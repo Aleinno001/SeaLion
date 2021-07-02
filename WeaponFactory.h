@@ -11,7 +11,7 @@
 
 class WeaponFactory : public SpecialWeaponFactory {
 public:
-    std::unique_ptr<Arsenal> createSpecialWeapon(std::string type) const override;
+    std::unique_ptr<Arsenal> createSpecialWeapon(WeaponType type) const override;
 
 };
 
