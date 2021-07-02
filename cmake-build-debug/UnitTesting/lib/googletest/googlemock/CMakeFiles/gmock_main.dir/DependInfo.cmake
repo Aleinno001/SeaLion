@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc" "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+  "/home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc" "/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,8 +18,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
-  "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
+  "/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
+  "/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

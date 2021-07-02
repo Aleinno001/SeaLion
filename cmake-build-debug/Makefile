@@ -67,10 +67,10 @@ RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
+CMAKE_SOURCE_DIR = /home/alessandro/CLionProjects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/alessandro/CLionProjects/SeaLion/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -145,9 +145,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles /home/alessandro/CLionProjects/SeaLion/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -266,6 +266,33 @@ gtest/fast:
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+Vehicle.o: Vehicle.cpp.o
+
+.PHONY : Vehicle.o
+
+# target to build an object file
+Vehicle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.o
+.PHONY : Vehicle.cpp.o
+
+Vehicle.i: Vehicle.cpp.i
+
+.PHONY : Vehicle.i
+
+# target to preprocess a source file
+Vehicle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.i
+.PHONY : Vehicle.cpp.i
+
+Vehicle.s: Vehicle.cpp.s
+
+.PHONY : Vehicle.s
+
+# target to generate assembly for a file
+Vehicle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.s
+.PHONY : Vehicle.cpp.s
+
 WarShip.o: WarShip.cpp.o
 
 .PHONY : WarShip.o
@@ -339,6 +366,9 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... runSeaLionTests"
+	@echo "... Vehicle.o"
+	@echo "... Vehicle.i"
+	@echo "... Vehicle.s"
 	@echo "... WarShip.o"
 	@echo "... WarShip.i"
 	@echo "... WarShip.s"

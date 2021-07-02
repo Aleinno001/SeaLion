@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/core.dir/Vehicle.cpp.o"
   "CMakeFiles/core.dir/WarShip.cpp.o"
   "libcore.a"
   "libcore.pdb"

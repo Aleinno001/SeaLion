@@ -62,10 +62,10 @@ RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
+CMAKE_SOURCE_DIR = /home/alessandro/CLionProjects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/alessandro/CLionProjects/SeaLion/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/depend.make
@@ -78,16 +78,16 @@ include UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/flags.ma
 
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/flags.make
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: ../UnitTesting/lib/googletest/googlemock/src/gmock_main.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc
 
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gmock_main.dir/src/gmock_main.cc.i"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc > CMakeFiles/gmock_main.dir/src/gmock_main.cc.i
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc > CMakeFiles/gmock_main.dir/src/gmock_main.cc.i
 
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gmock_main.dir/src/gmock_main.cc.s"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.s
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.s
 
 # Object files for target gmock_main
 gmock_main_OBJECTS = \
@@ -99,9 +99,9 @@ gmock_main_EXTERNAL_OBJECTS =
 lib/libgmock_maind.a: UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
 lib/libgmock_maind.a: UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make
 lib/libgmock_maind.a: UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../../../lib/libgmock_maind.a"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock_main.dir/cmake_clean_target.cmake
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmock_main.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../../../lib/libgmock_maind.a"
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock_main.dir/cmake_clean_target.cmake
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmock_main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build: lib/libgmock_maind.a
@@ -109,10 +109,10 @@ UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build: lib/libgm
 .PHONY : UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build
 
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/clean:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock_main.dir/cmake_clean.cmake
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock_main.dir/cmake_clean.cmake
 .PHONY : UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/clean
 
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/depend:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pala/CLionProjects/Projects/SeaLion /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/alessandro/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alessandro/CLionProjects/SeaLion /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock /home/alessandro/CLionProjects/SeaLion/cmake-build-debug /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock /home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/depend
 
