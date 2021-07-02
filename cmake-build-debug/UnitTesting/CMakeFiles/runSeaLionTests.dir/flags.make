@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include -isystem /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest
+CXX_INCLUDES = -isystem /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include -isystem /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest
 
 CXX_FLAGS = -g -std=gnu++14
 

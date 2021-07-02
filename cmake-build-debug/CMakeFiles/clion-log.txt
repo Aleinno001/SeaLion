@@ -1,4 +1,4 @@
-/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/alessandro/CLionProjects/SeaLion
+/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/pala/CLionProjects/Projects/SeaLion
 -- The C compiler identification is GNU 9.3.0
 -- The CXX compiler identification is GNU 9.3.0
 -- Detecting C compiler ABI info
@@ -23,4 +23,4 @@
 -- Found Threads: TRUE  
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/alessandro/CLionProjects/SeaLion/cmake-build-debug
+-- Build files have been written to: /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug

@@ -6,6 +6,6 @@
 #include "gtest/gtest.h"
 
 int main() {
-    std::cout << "Ciao mondo" << std::endl;
+    std::cout << "Ciao" << std::endl;
     return 0;
 }
