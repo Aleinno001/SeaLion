@@ -3,3 +3,11 @@
 //
 
 #include "Radar.h"
+
+float Radar::getRadius() const {
+    return radius;
+}
+
+float Radar::getDuration() const {
+    return duration;
+}

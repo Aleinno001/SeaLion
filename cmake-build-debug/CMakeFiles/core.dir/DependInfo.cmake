@@ -6,6 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/davide/CLionProjects/SeaLion/Arsenal.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/Arsenal.cpp.o"
   "/home/davide/CLionProjects/SeaLion/Bonus.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/Bonus.cpp.o"
+  "/home/davide/CLionProjects/SeaLion/Destroyer.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/Destroyer.cpp.o"
+  "/home/davide/CLionProjects/SeaLion/QuickRepair.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/QuickRepair.cpp.o"
+  "/home/davide/CLionProjects/SeaLion/Radar.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/Radar.cpp.o"
+  "/home/davide/CLionProjects/SeaLion/Vehicle.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/Vehicle.cpp.o"
   "/home/davide/CLionProjects/SeaLion/WarShip.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/WarShip.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

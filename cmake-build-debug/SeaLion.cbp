@@ -426,6 +426,24 @@
 		<Unit filename="/home/davide/CLionProjects/SeaLion/Bonus.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/Destroyer.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/Destroyer.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/QuickRepair.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/QuickRepair.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/Radar.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/Radar.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>
@@ -440,6 +458,12 @@
 		</Unit>
 		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/runAllTests.cpp">
 			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/Vehicle.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/davide/CLionProjects/SeaLion/Vehicle.h">
+			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/davide/CLionProjects/SeaLion/WarShip.cpp">
 			<Option target="core"/>

@@ -320,6 +320,114 @@ Bonus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bonus.cpp.s
 .PHONY : Bonus.cpp.s
 
+Destroyer.o: Destroyer.cpp.o
+
+.PHONY : Destroyer.o
+
+# target to build an object file
+Destroyer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Destroyer.cpp.o
+.PHONY : Destroyer.cpp.o
+
+Destroyer.i: Destroyer.cpp.i
+
+.PHONY : Destroyer.i
+
+# target to preprocess a source file
+Destroyer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Destroyer.cpp.i
+.PHONY : Destroyer.cpp.i
+
+Destroyer.s: Destroyer.cpp.s
+
+.PHONY : Destroyer.s
+
+# target to generate assembly for a file
+Destroyer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Destroyer.cpp.s
+.PHONY : Destroyer.cpp.s
+
+QuickRepair.o: QuickRepair.cpp.o
+
+.PHONY : QuickRepair.o
+
+# target to build an object file
+QuickRepair.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/QuickRepair.cpp.o
+.PHONY : QuickRepair.cpp.o
+
+QuickRepair.i: QuickRepair.cpp.i
+
+.PHONY : QuickRepair.i
+
+# target to preprocess a source file
+QuickRepair.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/QuickRepair.cpp.i
+.PHONY : QuickRepair.cpp.i
+
+QuickRepair.s: QuickRepair.cpp.s
+
+.PHONY : QuickRepair.s
+
+# target to generate assembly for a file
+QuickRepair.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/QuickRepair.cpp.s
+.PHONY : QuickRepair.cpp.s
+
+Radar.o: Radar.cpp.o
+
+.PHONY : Radar.o
+
+# target to build an object file
+Radar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Radar.cpp.o
+.PHONY : Radar.cpp.o
+
+Radar.i: Radar.cpp.i
+
+.PHONY : Radar.i
+
+# target to preprocess a source file
+Radar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Radar.cpp.i
+.PHONY : Radar.cpp.i
+
+Radar.s: Radar.cpp.s
+
+.PHONY : Radar.s
+
+# target to generate assembly for a file
+Radar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Radar.cpp.s
+.PHONY : Radar.cpp.s
+
+Vehicle.o: Vehicle.cpp.o
+
+.PHONY : Vehicle.o
+
+# target to build an object file
+Vehicle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.o
+.PHONY : Vehicle.cpp.o
+
+Vehicle.i: Vehicle.cpp.i
+
+.PHONY : Vehicle.i
+
+# target to preprocess a source file
+Vehicle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.i
+.PHONY : Vehicle.cpp.i
+
+Vehicle.s: Vehicle.cpp.s
+
+.PHONY : Vehicle.s
+
+# target to generate assembly for a file
+Vehicle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.s
+.PHONY : Vehicle.cpp.s
+
 WarShip.o: WarShip.cpp.o
 
 .PHONY : WarShip.o
@@ -399,6 +507,18 @@ help:
 	@echo "... Bonus.o"
 	@echo "... Bonus.i"
 	@echo "... Bonus.s"
+	@echo "... Destroyer.o"
+	@echo "... Destroyer.i"
+	@echo "... Destroyer.s"
+	@echo "... QuickRepair.o"
+	@echo "... QuickRepair.i"
+	@echo "... QuickRepair.s"
+	@echo "... Radar.o"
+	@echo "... Radar.i"
+	@echo "... Radar.s"
+	@echo "... Vehicle.o"
+	@echo "... Vehicle.i"
+	@echo "... Vehicle.s"
 	@echo "... WarShip.o"
 	@echo "... WarShip.i"
 	@echo "... WarShip.s"

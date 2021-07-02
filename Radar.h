@@ -17,6 +17,10 @@ public:
 
     ~Radar() override;
 
+    float getRadius() const;
+
+    float getDuration() const;
+
     void activate() override;
 };
 
