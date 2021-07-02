@@ -25,12 +25,23 @@ protected:
     //TODO sprite/grafica
 public:
     //TODO implementare i metodi
+
+    Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+            float decelleration, int power, int num, double x, double y);
+
+    virtual ~Arsenal() = 0;
+
     virtual void openFire(Vehicle enemy);
 
     virtual void update(double posX, double posY); //FIXME posX,posY da rivedere
+
     virtual void attach();
 
     virtual void detach();
+
+    virtual bool engage(Vehicle enemy);
+
+    virtual void rotate();
 
     //getter
     const float getRangeOfFire() const;
@@ -55,10 +66,6 @@ public:
 
     double getPosY() const;
 
-protected:
-    virtual bool engage(Vehicle enemy) const = 0;
-
-    virtual void rotate() const = 0;
 };
 
 #endif //SEALION_ARSENAL_H

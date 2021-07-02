@@ -4,7 +4,7 @@ project(SeaLion)
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(UnitTesting)
-set(SOURCE_FILES WarShip.cpp WarShip.h Arsenal.cpp Arsenal.h Bonus.cpp Bonus.h Destroyer.cpp Destroyer.h Vehicle.h Vehicle.cpp)
+set(SOURCE_FILES WarShip.cpp WarShip.h Arsenal.cpp Arsenal.h Bonus.cpp Bonus.h Destroyer.cpp Destroyer.h Vehicle.h Vehicle.cpp LightCannon.cpp LightCannon.h MediumCannon.cpp MediumCannon.h HeavlyCannon.cpp HeavlyCannon.h TorpedoTube.cpp TorpedoTube.h AntiAircraft.cpp AntiAircraft.h)
 add_executable(SeaLion main.cpp)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(SeaLion core)
