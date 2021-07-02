@@ -7,7 +7,7 @@
 
 #include "Arsenal.h"
 
-class AntiAircraft : Arsenal {
+class AntiAircraft : public Arsenal {
 public:
     //TODO implementare
     //FIXME coordinate da rivedere + sprite

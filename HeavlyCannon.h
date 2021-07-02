@@ -8,7 +8,7 @@
 
 #include "Arsenal.h"
 
-class HeavlyCannon : Arsenal {
+class HeavlyCannon : public Arsenal {
 public:
     //TODO implementare
     //FIXME coordinate da rivedere + sprite

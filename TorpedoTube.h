@@ -7,7 +7,7 @@
 
 #include "Arsenal.h"
 
-class TorpedoTube : Arsenal {
+class TorpedoTube : public Arsenal {
 public:
     //TODO implementare
     //FIXME coordinate da rivedere + sprite

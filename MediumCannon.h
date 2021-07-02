@@ -7,7 +7,7 @@
 
 #include "Arsenal.h"
 
-class MediumCannnon : Arsenal {
+class MediumCannnon : public Arsenal {
 public:
     //TODO implementare
     //FIXME coordinate da rivedere + sprite
