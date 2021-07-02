@@ -62,10 +62,10 @@ RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
+CMAKE_SOURCE_DIR = /home/davide/CLionProjects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/davide/CLionProjects/SeaLion/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/core.dir/depend.make
@@ -78,28 +78,58 @@ include CMakeFiles/core.dir/flags.make
 
 CMakeFiles/core.dir/WarShip.cpp.o: CMakeFiles/core.dir/flags.make
 CMakeFiles/core.dir/WarShip.cpp.o: ../WarShip.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/core.dir/WarShip.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/WarShip.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/WarShip.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/core.dir/WarShip.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/WarShip.cpp.o -c /home/davide/CLionProjects/SeaLion/WarShip.cpp
 
 CMakeFiles/core.dir/WarShip.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/WarShip.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/WarShip.cpp > CMakeFiles/core.dir/WarShip.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/CLionProjects/SeaLion/WarShip.cpp > CMakeFiles/core.dir/WarShip.cpp.i
 
 CMakeFiles/core.dir/WarShip.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/WarShip.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/WarShip.cpp -o CMakeFiles/core.dir/WarShip.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/CLionProjects/SeaLion/WarShip.cpp -o CMakeFiles/core.dir/WarShip.cpp.s
+
+CMakeFiles/core.dir/Arsenal.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/Arsenal.cpp.o: ../Arsenal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/core.dir/Arsenal.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/Arsenal.cpp.o -c /home/davide/CLionProjects/SeaLion/Arsenal.cpp
+
+CMakeFiles/core.dir/Arsenal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/Arsenal.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/CLionProjects/SeaLion/Arsenal.cpp > CMakeFiles/core.dir/Arsenal.cpp.i
+
+CMakeFiles/core.dir/Arsenal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/Arsenal.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/CLionProjects/SeaLion/Arsenal.cpp -o CMakeFiles/core.dir/Arsenal.cpp.s
+
+CMakeFiles/core.dir/Bonus.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/Bonus.cpp.o: ../Bonus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/core.dir/Bonus.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/Bonus.cpp.o -c /home/davide/CLionProjects/SeaLion/Bonus.cpp
+
+CMakeFiles/core.dir/Bonus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/Bonus.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/CLionProjects/SeaLion/Bonus.cpp > CMakeFiles/core.dir/Bonus.cpp.i
+
+CMakeFiles/core.dir/Bonus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/Bonus.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/CLionProjects/SeaLion/Bonus.cpp -o CMakeFiles/core.dir/Bonus.cpp.s
 
 # Object files for target core
 core_OBJECTS = \
-"CMakeFiles/core.dir/WarShip.cpp.o"
+"CMakeFiles/core.dir/WarShip.cpp.o" \
+"CMakeFiles/core.dir/Arsenal.cpp.o" \
+"CMakeFiles/core.dir/Bonus.cpp.o"
 
 # External object files for target core
 core_EXTERNAL_OBJECTS =
 
 libcore.a: CMakeFiles/core.dir/WarShip.cpp.o
+libcore.a: CMakeFiles/core.dir/Arsenal.cpp.o
+libcore.a: CMakeFiles/core.dir/Bonus.cpp.o
 libcore.a: CMakeFiles/core.dir/build.make
 libcore.a: CMakeFiles/core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libcore.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libcore.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core.dir/link.txt --verbose=$(VERBOSE)
 
@@ -113,6 +143,6 @@ CMakeFiles/core.dir/clean:
 .PHONY : CMakeFiles/core.dir/clean
 
 CMakeFiles/core.dir/depend:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pala/CLionProjects/Projects/SeaLion /home/pala/CLionProjects/Projects/SeaLion /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/CLionProjects/SeaLion /home/davide/CLionProjects/SeaLion /home/davide/CLionProjects/SeaLion/cmake-build-debug /home/davide/CLionProjects/SeaLion/cmake-build-debug /home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/core.dir/depend
 

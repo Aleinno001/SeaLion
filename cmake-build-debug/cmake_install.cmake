@@ -1,4 +1,4 @@
-# Install script for directory: /home/alessandro/CLionProjects/SeaLion
+# Install script for directory: /home/davide/CLionProjects/SeaLion
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/cmake_install.cmake")
+  include("/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/alessandro/CLionProjects/SeaLion/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/davide/CLionProjects/SeaLion/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

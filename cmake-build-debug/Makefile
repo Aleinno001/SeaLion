@@ -67,10 +67,10 @@ RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
+CMAKE_SOURCE_DIR = /home/davide/CLionProjects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/davide/CLionProjects/SeaLion/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -145,9 +145,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles /home/davide/CLionProjects/SeaLion/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -293,6 +293,33 @@ Arsenal.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Arsenal.cpp.s
 .PHONY : Arsenal.cpp.s
 
+Bonus.o: Bonus.cpp.o
+
+.PHONY : Bonus.o
+
+# target to build an object file
+Bonus.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bonus.cpp.o
+.PHONY : Bonus.cpp.o
+
+Bonus.i: Bonus.cpp.i
+
+.PHONY : Bonus.i
+
+# target to preprocess a source file
+Bonus.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bonus.cpp.i
+.PHONY : Bonus.cpp.i
+
+Bonus.s: Bonus.cpp.s
+
+.PHONY : Bonus.s
+
+# target to generate assembly for a file
+Bonus.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bonus.cpp.s
+.PHONY : Bonus.cpp.s
+
 WarShip.o: WarShip.cpp.o
 
 .PHONY : WarShip.o
@@ -369,6 +396,9 @@ help:
 	@echo "... Arsenal.o"
 	@echo "... Arsenal.i"
 	@echo "... Arsenal.s"
+	@echo "... Bonus.o"
+	@echo "... Bonus.i"
+	@echo "... Bonus.s"
 	@echo "... WarShip.o"
 	@echo "... WarShip.i"
 	@echo "... WarShip.s"
