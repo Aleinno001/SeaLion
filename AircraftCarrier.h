@@ -2,21 +2,20 @@
 // Created by pala on 7/2/21.
 //
 
-#ifndef SEALION_DESTROYER_H
-#define SEALION_DESTROYER_H
+#ifndef SEALION_AIRCRAFTCARRIER_H
+#define SEALION_AIRCRAFTCARRIER_H
 
 
 #include "WarShip.h"
 
-class Destroyer : public WarShip {
+class AircraftCarrier : public WarShip {
 private:
-    int numTorpedoTubes;
+    int numPlanes;
 public:
-
-    Destroyer(double x, double y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
-              std::string nat, int numL, int numH, int numM,
-              std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-              std::vector<std::unique_ptr<Vehicle>> &vehicleList);
+    AircraftCarrier(double x, double y, float ac, const float maxVel, int hp, int length, int arm,
+                    std::string na, std::string nat, int numL, int numH, int numM,
+                    std::vector<std::unique_ptr<Arsenal>> &arsenalList,
+                    std::vector<std::unique_ptr<Vehicle>> &vehicleList);
 
     float calcSpeed(Map battleSea) override;
 
@@ -40,7 +39,7 @@ public:
 
     void notifyArsenals() override;
 
-    ~Destroyer() override;
+    ~AircraftCarrier() override;
 
 protected:
     void rotate() override;
@@ -49,4 +48,4 @@ protected:
 };
 
 
-#endif //SEALION_DESTROYER_H
+#endif //SEALION_AIRCRAFTCARRIER_H
