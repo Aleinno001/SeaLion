@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o -o runSeaLionTests  ../lib/libgtestd.a ../lib/libgtest_maind.a ../libcore.a ../lib/libgtestd.a -lpthread 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/SeaLion.dir/main.cpp.o -o SeaLion  libcore.a 

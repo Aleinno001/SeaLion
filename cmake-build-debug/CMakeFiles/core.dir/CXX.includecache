@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alessandro/CLionProjects/SeaLion/WarShip.cpp
+WarShip.h
+/home/alessandro/CLionProjects/SeaLion/WarShip.h
+
+/home/alessandro/CLionProjects/SeaLion/WarShip.h
+
