@@ -1,5 +1,5 @@
 //
-// Created by pala on 7/2/21.
+// Created by gabriele on 7/2/21.
 //
 
 #ifndef SEALION_ARSENAL_H
