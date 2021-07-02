@@ -12,9 +12,13 @@ class Cruiser : public WarShip {
 private:
     int numPlanes;
 public:
-    Cruiser(double x, double y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
-            std::string nat, int numL, int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-            std::vector<std::unique_ptr<Vehicle>> &vehicleList);
+    Cruiser(double x1, double y1, float ac1, const float maxVel1, int hp1, int length1, int arm1,
+            std::string na1, std::string nat1, int numL1, int numH1, int numM1,
+            std::vector<std::unique_ptr<Arsenal>> &arsenalList1,
+            std::vector<std::unique_ptr<Vehicle>> &vehicleList1, double x, double y, float ac,
+            const float maxVel, int hp, int length, int arm, std::string na, std::string nat, int numL,
+            int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
+            std::vector<std::unique_ptr<Vehicle>> &vehicleList, int numPlan);
 
     float calcSpeed(Map battleSea) override;
 

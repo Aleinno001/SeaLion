@@ -60,11 +60,19 @@ bool Battleship::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
-Battleship::Battleship(double x, double y, float ac, const float maxVel, int hp, int length, int arm,
-                       std::string na, std::string nat, int numL, int numH, int numM,
-                       std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-                       std::vector<std::unique_ptr<Vehicle>> &vehicleList) : WarShip(x, y, ac, maxVel, hp, length, arm,
-                                                                                     na, nat, numL, numH, numM,
-                                                                                     arsenalList, vehicleList) {
+Battleship::Battleship(double x1, double y1, float ac1, const float maxVel1, int hp1, int length1, int arm1,
+                       std::string na1, std::string nat1, int numL1, int numH1, int numM1,
+                       std::vector<std::unique_ptr<Arsenal>> &arsenalList1,
+                       std::vector<std::unique_ptr<Vehicle>> &vehicleList1, double x, double y, float ac,
+                       const float maxVel, int hp, int length, int arm, std::string na, std::string nat, int numL,
+                       int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
+                       std::vector<std::unique_ptr<Vehicle>> &vehicleList, int numInter) : WarShip(x1, y1, ac1, maxVel1,
+                                                                                                   hp1, length1, arm1,
+                                                                                                   na1, nat1, numL1,
+                                                                                                   numH1, numM1,
+                                                                                                   arsenalList1,
+                                                                                                   vehicleList1) {
 
 }
+
+
