@@ -3,3 +3,7 @@
 //
 
 #include "Bonus.h"
+
+float Bonus::getCooldown() const {
+    return cooldown;
+}
