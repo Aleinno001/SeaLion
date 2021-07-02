@@ -266,6 +266,33 @@ gtest/fast:
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+Arsenal.o: Arsenal.cpp.o
+
+.PHONY : Arsenal.o
+
+# target to build an object file
+Arsenal.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Arsenal.cpp.o
+.PHONY : Arsenal.cpp.o
+
+Arsenal.i: Arsenal.cpp.i
+
+.PHONY : Arsenal.i
+
+# target to preprocess a source file
+Arsenal.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Arsenal.cpp.i
+.PHONY : Arsenal.cpp.i
+
+Arsenal.s: Arsenal.cpp.s
+
+.PHONY : Arsenal.s
+
+# target to generate assembly for a file
+Arsenal.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Arsenal.cpp.s
+.PHONY : Arsenal.cpp.s
+
 WarShip.o: WarShip.cpp.o
 
 .PHONY : WarShip.o
@@ -339,6 +366,9 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... runSeaLionTests"
+	@echo "... Arsenal.o"
+	@echo "... Arsenal.i"
+	@echo "... Arsenal.s"
 	@echo "... WarShip.o"
 	@echo "... WarShip.i"
 	@echo "... WarShip.s"

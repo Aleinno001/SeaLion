@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pala/CLionProjects/Projects/SeaLion/Arsenal.cpp" "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/Arsenal.cpp.o"
   "/home/pala/CLionProjects/Projects/SeaLion/WarShip.cpp" "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/WarShip.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

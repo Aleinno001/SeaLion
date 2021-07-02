@@ -414,6 +414,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Arsenal.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Arsenal.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>
