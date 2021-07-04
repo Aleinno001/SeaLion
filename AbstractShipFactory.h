@@ -9,6 +9,33 @@
 #include "WarShip.h"
 
 enum class ModelType {
+    Yamato,
+    Musashi,
+    Kongo,
+    ISE,
+    Takao,
+    IsuzuNagara,
+    Akizuki,
+    Fubuki,
+    Yukikaze,
+    Hiryu,
+    Tahio,
+    I400,
+    typeb1,
+    VittorioVeneto,
+    AndreaDoria,
+    ImperatoreAugusto,
+    MichelangeloBuonarroti,
+    AlbertoDiGiussano,
+    Trento,
+    Gorizia,
+    Impavido,
+    Leone,
+    PaoloEmilio,
+    GiuseppeGaribaldi,
+    Cavour,
+    DaVinci,
+    Papa
 }; //TODO Concludere l'aggiunta dei tipi di modelli navali!!
 
 class AbstractShipFactory {
