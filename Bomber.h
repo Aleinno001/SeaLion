@@ -14,7 +14,7 @@ private:
     int bombDamage;
 private:
     Bomber(double X, double Y, float ac, const float maxVel, int HP, int length, int numBombs,
-           int damage/*SpriteSheet sprite*/);
+           int damage/*SpriteSheet sprite*/);//FIXME sprite
 
     void bombard(Vehicle enemy);
 

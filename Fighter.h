@@ -9,7 +9,7 @@
 
 class Fighter : public Vehicle {
 private:
-    Fighter(double X, double Y, float ac, const float maxVel, int HP, int length/*SpriteSheet sprite*/);
+    Fighter(double X, double Y, float ac, const float maxVel, int HP, int length/*SpriteSheet sprite*/);//FIXME sprite
 
     void fight(Vehicle enemy);
 
