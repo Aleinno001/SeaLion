@@ -50,6 +50,8 @@ enum class ModelType {
     Indomitable,
     Triton,
     Trenchant,
+    NewYork,
+    Arizona, NorthCarolina, Montana, StLouis, NewOrleans, Alaska, Mahan, Sims, Fletcher, Ranger, Midway, Gato, Narwhal
 }; //TODO Concludere l'aggiunta dei tipi di modelli navali!!
 
 class AbstractShipFactory {
