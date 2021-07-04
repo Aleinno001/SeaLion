@@ -10,10 +10,11 @@
 #include "GameTile.h"
 
 
+
 class GameWorld {
 
     sf::Vector2i exitPos;
-    sf::Vector2i playerPos;
+    std::vector<sf::Vector2i> navyElementsPosition;
     std::vector<sf::Vector2i> enemyPositions;
 
     void setUpInitialState();
@@ -23,7 +24,7 @@ class GameWorld {
     void setUpTiles();
 
 public:
-    std::vector<std::vector<GameTile *>> tiles;
+    std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
     int gridLength;
 
     GameWorld();
