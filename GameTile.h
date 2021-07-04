@@ -17,7 +17,6 @@ private:
 public:
 
     GameTile(std::string textureName, float x, float y, bool collision, bool exit);
-
     bool setUpSprite(std::string textureName);
 };
 
