@@ -35,7 +35,21 @@ enum class ModelType {
     GiuseppeGaribaldi,
     Cavour,
     DaVinci,
-    Papa
+    Papa,
+    Dreadnought,
+    IronDuke,
+    Hood,
+    Lion,
+    Danae,
+    Belfast,
+    Tiger59,
+    Campbelltown,
+    Gallant,
+    Jutland,
+    ArkRoyal,
+    Indomitable,
+    Triton,
+    Trenchant,
 }; //TODO Concludere l'aggiunta dei tipi di modelli navali!!
 
 class AbstractShipFactory {
