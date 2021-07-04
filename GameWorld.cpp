@@ -8,7 +8,7 @@ GameWorld::GameWorld() {
     gridLength = 8;
     setUpInitialState();
 }
-
+//TODO Rimuovere i row pointer e sistemare l'implementazione di Game Word
 void GameWorld::setUpInitialState() {
     exitPos = sf::Vector2i(1, 0);
     playerPos = sf::Vector2i(gridLength - 1, gridLength - 1);
