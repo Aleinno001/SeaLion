@@ -29,7 +29,7 @@ public:
     Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
             float decelleration, int power, int num, double x, double y);
 
-    virtual ~Arsenal() = 0;
+    virtual ~Arsenal() = default;
 
     virtual void openFire(Vehicle enemy);
 

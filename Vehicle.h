@@ -39,7 +39,7 @@ public:
 
     virtual void detach();
 
-    ~Vehicle() = default;
+    virtual ~Vehicle() = default;
 };
 
 #endif //SEALION_VEHICLE_H
