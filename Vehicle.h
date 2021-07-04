@@ -6,7 +6,7 @@
 #define SEALION_VEHICLE_H
 
 
-#include "Map.h"
+#include "GameWorld.h"
 
 class Vehicle {
 protected:
@@ -27,7 +27,7 @@ public:
 
     Vehicle(double X, double Y, float ac, float maxVel, int HP, int length/*SpriteSheet sprite*/);
 
-    virtual float calcSpeed(Map battleSea);
+    virtual float calcSpeed(GameWorld battleSea);
 
     virtual void attack(Vehicle target);
 

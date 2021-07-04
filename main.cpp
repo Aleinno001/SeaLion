@@ -3,7 +3,7 @@
 #include "GameWorld.h"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SeaLion");
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SeaLion");
     GameWorld gameWorld = GameWorld();
     while (window.isOpen()) {
         sf::Event e;
