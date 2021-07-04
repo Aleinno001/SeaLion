@@ -12,6 +12,7 @@
 
 
 class GameWorld {
+
 private:
 
     sf::Vector2i exitPos;
