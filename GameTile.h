@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 class GameTile {
-private:
+public:
     bool isPassable;
     bool isExit;
     sf::Vector2f pos;
@@ -17,6 +17,7 @@ private:
 public:
 
     GameTile(std::string textureName, float x, float y, bool collision, bool exit);
+
     bool setUpSprite(std::string textureName);
 };
 
