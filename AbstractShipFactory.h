@@ -64,7 +64,7 @@ enum class ModelType {
     Midway,
     Gato,
     Narwhal
-}; //TODO Concludere l'aggiunta dei tipi di modelli navali!!
+};
 
 class AbstractShipFactory {
 public:

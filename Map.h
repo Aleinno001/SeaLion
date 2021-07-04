@@ -7,6 +7,9 @@
 
 
 class Map {
+private:
+    double width;
+    double height;
 
 };
 
