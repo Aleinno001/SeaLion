@@ -2,13 +2,7 @@
 #include "SFML/Graphics.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    /*
-    unsigned int windowHeight=400;
-    unsigned int windowWidth=400;
-    sf::RenderWindow window(sf::VideoMode(windowWidth,windowHeight),"SeaLion");
-     */
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SeaLion");
     while (window.isOpen()) {
         sf::Event e;
         while (window.pollEvent(e)) {
@@ -17,7 +11,6 @@ int main() {
             }
         }
         window.clear();
-
         window.display();
     }
     return 0;
