@@ -16,7 +16,7 @@ float Vehicle::calcSpeed(Map battleSea) {
     return 0;
 }
 
-Vehicle::Vehicle(double X, double Y, float ac, const float maxVel, int HP, int lenght) {
+Vehicle::Vehicle(double X, double Y, float ac, float maxVel, int HP, int lenght) {
 
 }
 

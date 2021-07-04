@@ -13,7 +13,7 @@ protected:
     double posX;  //TODO ricontrollare meglio con la libreria SFML
     double posY;  //TODO ricontrollare meglio con la libreria SFML
     float acceleration;
-    const float maxSpeed;
+    const float maxSpeed = 0; //FIXME valore di default di velocità
     int hp;
     int length;
 
@@ -25,7 +25,7 @@ protected:
 
 public:
 
-    Vehicle(double X, double Y, float ac, const float maxVel, int HP, int length/*SpriteSheet sprite*/);
+    Vehicle(double X, double Y, float ac, float maxVel, int HP, int length/*SpriteSheet sprite*/);
 
     virtual float calcSpeed(Map battleSea);
 
