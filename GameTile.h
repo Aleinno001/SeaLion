@@ -15,9 +15,10 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
 public:
+
     GameTile(std::string textureName, float x, float y, bool collision, bool exit);
 
-    bool setUpSprite(std::string);
+    bool setUpSprite(std::string textureName);
 };
 
 
