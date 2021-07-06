@@ -100,24 +100,23 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
 }
 
 void
-GameWorld::setUpAlliedFleet(int &numAlliedSub, int &numAlliedBat, int &numAlliedCru, int &numAlliedDes,
-                            int &numAlliedAir) {
+GameWorld::setUpAlliedFleet() {                     //FIXME da rifare tutto
 
-    ShipFactory *alliedFactory;
+    ShipFactory alliedFactory;
     for (int i = 0; i < numAlliedSub; i++) {
-        alliedFleet.push_back(alliedFactory->createSubmarine());
+        alliedFleet.push_back(alliedFactory.createSubmarine());
     }
     for (int i = 0; i < numAlliedBat; i++) {
-        alliedFleet.push_back(alliedFactory->createBattleship());
+        alliedFleet.push_back(alliedFactory.createBattleship());
     }
     for (int i = 0; i < numAlliedCru; i++) {
-        alliedFleet.push_back(alliedFactory->createCruiser());
+        alliedFleet.push_back(alliedFactory.createCruiser());
     }
     for (int i = 0; i < numAlliedDes; i++) {
-        alliedFleet.push_back(alliedFactory->createDestroyer());
+        alliedFleet.push_back(alliedFactory.createDestroyer());
     }
     for (int i = 0; i < numAlliedAir; i++) {
-        alliedFleet.push_back(alliedFactory->createAircraftCarrier());
+        alliedFleet.push_back(alliedFactory.createAircraftCarrier());
     }
 }
 

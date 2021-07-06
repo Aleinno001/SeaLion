@@ -44,7 +44,7 @@ public:
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
     void
-    setUpAlliedFleet(int &numAlliedSub, int &numAlliedBat, int &numAlliedCru, int &numAlliedDes, int &numAlliedAir);
+    setUpAlliedFleet();
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
@@ -60,6 +60,12 @@ public:
 
     void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFaction);
 
+};
+
+struct Fleet {
+    ModelType name;
+    int num;
+    std::string type;
 };
 
 
