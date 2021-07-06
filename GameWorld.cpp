@@ -20,28 +20,52 @@ GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCr
 
 void
 GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
-    ShipFactory enemyfactory;
+
+    ShipFactory enemyFactory;
+
     Dice subDice(2);
 
-    ModelType type;
+
     for (int i = 0; i < numEnemySub; i++) {
 
         switch (enemyFaction) {
             case "Japan":
+
                 if (subDice.roll(1) > 1)
-                    type = "I400";
-                enemyfactory.createSubmarine(type);
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::I400));
+                else
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::typeb1));
+                enemyFleet.push_back(std::move(enemy));
+
                 break;
 
             case "Italy":
+
+                if (subDice.roll(1) > 1)
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::DaVinci));
+                else
+
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Papa));
+                enemyFleet.push_back(std::move(enemy));
 
                 break;
 
             case "Usa":
 
+                if (subDice.roll(1) > 1)
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Gato));
+                else
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Narwhal));
+                enemyFleet.push_back(std::move(enemy));
                 break;
 
             case "Uk":
+
+                if (subDice.roll(1) > 1)
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Triton));
+                else
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Trenchant));
+                enemyFleet.push_back(std::move(enemy));
 
                 break;
             default:
@@ -50,8 +74,7 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 
         }
 
-        std::unique_ptr<WarShip> enemy(enemyfactory.createSubmarine(type));
-        enemyFleet.pushBack(std::move(enemy));
+
     }
 
 

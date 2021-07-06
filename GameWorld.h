@@ -27,8 +27,8 @@ class GameWorld {
 
 private:
 
-    FactioType enemyFaction{"Japan"};
-    FactionType alliedFaction{"Italy"};
+    FactioType enemyFaction{FactionType::Japan};
+    FactionType alliedFaction{FactionType::Italy};
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
     std::list<std::unique_ptr<WarShip>> enemyFleet;

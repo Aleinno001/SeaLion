@@ -18,7 +18,7 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type) {
 }
 
 std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type) {
-    return std::unique_ptr<WarShip>();
+    return std::unique_ptr<WarShip>(); //TODO implementare il costruttore di Battleship
 }
 
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type) {
