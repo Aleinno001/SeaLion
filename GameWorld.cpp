@@ -95,12 +95,23 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
     tiles.push_back(secondRow);
 */
 
-    std::string pathSea = "/Res/Tiles/seaBlock";
     std::vector<std::unique_ptr<GameTile>> row;
+    Dice dice(6);
+    std::string path;
+    bool collision = false;
     for (int i = 1; i < (mapHeight / 30); i++) {
         row.clear();
         for (int j = 1; j < (mapWidth / 30); j++) {
-            std::unique_ptr<GameTile> tile(new GameTile(pathSea, 30 * (i - 1), 30 * (j - 1), false, false));
+            int resTile = dice.roll(1);
+            if (resTile >= 1 && resTile < 5) {
+                path = "/Res/Tiles/seaBlock";
+            } else if (resTile == 5) {
+                path = "/Res/Tiles/seaFoggyBlock";
+                collision = true;
+            } else {
+                path = "/Res/Tiles/seaWaveBlock";
+            }
+            std::unique_ptr<GameTile> tile(new GameTile(path, 30 * (i - 1), 30 * (j - 1), collision, false));
             row.push_back(std::move(tile));
         }
         tiles.push_back(row);
