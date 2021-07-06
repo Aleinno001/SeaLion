@@ -68,7 +68,7 @@ enum class ModelType {
 
 class AbstractShipFactory {
 public:
-    virtual std::unique_ptr<WarShip> createSubmarine(ModelType type) = 0;
+    virtual std::unique_ptr<Warship> createSubmarine(ModelType type) = 0;
 
     virtual std::unique_ptr<WarShip> createAircraftCarrier(ModelType type) = 0;
 
