@@ -20,11 +20,41 @@ GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCr
 
 void
 GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
-    ShipFactory enemyfactory();
+    ShipFactory enemyfactory;
+    Dice subDice(2);
+
+    ModelType type;
     for (int i = 0; i < numEnemySub; i++) {
-        std::unique_ptr<WarShip> enemy(new Subma);//TODO FINIRE DOPO PRANZO
-        enemyFleet.pushBack();
+
+        switch (enemyFaction) {
+            case "Japan":
+                if (subDice.roll(1) > 1)
+                    type = "I400";
+                enemyfactory.createSubmarine(type);
+                break;
+
+            case "Italy":
+
+                break;
+
+            case "Usa":
+
+                break;
+
+            case "Uk":
+
+                break;
+            default:
+                //TODO lancia eccezione
+                break;
+
+        }
+
+        std::unique_ptr<WarShip> enemy(enemyfactory.createSubmarine(type));
+        enemyFleet.pushBack(std::move(enemy));
     }
+
+
 }
 
 void

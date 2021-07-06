@@ -11,12 +11,24 @@
 #include "WarShip.h"
 #include "ShipFactory.h"
 #include <string>
+#include "AbstractShipFactory.h"
+#include <memory>
+#include "Dice.h"
+
+class enum FactionType {
+    Uk,
+    Usa,
+    Italy,
+    Japan
+
+};
 
 class GameWorld {
 
 private:
 
-
+    FactioType enemyFaction{"Japan"};
+    FactionType alliedFaction{"Italy"};
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
     std::list<std::unique_ptr<WarShip>> enemyFleet;
