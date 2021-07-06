@@ -4,19 +4,27 @@
 
 #include "GameWorld.h"
 
-GameWorld::GameWorld() : gridLength(8) {
-    setUpInitialState();
+GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir)
+        : gridLength(8) {
+    setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
 }
 //TODO Rimuovere i row pointer e sistemare l'implementazione di Game Word
 
-void GameWorld::setUpInitialState() {
+void
+GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
     exitPos = sf::Vector2i(1, 0);
     //TODO iniziallizare la lista di navi alleate e nemiche
     setUpAlliedFleet();
-    setUpEnemyFleet();
+    setUpEnemyFleet(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
 }
 
-void GameWorld::setUpEnemyFleet() {
+void
+GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
+    ShipFactory enemyfactory();
+    for (int i = 0; i < numEnemySub; i++)
+        std::unique_ptr<WarShip> enemy(new Subma) //TODO FINIRE DOPO PRANZO
+            enemyFleet.pushBack();
+
 
 }
 
