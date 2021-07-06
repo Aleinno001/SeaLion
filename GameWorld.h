@@ -9,7 +9,7 @@
 #include <vector>
 #include "GameTile.h"
 #include "WarShip.h"
-
+#include <string>
 
 class GameWorld {
 
@@ -20,9 +20,9 @@ private:
     std::list<std::unique_ptr<WarShip>> enemyFleet;
     std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
     int gridLength;
-    std::map<sf::Vector2<int>, std::unique_ptr<GameTile>> worldMap;
+    std::map<std::string, std::unique_ptr<GameTile>> worldMap;
     int mapWidth{1920};
-    int mapHegith{1080};
+    int mapHeight{1080};
 
 public:
 

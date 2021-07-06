@@ -5,6 +5,7 @@
 #include "GameWorld.h"
 
 #include <memory>
+#include <string>
 
 GameWorld::GameWorld() : gridLength(8) {
     setUpInitialState();
@@ -63,14 +64,12 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
     std::string pathSea = "/Res/Tiles/seaBlock";
     int j = 1;
     int i = 1;
-    sf::Vector2<int> key(i, j);
-    for (; i < (mapHegith / 30); i++) {
-        key.x = i;
+    for (; i < (mapHeight / 30); i++) {
         for (; j < (mapWidth / 30); j++) {
-            key.y = j;
             //worldMap.emplace(i,j,std::unique_ptr<GameTile> (new GameTile(pathSea, 100, 0, false, false)));
+            std::string key = std::to_string(i) + ',' + std::to_string(j);
             std::unique_ptr<GameTile> tile(new GameTile(pathSea, 100, 0, false, false));
-            worldMap.insert(std::pair(key, tile));
+            worldMap.emplace(key, std::move(tile));
         }
     }
 
