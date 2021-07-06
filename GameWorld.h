@@ -50,6 +50,15 @@ public:
 
     void setUpTiles();
 
+    void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFaction);
+
+    void battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFaction);
+
+    void cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFaction);
+
+    void destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFaction);
+
+    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFaction);
 
 };
 
