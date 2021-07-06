@@ -16,7 +16,7 @@ class GameWorld {
 private:
 
     sf::Vector2i exitPos;
-    std::vector<sf::Vector2i> navyElementsPosition;
+    std::vector<sf::Vector2i> alliedPosition;
     std::vector<sf::Vector2i> enemyPositions;
     std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
     int gridLength;
@@ -26,6 +26,8 @@ public:
 
 
     void setUpInitialState();
+
+    void setUpAlliedPosition();
 
     void setUpEnemyPositions();
 
