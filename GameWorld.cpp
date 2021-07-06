@@ -57,6 +57,13 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
     secondRow.push_back(new GameTile("", 350, 0, false, false));
     tiles.push_back(secondRow);
 */
+
+    for (int i = 1; i < (mapHegith / 30); i++) {
+        for (int j = 1; j < (mapWidth / 30); j++) {
+            worldMap.emplace();
+        }
+    }
+
 }
 
 void GameWorld::setUpAlliedFleet() {
