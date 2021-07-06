@@ -44,7 +44,8 @@ public:
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
-    void setUpAlliedFleet();
+    void
+    setUpAlliedFleet(int &numAlliedSub, int &numAlliedBat, int &numAlliedCru, int &numAlliedDes, int &numAlliedAir);
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
