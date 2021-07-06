@@ -3,7 +3,6 @@
 //
 
 #include "GameTile.h"
-#include <SFML/Graphics.hpp>
 
 bool GameTile::setUpSprite(std::string textureName) {
     if (!texture.loadFromFile(textureName)) {

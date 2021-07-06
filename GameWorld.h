@@ -22,7 +22,6 @@ private:
     std::list<std::unique_ptr<WarShip>> enemyFleet;
     std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
     int gridLength;
-    std::map<std::string, std::unique_ptr<GameTile>> worldMap;
     int mapWidth{1920};
     int mapHeight{1080};
 

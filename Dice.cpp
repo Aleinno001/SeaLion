@@ -7,7 +7,6 @@
 int Dice::roll(int rolls) const {
     int roll;
     int min = 1;
-    int max = this->numFaces;
 
     unsigned seed;
     seed = time(0);
@@ -16,7 +15,7 @@ int Dice::roll(int rolls) const {
     roll = 0;
 
     for (int i = 0; i < rolls; i++)
-        roll = roll + rand() % (max - min + 1) + min;
+        roll = roll + rand() % (numFaces - min + 1) + min;
 
 
     return roll;

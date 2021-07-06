@@ -13,9 +13,9 @@ class Dice {
 private:
     int numFaces;
 public:
-    Dice(int num, int max) : numFaces(num) {};
+    Dice(int num) : numFaces(num) {};
 
-    ~Dice();
+    ~Dice() = default;
 
     int roll(int rolls) const;
 };

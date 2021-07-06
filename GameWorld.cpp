@@ -4,9 +4,6 @@
 
 #include "GameWorld.h"
 
-#include <memory>
-#include <string>
-
 GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir)
         : gridLength(8) {
     setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
@@ -24,11 +21,10 @@ GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCr
 void
 GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
     ShipFactory enemyfactory();
-    for (int i = 0; i < numEnemySub; i++)
-        std::unique_ptr<WarShip> enemy(new Subma) //TODO FINIRE DOPO PRANZO
-            enemyFleet.pushBack();
-
-
+    for (int i = 0; i < numEnemySub; i++) {
+        std::unique_ptr<WarShip> enemy(new Subma);//TODO FINIRE DOPO PRANZO
+        enemyFleet.pushBack();
+    }
 }
 
 void
@@ -70,15 +66,14 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
 */
 
     std::string pathSea = "/Res/Tiles/seaBlock";
-    int j = 1;
-    int i = 1;
-    for (; i < (mapHeight / 30); i++) {
-        for (; j < (mapWidth / 30); j++) {
-            //worldMap.emplace(i,j,std::unique_ptr<GameTile> (new GameTile(pathSea, 100, 0, false, false)));
-            std::string key = std::to_string(i) + ',' + std::to_string(j);
-            std::unique_ptr<GameTile> tile(new GameTile(pathSea, 100, 0, false, false));
-            worldMap.emplace(key, std::move(tile));
+    std::vector<std::unique_ptr<GameTile>> row;
+    for (int i = 1; i < (mapHeight / 30); i++) {
+        row.clear();
+        for (int j = 1; j < (mapWidth / 30); j++) {
+            std::unique_ptr<GameTile> tile(new GameTile(pathSea, 30 * (i - 1), 30 * (j - 1), false, false));
+            row.push_back(std::move(tile));
         }
+        tiles.push_back(row);
     }
 
 }
