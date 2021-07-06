@@ -20,6 +20,7 @@ public:
 
     std::unique_ptr<WarShip> createDestroyer(ModelType type) override;
 
+    ShipFactory() = default;
 };
 
 

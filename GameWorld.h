@@ -9,11 +9,13 @@
 #include <vector>
 #include "GameTile.h"
 #include "WarShip.h"
+#include "ShipFactory.h"
 #include <string>
 
 class GameWorld {
 
 private:
+
 
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
@@ -24,18 +26,19 @@ private:
     int mapWidth{1920};
     int mapHeight{1080};
 
+
 public:
+    GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
-
-    void setUpInitialState();
+    void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
     void setUpAlliedFleet();
 
-    void setUpEnemyFleet();
+    void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
     void setUpTiles();
 
-    GameWorld();
+
 };
 
 
