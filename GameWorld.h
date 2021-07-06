@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GameTile.h"
-
+#include "WarShip.h"
 
 
 class GameWorld {
@@ -16,8 +16,8 @@ class GameWorld {
 private:
 
     sf::Vector2i exitPos;
-    std::vector<sf::Vector2i> alliedPosition;
-    std::vector<sf::Vector2i> enemyPositions;
+    std::list<std::unique_ptr<WarShip>> alliedFleet;
+    std::list<std::unique_ptr<WarShip>> enemyFleet;
     std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
     int gridLength;
 
@@ -27,9 +27,9 @@ public:
 
     void setUpInitialState();
 
-    void setUpAlliedPosition();
+    void setUpAlliedFleet();
 
-    void setUpEnemyPositions();
+    void setUpEnemyFleet();
 
     void setUpTiles();
 

@@ -12,20 +12,18 @@ GameWorld::GameWorld() : gridLength(8) {
 void GameWorld::setUpInitialState() {
     exitPos = sf::Vector2i(1, 0);
     //TODO iniziallizare la lista di navi alleate e nemiche
-    setUpAlliedPosition();
-    setUpEnemyPositions();
+    setUpAlliedFleet();
+    setUpEnemyFleet();
 }
 
-void GameWorld::setUpEnemyPositions() {
-    enemyPositions.clear();
-    enemyPositions.push_back(sf::Vector2i(0, 2));
-    enemyPositions.push_back(sf::Vector2i(6, 0));
-    enemyPositions.push_back(sf::Vector2i(2, 7));
+void GameWorld::setUpEnemyFleet() {
+
 }
 
 void
 GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare la mappa , più randomica e più automatizzata
     tiles.clear();
+    /*
     std::string pathSea = "/Res/Tiles/seaBlock"; //TODO Inserire un eccezione e forse passare tra i parametri di ingresso al metodo il path (potrebbe lanciare un eccezione se non trova la risorsa)
     std::vector<std::unique_ptr<GameTile>> firstRow;
     std::unique_ptr<GameTile> firstTile(
@@ -48,6 +46,7 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
     firstRow.push_back(std::move(eightyTile));
     tiles.push_back(firstRow);
     std::vector<std::unique_ptr<GameTile>> secondRow;
+
     secondRow.push_back(new GameTile("", 0, 0, false, false));
     secondRow.push_back(new GameTile("", 50, 0, false, false));
     secondRow.push_back(new GameTile("", 100, 0, false, false));
@@ -57,9 +56,11 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
     secondRow.push_back(new GameTile("", 300, 0, false, false));
     secondRow.push_back(new GameTile("", 350, 0, false, false));
     tiles.push_back(secondRow);
+*/
+}
+
+void GameWorld::setUpAlliedFleet() {
 
 }
 
-void GameWorld::setUpAlliedPosition() {
-    //playerPos = sf::Vector2i(gridLength - 1, gridLength - 1);
-}
+
