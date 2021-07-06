@@ -44,13 +44,19 @@ public:
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
     void
-    setUpAlliedFleet(int &numAlliedSub, int &numAlliedBat, int &numAlliedCru, int &numAlliedDes, int &numAlliedAir);
+    setUpAlliedFleet();
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
     void setUpTiles();
 
 
+};
+
+struct Fleet {
+    ModelType name;
+    int num;
+    std::string type;
 };
 
 
