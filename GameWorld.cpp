@@ -452,34 +452,10 @@ void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, 
 
 
 
-    for (int i = 0; i < numCru; i++) {
 
 
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::StLouis));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::NewOrleans));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Alaska));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
 
 
-    for (int i = 0; i < numCru; i++) {
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Danae));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Belfast));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Tiger59));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
 
 }
 
@@ -545,6 +521,38 @@ void GameWorld::italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory
 }
 
 void GameWorld::usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numCru; i++) {
+
+
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::StLouis));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::NewOrleans));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Alaska));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numCru; i++) {
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Danae));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Belfast));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Tiger59));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
 
 }
 

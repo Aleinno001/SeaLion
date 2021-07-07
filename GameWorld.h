@@ -99,6 +99,8 @@ public:
 
     void usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
 
+    void ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
 };
 
 
