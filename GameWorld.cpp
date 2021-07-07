@@ -43,6 +43,7 @@ void
 GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
+
     Dice dice(6);
     std::string path = "";
     bool collision = false;

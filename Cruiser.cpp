@@ -3,11 +3,11 @@
 //
 
 #include "Cruiser.h"
-
+/*
 float Cruiser::calcSpeed(Map battleSea) {
     return Vehicle::calcSpeed(battleSea);
 }
-
+*/
 void Cruiser::attack(Vehicle target) {
     Vehicle::attack(target);
 }

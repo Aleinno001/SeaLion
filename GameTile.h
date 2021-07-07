@@ -16,7 +16,7 @@ public:
     sf::Sprite sprite;
 public:
 
-    GameTile(std::string textureName, float x, float y, bool collision, bool exit);
+    GameTile(std::string textureName, int x, int y, bool collision, bool exit);
 
     bool setUpSprite(std::string textureName);
 };

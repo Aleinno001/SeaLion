@@ -3,11 +3,11 @@
 //
 
 #include "AircraftCarrier.h"
-
+/*
 float AircraftCarrier::calcSpeed(Map battleSea) {
     return Vehicle::calcSpeed(battleSea);
 }
-
+*/
 void AircraftCarrier::attack(Vehicle target) {
     Vehicle::attack(target);
 }
