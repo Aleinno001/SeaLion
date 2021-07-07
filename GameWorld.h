@@ -119,7 +119,23 @@ public:
 
     void ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
 
+    FactionType getEnemyFaction() const;
 
+    FactionType getAlliedFaction() const;
+
+    const sf::Vector2i &getExitPos() const;
+
+    const std::list<std::unique_ptr<WarShip>> &getAlliedFleet() const;
+
+    const std::list<std::unique_ptr<WarShip>> &getEnemyFleet() const;
+
+    const std::vector<std::vector<std::unique_ptr<GameTile>>> &getTiles() const;
+
+    int getGridLength() const;
+
+    int getMapWidth() const;
+
+    int getMapHeight() const;
 };
 
 

@@ -624,6 +624,42 @@ void GameWorld::ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFact
 
 }
 
+FactionType GameWorld::getEnemyFaction() const {
+    return enemyFaction;
+}
+
+FactionType GameWorld::getAlliedFaction() const {
+    return alliedFaction;
+}
+
+const sf::Vector2i &GameWorld::getExitPos() const {
+    return exitPos;
+}
+
+const std::list<std::unique_ptr<WarShip>> &GameWorld::getAlliedFleet() const {
+    return alliedFleet;
+}
+
+const std::list<std::unique_ptr<WarShip>> &GameWorld::getEnemyFleet() const {
+    return enemyFleet;
+}
+
+const std::vector<std::vector<std::unique_ptr<GameTile>>> &GameWorld::getTiles() const {
+    return tiles;
+}
+
+int GameWorld::getGridLength() const {
+    return gridLength;
+}
+
+int GameWorld::getMapWidth() const {
+    return mapWidth;
+}
+
+int GameWorld::getMapHeight() const {
+    return mapHeight;
+}
+
 
 
 
