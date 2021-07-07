@@ -142,15 +142,15 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
 
     } else if (enemyFaction == FactionType::Italy) {
 
-        submarineInizializer(enemySub, enemyFactory, subDice);
+        italianSubmarineInizializer(enemySub, enemyFactory, subDice);
 
     } else if (enemyFaction == FactionType::Usa) {
 
-        submarineInizializer(enemySub, enemyFactory, subDice);
+        usaSubmarineInizializer(enemySub, enemyFactory, subDice);
 
     } else {
 
-        submarineInizializer(enemySub, enemyFactory, subDice);
+        ukSubmarineInizializer(enemySub, enemyFactory, subDice);
     }
 
 
@@ -324,40 +324,14 @@ void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactor
 
 void GameWorld::japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
 
-
-    if (dice.roll(1) > 1) {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::I400));
-        enemyFleet.push_back(std::move(enemy));
-    } else {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::typeb1));
-        enemyFleet.push_back(std::move(enemy));
-    }
-
-
-    if (dice.roll(1) > 1) {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::DaVinci));
-        enemyFleet.push_back(std::move(enemy));
-    } else {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Papa));
-        enemyFleet.push_back(std::move(enemy));
-    }
-
-
-    if (dice.roll(1) > 1) {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Gato));
-        enemyFleet.push_back(std::move(enemy));
-    } else {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Narwhal));
-        enemyFleet.push_back(std::move(enemy));
-    }
-
-
-    if (dice.roll(1) > 1) {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Triton));
-        enemyFleet.push_back(std::move(enemy));
-    } else {
-        std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Trenchant));
-        enemyFleet.push_back(std::move(enemy));
+    for (int i = 0; i < numSub; i++) {
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::I400));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::typeb1));
+            enemyFleet.push_back(std::move(enemy));
+        }
     }
 
 
@@ -568,6 +542,46 @@ void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, D
             enemyFleet.push_back(std::move(enemy));
         } else {
             std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Jutland));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::italianSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numSub; i++) {
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::DaVinci));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Papa));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::usaSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+    for (int i = 0; i < numSub; i++) {
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Gato));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Narwhal));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+    for (int i = 0; i < numSub; i++) {
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Triton));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Trenchant));
             enemyFleet.push_back(std::move(enemy));
         }
     }
