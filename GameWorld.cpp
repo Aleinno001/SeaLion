@@ -38,56 +38,33 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 }
 
 void
-GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare la mappa , più randomica e più automatizzata
+GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
-    /*
-    std::string pathSea = "/Res/Tiles/seaBlock"; //TODO Inserire un eccezione e forse passare tra i parametri di ingresso al metodo il path (potrebbe lanciare un eccezione se non trova la risorsa)
-    std::vector<std::unique_ptr<GameTile>> firstRow;
-    std::unique_ptr<GameTile> firstTile(
-            new GameTile(pathSea, 0, 0, false, false));  //TODO cercare un modo di non usare costanti codeSmell
-    firstRow.push_back(std::move(firstTile));
-    std::unique_ptr<GameTile> secondTile(
-            new GameTile(pathSea, 50, 0, false, false));   //TODO le misure della singola tile non è 50 ma 30
-    firstRow.push_back(std::move(secondTile));
-    std::unique_ptr<GameTile> thirdTile(new GameTile(pathSea, 100, 0, false, false));
-    firstRow.push_back(std::move(thirdTile));
-    std::unique_ptr<GameTile> fourthTile(new GameTile(pathSea, 150, 0, false, false));
-    firstRow.push_back(std::move(fourthTile));
-    std::unique_ptr<GameTile> fifthTile(new GameTile(pathSea, 200, 0, false, false));
-    firstRow.push_back(std::move(fifthTile));
-    std::unique_ptr<GameTile> sixtyTile(new GameTile(pathSea, 250, 0, false, false));
-    firstRow.push_back(std::move(sixtyTile));
-    std::unique_ptr<GameTile> seventhTile(new GameTile(pathSea, 300, 0, false, false));
-    firstRow.push_back(std::move(seventhTile));
-    std::unique_ptr<GameTile> eightyTile(new GameTile(pathSea, 350, 0, false, false));
-    firstRow.push_back(std::move(eightyTile));
-    tiles.push_back(firstRow);
-    std::vector<std::unique_ptr<GameTile>> secondRow;
-
-    secondRow.push_back(new GameTile("", 0, 0, false, false));
-    secondRow.push_back(new GameTile("", 50, 0, false, false));
-    secondRow.push_back(new GameTile("", 100, 0, false, false));
-    secondRow.push_back(new GameTile("", 150, 0, false, false));
-    secondRow.push_back(new GameTile("", 200, 0, false, false));
-    secondRow.push_back(new GameTile("", 250, 0, false, false));
-    secondRow.push_back(new GameTile("", 300, 0, false, false));
-    secondRow.push_back(new GameTile("", 350, 0, false, false));
-    tiles.push_back(secondRow);
-*/
-
     std::vector<std::unique_ptr<GameTile>> row;
     Dice dice(6);
-    std::string path;
+    std::string path = "";
     bool collision = false;
+    int resTile;
+    int firstChangeTileValue;
+    int secondChangeTileValue;
     for (int i = 1; i < (mapHeight / 30); i++) {
         row.clear();
         for (int j = 1; j < (mapWidth / 30); j++) {
-            int resTile = dice.roll(1);
-            if (resTile >= 1 && resTile < 5) {
-                path = "/Res/Tiles/seaBlock";
-            } else if (resTile == 5) {
+            resTile = dice.roll(1);
+            firstChangeTileValue = 5;
+            secondChangeTileValue = 6;
+            if (path == "/Res/Tiles/seaFoggyBlock") {
+                firstChangeTileValue = 3;
+                secondChangeTileValue = 6;
+            } else if (path == "/Res/Tiles/seaWaveBlock") {
+                firstChangeTileValue = 3;
+                secondChangeTileValue = 4;
+            }
+            if (resTile >= 1 && resTile < firstChangeTileValue) {
+                path = "/Res/Tiles/seaBlock";   //TODO gestire eccezioni per il path dei file
+            } else if (resTile >= firstChangeTileValue && resTile < secondChangeTileValue) {
                 path = "/Res/Tiles/seaFoggyBlock";
-                collision = true;
+                collision = true;  //FIXME da cambiare la collisione della nebbia(tenere solo per testare)
             } else {
                 path = "/Res/Tiles/seaWaveBlock";
             }
@@ -100,24 +77,37 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
 }
 
 void
-GameWorld::setUpAlliedFleet() {                     //FIXME da rifare tutto
+GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
 
     ShipFactory alliedFactory;
-    for (int i = 0; i < numAlliedSub; i++) {
-        alliedFleet.push_back(alliedFactory.createSubmarine());
+
+    for (auto iterator:fleet) {
+        switch (iterator.type) {
+            case ShipType::Battleship:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createBattleship(iterator.name));
+                break;
+            case ShipType::Cruiser:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createCruiser(iterator.name));
+                break;
+            case ShipType::AircraftCarrier:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createAircraftCarrier(iterator.name));
+                break;
+            case ShipType::Destroyer:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createDestroyer(iterator.name));
+                break;
+            case ShipType::Submarine:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createSubmarine(iterator.name));
+                break;
+            default:                                                                //FIXME add exceptions
+                break;
+        }
     }
-    for (int i = 0; i < numAlliedBat; i++) {
-        alliedFleet.push_back(alliedFactory.createBattleship());
-    }
-    for (int i = 0; i < numAlliedCru; i++) {
-        alliedFleet.push_back(alliedFactory.createCruiser());
-    }
-    for (int i = 0; i < numAlliedDes; i++) {
-        alliedFleet.push_back(alliedFactory.createDestroyer());
-    }
-    for (int i = 0; i < numAlliedAir; i++) {
-        alliedFleet.push_back(alliedFactory.createAircraftCarrier());
-    }
+
 }
 
 void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory) {
@@ -379,6 +369,7 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
                     enemyFleet.push_back(std::move(enemy));
                 }
 
+void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFaction) {
 
                 break;
 
