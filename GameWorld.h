@@ -15,7 +15,7 @@
 #include <memory>
 #include "Dice.h"
 
-class enum FactionType {
+enum class FactionType {
     Uk,
     Usa,
     Italy,
