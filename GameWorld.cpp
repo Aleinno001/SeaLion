@@ -8,7 +8,7 @@ GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &
         : gridLength(8) {
     setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
 }
-//TODO Rimuovere i row pointer e sistemare l'implementazione di Game Word
+
 
 void
 GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
@@ -182,7 +182,91 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
     }
 }
 
-void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFaction) {
+void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFactory) {
+
+    for (int i = 0; i < enemyBat; i++) {
+
+        switch (enemyFaction) {
+            case "Japan":
+
+                if (batDice.roll(1) == 1) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Kongo));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 2) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Musashi));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 3) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Yamato));
+                    enemyFleet.push_back(std::move(enemy));
+                } else {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::ISE));
+                    enemyFleet.push_back(std::move(enemy));
+                }
+
+                break;
+
+            case "Italy":
+
+                if (batDice.roll(1) == 1) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::AndreaDoria));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 2) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::ImperatoreAugusto));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 3) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::VittorioVeneto));
+                    enemyFleet.push_back(std::move(enemy));
+                } else {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::MichelangeloBuonarroti));
+                    enemyFleet.push_back(std::move(enemy));
+                }
+
+
+                break;
+
+            case "Usa":
+
+                if (batDice.roll(1) == 1) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NewYork));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 2) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Arizona));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 3) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NorthCarolina));
+                    enemyFleet.push_back(std::move(enemy));
+                } else {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Montana));
+                    enemyFleet.push_back(std::move(enemy));
+                }
+                break;
+
+            case "Uk":
+
+                if (batDice.roll(1) == 1) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Dreadnought));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 2) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::IronDuke));
+                    enemyFleet.push_back(std::move(enemy));
+                } else if (batDice.roll(1) == 3) {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Hood));
+                    enemyFleet.push_back(std::move(enemy));
+                } else {
+                    std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Lion));
+                    enemyFleet.push_back(std::move(enemy));
+                }
+
+                break;
+            default:
+                //TODO lancia eccezione
+                break;
+
+        }
+
+
+    }
+
 
 }
 
