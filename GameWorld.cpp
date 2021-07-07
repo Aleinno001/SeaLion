@@ -79,7 +79,8 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
 
 }
 
-void GameWorld::italianBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::italianBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
+                                             Dice &dice) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     for (int i = 0; i < numBat; i++) {
 
@@ -134,7 +135,8 @@ GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
 
 }
 
-void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory) {
+void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice,
+                                    ShipFactory &enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     if (enemyFaction == FactionType::Japan) {
 
@@ -156,7 +158,8 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
 
 }
 
-void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFactory) {
+void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice,
+                                     ShipFactory &enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     if (enemyFaction == FactionType::Japan) {
 
@@ -179,7 +182,8 @@ void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &
 
 }
 
-void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFactory) {
+void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice,
+                                  ShipFactory &enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     if (enemyFaction == FactionType::Japan) {
 
@@ -203,7 +207,8 @@ void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &ene
 
 }
 
-void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFactory) {
+void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice,
+                                    ShipFactory &enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     if (enemyFaction == FactionType::Japan) {
 
@@ -225,7 +230,8 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
 
 }
 
-void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFactory) {
+void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice,
+                                          ShipFactory &enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     if (enemyFaction == FactionType::Japan) {
 
@@ -249,7 +255,8 @@ void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFact
 
 }
 
-void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
+                                           Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
 
 
@@ -279,10 +286,8 @@ void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactor
 }
 
 
-
-
-
-void GameWorld::japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
+                                          Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numSub; i++) {
         if (dice.roll(1) > 1) {
@@ -298,7 +303,8 @@ void GameWorld::japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory
 }
 
 
-void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
+                                          Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
 
 
     for (int i = 0; i < numDes; i++) {
@@ -318,7 +324,8 @@ void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory
 }
 
 
-void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
+                                                Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
 
 
     for (int i = 0; i < numAir; i++) {
@@ -339,7 +346,8 @@ void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyF
 }
 
 
-void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
+                                        Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
 
 
     for (int i = 0; i < numCru; i++) {
@@ -365,7 +373,8 @@ void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, 
 
 }
 
-void GameWorld::usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
+                                         Dice &dice) {   //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numBat; i++) {
 
@@ -387,7 +396,8 @@ void GameWorld::usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
 
 }
 
-void GameWorld::ukBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::ukBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
+                                        Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numBat; i++) {
 
@@ -408,7 +418,8 @@ void GameWorld::ukBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, 
 
 }
 
-void GameWorld::italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
+                                          Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numCru; i++) {
 
@@ -426,7 +437,8 @@ void GameWorld::italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory
 
 }
 
-void GameWorld::usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
+                                      Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numCru; i++) {
 
@@ -445,7 +457,8 @@ void GameWorld::usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Di
 
 }
 
-void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
+                                     Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numCru; i++) {
         if (dice.roll(1) == 1) {
@@ -462,7 +475,8 @@ void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dic
 
 }
 
-void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
+                                            Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numDes; i++) {
 
@@ -481,7 +495,8 @@ void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFacto
 
 }
 
-void GameWorld::usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
+                                        Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numDes; i++) {
 
@@ -500,7 +515,8 @@ void GameWorld::usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, 
 
 }
 
-void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
+                                       Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numDes; i++) {
 
@@ -518,7 +534,8 @@ void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, D
 
 }
 
-void GameWorld::italianSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::italianSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
+                                            Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numSub; i++) {
         if (dice.roll(1) > 1) {
@@ -532,7 +549,8 @@ void GameWorld::italianSubmarineInizializer(int &numSub, ShipFactory &enemyFacto
 
 }
 
-void GameWorld::usaSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::usaSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
+                                        Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     for (int i = 0; i < numSub; i++) {
         if (dice.roll(1) > 1) {
             std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Gato));
@@ -545,7 +563,8 @@ void GameWorld::usaSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, 
 
 }
 
-void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
+                                       Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     for (int i = 0; i < numSub; i++) {
         if (dice.roll(1) > 1) {
             std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Triton));
@@ -558,7 +577,8 @@ void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, D
 
 }
 
-void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
+                                                  Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     for (int i = 0; i < numAir; i++) {
 
 
@@ -573,7 +593,8 @@ void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enem
 
 }
 
-void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
+                                              Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
 
     for (int i = 0; i < numAir; i++) {
 
@@ -588,7 +609,8 @@ void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFac
 
 }
 
-void GameWorld::ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+void GameWorld::ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
+                                             Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     for (int i = 0; i < numAir; i++) {
 
         if (dice.roll(1) > 1) {
