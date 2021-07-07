@@ -330,38 +330,10 @@ void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyF
             enemyFleet.push_back(std::move(enemy));
         }
     }
-    for (int i = 0; i < numAir; i++) {
 
 
-        if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
 
-    for (int i = 0; i < numAir; i++) {
 
-        if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
-    for (int i = 0; i < numAir; i++) {
-
-        if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::ArkRoyal));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Indomitable));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
 
 
 }
@@ -580,6 +552,50 @@ void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, D
             enemyFleet.push_back(std::move(enemy));
         } else {
             std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Trenchant));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+    for (int i = 0; i < numAir; i++) {
+
+
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numAir; i++) {
+
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
+    for (int i = 0; i < numAir; i++) {
+
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::ArkRoyal));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Indomitable));
             enemyFleet.push_back(std::move(enemy));
         }
     }

@@ -113,6 +113,12 @@ public:
 
     void ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice);
 
+    void italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
 
 };
 
