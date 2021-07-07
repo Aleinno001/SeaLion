@@ -13,7 +13,7 @@ class Dice {
 private:
     int numFaces;
 public:
-    Dice(int num) : numFaces(num) {};
+    Dice(int num);
 
     ~Dice() = default;
 

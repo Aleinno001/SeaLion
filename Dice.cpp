@@ -8,10 +8,6 @@ int Dice::roll(int rolls) const {
     int roll;
     int min = 1;
 
-    unsigned seed;
-    seed = time(0);
-    srand(seed);
-
     roll = 0;
 
     for (int i = 0; i < rolls; i++)
@@ -19,4 +15,11 @@ int Dice::roll(int rolls) const {
 
 
     return roll;
+}
+
+Dice::Dice(int num) {
+    unsigned seed;
+    numFaces = num;
+    seed = time(0);
+    srand(seed);
 }
