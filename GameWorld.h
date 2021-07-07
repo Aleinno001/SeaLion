@@ -15,12 +15,27 @@
 #include <memory>
 #include "Dice.h"
 
-class enum FactionType {
+enum class FactionType {
     Uk,
     Usa,
     Italy,
     Japan
 
+};
+
+enum class ShipType {
+    Battleship,
+    Cruiser,
+    AircraftCarrier,
+    Destroyer,
+    Submarine
+};
+
+
+struct Fleet {
+    ModelType name;
+    int num;
+    ShipType type;
 };
 
 class GameWorld {
@@ -43,8 +58,7 @@ public:
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
-    void
-    setUpAlliedFleet();
+    void setUpAlliedFleet(std::vector<Fleet> &fleet);
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
@@ -62,11 +76,6 @@ public:
 
 };
 
-struct Fleet {
-    ModelType name;
-    int num;
-    std::string type;
-};
 
 
 #endif //SEALION_GAMEWORLD_H
