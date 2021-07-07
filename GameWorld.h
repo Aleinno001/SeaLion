@@ -43,8 +43,8 @@ class GameWorld {
 
 private:
 
-    FactionType enemyFaction{FactionType::Japan};
-    FactionType alliedFaction{FactionType::Italy};
+    FactionType enemyFaction;
+    FactionType alliedFaction;
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
     std::list<std::unique_ptr<WarShip>> enemyFleet;
@@ -58,7 +58,7 @@ public:
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
               std::vector<Fleet> &fleet);
 
-    ~GameWorld() = default;
+
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                            std::vector<Fleet> &fleet);
@@ -69,15 +69,56 @@ public:
 
     void setUpTiles();
 
-    void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFaction);
+    void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory);
 
-    void battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFaction);
+    void battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFactory);
 
-    void cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFaction);
+    void cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFactory);
 
-    void destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFaction);
+    void destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFactory);
 
-    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFaction);
+    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFactory);
+
+    void japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
+    void italianBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
+    void italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void italianSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice);
+
+    void italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
+
 
 };
 
