@@ -15,6 +15,7 @@ enum class ModelType {
     ISE,
     Takao,
     IsuzuNagara,
+    Ijn,
     Akizuki,
     Fubuki,
     Yukikaze,
