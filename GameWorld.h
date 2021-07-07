@@ -42,8 +42,8 @@ class GameWorld {
 
 private:
 
-    FactioType enemyFaction{FactionType::Japan};
-    FactionType alliedFaction{FactionType::Italy};
+    FactionType enemyFaction;
+    FactionType alliedFaction;
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
     std::list<std::unique_ptr<WarShip>> enemyFleet;
@@ -66,15 +66,25 @@ public:
 
     void setUpTiles();
 
-    void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFaction);
+    void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory);
 
-    void battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFaction);
+    void battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFactory);
 
-    void cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFaction);
+    void cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFactory);
 
-    void destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFaction);
+    void destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFactory);
 
-    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFaction);
+    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFactory);
+
+    void japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
 
 };
 
