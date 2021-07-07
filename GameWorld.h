@@ -93,6 +93,12 @@ public:
 
     void usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
 
+    void ukBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
+
 };
 
 
