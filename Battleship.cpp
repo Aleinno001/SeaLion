@@ -3,11 +3,11 @@
 //
 
 #include "Battleship.h"
-
+/*
 float Battleship::calcSpeed(Map battleSea) {
     return Vehicle::calcSpeed(battleSea);
 }
-
+*/
 void Battleship::attack(Vehicle target) {
     Vehicle::attack(target);
 }

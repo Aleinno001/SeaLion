@@ -17,7 +17,7 @@ private:
 
     void launchTorpedo(Vehicle enemy);
 
-    float calcSpeed(Map battleSea);
+    //float calcSpeed();
 
     void attack(Vehicle target) override;
 

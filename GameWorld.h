@@ -13,6 +13,7 @@
 #include <string>
 #include "AbstractShipFactory.h"
 #include <memory>
+#include <list>
 #include "Dice.h"
 
 enum class FactionType {
@@ -42,7 +43,7 @@ class GameWorld {
 
 private:
 
-    FactioType enemyFaction{FactionType::Japan};
+    FactionType enemyFaction{FactionType::Japan};
     FactionType alliedFaction{FactionType::Italy};
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
@@ -56,6 +57,8 @@ private:
 public:
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
               std::vector<Fleet> &fleet);
+
+    ~GameWorld() = default;
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                            std::vector<Fleet> &fleet);

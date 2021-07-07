@@ -3,11 +3,11 @@
 //
 
 #include "Destroyer.h"
-
-float Destroyer::calcSpeed(Map battleSea) {
-    return Vehicle::calcSpeed(battleSea);
+/*
+float Destroyer::calcSpeed() {
+    return Vehicle::calcSpeed();
 }
-
+*/
 void Destroyer::attack(Vehicle target) {
     Vehicle::attack(target);
 }

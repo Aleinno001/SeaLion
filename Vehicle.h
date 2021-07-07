@@ -5,9 +5,6 @@
 #ifndef SEALION_VEHICLE_H
 #define SEALION_VEHICLE_H
 
-
-#include "GameWorld.h"
-
 class Vehicle {
 protected:
     double posX;  //TODO ricontrollare meglio con la libreria SFML
@@ -27,7 +24,7 @@ public:
 
     Vehicle(double X, double Y, float ac, float maxVel, int HP, int length/*SpriteSheet sprite*/);
 
-    virtual float calcSpeed(GameWorld battleSea);
+    //virtual float calcSpeed();
 
     virtual void attack(Vehicle target);
 

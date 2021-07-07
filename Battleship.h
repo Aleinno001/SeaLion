@@ -23,7 +23,7 @@ public:
                int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
                std::vector<std::unique_ptr<Vehicle>> &vehicleList, int numInter);
 
-    float calcSpeed(Map battleSea) override;
+    //float calcSpeed() override;
 
     void attack(Vehicle target) override;
 

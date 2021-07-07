@@ -14,7 +14,7 @@ bool GameTile::setUpSprite(std::string textureName) {
     return true;
 }
 
-GameTile::GameTile(std::string textureName, float x, float y, bool collision, bool exit) {
+GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool exit) {
     if (!setUpSprite(textureName)) {
         return; //TODO da gestire meglio con le eccezioni
     }
