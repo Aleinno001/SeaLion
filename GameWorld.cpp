@@ -100,24 +100,37 @@ GameWorld::setUpTiles() { //FIXME Trovare un metodo migliore per inizializzare l
 }
 
 void
-GameWorld::setUpAlliedFleet() {                     //FIXME da rifare tutto
+GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
 
     ShipFactory alliedFactory;
-    for (int i = 0; i < numAlliedSub; i++) {
-        alliedFleet.push_back(alliedFactory.createSubmarine());
+
+    for (auto iterator:fleet) {
+        switch (iterator.type) {
+            case ShipType::Battleship:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createBattleship(iterator.name));
+                break;
+            case ShipType::Cruiser:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createCruiser(iterator.name));
+                break;
+            case ShipType::AircraftCarrier:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createAircraftCarrier(iterator.name));
+                break;
+            case ShipType::Destroyer:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createDestroyer(iterator.name));
+                break;
+            case ShipType::Submarine:
+                for (int i = 0; i < iterator.num; i++)
+                    alliedFleet.push_back(alliedFactory.createSubmarine(iterator.name));
+                break;
+            default:                                                                //FIXME add exceptions
+                break;
+        }
     }
-    for (int i = 0; i < numAlliedBat; i++) {
-        alliedFleet.push_back(alliedFactory.createBattleship());
-    }
-    for (int i = 0; i < numAlliedCru; i++) {
-        alliedFleet.push_back(alliedFactory.createCruiser());
-    }
-    for (int i = 0; i < numAlliedDes; i++) {
-        alliedFleet.push_back(alliedFactory.createDestroyer());
-    }
-    for (int i = 0; i < numAlliedAir; i++) {
-        alliedFleet.push_back(alliedFactory.createAircraftCarrier());
-    }
+
 }
 
 void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory) {
