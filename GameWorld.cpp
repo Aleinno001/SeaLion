@@ -4,17 +4,19 @@
 
 #include "GameWorld.h"
 
-GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir)
+GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
+                     std::vector<Fleet> &fleet)
         : gridLength(8) {
-    setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
+    setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet);
 }
 
 
 void
-GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
+GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
+                             std::vector<Fleet> &fleet) {
     exitPos = sf::Vector2i(1, 0);
     //TODO iniziallizare la lista di navi alleate e nemiche
-    setUpAlliedFleet();
+    setUpAlliedFleet(fleet);
     setUpEnemyFleet(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
 }
 
@@ -116,7 +118,6 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
 
         switch (enemyFaction) {
             case FactionType::Japan:
-
                 if (subDice.roll(1) > 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::I400));
                     enemyFleet.push_back(std::move(enemy));
@@ -124,7 +125,6 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
                     std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::typeb1));
                     enemyFleet.push_back(std::move(enemy));
                 }
-
                 break;
 
             case FactionType::Italy:
@@ -473,5 +473,3 @@ void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFact
 
 
 }
-
-

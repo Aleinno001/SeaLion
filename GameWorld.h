@@ -54,9 +54,11 @@ private:
 
 
 public:
-    GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
+    GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
+              std::vector<Fleet> &fleet);
 
-    void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
+    void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
+                           std::vector<Fleet> &fleet);
 
     void setUpAlliedFleet(std::vector<Fleet> &fleet);
 
