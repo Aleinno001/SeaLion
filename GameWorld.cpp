@@ -211,15 +211,15 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
 
     } else if (enemyFaction == FactionType::Italy) {
 
-        destroyerInizializer(enemyDes, enemyFactory, desDice);
+        italianDestroyerInizializer(enemyDes, enemyFactory, desDice);
 
     } else if (enemyFaction == FactionType::Usa) {
 
-        destroyerInizializer(enemyDes, enemyFactory, desDice);
+        usaDestroyerInizializer(enemyDes, enemyFactory, desDice);
 
     } else {
 
-        destroyerInizializer(enemyDes, enemyFactory, desDice);
+        ukDestroyerInizializer(enemyDes, enemyFactory, desDice);
     }
 
 
@@ -380,50 +380,12 @@ void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory
         }
     }
 
-    for (int i = 0; i < numDes; i++) {
 
 
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Impavido));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Leone));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::PaoloEmilio));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
-
-    for (int i = 0; i < numDes; i++) {
 
 
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Mahan));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Fletcher));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Sims));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
 
 
-    for (int i = 0; i < numDes; i++) {
-
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Campbelltown));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Gallant));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Jutland));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
 
 
 }
@@ -550,6 +512,62 @@ void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dic
             enemyFleet.push_back(std::move(enemy));
         } else {
             std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Tiger59));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numDes; i++) {
+
+
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Impavido));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Leone));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::PaoloEmilio));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numDes; i++) {
+
+
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Mahan));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Fletcher));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Sims));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numDes; i++) {
+
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Campbelltown));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Gallant));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Jutland));
             enemyFleet.push_back(std::move(enemy));
         }
     }

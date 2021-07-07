@@ -101,6 +101,12 @@ public:
 
     void ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice);
 
+    void italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
+    void ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory, Dice &dice);
+
 };
 
 
