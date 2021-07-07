@@ -227,64 +227,24 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
 
 void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFactory) {
 
-    for (int i = 0; i < enemyAir; i++) {
+    if (enemyFaction == FactionType::Japan) {
 
-        switch (enemyFaction) {
-            case FactionType::Japan:
+        japanAircraftCarrierInizializer(enemyAir, enemyFactory, airDice);
 
-                if (airDice.roll(1) > 1) {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Hiryu));
-                    enemyFleet.push_back(std::move(enemy));
-                } else {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Tahio));
-                    enemyFleet.push_back(std::move(enemy));
-                }
+    } else if (enemyFaction == FactionType::Italy) {
 
-                break;
+        italianAircraftCarrierInizializer(enemyAir, enemyFactory, airDice);
 
-            case FactionType::Italy:
+    } else if (enemyFaction == FactionType::Usa) {
 
-                if (airDice.roll(1) > 1) {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
-                    enemyFleet.push_back(std::move(enemy));
-                } else {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
-                    enemyFleet.push_back(std::move(enemy));
-                }
+        usaAircraftCarrierInizializer(enemyAir, enemyFactory, airDice);
 
-                break;
+    } else {
 
-            case FactionType::Usa:
-
-                if (airDice.roll(1) > 1) {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway));
-                    enemyFleet.push_back(std::move(enemy));
-                } else {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger));
-                    enemyFleet.push_back(std::move(enemy));
-                }
-                break;
-
-            case FactionType::Uk:
-
-                if (airDice.roll(1) > 1) {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::ArkRoyal));
-                    enemyFleet.push_back(std::move(enemy));
-                } else {
-                    std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Indomitable));
-                    enemyFleet.push_back(std::move(enemy));
-                }
-
-                break;
-
-            default:
-                //TODO lancia eccezione
-                break;
-
-        }
-
-
+        ukAircraftCarrierInizializer(enemyAir, enemyFactory, airDice);
     }
+
+
 
 
 }
@@ -355,19 +315,57 @@ void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory
     }
 
 
-
-
-
-
-
-
-
 }
 
 
 void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice) {
 
+
+    for (int i = 0; i < numAir; i++) {
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Hiryu));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Tahio));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+    for (int i = 0; i < numAir; i++) {
+
+
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+    for (int i = 0; i < numAir; i++) {
+
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+    for (int i = 0; i < numAir; i++) {
+
+        if (dice.roll(1) > 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::ArkRoyal));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Indomitable));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+
 }
+
 
 void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, Dice &dice) {
 
