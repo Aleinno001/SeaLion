@@ -125,7 +125,7 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
     for (int i = 0; i < enemySub; i++) {
 
         switch (enemyFaction) {
-            case "Japan":
+            case FactionType::Japan:
 
                 if (subDice.roll(1) > 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::I400));
@@ -137,7 +137,7 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
 
                 break;
 
-            case "Italy":
+            case FactionType::Italy:
 
                 if (subDice.roll(1) > 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::DaVinci));
@@ -150,7 +150,7 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
 
                 break;
 
-            case "Usa":
+            case FactionType::Usa:
 
                 if (subDice.roll(1) > 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Gato));
@@ -161,7 +161,7 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
                 }
                 break;
 
-            case "Uk":
+            case FactionType::Uk:
 
                 if (subDice.roll(1) > 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Triton));
@@ -187,7 +187,7 @@ void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &
     for (int i = 0; i < enemyBat; i++) {
 
         switch (enemyFaction) {
-            case "Japan":
+            case FactionType::Japan:
 
                 if (batDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Kongo));
@@ -205,7 +205,7 @@ void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &
 
                 break;
 
-            case "Italy":
+            case FactionType::Italy:
 
                 if (batDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::AndreaDoria));
@@ -224,7 +224,7 @@ void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &
 
                 break;
 
-            case "Usa":
+            case FactionType::Usa:
 
                 if (batDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NewYork));
@@ -241,7 +241,7 @@ void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &
                 }
                 break;
 
-            case "Uk":
+            case FactionType::Uk:
 
                 if (batDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Dreadnought));
@@ -275,7 +275,7 @@ void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &ene
     for (int i = 0; i < enemyCru; i++) {
 
         switch (enemyFaction) {
-            case "Japan":
+            case FactionType::Japan:
 
                 if (cruDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Takao));
@@ -290,7 +290,7 @@ void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &ene
 
                 break;
 
-            case "Italy":
+            case FactionType::Italy:
 
                 if (cruDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::AlbertoDiGiussano));
@@ -306,7 +306,7 @@ void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &ene
 
                 break;
 
-            case "Usa":
+            case FactionType::Usa:
 
                 if (cruDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::StLouis));
@@ -320,7 +320,7 @@ void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &ene
                 }
                 break;
 
-            case "Uk":
+            case FactionType::Uk:
 
                 if (cruDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Danae));
@@ -351,7 +351,7 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
     for (int i = 0; i < enemyDes; i++) {
 
         switch (enemyFaction) {
-            case "Japan":
+            case FactionType::Japan:
 
                 if (desDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Akizuki));
@@ -366,7 +366,7 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
 
                 break;
 
-            case "Italy":
+            case FactionType::Italy:
 
                 if (desDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Impavido));
@@ -382,7 +382,7 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
 
                 break;
 
-            case "Usa":
+            case FactionType::Usa:
 
                 if (desDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Mahan));
@@ -396,7 +396,7 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
                 }
                 break;
 
-            case "Uk":
+            case FactionType::Uk:
 
                 if (desDice.roll(1) == 1) {
                     std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Campbelltown));
