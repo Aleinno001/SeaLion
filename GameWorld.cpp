@@ -369,7 +369,6 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
                     enemyFleet.push_back(std::move(enemy));
                 }
 
-void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFaction) {
 
                 break;
 
