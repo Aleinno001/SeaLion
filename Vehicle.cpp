@@ -12,7 +12,7 @@ bool Vehicle::canEngage(Vehicle target) {
     return false;
 }
 
-float Vehicle::calcSpeed(Map battleSea) {
+float Vehicle::calcSpeed(GameWorld battleSea) {
     return 0;
 }
 

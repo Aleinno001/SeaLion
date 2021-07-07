@@ -11,6 +11,7 @@
 #include "Vehicle.h"
 #include "Arsenal.h"
 
+
 class WarShip : public Vehicle {
 protected:
     const int armour;
