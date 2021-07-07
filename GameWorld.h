@@ -89,6 +89,10 @@ public:
 
     void japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
 
+    void italianBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
+    void usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice);
+
 };
 
 

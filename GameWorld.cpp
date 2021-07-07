@@ -79,6 +79,27 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
 
 }
 
+void GameWorld::italianBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numBat; i++) {
+
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::AndreaDoria));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::ImperatoreAugusto));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 3) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::VittorioVeneto));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::MichelangeloBuonarroti));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
 void
 GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
 
@@ -117,7 +138,7 @@ void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &e
 
     if (enemyFaction == FactionType::Japan) {
 
-        submarineInizializer(enemySub, enemyFactory, subDice);
+        japanSubmarineInizializer(enemySub, enemyFactory, subDice);
 
     } else if (enemyFaction == FactionType::Italy) {
 
@@ -139,15 +160,15 @@ void GameWorld::battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &
 
     if (enemyFaction == FactionType::Japan) {
 
-        battleshipInizializer(enemyBat, enemyFactory, batDice);
+        japanBattleshipInizializer(enemyBat, enemyFactory, batDice);
 
     } else if (enemyFaction == FactionType::Italy) {
 
-        battleshipInizializer(enemyBat, enemyFactory, batDice);
+        italianBattleshipInizializer(enemyBat, enemyFactory, batDice);
 
     } else if (enemyFaction == FactionType::Usa) {
 
-        battleshipInizializer(enemyBat, enemyFactory, batDice);
+        usaBattleshipInizializer(enemyBat, enemyFactory, batDice);
 
     } else {
 
@@ -162,7 +183,7 @@ void GameWorld::cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &ene
 
     if (enemyFaction == FactionType::Japan) {
 
-        cruiserInizializer(enemyCru, enemyFactory, cruDice);
+        japanCruiserInizializer(enemyCru, enemyFactory, cruDice);
 
     } else if (enemyFaction == FactionType::Italy) {
 
@@ -186,7 +207,7 @@ void GameWorld::destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &e
 
     if (enemyFaction == FactionType::Japan) {
 
-        destroyerInizializer(enemyDes, enemyFactory, desDice);
+        japanDestroyerInizializer(enemyDes, enemyFactory, desDice);
 
     } else if (enemyFaction == FactionType::Italy) {
 
@@ -271,7 +292,7 @@ void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFact
 void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
 
 
-    i
+
     for (int i = 0; i < numBat; i++) {
         if (dice.roll(1) == 1) {
             std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Kongo));
@@ -289,40 +310,9 @@ void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactor
     }
 
 
-    for (int i = 0; i < numBat; i++) {
-
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::AndreaDoria));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::ImperatoreAugusto));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 3) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::VittorioVeneto));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::MichelangeloBuonarroti));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
-
-    for (int i = 0; i < numBat; i++) {
 
 
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NewYork));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Arizona));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 3) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NorthCarolina));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Montana));
-            enemyFleet.push_back(std::move(enemy));
-        }
-    }
+
 
 
     for (int i = 0; i < numBat; i++) {
@@ -514,6 +504,28 @@ void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory, 
             enemyFleet.push_back(std::move(enemy));
         } else {
             std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Tiger59));
+            enemyFleet.push_back(std::move(enemy));
+        }
+    }
+
+}
+
+void GameWorld::usaBattleshipInizializer(int &numBat, ShipFactory &enemyFactory, Dice &dice) {
+
+    for (int i = 0; i < numBat; i++) {
+
+
+        if (dice.roll(1) == 1) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NewYork));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 2) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Arizona));
+            enemyFleet.push_back(std::move(enemy));
+        } else if (dice.roll(1) == 3) {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::NorthCarolina));
+            enemyFleet.push_back(std::move(enemy));
+        } else {
+            std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Montana));
             enemyFleet.push_back(std::move(enemy));
         }
     }
