@@ -24,7 +24,7 @@ public:
 
     Vehicle(double X, double Y, float ac, float maxVel, int HP, int length/*SpriteSheet sprite*/);
 
-    //virtual float calcSpeed();
+    //virtual float calcSpeed(); //FIXME da rivedere il calcolo della velocità qua e nelle sottoclassi
 
     virtual void attack(Vehicle target);
 
