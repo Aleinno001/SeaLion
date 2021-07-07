@@ -16,6 +16,21 @@
 #include <list>
 #include "Dice.h"
 
+#include <stdio.h>  /* defines FILENAME_MAX */
+// #define WINDOWS  /* uncomment this line to use it for windows.*/
+#ifdef WINDOWS
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+
+#include <unistd.h>
+
+#define GetCurrentDir getcwd
+#endif
+
+#include<iostream>
+
+
 enum class FactionType {
     Uk,
     Usa,
@@ -48,17 +63,16 @@ private:
     sf::Vector2i exitPos;
     std::list<std::unique_ptr<WarShip>> alliedFleet;
     std::list<std::unique_ptr<WarShip>> enemyFleet;
-    std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
+
     int gridLength;
     int mapWidth{1920};
     int mapHeight{1080};
-
+public:
+    std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
 
 public:
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
               std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit);
-
-
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                            std::vector<Fleet> &fleet);

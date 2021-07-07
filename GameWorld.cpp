@@ -4,10 +4,18 @@
 
 #include "GameWorld.h"
 
+std::string GetCurrentWorkingDir() {
+    char buff[FILENAME_MAX];
+    GetCurrentDir(buff, FILENAME_MAX);
+    std::string current_working_dir(buff);
+    return current_working_dir;
+}
+
 GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                      std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,
                      sf::Vector2i exit) : gridLength(grid), enemyFaction(enemyFact), alliedFaction(alliedFact),
                                           exitPos(exit) {
+    setUpTiles();
     setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet);
 }
 
@@ -45,7 +53,8 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
     Dice dice(6);
-    std::string path = "";
+    std::string currentDir = GetCurrentWorkingDir();
+    std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
     bool collision = false;
     int resTile;
     int firstChangeTileValue;
@@ -54,22 +63,23 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
         row.clear();
         for (int j = 1; j < (mapWidth / 30); j++) {
             resTile = dice.roll(1);
+            std::cerr << resTile << std::endl;
             firstChangeTileValue = 5;
             secondChangeTileValue = 6;
-            if (path == "/Res/Tiles/seaFoggyBlock") {
+            if (path == (currentDir + "/../Res/Tiles/seaFoggyBlock.png")) {
                 firstChangeTileValue = 3;
                 secondChangeTileValue = 6;
-            } else if (path == "/Res/Tiles/seaWaveBlock") {
+            } else if (path == (currentDir + "/../Res/Tiles/seaWaveBlock.png")) {
                 firstChangeTileValue = 3;
                 secondChangeTileValue = 4;
             }
             if (resTile >= 1 && resTile < firstChangeTileValue) {
-                path = "/Res/Tiles/seaBlock";   //TODO gestire eccezioni per il path dei file
+                path = currentDir + "/../Res/Tiles/seaBlock.png";   //TODO gestire eccezioni per il path dei file
             } else if (resTile >= firstChangeTileValue && resTile < secondChangeTileValue) {
-                path = "/Res/Tiles/seaFoggyBlock";
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 collision = true;  //FIXME da cambiare la collisione della nebbia(tenere solo per testare)
             } else {
-                path = "/Res/Tiles/seaWaveBlock";
+                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
             std::unique_ptr<GameTile> tile(new GameTile(path, 30 * (i - 1), 30 * (j - 1), collision, false));
             row.push_back(std::move(tile));
@@ -659,10 +669,3 @@ int GameWorld::getMapWidth() const {
 int GameWorld::getMapHeight() const {
     return mapHeight;
 }
-
-
-
-
-
-
-
