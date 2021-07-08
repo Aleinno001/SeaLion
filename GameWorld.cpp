@@ -13,8 +13,9 @@ std::string GetCurrentWorkingDir() {
 
 GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                      std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,
-                     sf::Vector2i exit) : gridLength(grid), enemyFaction(enemyFact), alliedFaction(alliedFact),
-                                          exitPos(exit) {
+                     sf::Vector2i exit, int width, int height) : gridLength(grid), enemyFaction(enemyFact),
+                                                                 alliedFaction(alliedFact),
+                                                                 exitPos(exit), mapHeight(height), mapWidth(width) {
     setUpTiles();
     setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet);
 }
