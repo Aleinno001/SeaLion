@@ -18,14 +18,14 @@ public:
                  const float range, const int reload, const int rate, int speed, int dispersion,
                  std::string type, float decelleration, int power, int num, double x, double y);
 
-    ~HeavlyCannon();
+    ~HeavlyCannon() override;
 
 private:
     bool shoreBombardment();
 
     void openFire(Vehicle enemy) override;
 
-    void update(double posX, double posY) override; //FIXME posX,posY da rivedere
+    void update(int posX, int posY) override;
 
     void attach() override;
 
