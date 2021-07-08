@@ -11,7 +11,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
     switch (type) {
 
         case ModelType::I400:
-            std::unique_ptr<Submarine> i400(new Submarine());
+            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO CONCLUDI
             break;
 
         case ModelType::typeb1:
