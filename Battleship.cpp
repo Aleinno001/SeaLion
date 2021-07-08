@@ -60,7 +60,7 @@ bool Battleship::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
-Battleship::Battleship(double x1, double y1, float ac1, const float maxVel1, int hp1, int length1, int arm1,
+Battleship::Battleship(int x1, int y1, float ac1, const float maxVel1, int hp1, int length1, int arm1,
                        std::string na1, std::string nat1, int numL1, int numH1, int numM1,
                        std::vector<std::unique_ptr<Arsenal>> &arsenalList1,
                        std::vector<std::unique_ptr<Vehicle>> &vehicleList1, double x, double y, float ac,
