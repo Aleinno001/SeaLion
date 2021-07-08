@@ -39,7 +39,7 @@ public:
 
     virtual void openFire(Vehicle enemy);
 
-    virtual void update(double posX, double posY); //FIXME posX,posY da rivedere
+    virtual void update(int posX, int posY); //FIXME posX,posY da rivedere
 
     virtual void attach();
 

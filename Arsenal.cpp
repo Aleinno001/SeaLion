@@ -75,3 +75,16 @@ bool Arsenal::setUpSprite(std::string textureName) {
     sprite.setTextureRect(sf::IntRect(0, 0, length, width));
     return true;
 }
+
+void Arsenal::openFire(Vehicle enemy) {
+
+}
+
+
+void Arsenal::attach() {
+
+}
+
+void Arsenal::update(int posX, double posY) {
+
+}
