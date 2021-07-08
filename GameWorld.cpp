@@ -56,7 +56,7 @@ GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
-    Dice dice(500);
+    Dice dice(1000);
     std::string currentDir = GetCurrentWorkingDir();
     std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
     bool collision = false;
@@ -125,14 +125,14 @@ GameWorld::setUpTiles(
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
              */
-            if (resTile == 499 && !isCluster && maxFogCluster != 0) {
+            if (resTile == 999 && !isCluster && maxFogCluster != 0) {
                 fogColumn = j;
                 specialTilesInAcolumn = resTile % 3 + 3;
                 isCluster = true;
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
                 specialTilesInARow -= 1;
-            } else if (specialTilesInARow != 0 && specialTilesInAColumn != 0 && isCluster &&
+            } else if (specialTilesInARow != 0 && isCluster &&
                        j >= fogColumn - (resTile % 4)) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 specialTilesInARow -= 1;
