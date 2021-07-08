@@ -11,7 +11,6 @@ TorpedoBomber::TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int
                                                                                                                       ac1,
                                                                                                                       maxVel1,
                                                                                                                       hp,
-                                                                                                                      length1,
                                                                                                                       tex,
                                                                                                                       sp,
                                                                                                                       le,
