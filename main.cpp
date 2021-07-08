@@ -3,7 +3,6 @@
 #include "GameWorld.h"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SeaLion");
     std::vector<Fleet> fleet;
     Fleet submarineFleet;
     submarineFleet.name = ModelType::I400;
@@ -12,12 +11,18 @@ int main() {
     fleet.emplace_back(submarineFleet);
     sf::Vector2i boundaries(1920, 1080);
     int a, b, c, d, e;
+    int width, height, tileDim;
     a = 1;
     b = 2;
     c = 3;
     d = 4;
     e = 5;
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Japan, FactionType::Italy, 8, boundaries);
+    width = 1920;
+    height = 1080;
+    tileDim = 30;
+    sf::RenderWindow window(sf::VideoMode(width, height), "SeaLion");
+    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Japan, FactionType::Italy, 8, boundaries, width,
+                                    height, tileDim);
     while (window.isOpen()) {
         sf::Event e;
         while (window.pollEvent(e)) {
