@@ -63,8 +63,10 @@ bool Destroyer::canEngage(Vehicle target) {
 Destroyer::Destroyer(double x, double y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
                      std::string nat, int numL, int numH, int numM,
                      std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-                     std::vector<std::unique_ptr<Vehicle>> &vehicleList) : WarShip(x, y, ac, maxVel, hp, length, arm,
-                                                                                   na, nat, numL, numH, numM,
-                                                                                   arsenalList, vehicleList) {
+                     std::vector<std::unique_ptr<Vehicle>> &vehicleList, sf::Texture tex, sf::Sprite sp, int le, int wi,
+                     bool col, std::string textureName) : WarShip(x, y, ac, maxVel, hp, length, arm,
+                                                                  na, nat, numL, numH, numM,
+                                                                  arsenalList, vehicleList, tex, sp, le, wi, col,
+                                                                  textureName) {
 
 }

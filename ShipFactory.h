@@ -7,8 +7,13 @@
 
 
 #include "AbstractShipFactory.h"
+#include "WarShip.h"
+#include "ArsenalFactory.h"
+#include "Submarine.h"
+#include "Dice.h"
 
 class ShipFactory : public AbstractShipFactory {
+
 public:
     std::unique_ptr<WarShip> createSubmarine(ModelType type) override;
 

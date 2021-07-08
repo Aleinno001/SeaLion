@@ -48,3 +48,43 @@ double Arsenal::getPosX() const {
 double Arsenal::getPosY() const {
     return posY;
 }
+
+Arsenal::Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+                 float decelleration, int power, int num, int x, int y, sf::Texture tex, sf::Sprite sp, int le, int wi,
+                 bool col, std::string texName) : rangeOfFire(range), reloadTime(reload), rateOfFire(rate),
+                                                  ammoSpeed(speed), maximumDispersion(dispersion),
+                                                  ammoDeceleration(decelleration), firepower(power), numAmmo(num),
+                                                  posX(x), posY(y), sprite(sp), texture(tex), length(le), width(wi) {
+    ammoType = type;
+
+    if (!setUpSprite(texName)) {
+        return; //TODO da gestire meglio con le eccezioni
+    }
+    pos = sf::Vector2f(posX, posY);
+    sprite.setPosition(pos);
+
+
+}
+
+bool Arsenal::setUpSprite(std::string textureName) {
+    if (!texture.loadFromFile(textureName)) {
+        return false; //TODO usare poi l'eccezioni per gestire la lettura da file
+    }
+    texture.setSmooth(true);
+    sprite.setTexture(texture);
+    sprite.setTextureRect(sf::IntRect(0, 0, length, width));
+    return true;
+}
+
+void Arsenal::openFire(Vehicle enemy) {
+
+}
+
+
+void Arsenal::attach() {
+
+}
+
+void Arsenal::update(int posX, double posY) {
+
+}

@@ -5,8 +5,44 @@
 #include "ShipFactory.h"
 
 
+
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
-    return std::unique_ptr<WarShip>();
+
+    switch (type) {
+
+        case ModelType::I400:
+            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO CONCLUDI
+            break;
+
+        case ModelType::typeb1:
+
+            break;
+
+        case ModelType::DaVinci:
+
+            break;
+
+        case ModelType::Papa:
+
+            break;
+
+        case ModelType::Triton:
+
+            break;
+
+        case ModelType::Trenchant:
+
+            break;
+
+        case ModelType::Gato:
+
+            break;
+
+        case ModelType::Narwhal:
+
+            break;
+    }
+
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type) {
