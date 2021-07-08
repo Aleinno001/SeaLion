@@ -132,12 +132,10 @@ GameWorld::setUpTiles(
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
                 specialTilesInAcolumn -= 1;
-                specialTilesInAColumn = 5;
             } else if (specialTilesInAColumn != 0 && specialTilesInAcolumn != 0 && isCluster && j != 0 &&
-                       j >= fogColumn && j <= fogColumn) {
+                       j >= fogColumn - 1 && j <= fogColumn + (5 - specialTilesInAcolumn)) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 specialTilesInAcolumn -= 1;
-                fogColumn = j;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
