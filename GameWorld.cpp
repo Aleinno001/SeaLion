@@ -13,9 +13,12 @@ std::string GetCurrentWorkingDir() {
 
 GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                      std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,
-                     sf::Vector2i exit) : gridLength(grid), enemyFaction(enemyFact), alliedFaction(alliedFact),
-                                          exitPos(exit) {
-    setUpTiles();
+                     sf::Vector2i exit, int &width, int &height, int &tileDim) : gridLength(grid),
+                                                                                 enemyFaction(enemyFact),
+                                                                                 alliedFaction(alliedFact),
+                                                                                 exitPos(exit), mapHeight(height),
+                                                                                 mapWidth(width) {
+    setUpTiles(tileDim);
     setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet);
 }
 
@@ -49,7 +52,8 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 }
 
 void
-GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
+GameWorld::setUpTiles(
+        int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
     Dice dice(6);
@@ -59,9 +63,9 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
     int resTile;
     int firstChangeTileValue;
     int secondChangeTileValue;
-    for (int i = 1; i < (mapHeight / 30); i++) {
+    for (int i = 1; i < (mapHeight / tileDim); i++) {
         row.clear();
-        for (int j = 1; j < (mapWidth / 30); j++) {
+        for (int j = 1; j < (mapWidth / tileDim); j++) {
             resTile = dice.roll(1);
             firstChangeTileValue = 5;
             secondChangeTileValue = 6;
@@ -80,7 +84,7 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
             } else {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
-            std::unique_ptr<GameTile> tile(new GameTile(path, 30 * (j), 30 * (i - 1), collision, false));
+            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * (j - 1), tileDim * (i - 1), collision, false));
             row.push_back(std::move(tile));
         }
         tiles.push_back(std::move(row));

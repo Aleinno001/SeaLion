@@ -72,7 +72,8 @@ public:
 
 public:
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
-              std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit);
+              std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,
+              int &width, int &height, int &tileDim);
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                            std::vector<Fleet> &fleet);
@@ -81,7 +82,7 @@ public:
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
-    void setUpTiles();
+    void setUpTiles(int &tileDim);
 
     void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory);
 
