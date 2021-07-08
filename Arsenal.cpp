@@ -85,6 +85,7 @@ void Arsenal::attach() {
 
 }
 
-void Arsenal::update(int posX, double posY) {
+void Arsenal::update(int posX, int posY) {
 
 }
+
