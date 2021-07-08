@@ -6,6 +6,29 @@
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
+    switch (type) {
+
+        case ModelType::I400:
+
+            break;
+        case ModelType::typeb1:
+            break;
+
+        case ModelType::DaVinci:
+            break;
+        case ModelType::Papa:
+            break;
+
+        case ModelType::Triton:
+            break;
+        case ModelType::Trenchant:
+            break;
+
+        case ModelType::Gato:
+            break;
+        case ModelType::Narwhal:
+            break;
+    }
     return std::unique_ptr<WarShip>();
 }
 
