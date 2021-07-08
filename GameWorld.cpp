@@ -93,10 +93,12 @@ GameWorld::setUpTiles(
      */
 
     resTile = dice.roll(1);
-    int numberOfFogChunk = 2 % resTile;
+    int specialTilesInAColumn = 5;
     int numberOfWaveChunk = 4 % resTile;
     int specialTilesInAcolumn = 0;
-    int fogRow = -1;
+    bool isCluster = false;
+    int fogColumn;
+    TileType tileType = TileType::Sea;
 
     for (int i = 0; i < (mapHeight / tileDim); i++) {
         column.clear();
@@ -122,24 +124,37 @@ GameWorld::setUpTiles(
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
              */
-            if (resTile == 23 && fogRow == -1) {
-                specialTilesInAcolumn = resTile % 8;
-                fogRow = i;
-            }
-            if (numberOfFogChunk != 0 &&
-                specialTilesInAcolumn != 0) {  //FIXME controllare che le caselle siano dello stesso tipo
+            std::cerr << resTile << std::endl;
+            if (resTile == 23 && !isCluster) {
+                fogColumn = j;
+                specialTilesInAcolumn = resTile % 3 + 3;
+                isCluster = true;
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                tileType = TileType::Fog;
+                specialTilesInAcolumn -= 1;
+                specialTilesInAColumn = 5;
+            } else if (specialTilesInAColumn != 0 && specialTilesInAcolumn != 0 && isCluster && j != 0 &&
+                       j >= fogColumn && j <= fogColumn) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 specialTilesInAcolumn -= 1;
+                fogColumn = j;
             } else {
-                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+                path = currentDir + "/../Res/Tiles/seaBlock.png";
+                tileType = TileType::Sea;
             }
-            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false));
+            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
             column.push_back(std::move(tile));
         }
-        //specialTilesInAcolumn = resTile % 8;
+        if (isCluster) {
+            specialTilesInAcolumn = resTile % 3 + 3;
+            specialTilesInAColumn -= 1;
+        }
+        if (specialTilesInAColumn == 0) {
+            isCluster = false;
+        }
         /*
-        if(numberOfFogChunk!=0){
-            numberOfFogChunk-=1;
+        if(specialTilesInAColumn!=0){
+            specialTilesInAColumn-=1;
         }
          */
         tiles.push_back(std::move(column));

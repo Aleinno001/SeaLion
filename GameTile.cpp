@@ -14,7 +14,7 @@ bool GameTile::setUpSprite(std::string textureName) {
     return true;
 }
 
-GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool exit) {
+GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool exit, TileType tp) {
     if (!setUpSprite(textureName)) {
         return; //TODO da gestire meglio con le eccezioni
     }
@@ -22,7 +22,7 @@ GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool e
     sprite.setPosition(pos);
     isPassable = collision;
     isExit = exit;
-
+    tileType = tp;
 
 }
 

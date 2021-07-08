@@ -7,6 +7,11 @@
 
 #include <SFML/Graphics.hpp>
 
+enum class TileType {
+    Sea,
+    Wave,
+    Fog
+};
 
 class GameTile {
 public:
@@ -15,9 +20,10 @@ public:
     sf::Vector2f pos;
     sf::Texture texture;
     sf::Sprite sprite;
+    TileType tileType;
 public:
 
-    GameTile(std::string textureName, int x, int y, bool collision, bool exit);
+    GameTile(std::string textureName, int x, int y, bool collision, bool exit, TileType tp);
 
     bool setUpSprite(std::string textureName);
 };
