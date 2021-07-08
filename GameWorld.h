@@ -151,6 +151,20 @@ public:
     int getMapWidth() const;
 
     int getMapHeight() const;
+
+    void setEnemyFaction(FactionType enemyFaction);
+
+    void setAlliedFaction(FactionType alliedFaction);
+
+    void setExitPos(const sf::Vector2i &exitPos);
+
+    void setGridLength(int gridLength);
+
+    void setMapWidth(int mapWidth);
+
+    void setMapHeight(int mapHeight);
+
+    void setTiles(const std::vector<std::vector<std::unique_ptr<GameTile>>> &tiles);
 };
 
 
