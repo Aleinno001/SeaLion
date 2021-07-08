@@ -4,15 +4,21 @@
 
 #ifndef SEALION_VEHICLE_H
 #define SEALION_VEHICLE_H
+#include "SFML/Graphics.hpp"
 
 class Vehicle {
 protected:
-    double posX;  //TODO ricontrollare meglio con la libreria SFML
-    double posY;  //TODO ricontrollare meglio con la libreria SFML
+    int posX;  //TODO ricontrollare meglio con la libreria SFML
+    int posY;  //TODO ricontrollare meglio con la libreria SFML
     float acceleration;
     const float maxSpeed = 0; //FIXME valore di default di velocità
     int hp;
     int length;
+    int width;
+    bool collision;
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::Vector2f pos;
 
     //TODO controllare la Sfml per le sprite
     //SpriteSheet sprite
@@ -22,9 +28,12 @@ protected:
 
 public:
 
-    Vehicle(double X, double Y, float ac, float maxVel, int HP, int length/*SpriteSheet sprite*/);
+    Vehicle(int X, int Y, float ac, float maxVel, int HP, sf::Texture tex, sf::Sprite sp, int le, int wi,
+            bool col, std::string texName);
 
     //virtual float calcSpeed(); //FIXME da rivedere il calcolo della velocità qua e nelle sottoclassi
+
+    virtual bool setUpSprite(std::string textureName);
 
     virtual void attack(Vehicle target);
 

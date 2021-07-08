@@ -741,3 +741,32 @@ int GameWorld::getMapWidth() const {
 int GameWorld::getMapHeight() const {
     return mapHeight;
 }
+
+void GameWorld::setEnemyFaction(FactionType enemyFaction) {
+    GameWorld::enemyFaction = enemyFaction;
+}
+
+void GameWorld::setAlliedFaction(FactionType alliedFaction) {
+    GameWorld::alliedFaction = alliedFaction;
+}
+
+void GameWorld::setExitPos(const sf::Vector2i &exitPos) {
+    GameWorld::exitPos = exitPos;
+}
+
+void GameWorld::setGridLength(int gridLength) {
+    GameWorld::gridLength = gridLength;
+}
+
+void GameWorld::setMapWidth(int mapWidth) {
+    GameWorld::mapWidth = mapWidth;
+}
+
+void GameWorld::setMapHeight(int mapHeight) {
+    GameWorld::mapHeight = mapHeight;
+}
+
+
+
+
+
