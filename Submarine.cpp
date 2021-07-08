@@ -9,7 +9,7 @@ void Submarine::submerge() {
 
 }
 
-Submarine::Submarine(double x, double y, float ac, const float maxVel, int hp, int length, int arm1,
+Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int length, int arm1,
                      std::string na1, std::string nat1, int numL1, int numH1, int numM1,
                      std::vector<std::unique_ptr<Arsenal>> &arsenalList1,
                      std::vector<std::unique_ptr<Vehicle>> &vehicleList1, int numTubes, bool submerged, int arm,

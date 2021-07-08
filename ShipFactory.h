@@ -7,6 +7,9 @@
 
 
 #include "AbstractShipFactory.h"
+#include "WarShip.h"
+#include "ArsenalFactory.h"
+#include "Submarine.h"
 
 class ShipFactory : public AbstractShipFactory {
 public:
