@@ -12,11 +12,11 @@
 
 class AirplaneFactory : public AbstractAirplaneFactory {
 public:
-    std::unique_ptr<Vehicle> createFighter();
+    std::unique_ptr<Vehicle> createFighter() override;
 
-    std::unique_ptr<Vehicle> createBomber();
+    std::unique_ptr<Vehicle> createBomber() override;
 
-    std::unique_ptr<Vehicle> createTorpedoBomber();
+    std::unique_ptr<Vehicle> createTorpedoBomber() override;
 };
 
 

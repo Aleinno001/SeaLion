@@ -7,6 +7,7 @@
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
+
     switch (type) {
 
         case ModelType::I400:
