@@ -48,3 +48,14 @@ double Arsenal::getPosX() const {
 double Arsenal::getPosY() const {
     return posY;
 }
+
+Arsenal::Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+                 float decelleration, int power, int num, int x, int y, sf::Texture tex, sf::Sprite sp, int le, int wi,
+                 bool col, std::string textureName) : rangeOfFire(range), reloadTime(reload), rateOfFire(rate),
+                                                      ammoSpeed(speed), maximumDispersion(dispersion),
+                                                      ammoDeceleration(decelleration), firepower(power), numAmmo(num),
+                                                      posX(x), posY(y) {
+    ammoType = type;
+
+
+}

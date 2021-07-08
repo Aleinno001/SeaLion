@@ -11,23 +11,29 @@
 
 class Arsenal {
 protected:
-    const float rangeOfFire;
-    const int reloadTime;
-    const int rateOfFire;
+    float rangeOfFire;
+    int reloadTime;
+    int rateOfFire;
     int ammoSpeed;
     int maximumDispersion;
     std::string ammoType;
     float ammoDeceleration;
     int firepower;
     int numAmmo;
-    double posX;
-    double posY;  //FIXME posX,posY da rivedere quando la mappa sarà definita
-    //TODO sprite/grafica
+    int posX;
+    int posY;  //FIXME posX,posY da rivedere quando la mappa sarà definita
+    int length;
+    int width;
+    bool collision;
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::Vector2f pos;
 public:
     //TODO implementare i metodi
 
     Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
-            float decelleration, int power, int num, double x, double y);
+            float decelleration, int power, int num, int x, int y, sf::Texture tex, sf::Sprite sp, int le, int wi,
+            bool col, std::string textureName);
 
     virtual ~Arsenal() = default;
 
@@ -42,6 +48,8 @@ public:
     virtual bool engage(Vehicle enemy);
 
     virtual void rotate();
+
+    virtual bool setUpSprite(std::string textureName);
 
     //getter
     const float getRangeOfFire() const;
