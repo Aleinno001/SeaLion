@@ -54,7 +54,7 @@ Arsenal::Arsenal(const float range, const int reload, const int rate, int speed,
                  bool col, std::string texName) : rangeOfFire(range), reloadTime(reload), rateOfFire(rate),
                                                   ammoSpeed(speed), maximumDispersion(dispersion),
                                                   ammoDeceleration(decelleration), firepower(power), numAmmo(num),
-                                                  posX(x), posY(y) {
+                                                  posX(x), posY(y), sprite(sp), texture(tex), length(le), width(wi) {
     ammoType = type;
 
     if (!setUpSprite(texName)) {
