@@ -697,6 +697,7 @@ void GameWorld::setMapHeight(int mapHeight) {
     GameWorld::mapHeight = mapHeight;
 }
 
-void GameWorld::setTiles(const std::vector<std::vector<std::unique_ptr<GameTile>>> &tiles) {
-    GameWorld::tiles = tiles;
-}
+
+
+
+
