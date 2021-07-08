@@ -55,8 +55,8 @@ void
 GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
-    std::vector<std::unique_ptr<GameTile>> column;
-    Dice dice(24);
+    std::vector<std::unique_ptr<GameTile>> row;
+    Dice dice(500);
     std::string currentDir = GetCurrentWorkingDir();
     std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
     bool collision = false;
@@ -93,15 +93,16 @@ GameWorld::setUpTiles(
      */
 
     resTile = dice.roll(1);
-    int specialTilesInAColumn = 5;
+    int specialTilesInARow = 0; //FIXME parametrizza
     int numberOfWaveChunk = 4 % resTile;
-    int specialTilesInAcolumn = 0;
+    int specialTilesInAColumn = 10;
     bool isCluster = false;
     int fogColumn;
+    int maxFogCluster = resTile % 5 - 1;  //FIXME parametrizza
     TileType tileType = TileType::Sea;
 
     for (int i = 0; i < (mapHeight / tileDim); i++) {
-        column.clear();
+        row.clear();
         for (int j = 0; j < (mapWidth / tileDim); j++) {
             resTile = dice.roll(1);
             // i è la riga e j la colonna
@@ -124,38 +125,39 @@ GameWorld::setUpTiles(
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
              */
-            std::cerr << resTile << std::endl;
-            if (resTile == 23 && !isCluster) {
+            if (resTile == 499 && !isCluster && maxFogCluster != 0) {
                 fogColumn = j;
                 specialTilesInAcolumn = resTile % 3 + 3;
                 isCluster = true;
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
-                specialTilesInAcolumn -= 1;
-            } else if (specialTilesInAColumn != 0 && specialTilesInAcolumn != 0 && isCluster && j != 0 &&
-                       j >= fogColumn - 1 && j <= fogColumn + (5 - specialTilesInAcolumn)) {
+                specialTilesInARow -= 1;
+            } else if (specialTilesInARow != 0 && specialTilesInAColumn != 0 && isCluster &&
+                       j >= fogColumn - (resTile % 4)) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                specialTilesInAcolumn -= 1;
+                specialTilesInARow -= 1;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
             }
             std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
-            column.push_back(std::move(tile));
+            row.push_back(std::move(tile));
         }
         if (isCluster) {
-            specialTilesInAcolumn = resTile % 3 + 3;
+            specialTilesInARow = resTile % 4 + 10;
             specialTilesInAColumn -= 1;
         }
         if (specialTilesInAColumn == 0) {
             isCluster = false;
+            maxFogCluster -= 1;
+            specialTilesInAColumn = 10;
         }
         /*
         if(specialTilesInAColumn!=0){
             specialTilesInAColumn-=1;
         }
          */
-        tiles.push_back(std::move(column));
+        tiles.push_back(std::move(row));
     }
 
 
