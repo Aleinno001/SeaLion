@@ -45,6 +45,7 @@ WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int length,
                                                       numLCannons(numL),
                                                       numHCannons(numH), numMCannons(numM) {
 
+
 }
 
 

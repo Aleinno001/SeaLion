@@ -21,7 +21,9 @@ public:
                std::vector<std::unique_ptr<Vehicle>> &vehicleList1, double x, double y, float ac,
                const float maxVel, int hp, int length, int arm, std::string na, std::string nat, int numL,
                int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-               std::vector<std::unique_ptr<Vehicle>> &vehicleList, int numInter);
+               std::vector<std::unique_ptr<Vehicle>> &vehicleList, int numInter, sf::Texture tex, sf::Sprite sp, int le,
+               int wi,
+               bool col, std::string textureName);
 
     //float calcSpeed() override;
 
