@@ -55,26 +55,27 @@ void
 GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
-    std::vector<std::unique_ptr<GameTile>> row;
-    Dice dice(6);
+    std::vector<std::unique_ptr<GameTile>> column;
+    Dice dice(24);
     std::string currentDir = GetCurrentWorkingDir();
     std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
     bool collision = false;
     int resTile;
     int firstChangeTileValue;
     int secondChangeTileValue;
-    for (int i = 1; i < (mapHeight / tileDim); i++) {
-        row.clear();
-        for (int j = 1; j < (mapWidth / tileDim); j++) {
+    /*
+    for (int i = 0; i < (mapHeight / tileDim); i++) {
+        column.clear();
+        for (int j = 0; j < (mapWidth / tileDim); j++) {
             resTile = dice.roll(1);
-            firstChangeTileValue = 5;
-            secondChangeTileValue = 6;
+            firstChangeTileValue = 22;
+            secondChangeTileValue = 23;
             if (path == (currentDir + "/../Res/Tiles/seaFoggyBlock.png")) {
-                firstChangeTileValue = 3;
-                secondChangeTileValue = 6;
+                firstChangeTileValue = 12;
+                secondChangeTileValue = 23;
             } else if (path == (currentDir + "/../Res/Tiles/seaWaveBlock.png")) {
-                firstChangeTileValue = 3;
-                secondChangeTileValue = 4;
+                firstChangeTileValue = 12;
+                secondChangeTileValue = 14;
             }
             if (resTile >= 1 && resTile < firstChangeTileValue) {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";   //TODO gestire eccezioni per il path dei file
@@ -84,11 +85,66 @@ GameWorld::setUpTiles(
             } else {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
-            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * (j - 1), tileDim * (i - 1), collision, false));
-            row.push_back(std::move(tile));
+            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim *j, tileDim *i, collision, false));
+            column.push_back(std::move(tile));
         }
-        tiles.push_back(std::move(row));
+        tiles.push_back(std::move(column));
     }
+     */
+
+    resTile = dice.roll(1);
+    int numberOfFogChunk = 2 % resTile;
+    int numberOfWaveChunk = 4 % resTile;
+    int specialTilesInAcolumn = 0;
+    int fogRow = -1;
+
+    for (int i = 0; i < (mapHeight / tileDim); i++) {
+        column.clear();
+        for (int j = 0; j < (mapWidth / tileDim); j++) {
+            resTile = dice.roll(1);
+            // i è la riga e j la colonna
+            /*
+            firstChangeTileValue = 22;
+            secondChangeTileValue = 23;
+            if (path == (currentDir + "/../Res/Tiles/seaFoggyBlock.png")) {
+                firstChangeTileValue = 12;
+                secondChangeTileValue = 23;
+            } else if (path == (currentDir + "/../Res/Tiles/seaWaveBlock.png")) {
+                firstChangeTileValue = 12;
+                secondChangeTileValue = 14;
+            }
+            if (resTile >= 1 && resTile < firstChangeTileValue) {
+                path = currentDir + "/../Res/Tiles/seaBlock.png";
+            } else if (resTile >= firstChangeTileValue && resTile < secondChangeTileValue) {
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                collision = true;
+            } else {
+                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+            }
+             */
+            if (resTile == 23 && fogRow == -1) {
+                specialTilesInAcolumn = resTile % 8;
+                fogRow = i;
+            }
+            if (numberOfFogChunk != 0 &&
+                specialTilesInAcolumn != 0) {  //FIXME controllare che le caselle siano dello stesso tipo
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                specialTilesInAcolumn -= 1;
+            } else {
+                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+            }
+            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false));
+            column.push_back(std::move(tile));
+        }
+        //specialTilesInAcolumn = resTile % 8;
+        /*
+        if(numberOfFogChunk!=0){
+            numberOfFogChunk-=1;
+        }
+         */
+        tiles.push_back(std::move(column));
+    }
+
 
 }
 

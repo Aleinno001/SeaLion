@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 
+
 class GameTile {
 public:
     bool isPassable;
