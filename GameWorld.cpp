@@ -51,8 +51,7 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 
 }
 
-void
-GameWorld::setUpTiles(
+void GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
@@ -127,7 +126,7 @@ GameWorld::setUpTiles(
              */
             if (resTile == 999 && !isCluster && maxFogCluster != 0) {
                 fogColumn = j;
-                specialTilesInAcolumn = resTile % 3 + 3;
+                specialTilesInARow = resTile % 4 + 4;
                 isCluster = true;
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
