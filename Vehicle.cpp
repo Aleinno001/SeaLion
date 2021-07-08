@@ -19,7 +19,8 @@ float Vehicle::calcSpeed() {
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int lenght, sf::Texture tex, sf::Sprite sp, int le,
                  int wi, bool col, std::string texName) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
-                                                          length(lenght), collision(col) {
+                                                          length(le), collision(col), width(wi), texture(tex),
+                                                          sprite(sp) {
 
     if (!setUpSprite(texName)) {
         return; //TODO da gestire meglio con le eccezioni
