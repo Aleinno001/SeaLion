@@ -15,8 +15,10 @@ protected:
     int hp;
     int length;
     int width;
+    bool collision;
     sf::Texture texture;
     sf::Sprite sprite;
+    sf::Vector2f pos;
 
     //TODO controllare la Sfml per le sprite
     //SpriteSheet sprite
@@ -26,7 +28,8 @@ protected:
 
 public:
 
-    Vehicle(int X, int Y, float ac, float maxVel, int HP, int length, sf::Texture tex, sf::Sprite sp, int le, int wi);
+    Vehicle(int X, int Y, float ac, float maxVel, int HP, int length, sf::Texture tex, sf::Sprite sp, int le, int wi,
+            bool col, std::string textureName);
 
     //virtual float calcSpeed(); //FIXME da rivedere il calcolo della velocità qua e nelle sottoclassi
 

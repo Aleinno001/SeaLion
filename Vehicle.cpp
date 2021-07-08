@@ -18,7 +18,14 @@ float Vehicle::calcSpeed() {
 }
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int lenght, sf::Texture tex, sf::Sprite sp, int le,
-                 int wi) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP), length(lenght) {
+                 int wi, bool col, std::string texName) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
+                                                          length(lenght), collision(col) {
+
+    if (!setUpSprite(texName)) {
+        return; //TODO da gestire meglio con le eccezioni
+    }
+    pos = sf::Vector2f(posX, posY);
+    sprite.setPosition(pos);
 
 
 }
@@ -45,5 +52,12 @@ void Vehicle::detach() {
 
 bool Vehicle::setUpSprite(std::string textureName) {
 
+    if (!texture.loadFromFile(textureName)) {
+        return false; //TODO usare poi l'eccezioni per gestire la lettura da file
+    }
+    texture.setSmooth(true);
+    sprite.setTexture(texture);
+    sprite.setTextureRect(sf::IntRect(0, 0, length, width));
+    return true;
 }
 
