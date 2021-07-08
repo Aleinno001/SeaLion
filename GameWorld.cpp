@@ -63,7 +63,6 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
         row.clear();
         for (int j = 1; j < (mapWidth / 30); j++) {
             resTile = dice.roll(1);
-            std::cerr << resTile << std::endl;
             firstChangeTileValue = 5;
             secondChangeTileValue = 6;
             if (path == (currentDir + "/../Res/Tiles/seaFoggyBlock.png")) {
@@ -81,7 +80,7 @@ GameWorld::setUpTiles() { //FIXME Finire di aggiungere le tiles per poi migliora
             } else {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
             }
-            std::unique_ptr<GameTile> tile(new GameTile(path, 30 * (i - 1), 30 * (j - 1), collision, false));
+            std::unique_ptr<GameTile> tile(new GameTile(path, 30 * (j), 30 * (i - 1), collision, false));
             row.push_back(std::move(tile));
         }
         tiles.push_back(std::move(row));

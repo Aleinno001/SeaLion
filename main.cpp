@@ -27,8 +27,8 @@ int main() {
         }
 
         window.clear();
-        for (int i = 0; i < 36 - 1; i++) {
-            for (int j = 0; j < 64 - 1; j++) {
+        for (int i = 0; i < (gameWorld.getMapHeight() / 30) - 1; i++) {
+            for (int j = 0; j < (gameWorld.getMapWidth() / 30) - 1; j++) {
                 window.draw(gameWorld.tiles[i][j]->sprite);
             }
         }
