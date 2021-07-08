@@ -12,8 +12,11 @@ class HeavlyCannon : public Arsenal {
 public:
     //TODO implementare
     //FIXME coordinate da rivedere + sprite
-    HeavlyCannon(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
-                 float decelleration, int power, int num, double x, double y);
+    HeavlyCannon(const float range1, const int reload1, const int rate1, int speed1, int dispersion1,
+                 std::string type1, float decelleration1, int power1, int num1, int x1, int y1,
+                 sf::Texture tex, sf::Sprite sp, int le, int wi, bool col, std::string texName,
+                 const float range, const int reload, const int rate, int speed, int dispersion,
+                 std::string type, float decelleration, int power, int num, double x, double y);
 
     ~HeavlyCannon();
 
