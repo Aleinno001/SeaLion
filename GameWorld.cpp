@@ -142,7 +142,7 @@ void GameWorld::setUpTiles(
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
             }
-            }
+
             std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
             row.push_back(std::move(tile));
         }
@@ -178,8 +178,12 @@ void GameWorld::setUpTiles(
         tiles.push_back(std::move(row));
     }
 
-
 }
+
+
+
+
+
 
 void GameWorld::italianBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
                                              Dice &dice) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
