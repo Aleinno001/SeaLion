@@ -38,6 +38,14 @@ protected:
         secondDestroyers.type = ShipType::Destroyer;
         secondDestroyers.name = ModelType::Leone;
         secondDestroyers.num = 2;
+        Fleet cruisers;
+        cruisers.type = ShipType::Cruiser;
+        cruisers.name = ModelType::AlbertoDiGiussano;
+        cruisers.num = 2;
+        Fleet secondCruisers;
+        secondCruisers.type = ShipType::Cruiser;
+        secondCruisers.name = ModelType::Trento;
+        secondCruisers.num = 1;
 
 
         c.setUpTiles(tileDim);
