@@ -22,9 +22,8 @@ Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, sf::Texture tex, 
                                                   length(le), collision(col), width(wi), texture(tex),
                                                   sprite(sp) {
 
-    if (!setUpSprite(texName)) {
-        return; //TODO da gestire meglio con le eccezioni
-    }
+    setUpSprite(texName)
+
     pos = sf::Vector2f(posX, posY);
     sprite.setPosition(pos);
 
@@ -54,7 +53,7 @@ void Vehicle::detach() {
 bool Vehicle::setUpSprite(std::string textureName) {
 
     if (!texture.loadFromFile(textureName)) {
-        return false; //TODO usare poi l'eccezioni per gestire la lettura da file
+        throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
