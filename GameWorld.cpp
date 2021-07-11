@@ -36,7 +36,7 @@ void
 GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                              std::vector<Fleet> &fleet) {
     exitPos = sf::Vector2i(1, 0);
-    //TODO iniziallizare la lista di navi alleate e nemiche
+
     setUpAlliedFleet(fleet);
     setUpEnemyFleet(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
 }
