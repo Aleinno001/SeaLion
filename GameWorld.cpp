@@ -64,13 +64,13 @@ void GameWorld::setUpTiles(
     int fogTilesInARow = 0;
     int waveTilesInARow = 0;
     int fogTilesInAColumn = resTile % 10 + 4;
-    int waveTilesInAColumn = resTile % 10 + 4;
+    int waveTilesInAColumn = resTile % 8 + 3;
     bool isFogCluster = false;
     bool isWaveCluster = false;
     int fogColumn;
     int waveColumn;
     int maxFogCluster = resTile % 5 - 1;
-    int maxWaveCluster = resTile % 5 - 1;
+    int maxWaveCluster = resTile % 7 - 1;
     TileType tileType = TileType::Sea;
 
     for (int i = 0; i < (mapHeight / tileDim); i++) {
@@ -93,17 +93,17 @@ void GameWorld::setUpTiles(
                 tileType = TileType::Fog;
             } else if (resTile == 500 && !isWaveCluster && maxWaveCluster != 0) {      //Wave
                 waveColumn = j;
-                waveTilesInARow = 4;
+                waveTilesInARow = 3;
                 isWaveCluster = true;
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
             } else if (isWaveCluster && waveTilesInAColumn > 1 &&
-                       j >= waveColumn - (resTile % 4) && j <= (waveColumn + waveTilesInARow + (resTile % 4))) {
+                       j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
-            } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 4) &&
-                       j <= (waveColumn + 4 + (resTile % 4))) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+            } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 3) &&
+                       j <= (waveColumn + 3 + (resTile % 3))) {
+                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
@@ -119,16 +119,16 @@ void GameWorld::setUpTiles(
         if (fogTilesInAColumn == 0) {
             isFogCluster = false;
             maxFogCluster -= 1;
-            fogTilesInAColumn = 10;
+            fogTilesInAColumn = resTile % 10 + 4;
         }
         if (isWaveCluster) {
-            waveTilesInARow = 7;
+            waveTilesInARow = 6;
             waveTilesInAColumn -= 1;
         }
         if (waveTilesInAColumn == 0) {
             isWaveCluster = false;
             maxWaveCluster -= 1;
-            waveTilesInAColumn = 10;
+            waveTilesInAColumn = resTile % 8 + 3;
         }
         tiles.push_back(std::move(row));
     }
