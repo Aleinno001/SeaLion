@@ -38,15 +38,33 @@ protected:
         secondDestroyers.type = ShipType::Destroyer;
         secondDestroyers.name = ModelType::Leone;
         secondDestroyers.num = 2;
+        alliedTypeFleet.push_back(secondDestroyers);
         Fleet cruisers;
         cruisers.type = ShipType::Cruiser;
         cruisers.name = ModelType::AlbertoDiGiussano;
         cruisers.num = 2;
+        alliedTypeFleet.push_back(cruisers);
         Fleet secondCruisers;
         secondCruisers.type = ShipType::Cruiser;
         secondCruisers.name = ModelType::Trento;
         secondCruisers.num = 1;
+        alliedTypeFleet.push_back(secondCruisers);
+        Fleet battleships;
+        battleships.type = ShipType::Battleship;
+        battleships.name = ModelType::AndreaDoria;
+        battleships.num = 1;
+        alliedTypeFleet.push_back(battleships);
+        Fleet secondBattleships;
+        secondBattleships.type = ShipType::Battleship;
+        secondBattleships.name = ModelType::ImperatoreAugusto;
+        secondBattleships.num = 1;
+        alliedTypeFleet.push_back(secondBattleships);
 
+        Fleet thirdBattleships;
+        thirdBattleships.type = ShipType::Battleship;
+        thirdBattleships.name = ModelType::MichelangeloBuonarroti;
+        thirdBattleships.num = 1;
+        alliedTypeFleet.push_back(thirdBattleships);
 
         c.setUpTiles(tileDim);
         c.setUpInitialState();
