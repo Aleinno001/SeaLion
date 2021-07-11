@@ -724,32 +724,41 @@ void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
 
 void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
                                                   Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
-    for (int i = 0; i < numAir; i++) {
+    try {
+        for (int i = 0; i < numAir; i++) {
 
 
-        if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
-            enemyFleet.push_back(std::move(enemy));
+            if (dice.roll(1) > 1) {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
+                enemyFleet.push_back(std::move(enemy));
+            } else {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi));
+                enemyFleet.push_back(std::move(enemy));
+            }
         }
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+
     }
 
 }
 
 void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
                                               Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+    try {
+        for (int i = 0; i < numAir; i++) {
 
-    for (int i = 0; i < numAir; i++) {
-
-        if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger));
-            enemyFleet.push_back(std::move(enemy));
+            if (dice.roll(1) > 1) {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway));
+                enemyFleet.push_back(std::move(enemy));
+            } else {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger));
+                enemyFleet.push_back(std::move(enemy));
+            }
         }
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+
     }
 
 }
