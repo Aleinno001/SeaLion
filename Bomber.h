@@ -13,9 +13,10 @@ private:
     int numBombs;
     int bombDamage;
 private:
+    //TODO Implementare i metodi
     Bomber(int x, int y, float ac1, float maxVel1, int hp, int length1, sf::Texture tex, sf::Sprite sp, int le,
            int wi, bool col, std::string textureName, double X, double Y, float ac, const float maxVel, int HP,
-           int length, int numBombs, int damage);//FIXME sprite
+           int length, int numBombs, int damage);
 
     void bombard(Vehicle enemy);
 

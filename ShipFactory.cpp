@@ -11,7 +11,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
     switch (type) {
 
         case ModelType::I400:
-            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO CONCLUDI
+            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
             break;
 
         case ModelType::typeb1:
@@ -54,7 +54,7 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type) {
 }
 
 std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type) {
-    return std::unique_ptr<WarShip>(); //TODO implementare il costruttore di Battleship
+    return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
 }
 
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type) {

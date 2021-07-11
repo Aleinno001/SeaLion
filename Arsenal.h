@@ -21,7 +21,7 @@ protected:
     int firepower;
     int numAmmo;
     int posX;
-    int posY;  //FIXME posX,posY da rivedere quando la mappa sarà definita
+    int posY;
     int length;
     int width;
     bool collision;
@@ -39,7 +39,7 @@ public:
 
     virtual void openFire(Vehicle enemy);
 
-    virtual void update(int posX, int posY); //FIXME posX,posY da rivedere
+    virtual void update(int posX, int posY);
 
     virtual void attach();
 

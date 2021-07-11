@@ -12,14 +12,15 @@ class SmokeScreen : public Bonus {
 private:
     int uses;
     float duration;
-    double posX;       //TODO fix nel caso non sia double
-    double posY;       //TODO fix nel caso non sia double
+    int posX;
+    int posY;
     float diameter;
 
 public:
-    SmokeScreen(WarShip *m, float c, int u, float d, double pX, double pY, float diam) : Bonus(m, c), uses(u),
-                                                                                         duration(d), posX(pX),
-                                                                                         posY(pY), diameter(diam) {};
+    //TODO implementare i metodi
+    SmokeScreen(WarShip *m, float c, int u, float d, int pX, int pY, float diam) : Bonus(m, c), uses(u),
+                                                                                   duration(d), posX(pX),
+                                                                                   posY(pY), diameter(diam) {};
 
     ~SmokeScreen() override;
 

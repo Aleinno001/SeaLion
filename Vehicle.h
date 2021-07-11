@@ -8,8 +8,8 @@
 
 class Vehicle {
 protected:
-    int posX;  //TODO ricontrollare meglio con la libreria SFML
-    int posY;  //TODO ricontrollare meglio con la libreria SFML
+    int posX;
+    int posY;
     float acceleration;
     const float maxSpeed = 0; //FIXME valore di default di velocità
     int hp;
@@ -20,7 +20,7 @@ protected:
     sf::Sprite sprite;
     sf::Vector2f pos;
 
-    //TODO controllare la Sfml per le sprite
+
     //SpriteSheet sprite
     virtual void rotate();
 
