@@ -53,7 +53,7 @@ void Vehicle::detach() {
 bool Vehicle::setUpSprite(std::string textureName) {
 
     if (!texture.loadFromFile(textureName)) {
-        throw std::runtime_error("Path to tile filename invalid!!");
+        throw std::runtime_error("Path to tile filename invalid, for the vehicle object sprite");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
