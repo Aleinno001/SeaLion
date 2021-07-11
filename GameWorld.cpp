@@ -92,62 +92,75 @@ void GameWorld::setUpTiles(
                 isFogCluster = true;
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
+                collision = false;
             } else if (isFogCluster && fogTilesInAColumn > 1 &&
                        j >= fogColumn - (resTile % 5) && j <= (fogColumn + fogTilesInARow + (resTile % 5))) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
+                collision = false;
             } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
                        j <= (fogColumn + 4 + (resTile % 4))) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
+                collision = false;
             } else if (resTile == 300 && !isWaveCluster && maxWaveCluster != 0) {      //Wave
                 waveColumn = j;
                 waveTilesInARow = 3;
                 isWaveCluster = true;
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
+                collision = false;
             } else if (isWaveCluster && waveTilesInAColumn > 1 &&
                        j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
+                collision = false;
             } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 3) &&
                        j <= (waveColumn + 3 + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
+                collision = false;
             } else if (resTile == 298 && !isWhirlpoolCluster && maxWhirlpoolCluster != 0) {         //Whirlplool
                 whirlpoolColumn = j;
                 whirlpoolTilesInARow = 2;
                 isWhirlpoolCluster = true;
                 path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
                 tileType = TileType::Whirlpool;
+                collision = false;
             } else if (isWhirlpoolCluster && whirlpoolTilesInAColumn > 1 &&
                        j >= whirlpoolColumn - (resTile % 3) &&
                        j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
                 tileType = TileType::Whirlpool;
+                collision = false;
             } else if (whirlpoolTilesInAColumn == 1 && j >= whirlpoolColumn - (resTile % 3) &&
                        j <= (whirlpoolColumn + 2 + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
                 tileType = TileType::Whirlpool;
+                collision = false;
             } else if (resTile == 297 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
                 dirtColumn = j;
                 dirtTilesInARow = 2;
                 isDirtCluster = true;
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
+                collision = true;
             } else if (isDirtCluster && dirtTilesInAColumn > 1 &&
                        j >= dirtColumn - (resTile % 3) && j <= (dirtColumn + dirtTilesInARow + (resTile % 3))) {
 
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
+                collision = true;
 
             } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 3) &&
                        j <= (dirtColumn + 3 + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
+                collision = true;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
+                collision = false;
             }
             std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
             row.push_back(std::move(tile));
