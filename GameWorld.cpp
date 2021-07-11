@@ -133,14 +133,15 @@ void GameWorld::setUpTiles(
                        j >= dirtColumn - (resTile % 4) && j <= (dirtColumn + dirtTilesInARow + (resTile % 4))) {
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
-                dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 4) &&
-                j <= (dirtColumn + 4 + (resTile % 4))) {
-                    path = currentDir + "/../Res/Tiles/dirtBlock.png";
-                    tileType = TileType::Dirt;
-                } else {
-                    path = currentDir + "/../Res/Tiles/seaBlock.png";
-                    tileType = TileType::Sea;
-                }
+
+            } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 4) &&
+                       j <= (dirtColumn + 4 + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/dirtBlock.png";
+                tileType = TileType::Dirt;
+            } else {
+                path = currentDir + "/../Res/Tiles/seaBlock.png";
+                tileType = TileType::Sea;
+            }
             }
             std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
             row.push_back(std::move(tile));
