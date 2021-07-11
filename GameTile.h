@@ -10,7 +10,8 @@
 enum class TileType {
     Sea,
     Wave,
-    Fog
+    Fog,
+    Whirlpool
 };
 
 class GameTile {

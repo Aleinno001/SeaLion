@@ -63,13 +63,18 @@ void GameWorld::setUpTiles(
     resTile = dice.roll(1);
     int fogTilesInARow = 0;
     int waveTilesInARow = 0;
+    int whirlpoolTilesInARow = 0;
     int fogTilesInAColumn = resTile % 10 + 4;
+    int whirlpoolTilesInAColumn = resTile % 10 + 4;
     int waveTilesInAColumn = resTile % 8 + 3;
     bool isFogCluster = false;
     bool isWaveCluster = false;
+    bool isWhirlpoolCluster = false;
     int fogColumn;
     int waveColumn;
+    int whirlpoolColumn;
     int maxFogCluster = resTile % 5 - 1;
+    int maxWhirlpoolCluster = resTile % 5 - 1;
     int maxWaveCluster = resTile % 7 - 1;
     TileType tileType = TileType::Sea;
 
@@ -105,20 +110,21 @@ void GameWorld::setUpTiles(
                        j <= (waveColumn + 3 + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
-            } else if (resTile == 499 && !isFogCluster && maxFogCluster != 0) {         //Whirlplool
-                fogColumn = j;
-                fogTilesInARow = 4;
-                isFogCluster = true;
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                tileType = TileType::Fog;
-            } else if (isFogCluster && fogTilesInAColumn > 1 &&
-                       j >= fogColumn - (resTile % 4) && j <= (fogColumn + fogTilesInARow + (resTile % 4))) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                tileType = TileType::Fog;
-            } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
-                       j <= (fogColumn + 4 + (resTile % 4))) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                tileType = TileType::Fog;
+            } else if (resTile == 498 && !isWhirlpoolCluster && maxWhirlpoolCluster != 0) {         //Whirlplool
+                whirlpoolColumn = j;
+                whirlpoolTilesInARow = 4;
+                isWhirlpoolCluster = true;
+                path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
+                tileType = TileType::Whirlpool;
+            } else if (isWhirlpoolCluster && whirlpoolTilesInAColumn > 1 &&
+                       j >= whirlpoolColumn - (resTile % 4) &&
+                       j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
+                tileType = TileType::Whirlpool;
+            } else if (whirlpoolTilesInAColumn == 1 && j >= whirlpoolColumn - (resTile % 4) &&
+                       j <= (whirlpoolColumn + 4 + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
+                tileType = TileType::Whirlpool;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
@@ -143,6 +149,15 @@ void GameWorld::setUpTiles(
             isWaveCluster = false;
             maxWaveCluster -= 1;
             waveTilesInAColumn = resTile % 8 + 3;
+        }
+        if (isWhirlpoolCluster) {
+            whirlpoolTilesInARow = 7;
+            whirlpoolTilesInAColumn -= 1;
+        }
+        if (whirlpoolTilesInAColumn == 0) {
+            isWhirlpoolCluster = false;
+            maxWhirlpoolCluster -= 1;
+            whirlpoolTilesInAColumn = 10;
         }
         tiles.push_back(std::move(row));
     }
