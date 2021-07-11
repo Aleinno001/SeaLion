@@ -622,7 +622,7 @@ void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
 
 void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
                                             Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
-
+try {
     for (int i = 0; i < numDes; i++) {
 
 
@@ -637,6 +637,10 @@ void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFacto
             enemyFleet.push_back(std::move(enemy));
         }
     }
+} catch (std::runtime_error &e) {
+    std::cerr << e.what() << std::endl;
+
+}
 
 }
 
