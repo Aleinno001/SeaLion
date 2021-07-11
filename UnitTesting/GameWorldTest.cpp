@@ -9,7 +9,7 @@
 class GameWorldTest : public ::testing::Test {
 
 protected:
-    virtual void SetUp() {                                   //TODO aggiungere setAlliedFleet, setEnemyFleet e setTiles
+    virtual void SetUp() {
 
         c.setExitPos(sf::Vector2i(1, 0));
         c.setEnemyFaction(FactionType::Japan);
@@ -17,7 +17,7 @@ protected:
         c.setGridLength(8);
         c.setMapWidth(1920);
         c.setMapHeight(1080);
-        int tileDim = 60;
+        int tileDim = 30;
         int numEnemySub = 2;
         int numEnemyBat = 3;
         int numEnemyCru = 3;
@@ -73,7 +73,7 @@ protected:
         alliedTypeFleet.push_back(aircraftCarriers);
 
         c.setUpTiles(tileDim);
-        c.setUpInitialState();
+        c.setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, alliedTypeFleet);
     }
 
     GameWorld c;
