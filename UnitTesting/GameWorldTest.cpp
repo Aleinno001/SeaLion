@@ -17,6 +17,22 @@ protected:
         c.setGridLength(8);
         c.setMapWidth(1920);
         c.setMapHeight(1080);
+        int tileDim = 60;
+        int numEnemySub = 2;
+        int numEnemyBat = 3;
+        int numEnemyCru = 3;
+        int numEnemyDes = 4;
+        int numEnemyAir = 1;
+        std::vector<Fleet> alliedTypeFleet;
+        Fleet submarines;
+        submarines.type = ShipType::Submarine;
+        submarines.name = ModelType::Papa;
+        submarines.num = 2;
+        alliedTypeFleet.push_back(submarines);
+
+
+        c.setUpTiles(tileDim);
+        c.setUpInitialState();
     }
 
     GameWorld c;
