@@ -29,6 +29,15 @@ protected:
         submarines.name = ModelType::Papa;
         submarines.num = 2;
         alliedTypeFleet.push_back(submarines);
+        Fleet destroyers;
+        destroyers.type = ShipType::Destroyer;
+        destroyers.name = ModelType::PaoloEmilio;
+        destroyers.num = 2;
+        alliedTypeFleet.push_back(destroyers);
+        Fleet secondDestroyers;
+        secondDestroyers.type = ShipType::Destroyer;
+        secondDestroyers.name = ModelType::Leone;
+        secondDestroyers.num = 2;
 
 
         c.setUpTiles(tileDim);
