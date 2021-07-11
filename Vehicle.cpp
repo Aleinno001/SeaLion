@@ -22,7 +22,7 @@ Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, sf::Texture tex, 
                                                   length(le), collision(col), width(wi), texture(tex),
                                                   sprite(sp) {
 
-    setUpSprite(texName)
+    setUpSprite(texName);
 
     pos = sf::Vector2f(posX, posY);
     sprite.setPosition(pos);
