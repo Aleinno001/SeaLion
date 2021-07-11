@@ -123,7 +123,7 @@ void GameWorld::setUpTiles(
                        j <= (fogColumn + 4 + (resTile % 4))) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
-            } else if (resTile == 499 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
+            } else if (resTile == 497 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
                 dirtColumn = j;
                 dirtTilesInARow = 4;
                 isDirtCluster = true;
