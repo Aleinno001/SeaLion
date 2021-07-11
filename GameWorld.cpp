@@ -13,13 +13,22 @@ std::string GetCurrentWorkingDir() {
 
 GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                      std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,
-                     sf::Vector2i exit, int &width, int &height, int &tileDim) : gridLength(grid),
-                                                                                 enemyFaction(enemyFact),
-                                                                                 alliedFaction(alliedFact),
-                                                                                 exitPos(exit), mapHeight(height),
-                                                                                 mapWidth(width) {
-    setUpTiles(tileDim);
-    setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet);
+                     sf::Vector2i exit, int &width, int &height, int &tileDim) {
+    try {
+        gridLength = grid;
+        enemyFaction = enemyFact;
+        exitPos = exit;
+        mapHeight = height;
+        mapWidth = width;
+        alliedFaction = alliedFact;
+        setUpTiles(tileDim);
+        setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Please change Warship type" << std::endl;
+    }
+
+
 }
 
 
@@ -277,8 +286,8 @@ GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
                 for (int i = 0; i < iterator.num; i++)
                     alliedFleet.push_back(alliedFactory.createSubmarine(iterator.name));
                 break;
-            default:                                                                //FIXME add exceptions
-                break;
+            default:
+                throw std::runtime_error("Invalid Warship type!");
         }
     }
 
