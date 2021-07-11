@@ -642,7 +642,7 @@ void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFacto
 
 void GameWorld::usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
                                         Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
-
+try {
     for (int i = 0; i < numDes; i++) {
 
 
@@ -657,24 +657,32 @@ void GameWorld::usaDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
             enemyFleet.push_back(std::move(enemy));
         }
     }
+} catch (std::runtime_error &e) {
+    std::cerr << e.what() << std::endl;
+
+}
 
 }
 
 void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
                                        Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+    try {
+        for (int i = 0; i < numDes; i++) {
 
-    for (int i = 0; i < numDes; i++) {
-
-        if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Campbelltown));
-            enemyFleet.push_back(std::move(enemy));
-        } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Gallant));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Jutland));
-            enemyFleet.push_back(std::move(enemy));
+            if (dice.roll(1) == 1) {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Campbelltown));
+                enemyFleet.push_back(std::move(enemy));
+            } else if (dice.roll(1) == 2) {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Gallant));
+                enemyFleet.push_back(std::move(enemy));
+            } else {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Jutland));
+                enemyFleet.push_back(std::move(enemy));
+            }
         }
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+
     }
 
 }
