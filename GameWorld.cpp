@@ -756,15 +756,20 @@ void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFac
 
 void GameWorld::ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
                                              Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
-    for (int i = 0; i < numAir; i++) {
+    try {
+        for (int i = 0; i < numAir; i++) {
 
-        if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::ArkRoyal));
-            enemyFleet.push_back(std::move(enemy));
-        } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Indomitable));
-            enemyFleet.push_back(std::move(enemy));
+            if (dice.roll(1) > 1) {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::ArkRoyal));
+                enemyFleet.push_back(std::move(enemy));
+            } else {
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Indomitable));
+                enemyFleet.push_back(std::move(enemy));
+            }
         }
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+
     }
 
 }
