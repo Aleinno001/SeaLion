@@ -78,10 +78,10 @@ void GameWorld::setUpTiles(
     int maxWaveCluster = resTile % 7 - 1;
     TileType tileType = TileType::Sea;
     bool isDirtCluster = false;
-    int maxDirtCluster = resTile % 5 - 1;
+    int maxDirtCluster = resTile % 3 - 1;
     int dirtColumn;
     int dirtTilesInARow;
-    int dirtTilesInAColumn = resTile % 10 + 4;
+    int dirtTilesInAColumn = resTile % 5 + 4;
     for (int i = 0; i < (mapHeight / tileDim); i++) {
         row.clear();
         for (int j = 0; j < (mapWidth / tileDim); j++) {
@@ -141,21 +141,24 @@ void GameWorld::setUpTiles(
                 tileType = TileType::Fog;
             } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
                        j <= (fogColumn + 4 + (resTile % 4))) {
+
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
+
             } else if (resTile == 497 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
                 dirtColumn = j;
-                dirtTilesInARow = 4;
+                dirtTilesInARow = 2;
                 isDirtCluster = true;
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
             } else if (isDirtCluster && dirtTilesInAColumn > 1 &&
-                       j >= dirtColumn - (resTile % 4) && j <= (dirtColumn + dirtTilesInARow + (resTile % 4))) {
+                       j >= dirtColumn - (resTile % 3) && j <= (dirtColumn + dirtTilesInARow + (resTile % 3))) {
+
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
 
-            } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 4) &&
-                       j <= (dirtColumn + 4 + (resTile % 4))) {
+            } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 3) &&
+                       j <= (dirtColumn + 3 + (resTile % 3))) {
                 path = currentDir + "/../Res/Tiles/dirtBlock.png";
                 tileType = TileType::Dirt;
             } else {
@@ -195,13 +198,13 @@ void GameWorld::setUpTiles(
 
 
         if (isDirtCluster) {
-            dirtTilesInARow = 7;
+            dirtTilesInARow = 5;
             dirtTilesInAColumn -= 1;
         }
         if (dirtTilesInAColumn == 0) {
             isDirtCluster = false;
             maxDirtCluster -= 1;
-            dirtTilesInAColumn = 10;
+            dirtTilesInAColumn = resTile % 5 + 4;
         }
         tiles.push_back(std::move(row));
     }
