@@ -57,9 +57,9 @@ Arsenal::Arsenal(const float range, const int reload, const int rate, int speed,
                                                   posX(x), posY(y), sprite(sp), texture(tex), length(le), width(wi) {
     ammoType = type;
 
-    if (!setUpSprite(texName)) {
-        return; //TODO da gestire meglio con le eccezioni
-    }
+    setUpSprite(texName);
+
+
     pos = sf::Vector2f(posX, posY);
     sprite.setPosition(pos);
 
@@ -68,7 +68,7 @@ Arsenal::Arsenal(const float range, const int reload, const int rate, int speed,
 
 bool Arsenal::setUpSprite(std::string textureName) {
     if (!texture.loadFromFile(textureName)) {
-        return false; //TODO usare poi l'eccezioni per gestire la lettura da file
+        throw std::runtime_error("Path to tile filename invalid, for the arsenal object sprite");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
