@@ -6,7 +6,7 @@
 
 bool GameTile::setUpSprite(std::string textureName) {
     if (!texture.loadFromFile(textureName)) {
-        return false; //TODO usare poi l'eccezioni per gestire la lettura da file
+        return false;
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
@@ -16,7 +16,7 @@ bool GameTile::setUpSprite(std::string textureName) {
 
 GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool exit, TileType tp) {
     if (!setUpSprite(textureName)) {
-        return; //TODO da gestire meglio con le eccezioni
+        throw std::runtime_error("Path to tile filename invalid!!");
     }
     pos = sf::Vector2f(x, y);
     sprite.setPosition(pos);

@@ -82,37 +82,38 @@ void GameWorld::setUpTiles(
     int dirtColumn;
     int dirtTilesInARow;
     int dirtTilesInAColumn = resTile % 5 + 4;
-    for (int i = 0; i < (mapHeight / tileDim); i++) {
-        row.clear();
-        for (int j = 0; j < (mapWidth / tileDim); j++) {
-            resTile = dice.roll(1);
-            if (resTile == 299 && !isFogCluster && maxFogCluster != 0) {         //Nebbia
-                fogColumn = j;
-                fogTilesInARow = 4;
-                isFogCluster = true;
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                tileType = TileType::Fog;
-                collision = false;
-            } else if (isFogCluster && fogTilesInAColumn > 1 &&
-                       j >= fogColumn - (resTile % 5) && j <= (fogColumn + fogTilesInARow + (resTile % 5))) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                tileType = TileType::Fog;
-                collision = false;
-            } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
-                       j <= (fogColumn + 4 + (resTile % 4))) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                tileType = TileType::Fog;
-                collision = false;
-            } else if (resTile == 300 && !isWaveCluster && maxWaveCluster != 0) {      //Wave
-                waveColumn = j;
-                waveTilesInARow = 3;
-                isWaveCluster = true;
-                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
-                tileType = TileType::Wave;
-                collision = false;
-            } else if (isWaveCluster && waveTilesInAColumn > 1 &&
-                       j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3))) {
-                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+    try {
+        for (int i = 0; i < (mapHeight / tileDim); i++) {
+            row.clear();
+            for (int j = 0; j < (mapWidth / tileDim); j++) {
+                resTile = dice.roll(1);
+                if (resTile == 299 && !isFogCluster && maxFogCluster != 0) {         //Nebbia
+                    fogColumn = j;
+                    fogTilesInARow = 4;
+                    isFogCluster = true;
+                    path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                    tileType = TileType::Fog;
+                    collision = false;
+                } else if (isFogCluster && fogTilesInAColumn > 1 &&
+                           j >= fogColumn - (resTile % 5) && j <= (fogColumn + fogTilesInARow + (resTile % 5))) {
+                    path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                    tileType = TileType::Fog;
+                    collision = false;
+                } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
+                           j <= (fogColumn + 4 + (resTile % 4))) {
+                    path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                    tileType = TileType::Fog;
+                    collision = false;
+                } else if (resTile == 300 && !isWaveCluster && maxWaveCluster != 0) {      //Wave
+                    waveColumn = j;
+                    waveTilesInARow = 3;
+                    isWaveCluster = true;
+                    path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+                    tileType = TileType::Wave;
+                    collision = false;
+                } else if (isWaveCluster && waveTilesInAColumn > 1 &&
+                           j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3))) {
+                    path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
                 tileType = TileType::Wave;
                 collision = false;
             } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 3) &&
@@ -152,19 +153,24 @@ void GameWorld::setUpTiles(
                 tileType = TileType::Dirt;
                 collision = true;
 
-            } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 3) &&
-                       j <= (dirtColumn + 3 + (resTile % 3))) {
-                path = currentDir + "/../Res/Tiles/dirtBlock.png";
-                tileType = TileType::Dirt;
-                collision = true;
-            } else {
-                path = currentDir + "/../Res/Tiles/seaBlock.png";
-                tileType = TileType::Sea;
-                collision = false;
+                } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 3) &&
+                           j <= (dirtColumn + 3 + (resTile % 3))) {
+                    path = currentDir + "/../Res/Tiles/dirtBlock.png";
+                    tileType = TileType::Dirt;
+                    collision = true;
+                } else {
+                    path = currentDir + "/../Res/Tiles/seaBlock.png";
+                    tileType = TileType::Sea;
+                    collision = false;
+                }
+
+
+                std::unique_ptr<GameTile> tile(
+                        new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
+                row.push_back(std::move(tile));
+
+
             }
-            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
-            row.push_back(std::move(tile));
-        }
         if (isFogCluster) {
             fogTilesInARow = 8;
             fogTilesInAColumn -= 1;
@@ -198,12 +204,17 @@ void GameWorld::setUpTiles(
             dirtTilesInARow = 5;
             dirtTilesInAColumn -= 1;
         }
-        if (dirtTilesInAColumn == 0) {
-            isDirtCluster = false;
-            maxDirtCluster -= 1;
-            dirtTilesInAColumn = resTile % 5 + 4;
+            if (dirtTilesInAColumn == 0) {
+                isDirtCluster = false;
+                maxDirtCluster -= 1;
+                dirtTilesInAColumn = resTile % 5 + 4;
+            }
+            tiles.push_back(std::move(row));
         }
-        tiles.push_back(std::move(row));
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Please change the directory" << std::endl;
+
     }
 
 }
