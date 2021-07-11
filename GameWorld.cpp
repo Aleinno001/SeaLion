@@ -72,7 +72,11 @@ void GameWorld::setUpTiles(
     int maxFogCluster = resTile % 5 - 1;
     int maxWaveCluster = resTile % 5 - 1;
     TileType tileType = TileType::Sea;
-
+    bool isDirtCluster = false;
+    int maxDirtCluster = resTile % 5 - 1;
+    int dirtColumn;
+    int dirtTilesInARow;
+    int dirtTilesInAColumn = resTile % 10 + 4;
     for (int i = 0; i < (mapHeight / tileDim); i++) {
         row.clear();
         for (int j = 0; j < (mapWidth / tileDim); j++) {
@@ -119,9 +123,24 @@ void GameWorld::setUpTiles(
                        j <= (fogColumn + 4 + (resTile % 4))) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
-            } else {
-                path = currentDir + "/../Res/Tiles/seaBlock.png";
-                tileType = TileType::Sea;
+            } else if (resTile == 499 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
+                dirtColumn = j;
+                dirtTilesInARow = 4;
+                isDirtCluster = true;
+                path = currentDir + "/../Res/Tiles/dirtBlock.png";
+                tileType = TileType::Dirt;
+            } else if (isDirtCluster && dirtTilesInAColumn > 1 &&
+                       j >= dirtColumn - (resTile % 4) && j <= (dirtColumn + dirtTilesInARow + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/dirtBlock.png";
+                tileType = TileType::Dirt;
+                dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 4) &&
+                j <= (dirtColumn + 4 + (resTile % 4))) {
+                    path = currentDir + "/../Res/Tiles/dirtBlock.png";
+                    tileType = TileType::Dirt;
+                } else {
+                    path = currentDir + "/../Res/Tiles/seaBlock.png";
+                    tileType = TileType::Sea;
+                }
             }
             std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
             row.push_back(std::move(tile));
@@ -143,6 +162,17 @@ void GameWorld::setUpTiles(
             isWaveCluster = false;
             maxWaveCluster -= 1;
             waveTilesInAColumn = 10;
+        }
+
+
+        if (isDirtCluster) {
+            dirtTilesInARow = 7;
+            dirtTilesInAColumn -= 1;
+        }
+        if (dirtTilesInAColumn == 0) {
+            isDirtCluster = false;
+            maxDirtCluster -= 1;
+            dirtTilesInAColumn = 10;
         }
         tiles.push_back(std::move(row));
     }
