@@ -55,86 +55,56 @@ void GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
-    Dice dice(1000);
+    Dice dice(500);
     std::string currentDir = GetCurrentWorkingDir();
     std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
     bool collision = false;
     int resTile;
-    int firstChangeTileValue;
-    int secondChangeTileValue;
-    /*
-    for (int i = 0; i < (mapHeight / tileDim); i++) {
-        column.clear();
-        for (int j = 0; j < (mapWidth / tileDim); j++) {
-            resTile = dice.roll(1);
-            firstChangeTileValue = 22;
-            secondChangeTileValue = 23;
-            if (path == (currentDir + "/../Res/Tiles/seaFoggyBlock.png")) {
-                firstChangeTileValue = 12;
-                secondChangeTileValue = 23;
-            } else if (path == (currentDir + "/../Res/Tiles/seaWaveBlock.png")) {
-                firstChangeTileValue = 12;
-                secondChangeTileValue = 14;
-            }
-            if (resTile >= 1 && resTile < firstChangeTileValue) {
-                path = currentDir + "/../Res/Tiles/seaBlock.png";   //TODO gestire eccezioni per il path dei file
-            } else if (resTile >= firstChangeTileValue && resTile < secondChangeTileValue) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                collision = true;  //FIXME da cambiare la collisione della nebbia(tenere solo per testare)
-            } else {
-                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
-            }
-            std::unique_ptr<GameTile> tile(new GameTile(path, tileDim *j, tileDim *i, collision, false));
-            column.push_back(std::move(tile));
-        }
-        tiles.push_back(std::move(column));
-    }
-     */
-
     resTile = dice.roll(1);
-    int specialTilesInARow = 0; //FIXME parametrizza
-    int numberOfWaveChunk = 4 % resTile;
-    int specialTilesInAColumn = 10;
-    bool isCluster = false;
+    int fogTilesInARow = 0;
+    int waveTilesInARow = 0;
+    int fogTilesInAColumn = resTile % 10 + 4;
+    int waveTilesInAColumn = resTile % 10 + 4;
+    bool isFogCluster = false;
+    bool isWaveCluster = false;
     int fogColumn;
-    int maxFogCluster = resTile % 5 - 1;  //FIXME parametrizza
+    int waveColumn;
+    int maxFogCluster = resTile % 5 - 1;
+    int maxWaveCluster = resTile % 5 - 1;
     TileType tileType = TileType::Sea;
 
     for (int i = 0; i < (mapHeight / tileDim); i++) {
         row.clear();
         for (int j = 0; j < (mapWidth / tileDim); j++) {
             resTile = dice.roll(1);
-            // i è la riga e j la colonna
-            /*
-            firstChangeTileValue = 22;
-            secondChangeTileValue = 23;
-            if (path == (currentDir + "/../Res/Tiles/seaFoggyBlock.png")) {
-                firstChangeTileValue = 12;
-                secondChangeTileValue = 23;
-            } else if (path == (currentDir + "/../Res/Tiles/seaWaveBlock.png")) {
-                firstChangeTileValue = 12;
-                secondChangeTileValue = 14;
-            }
-            if (resTile >= 1 && resTile < firstChangeTileValue) {
-                path = currentDir + "/../Res/Tiles/seaBlock.png";
-            } else if (resTile >= firstChangeTileValue && resTile < secondChangeTileValue) {
-                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                collision = true;
-            } else {
-                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
-            }
-             */
-            if (resTile == 999 && !isCluster && maxFogCluster != 0) {
+            if (resTile == 499 && !isFogCluster && maxFogCluster != 0) {         //Nebbia
                 fogColumn = j;
-                specialTilesInARow = resTile % 4 + 4;
-                isCluster = true;
+                fogTilesInARow = 4;
+                isFogCluster = true;
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Fog;
-                specialTilesInARow -= 1;
-            } else if (specialTilesInARow != 0 && isCluster &&
-                       j >= fogColumn - (resTile % 4)) {
+            } else if (isFogCluster && fogTilesInAColumn > 1 &&
+                       j >= fogColumn - (resTile % 4) && j <= (fogColumn + fogTilesInARow + (resTile % 4))) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
-                specialTilesInARow -= 1;
+                tileType = TileType::Fog;
+            } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
+                       j <= (fogColumn + 4 + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                tileType = TileType::Fog;
+            } else if (resTile == 500 && !isWaveCluster && maxWaveCluster != 0) {      //Wave
+                waveColumn = j;
+                waveTilesInARow = 4;
+                isWaveCluster = true;
+                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+                tileType = TileType::Wave;
+            } else if (isWaveCluster && waveTilesInAColumn > 1 &&
+                       j >= waveColumn - (resTile % 4) && j <= (waveColumn + waveTilesInARow + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaWaveBlock.png";
+                tileType = TileType::Wave;
+            } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 4) &&
+                       j <= (waveColumn + 4 + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                tileType = TileType::Wave;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
@@ -142,20 +112,24 @@ void GameWorld::setUpTiles(
             std::unique_ptr<GameTile> tile(new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
             row.push_back(std::move(tile));
         }
-        if (isCluster) {
-            specialTilesInARow = resTile % 4 + 10;
-            specialTilesInAColumn -= 1;
+        if (isFogCluster) {
+            fogTilesInARow = 7;
+            fogTilesInAColumn -= 1;
         }
-        if (specialTilesInAColumn == 0) {
-            isCluster = false;
+        if (fogTilesInAColumn == 0) {
+            isFogCluster = false;
             maxFogCluster -= 1;
-            specialTilesInAColumn = 10;
+            fogTilesInAColumn = 10;
         }
-        /*
-        if(specialTilesInAColumn!=0){
-            specialTilesInAColumn-=1;
+        if (isWaveCluster) {
+            waveTilesInARow = 7;
+            waveTilesInAColumn -= 1;
         }
-         */
+        if (waveTilesInAColumn == 0) {
+            isWaveCluster = false;
+            maxWaveCluster -= 1;
+            waveTilesInAColumn = 10;
+        }
         tiles.push_back(std::move(row));
     }
 

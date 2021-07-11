@@ -32,7 +32,7 @@ int main() {
                 window.close();
             }
             if (e.key.code == sf::Keyboard::Escape && videoMode == sf::Style::Fullscreen) {
-                videoMode = 0;
+                videoMode = 0;//FIXME non è il modo corretto
                 window.create(sf::VideoMode(width, height), "SeaLion");
             }
         }
