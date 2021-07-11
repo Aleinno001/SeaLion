@@ -52,9 +52,9 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 }
 
 void GameWorld::setUpTiles(
-        int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
+        int &tileDim) {
     tiles.clear();
-    std::vector <std::unique_ptr<GameTile>> row;
+    std::vector<std::unique_ptr<GameTile>> row;
     Dice dice(300);
     std::string currentDir = GetCurrentWorkingDir();
     std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
@@ -273,7 +273,7 @@ GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
                 for (int i = 0; i < iterator.num; i++)
                     alliedFleet.push_back(alliedFactory.createSubmarine(iterator.name));
                 break;
-            default:                                                                //FIXME add exceptions
+            default:     //FIXME add exceptions
                 break;
         }
     }
