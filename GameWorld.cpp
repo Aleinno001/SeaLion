@@ -118,16 +118,16 @@ void GameWorld::setUpTiles(
                 whirlpoolColumn = j;
                 whirlpoolTilesInARow = 2;
                 isWhirlpoolCluster = true;
-                path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
+                path = currentDir + "/../Res/Tiles/seaWhirlpoolBlock.png";
                 tileType = TileType::Whirlpool;
             } else if (isWhirlpoolCluster && whirlpoolTilesInAColumn > 1 &&
                        j >= whirlpoolColumn - (resTile % 3) &&
                        j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 3))) {
-                path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
+                path = currentDir + "/../Res/Tiles/seaWhirlpoolBlock.png";
                 tileType = TileType::Whirlpool;
             } else if (whirlpoolTilesInAColumn == 1 && j >= whirlpoolColumn - (resTile % 3) &&
                        j <= (whirlpoolColumn + 2 + (resTile % 3))) {
-                path = currentDir + "/../Res/Tiles/seaWhirlpool.png";
+                path = currentDir + "/../Res/Tiles/seaWhirlpoolBlock.png";
                 tileType = TileType::Whirlpool;
             } else if (resTile == 297 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
                 dirtColumn = j;
