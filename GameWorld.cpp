@@ -105,6 +105,20 @@ void GameWorld::setUpTiles(
                        j <= (waveColumn + 4 + (resTile % 4))) {
                 path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
                 tileType = TileType::Wave;
+            } else if (resTile == 499 && !isFogCluster && maxFogCluster != 0) {         //Whirlplool
+                fogColumn = j;
+                fogTilesInARow = 4;
+                isFogCluster = true;
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                tileType = TileType::Fog;
+            } else if (isFogCluster && fogTilesInAColumn > 1 &&
+                       j >= fogColumn - (resTile % 4) && j <= (fogColumn + fogTilesInARow + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                tileType = TileType::Fog;
+            } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
+                       j <= (fogColumn + 4 + (resTile % 4))) {
+                path = currentDir + "/../Res/Tiles/seaFoggyBlock.png";
+                tileType = TileType::Fog;
             } else {
                 path = currentDir + "/../Res/Tiles/seaBlock.png";
                 tileType = TileType::Sea;
