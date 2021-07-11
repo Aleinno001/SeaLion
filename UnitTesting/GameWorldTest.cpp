@@ -66,6 +66,12 @@ protected:
         thirdBattleships.num = 1;
         alliedTypeFleet.push_back(thirdBattleships);
 
+        Fleet aircraftCarriers;
+        aircraftCarriers.type = ShipType::AircraftCarrier;
+        aircraftCarriers.name = ModelType::GiuseppeGaribaldi;
+        aircraftCarriers.num = 1;
+        alliedTypeFleet.push_back(aircraftCarriers);
+
         c.setUpTiles(tileDim);
         c.setUpInitialState();
     }
