@@ -73,8 +73,8 @@ protected:
         aircraftCarriers.num = 1;
         alliedTypeFleet.push_back(aircraftCarriers);
 
-        c.setUpTiles(tileDim);
-        c.setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, alliedTypeFleet);
+        // c.setUpTiles(tileDim);
+        // c.setUpInitialState(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, alliedTypeFleet);
     }
 
     GameWorld c;

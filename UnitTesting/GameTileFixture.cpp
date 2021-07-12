@@ -21,7 +21,12 @@ protected:
     GameTile c;
 };
 
-
+TEST_F(GameTileSuite, Constructor) {
+    ASSERT_EQ(c.getPos(), sf::Vector2f(1, 0));
+    ASSERT_EQ(c.getTileType(), TileType::Fog);
+    //ASSERT_EQ(c.getTexture().Pi, );
+    ASSERT_EQ(c.getSprite().getPosition(), sf::Vector2f(0, 0));
+}
 
 
 
