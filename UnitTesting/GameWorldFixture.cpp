@@ -84,6 +84,17 @@ TEST_F(GameWorldSuite, Constructor) {
 
     int enemyNumShip = 0;
     int alliedNumShip = 0;
+    int enemyNumBat = 0;
+    int enemyNumCru = 0;
+    int enemySub = 0;
+    int enemyDes = 0;
+    int enemyAir = 0;
+
+    int alliedNumBat = 0;
+    int alliedNumCru = 0;
+    int alliedSub = 0;
+    int alliedDes = 0;
+    int alliedAir = 0;
     GTEST_ASSERT_EQ(c.getMapHeight(), 1080);
     GTEST_ASSERT_EQ(c.getMapWidth(), 1920);
     GTEST_ASSERT_EQ(c.getGridLength(), 8);
@@ -96,16 +107,44 @@ TEST_F(GameWorldSuite, Constructor) {
         GTEST_ASSERT_EQ(it->get()->getNationality(), "Japan");
         enemyNumShip++;
 
-        if (it->get()->get)
+        if (it->get()->getShipType() == ShipType::Battleship)
+            enemyNumBat++;
+        else if (it->get()->getShipType() == ShipType::Cruiser)
+            enemyNumCru++;
+        else if (it->get()->getShipType() == ShipType::Submarine)
+            enemySub++;
+        else if (it->get()->getShipType() == ShipType::Destroyer)
+            enemyDes++;
+        else
+            enemyAir++;
+
 
     }
+
     GTEST_ASSERT_EQ(enemyNumShip, 13);
+    GTEST_ASSERT_EQ(enemyNumBat, 3);
+    GTEST_ASSERT_EQ(enemyNumCru, 3);
+    GTEST_ASSERT_EQ(enemySub, 2);
+    GTEST_ASSERT_EQ(enemyDes, 4);
+    GTEST_ASSERT_EQ(enemyAir, 1);
+
 
     for (auto it = c.getAlliedFleet().begin(); it != c.getAlliedFleet().end(); ++it) {
 
         GTEST_ASSERT_EQ(it->get()->getNationality(), "Italy");
         alliedNumShip++;
-
+/*
+        if (it->get()->getShipType()==ShipType::Battleship)
+            enemyNumBat ++;
+        else if(it->get()->getShipType()==ShipType::Cruiser)
+            enemyNumCru ++;
+        else if(it->get()->getShipType()==ShipType::Submarine)
+            enemySub ++;
+        else if(it->get()->getShipType()==ShipType::Destroyer)
+            enemyDes ++;
+        else
+            enemyAir ++;
+*/
     }
 
     GTEST_ASSERT_EQ(alliedNumShip, 13);
