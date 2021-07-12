@@ -8,15 +8,20 @@
 
 class GameTileSuite : public ::testing::Test {
 protected:
-    void SetUp() override {
+    virtual void SetUp() {
 
+        c.setPos(sf::Vector2f(1, 0));
+        c.sprite.setTexture(c.texture);
+        c.sprite.setTextureRect(sf::IntRect(0, 0, 30, 30));
+        c.sprite.setPosition(c.pos);
+        c.setTileType(TileType::Fog);
 
     }
 
     GameTile c;
 
+
 };
 
-TEST_F(GameTileSuite, Constructor) {
 
-}
+

@@ -7,4 +7,5 @@
 
 TEST(GameTile, Constructor) {
 
+    GameTile c("ciao", 1, 2, true, true, TileType::Whirlpool);
 }
