@@ -75,7 +75,7 @@ public:
               std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,
               int &width, int &height, int &tileDim);
 
-    GameWorld();
+    GameWorld() = default;
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                            std::vector<Fleet> &fleet);
