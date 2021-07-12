@@ -55,6 +55,15 @@ public:
     const std::vector<std::unique_ptr<Vehicle>> &getVehicleList() const;
 
     virtual ~WarShip() = 0;
+
+    const std::string getNationality() {
+        return nationality;
+    }
+
+    const std::string getName() {
+        return name;
+    }
+
 };
 
 
