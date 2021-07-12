@@ -51,4 +51,12 @@ WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int length,
 
 }
 
+ShipType WarShip::getShipType() const {
+    return shipType;
+}
+
+ModelType WarShip::getModelType() const {
+    return modelType;
+}
+
 

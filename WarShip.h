@@ -131,6 +131,9 @@ public:
         return name;
     }
 
+    ShipType getShipType() const;
+
+    ModelType getModelType() const;
 };
 
 
