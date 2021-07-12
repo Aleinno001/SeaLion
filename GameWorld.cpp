@@ -63,9 +63,14 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 void GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
-    std::vector <std::unique_ptr<GameTile>> row;
+    std::vector<std::unique_ptr<GameTile>> row;
     Dice dice(300);
     std::string currentDir = GetCurrentWorkingDir();
+    std::string unitTestingPath = "UnitTesting";
+    std::size_t found = currentDir.find(unitTestingPath);
+    if (found != std::string::npos) {
+        currentDir.erase(found);
+    }
     std::string path = currentDir + "/../Res/Tiles/seaBlock.png";
     bool collision = false;
     int resTile;
