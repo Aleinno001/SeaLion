@@ -89,5 +89,7 @@ TEST_F(GameWorldSuite, Constructor) {
     GTEST_ASSERT_EQ(c.getEnemyFaction(), "Japan");
     GTEST_ASSERT_EQ(c.getExitPos(), sf::Vector2i(1, 0));
 
+    for (int i = 0; i < c.alliedTypeFleet)
+
 }
 

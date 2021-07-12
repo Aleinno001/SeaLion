@@ -166,6 +166,13 @@ public:
 
     void setMapHeight(int mapHeight);
 
+    std::list<std::unique_ptr<WarShip>> getAlliedFleet() {
+        return alliedFleet;
+    }
+
+    std::list<std::unique_ptr<WarShip>> getEnemyFleet() {
+        return enemyFleet;
+    }
 
 };
 
