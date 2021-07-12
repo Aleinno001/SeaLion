@@ -4,6 +4,7 @@
 
 #include "gtest/gtest.h"
 #include "../GameWorld.h"
+#include <SFML/Graphics.hpp>
 
 TEST(GameWorld, Tiles) {
     
