@@ -39,13 +39,6 @@ enum class FactionType {
 
 };
 
-enum class ShipType {
-    Battleship,
-    Cruiser,
-    AircraftCarrier,
-    Destroyer,
-    Submarine
-};
 
 
 struct Fleet {

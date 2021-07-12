@@ -96,6 +96,7 @@ TEST_F(GameWorldSuite, Constructor) {
         GTEST_ASSERT_EQ(it->get()->getNationality(), "Japan");
         enemyNumShip++;
 
+        if (it->get()->get)
 
     }
     GTEST_ASSERT_EQ(enemyNumShip, 13);
