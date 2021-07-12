@@ -19,10 +19,12 @@ protected:
     }
 
     GameTile c;
-
-
 };
 
+TEST_F(GameTileSuite, Constructor) {
+    ASSERT_EQ(c.getPos(), sf::Vector2f(1, 0));
+
+}
 
 
 
