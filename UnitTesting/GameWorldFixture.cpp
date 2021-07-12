@@ -81,7 +81,7 @@ protected:
 };
 
 TEST_F(GameWorldSuite, Constructor) {
-
+    int enemyNumShip = 0;
     GTEST_ASSERT_EQ(c.getMapHeight(), 1080);
     GTEST_ASSERT_EQ(c.getMapWidth(), 1920);
     GTEST_ASSERT_EQ(c.getGridLength(), 8);
@@ -89,9 +89,13 @@ TEST_F(GameWorldSuite, Constructor) {
     GTEST_ASSERT_EQ(c.getEnemyFaction(), "Japan");
     GTEST_ASSERT_EQ(c.getExitPos(), sf::Vector2i(1, 0));
 
-    for (int i = 0; i < c.getEnemyFleet().size(); i++) {
-        c.getEnemyFleet()[i]
+    for (auto it = c.getEnemyFleet().begin(); it != c.getEnemyFleet().end(); ++it) {
+
+        GTEST_ASSERT_EQ(it->get()->getNationality(), "Japan");
+        enemyNumShip++;
+
     }
+    GTEST_ASSERT_EQ(enemyNumShip, 13);
 
 }
 
