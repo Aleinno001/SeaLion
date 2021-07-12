@@ -39,11 +39,14 @@ const std::vector<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() const {
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
                  std::string nat, int numL, int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
                  std::vector<std::unique_ptr<Vehicle>> &vehicleList, sf::Texture tex, sf::Sprite sp, int le, int wi,
-                 bool col, std::string textureName) : Vehicle(x, y, ac, maxVel, hp, tex, sp, le, wi, col,
-                                                              textureName),
-                                                      armour(arm), name(na), nationality(nat),
-                                                      numLCannons(numL),
-                                                      numHCannons(numH), numMCannons(numM) {
+                 bool col, std::string textureName, ShipType sh, ModelType mo) : Vehicle(x, y, ac, maxVel, hp, tex, sp,
+                                                                                         le, wi, col,
+                                                                                         textureName),
+                                                                                 armour(arm), name(na),
+                                                                                 nationality(nat),
+                                                                                 numLCannons(numL),
+                                                                                 numHCannons(numH), numMCannons(numM),
+                                                                                 shipType(sh), modelType(mo) {
 
 
 }
