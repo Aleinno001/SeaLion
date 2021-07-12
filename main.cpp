@@ -25,7 +25,6 @@ int main() {
     d = 4;
     e = 5;
 
-
     sf::ContextSettings settings;
     settings.depthBits = 24;
     settings.stencilBits = 8;
