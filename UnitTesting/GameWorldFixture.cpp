@@ -81,7 +81,13 @@ protected:
 };
 
 TEST_F(GameWorldSuite, Constructor) {
-    ASSERT_EQ(c.getMapHeight(), 0);
-    ASSERT_EQ(c.getMapWidth(), 0);
+
+    GTEST_ASSERT_EQ(c.getMapHeight(), 1080);
+    GTEST_ASSERT_EQ(c.getMapWidth(), 1920);
+    GTEST_ASSERT_EQ(c.getGridLength(), 8);
+    GTEST_ASSERT_EQ(c.getAlliedFaction(), "Italy");
+    GTEST_ASSERT_EQ(c.getEnemyFaction(), "Japan");
+    GTEST_ASSERT_EQ(c.getExitPos(), sf::Vector2i(1, 0));
+
 }
 
