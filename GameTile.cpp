@@ -48,3 +48,19 @@ void GameTile::setTileType(TileType tileType) {
     GameTile::tileType = tileType;
 }
 
+const sf::Vector2f &GameTile::getPos() const {
+    return pos;
+}
+
+const sf::Texture &GameTile::getTexture() const {
+    return texture;
+}
+
+const sf::Sprite &GameTile::getSprite() const {
+    return sprite;
+}
+
+TileType GameTile::getTileType() const {
+    return tileType;
+}
+

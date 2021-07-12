@@ -40,6 +40,14 @@ public:
     void setSprite(const sf::Sprite &sprite);
 
     void setTileType(TileType tileType);
+
+    const sf::Vector2f &getPos() const;
+
+    const sf::Texture &getTexture() const;
+
+    const sf::Sprite &getSprite() const;
+
+    TileType getTileType() const;
 };
 
 
