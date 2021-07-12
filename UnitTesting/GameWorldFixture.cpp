@@ -82,6 +82,7 @@ protected:
 
 TEST_F(GameWorldSuite, Constructor) {
     int enemyNumShip = 0;
+    int alliedNumShip = 0;
     GTEST_ASSERT_EQ(c.getMapHeight(), 1080);
     GTEST_ASSERT_EQ(c.getMapWidth(), 1920);
     GTEST_ASSERT_EQ(c.getGridLength(), 8);
@@ -96,6 +97,16 @@ TEST_F(GameWorldSuite, Constructor) {
 
     }
     GTEST_ASSERT_EQ(enemyNumShip, 13);
+
+    for (auto it = c.getAlliedFleet().begin(); it != c.getAlliedFleet().end(); ++it) {
+
+        GTEST_ASSERT_EQ(it->get()->getNationality(), "Italy");
+        alliedNumShip++;
+
+    }
+
+    GTEST_ASSERT_EQ(alliedNumShip, 13);
+
 
 }
 
