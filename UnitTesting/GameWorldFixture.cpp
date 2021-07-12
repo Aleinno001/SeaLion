@@ -133,21 +133,26 @@ TEST_F(GameWorldSuite, Constructor) {
 
         GTEST_ASSERT_EQ(it->get()->getNationality(), "Italy");
         alliedNumShip++;
-/*
-        if (it->get()->getShipType()==ShipType::Battleship)
-            enemyNumBat ++;
-        else if(it->get()->getShipType()==ShipType::Cruiser)
-            enemyNumCru ++;
-        else if(it->get()->getShipType()==ShipType::Submarine)
-            enemySub ++;
-        else if(it->get()->getShipType()==ShipType::Destroyer)
-            enemyDes ++;
+
+        if (it->get()->getShipType() == ShipType::Battleship)
+            alliedNumBat++;
+        else if (it->get()->getShipType() == ShipType::Cruiser)
+            alliedNumCru++;
+        else if (it->get()->getShipType() == ShipType::Submarine)
+            alliedSub++;
+        else if (it->get()->getShipType() == ShipType::Destroyer)
+            alliedDes++;
         else
-            enemyAir ++;
-*/
+            alliedAir++;
+
     }
 
     GTEST_ASSERT_EQ(alliedNumShip, 13);
+    GTEST_ASSERT_EQ(alliedNumBat, 3);
+    GTEST_ASSERT_EQ(alliedNumCru, 3);
+    GTEST_ASSERT_EQ(alliedSub, 2);
+    GTEST_ASSERT_EQ(alliedDes, 4);
+    GTEST_ASSERT_EQ(alliedAir, 1);
 
 
 }
