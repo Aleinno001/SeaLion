@@ -9,7 +9,7 @@
 class GameWorldTest : public ::testing::Test {
 
 protected:
-    virtual void SetUp() {
+    void SetUp() override {
 
         c.setExitPos(sf::Vector2i(1, 0));
         c.setEnemyFaction(FactionType::Japan);
@@ -79,9 +79,9 @@ protected:
     GameWorld c;
 };
 
-TEST(GameWorld, Constructor) {
-
-
+TEST_F(GameWorldTest, Constructor) {
+    ASSERT_EQ(c.getMapHeight(), 0);
+    ASSERT_EQ(c.getMapWidth(), 0);
 }
 
 TEST(GameWorld, Tiles) {
