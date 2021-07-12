@@ -46,6 +46,28 @@ public:
     virtual void detach();
 
     virtual ~Vehicle() = default;
+
+    int getPosX() const;
+
+    int getPosY() const;
+
+    float getAcceleration() const;
+
+    const float getMaxSpeed() const;
+
+    int getHp() const;
+
+    int getLength() const;
+
+    int getWidth() const;
+
+    bool isCollision() const;
+
+    const sf::Texture &getTexture() const;
+
+    const sf::Sprite &getSprite() const;
+
+    const sf::Vector2f &getPos() const;
 };
 
 #endif //SEALION_VEHICLE_H

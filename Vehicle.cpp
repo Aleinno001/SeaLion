@@ -61,3 +61,47 @@ bool Vehicle::setUpSprite(std::string textureName) {
     return true;
 }
 
+int Vehicle::getPosX() const {
+    return posX;
+}
+
+int Vehicle::getPosY() const {
+    return posY;
+}
+
+float Vehicle::getAcceleration() const {
+    return acceleration;
+}
+
+const float Vehicle::getMaxSpeed() const {
+    return maxSpeed;
+}
+
+int Vehicle::getHp() const {
+    return hp;
+}
+
+int Vehicle::getLength() const {
+    return length;
+}
+
+int Vehicle::getWidth() const {
+    return width;
+}
+
+bool Vehicle::isCollision() const {
+    return collision;
+}
+
+const sf::Texture &Vehicle::getTexture() const {
+    return texture;
+}
+
+const sf::Sprite &Vehicle::getSprite() const {
+    return sprite;
+}
+
+const sf::Vector2f &Vehicle::getPos() const {
+    return pos;
+}
+

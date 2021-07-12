@@ -81,6 +81,7 @@ protected:
 };
 
 TEST_F(GameWorldSuite, Constructor) {
+
     int enemyNumShip = 0;
     int alliedNumShip = 0;
     GTEST_ASSERT_EQ(c.getMapHeight(), 1080);
@@ -94,6 +95,7 @@ TEST_F(GameWorldSuite, Constructor) {
 
         GTEST_ASSERT_EQ(it->get()->getNationality(), "Japan");
         enemyNumShip++;
+
 
     }
     GTEST_ASSERT_EQ(enemyNumShip, 13);
