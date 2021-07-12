@@ -24,3 +24,19 @@ GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool e
 
 }
 
+void GameTile::setPos(const sf::Vector2f &pos) {
+    GameTile::pos = pos;
+}
+
+void GameTile::setTexture(const sf::Texture &texture) {
+    GameTile::texture = texture;
+}
+
+void GameTile::setSprite(const sf::Sprite &sprite) {
+    GameTile::sprite = sprite;
+}
+
+void GameTile::setTileType(TileType tileType) {
+    GameTile::tileType = tileType;
+}
+

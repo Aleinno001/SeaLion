@@ -10,7 +10,7 @@
 class GameWorldSuite : public ::testing::Test {
 
 protected:
-    void SetUp() override {
+    virtual void SetUp() {
 
         c.setExitPos(sf::Vector2i(1, 0));
         c.setEnemyFaction(FactionType::Japan);
