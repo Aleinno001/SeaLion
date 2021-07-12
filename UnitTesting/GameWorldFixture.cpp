@@ -95,11 +95,12 @@ TEST_F(GameWorldSuite, Constructor) {
     int alliedSub = 0;
     int alliedDes = 0;
     int alliedAir = 0;
+
     GTEST_ASSERT_EQ(c.getMapHeight(), 1080);
     GTEST_ASSERT_EQ(c.getMapWidth(), 1920);
     GTEST_ASSERT_EQ(c.getGridLength(), 8);
-    GTEST_ASSERT_EQ(c.getAlliedFaction(), "Italy");
-    GTEST_ASSERT_EQ(c.getEnemyFaction(), "Japan");
+    GTEST_ASSERT_EQ(c.getAlliedFaction(), FactionType::Italy);
+    GTEST_ASSERT_EQ(c.getEnemyFaction(), FactionType::Japan);
     GTEST_ASSERT_EQ(c.getExitPos(), sf::Vector2i(1, 0));
 
     for (auto it = c.getEnemyFleet().begin(); it != c.getEnemyFleet().end(); ++it) {

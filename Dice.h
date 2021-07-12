@@ -1,5 +1,5 @@
 //
-// Created by davide on 04/07/21.
+// Created by pala on 04/07/21.
 //
 
 #ifndef SEALION_DICE_H
