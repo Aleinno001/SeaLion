@@ -11,7 +11,6 @@
 #include "WarShip.h"
 #include "ShipFactory.h"
 #include <string>
-#include "AbstractShipFactory.h"
 #include <memory>
 #include <list>
 #include "Dice.h"

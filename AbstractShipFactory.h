@@ -7,20 +7,22 @@
 
 
 #include "WarShip.h"
+#include "GameWorld.h"
 
 
+class GameWorld;
 
 class AbstractShipFactory {
 public:
-    virtual std::unique_ptr<WarShip> createSubmarine(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createSubmarine(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createAircraftCarrier(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createAircraftCarrier(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createCruiser(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createCruiser(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createBattleship(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createBattleship(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createDestroyer(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createDestroyer(ModelType type, GameWorld &map) = 0;
 
     virtual std::unique_ptr<WarShip> createAlliedSubmarine(ModelType type) = 0;
 

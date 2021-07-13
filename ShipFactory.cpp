@@ -6,7 +6,7 @@
 
 
 
-std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
+std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
 
     switch (type) {
 
@@ -45,19 +45,19 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type) {
 
 }
 
-std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type) {
+std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
     return std::unique_ptr<WarShip>();
 }
 
-std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type) {
+std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &map) {
     return std::unique_ptr<WarShip>();
 }
 
-std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type) {
+std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
 }
 
-std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type) {
+std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
     return std::unique_ptr<WarShip>();
 }
 

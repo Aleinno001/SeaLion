@@ -7,23 +7,21 @@
 
 
 #include "AbstractShipFactory.h"
-#include "WarShip.h"
-#include "ArsenalFactory.h"
-#include "Submarine.h"
 #include "Dice.h"
+
 
 class ShipFactory : public AbstractShipFactory {
 
 public:
-    std::unique_ptr<WarShip> createSubmarine(ModelType type) override;
+    std::unique_ptr<WarShip> createSubmarine(ModelType type, GameWorld &map) override;
 
-    std::unique_ptr<WarShip> createAircraftCarrier(ModelType type) override;
+    std::unique_ptr<WarShip> createAircraftCarrier(ModelType type, GameWorld &map) override;
 
-    std::unique_ptr<WarShip> createCruiser(ModelType type) override;
+    std::unique_ptr<WarShip> createCruiser(ModelType type, GameWorld &map) override;
 
-    std::unique_ptr<WarShip> createBattleship(ModelType type) override;
+    std::unique_ptr<WarShip> createBattleship(ModelType type, GameWorld &map) override;
 
-    std::unique_ptr<WarShip> createDestroyer(ModelType type) override;
+    std::unique_ptr<WarShip> createDestroyer(ModelType type, GameWorld &map) override;
 
     std::unique_ptr<WarShip> createAlliedSubmarine(ModelType type) override;
 
