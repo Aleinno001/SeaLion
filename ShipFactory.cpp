@@ -196,38 +196,50 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
     switch (type) {
 
-        case ModelType::I400:
+        case ModelType::Akizuki:
 
 
             break;
 
-        case ModelType::typeb1:
+        case ModelType::Yukikaze:
 
             break;
 
-        case ModelType::DaVinci:
+        case ModelType::Fubuki:
 
             break;
 
-        case ModelType::Papa:
+        case ModelType::Impavido:
 
             break;
 
-        case ModelType::Triton:
+        case ModelType::Leone:
 
             break;
 
-        case ModelType::Trenchant:
+        case ModelType::PaoloEmilio:
 
             break;
 
-        case ModelType::Gato:
+        case ModelType::Campbelltown:
 
             break;
 
-        case ModelType::Narwhal:
+        case ModelType::Jutland:
 
             break;
+        case ModelType::Gallant:
+
+            break;
+        case ModelType::Fletcher:
+
+            break;
+        case ModelType::Mahan:
+
+            break;
+        case ModelType::Sims:
+
+            break;//TODO add exception
     }
     return std::unique_ptr<WarShip>();
 }
