@@ -527,3 +527,25 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
 
 }
 
+sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {            //TODO da modificare
+
+
+    Dice percentage(3);
+    int xMap = map.getMapWidth();
+    int yMap = map.getMapHeight();
+
+    if (offsetAllied.x >= xMap - (xMap * 0.03)) {
+
+        offsetAllied.x = ((percentage.roll(1) + 1) / 100) * xMap;
+        offsetAllied.y = yMap - (offsetAllied.y + yMap * 0.24);
+
+    } else {
+
+        offsetAllied.x = offsetAllied.x + ((percentage.roll(1) + 1) / 100) * xMap;
+
+    }
+
+    return offset;
+
+}
+
