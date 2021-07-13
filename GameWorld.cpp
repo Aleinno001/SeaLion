@@ -277,23 +277,23 @@ GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
         switch (iterator.type) {
             case ShipType::Battleship:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedBattleship(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedBattleship(iterator.name, *this));
                 break;
             case ShipType::Cruiser:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedCruiser(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedCruiser(iterator.name, *this));
                 break;
             case ShipType::AircraftCarrier:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedAircraftCarrier(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedAircraftCarrier(iterator.name, *this));
                 break;
             case ShipType::Destroyer:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedDestroyer(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedDestroyer(iterator.name, *this));
                 break;
             case ShipType::Submarine:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedSubmarine(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedSubmarine(iterator.name, *this));
                 break;
             default:
                 throw std::runtime_error("Invalid Warship type!");

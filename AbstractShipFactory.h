@@ -7,7 +7,6 @@
 
 
 #include "WarShip.h"
-#include "GameWorld.h"
 
 
 class GameWorld;
@@ -24,15 +23,15 @@ public:
 
     virtual std::unique_ptr<WarShip> createDestroyer(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createAlliedSubmarine(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createAlliedSubmarine(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createAlliedAircraftCarrier(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createAlliedAircraftCarrier(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createAlliedCruiser(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createAlliedCruiser(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createAlliedBattleship(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createAlliedBattleship(ModelType type, GameWorld &map) = 0;
 
-    virtual std::unique_ptr<WarShip> createAlliedDestroyer(ModelType type) = 0;
+    virtual std::unique_ptr<WarShip> createAlliedDestroyer(ModelType type, GameWorld &map) = 0;
 
 
 };
