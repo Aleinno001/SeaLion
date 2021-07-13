@@ -131,39 +131,64 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
     switch (type) {
 
-        case ModelType::I400:
+        case ModelType::Yamato:
             //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
 
 
             break;
 
-        case ModelType::typeb1:
+        case ModelType::Kongo:
 
             break;
 
-        case ModelType::DaVinci:
+        case ModelType::ISE:
 
             break;
 
-        case ModelType::Papa:
+        case ModelType::Musashi:
 
             break;
 
-        case ModelType::Triton:
+        case ModelType::AndreaDoria:
 
             break;
 
-        case ModelType::Trenchant:
+        case ModelType::ImperatoreAugusto:
 
             break;
 
-        case ModelType::Gato:
+        case ModelType::VittorioVeneto:
 
             break;
 
-        case ModelType::Narwhal:
+        case ModelType::MichelangeloBuonarroti:
 
             break;
+        case ModelType::Dreadnought:
+
+            break;
+        case ModelType::IronDuke:
+
+            break;
+        case ModelType::Lion:
+
+            break;
+        case ModelType::Hood:
+
+            break;
+        case ModelType::Arizona:
+
+            break;
+        case ModelType::Montana:
+
+            break;
+        case ModelType::NewYork:
+
+            break;
+        case ModelType::NorthCarolina:
+
+            break;
+            //TODO add exception
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
 }
