@@ -12,6 +12,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 
         case ModelType::I400:
             //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
+
             break;
 
         case ModelType::typeb1:
