@@ -76,6 +76,7 @@ public:
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
+private:
     void setUpTiles(int &tileDim);
 
     void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory);
@@ -128,6 +129,7 @@ public:
 
     void ukAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory, Dice &dice);
 
+public:
     FactionType getEnemyFaction() const;
 
     FactionType getAlliedFaction() const;

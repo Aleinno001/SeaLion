@@ -34,6 +34,11 @@ public:
     std::unique_ptr<WarShip> createAlliedDestroyer(ModelType type, GameWorld &map) override;
 
     ShipFactory() = default;
+
+private:
+    sf::Vector2i offset{0, 0};
+
+    sf::Vector2i randomizeEnemyPositions(GameWorld &map);
 };
 
 
