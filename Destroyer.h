@@ -6,6 +6,8 @@
 #define SEALION_DESTROYER_H
 
 
+#include <utility>
+
 #include "WarShip.h"
 
 class Destroyer : public WarShip {
@@ -13,15 +15,19 @@ private:
     int numTorpedoTubes;
 public:
 
-    Destroyer(int x1, int y1, float ac1, const float maxVel1, int hp1, int length1, int arm1,
-              std::string na1, std::string nat1, int numL1, int numH1, int numM1,
-              std::vector<std::unique_ptr<Arsenal>> &arsenalList1,
-              std::vector<std::unique_ptr<Vehicle>> &vehicleList1, sf::Texture tex1, sf::Sprite sp1, int le1,
-              int wi1, bool col1, std::string textureName1, ShipType sh, ModelType mo, double x, double y,
-              float ac, const float maxVel, int hp, int length, int arm, std::string na, std::string nat,
-              int numL, int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-              std::vector<std::unique_ptr<Vehicle>> &vehicleList, sf::Texture tex, sf::Sprite sp, int le,
-              int wi, bool col, std::string textureName);
+    Destroyer(int x, int y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
+              std::string nat, int numL, int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
+              std::vector<std::unique_ptr<Vehicle>> &vehicleList, const sf::Texture &tex, sf::Sprite sp, int le, int wi,
+              bool col, std::string textureName, ShipType sh, ModelType mo, int torpedo) : WarShip(x, y, ac, maxVel, hp,
+                                                                                                   length, arm, na, nat,
+                                                                                                   numL, numH, numM,
+                                                                                                   arsenalList,
+                                                                                                   vehicleList, tex, sp,
+                                                                                                   le, wi, col,
+                                                                                                   textureName, sh, mo),
+                                                                                           numTorpedoTubes(torpedo) {}
+
+    );
 
     //float calcSpeed() override;
 
