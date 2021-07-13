@@ -315,7 +315,8 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
         offset.x = offset.x + ((percentage.roll(1) + 1) / 100) * xMap;
 
     }
-    return offset
 
+    return offset;
 
 }
+
