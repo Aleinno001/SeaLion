@@ -7,6 +7,8 @@
 
 
 #include "WarShip.h"
+#include "SFML/Graphics.hpp"
+#include "Dice.h"
 
 
 class GameWorld;
