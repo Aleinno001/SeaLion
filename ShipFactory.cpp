@@ -4,6 +4,7 @@
 
 #include "ShipFactory.h"
 #include "GameWorld.h"
+#include "Submarine.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -11,7 +12,9 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
     switch (type) {
 
         case ModelType::I400:
-
+            sf::Vector2i coord = randomizeEnemyPositions(map);
+            std::unique_ptr<WarShip> sub(new Submarine(coord.x, coord.y,))//TODO Concludere
+            return;
             break;
 
         case ModelType::typeb1:
