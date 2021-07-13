@@ -7,7 +7,6 @@
 
 
 #include "WarShip.h"
-#include "GameWorld.h"
 
 
 class GameWorld;
