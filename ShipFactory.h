@@ -37,8 +37,11 @@ public:
 
 private:
     sf::Vector2i offset{0, 0};
+    sf::Vector2i offsetAllied{0, 0};
 
     sf::Vector2i randomizeEnemyPositions(GameWorld &map);
+
+    sf::Vector2i randomizeAlliedPositions(GameWorld &map);
 };
 
 
