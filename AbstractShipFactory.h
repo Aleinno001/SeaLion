@@ -21,6 +21,18 @@ public:
     virtual std::unique_ptr<WarShip> createBattleship(ModelType type) = 0;
 
     virtual std::unique_ptr<WarShip> createDestroyer(ModelType type) = 0;
+
+    virtual std::unique_ptr<WarShip> createAlliedSubmarine(ModelType type) = 0;
+
+    virtual std::unique_ptr<WarShip> createAlliedAircraftCarrier(ModelType type) = 0;
+
+    virtual std::unique_ptr<WarShip> createAlliedCruiser(ModelType type) = 0;
+
+    virtual std::unique_ptr<WarShip> createAlliedBattleship(ModelType type) = 0;
+
+    virtual std::unique_ptr<WarShip> createAlliedDestroyer(ModelType type) = 0;
+
+
 };
 
 

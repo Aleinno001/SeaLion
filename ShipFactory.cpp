@@ -60,3 +60,23 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type) {
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type) {
     return std::unique_ptr<WarShip>();
 }
+
+std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type) {
+    return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type) {
+    return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type) {
+    return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type) {
+    return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type) {
+    return std::unique_ptr<WarShip>();
+}

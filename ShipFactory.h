@@ -25,6 +25,16 @@ public:
 
     std::unique_ptr<WarShip> createDestroyer(ModelType type) override;
 
+    std::unique_ptr<WarShip> createAlliedSubmarine(ModelType type) override;
+
+    std::unique_ptr<WarShip> createAlliedAircraftCarrier(ModelType type) override;
+
+    std::unique_ptr<WarShip> createAlliedCruiser(ModelType type) override;
+
+    std::unique_ptr<WarShip> createAlliedBattleship(ModelType type) override;
+
+    std::unique_ptr<WarShip> createAlliedDestroyer(ModelType type) override;
+
     ShipFactory() = default;
 };
 

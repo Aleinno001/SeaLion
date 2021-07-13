@@ -35,7 +35,6 @@ GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &
 void
 GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                              std::vector<Fleet> &fleet) {
-    exitPos = sf::Vector2i(1, 0);
 
     setUpAlliedFleet(fleet);
     setUpEnemyFleet(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
@@ -47,10 +46,15 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
     ShipFactory enemyFactory;
 
     Dice subDice(2);
+
     submarineRandomizer(numEnemySub, subDice, enemyFactory);
+
     Dice batDice(4);
+
     battleshipRandomizer(numEnemyBat, batDice, enemyFactory);
+
     Dice tripleDice(3);
+
     cruiserRandomizer(numEnemyCru, tripleDice, enemyFactory);
 
     destroyerRandomizer(numEnemyDes, tripleDice, enemyFactory);
@@ -273,23 +277,23 @@ GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
         switch (iterator.type) {
             case ShipType::Battleship:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createBattleship(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedBattleship(iterator.name));
                 break;
             case ShipType::Cruiser:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createCruiser(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedCruiser(iterator.name));
                 break;
             case ShipType::AircraftCarrier:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAircraftCarrier(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedAircraftCarrier(iterator.name));
                 break;
             case ShipType::Destroyer:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createDestroyer(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedDestroyer(iterator.name));
                 break;
             case ShipType::Submarine:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createSubmarine(iterator.name));
+                    alliedFleet.push_back(alliedFactory.createAlliedSubmarine(iterator.name));
                 break;
             default:
                 throw std::runtime_error("Invalid Warship type!");
