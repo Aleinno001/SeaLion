@@ -9,75 +9,162 @@
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
-
+    std::vector<std::unique_ptr<Arsenal>> a;
+    std::vector<std::unique_ptr<Vehicle>> v;
+    sf::Vector2i coordinates = randomizeEnemyPositions(map);
     switch (type) {
 
-        case ModelType::I400:
-            sf::Vector2i coord = randomizeEnemyPositions(map);
-            std::unique_ptr<WarShip> sub(new Submarine(coord.x, coord.y,))//TODO Concludere
-            return;
-            break;
+        case ModelType::I400: {
+            std::unique_ptr<Submarine> i400(
+                    new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
+                                  true,
+                                  ShipType::Submarine, ModelType::I400, 8, false));
 
-        case ModelType::typeb1:
 
-            break;
+            return std::move(i400);
+        }
+        case ModelType::typeb1: {
+            std::unique_ptr<Submarine> typeb1(
+                    new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
+                                  true,
+                                  ShipType::Submarine, ModelType::typeb1, 6,
+                                  false));
+            return std::move(typeb1);
+        }
 
-        case ModelType::DaVinci:
+        case ModelType::DaVinci: {
+            std::unique_ptr<Submarine> DaVinci(
+                    new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
+                                  ShipType::Submarine, ModelType::DaVinci, 8, false));
 
-            break;
+            return std::move(DaVinci);
+        }
+        case ModelType::Papa: {
+            std::unique_ptr<Submarine> Papa(
+                    new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
+                                  true,
+                                  ShipType::Submarine, ModelType::Papa, 10, false));
 
-        case ModelType::Papa:
+            return std::move(Papa);
+        }
+        case ModelType::Triton: {
+            std::unique_ptr<Submarine> Triton(
+                    new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
+                                  ShipType::Submarine, ModelType::Triton, 6, false));
 
-            break;
+            return std::move(Triton);
+        }
+        case ModelType::Trenchant: {
+            std::unique_ptr<Submarine> Trenchant(
+                    new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
+                                  ShipType::Submarine, ModelType::Trenchant, 5, false));
+            return std::move(Trenchant);
+        }
+        case ModelType::Gato: {
+            std::unique_ptr<Submarine> Gato(
+                    new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
+                                  ShipType::Submarine, ModelType::Gato, 6, false));
 
-        case ModelType::Triton:
 
-            break;
+            return std::move(Gato);
+        }
+        case ModelType::Narwhal: {
+            std::unique_ptr<Submarine> Narwhal(
+                    new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
+                                  ShipType::Submarine, ModelType::Narwhal, 4, false));
 
-        case ModelType::Trenchant:
-
-            break;
-
-        case ModelType::Gato:
-
-            break;
-
-        case ModelType::Narwhal:
-
-            break;      //TODO add exception
+            return std::move(Narwhal);
+        }
     }
 
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
+    std::vector<std::unique_ptr<Arsenal>> a;
+    std::vector<std::unique_ptr<Vehicle>> v;
+    sf::Vector2i coordinates = randomizeEnemyPositions(map);
+
+
     switch (type) {
 
-        case ModelType::Hiryu:
-            break;
+        case ModelType::Tahio: {
+            std::unique_ptr<AircraftCarrier> Tahio(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
+                                        27,
+                                        true,
+                                        ShipType::AircraftCarrier, ModelType::Tahio, 7));
 
-        case ModelType::Tahio:
 
-            break;
+            return std::move(Tahio);
+        }
 
-        case ModelType::GiuseppeGaribaldi:
 
-            break;
+        case ModelType::Hiryu: {
+            std::unique_ptr<AircraftCarrier> Hiryu(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
+                                        22,
+                                        true,
+                                        ShipType::AircraftCarrier, ModelType::Hiryu, 6));
 
-        case ModelType::ArkRoyal:
+            return std::move(Hiryu);
+        }
 
-            break;
+        case ModelType::GiuseppeGaribaldi: {
+            std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
+                                        33,
+                                        true,
+                                        ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
 
-        case ModelType::Indomitable:
 
-            break;
+            return std::move(GiuseppeGaribaldi);
+        }
 
-        case ModelType::Midway:
+        case ModelType::Cavour: {
+            std::unique_ptr<AircraftCarrier> cavour(new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241,
+                                                                        "Italy", 4, 0, 0, 3, a, v, 244, 29, true,
+                                                                        ShipType::AircraftCarrier, ModelType::Cavour,
+                                                                        5));
 
-            break;    //TODO add exception
+            return std::move(cavour);
+        }
+        case ModelType::ArkRoyal: {
+            std::unique_ptr<AircraftCarrier> arkRoyal(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
+                                        "Uk", 2, 0, 0, 4, a, v, 240, 29, true, ShipType::AircraftCarrier,
+                                        ModelType::ArkRoyal, 7));
+
+            return std::move(arkRoyal);
+        }
+
+        case ModelType::Indomitable: {
+
+            std::unique_ptr<AircraftCarrier> indom(new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240,
+                                                                       "Uk", 2, 0, 0, 6, a, v, 230, 29, true,
+                                                                       ShipType::AircraftCarrier,
+                                                                       ModelType::Indomitable, 5));
+
+            return std::move(indom);
+        }
+
+        case ModelType::Midway: {
+            std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
+                                                                     "Usa", 2, 0, 0, 15, a, v, 305, 74, true,
+                                                                     ShipType::AircraftCarrier, ModelType::Midway, 14));
+            return std::move(mid);
+        }
+
+        case ModelType::FranklinDRoosevelt: {
+            std::unique_ptr<AircraftCarrier> frank(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363,
+                                                                       "Usa", 0, 2, 0, 8, a, v, 295, 34, true,
+                                                                       ShipType::AircraftCarrier,
+                                                                       ModelType::FranklinDRoosevelt, 14));
+            return std::move(frank);
+        }
 
 
     }
-    return std::unique_ptr<WarShip>();
+
 }
 
 std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &map) {
