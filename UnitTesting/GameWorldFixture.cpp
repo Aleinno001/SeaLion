@@ -85,7 +85,6 @@ protected:
 
     GameWorld c;
 };
-
 TEST_F(GameWorldSuite, Constructor) {
 
     int enemyNumShip = 0;
