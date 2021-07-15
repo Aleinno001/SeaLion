@@ -6,6 +6,7 @@
 #include "GameWorld.h"
 #include "Submarine.h"
 #include "AircraftCarrier.h"
+#include "Cruiser.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -342,21 +343,21 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
     switch (type) {
 
         case ModelType::I400: {
-            std::unique_ptr<Submarine> i400(
+            std::unique_ptr<Submarine> I400(
                     new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
                                   true,
                                   ShipType::Submarine, ModelType::I400, 8,
                                   false));
-                return std::move(i400);
+            return std::move(I400);
         }
 
         case ModelType::typeb1: {
-            std::unique_ptr<Submarine> typeb1(
+            std::unique_ptr<Submarine> Typeb1(
                     new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
                                   true,
                                   ShipType::Submarine, ModelType::typeb1, 6,
                                   false));
-            return std::move(typeb1);
+            return std::move(Typeb1);
         }
 
         case ModelType::DaVinci: {
@@ -492,55 +493,124 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWorld &map) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(map);
+    std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+    std::vector<std::unique_ptr<Vehicle>> v;
     switch (type) {
 
-        case ModelType::Ijn:
-            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
-            break;
+        case ModelType::Ijn: {
+            std::unique_ptr<Cruiser> Ijn(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230, "Japan", 4, 0, 4, 10, a, v, 204,
+                                20,
+                                true,
+                                ShipType::Cruiser, ModelType::Ijn, 2));
+            return std::move(Ijn);
+        }
 
-        case ModelType::IsuzuNagara:
+        case ModelType::IsuzuNagara: {
+            std::unique_ptr<Cruiser> IsuzuNagara(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90, "Japan", 5, 0, 3, 6, a, v, 159,
+                                14,
+                                true,
+                                ShipType::Cruiser, ModelType::IsuzuNagara, 1));
+            return std::move(IsuzuNagara);
+        }
 
-            break;
+        case ModelType::Takao: {
+            std::unique_ptr<Cruiser> Takao(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237, "Japan", 4, 0, 5, 16, a, v, 193,
+                                19,
+                                true,
+                                ShipType::Cruiser, ModelType::Takao, 2));
+            return std::move(Takao);
+        }
 
-        case ModelType::Takao:
+        case ModelType::AlbertoDiGiussano: {
+            std::unique_ptr<Cruiser> AlbertoDiGiussano(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84, "Italy", 3, 0, 4, 2, a, v, 169,
+                                16,
+                                true,
+                                ShipType::Cruiser, ModelType::AlbertoDiGiussano, 1));
+            return std::move(AlbertoDiGiussano);
+        }
 
-            break;
+        case ModelType::Gorizia: {
+            std::unique_ptr<Cruiser> Gorizia(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, 2, a, v, 183,
+                                21,
+                                true,
+                                ShipType::Cruiser, ModelType::Gorizia, 0));
+            return std::move(Gorizia);
+        }
 
-        case ModelType::AlbertoDiGiussano:
 
-            break;
+        case ModelType::Trento: {
+            std::unique_ptr<Cruiser> Trento(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120, "Italy", 6, 0, 4, 2, a, v, 197,
+                                21,
+                                true,
+                                ShipType::Cruiser, ModelType::Trento, 2));
+            return std::move(Trento);
+        }
 
-        case ModelType::Gorizia:
 
-            break;
+        case ModelType::Belfast: {
+            std::unique_ptr<Cruiser> Belfast(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228, "Uk", 6, 0, 4, 2, a, v, 187,
+                                19,
+                                true,
+                                ShipType::Cruiser, ModelType::Belfast, 1));
+            return std::move(Belfast);
+        }
 
-        case ModelType::Trento:
+        case ModelType::Danae: {
+            std::unique_ptr<Cruiser> Danae(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190, "Uk", 6, 0, 1, 1, a, v, 136,
+                                14,
+                                true,
+                                ShipType::Cruiser, ModelType::Danae, 0));
+            return std::move(Danae);
+        }
 
-            break;
 
-        case ModelType::Belfast:
+        case ModelType::Tiger59: {
+            std::unique_ptr<Cruiser> Tiger59(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191, "Uk", 2, 0, 2, 1, a, v, 169,
+                                20,
+                                true,
+                                ShipType::Cruiser, ModelType::Tiger59, 2));
+            return std::move(Tiger59);
+        }
 
-            break;
 
-        case ModelType::Danae:
+        case ModelType::Alaska: {
+            std::unique_ptr<Cruiser> Alaska(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918, "Usa", 6, 1, 2, 9, a, v, 246,
+                                28,
+                                true,
+                                ShipType::Cruiser, ModelType::Alaska, 4));
+            return std::move(Alaska);
+        }
 
-            break;
 
-        case ModelType::Tiger59:
+        case ModelType::NewOrleans: {
+            std::unique_ptr<Cruiser> NewOrleans(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476, "Usa", 6, 0, 3, 2, a, v, 179,
+                                19,
+                                true,
+                                ShipType::Cruiser, ModelType::NewOrleans, 0));
+            return std::move(NewOrleans);
+        }
 
-            break;
 
-        case ModelType::Alaska:
-
-            break;
-
-        case ModelType::NewOrleans:
-
-            break;
-
-        case ModelType::StLouis:
-
-            break;
+        case ModelType::StLouis: {
+            std::unique_ptr<Cruiser> StLouis(
+                    new Cruiser(coordinates.x, coordinates.y, 3, 41, 11013, 280, "Usa", 5, 0, 3, 2, a, v, 130,
+                                20,
+                                true,
+                                ShipType::Cruiser, ModelType::StLouis, 0));
+            return std::move(StLouis);
+        }
 
         default:                    //TODO aggiungere eccezione
             break;;
