@@ -338,20 +338,32 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
         case ModelType::ImperatoreAugusto: {
             std::unique_ptr<Battleship> imperatoreAugusto(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622,
-                                   "Italy", 10, 2, 2, 13, a, v, 176, 28, true,
+                    new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126,
+                                   "Italy", 16, 4, 10, 12, a, v, 274, 40, true,
                                    ShipType::Battleship,
                                    ModelType::ImperatoreAugusto, 0));
 
             return std::move(imperatoreAugusto);
         }
-        case ModelType::VittorioVeneto:
+        case ModelType::VittorioVeneto: {
+            std::unique_ptr<Battleship> vittorioVeneto(
+                    new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862,
+                                   "Italy", 14, 3, 4, 32, a, v, 238, 33, true,
+                                   ShipType::Battleship,
+                                   ModelType::VittorioVeneto, 1));
 
-            break;
+            return std::move(vittorioVeneto);
+        }
 
-        case ModelType::MichelangeloBuonarroti:
+        case ModelType::MichelangeloBuonarroti: {
+            std::unique_ptr<Battleship> michelangeloBuonarroti(
+                    new Battleship(coordinates.x, coordinates.y, 1, 61, 42533, 837,
+                                   "Italy", 12, 3, 6, 14, a, v, 246, 29, true,
+                                   ShipType::Battleship,
+                                   ModelType::MichelangeloBuonarroti, 1));
 
-            break;
+            return std::move(michelangeloBuonarroti);
+        }
         case ModelType::Dreadnought:
 
             break;
