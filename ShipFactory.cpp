@@ -260,8 +260,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
                                   true,
                                   ShipType::Submarine, ModelType::I400, 8,
                                   false));
+                return std::move(i400);
         }
-            break;
 
         case ModelType::typeb1: {
             std::unique_ptr<Submarine> typeb1(
@@ -269,51 +269,51 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
                                   true,
                                   ShipType::Submarine, ModelType::typeb1, 6,
                                   false));
+            return std::move(typeb1);
         }
-            break;
 
         case ModelType::DaVinci: {
             std::unique_ptr<Submarine> DaVinci(
                     new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
                                   ShipType::Submarine, ModelType::DaVinci, 8, false));
+            return std::move(DaVinci);
         }
-            break;
 
         case ModelType::Papa: {
             std::unique_ptr<Submarine> Papa(
                     new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
                                   true,
                                   ShipType::Submarine, ModelType::Papa, 10, false));
+            return std::move(Papa);
         }
-            break;
 
         case ModelType::Triton: {
             std::unique_ptr<Submarine> Triton(
                     new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
                                   ShipType::Submarine, ModelType::Triton, 6, false));
+            return std::move(Triton);
         }
-            break;
 
         case ModelType::Trenchant: {
             std::unique_ptr<Submarine> Trenchant(
                     new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
                                   ShipType::Submarine, ModelType::Trenchant, 5, false));
+            return std::move(Trenchant);
         }
-            break;
 
         case ModelType::Gato: {
             std::unique_ptr<Submarine> Gato(
                     new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
                                   ShipType::Submarine, ModelType::Gato, 6, false));
+            return std::move(Gato);
         }
-            break;
 
         case ModelType::Narwhal: {
             std::unique_ptr<Submarine> Narwhal(
                     new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
                                   ShipType::Submarine, ModelType::Narwhal, 4, false));
+            return std::move(Narwhal);
         }
-            break;
     }
     return std::unique_ptr<WarShip>();
 }
@@ -330,9 +330,10 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         27,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::Tahio, 7));
+            return std::move(Tahio);
         }
 
-            break;
+
 
         case ModelType::Hiryu: {
             std::unique_ptr<AircraftCarrier> Hiryu(
@@ -340,8 +341,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         22,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::Hiryu, 6));
+            return std::move(Hiryu);
         }
-            break;
 
         case ModelType::GiuseppeGaribaldi: {
             std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
@@ -349,8 +350,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         33,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
+            return std::move(GiuseppeGaribaldi);
         }
-            break;
 
         case ModelType::Cavour: {
             std::unique_ptr<AircraftCarrier> Cavour(
@@ -358,16 +359,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         29,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::Cavour, 5));
+            return std::move(Cavour);
         }
-            break;
 
         case ModelType::ArkRoyal: {
             std::unique_ptr<AircraftCarrier> ArkRoyal(
                     new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20, "Uk", 2, 0, 0, 4, a, v, 240, 29,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::ArkRoyal, 7));
+            return std::move(ArkRoyal);
         }
-            break;
+
 
         case ModelType::Indomitable: {
             std::unique_ptr<AircraftCarrier> Indomitable(
@@ -375,8 +377,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         29,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::Indomitable, 5));
+            return std::move(Indomitable);
         }
-            break;
 
         case ModelType::Midway: {
             std::unique_ptr<AircraftCarrier> Midway(
@@ -384,8 +386,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         73,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::Midway, 14));
+            return std::move(Midway);
         }
-            break;
 
         case ModelType::FranklinDRoosevelt: {
             std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
@@ -393,8 +395,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
                                         34,
                                         true,
                                         ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
+            return std::move(FranklinDRoosevelt);
         }
-            break;
 
         default:                        //TODO aggiungere eccezione
             break;
