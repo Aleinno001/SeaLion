@@ -364,18 +364,30 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
             return std::move(michelangeloBuonarroti);
         }
-        case ModelType::Dreadnought:
+        case ModelType::Dreadnought: {
+            std::unique_ptr<Battleship> dreadNought(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
+                                   "Uk", 0, 0, 5, 20, a, v, 161, 25, true,
+                                   ShipType::Battleship,
+                                   ModelType::Dreadnought, 0));
 
-            break;
+            return std::move(dreadNought);
+        }
         case ModelType::IronDuke:
 
             break;
         case ModelType::Lion:
 
             break;
-        case ModelType::Hood:
+        case ModelType::Hood: {
+            std::unique_ptr<Battleship> hood(
+                    new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800,
+                                   "Uk", 0, 2, 2, 20, a, v, 262, 32, true,
+                                   ShipType::Battleship,
+                                   ModelType::Hood, 0));
 
-            break;
+            return std::move(hood);
+        }
         case ModelType::Arizona:
 
             break;
