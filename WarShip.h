@@ -74,7 +74,8 @@ enum class ModelType {
     Ranger,
     Midway,
     Gato,
-    Narwhal
+    Narwhal,
+    FranklinDRoosevelt
 };
 
 class WarShip : public Vehicle {
