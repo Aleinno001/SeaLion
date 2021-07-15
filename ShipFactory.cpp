@@ -131,9 +131,17 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
         case ModelType::Midway: {
             std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
-                                                                     "Italy", 0, 0, 0, a, v, 305, 74, true,
+                                                                     "Usa", 0, 0, 0, a, v, 305, 74, true,
                                                                      ShipType::AircraftCarrier, ModelType::Midway, 14));
             return std::move(mid);
+        }
+
+        case ModelType::FranklinDRoosevelt: {
+            std::unique_ptr<AircraftCarrier> frank(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363,
+                                                                       "Usa", 0, 0, 0, a, v, 295, 34, true,
+                                                                       ShipType::AircraftCarrier,
+                                                                       ModelType::FranklinDRoosevelt, 14));
+            return std::move(frank);
         }
 
 
