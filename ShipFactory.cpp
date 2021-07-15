@@ -16,7 +16,8 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 
         case ModelType::I400: {
             std::unique_ptr<Submarine> i400(
-                    new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, a, v, 122, 12, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
+                                  true,
                                   ShipType::Submarine, ModelType::I400, 8, false));
 
 
@@ -24,7 +25,8 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
         }
         case ModelType::typeb1: {
             std::unique_ptr<Submarine> typeb1(
-                    new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, a, v, 111, 10, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
+                                  true,
                                   ShipType::Submarine, ModelType::typeb1, 6,
                                   false));
             return std::move(typeb1);
@@ -32,34 +34,35 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 
         case ModelType::DaVinci: {
             std::unique_ptr<Submarine> DaVinci(
-                    new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, a, v, 77, 9, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
                                   ShipType::Submarine, ModelType::DaVinci, 8, false));
 
             return std::move(DaVinci);
         }
         case ModelType::Papa: {
             std::unique_ptr<Submarine> Papa(
-                    new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, a, v, 107, 12, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
+                                  true,
                                   ShipType::Submarine, ModelType::Papa, 10, false));
 
             return std::move(Papa);
         }
         case ModelType::Triton: {
             std::unique_ptr<Submarine> Triton(
-                    new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, a, v, 84, 8, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
                                   ShipType::Submarine, ModelType::Triton, 6, false));
 
             return std::move(Triton);
         }
         case ModelType::Trenchant: {
             std::unique_ptr<Submarine> Trenchant(
-                    new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, a, v, 85, 10, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
                                   ShipType::Submarine, ModelType::Trenchant, 5, false));
             return std::move(Trenchant);
         }
         case ModelType::Gato: {
             std::unique_ptr<Submarine> Gato(
-                    new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, a, v, 95, 8, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
                                   ShipType::Submarine, ModelType::Gato, 6, false));
 
 
@@ -67,7 +70,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
         }
         case ModelType::Narwhal: {
             std::unique_ptr<Submarine> Narwhal(
-                    new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, a, v, 91, 10, true,
+                    new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
                                   ShipType::Submarine, ModelType::Narwhal, 4, false));
 
             return std::move(Narwhal);
