@@ -77,34 +77,68 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
+    std::vector<std::unique_ptr<Arsenal>> a;
+    std::vector<std::unique_ptr<Vehicle>> v;
+    sf::Vector2i coordinates = randomizeEnemyPositions(map);
+
+
     switch (type) {
 
-        case ModelType::Hiryu:
-            break;
+        case ModelType::Hiryu: {
 
-        case ModelType::Tahio:
 
-            break;
+            return std::move();
+        }
 
-        case ModelType::GiuseppeGaribaldi:
 
-            break;
+        case ModelType::Tahio: {
 
-        case ModelType::ArkRoyal:
+            return std::move();
+        }
 
-            break;
+        case ModelType::GiuseppeGaribaldi: {
 
-        case ModelType::Indomitable:
 
-            break;
+            return std::move();
+        }
 
-        case ModelType::Midway:
+        case ModelType::Cavour: {
+            std::unique_ptr<AircraftCarrier> cavour(new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241,
+                                                                        "Italy", 0, 0, 0, a, v, 244, 29, true,
+                                                                        ShipType::AircraftCarrier, ModelType::Cavour,
+                                                                        5));
 
-            break;    //TODO add exception
+            return std::move(cavour);
+        }
+        case ModelType::ArkRoyal: {
+            std::unique_ptr<AircraftCarrier> arkRoyal(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
+                                        "Uk", 0, 0, 0, a, v, 240, 29, true, ShipType::AircraftCarrier,
+                                        ModelType::ArkRoyal, 7));
+
+            return std::move(arkRoyal);
+        }
+
+        case ModelType::Indomitable: {
+
+            std::unique_ptr<AircraftCarrier> indom(new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240,
+                                                                       "Uk", 0, 0, 0, a, v, 230, 29, true,
+                                                                       ShipType::AircraftCarrier,
+                                                                       ModelType::Indomitable, 5));
+
+            return std::move(indom);
+        }
+
+        case ModelType::Midway: {
+            std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
+                                                                     "Italy", 0, 0, 0, a, v, 305, 74, true,
+                                                                     ShipType::AircraftCarrier, ModelType::Midway, 14));
+            return std::move(mid);
+        }
 
 
     }
-    return std::unique_ptr<WarShip>();
+
 }
 
 std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &map) {
