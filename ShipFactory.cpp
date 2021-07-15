@@ -87,22 +87,37 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
     switch (type) {
 
-        case ModelType::Hiryu: {
+        case ModelType::Tahio: {
+            std::unique_ptr<AircraftCarrier> Tahio(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
+                                        27,
+                                        true,
+                                        ShipType::AircraftCarrier, ModelType::Tahio, 7));
 
 
-            return std::move();
+            return std::move(Tahio);
         }
 
 
-        case ModelType::Tahio: {
+        case ModelType::Hiryu: {
+            std::unique_ptr<AircraftCarrier> Hiryu(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
+                                        22,
+                                        true,
+                                        ShipType::AircraftCarrier, ModelType::Hiryu, 6));
 
-            return std::move();
+            return std::move(Hiryu);
         }
 
         case ModelType::GiuseppeGaribaldi: {
+            std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
+                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
+                                        33,
+                                        true,
+                                        ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
 
 
-            return std::move();
+            return std::move(GiuseppeGaribaldi);
         }
 
         case ModelType::Cavour: {
