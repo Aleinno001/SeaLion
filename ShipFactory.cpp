@@ -248,10 +248,15 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(map);
     switch (type) {
 
         case ModelType::I400:
-            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
+            std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+            std::vector<std::unique_ptr<Vehicle>> v;
+            std::unique_ptr<Submarine> i400(
+                    new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 122, 0, "I400", "Japan", 0, 0, 0, a,
+                                  v,)); //FIXME da sistemare texture e sprite non devono essere richieste dal costruttore
             break;
 
         case ModelType::typeb1:
@@ -379,10 +384,11 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, GameWorld &map) {
+
     switch (type) {
 
         case ModelType::ISE:
-            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
+
             break;
 
         case ModelType::Kongo:
@@ -530,17 +536,19 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
 
 }
 
-sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {            //TODO da modificare
+sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
 
 
     Dice percentage(3);
     int xMap = map.getMapWidth();
     int yMap = map.getMapHeight();
-
+    if (offsetAllied.y == 0) {
+        offsetAllied.y = yMap - yMap * 0.24;
+    }
     if (offsetAllied.x >= xMap - (xMap * 0.03)) {
 
         offsetAllied.x = ((percentage.roll(1) + 1) / 100) * xMap;
-        offsetAllied.y = yMap - (offsetAllied.y + yMap * 0.24);
+        offsetAllied.y -= yMap * 0.24;
 
     } else {
 
@@ -548,7 +556,7 @@ sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {            
 
     }
 
-    return offset;
+    return offsetAllied;
 
 }
 
