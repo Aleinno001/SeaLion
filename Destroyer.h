@@ -15,19 +15,18 @@ private:
     int numTorpedoTubes;
 public:
 
-    Destroyer(int x, int y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
+    Destroyer(int x, int y, float ac, const float maxVel, int hp, int arm,
               std::string nat, int numL, int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-              std::vector<std::unique_ptr<Vehicle>> &vehicleList, const sf::Texture &tex, sf::Sprite sp, int le, int wi,
-              bool col, std::string textureName, ShipType sh, ModelType mo, int torpedo) : WarShip(x, y, ac, maxVel, hp,
-                                                                                                   length, arm, na, nat,
-                                                                                                   numL, numH, numM,
-                                                                                                   arsenalList,
-                                                                                                   vehicleList, tex, sp,
-                                                                                                   le, wi, col,
-                                                                                                   textureName, sh, mo),
-                                                                                           numTorpedoTubes(torpedo) {}
+              std::vector<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+              bool col, ShipType sh, ModelType mo, int torpedo) : WarShip(x, y, ac, maxVel, hp,
+                                                                          arm, nat,
+                                                                          numL, numH, numM,
+                                                                          arsenalList,
+                                                                          vehicleList,
+                                                                          le, wi, col, sh, mo),
+                                                                  numTorpedoTubes(torpedo) {}
 
-    );
+
 
     //float calcSpeed() override;
 

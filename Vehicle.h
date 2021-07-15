@@ -28,8 +28,8 @@ protected:
 
 public:
 
-    Vehicle(int X, int Y, float ac, float maxVel, int HP, sf::Texture tex, sf::Sprite sp, int le, int wi,
-            bool col, std::string texName);
+    Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
+            bool col);
 
     //virtual float calcSpeed(); //FIXME da rivedere il calcolo della velocità qua e nelle sottoclassi
 

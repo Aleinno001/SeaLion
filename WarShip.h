@@ -90,10 +90,10 @@ protected:
     std::vector<std::unique_ptr<Arsenal>> arsenalList;
     std::vector<std::unique_ptr<Vehicle>> vehicleList;
 public:
-    WarShip(int x, int y, float ac, const float maxVel, int hp, int length, int arm, std::string na,
+    WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
             std::string nat, int numL, int numH, int numM, std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-            std::vector<std::unique_ptr<Vehicle>> &vehicleList, sf::Texture tex, sf::Sprite sp, int le, int wi,
-            bool col, std::string textureName, ShipType sh, ModelType mo);
+            std::vector<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+            bool col, ShipType sh, ModelType mo);
 
     virtual void stopMove() = 0;
 
