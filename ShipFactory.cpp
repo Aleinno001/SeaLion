@@ -7,6 +7,7 @@
 #include "Submarine.h"
 #include "AircraftCarrier.h"
 #include "Cruiser.h"
+#include "Battleship.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -285,34 +286,65 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 }
 
 std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
+    std::vector<std::unique_ptr<Arsenal>> a;
+    std::vector<std::unique_ptr<Vehicle>> v;
+    sf::Vector2i coordinates = randomizeEnemyPositions(map);
     switch (type) {
 
-        case ModelType::Yamato:
-            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
+        case ModelType::Yamato: {
+            std::unique_ptr<Battleship> yamato(new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286,
+                                                              "Japan", 12, 3, 2, 40, a, v, 263, 39, true,
+                                                              ShipType::Battleship,
+                                                              ModelType::Yamato, 3));
 
+            return std::move(yamato);
+        }
 
-            break;
+        case ModelType::Kongo: {
+            std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
+                                                             "Japan", 6, 4, 0, 18, a, v, 222, 31, true,
+                                                             ShipType::Battleship,
+                                                             ModelType::Kongo, 0));
 
-        case ModelType::Kongo:
+            return std::move(kongo);
+        }
 
-            break;
+        case ModelType::ISE: {
+            std::unique_ptr<Battleship> ise(new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705,
+                                                           "Japan", 8, 4, 0, 19, a, v, 220, 32, true,
+                                                           ShipType::Battleship,
+                                                           ModelType::ISE, 2));
 
-        case ModelType::ISE:
+            return std::move(ise);
+        }
 
-            break;
+        case ModelType::Musashi: {
+            std::unique_ptr<Battleship> musashi(new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540,
+                                                               "Japan", 6, 3, 2, 30, a, v, 244, 37, true,
+                                                               ShipType::Battleship,
+                                                               ModelType::Musashi, 2));
 
-        case ModelType::Musashi:
+            return std::move(musashi);
+        }
 
-            break;
+        case ModelType::AndreaDoria: {
+            std::unique_ptr<Battleship> andreaDoria(new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622,
+                                                                   "Italy", 10, 2, 2, 13, a, v, 176, 28, true,
+                                                                   ShipType::Battleship,
+                                                                   ModelType::AndreaDoria, 0));
 
-        case ModelType::AndreaDoria:
+            return std::move(andreaDoria);
+        }
 
-            break;
+        case ModelType::ImperatoreAugusto: {
+            std::unique_ptr<Battleship> imperatoreAugusto(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622,
+                                   "Italy", 10, 2, 2, 13, a, v, 176, 28, true,
+                                   ShipType::Battleship,
+                                   ModelType::ImperatoreAugusto, 0));
 
-        case ModelType::ImperatoreAugusto:
-
-            break;
-
+            return std::move(imperatoreAugusto);
+        }
         case ModelType::VittorioVeneto:
 
             break;
