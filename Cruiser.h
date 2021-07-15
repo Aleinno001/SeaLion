@@ -46,6 +46,8 @@ public:
 
     ~Cruiser() override;
 
+    bool setUpSprite(std::string textureName) override;
+
 protected:
     void rotate() override;
 

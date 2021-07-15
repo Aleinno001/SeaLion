@@ -24,6 +24,36 @@ public:
               bool col, ShipType sh, ModelType mo, int numTor, bool isSub);
 
     void submerge();
+
+    bool setUpSprite(std::string textureName) override;
+
+    void attack(Vehicle target) override;
+
+    void calculateDistance(Vehicle target) override;
+
+    void update(bool isDead) override;
+
+    void attach() override;
+
+    void detach() override;
+
+    ~Submarine() override = default;
+
+    void stopMove() override;
+
+    void ceaseFire() override;
+
+    void registerArsenals() override;
+
+    void removeArsenals() override;
+
+    void notifyArsenals() override;
+
+
+protected:
+    void rotate() override;
+
+    bool canEngage(Vehicle target) override;
 };
 
 

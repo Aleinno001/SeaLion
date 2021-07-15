@@ -60,4 +60,8 @@ bool Cruiser::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
+bool Cruiser::setUpSprite(std::string textureName) {
+    return Vehicle::setUpSprite(textureName);
+}
+
 

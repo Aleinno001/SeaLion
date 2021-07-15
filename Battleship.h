@@ -44,6 +44,8 @@ public:
 
     ~Battleship() override;
 
+    bool setUpSprite(std::string textureName) override;
+
 protected:
     void rotate() override;
 

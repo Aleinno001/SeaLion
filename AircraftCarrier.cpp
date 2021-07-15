@@ -60,3 +60,7 @@ bool AircraftCarrier::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
+bool AircraftCarrier::setUpSprite(std::string textureName) {
+    return Vehicle::setUpSprite(textureName);
+}
+

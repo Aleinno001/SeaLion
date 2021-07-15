@@ -60,3 +60,7 @@ bool Destroyer::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
+bool Destroyer::setUpSprite(std::string textureName) {
+    return Vehicle::setUpSprite(textureName);
+}
+
