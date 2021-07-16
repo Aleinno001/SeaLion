@@ -160,6 +160,27 @@ TEST_F(GameWorldSuite, Constructor) {
     GTEST_ASSERT_EQ(alliedDes, 4);
     GTEST_ASSERT_EQ(alliedAir, 1);
 
-
 }
 
+TEST_F(GameWorldSuite, MapGenerationTest) {
+    int height = c.getMapHeight();
+    int width = c.getMapWidth();
+    int tileDim = 30;
+    ASSERT_EQ(c.tiles[0][0]->getSprite().getTextureRect().height, c.tiles[0][0]->getSprite().getTextureRect().width);
+    ASSERT_EQ(c.tiles[0][0]->getSprite().getTextureRect().height, tileDim);
+    ASSERT_EQ(c.tiles[0][0]->getSprite().getTextureRect().width, tileDim);
+    bool isFull = true;
+    int numtilesX = width / tileDim;
+    int numtilesY = height / tileDim;
+    int i, j;
+    for (i = 0; i < c.tiles.size(); i++) {
+        for (j = 0; j < c.tiles[i].size(); j++) {
+            if (!c.tiles[j][i]) {
+                isFull = false;
+            }
+        }
+    }
+    ASSERT_EQ(j, width / tileDim);
+    ASSERT_EQ(i, height / tileDim);
+    ASSERT_TRUE(isFull);
+}

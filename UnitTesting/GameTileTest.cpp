@@ -6,6 +6,5 @@
 
 
 TEST(GameTile, Constructor) {
-
     GameTile c("seaWhirlpoolBlock.png", 1, 2, true, true, TileType::Whirlpool);      //TODO risolvere problema path
 }
