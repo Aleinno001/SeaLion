@@ -943,29 +943,66 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         }
 
 
-        case ModelType::IronDuke:
+        case ModelType::IronDuke: {
+            std::unique_ptr<Battleship> ironDuke(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
+                                   "Uk", 0, 5, 0, 15, a, v, 190, 27, true,
+                                   ShipType::Battleship,
+                                   ModelType::IronDuke, 0));
 
-            break;
+            return std::move(ironDuke);
+        }
+        case ModelType::Lion: {
+            std::unique_ptr<Battleship> lion(
+                    new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
+                                   "Uk", 0, 4, 0, 10, a, v, 242, 33, true,
+                                   ShipType::Battleship,
+                                   ModelType::Lion, 0));
 
-        case ModelType::Lion:
+            return std::move(lion);
+        }
 
-            break;
+        case ModelType::Arizona: {
+            std::unique_ptr<Battleship> Arizona(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
+                                   "Usa", 8, 4, 0, 4, a, v, 185, 30, true,
+                                   ShipType::Battleship,
+                                   ModelType::Arizona, 0));
 
-        case ModelType::Arizona:
+            return std::move(Arizona);
+        }
 
-            break;
+        case ModelType::Montana: {
+            std::unique_ptr<Battleship> Montana(
+                    new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
+                                   "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
+                                   ShipType::Battleship,
+                                   ModelType::Montana, 2));
 
-        case ModelType::Montana:
+            return std::move(Montana);
+        }
 
-            break;
+        case ModelType::NewYork: {
+            std::unique_ptr<Battleship> NewYork(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
+                                   "Usa", 0, 5, 0, 6, a, v, 175, 29, true,
+                                   ShipType::Battleship,
+                                   ModelType::NewYork, 0));
 
-        case ModelType::NewYork:
+            return std::move(NewYork);
+        }
 
-            break;
 
-        case ModelType::NorthCarolina:
+        case ModelType::NorthCarolina: {
+            std::unique_ptr<Battleship> NorthCarolina(
+                    new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
+                                   "Usa", 6, 2, 0, 34, a, v, 222, 33, true,
+                                   ShipType::Battleship,
+                                   ModelType::NorthCarolina, 3));
 
-            break;
+            return std::move(NorthCarolina);
+        }
+
 
         default:                        //TODO aggiungere eccezione
             break;
@@ -974,55 +1011,141 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, GameWorld &map) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(map);
+    std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+    std::vector<std::unique_ptr<Vehicle>> v;
+
     switch (type) {
 
-        case ModelType::Akizuki:
-            //std::unique_ptr<Submarine> i400(new Submarine()); //TODO da concludere
-            break;
+        case ModelType::Akizuki: {
+            std::unique_ptr<Destroyer> Akizuki(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
+                                  "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Akizuki, 4));
 
-        case ModelType::Fubuki:
+            return std::move(Akizuki);
+        }
 
-            break;
 
-        case ModelType::Yukikaze:
+        case ModelType::Fubuki: {
+            std::unique_ptr<Destroyer> Fubuki(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
+                                  "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Fubuki, 9));
 
-            break;
+            return std::move(Fubuki);
+        }
 
-        case ModelType::Impavido:
 
-            break;
+        case ModelType::Yukikaze: {
+            std::unique_ptr<Destroyer> Yukikaze(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
+                                  "Japan", 0, 0, 4, 32, a, v, 119, 11, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Yukikaze, 8));
 
-        case ModelType::Leone:
+            return std::move(Yukikaze);
+        }
 
-            break;
 
-        case ModelType::PaoloEmilio:
+        case ModelType::Impavido: {
+            std::unique_ptr<Destroyer> Impavido(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
+                                  "Italy", 4, 0, 1, 40, a, v, 131, 14, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Impavido, 6));
 
-            break;
+            return std::move(Impavido);
+        }
 
-        case ModelType::Campbelltown:
 
-            break;
+        case ModelType::Leone: {
+            std::unique_ptr<Destroyer> Leone(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
+                                  "Italy", 0, 0, 3, 20, a, v, 113, 10, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Leone, 6));
 
-        case ModelType::Gallant:
+            return std::move(Leone);
+        }
+        case ModelType::PaoloEmilio: {
+            std::unique_ptr<Destroyer> PaoloEmilio(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
+                                  "Italy", 0, 0, 4, 12, a, v, 142, 14, true,
+                                  ShipType::Destroyer,
+                                  ModelType::PaoloEmilio, 8));
 
-            break;
+            return std::move(PaoloEmilio);
+        }
 
-        case ModelType::Jutland:
 
-            break;
+        case ModelType::Campbelltown: {
+            std::unique_ptr<Destroyer> Campbelltown(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 66, 1280, 19,
+                                  "Uk", 4, 0, 0, 10, a, v, 96, 9, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Campbelltown, 6));
 
-        case ModelType::Fletcher:
+            return std::move(Campbelltown);
+        }
 
-            break;
 
-        case ModelType::Mahan:
+        case ModelType::Gallant: {
+            std::unique_ptr<Destroyer> Gallant(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 67, 1913, 22,
+                                  "Uk", 0, 0, 4, 8, a, v, 99, 10, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Gallant, 8));
 
-            break;
+            return std::move(Gallant);
+        }
 
-        case ModelType::Sims:
 
-            break;
+        case ModelType::Jutland: {
+            std::unique_ptr<Destroyer> Jutland(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
+                                  "Uk", 0, 0, 3, 16, a, v, 116, 12, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Jutland, 10));
+
+            return std::move(Jutland);
+        }
+
+
+        case ModelType::Fletcher: {
+            std::unique_ptr<Destroyer> Fletcher(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
+                                  "Usa", 0, 0, 5, 14, a, v, 115, 12, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Fletcher, 610));
+
+            return std::move(Fletcher);
+        }
+
+
+        case ModelType::Mahan: {
+            std::unique_ptr<Destroyer> Mahan(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
+                                  "Usa", 0, 0, 4, 8, a, v, 104, 11, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Mahan, 12));
+
+            return std::move(Mahan);
+        }
+
+
+        case ModelType::Sims: {
+            std::unique_ptr<Destroyer> Sims(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
+                                  "Usa", 0, 0, 4, 16, a, v, 106, 11, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Sims, 8));
+
+            return std::move(Sims);
+        }
+
 
         default:                        //TODO aggiungere eccezione
             break;
