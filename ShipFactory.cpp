@@ -542,31 +542,19 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
             return std::move(fubuki);
         }
         case ModelType::Impavido: {
-            std::unique_ptr<Destroyer> impavido(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
-                                  "Italy", 4, 0, 1, 40, a, v, 131, 14, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Impavido, 6));
+            std::unique_ptr<Destroyer> impavido = impavidoBuilder(a, v, coordinates);
 
             return std::move(impavido);
         }
 
         case ModelType::Leone: {
-            std::unique_ptr<Destroyer> leone(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
-                                  "Italy", 0, 0, 3, 20, a, v, 113, 10, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Leone, 6));
+            std::unique_ptr<Destroyer> leone = leoneBuilder(coordinates, a, v);
 
             return std::move(leone);
         }
 
         case ModelType::PaoloEmilio: {
-            std::unique_ptr<Destroyer> paoloEmilio(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
-                                  "Italy", 0, 0, 4, 12, a, v, 142, 14, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Impavido, 8));
+            std::unique_ptr<Destroyer> paoloEmilio = paoloEmilioBuilder(a, v, coordinates);
 
             return std::move(paoloEmilio);
         }
@@ -630,6 +618,28 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
         }
     }
 
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::paoloEmilioBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                                const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Destroyer> paoloEmilio(
+            new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
+                          "Italy", 0, 0, 4, 12, a, v, 142, 14, true,
+                          ShipType::Destroyer,
+                          ModelType::Impavido, 8));
+    return paoloEmilio;
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::impavidoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                             const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Destroyer> impavido(
+            new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
+                          "Italy", 4, 0, 1, 40, a, v, 131, 14, true,
+                          ShipType::Destroyer,
+                          ModelType::Impavido, 6));
+    return impavido;
 }
 
 std::unique_ptr<Destroyer>
@@ -1191,33 +1201,21 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 
 
         case ModelType::Impavido: {
-            std::unique_ptr<Destroyer> Impavido(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
-                                  "Italy", 4, 0, 1, 40, a, v, 131, 14, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Impavido, 6));
+            std::unique_ptr<Destroyer> impavido = impavidoBuilder(a, v, coordinates);
 
-            return std::move(Impavido);
+            return std::move(impavido);
         }
 
 
         case ModelType::Leone: {
-            std::unique_ptr<Destroyer> Leone(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
-                                  "Italy", 0, 0, 3, 20, a, v, 113, 10, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Leone, 6));
+            std::unique_ptr<Destroyer> leone = leoneBuilder(coordinates, a, v);
 
-            return std::move(Leone);
+            return std::move(leone);
         }
         case ModelType::PaoloEmilio: {
-            std::unique_ptr<Destroyer> PaoloEmilio(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
-                                  "Italy", 0, 0, 4, 12, a, v, 142, 14, true,
-                                  ShipType::Destroyer,
-                                  ModelType::PaoloEmilio, 8));
+            std::unique_ptr<Destroyer> paoloEmilio = paoloEmilioBuilder(a, v, coordinates);
 
-            return std::move(PaoloEmilio);
+            return std::move(paoloEmilio);
         }
 
 
@@ -1291,6 +1289,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                          std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Destroyer> Leone(
+            new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
+                          "Italy", 0, 0, 3, 20, a, v, 113, 10, true,
+                          ShipType::Destroyer,
+                          ModelType::Leone, 6));
+    return Leone;
 }
 
 std::unique_ptr<Destroyer>
