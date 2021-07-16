@@ -115,6 +115,17 @@ private:
     std::unique_ptr<Cruiser>
     isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
                        std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Cruiser>
+    albertoDiGiussanoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                             const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Cruiser> goriziaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                            std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Cruiser>
+    trentoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                  const sf::Vector2i &coordinates) const;
 };
 
 

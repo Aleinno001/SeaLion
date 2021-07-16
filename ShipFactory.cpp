@@ -237,28 +237,18 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 
 
         case ModelType::AlbertoDiGiussano: {
-            std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84,
-                                                                   "Italy", 3, 0, 4, 2, a, v, 169, 16, true,
-                                                                   ShipType::Cruiser,
-                                                                   ModelType::AlbertoDiGiussano, 1));
+            std::unique_ptr<Cruiser> albertoDiGiussano = albertoDiGiussanoBuilder(a, v, coordinates);
 
             return std::move(albertoDiGiussano);
         }
 
         case ModelType::Gorizia: {
-            std::unique_ptr<Cruiser> gorizia(new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370,
-                                                         "Italy", 6, 0, 4, 2, a, v, 183, 21, true,
-                                                         ShipType::Cruiser,
-                                                         ModelType::Gorizia, 0));
-
+            std::unique_ptr<Cruiser> gorizia = goriziaBuilder(coordinates, a, v);
             return std::move(gorizia);
         }
 
         case ModelType::Trento: {
-            std::unique_ptr<Cruiser> trento(new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120,
-                                                        "Italy", 6, 0, 4, 2, a, v, 197, 21, true,
-                                                        ShipType::Cruiser,
-                                                        ModelType::Trento, 2));
+            std::unique_ptr<Cruiser> trento = trentoBuilder(a, v, coordinates);
 
             return std::move(trento);
         }
@@ -314,6 +304,26 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
         }
     }
 
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::trentoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                           const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Cruiser> trento(new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120,
+                                                "Italy", 6, 0, 4, 2, a, v, 197, 21, true,
+                                                ShipType::Cruiser,
+                                                ModelType::Trento, 2));
+    return trento;
+}
+
+std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
+                                                               std::vector<std::unique_ptr<Vehicle>> &v,
+                                                               const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84,
+                                                           "Italy", 3, 0, 4, 2, a, v, 169, 16, true,
+                                                           ShipType::Cruiser,
+                                                           ModelType::AlbertoDiGiussano, 1));
+    return albertoDiGiussano;
 }
 
 std::unique_ptr<Cruiser>
@@ -812,31 +822,21 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
         }
 
         case ModelType::AlbertoDiGiussano: {
-            std::unique_ptr<Cruiser> AlbertoDiGiussano(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84, "Italy", 3, 0, 4, 2, a, v, 169,
-                                16,
-                                true,
-                                ShipType::Cruiser, ModelType::AlbertoDiGiussano, 1));
-            return std::move(AlbertoDiGiussano);
+            std::unique_ptr<Cruiser> albertoDiGiussano = albertoDiGiussanoBuilder(a, v, coordinates);
+
+            return std::move(albertoDiGiussano);
         }
 
         case ModelType::Gorizia: {
-            std::unique_ptr<Cruiser> Gorizia(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, 2, a, v, 183,
-                                21,
-                                true,
-                                ShipType::Cruiser, ModelType::Gorizia, 0));
-            return std::move(Gorizia);
+            std::unique_ptr<Cruiser> gorizia = goriziaBuilder(coordinates, a, v);
+            return std::move(gorizia);
         }
 
 
         case ModelType::Trento: {
-            std::unique_ptr<Cruiser> Trento(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120, "Italy", 6, 0, 4, 2, a, v, 197,
-                                21,
-                                true,
-                                ShipType::Cruiser, ModelType::Trento, 2));
-            return std::move(Trento);
+            std::unique_ptr<Cruiser> trento = trentoBuilder(a, v, coordinates);
+
+            return std::move(trento);
         }
 
 
@@ -902,6 +902,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
             break;;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Cruiser> Gorizia(
+            new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, 2, a, v, 183,
+                        21,
+                        true,
+                        ShipType::Cruiser, ModelType::Gorizia, 0));
+    return Gorizia;
 }
 
 std::unique_ptr<Cruiser>
