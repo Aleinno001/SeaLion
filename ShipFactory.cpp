@@ -398,11 +398,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
             return std::move(michelangeloBuonarroti);
         }
         case ModelType::Dreadnought: {
-            std::unique_ptr<Battleship> dreadNought(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
-                                   "Uk", 0, 0, 5, 20, a, v, 161, 25, true,
-                                   ShipType::Battleship,
-                                   ModelType::Dreadnought, 0));
+            std::unique_ptr<Battleship> dreadNought = dreadNoughtBuilder(a, v, coordinates);
 
             return std::move(dreadNought);
         }
@@ -416,21 +412,12 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
             return std::move(ironDuke);
         }
         case ModelType::Lion: {
-            std::unique_ptr<Battleship> lion(
-                    new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
-                                   "Uk", 0, 4, 0, 10, a, v, 242, 33, true,
-                                   ShipType::Battleship,
-                                   ModelType::Lion, 0));
+            std::unique_ptr<Battleship> lion = lionBuilder(a, v, coordinates);
 
             return std::move(lion);
         }
         case ModelType::Hood: {
-            std::unique_ptr<Battleship> hood(
-                    new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800,
-                                   "Uk", 0, 2, 2, 20, a, v, 262, 32, true,
-                                   ShipType::Battleship,
-                                   ModelType::Hood, 0));
-
+            std::unique_ptr<Battleship> hood = hoodBuilder(coordinates, a, v);
             return std::move(hood);
         }
         case ModelType::Arizona: {
@@ -471,6 +458,28 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
         }
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::lionBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                         const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> lion(
+            new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
+                           "Uk", 0, 4, 0, 10, a, v, 242, 33, true,
+                           ShipType::Battleship,
+                           ModelType::Lion, 0));
+    return lion;
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::dreadNoughtBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                                const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> dreadNought(
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
+                           "Uk", 0, 0, 5, 20, a, v, 161, 25, true,
+                           ShipType::Battleship,
+                           ModelType::Dreadnought, 0));
+    return dreadNought;
 }
 
 std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
@@ -1016,20 +1025,15 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 
 
         case ModelType::Dreadnought: {
-            std::unique_ptr<Battleship> Dreadnought(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837, "Uk", 0, 0, 5, 20, a, v, 161, 25,
-                                   true,
-                                   ShipType::Battleship, ModelType::Dreadnought, 0));
-            return std::move(Dreadnought);
+            std::unique_ptr<Battleship> dreadNought = dreadNoughtBuilder(a, v, coordinates);
+
+            return std::move(dreadNought);
         }
 
 
         case ModelType::Hood: {
-            std::unique_ptr<Battleship> Hood(
-                    new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800, "Uk", 0, 2, 2, 20, a, v, 262, 32,
-                                   true,
-                                   ShipType::Battleship, ModelType::Hood, 0));
-            return std::move(Hood);
+            std::unique_ptr<Battleship> hood = hoodBuilder(coordinates, a, v);
+            return std::move(hood);
         }
 
 
@@ -1043,11 +1047,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
             return std::move(ironDuke);
         }
         case ModelType::Lion: {
-            std::unique_ptr<Battleship> lion(
-                    new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
-                                   "Uk", 0, 4, 0, 10, a, v, 242, 33, true,
-                                   ShipType::Battleship,
-                                   ModelType::Lion, 0));
+            std::unique_ptr<Battleship> lion = lionBuilder(a, v, coordinates);
 
             return std::move(lion);
         }
@@ -1098,6 +1098,16 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                         std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> Hood(
+            new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800, "Uk", 0, 2, 2, 20, a, v, 262, 32,
+                           true,
+                           ShipType::Battleship, ModelType::Hood, 0));
+    return Hood;
 }
 
 std::unique_ptr<Battleship>
