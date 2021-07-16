@@ -1,5 +1,5 @@
 //
-// Created by pala on 7/2/21.
+// Created by alessandro on 7/2/21.
 //
 
 #ifndef SEALION_ABSTRACTSHIPFACTORY_H
