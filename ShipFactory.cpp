@@ -268,31 +268,41 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
             return std::move(tiger59);
         }
         case ModelType::Alaska: {
-            std::unique_ptr<Cruiser> alaska(new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918,
-                                                        "Usa", 6, 1, 2, 9, a, v, 246, 28, true,
-                                                        ShipType::Cruiser,
-                                                        ModelType::Alaska, 4));
+            std::unique_ptr<Cruiser> alaska = alaskaBuilder(a, v, coordinates);
 
             return std::move(alaska);
         }
         case ModelType::NewOrleans: {
-            std::unique_ptr<Cruiser> newOrleans(new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476,
-                                                            "Usa", 6, 0, 3, 1, a, v, 179, 19, true,
-                                                            ShipType::Cruiser,
-                                                            ModelType::NewOrleans, 0));
-
+            std::unique_ptr<Cruiser> newOrleans = newOrleansBuilder(coordinates, a, v);
             return std::move(newOrleans);
         }
         case ModelType::StLouis: {
-            std::unique_ptr<Cruiser> saintLouis(new Cruiser(coordinates.x, coordinates.y, 3, 41, 11013, 280,
-                                                            "Usa", 5, 0, 3, 2, a, v, 130, 20, true,
-                                                            ShipType::Cruiser,
-                                                            ModelType::StLouis, 0));
+            std::unique_ptr<Cruiser> saintLouis = stLouisBuilder(a, v, coordinates);
 
             return std::move(saintLouis);
         }
     }
 
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::stLouisBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                            const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Cruiser> saintLouis(new Cruiser(coordinates.x, coordinates.y, 3, 41, 11013, 280,
+                                                    "Usa", 5, 0, 3, 2, a, v, 130, 20, true,
+                                                    ShipType::Cruiser,
+                                                    ModelType::StLouis, 0));
+    return saintLouis;
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::alaskaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                           const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Cruiser> alaska(new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918,
+                                                "Usa", 6, 1, 2, 9, a, v, 246, 28, true,
+                                                ShipType::Cruiser,
+                                                ModelType::Alaska, 4));
+    return alaska;
 }
 
 std::unique_ptr<Cruiser>
@@ -858,38 +868,38 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
 
         case ModelType::Alaska: {
-            std::unique_ptr<Cruiser> Alaska(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918, "Usa", 6, 1, 2, 9, a, v, 246,
-                                28,
-                                true,
-                                ShipType::Cruiser, ModelType::Alaska, 4));
-            return std::move(Alaska);
+            std::unique_ptr<Cruiser> alaska = alaskaBuilder(a, v, coordinates);
+
+            return std::move(alaska);
         }
 
 
         case ModelType::NewOrleans: {
-            std::unique_ptr<Cruiser> NewOrleans(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476, "Usa", 6, 0, 3, 2, a, v, 179,
-                                19,
-                                true,
-                                ShipType::Cruiser, ModelType::NewOrleans, 0));
-            return std::move(NewOrleans);
+            std::unique_ptr<Cruiser> newOrleans = newOrleansBuilder(coordinates, a, v);
+            return std::move(newOrleans);
         }
 
 
         case ModelType::StLouis: {
-            std::unique_ptr<Cruiser> StLouis(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 41, 11013, 280, "Usa", 5, 0, 3, 2, a, v, 130,
-                                20,
-                                true,
-                                ShipType::Cruiser, ModelType::StLouis, 0));
-            return std::move(StLouis);
+            std::unique_ptr<Cruiser> saintLouis = stLouisBuilder(a, v, coordinates);
+
+            return std::move(saintLouis);
         }
 
-        default:                    //TODO aggiungere eccezione
-            break;;
+
     }
-    return std::unique_ptr<WarShip>();
+
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                               std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Cruiser> NewOrleans(
+            new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476, "Usa", 6, 0, 3, 2, a, v, 179,
+                        19,
+                        true,
+                        ShipType::Cruiser, ModelType::NewOrleans, 0));
+    return NewOrleans;
 }
 
 std::unique_ptr<Cruiser>
