@@ -5,65 +5,66 @@
 		<Option title="SeaLion"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\UnitTesting\;CMake Files\UnitTesting\lib\;CMake Files\UnitTesting\lib\googletest\;CMake Files\UnitTesting\lib\googletest\googlemock\;CMake Files\UnitTesting\lib\googletest\googlemock\cmake\;CMake Files\UnitTesting\lib\googletest\googletest\;CMake Files\UnitTesting\lib\googletest\googletest\cmake\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\;CMake Files\UnitTesting\;CMake Files\UnitTesting\lib\;CMake Files\UnitTesting\lib\googletest\;CMake Files\UnitTesting\lib\googletest\googlemock\;CMake Files\UnitTesting\lib\googletest\googlemock\cmake\;CMake Files\UnitTesting\lib\googletest\googletest\;CMake Files\UnitTesting\lib\googletest\googletest\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/strip">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/local">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="list_install_components">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="core">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/libcore.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/libcore.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -73,19 +74,20 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 core"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 core"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="core/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/libcore.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/libcore.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -95,29 +97,30 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 core/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 core/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SeaLion">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/SeaLion" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/SeaLion" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -127,19 +130,20 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SeaLion"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SeaLion"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SeaLion/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/SeaLion" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/SeaLion" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -149,31 +153,32 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SeaLion/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 SeaLion/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="runSeaLionTests">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/runSeaLionTests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/runSeaLionTests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -183,21 +188,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 runSeaLionTests"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 runSeaLionTests"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="runSeaLionTests/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/runSeaLionTests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/runSeaLionTests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -207,23 +213,24 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 runSeaLionTests/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 runSeaLionTests/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gmock_main">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgmock_maind.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgmock_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -233,23 +240,24 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock_main"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock_main"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gmock_main/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgmock_maind.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgmock_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -259,23 +267,24 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock_main/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock_main/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gmock">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgmockd.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgmockd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -285,23 +294,24 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gmock/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgmockd.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgmockd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -311,21 +321,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 gmock/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googlemock/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gtest_main">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -335,21 +346,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gtest_main/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -359,21 +371,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gtest">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -383,21 +396,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="gtest/fast">
-				<Option output="/home/davide/CLionProjects/SeaLion/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
+				<Option output="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
-					<Add directory="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include"/>
+					<Add directory="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -407,104 +421,299 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Arsenal.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AbstractAirplaneFactory.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Arsenal.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AbstractBonusFactory.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Bonus.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AbstractShipFactory.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Bonus.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AircraftCarrier.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Destroyer.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AircraftCarrier.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Destroyer.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AirplaneFactory.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/QuickRepair.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AirplaneFactory.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/QuickRepair.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AntiAircraft.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Radar.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/AntiAircraft.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Radar.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Arsenal.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock-all.cc">
-			<Option target="gmock"/>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Arsenal.h">
+			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc">
-			<Option target="gmock_main"/>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/ArsenalFactory.h">
+			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest-all.cc">
-			<Option target="gtest"/>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Battleship.cpp">
+			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc">
-			<Option target="gtest_main"/>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Battleship.h">
+			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/runAllTests.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Bomber.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Bomber.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Bonus.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Bonus.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/BonusFactory.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/BonusFactory.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/CannonFactory.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/CannonFactory.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Cruiser.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Cruiser.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Destroyer.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Destroyer.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Dice.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Dice.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Fighter.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Fighter.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/FireExtinguisher.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/FireExtinguisher.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/GameTile.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/GameTile.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/GameWorld.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/GameWorld.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/HeavlyCannon.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/HeavlyCannon.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/LightCannon.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/LightCannon.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/MediumCannon.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/MediumCannon.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Observer.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/QuickRepair.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/QuickRepair.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Radar.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Radar.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/ShipFactory.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/ShipFactory.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/SmokeScreen.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/SmokeScreen.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Sonar.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Sonar.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/SpecialWeaponFactory.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/SpeedBoost.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/SpeedBoost.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Submarine.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Submarine.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/TorpedoBomber.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/TorpedoBomber.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/TorpedoTube.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/TorpedoTube.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileFixture.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Vehicle.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock-all.cc">
+			<Option target="gmock"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock_main.cc">
+			<Option target="gmock_main"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest-all.cc">
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc">
+			<Option target="gtest_main"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/runAllTests.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Vehicle.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/Vehicle.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Vehicle.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/WarShip.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/View.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/WarShip.h">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/View.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/main.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/WarShip.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/WarShip.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/WeaponFactory.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/WeaponFactory.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/main.cpp">
 			<Option target="SeaLion"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/CMakeLists.txt">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/CMakeLists.txt">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/../../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/../../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/../../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/../../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/../../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\UnitTesting\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/CMakeLists.txt">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/CMakeLists.txt">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googlemock\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/cmake/gmock.pc.in">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/cmake/gmock.pc.in">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googlemock\cmake\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/cmake/gmock_main.pc.in">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/cmake/gmock_main.pc.in">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googlemock\cmake\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/CMakeLists.txt">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googletest\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/Config.cmake.in">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/Config.cmake.in">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googletest\cmake\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/gtest.pc.in">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/gtest.pc.in">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googletest\cmake\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/gtest_main.pc.in">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/gtest_main.pc.in">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googletest\cmake\"/>
 		</Unit>
-		<Unit filename="/home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/internal_utils.cmake">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/cmake/internal_utils.cmake">
 			<Option virtualFolder="CMake Files\UnitTesting\lib\googletest\googletest\cmake\"/>
 		</Unit>
 	</Project>

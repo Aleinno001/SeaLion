@@ -53,19 +53,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/152/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/158/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/158/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/CLionProjects/SeaLion
+CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/CLionProjects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include UnitTesting/CMakeFiles/runSeaLionTests.dir/depend.make
@@ -78,33 +78,96 @@ include UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
 
 UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
 UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o: ../UnitTesting/runAllTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o"
-	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o -c /home/davide/CLionProjects/SeaLion/UnitTesting/runAllTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/runAllTests.cpp
 
 UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.i"
-	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/davide/CLionProjects/SeaLion/UnitTesting/runAllTests.cpp > CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.i
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/runAllTests.cpp > CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.i
 
 UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.s"
-	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/davide/CLionProjects/SeaLion/UnitTesting/runAllTests.cpp -o CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.s
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/runAllTests.cpp -o CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o: ../UnitTesting/GameWorldFixture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldFixture.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.i"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldFixture.cpp > CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldFixture.cpp -o CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o: ../UnitTesting/GameTileTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileTest.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.i"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileTest.cpp > CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.s"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileTest.cpp -o CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.o: ../UnitTesting/GameWorldTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.o"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldTest.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.i"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldTest.cpp > CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.s"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldTest.cpp -o CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o: ../UnitTesting/GameTileFixture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileFixture.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.i"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileFixture.cpp > CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.s"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileFixture.cpp -o CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.s
 
 # Object files for target runSeaLionTests
 runSeaLionTests_OBJECTS = \
-"CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o"
+"CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o"
 
 # External object files for target runSeaLionTests
 runSeaLionTests_EXTERNAL_OBJECTS =
 
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldTest.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make
 UnitTesting/runSeaLionTests: lib/libgtestd.a
 UnitTesting/runSeaLionTests: lib/libgtest_maind.a
+UnitTesting/runSeaLionTests: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
+UnitTesting/runSeaLionTests: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+UnitTesting/runSeaLionTests: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 UnitTesting/runSeaLionTests: libcore.a
 UnitTesting/runSeaLionTests: lib/libgtestd.a
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable runSeaLionTests"
-	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/runSeaLionTests.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable runSeaLionTests"
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/runSeaLionTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 UnitTesting/CMakeFiles/runSeaLionTests.dir/build: UnitTesting/runSeaLionTests
@@ -112,10 +175,10 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/build: UnitTesting/runSeaLionTests
 .PHONY : UnitTesting/CMakeFiles/runSeaLionTests.dir/build
 
 UnitTesting/CMakeFiles/runSeaLionTests.dir/clean:
-	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && $(CMAKE_COMMAND) -P CMakeFiles/runSeaLionTests.dir/cmake_clean.cmake
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting && $(CMAKE_COMMAND) -P CMakeFiles/runSeaLionTests.dir/cmake_clean.cmake
 .PHONY : UnitTesting/CMakeFiles/runSeaLionTests.dir/clean
 
 UnitTesting/CMakeFiles/runSeaLionTests.dir/depend:
-	cd /home/davide/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/davide/CLionProjects/SeaLion /home/davide/CLionProjects/SeaLion/UnitTesting /home/davide/CLionProjects/SeaLion/cmake-build-debug /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting /home/davide/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/CMakeFiles/runSeaLionTests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pala/CLionProjects/Projects/SeaLion /home/pala/CLionProjects/Projects/SeaLion/UnitTesting /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/CMakeFiles/runSeaLionTests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : UnitTesting/CMakeFiles/runSeaLionTests.dir/depend
 

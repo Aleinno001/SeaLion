@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR
 
-CXX_FLAGS = -g -std=gnu++14
+CXX_FLAGS =  -std=c++11 -pthread -std=c++11 -g -std=gnu++14
 

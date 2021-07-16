@@ -352,37 +352,23 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
     switch (type) {
 
         case ModelType::Yamato: {
-            std::unique_ptr<Battleship> yamato(new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286,
-                                                              "Japan", 12, 3, 2, 40, a, v, 263, 39, true,
-                                                              ShipType::Battleship,
-                                                              ModelType::Yamato, 3));
-
+            std::unique_ptr<Battleship> yamato = yamatoBuilder(coordinates, a, v);
             return std::move(yamato);
         }
 
         case ModelType::Kongo: {
-            std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
-                                                             "Japan", 6, 4, 0, 18, a, v, 222, 31, true,
-                                                             ShipType::Battleship,
-                                                             ModelType::Kongo, 0));
+            std::unique_ptr<Battleship> kongo = kongoBuilder(a, v, coordinates);
 
             return std::move(kongo);
         }
 
         case ModelType::ISE: {
-            std::unique_ptr<Battleship> ise(new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705,
-                                                           "Japan", 8, 4, 0, 19, a, v, 220, 32, true,
-                                                           ShipType::Battleship,
-                                                           ModelType::ISE, 2));
-
+            std::unique_ptr<Battleship> ise = iseBuilder(coordinates, a, v);
             return std::move(ise);
         }
 
         case ModelType::Musashi: {
-            std::unique_ptr<Battleship> musashi(new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540,
-                                                               "Japan", 6, 3, 2, 30, a, v, 244, 37, true,
-                                                               ShipType::Battleship,
-                                                               ModelType::Musashi, 2));
+            std::unique_ptr<Battleship> musashi = musashiBuilder(a, v, coordinates);
 
             return std::move(musashi);
         }
@@ -498,6 +484,26 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
         }
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::kongoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                          const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
+                                                     "Japan", 6, 4, 0, 18, a, v, 222, 31, true,
+                                                     ShipType::Battleship,
+                                                     ModelType::Kongo, 0));
+    return kongo;
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::musashiBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                            const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> musashi(new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540,
+                                                       "Japan", 6, 3, 2, 30, a, v, 244, 37, true,
+                                                       ShipType::Battleship,
+                                                       ModelType::Musashi, 2));
+    return musashi;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
@@ -964,37 +970,25 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
     switch (type) {
 
         case ModelType::ISE: {
-            std::unique_ptr<Battleship> Ise(
-                    new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, 19, a, v, 220, 32,
-                                   true,
-                                   ShipType::Battleship, ModelType::ISE, 2));
-            return std::move(Ise);
+            std::unique_ptr<Battleship> ise = iseBuilder(coordinates, a, v);
+            return std::move(ise);
         }
 
         case ModelType::Kongo: {
-            std::unique_ptr<Battleship> Kongo(
-                    new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592, "Japan", 6, 4, 0, 18, a, v, 222, 31,
-                                   true,
-                                   ShipType::Battleship, ModelType::Kongo, 0));
-            return std::move(Kongo);
+            std::unique_ptr<Battleship> kongo = kongoBuilder(a, v, coordinates);
+
+            return std::move(kongo);
         }
 
         case ModelType::Musashi: {
-            std::unique_ptr<Battleship> Musashi(
-                    new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540, "Japan", 6, 3, 2, 30, a, v, 244,
-                                   37,
-                                   true,
-                                   ShipType::Battleship, ModelType::Musashi, 2));
-            return std::move(Musashi);
+            std::unique_ptr<Battleship> musashi = musashiBuilder(a, v, coordinates);
+
+            return std::move(musashi);
         }
 
         case ModelType::Yamato: {
-            std::unique_ptr<Battleship> Yamato(
-                    new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, 40, a, v, 263,
-                                   39,
-                                   true,
-                                   ShipType::Battleship, ModelType::Yamato, 3));
-            return std::move(Yamato);
+            std::unique_ptr<Battleship> yamato = yamatoBuilder(coordinates, a, v);
+            return std::move(yamato);
         }
 
         case ModelType::AndreaDoria: {
@@ -1117,6 +1111,27 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> Yamato(
+            new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, 40, a, v, 263,
+                           39,
+                           true,
+                           ShipType::Battleship, ModelType::Yamato, 3));
+    return Yamato;
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                        std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> Ise(
+            new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, 19, a, v, 220, 32,
+                           true,
+                           ShipType::Battleship, ModelType::ISE, 2));
+    return Ise;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, GameWorld &map) {

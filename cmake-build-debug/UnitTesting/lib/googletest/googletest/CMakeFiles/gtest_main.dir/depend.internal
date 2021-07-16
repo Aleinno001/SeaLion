@@ -22,4 +22,4 @@ UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.c
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h
- /home/alessandro/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc
+ /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc
