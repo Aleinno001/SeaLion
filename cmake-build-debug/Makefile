@@ -58,19 +58,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/152/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/158/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/152/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/158/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/davide/CLionProjects/SeaLion
+CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/davide/CLionProjects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,37 +78,37 @@ CMAKE_BINARY_DIR = /home/davide/CLionProjects/SeaLion/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/158/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/158/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/158/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/158/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/158/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/158/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -124,7 +124,7 @@ list_install_components/fast: list_install_components
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/158/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -135,7 +135,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/152/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/158/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -145,9 +145,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles /home/davide/CLionProjects/SeaLion/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -266,6 +266,87 @@ gtest/fast:
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+AircraftCarrier.o: AircraftCarrier.cpp.o
+
+.PHONY : AircraftCarrier.o
+
+# target to build an object file
+AircraftCarrier.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AircraftCarrier.cpp.o
+.PHONY : AircraftCarrier.cpp.o
+
+AircraftCarrier.i: AircraftCarrier.cpp.i
+
+.PHONY : AircraftCarrier.i
+
+# target to preprocess a source file
+AircraftCarrier.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AircraftCarrier.cpp.i
+.PHONY : AircraftCarrier.cpp.i
+
+AircraftCarrier.s: AircraftCarrier.cpp.s
+
+.PHONY : AircraftCarrier.s
+
+# target to generate assembly for a file
+AircraftCarrier.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AircraftCarrier.cpp.s
+.PHONY : AircraftCarrier.cpp.s
+
+AirplaneFactory.o: AirplaneFactory.cpp.o
+
+.PHONY : AirplaneFactory.o
+
+# target to build an object file
+AirplaneFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AirplaneFactory.cpp.o
+.PHONY : AirplaneFactory.cpp.o
+
+AirplaneFactory.i: AirplaneFactory.cpp.i
+
+.PHONY : AirplaneFactory.i
+
+# target to preprocess a source file
+AirplaneFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AirplaneFactory.cpp.i
+.PHONY : AirplaneFactory.cpp.i
+
+AirplaneFactory.s: AirplaneFactory.cpp.s
+
+.PHONY : AirplaneFactory.s
+
+# target to generate assembly for a file
+AirplaneFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AirplaneFactory.cpp.s
+.PHONY : AirplaneFactory.cpp.s
+
+AntiAircraft.o: AntiAircraft.cpp.o
+
+.PHONY : AntiAircraft.o
+
+# target to build an object file
+AntiAircraft.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AntiAircraft.cpp.o
+.PHONY : AntiAircraft.cpp.o
+
+AntiAircraft.i: AntiAircraft.cpp.i
+
+.PHONY : AntiAircraft.i
+
+# target to preprocess a source file
+AntiAircraft.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AntiAircraft.cpp.i
+.PHONY : AntiAircraft.cpp.i
+
+AntiAircraft.s: AntiAircraft.cpp.s
+
+.PHONY : AntiAircraft.s
+
+# target to generate assembly for a file
+AntiAircraft.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AntiAircraft.cpp.s
+.PHONY : AntiAircraft.cpp.s
+
 Arsenal.o: Arsenal.cpp.o
 
 .PHONY : Arsenal.o
@@ -292,6 +373,60 @@ Arsenal.s: Arsenal.cpp.s
 Arsenal.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Arsenal.cpp.s
 .PHONY : Arsenal.cpp.s
+
+Battleship.o: Battleship.cpp.o
+
+.PHONY : Battleship.o
+
+# target to build an object file
+Battleship.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Battleship.cpp.o
+.PHONY : Battleship.cpp.o
+
+Battleship.i: Battleship.cpp.i
+
+.PHONY : Battleship.i
+
+# target to preprocess a source file
+Battleship.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Battleship.cpp.i
+.PHONY : Battleship.cpp.i
+
+Battleship.s: Battleship.cpp.s
+
+.PHONY : Battleship.s
+
+# target to generate assembly for a file
+Battleship.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Battleship.cpp.s
+.PHONY : Battleship.cpp.s
+
+Bomber.o: Bomber.cpp.o
+
+.PHONY : Bomber.o
+
+# target to build an object file
+Bomber.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bomber.cpp.o
+.PHONY : Bomber.cpp.o
+
+Bomber.i: Bomber.cpp.i
+
+.PHONY : Bomber.i
+
+# target to preprocess a source file
+Bomber.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bomber.cpp.i
+.PHONY : Bomber.cpp.i
+
+Bomber.s: Bomber.cpp.s
+
+.PHONY : Bomber.s
+
+# target to generate assembly for a file
+Bomber.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bomber.cpp.s
+.PHONY : Bomber.cpp.s
 
 Bonus.o: Bonus.cpp.o
 
@@ -320,6 +455,87 @@ Bonus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bonus.cpp.s
 .PHONY : Bonus.cpp.s
 
+BonusFactory.o: BonusFactory.cpp.o
+
+.PHONY : BonusFactory.o
+
+# target to build an object file
+BonusFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BonusFactory.cpp.o
+.PHONY : BonusFactory.cpp.o
+
+BonusFactory.i: BonusFactory.cpp.i
+
+.PHONY : BonusFactory.i
+
+# target to preprocess a source file
+BonusFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BonusFactory.cpp.i
+.PHONY : BonusFactory.cpp.i
+
+BonusFactory.s: BonusFactory.cpp.s
+
+.PHONY : BonusFactory.s
+
+# target to generate assembly for a file
+BonusFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BonusFactory.cpp.s
+.PHONY : BonusFactory.cpp.s
+
+CannonFactory.o: CannonFactory.cpp.o
+
+.PHONY : CannonFactory.o
+
+# target to build an object file
+CannonFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/CannonFactory.cpp.o
+.PHONY : CannonFactory.cpp.o
+
+CannonFactory.i: CannonFactory.cpp.i
+
+.PHONY : CannonFactory.i
+
+# target to preprocess a source file
+CannonFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/CannonFactory.cpp.i
+.PHONY : CannonFactory.cpp.i
+
+CannonFactory.s: CannonFactory.cpp.s
+
+.PHONY : CannonFactory.s
+
+# target to generate assembly for a file
+CannonFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/CannonFactory.cpp.s
+.PHONY : CannonFactory.cpp.s
+
+Cruiser.o: Cruiser.cpp.o
+
+.PHONY : Cruiser.o
+
+# target to build an object file
+Cruiser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Cruiser.cpp.o
+.PHONY : Cruiser.cpp.o
+
+Cruiser.i: Cruiser.cpp.i
+
+.PHONY : Cruiser.i
+
+# target to preprocess a source file
+Cruiser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Cruiser.cpp.i
+.PHONY : Cruiser.cpp.i
+
+Cruiser.s: Cruiser.cpp.s
+
+.PHONY : Cruiser.s
+
+# target to generate assembly for a file
+Cruiser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Cruiser.cpp.s
+.PHONY : Cruiser.cpp.s
+
 Destroyer.o: Destroyer.cpp.o
 
 .PHONY : Destroyer.o
@@ -346,6 +562,222 @@ Destroyer.s: Destroyer.cpp.s
 Destroyer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Destroyer.cpp.s
 .PHONY : Destroyer.cpp.s
+
+Dice.o: Dice.cpp.o
+
+.PHONY : Dice.o
+
+# target to build an object file
+Dice.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Dice.cpp.o
+.PHONY : Dice.cpp.o
+
+Dice.i: Dice.cpp.i
+
+.PHONY : Dice.i
+
+# target to preprocess a source file
+Dice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Dice.cpp.i
+.PHONY : Dice.cpp.i
+
+Dice.s: Dice.cpp.s
+
+.PHONY : Dice.s
+
+# target to generate assembly for a file
+Dice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Dice.cpp.s
+.PHONY : Dice.cpp.s
+
+Fighter.o: Fighter.cpp.o
+
+.PHONY : Fighter.o
+
+# target to build an object file
+Fighter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Fighter.cpp.o
+.PHONY : Fighter.cpp.o
+
+Fighter.i: Fighter.cpp.i
+
+.PHONY : Fighter.i
+
+# target to preprocess a source file
+Fighter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Fighter.cpp.i
+.PHONY : Fighter.cpp.i
+
+Fighter.s: Fighter.cpp.s
+
+.PHONY : Fighter.s
+
+# target to generate assembly for a file
+Fighter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Fighter.cpp.s
+.PHONY : Fighter.cpp.s
+
+FireExtinguisher.o: FireExtinguisher.cpp.o
+
+.PHONY : FireExtinguisher.o
+
+# target to build an object file
+FireExtinguisher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/FireExtinguisher.cpp.o
+.PHONY : FireExtinguisher.cpp.o
+
+FireExtinguisher.i: FireExtinguisher.cpp.i
+
+.PHONY : FireExtinguisher.i
+
+# target to preprocess a source file
+FireExtinguisher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/FireExtinguisher.cpp.i
+.PHONY : FireExtinguisher.cpp.i
+
+FireExtinguisher.s: FireExtinguisher.cpp.s
+
+.PHONY : FireExtinguisher.s
+
+# target to generate assembly for a file
+FireExtinguisher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/FireExtinguisher.cpp.s
+.PHONY : FireExtinguisher.cpp.s
+
+GameTile.o: GameTile.cpp.o
+
+.PHONY : GameTile.o
+
+# target to build an object file
+GameTile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/GameTile.cpp.o
+.PHONY : GameTile.cpp.o
+
+GameTile.i: GameTile.cpp.i
+
+.PHONY : GameTile.i
+
+# target to preprocess a source file
+GameTile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/GameTile.cpp.i
+.PHONY : GameTile.cpp.i
+
+GameTile.s: GameTile.cpp.s
+
+.PHONY : GameTile.s
+
+# target to generate assembly for a file
+GameTile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/GameTile.cpp.s
+.PHONY : GameTile.cpp.s
+
+GameWorld.o: GameWorld.cpp.o
+
+.PHONY : GameWorld.o
+
+# target to build an object file
+GameWorld.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/GameWorld.cpp.o
+.PHONY : GameWorld.cpp.o
+
+GameWorld.i: GameWorld.cpp.i
+
+.PHONY : GameWorld.i
+
+# target to preprocess a source file
+GameWorld.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/GameWorld.cpp.i
+.PHONY : GameWorld.cpp.i
+
+GameWorld.s: GameWorld.cpp.s
+
+.PHONY : GameWorld.s
+
+# target to generate assembly for a file
+GameWorld.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/GameWorld.cpp.s
+.PHONY : GameWorld.cpp.s
+
+HeavlyCannon.o: HeavlyCannon.cpp.o
+
+.PHONY : HeavlyCannon.o
+
+# target to build an object file
+HeavlyCannon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/HeavlyCannon.cpp.o
+.PHONY : HeavlyCannon.cpp.o
+
+HeavlyCannon.i: HeavlyCannon.cpp.i
+
+.PHONY : HeavlyCannon.i
+
+# target to preprocess a source file
+HeavlyCannon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/HeavlyCannon.cpp.i
+.PHONY : HeavlyCannon.cpp.i
+
+HeavlyCannon.s: HeavlyCannon.cpp.s
+
+.PHONY : HeavlyCannon.s
+
+# target to generate assembly for a file
+HeavlyCannon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/HeavlyCannon.cpp.s
+.PHONY : HeavlyCannon.cpp.s
+
+LightCannon.o: LightCannon.cpp.o
+
+.PHONY : LightCannon.o
+
+# target to build an object file
+LightCannon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/LightCannon.cpp.o
+.PHONY : LightCannon.cpp.o
+
+LightCannon.i: LightCannon.cpp.i
+
+.PHONY : LightCannon.i
+
+# target to preprocess a source file
+LightCannon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/LightCannon.cpp.i
+.PHONY : LightCannon.cpp.i
+
+LightCannon.s: LightCannon.cpp.s
+
+.PHONY : LightCannon.s
+
+# target to generate assembly for a file
+LightCannon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/LightCannon.cpp.s
+.PHONY : LightCannon.cpp.s
+
+MediumCannon.o: MediumCannon.cpp.o
+
+.PHONY : MediumCannon.o
+
+# target to build an object file
+MediumCannon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/MediumCannon.cpp.o
+.PHONY : MediumCannon.cpp.o
+
+MediumCannon.i: MediumCannon.cpp.i
+
+.PHONY : MediumCannon.i
+
+# target to preprocess a source file
+MediumCannon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/MediumCannon.cpp.i
+.PHONY : MediumCannon.cpp.i
+
+MediumCannon.s: MediumCannon.cpp.s
+
+.PHONY : MediumCannon.s
+
+# target to generate assembly for a file
+MediumCannon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/MediumCannon.cpp.s
+.PHONY : MediumCannon.cpp.s
 
 QuickRepair.o: QuickRepair.cpp.o
 
@@ -401,6 +833,195 @@ Radar.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Radar.cpp.s
 .PHONY : Radar.cpp.s
 
+ShipFactory.o: ShipFactory.cpp.o
+
+.PHONY : ShipFactory.o
+
+# target to build an object file
+ShipFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ShipFactory.cpp.o
+.PHONY : ShipFactory.cpp.o
+
+ShipFactory.i: ShipFactory.cpp.i
+
+.PHONY : ShipFactory.i
+
+# target to preprocess a source file
+ShipFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ShipFactory.cpp.i
+.PHONY : ShipFactory.cpp.i
+
+ShipFactory.s: ShipFactory.cpp.s
+
+.PHONY : ShipFactory.s
+
+# target to generate assembly for a file
+ShipFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ShipFactory.cpp.s
+.PHONY : ShipFactory.cpp.s
+
+SmokeScreen.o: SmokeScreen.cpp.o
+
+.PHONY : SmokeScreen.o
+
+# target to build an object file
+SmokeScreen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SmokeScreen.cpp.o
+.PHONY : SmokeScreen.cpp.o
+
+SmokeScreen.i: SmokeScreen.cpp.i
+
+.PHONY : SmokeScreen.i
+
+# target to preprocess a source file
+SmokeScreen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SmokeScreen.cpp.i
+.PHONY : SmokeScreen.cpp.i
+
+SmokeScreen.s: SmokeScreen.cpp.s
+
+.PHONY : SmokeScreen.s
+
+# target to generate assembly for a file
+SmokeScreen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SmokeScreen.cpp.s
+.PHONY : SmokeScreen.cpp.s
+
+Sonar.o: Sonar.cpp.o
+
+.PHONY : Sonar.o
+
+# target to build an object file
+Sonar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Sonar.cpp.o
+.PHONY : Sonar.cpp.o
+
+Sonar.i: Sonar.cpp.i
+
+.PHONY : Sonar.i
+
+# target to preprocess a source file
+Sonar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Sonar.cpp.i
+.PHONY : Sonar.cpp.i
+
+Sonar.s: Sonar.cpp.s
+
+.PHONY : Sonar.s
+
+# target to generate assembly for a file
+Sonar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Sonar.cpp.s
+.PHONY : Sonar.cpp.s
+
+SpeedBoost.o: SpeedBoost.cpp.o
+
+.PHONY : SpeedBoost.o
+
+# target to build an object file
+SpeedBoost.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SpeedBoost.cpp.o
+.PHONY : SpeedBoost.cpp.o
+
+SpeedBoost.i: SpeedBoost.cpp.i
+
+.PHONY : SpeedBoost.i
+
+# target to preprocess a source file
+SpeedBoost.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SpeedBoost.cpp.i
+.PHONY : SpeedBoost.cpp.i
+
+SpeedBoost.s: SpeedBoost.cpp.s
+
+.PHONY : SpeedBoost.s
+
+# target to generate assembly for a file
+SpeedBoost.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SpeedBoost.cpp.s
+.PHONY : SpeedBoost.cpp.s
+
+Submarine.o: Submarine.cpp.o
+
+.PHONY : Submarine.o
+
+# target to build an object file
+Submarine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Submarine.cpp.o
+.PHONY : Submarine.cpp.o
+
+Submarine.i: Submarine.cpp.i
+
+.PHONY : Submarine.i
+
+# target to preprocess a source file
+Submarine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Submarine.cpp.i
+.PHONY : Submarine.cpp.i
+
+Submarine.s: Submarine.cpp.s
+
+.PHONY : Submarine.s
+
+# target to generate assembly for a file
+Submarine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Submarine.cpp.s
+.PHONY : Submarine.cpp.s
+
+TorpedoBomber.o: TorpedoBomber.cpp.o
+
+.PHONY : TorpedoBomber.o
+
+# target to build an object file
+TorpedoBomber.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/TorpedoBomber.cpp.o
+.PHONY : TorpedoBomber.cpp.o
+
+TorpedoBomber.i: TorpedoBomber.cpp.i
+
+.PHONY : TorpedoBomber.i
+
+# target to preprocess a source file
+TorpedoBomber.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/TorpedoBomber.cpp.i
+.PHONY : TorpedoBomber.cpp.i
+
+TorpedoBomber.s: TorpedoBomber.cpp.s
+
+.PHONY : TorpedoBomber.s
+
+# target to generate assembly for a file
+TorpedoBomber.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/TorpedoBomber.cpp.s
+.PHONY : TorpedoBomber.cpp.s
+
+TorpedoTube.o: TorpedoTube.cpp.o
+
+.PHONY : TorpedoTube.o
+
+# target to build an object file
+TorpedoTube.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/TorpedoTube.cpp.o
+.PHONY : TorpedoTube.cpp.o
+
+TorpedoTube.i: TorpedoTube.cpp.i
+
+.PHONY : TorpedoTube.i
+
+# target to preprocess a source file
+TorpedoTube.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/TorpedoTube.cpp.i
+.PHONY : TorpedoTube.cpp.i
+
+TorpedoTube.s: TorpedoTube.cpp.s
+
+.PHONY : TorpedoTube.s
+
+# target to generate assembly for a file
+TorpedoTube.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/TorpedoTube.cpp.s
+.PHONY : TorpedoTube.cpp.s
+
 Vehicle.o: Vehicle.cpp.o
 
 .PHONY : Vehicle.o
@@ -428,6 +1049,33 @@ Vehicle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Vehicle.cpp.s
 .PHONY : Vehicle.cpp.s
 
+View.o: View.cpp.o
+
+.PHONY : View.o
+
+# target to build an object file
+View.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/View.cpp.o
+.PHONY : View.cpp.o
+
+View.i: View.cpp.i
+
+.PHONY : View.i
+
+# target to preprocess a source file
+View.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/View.cpp.i
+.PHONY : View.cpp.i
+
+View.s: View.cpp.s
+
+.PHONY : View.s
+
+# target to generate assembly for a file
+View.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/View.cpp.s
+.PHONY : View.cpp.s
+
 WarShip.o: WarShip.cpp.o
 
 .PHONY : WarShip.o
@@ -454,6 +1102,33 @@ WarShip.s: WarShip.cpp.s
 WarShip.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/WarShip.cpp.s
 .PHONY : WarShip.cpp.s
+
+WeaponFactory.o: WeaponFactory.cpp.o
+
+.PHONY : WeaponFactory.o
+
+# target to build an object file
+WeaponFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/WeaponFactory.cpp.o
+.PHONY : WeaponFactory.cpp.o
+
+WeaponFactory.i: WeaponFactory.cpp.i
+
+.PHONY : WeaponFactory.i
+
+# target to preprocess a source file
+WeaponFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/WeaponFactory.cpp.i
+.PHONY : WeaponFactory.cpp.i
+
+WeaponFactory.s: WeaponFactory.cpp.s
+
+.PHONY : WeaponFactory.s
+
+# target to generate assembly for a file
+WeaponFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/WeaponFactory.cpp.s
+.PHONY : WeaponFactory.cpp.s
 
 main.o: main.cpp.o
 
@@ -501,27 +1176,102 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... runSeaLionTests"
+	@echo "... AircraftCarrier.o"
+	@echo "... AircraftCarrier.i"
+	@echo "... AircraftCarrier.s"
+	@echo "... AirplaneFactory.o"
+	@echo "... AirplaneFactory.i"
+	@echo "... AirplaneFactory.s"
+	@echo "... AntiAircraft.o"
+	@echo "... AntiAircraft.i"
+	@echo "... AntiAircraft.s"
 	@echo "... Arsenal.o"
 	@echo "... Arsenal.i"
 	@echo "... Arsenal.s"
+	@echo "... Battleship.o"
+	@echo "... Battleship.i"
+	@echo "... Battleship.s"
+	@echo "... Bomber.o"
+	@echo "... Bomber.i"
+	@echo "... Bomber.s"
 	@echo "... Bonus.o"
 	@echo "... Bonus.i"
 	@echo "... Bonus.s"
+	@echo "... BonusFactory.o"
+	@echo "... BonusFactory.i"
+	@echo "... BonusFactory.s"
+	@echo "... CannonFactory.o"
+	@echo "... CannonFactory.i"
+	@echo "... CannonFactory.s"
+	@echo "... Cruiser.o"
+	@echo "... Cruiser.i"
+	@echo "... Cruiser.s"
 	@echo "... Destroyer.o"
 	@echo "... Destroyer.i"
 	@echo "... Destroyer.s"
+	@echo "... Dice.o"
+	@echo "... Dice.i"
+	@echo "... Dice.s"
+	@echo "... Fighter.o"
+	@echo "... Fighter.i"
+	@echo "... Fighter.s"
+	@echo "... FireExtinguisher.o"
+	@echo "... FireExtinguisher.i"
+	@echo "... FireExtinguisher.s"
+	@echo "... GameTile.o"
+	@echo "... GameTile.i"
+	@echo "... GameTile.s"
+	@echo "... GameWorld.o"
+	@echo "... GameWorld.i"
+	@echo "... GameWorld.s"
+	@echo "... HeavlyCannon.o"
+	@echo "... HeavlyCannon.i"
+	@echo "... HeavlyCannon.s"
+	@echo "... LightCannon.o"
+	@echo "... LightCannon.i"
+	@echo "... LightCannon.s"
+	@echo "... MediumCannon.o"
+	@echo "... MediumCannon.i"
+	@echo "... MediumCannon.s"
 	@echo "... QuickRepair.o"
 	@echo "... QuickRepair.i"
 	@echo "... QuickRepair.s"
 	@echo "... Radar.o"
 	@echo "... Radar.i"
 	@echo "... Radar.s"
+	@echo "... ShipFactory.o"
+	@echo "... ShipFactory.i"
+	@echo "... ShipFactory.s"
+	@echo "... SmokeScreen.o"
+	@echo "... SmokeScreen.i"
+	@echo "... SmokeScreen.s"
+	@echo "... Sonar.o"
+	@echo "... Sonar.i"
+	@echo "... Sonar.s"
+	@echo "... SpeedBoost.o"
+	@echo "... SpeedBoost.i"
+	@echo "... SpeedBoost.s"
+	@echo "... Submarine.o"
+	@echo "... Submarine.i"
+	@echo "... Submarine.s"
+	@echo "... TorpedoBomber.o"
+	@echo "... TorpedoBomber.i"
+	@echo "... TorpedoBomber.s"
+	@echo "... TorpedoTube.o"
+	@echo "... TorpedoTube.i"
+	@echo "... TorpedoTube.s"
 	@echo "... Vehicle.o"
 	@echo "... Vehicle.i"
 	@echo "... Vehicle.s"
+	@echo "... View.o"
+	@echo "... View.i"
+	@echo "... View.s"
 	@echo "... WarShip.o"
 	@echo "... WarShip.i"
 	@echo "... WarShip.s"
+	@echo "... WeaponFactory.o"
+	@echo "... WeaponFactory.i"
+	@echo "... WeaponFactory.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

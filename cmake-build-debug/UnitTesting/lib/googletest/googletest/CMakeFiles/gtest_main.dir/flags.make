@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include -isystem /home/davide/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest
+CXX_INCLUDES = -I/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR -isystem /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include -isystem /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest
 
-CXX_FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++14
+CXX_FLAGS =  -std=c++11 -pthread -std=c++11 -std=c++11 -pthread -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++14
 

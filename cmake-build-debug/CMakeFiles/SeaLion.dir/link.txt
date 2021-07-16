@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/SeaLion.dir/main.cpp.o -o SeaLion  libcore.a 
+/usr/bin/c++  -std=c++11 -pthread -std=c++11 -g CMakeFiles/SeaLion.dir/main.cpp.o -o SeaLion   -L/home/pala/CLionProjects/Projects/SeaLion/SFML_LIBRARY_DIR  -Wl,-rpath,/home/pala/CLionProjects/Projects/SeaLion/SFML_LIBRARY_DIR libcore.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1 

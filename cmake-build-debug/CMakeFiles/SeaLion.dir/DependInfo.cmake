@@ -4,17 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/davide/CLionProjects/SeaLion/main.cpp" "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/SeaLion.dir/main.cpp.o"
+  "/home/pala/CLionProjects/Projects/SeaLion/main.cpp" "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles/SeaLion.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../SFML_INCLUDE_DIR"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/davide/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/DependInfo.cmake"
+  "/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles/core.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
