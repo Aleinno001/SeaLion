@@ -1,5 +1,5 @@
 //
-// Created by alessandro on 08/07/21.
+// Created by pala on 08/07/21.
 //
 
 #include "gtest/gtest.h"
@@ -110,7 +110,7 @@ TEST_F(GameWorldSuite, Constructor) {
 
     for (auto it = c.getEnemyFleet().begin(); it != c.getEnemyFleet().end(); ++it) {
 
-        //GTEST_ASSERT_EQ(it->get()->getNationality(), "Japan");
+        GTEST_ASSERT_EQ(it->get()->getNationality(), "Japan");
         enemyNumShip++;
 
         if (it->get()->getShipType() == ShipType::Battleship)
@@ -175,7 +175,7 @@ TEST_F(GameWorldSuite, MapGenerationTest) {
     int i, j;
     for (i = 0; i < c.tiles.size(); i++) {
         for (j = 0; j < c.tiles[i].size(); j++) {
-            if (!c.tiles[j][i]) {
+            if (!c.tiles[i][j]) {
                 isFull = false;
             }
         }
