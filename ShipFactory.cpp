@@ -583,25 +583,30 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
         }
 
         case ModelType::Mahan: {
-            std::unique_ptr<Destroyer> mahan(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
-                                  "Usa", 0, 0, 4, 8, a, v, 104, 11, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Mahan, 12));
+            std::unique_ptr<Destroyer> mahan = mahanBuilder(coordinates, a, v);
 
             return std::move(mahan);
+
+
         }
         case ModelType::Sims: {
-            std::unique_ptr<Destroyer> sims(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
-                                  "Usa", 0, 0, 4, 16, a, v, 106, 11, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Sims, 8));
+            std::unique_ptr<Destroyer> sims = simsBuilder(a, v, coordinates);
 
             return std::move(sims);
         }
     }
 
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::simsBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                         const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Destroyer> sims(
+            new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
+                          "Usa", 0, 0, 4, 16, a, v, 106, 11, true,
+                          ShipType::Destroyer,
+                          ModelType::Sims, 8));
+    return sims;
 }
 
 std::unique_ptr<Destroyer>
@@ -1254,31 +1259,32 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 
 
         case ModelType::Mahan: {
-            std::unique_ptr<Destroyer> Mahan(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
-                                  "Usa", 0, 0, 4, 8, a, v, 104, 11, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Mahan, 12));
+            std::unique_ptr<Destroyer> mahan = mahanBuilder(coordinates, a, v);
 
-            return std::move(Mahan);
+            return std::move(mahan);
         }
 
 
         case ModelType::Sims: {
-            std::unique_ptr<Destroyer> Sims(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
-                                  "Usa", 0, 0, 4, 16, a, v, 106, 11, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Sims, 8));
+            std::unique_ptr<Destroyer> sims = simsBuilder(a, v, coordinates);
 
-            return std::move(Sims);
+            return std::move(sims);
         }
 
 
-        default:                        //TODO aggiungere eccezione
-            break;
     }
-    return std::unique_ptr<WarShip>();
+
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                          std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Destroyer> Mahan(
+            new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
+                          "Usa", 0, 0, 4, 8, a, v, 104, 11, true,
+                          ShipType::Destroyer,
+                          ModelType::Mahan, 12));
+    return Mahan;
 }
 
 std::unique_ptr<Destroyer>
