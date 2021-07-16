@@ -130,22 +130,14 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         }
 
         case ModelType::GiuseppeGaribaldi: {
-            std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
-                                        33,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
+            std::unique_ptr<AircraftCarrier> giuseppeGaribaldi = giuseppeGaribaldiBuilder(a, v, coordinates);
 
 
-            return std::move(GiuseppeGaribaldi);
+            return std::move(giuseppeGaribaldi);
         }
 
         case ModelType::Cavour: {
-            std::unique_ptr<AircraftCarrier> cavour(new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241,
-                                                                        "Italy", 4, 0, 0, 3, a, v, 244, 29, true,
-                                                                        ShipType::AircraftCarrier, ModelType::Cavour,
-                                                                        5));
-
+            std::unique_ptr<AircraftCarrier> cavour = cavourBuilder(coordinates, a, v);
             return std::move(cavour);
         }
         case ModelType::ArkRoyal: {
@@ -185,6 +177,17 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
     }
 
+}
+
+std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
+                                                                       std::vector<std::unique_ptr<Vehicle>> &v,
+                                                                       const sf::Vector2i &coordinates) const {
+    std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
+                                33,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
+    return GiuseppeGaribaldi;
 }
 
 std::unique_ptr<AircraftCarrier>
@@ -696,21 +699,15 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
         }
 
         case ModelType::GiuseppeGaribaldi: {
-            std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
-                                        33,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
-            return std::move(GiuseppeGaribaldi);
+            std::unique_ptr<AircraftCarrier> giuseppeGaribaldi = giuseppeGaribaldiBuilder(a, v, coordinates);
+
+
+            return std::move(giuseppeGaribaldi);
         }
 
         case ModelType::Cavour: {
-            std::unique_ptr<AircraftCarrier> Cavour(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, 3, a, v, 244,
-                                        29,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Cavour, 5));
-            return std::move(Cavour);
+            std::unique_ptr<AircraftCarrier> cavour = cavourBuilder(coordinates, a, v);
+            return std::move(cavour);
         }
 
         case ModelType::ArkRoyal: {
@@ -753,6 +750,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<AircraftCarrier> Cavour(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, 3, a, v, 244,
+                                29,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::Cavour, 5));
+    return Cavour;
 }
 
 std::unique_ptr<AircraftCarrier>
