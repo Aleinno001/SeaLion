@@ -223,8 +223,8 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 
 
         case ModelType::Ijn: {
-            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
-            return std::move(midway);
+            std::unique_ptr<Cruiser> ijn = ijnBuilder(coordinates, a, v);
+            return std::move(ijn);
         }
 
 
@@ -848,8 +848,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
     switch (type) {
 
         case ModelType::Ijn: {
-            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
-            return std::move(midway);
+            std::unique_ptr<Cruiser> ijn = ijnBuilder(coordinates, a, v);
+            return std::move(ijn);
         }
 
         case ModelType::IsuzuNagara: {
