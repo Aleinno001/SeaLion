@@ -421,43 +421,49 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
             return std::move(hood);
         }
         case ModelType::Arizona: {
-            std::unique_ptr<Battleship> arizona(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
-                                   "Usa", 8, 4, 0, 4, a, v, 185, 30, true,
-                                   ShipType::Battleship,
-                                   ModelType::Arizona, 0));
+            std::unique_ptr<Battleship> arizona = arizonaBuilder(coordinates, a, v);
 
             return std::move(arizona);
         }
         case ModelType::Montana: {
-            std::unique_ptr<Battleship> montana(
-                    new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
-                                   "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
-                                   ShipType::Battleship,
-                                   ModelType::Montana, 2));
+            std::unique_ptr<Battleship> montana = montanaBuilder(a, v, coordinates);
 
             return std::move(montana);
         }
         case ModelType::NewYork: {
-            std::unique_ptr<Battleship> newYork(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
-                                   "Usa", 0, 5, 0, 6, a, v, 175, 29, true,
-                                   ShipType::Battleship,
-                                   ModelType::NewYork, 0));
+            std::unique_ptr<Battleship> newYork = newYorkBuilder(coordinates, a, v);
 
             return std::move(newYork);
         }
         case ModelType::NorthCarolina: {
-            std::unique_ptr<Battleship> northCarolina(
-                    new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
-                                   "Usa", 6, 2, 0, 34, a, v, 222, 33, true,
-                                   ShipType::Battleship,
-                                   ModelType::NorthCarolina, 3));
+            std::unique_ptr<Battleship> northCarolina = northCarolinaBuilder(a, v, coordinates);
 
             return std::move(northCarolina);
         }
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::northCarolinaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                                  const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> northCarolina(
+            new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
+                           "Usa", 6, 2, 0, 34, a, v, 222, 33, true,
+                           ShipType::Battleship,
+                           ModelType::NorthCarolina, 3));
+    return northCarolina;
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::montanaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                            const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> montana(
+            new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
+                           "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
+                           ShipType::Battleship,
+                           ModelType::Montana, 2));
+    return montana;
 }
 
 std::unique_ptr<Battleship>
@@ -1053,51 +1059,55 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         }
 
         case ModelType::Arizona: {
-            std::unique_ptr<Battleship> Arizona(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
-                                   "Usa", 8, 4, 0, 4, a, v, 185, 30, true,
-                                   ShipType::Battleship,
-                                   ModelType::Arizona, 0));
+            std::unique_ptr<Battleship> arizona = arizonaBuilder(coordinates, a, v);
 
-            return std::move(Arizona);
+            return std::move(arizona);
         }
 
         case ModelType::Montana: {
-            std::unique_ptr<Battleship> Montana(
-                    new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
-                                   "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
-                                   ShipType::Battleship,
-                                   ModelType::Montana, 2));
+            std::unique_ptr<Battleship> montana = montanaBuilder(a, v, coordinates);
 
-            return std::move(Montana);
+            return std::move(montana);
         }
 
         case ModelType::NewYork: {
-            std::unique_ptr<Battleship> NewYork(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
-                                   "Usa", 0, 5, 0, 6, a, v, 175, 29, true,
-                                   ShipType::Battleship,
-                                   ModelType::NewYork, 0));
+            std::unique_ptr<Battleship> newYork = newYorkBuilder(coordinates, a, v);
 
-            return std::move(NewYork);
+            return std::move(newYork);
         }
 
 
         case ModelType::NorthCarolina: {
-            std::unique_ptr<Battleship> NorthCarolina(
-                    new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
-                                   "Usa", 6, 2, 0, 34, a, v, 222, 33, true,
-                                   ShipType::Battleship,
-                                   ModelType::NorthCarolina, 3));
+            std::unique_ptr<Battleship> northCarolina = northCarolinaBuilder(a, v, coordinates);
 
-            return std::move(NorthCarolina);
+            return std::move(northCarolina);
         }
 
 
-        default:                        //TODO aggiungere eccezione
-            break;
     }
-    return std::unique_ptr<WarShip>();
+
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> NewYork(
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
+                           "Usa", 0, 5, 0, 6, a, v, 175, 29, true,
+                           ShipType::Battleship,
+                           ModelType::NewYork, 0));
+    return NewYork;
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> Arizona(
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
+                           "Usa", 8, 4, 0, 4, a, v, 185, 30, true,
+                           ShipType::Battleship,
+                           ModelType::Arizona, 0));
+    return Arizona;
 }
 
 std::unique_ptr<Battleship>
