@@ -38,25 +38,19 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
             return std::move(papa);
         }
         case ModelType::Triton: {
-            std::unique_ptr<Submarine> Triton(
-                    new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
-                                  ShipType::Submarine, ModelType::Triton, 6, false));
+            std::unique_ptr<Submarine> triton = tritonBuilder(a, v, coordinates);
 
-            return std::move(Triton);
+            return std::move(triton);
         }
         case ModelType::Trenchant: {
-            std::unique_ptr<Submarine> Trenchant(
-                    new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
-                                  ShipType::Submarine, ModelType::Trenchant, 5, false));
-            return std::move(Trenchant);
+            std::unique_ptr<Submarine> trenchant = trenchantBuilder(coordinates, a, v);
+            return std::move(trenchant);
         }
         case ModelType::Gato: {
-            std::unique_ptr<Submarine> Gato(
-                    new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
-                                  ShipType::Submarine, ModelType::Gato, 6, false));
+            std::unique_ptr<Submarine> gato = gatoBuilder(a, v, coordinates);
 
 
-            return std::move(Gato);
+            return std::move(gato);
         }
         case ModelType::Narwhal: {
             std::unique_ptr<Submarine> Narwhal(
@@ -67,6 +61,24 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
         }
     }
 
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::gatoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                         const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Submarine> Gato(
+            new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
+                          ShipType::Submarine, ModelType::Gato, 6, false));
+    return Gato;
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::tritonBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                           const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Submarine> Triton(
+            new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
+                          ShipType::Submarine, ModelType::Triton, 6, false));
+    return Triton;
 }
 
 std::unique_ptr<Submarine>
@@ -611,24 +623,21 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
         }
 
         case ModelType::Triton: {
-            std::unique_ptr<Submarine> Triton(
-                    new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
-                                  ShipType::Submarine, ModelType::Triton, 6, false));
-            return std::move(Triton);
+            std::unique_ptr<Submarine> triton = tritonBuilder(a, v, coordinates);
+
+            return std::move(triton);
         }
 
         case ModelType::Trenchant: {
-            std::unique_ptr<Submarine> Trenchant(
-                    new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
-                                  ShipType::Submarine, ModelType::Trenchant, 5, false));
-            return std::move(Trenchant);
+            std::unique_ptr<Submarine> trenchant = trenchantBuilder(coordinates, a, v);
+            return std::move(trenchant);
         }
 
         case ModelType::Gato: {
-            std::unique_ptr<Submarine> Gato(
-                    new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
-                                  ShipType::Submarine, ModelType::Gato, 6, false));
-            return std::move(Gato);
+            std::unique_ptr<Submarine> gato = gatoBuilder(a, v, coordinates);
+
+
+            return std::move(gato);
         }
 
         case ModelType::Narwhal: {
@@ -639,6 +648,15 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
         }
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                              std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Submarine> Trenchant(
+            new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
+                          ShipType::Submarine, ModelType::Trenchant, 5, false));
+    return Trenchant;
 }
 
 std::unique_ptr<Submarine>

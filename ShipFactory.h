@@ -57,6 +57,18 @@ private:
 
     std::unique_ptr<Submarine> papaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
                                            std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Submarine>
+    tritonBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                  const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Submarine>
+    trenchantBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                     std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Submarine>
+    gatoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                const sf::Vector2i &coordinates) const;
 };
 
 
