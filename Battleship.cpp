@@ -73,7 +73,6 @@ Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int a
                                                                                             ac,
                                                                                             maxVel,
                                                                                             hp,
-                                                                                            length,
                                                                                             arm,
                                                                                             nat,
                                                                                             numL,
