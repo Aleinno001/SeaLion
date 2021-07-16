@@ -4,11 +4,6 @@
 
 #include "ShipFactory.h"
 #include "GameWorld.h"
-#include "Submarine.h"
-#include "AircraftCarrier.h"
-#include "Cruiser.h"
-#include "Battleship.h"
-#include "Destroyer.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
