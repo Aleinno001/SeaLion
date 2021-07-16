@@ -534,17 +534,36 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
             return std::move(gallant);
         }
 
-        case ModelType::Fletcher:
+        case ModelType::Fletcher: {
+            std::unique_ptr<Destroyer> fletcher(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
+                                  "Usa", 0, 0, 5, 14, a, v, 115, 12, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Fletcher, 10));
 
-            break;
-        case ModelType::Mahan:
+            return std::move(fletcher);
+        }
 
-            break;
-        case ModelType::Sims:
+        case ModelType::Mahan: {
+            std::unique_ptr<Destroyer> mahan(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
+                                  "Usa", 0, 0, 4, 8, a, v, 104, 11, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Mahan, 12));
 
-            break;//TODO add exception
+            return std::move(mahan);
+        }
+        case ModelType::Sims: {
+            std::unique_ptr<Destroyer> sims(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
+                                  "Usa", 0, 0, 4, 16, a, v, 106, 11, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Sims, 8));
+
+            return std::move(sims);
+        }
     }
-    return std::unique_ptr<WarShip>();
+
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
