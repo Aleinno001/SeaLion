@@ -141,22 +141,15 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
             return std::move(cavour);
         }
         case ModelType::ArkRoyal: {
-            std::unique_ptr<AircraftCarrier> arkRoyal(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
-                                        "Uk", 2, 0, 0, 4, a, v, 240, 29, true, ShipType::AircraftCarrier,
-                                        ModelType::ArkRoyal, 7));
+            std::unique_ptr<AircraftCarrier> arkRoyal = arkRoyalBuilder(a, v, coordinates);
 
             return std::move(arkRoyal);
         }
 
         case ModelType::Indomitable: {
 
-            std::unique_ptr<AircraftCarrier> indom(new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240,
-                                                                       "Uk", 2, 0, 0, 6, a, v, 230, 29, true,
-                                                                       ShipType::AircraftCarrier,
-                                                                       ModelType::Indomitable, 5));
-
-            return std::move(indom);
+            std::unique_ptr<AircraftCarrier> indomitable = indomitableBuilder(coordinates, a, v);
+            return std::move(indomitable);
         }
 
         case ModelType::Midway: {
@@ -177,6 +170,16 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
     }
 
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::arkRoyalBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                             const sf::Vector2i &coordinates) const {
+    std::unique_ptr<AircraftCarrier> arkRoyal(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
+                                "Uk", 2, 0, 0, 4, a, v, 240, 29, true, ShipType::AircraftCarrier,
+                                ModelType::ArkRoyal, 7));
+    return arkRoyal;
 }
 
 std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
@@ -711,21 +714,15 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
         }
 
         case ModelType::ArkRoyal: {
-            std::unique_ptr<AircraftCarrier> ArkRoyal(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20, "Uk", 2, 0, 0, 4, a, v, 240, 29,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::ArkRoyal, 7));
-            return std::move(ArkRoyal);
+            std::unique_ptr<AircraftCarrier> arkRoyal = arkRoyalBuilder(a, v, coordinates);
+
+            return std::move(arkRoyal);
         }
 
 
         case ModelType::Indomitable: {
-            std::unique_ptr<AircraftCarrier> Indomitable(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, 6, a, v, 230,
-                                        29,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Indomitable, 5));
-            return std::move(Indomitable);
+            std::unique_ptr<AircraftCarrier> indomitable = indomitableBuilder(coordinates, a, v);
+            return std::move(indomitable);
         }
 
         case ModelType::Midway: {
@@ -750,6 +747,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<AircraftCarrier> Indomitable(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, 6, a, v, 230,
+                                29,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::Indomitable, 5));
+    return Indomitable;
 }
 
 std::unique_ptr<AircraftCarrier>

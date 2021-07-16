@@ -88,6 +88,14 @@ private:
     std::unique_ptr<AircraftCarrier>
     cavourBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
                   std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<AircraftCarrier>
+    arkRoyalBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                    const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<AircraftCarrier>
+    indomitableBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                       std::vector<std::unique_ptr<Vehicle>> &v) const;
 };
 
 
