@@ -53,11 +53,8 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
             return std::move(gato);
         }
         case ModelType::Narwhal: {
-            std::unique_ptr<Submarine> Narwhal(
-                    new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
-                                  ShipType::Submarine, ModelType::Narwhal, 4, false));
-
-            return std::move(Narwhal);
+            std::unique_ptr<Submarine> narwhal = narwhalBuilder(coordinates, a, v);
+            return std::move(narwhal);
         }
     }
 
@@ -641,13 +638,20 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
         }
 
         case ModelType::Narwhal: {
-            std::unique_ptr<Submarine> Narwhal(
-                    new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
-                                  ShipType::Submarine, ModelType::Narwhal, 4, false));
-            return std::move(Narwhal);
+            std::unique_ptr<Submarine> narwhal = narwhalBuilder(coordinates, a, v);
+            return std::move(narwhal);
         }
     }
-    return std::unique_ptr<WarShip>();
+
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Submarine> Narwhal(
+            new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
+                          ShipType::Submarine, ModelType::Narwhal, 4, false));
+    return Narwhal;
 }
 
 std::unique_ptr<Submarine>
