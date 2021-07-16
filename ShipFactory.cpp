@@ -219,31 +219,20 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
     switch (type) {
 
         case ModelType::Takao: {
-            std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
-                                                       "Japan", 4, 0, 5, 16, a, v, 193, 19, true,
-                                                       ShipType::Cruiser,
-                                                       ModelType::Takao, 2));
+            std::unique_ptr<Cruiser> takao = takaoBuilder(a, v, coordinates);
 
             return std::move(takao);
         }
 
         case ModelType::IsuzuNagara: {
-            std::unique_ptr<Cruiser> isuzuNagara(new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90,
-                                                             "Japan", 5, 0, 3, 6, a, v, 159, 14, true,
-                                                             ShipType::Cruiser,
-                                                             ModelType::IsuzuNagara, 1));
-
+            std::unique_ptr<Cruiser> isuzuNagara = isuzuNagaraBuilder(coordinates, a, v);
             return std::move(isuzuNagara);
         }
 
 
         case ModelType::Ijn: {
-            std::unique_ptr<Cruiser> ijn(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230,
-                                                     "Japan", 4, 0, 4, 10, a, v, 204, 20, true,
-                                                     ShipType::Cruiser,
-                                                     ModelType::Ijn, 2));
-
-            return std::move(ijn);
+            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
+            return std::move(midway);
         }
 
 
@@ -325,6 +314,16 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
         }
     }
 
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::takaoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                          const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
+                                               "Japan", 4, 0, 5, 16, a, v, 193, 19, true,
+                                               ShipType::Cruiser,
+                                               ModelType::Takao, 2));
+    return takao;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
@@ -797,30 +796,19 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
     switch (type) {
 
         case ModelType::Ijn: {
-            std::unique_ptr<Cruiser> Ijn(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230, "Japan", 4, 0, 4, 10, a, v, 204,
-                                20,
-                                true,
-                                ShipType::Cruiser, ModelType::Ijn, 2));
-            return std::move(Ijn);
+            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
+            return std::move(midway);
         }
 
         case ModelType::IsuzuNagara: {
-            std::unique_ptr<Cruiser> IsuzuNagara(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90, "Japan", 5, 0, 3, 6, a, v, 159,
-                                14,
-                                true,
-                                ShipType::Cruiser, ModelType::IsuzuNagara, 1));
-            return std::move(IsuzuNagara);
+            std::unique_ptr<Cruiser> isuzuNagara = isuzuNagaraBuilder(coordinates, a, v);
+            return std::move(isuzuNagara);
         }
 
         case ModelType::Takao: {
-            std::unique_ptr<Cruiser> Takao(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237, "Japan", 4, 0, 5, 16, a, v, 193,
-                                19,
-                                true,
-                                ShipType::Cruiser, ModelType::Takao, 2));
-            return std::move(Takao);
+            std::unique_ptr<Cruiser> takao = takaoBuilder(a, v, coordinates);
+
+            return std::move(takao);
         }
 
         case ModelType::AlbertoDiGiussano: {
@@ -914,6 +902,28 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
             break;;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Cruiser> IsuzuNagara(
+            new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90, "Japan", 5, 0, 3, 6, a, v, 159,
+                        14,
+                        true,
+                        ShipType::Cruiser, ModelType::IsuzuNagara, 1));
+    return IsuzuNagara;
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::ijnBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                        std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Cruiser> Ijn(
+            new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230, "Japan", 4, 0, 4, 10, a, v, 204,
+                        20,
+                        true,
+                        ShipType::Cruiser, ModelType::Ijn, 2));
+    return Ijn;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, GameWorld &map) {
