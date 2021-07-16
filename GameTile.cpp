@@ -2,9 +2,26 @@
 // Created by pala on 7/4/21.
 //
 
+#include <iostream>
 #include "GameTile.h"
 
+std::string GetCurrentWorkingDir() {
+    char buff[FILENAME_MAX];
+    GetCurrentDir(buff, FILENAME_MAX);
+    std::string current_working_dir(buff);
+    return current_working_dir;
+}
+
+
 bool GameTile::setUpSprite(std::string textureName) {
+    std::string currentDir = GetCurrentWorkingDir();
+    std::string unitTestingPath = "UnitTesting";
+    std::size_t found = currentDir.find(unitTestingPath);
+    if (found != std::string::npos) {
+        currentDir.erase(found);
+        currentDir.pop_back();
+    }
+    textureName = currentDir + "/../Res/Tiles/" + textureName;
     if (!texture.loadFromFile(textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
