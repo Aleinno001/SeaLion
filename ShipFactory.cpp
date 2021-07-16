@@ -374,20 +374,12 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
         }
 
         case ModelType::AndreaDoria: {
-            std::unique_ptr<Battleship> andreaDoria(new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622,
-                                                                   "Italy", 10, 2, 2, 13, a, v, 176, 28, true,
-                                                                   ShipType::Battleship,
-                                                                   ModelType::AndreaDoria, 0));
-
+            std::unique_ptr<Battleship> andreaDoria = andreaDoriaBuilder(coordinates, a, v);
             return std::move(andreaDoria);
         }
 
         case ModelType::ImperatoreAugusto: {
-            std::unique_ptr<Battleship> imperatoreAugusto(
-                    new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126,
-                                   "Italy", 16, 4, 10, 12, a, v, 274, 40, true,
-                                   ShipType::Battleship,
-                                   ModelType::ImperatoreAugusto, 0));
+            std::unique_ptr<Battleship> imperatoreAugusto = imperatoreAugustoBuilder(a, v, coordinates);
 
             return std::move(imperatoreAugusto);
         }
@@ -402,12 +394,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
         }
 
         case ModelType::MichelangeloBuonarroti: {
-            std::unique_ptr<Battleship> michelangeloBuonarroti(
-                    new Battleship(coordinates.x, coordinates.y, 1, 61, 42533, 837,
-                                   "Italy", 12, 3, 6, 14, a, v, 246, 29, true,
-                                   ShipType::Battleship,
-                                   ModelType::MichelangeloBuonarroti, 1));
-
+            std::unique_ptr<Battleship> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates, a, v);
             return std::move(michelangeloBuonarroti);
         }
         case ModelType::Dreadnought: {
@@ -484,6 +471,17 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
         }
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
+}
+
+std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
+                                                                  std::vector<std::unique_ptr<Vehicle>> &v,
+                                                                  const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> imperatoreAugusto(
+            new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126,
+                           "Italy", 16, 4, 10, 12, a, v, 274, 40, true,
+                           ShipType::Battleship,
+                           ModelType::ImperatoreAugusto, 0));
+    return imperatoreAugusto;
 }
 
 std::unique_ptr<Battleship>
@@ -992,30 +990,19 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         }
 
         case ModelType::AndreaDoria: {
-            std::unique_ptr<Battleship> AndreaDoria(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 2, 2, 13, a, v, 176,
-                                   28,
-                                   true,
-                                   ShipType::Battleship, ModelType::AndreaDoria, 0));
-            return std::move(AndreaDoria);
+            std::unique_ptr<Battleship> andreaDoria = andreaDoriaBuilder(coordinates, a, v);
+            return std::move(andreaDoria);
         }
 
         case ModelType::ImperatoreAugusto: {
-            std::unique_ptr<Battleship> ImperatoreAugusto(
-                    new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126, "Italy", 16, 4, 10, 12, a, v, 274,
-                                   40,
-                                   true,
-                                   ShipType::Battleship, ModelType::ImperatoreAugusto, 0));
-            return std::move(ImperatoreAugusto);
+            std::unique_ptr<Battleship> imperatoreAugusto = imperatoreAugustoBuilder(a, v, coordinates);
+
+            return std::move(imperatoreAugusto);
         }
 
         case ModelType::MichelangeloBuonarroti: {
-            std::unique_ptr<Battleship> MichelangeloBuonarroti(
-                    new Battleship(coordinates.x, coordinates.y, 1, 61, 42533, 837, "Italy", 12, 3, 6, 14, a, v, 246,
-                                   29,
-                                   true,
-                                   ShipType::Battleship, ModelType::MichelangeloBuonarroti, 1));
-            return std::move(MichelangeloBuonarroti);
+            std::unique_ptr<Battleship> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates, a, v);
+            return std::move(michelangeloBuonarroti);
         }
 
         case ModelType::VittorioVeneto: {
@@ -1111,6 +1098,28 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> MichelangeloBuonarroti(
+            new Battleship(coordinates.x, coordinates.y, 1, 61, 42533, 837, "Italy", 12, 3, 6, 14, a, v, 246,
+                           29,
+                           true,
+                           ShipType::Battleship, ModelType::MichelangeloBuonarroti, 1));
+    return MichelangeloBuonarroti;
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> AndreaDoria(
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 2, 2, 13, a, v, 176,
+                           28,
+                           true,
+                           ShipType::Battleship, ModelType::AndreaDoria, 0));
+    return AndreaDoria;
 }
 
 std::unique_ptr<Battleship>
