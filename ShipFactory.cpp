@@ -29,9 +29,9 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
         }
 
         case ModelType::DaVinci: {
-            std::unique_ptr<Submarine> DaVinci = DaVinciBuilder(a, v, coordinates);
+            std::unique_ptr<Submarine> daVinci = DaVinciBuilder(a, v, coordinates);
 
-            return std::move(DaVinci);
+            return std::move(daVinci);
         }
         case ModelType::Papa: {
             std::unique_ptr<Submarine> papa = papaBuilder(coordinates, a, v);
@@ -117,25 +117,16 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
     switch (type) {
 
         case ModelType::Tahio: {
-            std::unique_ptr<AircraftCarrier> Tahio(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
-                                        27,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Tahio, 7));
+            std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
 
 
-            return std::move(Tahio);
+            return std::move(tahio);
         }
 
 
         case ModelType::Hiryu: {
-            std::unique_ptr<AircraftCarrier> Hiryu(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
-                                        22,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Hiryu, 6));
-
-            return std::move(Hiryu);
+            std::unique_ptr<AircraftCarrier> hiryu = hiryuBuilder(coordinates, a, v);
+            return std::move(hiryu);
         }
 
         case ModelType::GiuseppeGaribaldi: {
@@ -194,6 +185,17 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
     }
 
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::tahioBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                          const sf::Vector2i &coordinates) const {
+    std::unique_ptr<AircraftCarrier> Tahio(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
+                                27,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::Tahio, 7));
+    return Tahio;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &map) {
@@ -680,23 +682,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
     switch (type) {
 
         case ModelType::Tahio: {
-            std::unique_ptr<AircraftCarrier> Tahio(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
-                                        27,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Tahio, 7));
-            return std::move(Tahio);
+            std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
+
+
+            return std::move(tahio);
         }
 
 
 
         case ModelType::Hiryu: {
-            std::unique_ptr<AircraftCarrier> Hiryu(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
-                                        22,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Hiryu, 6));
-            return std::move(Hiryu);
+            std::unique_ptr<AircraftCarrier> hiryu = hiryuBuilder(coordinates, a, v);
+            return std::move(hiryu);
         }
 
         case ModelType::GiuseppeGaribaldi: {
@@ -757,6 +753,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                          std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<AircraftCarrier> Hiryu(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
+                                22,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::Hiryu, 6));
+    return Hiryu;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWorld &map) {
