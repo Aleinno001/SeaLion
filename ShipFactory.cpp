@@ -153,10 +153,8 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         }
 
         case ModelType::Midway: {
-            std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
-                                                                     "Usa", 2, 0, 0, 15, a, v, 305, 74, true,
-                                                                     ShipType::AircraftCarrier, ModelType::Midway, 14));
-            return std::move(mid);
+            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
+            return std::move(midway);
         }
 
         case ModelType::FranklinDRoosevelt: {
@@ -170,6 +168,15 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
     }
 
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::midwayBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                           const sf::Vector2i &coordinates) const {
+    std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
+                                                             "Usa", 2, 0, 0, 15, a, v, 305, 74, true,
+                                                             ShipType::AircraftCarrier, ModelType::Midway, 14));
+    return mid;
 }
 
 std::unique_ptr<AircraftCarrier>
@@ -726,27 +733,28 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
         }
 
         case ModelType::Midway: {
-            std::unique_ptr<AircraftCarrier> Midway(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 64000, 520, "Usa", 2, 0, 0, 15, a, v, 305,
-                                        73,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::Midway, 14));
-            return std::move(Midway);
+            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
+            return std::move(midway);
         }
 
         case ModelType::FranklinDRoosevelt: {
-            std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
-                    new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, 8, a, v, 295,
-                                        34,
-                                        true,
-                                        ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
-            return std::move(FranklinDRoosevelt);
+            std::unique_ptr<AircraftCarrier> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates, a, v);
+            return std::move(franklinDRoosevelt);
         }
 
-        default:                        //TODO aggiungere eccezione
-            break;
     }
-    return std::unique_ptr<WarShip>();
+
+}
+
+std::unique_ptr<AircraftCarrier>
+ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, 8, a, v, 295,
+                                34,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
+    return FranklinDRoosevelt;
 }
 
 std::unique_ptr<AircraftCarrier>
