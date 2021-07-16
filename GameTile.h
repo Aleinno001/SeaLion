@@ -7,6 +7,23 @@
 
 #include <SFML/Graphics.hpp>
 
+
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include "GameTile.h"
+#include "WarShip.h"
+#include "ShipFactory.h"
+#include <string>
+#include <memory>
+#include <list>
+#include "Dice.h"
+
+#include <stdio.h>
+#include <unistd.h>
+
+#define GetCurrentDir getcwd
+
+
 enum class TileType {
     Sea,
     Wave,
@@ -53,4 +70,4 @@ public:
 };
 
 
-#endif //SEALION_GAMETILE_H
+#endif SEALION_GAMETILE_H
