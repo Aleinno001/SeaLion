@@ -18,37 +18,24 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
     switch (type) {
 
         case ModelType::I400: {
-            std::unique_ptr<Submarine> i400(
-                    new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
-                                  true,
-                                  ShipType::Submarine, ModelType::I400, 8, false));
+            std::unique_ptr<Submarine> i400 = i400Builder(a, v, coordinates);
 
 
             return std::move(i400);
         }
         case ModelType::typeb1: {
-            std::unique_ptr<Submarine> typeb1(
-                    new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
-                                  true,
-                                  ShipType::Submarine, ModelType::typeb1, 6,
-                                  false));
+            std::unique_ptr<Submarine> typeb1 = typeb1Builder(a, v, coordinates);
             return std::move(typeb1);
         }
 
         case ModelType::DaVinci: {
-            std::unique_ptr<Submarine> DaVinci(
-                    new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
-                                  ShipType::Submarine, ModelType::DaVinci, 8, false));
+            std::unique_ptr<Submarine> DaVinci = DaVinciBuilder(a, v, coordinates);
 
             return std::move(DaVinci);
         }
         case ModelType::Papa: {
-            std::unique_ptr<Submarine> Papa(
-                    new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
-                                  true,
-                                  ShipType::Submarine, ModelType::Papa, 10, false));
-
-            return std::move(Papa);
+            std::unique_ptr<Submarine> papa = papaBuilder(coordinates, a, v);
+            return std::move(papa);
         }
         case ModelType::Triton: {
             std::unique_ptr<Submarine> Triton(
@@ -80,6 +67,36 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
         }
     }
 
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::DaVinciBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                            const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Submarine> DaVinci(
+            new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
+                          ShipType::Submarine, ModelType::DaVinci, 8, false));
+    return DaVinci;
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::typeb1Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                           const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Submarine> typeb1(
+            new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
+                          true,
+                          ShipType::Submarine, ModelType::typeb1, 6,
+                          false));
+    return typeb1;
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::i400Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                         const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Submarine> i400(
+            new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
+                          true,
+                          ShipType::Submarine, ModelType::I400, 8, false));
+    return i400;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
@@ -573,36 +590,24 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
     switch (type) {
 
         case ModelType::I400: {
-            std::unique_ptr<Submarine> I400(
-                    new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
-                                  true,
-                                  ShipType::Submarine, ModelType::I400, 8,
-                                  false));
-            return std::move(I400);
+            std::unique_ptr<Submarine> i400 = i400Builder(a, v, coordinates);
+            return std::move(i400);
         }
 
         case ModelType::typeb1: {
-            std::unique_ptr<Submarine> Typeb1(
-                    new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
-                                  true,
-                                  ShipType::Submarine, ModelType::typeb1, 6,
-                                  false));
-            return std::move(Typeb1);
+            std::unique_ptr<Submarine> typeb1 = typeb1Builder(a, v, coordinates);
+            return std::move(typeb1);
         }
 
         case ModelType::DaVinci: {
-            std::unique_ptr<Submarine> DaVinci(
-                    new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
-                                  ShipType::Submarine, ModelType::DaVinci, 8, false));
+            std::unique_ptr<Submarine> DaVinci = DaVinciBuilder(a, v, coordinates);
+
             return std::move(DaVinci);
         }
 
         case ModelType::Papa: {
-            std::unique_ptr<Submarine> Papa(
-                    new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
-                                  true,
-                                  ShipType::Submarine, ModelType::Papa, 10, false));
-            return std::move(Papa);
+            std::unique_ptr<Submarine> papa = papaBuilder(coordinates, a, v);
+            return std::move(papa);
         }
 
         case ModelType::Triton: {
@@ -634,6 +639,16 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
         }
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Submarine>
+ShipFactory::papaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                         std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Submarine> Papa(
+            new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
+                          true,
+                          ShipType::Submarine, ModelType::Papa, 10, false));
+    return Papa;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type, GameWorld &map) {
