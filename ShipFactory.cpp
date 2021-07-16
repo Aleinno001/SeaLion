@@ -8,6 +8,7 @@
 #include "AircraftCarrier.h"
 #include "Cruiser.h"
 #include "Battleship.h"
+#include "Destroyer.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -441,21 +442,39 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 }
 
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
+    std::vector<std::unique_ptr<Arsenal>> a;
+    std::vector<std::unique_ptr<Vehicle>> v;
+    sf::Vector2i coordinates = randomizeEnemyPositions(map);
     switch (type) {
 
-        case ModelType::Akizuki:
+        case ModelType::Akizuki: {
+            std::unique_ptr<Destroyer> akizuki(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
+                                  "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Akizuki, 4));
 
+            return std::move(akizuki);
+        }
 
-            break;
+        case ModelType::Yukikaze: {
+            std::unique_ptr<Destroyer> yukikaze(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
+                                  "Japan", 0, 0, 4, 32, a, v, 119, 11, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Yukikaze, 8));
 
-        case ModelType::Yukikaze:
+            return std::move(yukikaze);
+        }
+        case ModelType::Fubuki: {
+            std::unique_ptr<Destroyer> fubuki(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
+                                  "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Fubuki, 9));
 
-            break;
-
-        case ModelType::Fubuki:
-
-            break;
-
+            return std::move(fubuki);
+        }
         case ModelType::Impavido:
 
             break;
