@@ -253,29 +253,18 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
             return std::move(trento);
         }
         case ModelType::Belfast: {
-            std::unique_ptr<Cruiser> belfast(new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228,
-                                                         "Uk", 6, 0, 4, 2, a, v, 187, 19, true,
-                                                         ShipType::Cruiser,
-                                                         ModelType::Belfast, 1));
-
+            std::unique_ptr<Cruiser> belfast = belfastBuilder(coordinates, a, v);
             return std::move(belfast);
         }
 
         case ModelType::Danae: {
-            std::unique_ptr<Cruiser> danae(new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190,
-                                                       "Uk", 6, 0, 1, 1, a, v, 136, 14, true,
-                                                       ShipType::Cruiser,
-                                                       ModelType::Danae, 0));
+            std::unique_ptr<Cruiser> danae = danaeBuilder(a, v, coordinates);
 
             return std::move(danae);
         }
 
         case ModelType::Tiger59: {
-            std::unique_ptr<Cruiser> tiger59(new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191,
-                                                         "Uk", 2, 0, 2, 1, a, v, 169, 20, true,
-                                                         ShipType::Cruiser,
-                                                         ModelType::Tiger59, 2));
-
+            std::unique_ptr<Cruiser> tiger59 = tiger59Builder(coordinates, a, v);
             return std::move(tiger59);
         }
         case ModelType::Alaska: {
@@ -304,6 +293,16 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
         }
     }
 
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::danaeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                          const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Cruiser> danae(new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190,
+                                               "Uk", 6, 0, 1, 1, a, v, 136, 14, true,
+                                               ShipType::Cruiser,
+                                               ModelType::Danae, 0));
+    return danae;
 }
 
 std::unique_ptr<Cruiser>
@@ -841,31 +840,20 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
 
         case ModelType::Belfast: {
-            std::unique_ptr<Cruiser> Belfast(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228, "Uk", 6, 0, 4, 2, a, v, 187,
-                                19,
-                                true,
-                                ShipType::Cruiser, ModelType::Belfast, 1));
-            return std::move(Belfast);
+            std::unique_ptr<Cruiser> belfast = belfastBuilder(coordinates, a, v);
+            return std::move(belfast);
         }
 
         case ModelType::Danae: {
-            std::unique_ptr<Cruiser> Danae(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190, "Uk", 6, 0, 1, 1, a, v, 136,
-                                14,
-                                true,
-                                ShipType::Cruiser, ModelType::Danae, 0));
-            return std::move(Danae);
+            std::unique_ptr<Cruiser> danae = danaeBuilder(a, v, coordinates);
+
+            return std::move(danae);
         }
 
 
         case ModelType::Tiger59: {
-            std::unique_ptr<Cruiser> Tiger59(
-                    new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191, "Uk", 2, 0, 2, 1, a, v, 169,
-                                20,
-                                true,
-                                ShipType::Cruiser, ModelType::Tiger59, 2));
-            return std::move(Tiger59);
+            std::unique_ptr<Cruiser> tiger59 = tiger59Builder(coordinates, a, v);
+            return std::move(tiger59);
         }
 
 
@@ -902,6 +890,28 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
             break;;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Cruiser> Tiger59(
+            new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191, "Uk", 2, 0, 2, 1, a, v, 169,
+                        20,
+                        true,
+                        ShipType::Cruiser, ModelType::Tiger59, 2));
+    return Tiger59;
+}
+
+std::unique_ptr<Cruiser>
+ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Cruiser> Belfast(
+            new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228, "Uk", 6, 0, 4, 2, a, v, 187,
+                        19,
+                        true,
+                        ShipType::Cruiser, ModelType::Belfast, 1));
+    return Belfast;
 }
 
 std::unique_ptr<Cruiser>

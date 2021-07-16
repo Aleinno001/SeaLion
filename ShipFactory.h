@@ -126,6 +126,16 @@ private:
     std::unique_ptr<Cruiser>
     trentoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
                   const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Cruiser> belfastBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                            std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Cruiser>
+    danaeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                 const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Cruiser> tiger59Builder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                            std::vector<std::unique_ptr<Vehicle>> &v) const;
 };
 
 
