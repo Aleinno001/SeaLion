@@ -153,11 +153,8 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         }
 
         case ModelType::FranklinDRoosevelt: {
-            std::unique_ptr<AircraftCarrier> frank(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363,
-                                                                       "Usa", 0, 0, 2, 8, a, v, 295, 34, true,
-                                                                       ShipType::AircraftCarrier,
-                                                                       ModelType::FranklinDRoosevelt, 14));
-            return std::move(frank);
+            std::unique_ptr<AircraftCarrier> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates, a, v);
+            return std::move(franklinDRoosevelt);
         }
 
 
@@ -379,12 +376,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
             return std::move(imperatoreAugusto);
         }
         case ModelType::VittorioVeneto: {
-            std::unique_ptr<Battleship> vittorioVeneto(
-                    new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862,
-                                   "Italy", 14, 3, 4, 32, a, v, 238, 33, true,
-                                   ShipType::Battleship,
-                                   ModelType::VittorioVeneto, 1));
-
+            std::unique_ptr<Battleship> vittorioVeneto = vittorioVenetoBuilder(coordinates, a, v);
             return std::move(vittorioVeneto);
         }
 
@@ -398,11 +390,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
             return std::move(dreadNought);
         }
         case ModelType::IronDuke: {
-            std::unique_ptr<Battleship> ironDuke(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
-                                   "Uk", 0, 5, 0, 15, a, v, 190, 27, true,
-                                   ShipType::Battleship,
-                                   ModelType::IronDuke, 0));
+            std::unique_ptr<Battleship> ironDuke = ironDukeBuilder(a, v, coordinates);
 
             return std::move(ironDuke);
         }
@@ -437,6 +425,17 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
         }
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::ironDukeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                             const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Battleship> ironDuke(
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
+                           "Uk", 0, 5, 0, 15, a, v, 190, 27, true,
+                           ShipType::Battleship,
+                           ModelType::IronDuke, 0));
+    return ironDuke;
 }
 
 std::unique_ptr<Battleship>
@@ -1036,12 +1035,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         }
 
         case ModelType::VittorioVeneto: {
-            std::unique_ptr<Battleship> VittorioVeneto(
-                    new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862, "Italy", 14, 3, 4, 32, a, v, 238,
-                                   33,
-                                   true,
-                                   ShipType::Battleship, ModelType::VittorioVeneto, 1));
-            return std::move(VittorioVeneto);
+            std::unique_ptr<Battleship> vittorioVeneto = vittorioVenetoBuilder(coordinates, a, v);
+            return std::move(vittorioVeneto);
         }
 
 
@@ -1059,11 +1054,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 
 
         case ModelType::IronDuke: {
-            std::unique_ptr<Battleship> ironDuke(
-                    new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
-                                   "Uk", 0, 5, 0, 15, a, v, 190, 27, true,
-                                   ShipType::Battleship,
-                                   ModelType::IronDuke, 0));
+            std::unique_ptr<Battleship> ironDuke = ironDukeBuilder(a, v, coordinates);
 
             return std::move(ironDuke);
         }
@@ -1101,6 +1092,17 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 
     }
 
+}
+
+std::unique_ptr<Battleship>
+ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                   std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Battleship> VittorioVeneto(
+            new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862, "Italy", 14, 3, 4, 32, a, v, 238,
+                           33,
+                           true,
+                           ShipType::Battleship, ModelType::VittorioVeneto, 1));
+    return VittorioVeneto;
 }
 
 std::unique_ptr<Battleship>

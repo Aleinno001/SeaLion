@@ -249,6 +249,14 @@ private:
     std::unique_ptr<Destroyer>
     simsBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
                 const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Battleship>
+    vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                          std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Battleship>
+    ironDukeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                    const sf::Vector2i &coordinates) const;
 };
 
 
