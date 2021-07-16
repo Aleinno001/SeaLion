@@ -475,18 +475,35 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
 
             return std::move(fubuki);
         }
-        case ModelType::Impavido:
+        case ModelType::Impavido: {
+            std::unique_ptr<Destroyer> impavido(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
+                                  "Italy", 4, 0, 1, 40, a, v, 131, 14, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Impavido, 6));
 
-            break;
+            return std::move(impavido);
+        }
 
-        case ModelType::Leone:
+        case ModelType::Leone: {
+            std::unique_ptr<Destroyer> leone(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
+                                  "Italy", 0, 0, 3, 20, a, v, 113, 10, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Leone, 6));
 
-            break;
+            return std::move(leone);
+        }
 
-        case ModelType::PaoloEmilio:
+        case ModelType::PaoloEmilio: {
+            std::unique_ptr<Destroyer> paoloEmilio(
+                    new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
+                                  "Italy", 0, 0, 4, 12, a, v, 142, 14, true,
+                                  ShipType::Destroyer,
+                                  ModelType::Impavido, 8));
 
-            break;
-
+            return std::move(paoloEmilio);
+        }
         case ModelType::Campbelltown:
 
             break;
