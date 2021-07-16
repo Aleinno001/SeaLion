@@ -201,6 +201,16 @@ private:
     std::unique_ptr<Battleship>
     northCarolinaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Destroyer> akizukiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                              std::vector<std::unique_ptr<Vehicle>> &v) const;
+
+    std::unique_ptr<Destroyer>
+    yukikazeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                    const sf::Vector2i &coordinates) const;
+
+    std::unique_ptr<Destroyer> fubukiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                             std::vector<std::unique_ptr<Vehicle>> &v) const;
 };
 
 

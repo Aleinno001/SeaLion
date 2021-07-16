@@ -526,30 +526,18 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
     switch (type) {
 
         case ModelType::Akizuki: {
-            std::unique_ptr<Destroyer> akizuki(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
-                                  "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Akizuki, 4));
+            std::unique_ptr<Destroyer> akizuki = akizukiBuilder(coordinates, a, v);
 
             return std::move(akizuki);
         }
 
         case ModelType::Yukikaze: {
-            std::unique_ptr<Destroyer> yukikaze(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
-                                  "Japan", 0, 0, 4, 32, a, v, 119, 11, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Yukikaze, 8));
+            std::unique_ptr<Destroyer> yukikaze = yukikazeBuilder(a, v, coordinates);
 
             return std::move(yukikaze);
         }
         case ModelType::Fubuki: {
-            std::unique_ptr<Destroyer> fubuki(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
-                                  "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Fubuki, 9));
+            std::unique_ptr<Destroyer> fubuki = fubukiBuilder(coordinates, a, v);
 
             return std::move(fubuki);
         }
@@ -642,6 +630,17 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
         }
     }
 
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::yukikazeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                             const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Destroyer> yukikaze(
+            new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
+                          "Japan", 0, 0, 4, 32, a, v, 119, 11, true,
+                          ShipType::Destroyer,
+                          ModelType::Yukikaze, 8));
+    return yukikaze;
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
@@ -1171,35 +1170,23 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
     switch (type) {
 
         case ModelType::Akizuki: {
-            std::unique_ptr<Destroyer> Akizuki(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
-                                  "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Akizuki, 4));
+            std::unique_ptr<Destroyer> akizuki = akizukiBuilder(coordinates, a, v);
 
-            return std::move(Akizuki);
+            return std::move(akizuki);
         }
 
 
         case ModelType::Fubuki: {
-            std::unique_ptr<Destroyer> Fubuki(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
-                                  "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Fubuki, 9));
+            std::unique_ptr<Destroyer> fubuki = fubukiBuilder(coordinates, a, v);
 
-            return std::move(Fubuki);
+            return std::move(fubuki);
         }
 
 
         case ModelType::Yukikaze: {
-            std::unique_ptr<Destroyer> Yukikaze(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
-                                  "Japan", 0, 0, 4, 32, a, v, 119, 11, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Yukikaze, 8));
+            std::unique_ptr<Destroyer> yukikaze = yukikazeBuilder(a, v, coordinates);
 
-            return std::move(Yukikaze);
+            return std::move(yukikaze);
         }
 
 
@@ -1304,6 +1291,28 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Destroyer> Fubuki(
+            new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
+                          "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
+                          ShipType::Destroyer,
+                          ModelType::Fubuki, 9));
+    return Fubuki;
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::akizukiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Destroyer> Akizuki(
+            new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
+                          "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
+                          ShipType::Destroyer,
+                          ModelType::Akizuki, 4));
+    return Akizuki;
 }
 
 sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
