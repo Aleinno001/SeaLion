@@ -813,7 +813,7 @@ void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enem
                 std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Cavour, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -833,7 +833,8 @@ void GameWorld::usaAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFac
                 std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Midway, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Ranger, *this));
+                std::unique_ptr<WarShip> enemy(
+                        enemyFactory.createAircraftCarrier(ModelType::FranklinDRoosevelt, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
