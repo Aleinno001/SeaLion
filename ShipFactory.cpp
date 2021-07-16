@@ -559,41 +559,25 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
             return std::move(paoloEmilio);
         }
         case ModelType::Campbelltown: {
-            std::unique_ptr<Destroyer> campBelltown(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 66, 1280, 19,
-                                  "Uk", 4, 0, 0, 10, a, v, 96, 9, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Campbelltown, 6));
+            std::unique_ptr<Destroyer> campbelltown = campbeltownBuilder(coordinates, a, v);
 
-            return std::move(campBelltown);
+            return std::move(campbelltown);
         }
 
         case ModelType::Jutland: {
-            std::unique_ptr<Destroyer> jutLand(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
-                                  "Uk", 0, 0, 3, 16, a, v, 116, 12, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Jutland, 10));
+            std::unique_ptr<Destroyer> jutLand = jutlandBuilder(a, v, coordinates);
 
             return std::move(jutLand);
         }
 
         case ModelType::Gallant: {
-            std::unique_ptr<Destroyer> gallant(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 67, 1913, 22,
-                                  "Uk", 0, 0, 4, 8, a, v, 99, 10, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Gallant, 8));
+            std::unique_ptr<Destroyer> gallant = gallandBuilder(coordinates, a, v);
 
             return std::move(gallant);
         }
 
         case ModelType::Fletcher: {
-            std::unique_ptr<Destroyer> fletcher(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
-                                  "Usa", 0, 0, 5, 14, a, v, 115, 12, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Fletcher, 10));
+            std::unique_ptr<Destroyer> fletcher = fletcherBuilder(a, v, coordinates);
 
             return std::move(fletcher);
         }
@@ -618,6 +602,28 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
         }
     }
 
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::fletcherBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                             const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Destroyer> fletcher(
+            new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
+                          "Usa", 0, 0, 5, 14, a, v, 115, 12, true,
+                          ShipType::Destroyer,
+                          ModelType::Fletcher, 10));
+    return fletcher;
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::jutlandBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+                            const sf::Vector2i &coordinates) const {
+    std::unique_ptr<Destroyer> jutLand(
+            new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
+                          "Uk", 0, 0, 3, 16, a, v, 116, 12, true,
+                          ShipType::Destroyer,
+                          ModelType::Jutland, 10));
+    return jutLand;
 }
 
 std::unique_ptr<Destroyer>
@@ -1220,46 +1226,30 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 
 
         case ModelType::Campbelltown: {
-            std::unique_ptr<Destroyer> Campbelltown(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 66, 1280, 19,
-                                  "Uk", 4, 0, 0, 10, a, v, 96, 9, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Campbelltown, 6));
+            std::unique_ptr<Destroyer> campbelltown = campbeltownBuilder(coordinates, a, v);
 
-            return std::move(Campbelltown);
+            return std::move(campbelltown);
         }
 
 
         case ModelType::Gallant: {
-            std::unique_ptr<Destroyer> Gallant(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 67, 1913, 22,
-                                  "Uk", 0, 0, 4, 8, a, v, 99, 10, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Gallant, 8));
+            std::unique_ptr<Destroyer> gallant = gallandBuilder(coordinates, a, v);
 
-            return std::move(Gallant);
+            return std::move(gallant);
         }
 
 
         case ModelType::Jutland: {
-            std::unique_ptr<Destroyer> Jutland(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
-                                  "Uk", 0, 0, 3, 16, a, v, 116, 12, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Jutland, 10));
+            std::unique_ptr<Destroyer> jutLand = jutlandBuilder(a, v, coordinates);
 
-            return std::move(Jutland);
+            return std::move(jutLand);
         }
 
 
         case ModelType::Fletcher: {
-            std::unique_ptr<Destroyer> Fletcher(
-                    new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
-                                  "Usa", 0, 0, 5, 14, a, v, 115, 12, true,
-                                  ShipType::Destroyer,
-                                  ModelType::Fletcher, 610));
+            std::unique_ptr<Destroyer> fletcher = fletcherBuilder(a, v, coordinates);
 
-            return std::move(Fletcher);
+            return std::move(fletcher);
         }
 
 
@@ -1289,6 +1279,28 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
             break;
     }
     return std::unique_ptr<WarShip>();
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Destroyer> Gallant(
+            new Destroyer(coordinates.x, coordinates.y, 4, 67, 1913, 22,
+                          "Uk", 0, 0, 4, 8, a, v, 99, 10, true,
+                          ShipType::Destroyer,
+                          ModelType::Gallant, 8));
+    return Gallant;
+}
+
+std::unique_ptr<Destroyer>
+ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
+                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+    std::unique_ptr<Destroyer> Campbelltown(
+            new Destroyer(coordinates.x, coordinates.y, 4, 66, 1280, 19,
+                          "Uk", 4, 0, 0, 10, a, v, 96, 9, true,
+                          ShipType::Destroyer,
+                          ModelType::Campbelltown, 6));
+    return Campbelltown;
 }
 
 std::unique_ptr<Destroyer>
