@@ -76,8 +76,9 @@ public:
 
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
-private:
     void setUpTiles(int &tileDim);
+
+private:
 
     void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory);
 
