@@ -59,7 +59,7 @@ std::unique_ptr<Submarine>
 ShipFactory::gatoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
     std::unique_ptr<Submarine> Gato(
-            new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Japan", 0, 0, 0, 0, a, v, 95, 8, true,
+            new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
                           ShipType::Submarine, ModelType::Gato, 6, false));
     return Gato;
 }
