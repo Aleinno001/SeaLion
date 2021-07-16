@@ -400,19 +400,42 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
             return std::move(hood);
         }
-        case ModelType::Arizona:
+        case ModelType::Arizona: {
+            std::unique_ptr<Battleship> arizona(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
+                                   "Usa", 8, 4, 0, 4, a, v, 185, 30, true,
+                                   ShipType::Battleship,
+                                   ModelType::Arizona, 0));
 
-            break;
-        case ModelType::Montana:
+            return std::move(arizona);
+        }
+        case ModelType::Montana: {
+            std::unique_ptr<Battleship> montana(
+                    new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
+                                   "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
+                                   ShipType::Battleship,
+                                   ModelType::Montana, 2));
 
-            break;
-        case ModelType::NewYork:
+            return std::move(montana);
+        }
+        case ModelType::NewYork: {
+            std::unique_ptr<Battleship> newYork(
+                    new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
+                                   "Usa", 0, 5, 0, 6, a, v, 175, 29, true,
+                                   ShipType::Battleship,
+                                   ModelType::NewYork, 0));
 
-            break;
-        case ModelType::NorthCarolina:
+            return std::move(newYork);
+        }
+        case ModelType::NorthCarolina: {
+            std::unique_ptr<Battleship> northCarolina(
+                    new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
+                                   "Usa", 6, 2, 0, 34, a, v, 222, 33, true,
+                                   ShipType::Battleship,
+                                   ModelType::NorthCarolina, 3));
 
-            break;
-            //TODO add exception
+            return std::move(northCarolina);
+        }
     }
     return std::unique_ptr<WarShip>(); //TODO implementare tutti i costruttori
 }
