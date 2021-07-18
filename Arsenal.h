@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <string>
 #include "Vehicle.h"
-
+#include "Bullet.h"
 
 class WarShip;
 
@@ -16,10 +16,9 @@ class Arsenal {
 protected:
     float rangeOfFire;
     int reloadTime;
-    int rateOfFire;
     int ammoSpeed;
     int maximumDispersion;
-    std::string ammoType;
+    Bullet ammoType;
     float ammoDeceleration;
     int firepower;
     int numAmmo;
@@ -30,7 +29,7 @@ protected:
 public:
     //TODO implementare i metodi
 
-    Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+    Arsenal(const float range, const int reload, int speed, int dispersion, Bullet type,
             float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
     virtual ~Arsenal() = default;
@@ -60,7 +59,7 @@ public:
 
     int getMaximumDispersion() const;
 
-    const std::string &getAmmoType() const;
+    const Bullet &getAmmoType() const;
 
     float getAmmoDeceleration() const;
 
@@ -68,9 +67,8 @@ public:
 
     int getNumAmmo() const;
 
-    double getPosX() const;
+    void setAmmoType(const Bullet &ammoType);
 
-    double getPosY() const;
 
 };
 

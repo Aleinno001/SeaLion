@@ -13,20 +13,12 @@ const int Arsenal::getReloadTime() const {
     return reloadTime;
 }
 
-const int Arsenal::getRateOfFire() const {
-    return rateOfFire;
-}
-
 int Arsenal::getAmmoSpeed() const {
     return ammoSpeed;
 }
 
 int Arsenal::getMaximumDispersion() const {
     return maximumDispersion;
-}
-
-const std::string &Arsenal::getAmmoType() const {
-    return ammoType;
 }
 
 float Arsenal::getAmmoDeceleration() const {
@@ -41,9 +33,9 @@ int Arsenal::getNumAmmo() const {
     return numAmmo;
 }
 
-Arsenal::Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+Arsenal::Arsenal(const float range, const int reload, int speed, int dispersion, Bullet type,
                  float decelleration, int power, int num, int posX, int posY, int le, int wi,
-                 std::string texName) : rangeOfFire(range), reloadTime(reload), rateOfFire(rate),
+                 std::string texName) : rangeOfFire(range), reloadTime(reload),
                                         ammoSpeed(speed), maximumDispersion(dispersion),
                                         ammoDeceleration(decelleration), firepower(power), numAmmo(num), length(le),
                                         width(wi), textureName(texName) {
@@ -73,6 +65,13 @@ void Arsenal::openFire(Vehicle enemy) {
 
 }
 
+const Bullet &Arsenal::getAmmoType() const {
+    return ammoType;
+}
+
+void Arsenal::setAmmoType(const Bullet &ammoType) {
+    Arsenal::ammoType = ammoType;
+}
 
 
 

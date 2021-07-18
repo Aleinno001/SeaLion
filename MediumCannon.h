@@ -6,6 +6,7 @@
 #define SEALION_MEDIUMCANNON_H
 
 #include "Arsenal.h"
+#include "Bullet.h"
 
 class MediumCannnon : public Arsenal {
 public:
@@ -13,7 +14,7 @@ public:
 
 
 
-    MediumCannnon(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+    MediumCannnon(const float range, const int reload, int speed, int dispersion, Bullet type,
                   float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
     ~MediumCannnon() override;

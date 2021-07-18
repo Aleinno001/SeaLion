@@ -14,6 +14,8 @@ private:
     float speedMult{1};
     float penetrationMult{1};
 public:
+    StandardBullet() = default;
+
     float getDmgMult() const;
 
     float getSpeedMult() const;

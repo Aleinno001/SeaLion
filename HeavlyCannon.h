@@ -7,13 +7,14 @@
 
 
 #include "Arsenal.h"
+#include "Bullet.h"
 
 class HeavlyCannon : public Arsenal {
 public:
     //TODO implementare
 
 
-    HeavlyCannon(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+    HeavlyCannon(const float range, const int reload, int speed, int dispersion, Bullet type,
                  float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
     ~HeavlyCannon() override;

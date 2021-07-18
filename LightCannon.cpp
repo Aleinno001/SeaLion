@@ -4,9 +4,9 @@
 
 #include "LightCannon.h"
 
-LightCannon::LightCannon(float range, const int reload, const int rate, int speed, int dispersion, std::string type,
+LightCannon::LightCannon(float range, const int reload, int speed, int dispersion, Bullet type,
                          float decelleration, int power, int num, int x, int y, int le, int wi, std::string texName)
-        : Arsenal(range, reload, rate, speed, dispersion, type, decelleration, power, num, x, y, le, wi, texName) {
+        : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, x, y, le, wi, texName) {
 
 }
 

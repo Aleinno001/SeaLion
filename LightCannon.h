@@ -11,8 +11,8 @@ class LightCannon : public Arsenal {
 public:
     //TODO implementare
 
-    LightCannon(float range, const int reload, const int rate, int speed, int dispersion,
-                std::string type, float decelleration, int power, int num, int x, int y, int le, int wi,
+    LightCannon(float range, const int reload, int speed, int dispersion,
+                Bullet type, float decelleration, int power, int num, int x, int y, int le, int wi,
                 std::string texName);
 
     ~LightCannon() override;
