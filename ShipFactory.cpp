@@ -355,7 +355,7 @@ std::unique_ptr<Cruiser>
 ShipFactory::takaoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
     std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
-                                               "Japan", 4, 0, 5, 16, a, v, 193, 19, true,
+                                               "Japan", 4, 0, 5, 16, a, v, 193, 25, true,
                                                ShipType::Cruiser,
                                                ModelType::Takao, 2));
     return takao;
