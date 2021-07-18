@@ -28,18 +28,18 @@ const int WarShip::getNumHCannons() const {
     return numHCannons;
 }
 
-const std::vector<std::unique_ptr<Arsenal>> &WarShip::getArsenalList() const {
+const std::list<std::unique_ptr<Arsenal>> &WarShip::getArsenalList() const {
     return arsenalList;
 }
 
-const std::vector<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() const {
+const std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() const {
     return vehicleList;
 }
 
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
-                 std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-                 std::vector<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+                 std::list<std::unique_ptr<Arsenal>> &arsenalList,
+                 std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
                  bool col, ShipType sh, ModelType mo) : Vehicle(x, y, ac, maxVel, hp,
                                                                 le, wi, col),
                                                         armour(arm),
