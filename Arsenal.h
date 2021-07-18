@@ -8,6 +8,9 @@
 #include <cstdlib>
 #include <string>
 #include "Vehicle.h"
+#include "WarShip.h"
+
+class WarShip;
 
 class Arsenal {
 protected:
@@ -39,11 +42,11 @@ public:
 
     virtual void openFire(Vehicle enemy);
 
-    virtual void update(int posX, int posY);
+    virtual void update(std::unique_ptr<WarShip> theChangedSubject) = 0;
 
-    virtual void attach();
+    virtual void attach() = 0;
 
-    virtual void detach();
+    virtual void detach() = 0;
 
     virtual bool engage(Vehicle enemy);
 

@@ -81,11 +81,6 @@ void Arsenal::openFire(Vehicle enemy) {
 }
 
 
-void Arsenal::attach() {
 
-}
 
-void Arsenal::update(int posX, int posY) {
-
-}
 
