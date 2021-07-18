@@ -10,6 +10,8 @@
 
 class Battleship : public WarShip {
 private:
+
+
     int numInterceptors;
 
 
@@ -17,8 +19,8 @@ public:
 
     Battleship(int x, int y, float ac, const float maxVel, int hp, int arm,
                std::string nat, int numL, int numH, int numM, int numAA,
-               std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-               std::vector<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+               std::list<std::unique_ptr<Arsenal>> &arsenalList,
+               std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
                bool col, ShipType sh, ModelType mo, int numInterceptors);
 
     //float calcSpeed() override;
