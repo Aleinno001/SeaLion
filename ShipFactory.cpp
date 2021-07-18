@@ -7,8 +7,8 @@
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
-    std::vector<std::unique_ptr<Arsenal>> a;
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a;
+    std::list<std::unique_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     switch (type) {
 
@@ -56,7 +56,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::gatoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::gatoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
     std::unique_ptr<Submarine> Gato(
             new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 8, true,
@@ -65,7 +65,7 @@ ShipFactory::gatoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<s
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::tritonBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::tritonBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
     std::unique_ptr<Submarine> Triton(
             new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
@@ -74,7 +74,7 @@ ShipFactory::tritonBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::DaVinciBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::DaVinciBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
     std::unique_ptr<Submarine> DaVinci(
             new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
@@ -83,7 +83,7 @@ ShipFactory::DaVinciBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vecto
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::typeb1Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::typeb1Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
     std::unique_ptr<Submarine> typeb1(
             new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
@@ -94,7 +94,7 @@ ShipFactory::typeb1Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::i400Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::i400Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
     std::unique_ptr<Submarine> i400(
             new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
@@ -660,8 +660,8 @@ ShipFactory::yukikazeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vect
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
-    std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+    std::list<std::unique_ptr<Vehicle>> v;
     switch (type) {
 
         case ModelType::I400: {
@@ -712,8 +712,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                            std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Submarine> Narwhal(
             new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 10, true,
                           ShipType::Submarine, ModelType::Narwhal, 4, false));
@@ -721,8 +721,8 @@ ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::vector<std::un
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                              std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                              std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Submarine> Trenchant(
             new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 10, true,
                           ShipType::Submarine, ModelType::Trenchant, 5, false));
@@ -730,8 +730,8 @@ ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::vector<std::
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::papaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                         std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::papaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                         std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Submarine> Papa(
             new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 107, 12,
                           true,
