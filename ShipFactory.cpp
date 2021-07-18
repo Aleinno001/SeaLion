@@ -104,8 +104,8 @@ ShipFactory::i400Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 }
 
 std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
-    std::vector<std::unique_ptr<Arsenal>> a;
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a;
+    std::list<std::unique_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
 
 
@@ -204,8 +204,8 @@ ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std:
 }
 
 std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &map) {
-    std::vector<std::unique_ptr<Arsenal>> a;
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a;
+    std::list<std::unique_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
 
     switch (type) {
@@ -428,7 +428,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::ironDukeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> ironDuke(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
@@ -439,7 +439,7 @@ ShipFactory::ironDukeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vect
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::northCarolinaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                   const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> northCarolina(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
@@ -450,7 +450,7 @@ ShipFactory::northCarolinaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std:
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::montanaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> montana(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
@@ -461,7 +461,7 @@ ShipFactory::montanaBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vecto
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::lionBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> lion(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
@@ -472,7 +472,7 @@ ShipFactory::lionBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<s
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::dreadNoughtBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                 const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> dreadNought(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
@@ -482,8 +482,8 @@ ShipFactory::dreadNoughtBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::v
     return dreadNought;
 }
 
-std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
-                                                                  std::vector<std::unique_ptr<Vehicle>> &v,
+std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::list<std::unique_ptr<Arsenal>> &a,
+                                                                  std::list<std::unique_ptr<Vehicle>> &v,
                                                                   const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> imperatoreAugusto(
             new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126,
@@ -494,7 +494,7 @@ std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::vector<st
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::kongoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::kongoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
                                                      "Japan", 6, 4, 0, 18, a, v, 222, 31, true,
@@ -504,7 +504,7 @@ ShipFactory::kongoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::musashiBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::musashiBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
     std::unique_ptr<Battleship> musashi(new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540,
                                                        "Japan", 6, 3, 2, 30, a, v, 244, 37, true,
@@ -992,8 +992,8 @@ ShipFactory::ijnBuilder(const sf::Vector2i &coordinates, std::list<std::unique_p
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
-    std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+    std::list<std::unique_ptr<Vehicle>> v;
     switch (type) {
 
         case ModelType::ISE: {
@@ -1095,8 +1095,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                   std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                   std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> VittorioVeneto(
             new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862, "Italy", 14, 3, 4, 32, a, v, 238,
                            33,
@@ -1106,8 +1106,8 @@ ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::vector<
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                            std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> NewYork(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
                            "Usa", 0, 5, 0, 6, a, v, 175, 29, true,
@@ -1117,8 +1117,8 @@ ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::vector<std::un
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                            std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> Arizona(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
                            "Usa", 8, 4, 0, 4, a, v, 185, 30, true,
@@ -1128,8 +1128,8 @@ ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::vector<std::un
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                         std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                         std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> Hood(
             new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800, "Uk", 0, 2, 2, 20, a, v, 262, 32,
                            true,
@@ -1138,8 +1138,8 @@ ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::vector<std::uniqu
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                           std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> MichelangeloBuonarroti(
             new Battleship(coordinates.x, coordinates.y, 1, 61, 42533, 837, "Italy", 12, 3, 6, 14, a, v, 246,
                            29,
@@ -1149,8 +1149,8 @@ ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std:
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> AndreaDoria(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 2, 2, 13, a, v, 176,
                            28,
@@ -1160,8 +1160,8 @@ ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::vector<std
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                           std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> Yamato(
             new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, 40, a, v, 263,
                            39,
@@ -1171,8 +1171,8 @@ ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::vector<std::uni
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                        std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                        std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Battleship> Ise(
             new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, 19, a, v, 220, 32,
                            true,
