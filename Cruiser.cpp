@@ -36,11 +36,11 @@ void Cruiser::ceaseFire() {
 
 }
 
-void Cruiser::registerArsenals() {
+void Cruiser::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 
-void Cruiser::removeArsenals() {
+void Cruiser::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 

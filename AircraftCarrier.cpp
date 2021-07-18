@@ -36,11 +36,12 @@ void AircraftCarrier::ceaseFire() {
 
 }
 
-void AircraftCarrier::registerArsenals() {
+void AircraftCarrier::registerArsenals(std::unique_ptr<Arsenal> observer) {
+
 
 }
 
-void AircraftCarrier::removeArsenals() {
+void AircraftCarrier::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 
