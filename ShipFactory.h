@@ -13,8 +13,9 @@
 #include "AircraftCarrier.h"
 #include "Battleship.h"
 #include "Cruiser.h"
-#include "SpecialWeaponFactory.h"
+#include "WeaponFactory.h"
 #include "CannonFactory.h"
+
 
 class ShipFactory : public AbstractShipFactory {
 

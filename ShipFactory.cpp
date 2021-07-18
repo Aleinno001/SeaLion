@@ -3,7 +3,7 @@
 //
 
 #include "ShipFactory.h"
-#include "GameWorld.h"
+
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -13,6 +13,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
     switch (type) {
 
         case ModelType::I400: {
+
             std::unique_ptr<Submarine> i400 = i400Builder(a, v, coordinates);
 
 
@@ -96,6 +97,11 @@ ShipFactory::typeb1Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<Submarine>
 ShipFactory::i400Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+
+    for (int i = 0; i < 8; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
     std::unique_ptr<Submarine> i400(
             new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 12,
                           true,
