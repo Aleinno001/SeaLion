@@ -13,7 +13,7 @@ public:
     //TODO implementare
 
     HeavlyCannon(int le, int wi, bool col, std::string texName,
-                 const float range, const int reload, const int rate, int speed, int dispersion,
+                 const float range, const int reload, int speed, int dispersion,
                  std::string type, float decelleration, int power, int num, double x, double y);
 
     ~HeavlyCannon() override;

@@ -5,9 +5,9 @@
 #include "MediumCannon.h"
 
 MediumCannon::MediumCannon(int le, int wi, std::string texName,
-                           const float range, const int reload, const int rate, int speed, int dispersion,
+                           const float range, const int reload, int speed, int dispersion,
                            std::string type, float decelleration, int power, int num, double x, double y)
-        : Arsenal(range, reload, rate, speed, dispersion, type, decelleration, power, num, x, y, le,
+        : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, x, y, le,
                   wi, texName) {}
 
 MediumCannon::~MediumCannon() {

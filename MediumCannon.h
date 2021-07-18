@@ -12,7 +12,7 @@ public:
     //TODO implementare
 
     MediumCannon(int le, int wi, std::string texName,
-                 const float range, const int reload, const int rate, int speed, int dispersion,
+                 const float range, const int reload, int speed, int dispersion,
                  std::string type, float decelleration, int power, int num, double x, double y);
 
     ~MediumCannon() override;
