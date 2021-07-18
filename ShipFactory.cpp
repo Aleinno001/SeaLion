@@ -110,7 +110,6 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
 
     switch (type) {
-
         case ModelType::Tahio: {
             std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
 
@@ -195,8 +194,11 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list
 std::unique_ptr<AircraftCarrier>
 ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
+    for (int i = 0; i < 20; i++) {
+        a.emplace_back(new SpecialWeaponFactory());
+    }
     std::unique_ptr<AircraftCarrier> Tahio(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 20, a, v, 260,
                                 27,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Tahio, 7));

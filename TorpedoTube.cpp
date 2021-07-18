@@ -5,9 +5,9 @@
 #include "TorpedoTube.h"
 
 TorpedoTube::TorpedoTube(const float range, const int reload, int speed, int dispersion,
-                         Bullet type, float decelleration, int power, int num, int posX, int posY, int le,
+                         Bullet type, float decelleration, int power, int num, int le,
                          int wi, std::string texName) : Arsenal(range, reload, speed, dispersion, type,
-                                                                decelleration, power, num, posX, posY, le, wi,
+                                                                decelleration, power, num, 0, 0, le, wi,
                                                                 texName) {
 
 }

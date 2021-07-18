@@ -14,7 +14,7 @@ public:
 
 
     TorpedoTube(const float range, const int reload, int speed, int dispersion, Bullet type,
-                float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
+                float decelleration, int power, int num, int le, int wi, std::string texName);
 
     ~TorpedoTube() override;
 

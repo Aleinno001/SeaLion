@@ -76,7 +76,7 @@ AircraftCarrier::AircraftCarrier(int x, int y, float ac, const float maxVel, int
                                                                                   vehicleList, le, wi,
                                                                                   col, sh,
                                                                                   mo),
-                                                                          numPlanes(planes) {}; {
+                                                                          numPlanes(planes) {
 
 }
 
