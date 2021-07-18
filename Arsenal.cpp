@@ -41,32 +41,24 @@ int Arsenal::getNumAmmo() const {
     return numAmmo;
 }
 
-double Arsenal::getPosX() const {
-    return posX;
-}
-
-double Arsenal::getPosY() const {
-    return posY;
-}
-
 Arsenal::Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
-                 float decelleration, int power, int num, int x, int y, sf::Texture tex, sf::Sprite sp, int le, int wi,
-                 bool col, std::string texName) : rangeOfFire(range), reloadTime(reload), rateOfFire(rate),
-                                                  ammoSpeed(speed), maximumDispersion(dispersion),
-                                                  ammoDeceleration(decelleration), firepower(power), numAmmo(num),
-                                                  posX(x), posY(y), sprite(sp), texture(tex), length(le), width(wi) {
+                 float decelleration, int power, int num, int posX, int posY, int le, int wi,
+                 std::string texName) : rangeOfFire(range), reloadTime(reload), rateOfFire(rate),
+                                        ammoSpeed(speed), maximumDispersion(dispersion),
+                                        ammoDeceleration(decelleration), firepower(power), numAmmo(num), length(le),
+                                        width(wi), textureName(texName) {
     ammoType = type;
 
-    setUpSprite(texName);
+    //setUpSprite(texName); TODO da rifare
 
 
-    pos = sf::Vector2f(posX, posY);
-    sprite.setPosition(pos);
+    pos = sf::Vector2i(posX, posY);
 
 
 }
 
 bool Arsenal::setUpSprite(std::string textureName) {
+    /*
     if (!texture.loadFromFile(textureName)) {
         throw std::runtime_error("Path to tile filename invalid, for the arsenal object sprite");
     }
@@ -74,6 +66,7 @@ bool Arsenal::setUpSprite(std::string textureName) {
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, length, width));
     return true;
+    */
 }
 
 void Arsenal::openFire(Vehicle enemy) {
