@@ -514,8 +514,8 @@ ShipFactory::musashiBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vecto
 }
 
 std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
-    std::vector<std::unique_ptr<Arsenal>> a;
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a;
+    std::list<std::unique_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     switch (type) {
 
@@ -593,7 +593,7 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::simsBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::simsBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
     std::unique_ptr<Destroyer> sims(
             new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
@@ -604,7 +604,7 @@ ShipFactory::simsBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<s
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::fletcherBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
     std::unique_ptr<Destroyer> fletcher(
             new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
@@ -615,7 +615,7 @@ ShipFactory::fletcherBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vect
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::jutlandBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::jutlandBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
     std::unique_ptr<Destroyer> jutLand(
             new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
@@ -626,7 +626,7 @@ ShipFactory::jutlandBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vecto
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::paoloEmilioBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                 const sf::Vector2i &coordinates) const {
     std::unique_ptr<Destroyer> paoloEmilio(
             new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
@@ -637,7 +637,7 @@ ShipFactory::paoloEmilioBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::v
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::impavidoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
     std::unique_ptr<Destroyer> impavido(
             new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
@@ -648,7 +648,7 @@ ShipFactory::impavidoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vect
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::yukikazeBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::yukikazeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
     std::unique_ptr<Destroyer> yukikaze(
             new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
