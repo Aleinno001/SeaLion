@@ -15,11 +15,11 @@
 class CannonFactory : public ArsenalFactory {
 public:
     //TODO implementare i metodi
-    std::unique_ptr<Arsenal> createLight() const;
+    std::unique_ptr<Arsenal> createLight(int posX, int posY) const override;
 
-    std::unique_ptr<Arsenal> createMedium() const;
+    std::unique_ptr<Arsenal> createMedium(int posX, int posY) const override;
 
-    std::unique_ptr<Arsenal> createHeavly() const;
+    std::unique_ptr<Arsenal> createHeavly(int posX, int posY) const override;
 };
 
 

@@ -8,10 +8,13 @@
 #include <memory>
 #include "Arsenal.h"
 #include "SpecialWeaponFactory.h"
+#include "StandardBullet.h"
+#include "AntiAircraft.h"
+#include "TorpedoTube.h"
 
 class WeaponFactory : public SpecialWeaponFactory {
 public:
-    std::unique_ptr<Arsenal> createSpecialWeapon(WeaponType type) const override;
+    std::unique_ptr<Arsenal> createSpecialWeapon(WeaponType type, int posX, int posY) const override;
 
 };
 

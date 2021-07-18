@@ -10,11 +10,11 @@
 
 class ArsenalFactory {
 public:
-    virtual std::unique_ptr<Arsenal> createLight() const = 0;
+    virtual std::unique_ptr<Arsenal> createLight(int posX, int posY) const = 0;
 
-    virtual std::unique_ptr<Arsenal> createMedium() const = 0;
+    virtual std::unique_ptr<Arsenal> createMedium(int posX, int posY) const = 0;
 
-    virtual std::unique_ptr<Arsenal> createHeavy() const = 0;
+    virtual std::unique_ptr<Arsenal> createHeavly(int posX, int posY) const = 0;
 };
 
 
