@@ -64,30 +64,12 @@ bool Battleship::setUpSprite(std::string textureName) {
     return Vehicle::setUpSprite(textureName);
 }
 
-Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int arm,
-                       std::string nat, int numL, int numH, int numM, int numAA,
-                       std::vector<std::unique_ptr<Arsenal>> &arsenalList,
-                       std::vector<std::unique_ptr<Vehicle>> &vehicleList, int le,
-                       int wi, bool col, ShipType sh, ModelType mo, int numInter) : WarShip(x,
-                                                                                            y,
-                                                                                            ac,
-                                                                                            maxVel,
-                                                                                            hp,
-                                                                                            arm,
-                                                                                            nat,
-                                                                                            numL,
-                                                                                            numH,
-                                                                                            numM,
-                                                                                            numAA,
-                                                                                            arsenalList,
-                                                                                            vehicleList,
-                                                                                            le,
-                                                                                            wi,
-                                                                                            col,
-                                                                                            sh,
-                                                                                            mo),
-                                                                                                             numInterceptors(
-                                                                                                                     numInter) {
+Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int arm, std::string nat, int numL,
+                       int numH, int numM, int numAa, std::list<std::unique_ptr<Arsenal>> &arsenalList,
+                       std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi, bool col, ShipType sh,
+                       ModelType mo, int numInterceptors) : WarShip(x, y, ac, maxVel, hp, arm, nat, numL, numH, numM,
+                                                                    numAa, arsenalList, vehicleList, le, wi, col, sh,
+                                                                    mo), numInterceptors(numInterceptors) {
 
 }
 
