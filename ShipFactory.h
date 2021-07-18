@@ -48,34 +48,34 @@ private:
     sf::Vector2i randomizeAlliedPositions(GameWorld &map);
 
     std::unique_ptr<Submarine>
-    i400Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+    i400Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                 const sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Submarine>
-    typeb1Builder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+    typeb1Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                   const sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Submarine>
-    DaVinciBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+    DaVinciBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                    const sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Submarine> papaBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                           std::vector<std::unique_ptr<Vehicle>> &v) const;
+    std::unique_ptr<Submarine> papaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                           std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Submarine>
-    tritonBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+    tritonBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                   const sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Submarine>
-    trenchantBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                     std::vector<std::unique_ptr<Vehicle>> &v) const;
+    trenchantBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                     std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Submarine>
-    gatoBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+    gatoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                 const sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Submarine> narwhalBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                              std::vector<std::unique_ptr<Vehicle>> &v) const;
+    std::unique_ptr<Submarine> narwhalBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                              std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<AircraftCarrier>
     tahioBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
