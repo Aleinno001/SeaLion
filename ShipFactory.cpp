@@ -1274,8 +1274,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                          std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                          std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Mahan(
             new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
                           "Usa", 0, 0, 4, 8, a, v, 104, 11, true,
@@ -1285,8 +1285,8 @@ ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::vector<std::uniq
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                            std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Gallant(
             new Destroyer(coordinates.x, coordinates.y, 4, 67, 1913, 22,
                           "Uk", 0, 0, 4, 8, a, v, 99, 10, true,
@@ -1296,8 +1296,8 @@ ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::vector<std::un
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Campbelltown(
             new Destroyer(coordinates.x, coordinates.y, 4, 66, 1280, 19,
                           "Uk", 4, 0, 0, 10, a, v, 96, 9, true,
@@ -1307,8 +1307,8 @@ ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::vector<std
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                          std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                          std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Leone(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
                           "Italy", 0, 0, 3, 20, a, v, 113, 10, true,
@@ -1318,8 +1318,8 @@ ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::vector<std::uniq
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                           std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Fubuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
                           "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
@@ -1329,8 +1329,8 @@ ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::vector<std::uni
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::akizukiBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                            std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::akizukiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                            std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Akizuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
                           "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
