@@ -36,11 +36,11 @@ void Destroyer::ceaseFire() {
 
 }
 
-void Destroyer::registerArsenals() {
+void Destroyer::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 
-void Destroyer::removeArsenals() {
+void Destroyer::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 

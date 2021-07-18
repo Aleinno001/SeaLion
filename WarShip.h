@@ -102,9 +102,9 @@ public:
 
     virtual void ceaseFire() = 0;
 
-    virtual void registerArsenals() = 0;
+    virtual void registerArsenals(std::unique_ptr<Arsenal> observer) = 0;
 
-    virtual void removeArsenals() = 0;
+    virtual void removeArsenals(std::unique_ptr<Arsenal> observer) = 0;
 
     virtual void notifyArsenals() = 0;
 

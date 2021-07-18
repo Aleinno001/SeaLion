@@ -36,11 +36,11 @@ void Battleship::ceaseFire() {
 
 }
 
-void Battleship::registerArsenals() {
+void Battleship::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 
-void Battleship::removeArsenals() {
+void Battleship::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 

@@ -57,11 +57,11 @@ void Submarine::ceaseFire() {
 
 }
 
-void Submarine::registerArsenals() {
+void Submarine::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 
-void Submarine::removeArsenals() {
+void Submarine::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
 }
 
