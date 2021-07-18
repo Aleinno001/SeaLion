@@ -163,7 +163,7 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::midwayBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::midwayBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
     std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
                                                              "Usa", 2, 0, 0, 15, a, v, 305, 74, true,
@@ -172,7 +172,7 @@ ShipFactory::midwayBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::arkRoyalBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
     std::unique_ptr<AircraftCarrier> arkRoyal(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
@@ -181,8 +181,8 @@ ShipFactory::arkRoyalBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vect
     return arkRoyal;
 }
 
-std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::vector<std::unique_ptr<Arsenal>> &a,
-                                                                       std::vector<std::unique_ptr<Vehicle>> &v,
+std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list<std::unique_ptr<Arsenal>> &a,
+                                                                       std::list<std::unique_ptr<Vehicle>> &v,
                                                                        const sf::Vector2i &coordinates) const {
     std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
@@ -193,7 +193,7 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::vect
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::tahioBuilder(std::vector<std::unique_ptr<Arsenal>> &a, std::vector<std::unique_ptr<Vehicle>> &v,
+ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 2, a, v, 260,
@@ -741,8 +741,8 @@ ShipFactory::papaBuilder(const sf::Vector2i &coordinates, std::vector<std::uniqu
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
-    std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+    std::list<std::unique_ptr<Vehicle>> v;
     switch (type) {
 
         case ModelType::Tahio: {
@@ -798,8 +798,8 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                           std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, 8, a, v, 295,
                                 34,
@@ -809,8 +809,8 @@ ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std:
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                                std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                                std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<AircraftCarrier> Indomitable(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, 6, a, v, 230,
                                 29,
@@ -820,8 +820,8 @@ ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::vector<std
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                           std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                           std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<AircraftCarrier> Cavour(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, 3, a, v, 244,
                                 29,
@@ -831,8 +831,8 @@ ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::vector<std::uni
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::vector<std::unique_ptr<Arsenal>> &a,
-                          std::vector<std::unique_ptr<Vehicle>> &v) const {
+ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+                          std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<AircraftCarrier> Hiryu(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
                                 22,
