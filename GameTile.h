@@ -70,4 +70,4 @@ public:
 };
 
 
-#endif //SEALION_GAMETILE_H
+#endif SEALION_GAMETILE_H

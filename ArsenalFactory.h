@@ -14,7 +14,7 @@ public:
 
     virtual std::unique_ptr<Arsenal> createMedium() const = 0;
 
-    virtual std::unique_ptr<Arsenal> createHeavly() const = 0;
+    virtual std::unique_ptr<Arsenal> createHeavy() const = 0;
 };
 
 

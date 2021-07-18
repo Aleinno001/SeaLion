@@ -1,5 +1,5 @@
 //
-// Created by pala on 7/2/21.
+// Created by alessandro on 7/2/21.
 //
 
 #ifndef SEALION_SHIPFACTORY_H
@@ -9,11 +9,10 @@
 #include "AbstractShipFactory.h"
 #include "Dice.h"
 #include "Submarine.h"
-#include "AircraftCarrier.h"
-#include "Cruiser.h"
-#include "Battleship.h"
 #include "Destroyer.h"
-
+#include "AircraftCarrier.h"
+#include "Battleship.h"
+#include "Cruiser.h"
 
 class ShipFactory : public AbstractShipFactory {
 
