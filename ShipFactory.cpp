@@ -1182,8 +1182,8 @@ ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::list<std::unique_p
 
 std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
-    std::vector<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
-    std::vector<std::unique_ptr<Vehicle>> v;
+    std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
+    std::list<std::unique_ptr<Vehicle>> v;
 
     switch (type) {
 
