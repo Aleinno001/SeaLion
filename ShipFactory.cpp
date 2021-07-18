@@ -1355,7 +1355,7 @@ ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
                            std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<Destroyer> Fubuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
-                          "Japan", 0, 0, 6, 20, a, v, 118, 10, true,
+                          "Japan", 0, 0, 6, 20, a, v, 118, 14, true,
                           ShipType::Destroyer,
                           ModelType::Fubuki, 9));
     return Fubuki;
