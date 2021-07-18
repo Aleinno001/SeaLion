@@ -22,7 +22,7 @@ void LightCannon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void LightCannon::update(int posX, int posY) {
+void LightCannon::update(std::unique_ptr<WarShip> theChangedSubject) {
 
 }
 

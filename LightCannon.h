@@ -22,7 +22,7 @@ private:
 
     void openFire(Vehicle enemy) override;
 
-    void update(int posX, int posY) override;
+    void update(std::unique_ptr<WarShip> theChangedSubject) override;
 
     void attach() override;
 
