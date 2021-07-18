@@ -23,20 +23,15 @@ protected:
     float ammoDeceleration;
     int firepower;
     int numAmmo;
-    int posX;
-    int posY;
     int length;
     int width;
-    bool collision;
-    sf::Texture texture;
-    sf::Sprite sprite;
-    sf::Vector2f pos;
+    sf::Vector2i pos;
+    std::string textureName;
 public:
     //TODO implementare i metodi
 
     Arsenal(const float range, const int reload, const int rate, int speed, int dispersion, std::string type,
-            float decelleration, int power, int num, int x, int y, sf::Texture tex, sf::Sprite sp, int le, int wi,
-            bool col, std::string texName);
+            float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
     virtual ~Arsenal() = default;
 

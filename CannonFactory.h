@@ -7,6 +7,9 @@
 
 
 #include "ArsenalFactory.h"
+#include "LightCannon.h"
+#include "MediumCannon.h"
+#include "HeavlyCannon.h"
 
 class CannonFactory : public ArsenalFactory {
 public:
