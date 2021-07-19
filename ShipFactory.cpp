@@ -221,7 +221,7 @@ ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std:
     }
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 20, a, v, 260,
-                                27,
+                                46,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Tahio, 7));
     return Tahio;
