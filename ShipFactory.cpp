@@ -186,8 +186,15 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 std::unique_ptr<AircraftCarrier>
 ShipFactory::midwayBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    WeaponFactory specialFactory;
+    a.emplace_back(std::move(factory.createLight(35, 79)));
+    a.emplace_back(std::move(factory.createLight(14, 230)));
+    int numAntiAir = 15;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
-                                                             "Usa", 2, 0, 0, 15, a, v, 296, 84, true,
+                                                             "Usa", 2, 0, 0, numAntiAir, a, v, 296, 84, true,
                                                              ShipType::AircraftCarrier, ModelType::Midway, 14));
     return mid;
 }
@@ -195,9 +202,16 @@ ShipFactory::midwayBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<AircraftCarrier>
 ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(7, 85)));
+    a.emplace_back(std::move(factory.createLight(28, 85)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 4;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<AircraftCarrier> arkRoyal(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
-                                "Uk", 2, 0, 0, 4, a, v, 240, 38, true, ShipType::AircraftCarrier,
+                                "Uk", 2, 0, 0, numAntiAir, a, v, 240, 38, true, ShipType::AircraftCarrier,
                                 ModelType::ArkRoyal, 7));
     return arkRoyal;
 }
@@ -205,6 +219,11 @@ ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list<std::unique_ptr<Arsenal>> &a,
                                                                        std::list<std::unique_ptr<Vehicle>> &v,
                                                                        const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(4, 41)));
+    a.emplace_back(std::move(factory.createLight(4, 69)));
+    a.emplace_back(std::move(factory.createLight(4, 98)));
+
     std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
                                 44,
@@ -216,11 +235,16 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list
 std::unique_ptr<AircraftCarrier>
 ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
-    for (int i = 0; i < 20; i++) {
-        //a.emplace_back(new SpecialWeaponFactory());
-    }
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(20, 55)));
+    a.emplace_back(std::move(factory.createLight(20, 218)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 20;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<AircraftCarrier> Tahio(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 20, a, v, 260,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, numAntiAir, a, v,
+                                260,
                                 46,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Tahio, 7));
@@ -300,22 +324,120 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
     }
 
 }
-
+                                                                                                            //TODO aggiungere aerei
 std::unique_ptr<Cruiser>
 ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
-    std::unique_ptr<Cruiser> saintLouis(new Cruiser(coordinates.x, coordinates.y, 3, 41, 11013, 280,
-                                                    "Usa", 5, 0, 3, 2, a, v, 130, 20, true,
-                                                    ShipType::Cruiser,
-                                                    ModelType::StLouis, 0));
-    return saintLouis;
-}
+                                                                                                                WeaponFactory factory;
+                                                                                                                CannonFactory cf;
+                                                                                                                int antiAir = 8;
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        7,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        29)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        7,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        37)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        6,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        98)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        1,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        71)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        15,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        71)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        8,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        80)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        2,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        41)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        16,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        41)));
+                                                                                                                for (int i = 0;
+                                                                                                                     i <
+                                                                                                                     antiAir; i++)
+                                                                                                                    a.emplace_back(
+                                                                                                                            std::move(
+                                                                                                                                    factory.createSpecialWeapon(
+                                                                                                                                            WeaponType::antiAir)));
+
+                                                                                                                std::unique_ptr<Cruiser> saintLouis(
+                                                                                                                        new Cruiser(
+                                                                                                                                coordinates.x,
+                                                                                                                                coordinates.y,
+                                                                                                                                3,
+                                                                                                                                41,
+                                                                                                                                11013,
+                                                                                                                                280,
+                                                                                                                                "Usa",
+                                                                                                                                5,
+                                                                                                                                0,
+                                                                                                                                3,
+                                                                                                                                antiAir,
+                                                                                                                                a,
+                                                                                                                                v,
+                                                                                                                                130,
+                                                                                                                                20,
+                                                                                                                                true,
+                                                                                                                                ShipType::Cruiser,
+                                                                                                                                ModelType::StLouis,
+                                                                                                                                0));
+                                                                                                                return saintLouis;
+                                                                                                            }
 
 std::unique_ptr<Cruiser>
 ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 9;
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 9, coordinates.y + 179)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 60)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 6, coordinates.y + 77)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 11, coordinates.y + 91)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 105)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 23, coordinates.y + 105)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 149)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 23, coordinates.y + 150)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 11, coordinates.y + 172)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> alaska(new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918,
-                                                "Usa", 6, 1, 2, 9, a, v, 246, 28, true,
+                                                "Usa", 6, 1, 2, antiAir, a, v, 246, 28, true,
                                                 ShipType::Cruiser,
                                                 ModelType::Alaska, 4));
     return alaska;
@@ -324,8 +446,20 @@ ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<Cruiser>
 ShipFactory::danaeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 7;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 111)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 102)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 120)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 74)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 45)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 33)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 19)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> danae(new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190,
-                                               "Uk", 6, 0, 1, 1, a, v, 136, 14, true,
+                                               "Uk", 6, 0, 1, antiAir, a, v, 136, 14, true,
                                                ShipType::Cruiser,
                                                ModelType::Danae, 0));
     return danae;
@@ -334,8 +468,23 @@ ShipFactory::danaeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std:
 std::unique_ptr<Cruiser>
 ShipFactory::trentoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 12;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 44)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 52)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 143)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 153)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 68)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 15, coordinates.y + 68)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 84)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 84)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 111)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 111)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> trento(new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120,
-                                                "Italy", 6, 0, 4, 2, a, v, 197, 25, true,
+                                                "Italy", 6, 0, 4, antiAir, a, v, 197, 25, true,
                                                 ShipType::Cruiser,
                                                 ModelType::Trento, 2));
     return trento;
@@ -344,8 +493,20 @@ ShipFactory::trentoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(std::list<std::unique_ptr<Arsenal>> &a,
                                                                std::list<std::unique_ptr<Vehicle>> &v,
                                                                const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 12;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 18)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 28)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 121)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 135)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x, coordinates.y + 93)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 10, coordinates.y + 93)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 6, coordinates.y + 112)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84,
-                                                           "Italy", 3, 0, 4, 2, a, v, 169, 15, true,
+                                                           "Italy", 3, 0, 4, antiAir, a, v, 169, 15, true,
                                                            ShipType::Cruiser,
                                                            ModelType::AlbertoDiGiussano, 1));
     return albertoDiGiussano;
@@ -354,8 +515,22 @@ std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(std::list<std::un
 std::unique_ptr<Cruiser>
 ShipFactory::takaoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 16;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 36)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 44)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 53)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 137)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 145)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 82)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 82)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 96)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 96)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
-                                               "Japan", 4, 0, 5, 16, a, v, 193, 25, true,
+                                               "Japan", 4, 0, 5, antiAir, a, v, 193, 25, true,
                                                ShipType::Cruiser,
                                                ModelType::Takao, 2));
     return takao;
@@ -454,9 +629,19 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 std::unique_ptr<Battleship>
 ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createHeavly(16, 41)));
+    a.emplace_back(std::move(factory.createHeavly(16, 55)));
+    a.emplace_back(std::move(factory.createHeavly(16, 107)));
+    a.emplace_back(std::move(factory.createHeavly(16, 133)));
+    a.emplace_back(std::move(factory.createHeavly(16, 141)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 15;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Battleship> ironDuke(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
-                           "Uk", 0, 5, 0, 15, a, v, 190, 39, true,
+                           "Uk", 0, 5, 0, numAntiAir, a, v, 190, 39, true,
                            ShipType::Battleship,
                            ModelType::IronDuke, 0));
     return ironDuke;
@@ -465,9 +650,23 @@ ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 std::unique_ptr<Battleship>
 ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                   const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createHeavly(12, 147)));
+    a.emplace_back(std::move(factory.createHeavly(12, 173)));
+    a.emplace_back(std::move(factory.createLight(5, 81)));
+    a.emplace_back(std::move(factory.createLight(22, 81)));
+    a.emplace_back(std::move(factory.createLight(5, 101)));
+    a.emplace_back(std::move(factory.createLight(22, 101)));
+    a.emplace_back(std::move(factory.createLight(1, 111)));
+    a.emplace_back(std::move(factory.createLight(26, 111)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 34;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Battleship> northCarolina(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
-                           "Usa", 6, 2, 0, 34, a, v, 222, 32, true,
+                           "Usa", 6, 2, 0, numAntiAir, a, v, 222, 32, true,
                            ShipType::Battleship,
                            ModelType::NorthCarolina, 3));
     return northCarolina;
@@ -476,9 +675,24 @@ ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::l
 std::unique_ptr<Battleship>
 ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
+    //TODO concludere tutte le aggiunte necessarie
+    CannonFactory factory;
+    /* a.emplace_back(std::move(factory.createHeavly(12, 147)));
+     a.emplace_back(std::move(factory.createHeavly(12, 173)));
+     a.emplace_back(std::move(factory.createLight(5, 81)));
+     a.emplace_back(std::move(factory.createLight(22, 81)));
+     a.emplace_back(std::move(factory.createLight(5, 101)));
+     a.emplace_back(std::move(factory.createLight(22, 101)));
+     a.emplace_back(std::move(factory.createLight(1, 111)));
+     a.emplace_back(std::move(factory.createLight(26, 111)));*/
+    WeaponFactory specialFactory;
+    int numAntiAir = 80;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Battleship> montana(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
-                           "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
+                           "Usa", 0, 4, 10, numAntiAir, a, v, 281, 37, true,
                            ShipType::Battleship,
                            ModelType::Montana, 2));
     return montana;
@@ -892,8 +1106,16 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
 std::unique_ptr<AircraftCarrier>
 ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createMedium(55, 92)));
+    a.emplace_back(std::move(factory.createMedium(56, 179)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 8;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, 8, a, v, 295,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir, a, v, 295,
                                 70,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
@@ -903,8 +1125,15 @@ ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std:
 std::unique_ptr<AircraftCarrier>
 ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(6, 38)));
+    a.emplace_back(std::move(factory.createLight(31, 38)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 6;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<AircraftCarrier> Indomitable(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, 6, a, v, 230,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir, a, v, 230,
                                 41,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Indomitable, 5));
@@ -914,8 +1143,19 @@ ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::
 std::unique_ptr<AircraftCarrier>
 ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(16, 4)));
+    a.emplace_back(std::move(factory.createLight(31, 23)));
+    a.emplace_back(std::move(factory.createLight(29, 78)));
+    a.emplace_back(std::move(factory.createLight(26, 171)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 3;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<AircraftCarrier> Cavour(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, 3, a, v, 244,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir, a, v,
+                                244,
                                 50,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Cavour, 5));
@@ -925,8 +1165,16 @@ ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 std::unique_ptr<AircraftCarrier>
 ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(18, 3)));
+    a.emplace_back(std::move(factory.createLight(5, 61)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 2;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<AircraftCarrier> Hiryu(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir, a, v, 222,
                                 39,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Hiryu, 6));
@@ -1016,6 +1264,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
 }
 
+//TODO da qui continuare a mettere i cannoni
 std::unique_ptr<Cruiser>
 ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                std::list<std::unique_ptr<Vehicle>> &v) const {
@@ -1243,8 +1492,14 @@ ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std:
 std::unique_ptr<Battleship>
 ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createHeavly(11, 49))); //TODO PROSEGUI BATTLESHIP
+    a.emplace_back(std::move(factory.createHeavly(11, 63)));
+    a.emplace_back(std::move(factory.createHeavly(11, 127)));
+    a.emplace_back(std::move(factory.createHeavly(11, 141)));
+
     std::unique_ptr<Battleship> AndreaDoria(
-            new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 2, 2, 13, a, v, 176,
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 4, 4, 13, a, v, 176,
                            29,
                            true,
                            ShipType::Battleship, ModelType::AndreaDoria, 0));
