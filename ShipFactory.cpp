@@ -211,6 +211,11 @@ ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list<std::unique_ptr<Arsenal>> &a,
                                                                        std::list<std::unique_ptr<Vehicle>> &v,
                                                                        const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(4, 41)));
+    a.emplace_back(std::move(factory.createLight(4, 69)));
+    a.emplace_back(std::move(factory.createLight(4, 98)));
+
     std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, a, v, 180,
                                 44,
@@ -868,6 +873,12 @@ ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::
 std::unique_ptr<AircraftCarrier>
 ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(16, 4)));
+    a.emplace_back(std::move(factory.createLight(31, 23)));
+    a.emplace_back(std::move(factory.createLight(29, 78)));
+    a.emplace_back(std::move(factory.createLight(26, 171)));
+
     std::unique_ptr<AircraftCarrier> Cavour(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, 3, a, v, 244,
                                 50,
