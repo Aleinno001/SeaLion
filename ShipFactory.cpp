@@ -13,6 +13,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
     switch (type) {
 
         case ModelType::I400: {
+
             std::unique_ptr<Submarine> i400 = i400Builder(a, v, coordinates);
 
 
@@ -58,6 +59,10 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 std::unique_ptr<Submarine>
 ShipFactory::gatoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 6; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
     std::unique_ptr<Submarine> Gato(
             new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, a, v, 95, 9, true,
                           ShipType::Submarine, ModelType::Gato, 6, false));
@@ -67,6 +72,10 @@ ShipFactory::gatoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 std::unique_ptr<Submarine>
 ShipFactory::tritonBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 6; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
     std::unique_ptr<Submarine> Triton(
             new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, a, v, 84, 8, true,
                           ShipType::Submarine, ModelType::Triton, 6, false));
@@ -76,6 +85,10 @@ ShipFactory::tritonBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<Submarine>
 ShipFactory::DaVinciBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 8; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
     std::unique_ptr<Submarine> DaVinci(
             new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, a, v, 77, 9, true,
                           ShipType::Submarine, ModelType::DaVinci, 8, false));
@@ -85,6 +98,10 @@ ShipFactory::DaVinciBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 std::unique_ptr<Submarine>
 ShipFactory::typeb1Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                            const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 6; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
     std::unique_ptr<Submarine> typeb1(
             new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, a, v, 111, 10,
                           true,
@@ -96,6 +113,11 @@ ShipFactory::typeb1Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<Submarine>
 ShipFactory::i400Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
+    WeaponFactory factory;
+
+    for (int i = 0; i < 8; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
     std::unique_ptr<Submarine> i400(
             new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, a, v, 122, 13,
                           true,
@@ -194,9 +216,9 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list
 std::unique_ptr<AircraftCarrier>
 ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
-    /*for (int i = 0; i < 20; i++) {
-        a.emplace_back(new SpecialWeaponFactory());
-    }*/
+    for (int i = 0; i < 20; i++) {
+        //a.emplace_back(new SpecialWeaponFactory());
+    }
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 20, a, v, 260,
                                 46,
@@ -716,6 +738,9 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
 std::unique_ptr<Submarine>
 ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 4; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
     std::unique_ptr<Submarine> Narwhal(
             new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, a, v, 91, 13, true,
                           ShipType::Submarine, ModelType::Narwhal, 4, false));
@@ -725,6 +750,9 @@ ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 std::unique_ptr<Submarine>
 ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                               std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 5; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
     std::unique_ptr<Submarine> Trenchant(
             new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, a, v, 85, 14, true,
                           ShipType::Submarine, ModelType::Trenchant, 5, false));
@@ -734,6 +762,9 @@ ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::list<std::un
 std::unique_ptr<Submarine>
 ShipFactory::papaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                          std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    for (int i = 0; i < 10; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
     std::unique_ptr<Submarine> Papa(
             new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, a, v, 106, 19,
                           true,
