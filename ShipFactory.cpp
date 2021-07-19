@@ -227,9 +227,9 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(std::list
 std::unique_ptr<AircraftCarrier>
 ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
-    for (int i = 0; i < 20; i++) {
-        //a.emplace_back(new SpecialWeaponFactory());
-    }
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(20, 55)));
+    a.emplace_back(std::move(factory.createLight(20, 218)));
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 20, a, v, 260,
                                 46,
@@ -890,6 +890,10 @@ ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 std::unique_ptr<AircraftCarrier>
 ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(18, 3)));
+    a.emplace_back(std::move(factory.createLight(5, 61)));
+
     std::unique_ptr<AircraftCarrier> Hiryu(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
                                 39,
