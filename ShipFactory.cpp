@@ -499,9 +499,23 @@ ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 std::unique_ptr<Battleship>
 ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                   const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createHeavly(12, 147)));
+    a.emplace_back(std::move(factory.createHeavly(12, 173)));
+    a.emplace_back(std::move(factory.createLight(5, 81)));
+    a.emplace_back(std::move(factory.createLight(22, 81)));
+    a.emplace_back(std::move(factory.createLight(5, 101)));
+    a.emplace_back(std::move(factory.createLight(22, 101)));
+    a.emplace_back(std::move(factory.createLight(1, 111)));
+    a.emplace_back(std::move(factory.createLight(26, 111)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 34;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Battleship> northCarolina(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
-                           "Usa", 6, 2, 0, 34, a, v, 222, 32, true,
+                           "Usa", 6, 2, 0, numAntiAir, a, v, 222, 32, true,
                            ShipType::Battleship,
                            ModelType::NorthCarolina, 3));
     return northCarolina;
@@ -510,9 +524,24 @@ ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::l
 std::unique_ptr<Battleship>
 ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
+    //TODO concludere tutte le aggiunte necessarie
+    CannonFactory factory;
+    /* a.emplace_back(std::move(factory.createHeavly(12, 147)));
+     a.emplace_back(std::move(factory.createHeavly(12, 173)));
+     a.emplace_back(std::move(factory.createLight(5, 81)));
+     a.emplace_back(std::move(factory.createLight(22, 81)));
+     a.emplace_back(std::move(factory.createLight(5, 101)));
+     a.emplace_back(std::move(factory.createLight(22, 101)));
+     a.emplace_back(std::move(factory.createLight(1, 111)));
+     a.emplace_back(std::move(factory.createLight(26, 111)));*/
+    WeaponFactory specialFactory;
+    int numAntiAir = 80;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Battleship> montana(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
-                           "Usa", 0, 4, 10, 80, a, v, 281, 37, true,
+                           "Usa", 0, 4, 10, numAntiAir, a, v, 281, 37, true,
                            ShipType::Battleship,
                            ModelType::Montana, 2));
     return montana;
