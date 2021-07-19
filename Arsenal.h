@@ -38,9 +38,9 @@ public:
 
     virtual void update(std::unique_ptr<WarShip> theChangedSubject) = 0;
 
-    virtual void attach() = 0;
+    virtual void attach();
 
-    virtual void detach() = 0;
+    virtual void detach();
 
     virtual bool engage(Vehicle enemy);
 

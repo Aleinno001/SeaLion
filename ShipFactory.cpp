@@ -3,7 +3,7 @@
 //
 
 #include "ShipFactory.h"
-
+#include "GameWorld.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -217,7 +217,7 @@ std::unique_ptr<AircraftCarrier>
 ShipFactory::tahioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                           const sf::Vector2i &coordinates) const {
     for (int i = 0; i < 20; i++) {
-        a.emplace_back(new SpecialWeaponFactory());
+        //a.emplace_back(new SpecialWeaponFactory());
     }
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, 20, a, v, 260,
