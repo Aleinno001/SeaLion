@@ -868,7 +868,7 @@ ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::list<std::unique
                           std::list<std::unique_ptr<Vehicle>> &v) const {
     std::unique_ptr<AircraftCarrier> Hiryu(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, 2, a, v, 222,
-                                22,
+                                39,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Hiryu, 6));
     return Hiryu;
