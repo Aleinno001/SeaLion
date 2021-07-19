@@ -21,7 +21,7 @@ bool AntiAircraft::airStrafe() {
 }
 
 void AntiAircraft::openFire(Vehicle enemy) {
-    Arsenal::openFire(enemy);
+
 }
 
 void AntiAircraft::update(std::unique_ptr<WarShip> theChangedSubject) {
@@ -29,17 +29,17 @@ void AntiAircraft::update(std::unique_ptr<WarShip> theChangedSubject) {
 }
 
 void AntiAircraft::attach() {
-    Arsenal::attach();
+
 }
 
 void AntiAircraft::detach() {
-    Arsenal::detach();
+
 }
 
 bool AntiAircraft::engage(Vehicle enemy) {
-    return Arsenal::engage(enemy);
+    return false;
 }
 
 void AntiAircraft::rotate() {
-    Arsenal::rotate();
+
 }

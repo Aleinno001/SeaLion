@@ -21,7 +21,7 @@ bool TorpedoTube::accuracy() {
 }
 
 void TorpedoTube::openFire(Vehicle enemy) {
-    Arsenal::openFire(enemy);
+
 }
 
 void TorpedoTube::update(std::unique_ptr<WarShip> theChangedSubject) {
@@ -29,17 +29,17 @@ void TorpedoTube::update(std::unique_ptr<WarShip> theChangedSubject) {
 }
 
 void TorpedoTube::attach() {
-    Arsenal::attach();
+
 }
 
 void TorpedoTube::detach() {
-    Arsenal::detach();
+
 }
 
 bool TorpedoTube::engage(Vehicle enemy) {
-    return Arsenal::engage(enemy);
+    return false;
 }
 
 void TorpedoTube::rotate() {
-    Arsenal::rotate();
+
 }
