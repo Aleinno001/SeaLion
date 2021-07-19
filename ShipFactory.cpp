@@ -198,6 +198,9 @@ ShipFactory::midwayBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 std::unique_ptr<AircraftCarrier>
 ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(7, 85)));
+    a.emplace_back(std::move(factory.createLight(28, 85)));
     std::unique_ptr<AircraftCarrier> arkRoyal(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
                                 "Uk", 2, 0, 0, 4, a, v, 240, 38, true, ShipType::AircraftCarrier,
@@ -837,8 +840,8 @@ std::unique_ptr<AircraftCarrier>
 ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
-    a.emplace_back(std::move(factory.createLight(55, 92)));
-    a.emplace_back(std::move(factory.createLight(56, 179)));
+    a.emplace_back(std::move(factory.createMedium(55, 92)));
+    a.emplace_back(std::move(factory.createMedium(56, 179)));
 
     std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, 8, a, v, 295,
@@ -851,6 +854,9 @@ ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std:
 std::unique_ptr<AircraftCarrier>
 ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createLight(6, 38)));
+    a.emplace_back(std::move(factory.createLight(31, 38)));
     std::unique_ptr<AircraftCarrier> Indomitable(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, 6, a, v, 230,
                                 41,
