@@ -81,15 +81,15 @@ public:
 
 private:
 
-    void submarineRandomizer(int &enemySub, Dice &subDice, ShipFactory &enemyFactory);
+    void submarineRandomizer(int &enemySub, Dice &subDice, std::shared_ptr<ShipFactory> enemyFactory);
 
-    void battleshipRandomizer(int &enemyBat, Dice &batDice, ShipFactory &enemyFactory);
+    void battleshipRandomizer(int &enemyBat, Dice &batDice, std::shared_ptr<ShipFactory> enemyFactory);
 
-    void cruiserRandomizer(int &enemyCru, Dice &cruDice, ShipFactory &enemyFactory);
+    void cruiserRandomizer(int &enemyCru, Dice &cruDice, std::shared_ptr<ShipFactory> enemyFactory);
 
-    void destroyerRandomizer(int &enemyDes, Dice &desDice, ShipFactory &enemyFactory);
+    void destroyerRandomizer(int &enemyDes, Dice &desDice, std::shared_ptr<ShipFactory> enemyFactory);
 
-    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, ShipFactory &enemyFactory);
+    void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, std::shared_ptr<ShipFactory> enemyFactory);
 
     void japanBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
 
