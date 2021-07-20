@@ -18,8 +18,8 @@ float Vehicle::calcSpeed() {
 }
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
-                 bool col) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
-                             length(le), collision(col), width(wi) {
+                 bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
+                                              length(le), collision(col), width(wi), nationality(nat) {
 
     //setUpSprite(texName);                     /TODO da modificare
 
@@ -51,12 +51,20 @@ void Vehicle::detach() {
 
 bool Vehicle::setUpSprite(std::string textureName) {
 
+    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    std::string unitTestingPath = "UnitTesting";
+    std::size_t found = currentDir.find(unitTestingPath);
+    if (found != std::string::npos) {
+        currentDir.erase(found);
+        currentDir.pop_back();
+    }
+    textureName = currentDir + "/../Res/" + nationality + "/" + textureName + ".png";
     if (!texture.loadFromFile(textureName)) {
-        throw std::runtime_error("Path to tile filename invalid, for the vehicle object sprite");
+        throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 0, length, width));
+    sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
 }
 

@@ -2,19 +2,11 @@
 // Created by alessandro on 7/4/21.
 //
 
-#include <iostream>
 #include "GameTile.h"
-
-std::string GetCurrentWorkingDir() {
-    char buff[FILENAME_MAX];
-    GetCurrentDir(buff, FILENAME_MAX);
-    std::string current_working_dir(buff);
-    return current_working_dir;
-}
 
 
 bool GameTile::setUpSprite(std::string textureName) {
-    std::string currentDir = GetCurrentWorkingDir();
+    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
     std::size_t found = currentDir.find(unitTestingPath);
     if (found != std::string::npos) {

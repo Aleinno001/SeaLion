@@ -26,8 +26,6 @@ public:
 
     void submerge();
 
-    bool setUpSprite(std::string textureName) override;
-
     void attack(Vehicle target) override;
 
     void calculateDistance(Vehicle target) override;
