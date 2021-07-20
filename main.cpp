@@ -64,8 +64,25 @@ int main() {
         for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) {
             for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
                 window.draw(gameWorld.tiles[i][j]->sprite);
+
             }
+
         }
+
+        for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
+            window.draw(it->get()->getSprite());
+
+            /*for(auto itArsenal = it->get()->getArsenalList().begin(); itArsenal!= it->get()->getArsenalList().end(); ++itArsenal){
+                window.draw(itArsenal->get().);
+            }*/
+
+        }
+
+        for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
+
+
+        }
+
         window.display();
     }
     return 0;
