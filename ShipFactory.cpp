@@ -1264,12 +1264,26 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
 }
 
-//TODO da qui continuare a mettere i cannoni
+
 std::unique_ptr<Cruiser>
 ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 12;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 8, coordinates.y + 121)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 8, coordinates.y + 50)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 8, coordinates.y + 41)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 73)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 82)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 90)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 17, coordinates.y + 73)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 17, coordinates.y + 82)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 17, coordinates.y + 90)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> NewOrleans(
-            new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476, "Usa", 6, 0, 3, 2, a, v, 178,
+            new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476, "Usa", 6, 0, 3, antiAir, a, v, 178,
                         25,
                         true,
                         ShipType::Cruiser, ModelType::NewOrleans, 0));
@@ -1279,8 +1293,23 @@ ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::u
 std::unique_ptr<Cruiser>
 ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 7;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 6, coordinates.y + 137)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 6, coordinates.y + 128)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 6, coordinates.y + 32)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 6, coordinates.y + 24)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 117)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 92)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 75)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 13, coordinates.y + 117)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 13, coordinates.y + 92)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 13, coordinates.y + 75)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> Tiger59(
-            new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191, "Uk", 2, 0, 2, 1, a, v, 169,
+            new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191, "Uk", 6, 0, 4, antiAir, a, v, 169,
                         19,
                         true,
                         ShipType::Cruiser, ModelType::Tiger59, 2));
@@ -1290,8 +1319,23 @@ ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::list<std::uniq
 std::unique_ptr<Cruiser>
 ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 12;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 151)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 141)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 34)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 25)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 4, coordinates.y + 121)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 4, coordinates.y + 107)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 4, coordinates.y + 95)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 121)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 107)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 95)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> Belfast(
-            new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228, "Uk", 6, 0, 4, 2, a, v, 187,
+            new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228, "Uk", 6, 0, 4, antiAir, a, v, 187,
                         27,
                         true,
                         ShipType::Cruiser, ModelType::Belfast, 1));
@@ -1301,8 +1345,23 @@ ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 std::unique_ptr<Cruiser>
 ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 12;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 7, coordinates.y + 153)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 7, coordinates.y + 143)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 7, coordinates.y + 59)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 7, coordinates.y + 49)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 78)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 15, coordinates.y + 78)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x, coordinates.y + 107)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x, coordinates.y + 98)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 107)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 98)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> Gorizia(
-            new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, 2, a, v, 183,
+            new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, antiAir, a, v, 183,
                         22,
                         true,
                         ShipType::Cruiser, ModelType::Gorizia, 0));
@@ -1312,8 +1371,21 @@ ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 std::unique_ptr<Cruiser>
 ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 6;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 132)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 94)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 18)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 142)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 77)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 6, coordinates.y + 77)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 30)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 6, coordinates.y + 30)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> IsuzuNagara(
-            new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90, "Japan", 5, 0, 3, 6, a, v, 159,
+            new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90, "Japan", 5, 0, 3, antiAir, a, v, 159,
                         14,
                         true,
                         ShipType::Cruiser, ModelType::IsuzuNagara, 1));
@@ -1323,8 +1395,21 @@ ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::
 std::unique_ptr<Cruiser>
 ShipFactory::ijnBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                         std::list<std::unique_ptr<Vehicle>> &v) const {
+    WeaponFactory factory;
+    CannonFactory cf;
+    int antiAir = 10;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 31)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 41)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 50));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 64)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 101)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 115)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 20, coordinates.y + 102)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 20, coordinates.y + 115)));
+    for (int i = 0; i < antiAir; i++)
+        a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Cruiser> Ijn(
-            new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230, "Japan", 4, 0, 4, 10, a, v, 204,
+            new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230, "Japan", 4, 0, 4, antiAir, a, v, 204,
                         26,
                         true,
                         ShipType::Cruiser, ModelType::Ijn, 2));
