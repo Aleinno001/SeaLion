@@ -3,14 +3,7 @@
 //
 
 #include "GameWorld.h"
-/*
-std::string GetCurrentWorkingDir() {
-    char buff[FILENAME_MAX];
-    GetCurrentDir(buff, FILENAME_MAX);
-    std::string current_working_dir(buff);
-    return current_working_dir;
-}
-*/
+
 GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                      std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,
                      sf::Vector2i exit, int &width, int &height, int &tileDim) {

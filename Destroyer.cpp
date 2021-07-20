@@ -20,7 +20,53 @@ Destroyer::Destroyer(int x, int y, float ac, const float maxVel, int hp, int arm
                                                                                  arsenalList,
                                                                                  vehicleList,
                                                                                  le, wi, col, sh, mo),
-                                                                         numTorpedoTubes(torpedo) {}
+                                                                         numTorpedoTubes(torpedo) {
+    std::string textureName;
+    switch (mo) {
+        case ModelType::Impavido:
+            textureName = "Impavido";
+            break;
+        case ModelType::Leone:
+            textureName = "Leone";
+            break;
+        case ModelType::PaoloEmilio:
+            textureName = "PaoloEmilio";
+            break;
+        case ModelType::Akizuki:
+            textureName = "akizuki";
+            break;
+        case ModelType::Fubuki:
+            textureName = "fubuki";
+            break;
+        case ModelType::Yukikaze:
+            textureName = "yukikaze";
+            break;
+        case ModelType::Campbelltown:
+            textureName = "Campbelltown";
+            break;
+        case ModelType::Gallant:
+            textureName = "Gallant";
+            break;
+        case ModelType::Jutland:
+            textureName = "Jutland";
+            break;
+        case ModelType::Fletcher:
+            textureName = "Fletcher";
+            break;
+        case ModelType::Mahan:
+            textureName = "Mahan";
+            break;
+        case ModelType::Sims:
+            textureName = "Sims";
+            break;
+    }
+    try {
+        setUpSprite(textureName);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Wrong texture name" << std::endl;
+    }
+}
 
 void Destroyer::attack(Vehicle target) {
     Vehicle::attack(target);

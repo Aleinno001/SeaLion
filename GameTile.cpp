@@ -2,7 +2,6 @@
 // Created by alessandro on 7/4/21.
 //
 
-#include <iostream>
 #include "GameTile.h"
 
 std::string GetCurrentWorkingDir() {

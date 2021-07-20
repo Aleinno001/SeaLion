@@ -17,6 +17,7 @@
 #include <memory>
 #include <list>
 #include "Dice.h"
+#include <iostream>
 
 #include <stdio.h>
 #include <unistd.h>

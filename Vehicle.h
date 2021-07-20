@@ -4,7 +4,14 @@
 
 #ifndef SEALION_VEHICLE_H
 #define SEALION_VEHICLE_H
+
 #include "SFML/Graphics.hpp"
+#include <iostream>
+
+#include <stdio.h>
+#include <unistd.h>
+
+#define GetCurrentDir getcwd
 
 class Vehicle {
 protected:

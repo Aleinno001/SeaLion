@@ -4,7 +4,6 @@
 
 #include "Submarine.h"
 
-
 void Submarine::submerge() {
 
 }
@@ -22,11 +21,39 @@ Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int arm
                                                                                             numTor),
                                                                                     isSubmerged(
                                                                                             isSub) {
-
-}
-
-bool Submarine::setUpSprite(std::string textureName) {
-    return Vehicle::setUpSprite(textureName);
+    std::string textureName;
+    switch (mo) {
+        case ModelType::DaVinci:
+            textureName = "DaVinci";
+            break;
+        case ModelType::Papa:
+            textureName = "Papa";
+            break;
+        case ModelType::I400:
+            textureName = "I-400";
+            break;
+        case ModelType::typeb1:
+            textureName = "Type-B-1";
+            break;
+        case ModelType::Trenchant:
+            textureName = "Trenchant";
+            break;
+        case ModelType::Triton:
+            textureName = "Triton";
+            break;
+        case ModelType::Gato:
+            textureName = "Gato";
+            break;
+        case ModelType::Narwhal:
+            textureName = "Narwhal";
+            break;
+    }
+    try {
+        setUpSprite(textureName);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Wrong texture name" << std::endl;
+    }
 }
 
 void Submarine::attack(Vehicle target) {
