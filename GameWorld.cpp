@@ -409,23 +409,23 @@ void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice,
 
 }
 
-void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
+void GameWorld::japanBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory>  enemyFactory,
                                            Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 
 
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Kongo, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Kongo, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Musashi, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Musashi, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 3) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::Yamato, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Yamato, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createBattleship(ModelType::ISE, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::ISE, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -444,15 +444,15 @@ void GameWorld::japanBattleshipInizializer(int &numBat, ShipFactory &enemyFactor
 }
 
 
-void GameWorld::japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
+void GameWorld::japanSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory>  enemyFactory,
                                           Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::I400, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::I400, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::typeb1, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::typeb1, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -465,19 +465,19 @@ void GameWorld::japanSubmarineInizializer(int &numSub, ShipFactory &enemyFactory
 }
 
 
-void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
+void GameWorld::japanDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory>  enemyFactory,
                                           Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
 
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Akizuki, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Akizuki, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Fubuki, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Fubuki, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Yukikaze, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Yukikaze, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -490,16 +490,16 @@ void GameWorld::japanDestroyerInizializer(int &numDes, ShipFactory &enemyFactory
 }
 
 
-void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
+void GameWorld::japanAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory>  enemyFactory,
                                                 Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
 
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Hiryu, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Hiryu, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Tahio, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Tahio, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -515,19 +515,19 @@ void GameWorld::japanAircraftCarrierInizializer(int &numAir, ShipFactory &enemyF
 }
 
 
-void GameWorld::japanCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
+void GameWorld::japanCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory>  enemyFactory,
                                         Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
 
 try {
     for (int i = 0; i < numCru; i++) {
         if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Takao, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Takao, *this));
             enemyFleet.push_back(std::move(enemy));
         } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::IsuzuNagara, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::IsuzuNagara, *this));
             enemyFleet.push_back(std::move(enemy));
         } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Ijn, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Ijn, *this));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -598,19 +598,19 @@ void GameWorld::ukBattleshipInizializer(int &numBat, ShipFactory &enemyFactory,
     }
 }
 
-void GameWorld::italianCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
+void GameWorld::italianCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory>  enemyFactory,
                                           Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 try {
     for (int i = 0; i < numCru; i++) {
 
         if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::AlbertoDiGiussano, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::AlbertoDiGiussano, *this));
             enemyFleet.push_back(std::move(enemy));
         } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Trento, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Trento, *this));
             enemyFleet.push_back(std::move(enemy));
         } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createCruiser(ModelType::Gorizia, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Gorizia, *this));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -667,20 +667,20 @@ void GameWorld::ukCruiserInizializer(int &numCru, ShipFactory &enemyFactory,
 
 }
 
-void GameWorld::italianDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
+void GameWorld::italianDestroyerInizializer(int &numDes,  std::shared_ptr<ShipFactory> enemyFactory,
                                             Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 try {
     for (int i = 0; i < numDes; i++) {
 
 
         if (dice.roll(1) == 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Impavido, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Impavido, *this));
             enemyFleet.push_back(std::move(enemy));
         } else if (dice.roll(1) == 2) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::Leone, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Leone, *this));
             enemyFleet.push_back(std::move(enemy));
         } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createDestroyer(ModelType::PaoloEmilio, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::PaoloEmilio, *this));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -738,15 +738,15 @@ void GameWorld::ukDestroyerInizializer(int &numDes, ShipFactory &enemyFactory,
 
 }
 
-void GameWorld::italianSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
+void GameWorld::italianSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory,
                                             Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
 try {
     for (int i = 0; i < numSub; i++) {
         if (dice.roll(1) > 1) {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::DaVinci, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::DaVinci, *this));
             enemyFleet.push_back(std::move(enemy));
         } else {
-            std::unique_ptr<WarShip> enemy(enemyFactory.createSubmarine(ModelType::Papa, *this));
+            std::unique_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Papa, *this));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -796,17 +796,17 @@ void GameWorld::ukSubmarineInizializer(int &numSub, ShipFactory &enemyFactory,
 
 }
 
-void GameWorld::italianAircraftCarrierInizializer(int &numAir, ShipFactory &enemyFactory,
+void GameWorld::italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory,
                                                   Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numAir; i++) {
 
 
             if (dice.roll(1) > 1) {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::GiuseppeGaribaldi, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::GiuseppeGaribaldi, *this));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::unique_ptr<WarShip> enemy(enemyFactory.createAircraftCarrier(ModelType::Cavour, *this));
+                std::unique_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Cavour, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
