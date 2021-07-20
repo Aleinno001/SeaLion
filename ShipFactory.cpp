@@ -1500,7 +1500,7 @@ ShipFactory::ijnBuilder(const sf::Vector2i &coordinates, std::list<std::unique_p
     int antiAir = 10;
     a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 31)));
     a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 41)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 50));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 50)));
     a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 64)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 101)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 115)));

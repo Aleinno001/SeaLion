@@ -8,10 +8,7 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
-#include <stdio.h>
-#include <unistd.h>
-
-#define GetCurrentDir getcwd
+#include "CurrentDir.h"
 
 class Vehicle {
 protected:
@@ -23,6 +20,7 @@ protected:
     int length;
     int width;
     bool collision;
+    const std::string nationality;
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Vector2f pos;
@@ -36,7 +34,7 @@ protected:
 public:
 
     Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
-            bool col);
+            bool col, std::string nat);
 
     //virtual float calcSpeed(); //FIXME da rivedere il calcolo della velocità qua e nelle sottoclassi
 

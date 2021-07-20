@@ -46,7 +46,7 @@ AircraftCarrier::AircraftCarrier(int x, int y, float ac, const float maxVel, int
             break;
     }
     try {
-        setUpSprite(textureName);
+        setUpSprite("AircraftCarrier/" + textureName);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;

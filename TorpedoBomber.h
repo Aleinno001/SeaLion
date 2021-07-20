@@ -13,7 +13,7 @@ private:
     int torpedoDamage;
 private:
     TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int le, int wi, bool col, double X, double Y,
-                  float ac, const float maxVel, int HP, int length, int numTorpedos, int damage);
+                  float ac, const float maxVel, int HP, int length, int numTorpedos, int damage, std::string nat);
 
     void launchTorpedo(Vehicle enemy);
 

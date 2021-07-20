@@ -85,7 +85,6 @@ protected:
     ModelType modelType;
     const int armour;
     const std::string name;
-    const std::string nationality;
     const int numLCannons;
     const int numMCannons;
     const int numHCannons;

@@ -43,3 +43,7 @@ bool AntiAircraft::engage(Vehicle enemy) {
 void AntiAircraft::rotate() {
 
 }
+
+bool AntiAircraft::setUpSprite(std::string textureName) {
+    return Arsenal::setUpSprite(textureName);
+}

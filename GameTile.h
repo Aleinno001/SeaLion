@@ -12,6 +12,7 @@
 #include <vector>
 #include "GameTile.h"
 #include "WarShip.h"
+#include "Vehicle.h"
 #include "ShipFactory.h"
 #include <string>
 #include <memory>
@@ -19,10 +20,7 @@
 #include "Dice.h"
 #include <iostream>
 
-#include <stdio.h>
-#include <unistd.h>
 
-#define GetCurrentDir getcwd
 
 
 enum class TileType {

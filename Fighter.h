@@ -11,7 +11,7 @@ class Fighter : public Vehicle {
 private:
     Fighter(int x, int y, float ac1, float maxVel1, int hp,
             int le, int wi, bool col, double X, double Y, float ac,
-            const float maxVel, int HP, int length);
+            const float maxVel, int HP, int length, std::string nat);
 
     void fight(Vehicle enemy);
 

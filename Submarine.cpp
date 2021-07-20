@@ -30,7 +30,7 @@ Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int arm
             textureName = "Papa";
             break;
         case ModelType::I400:
-            textureName = "I-400";
+            textureName = "I400";
             break;
         case ModelType::typeb1:
             textureName = "Type-B-1";
@@ -49,7 +49,7 @@ Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int arm
             break;
     }
     try {
-        setUpSprite(textureName);
+        setUpSprite("Submarines/" + textureName);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;

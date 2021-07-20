@@ -4,13 +4,6 @@
 
 #include "Vehicle.h"
 
-std::string GetCurrentWorkingDir() {
-    char buff[FILENAME_MAX];
-    GetCurrentDir(buff, FILENAME_MAX);
-    std::string current_working_dir(buff);
-    return current_working_dir;
-}
-
 void Vehicle::rotate() {
 
 }
@@ -25,8 +18,8 @@ float Vehicle::calcSpeed() {
 }
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
-                 bool col) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
-                             length(le), collision(col), width(wi) {
+                 bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
+                                              length(le), collision(col), width(wi), nationality(nat) {
 
     //setUpSprite(texName);                     /TODO da modificare
 
@@ -58,14 +51,14 @@ void Vehicle::detach() {
 
 bool Vehicle::setUpSprite(std::string textureName) {
 
-    std::string currentDir = GetCurrentWorkingDir();
+    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
     std::size_t found = currentDir.find(unitTestingPath);
     if (found != std::string::npos) {
         currentDir.erase(found);
         currentDir.pop_back();
     }
-    textureName = currentDir + "/../Res/Tiles/" + textureName + ".png";
+    textureName = currentDir + "/../Res/" + nationality + "/" + textureName + ".png";
     if (!texture.loadFromFile(textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }

@@ -61,7 +61,7 @@ Destroyer::Destroyer(int x, int y, float ac, const float maxVel, int hp, int arm
             break;
     }
     try {
-        setUpSprite(textureName);
+        setUpSprite("Destroyer/" + textureName);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;

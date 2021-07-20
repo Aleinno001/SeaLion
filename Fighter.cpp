@@ -6,8 +6,8 @@
 
 Fighter::Fighter(int x, int y, float ac1, float maxVel1, int hp,
                  int le, int wi, bool col, double X, double Y, float ac,
-                 const float maxVel, int HP, int length) : Vehicle(x, y, ac1, maxVel1, hp, le, wi,
-                                                                   col) {
+                 const float maxVel, int HP, int length, std::string nat) : Vehicle(x, y, ac1, maxVel1, hp, le, wi,
+                                                                                    col, nat) {
 
 }
 
