@@ -829,7 +829,7 @@ void GameWorld::usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipF
                 enemyFleet.push_back(std::move(enemy));
             } else {
                 std::unique_ptr<WarShip> enemy(
-                        enemyFactory.createAircraftCarrier(ModelType::FranklinDRoosevelt, *this));
+                        enemyFactory->createAircraftCarrier(ModelType::FranklinDRoosevelt, *this));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
