@@ -677,14 +677,20 @@ ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
                             const sf::Vector2i &coordinates) const {
     //TODO concludere tutte le aggiunte necessarie
     CannonFactory factory;
-    /* a.emplace_back(std::move(factory.createHeavly(12, 147)));
-     a.emplace_back(std::move(factory.createHeavly(12, 173)));
-     a.emplace_back(std::move(factory.createLight(5, 81)));
-     a.emplace_back(std::move(factory.createLight(22, 81)));
-     a.emplace_back(std::move(factory.createLight(5, 101)));
-     a.emplace_back(std::move(factory.createLight(22, 101)));
-     a.emplace_back(std::move(factory.createLight(1, 111)));
-     a.emplace_back(std::move(factory.createLight(26, 111)));*/
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 68)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 88)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 183)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 203)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 2, coordinates.y + 111)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 30, coordinates.y + 111)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 5, coordinates.y + 125)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 27, coordinates.y + 125)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 2, coordinates.y + 138)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 30, coordinates.y + 138)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 4, coordinates.y + 152)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 27, coordinates.y + 152)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 2, coordinates.y + 165)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 30, coordinates.y + 165)));
     WeaponFactory specialFactory;
     int numAntiAir = 80;
     for (int i = 0; i < numAntiAir; i++)
