@@ -36,7 +36,7 @@ GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCr
 void
 GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
 
-    ShipFactory enemyFactory;
+    std::shared_ptr<ShipFactory> enemyFactory;
 
     Dice subDice(2);
 
@@ -290,7 +290,7 @@ GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
 }
 
 void GameWorld::submarineRandomizer(int &enemySub, Dice &subDice,
-                                    ShipFactory &enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
+                                    std::shared_ptr<ShipFactory> enemyFactory) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
 
     if (enemyFaction == FactionType::Japan) {
 

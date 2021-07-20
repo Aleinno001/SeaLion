@@ -2145,3 +2145,5 @@ sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
 
 }
 
+
+
