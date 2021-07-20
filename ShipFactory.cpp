@@ -933,9 +933,20 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
 std::unique_ptr<Destroyer>
 ShipFactory::simsBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 16)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 23)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 81)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 89)));
+    int numAntiAir = 16;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
+
     std::unique_ptr<Destroyer> sims(
             new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
-                          "Usa", 0, 0, 4, 16, a, v, 106, 16, true,
+                          "Usa", 0, 0, 4, numAntiAir, a, v, 106, 16, true,
                           ShipType::Destroyer,
                           ModelType::Sims, 8));
     return sims;
@@ -944,9 +955,21 @@ ShipFactory::simsBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 std::unique_ptr<Destroyer>
 ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 93)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 87)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 73)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 17)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 24)));
+    int numAntiAir = 14;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
+
     std::unique_ptr<Destroyer> fletcher(
             new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
-                          "Usa", 0, 0, 5, 14, a, v, 114, 12, true,
+                          "Usa", 0, 0, 5, numAntiAir, a, v, 114, 12, true,
                           ShipType::Destroyer,
                           ModelType::Fletcher, 10));
     return fletcher;
@@ -955,6 +978,11 @@ ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 std::unique_ptr<Destroyer>
 ShipFactory::jutlandBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                             const sf::Vector2i &coordinates) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 18)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 28)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 95)));
+
     std::unique_ptr<Destroyer> jutLand(
             new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
                           "Uk", 0, 0, 3, 16, a, v, 116, 13, true,
@@ -966,9 +994,19 @@ ShipFactory::jutlandBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 std::unique_ptr<Destroyer>
 ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                 const sf::Vector2i &coordinates) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 28)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 36)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 132)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 140)));
+    int numAntiAir = 12;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Destroyer> paoloEmilio(
             new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
-                          "Italy", 0, 0, 4, 12, a, v, 172, 15, true,
+                          "Italy", 0, 0, 4, numAntiAir, a, v, 172, 15, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 8));
     return paoloEmilio;
@@ -977,9 +1015,20 @@ ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::lis
 std::unique_ptr<Destroyer>
 ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 17)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 67)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 79)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 10, coordinates.y + 67)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 10, coordinates.y + 79)));
+    int numAntiAir = 40;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Destroyer> impavido(
             new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
-                          "Italy", 4, 0, 1, 40, a, v, 131, 15, true,
+                          "Italy", 4, 0, 1, numAntiAir, a, v, 131, 15, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 6));
     return impavido;
@@ -988,9 +1037,19 @@ ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 std::unique_ptr<Destroyer>
 ShipFactory::yukikazeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 16)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 51)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 70)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 93)));
+    int numAntiAir = 32;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Destroyer> yukikaze(
             new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
-                          "Japan", 0, 0, 4, 32, a, v, 119, 12, true,
+                          "Japan", 0, 0, 4, numAntiAir, a, v, 119, 12, true,
                           ShipType::Destroyer,
                           ModelType::Yukikaze, 8));
     return yukikaze;
@@ -1751,9 +1810,20 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 std::unique_ptr<Destroyer>
 ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 11)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 20)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 85)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 76)));
+    int numAntiAir = 8;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
+
     std::unique_ptr<Destroyer> Mahan(
             new Destroyer(coordinates.x, coordinates.y, 4, 69, 2137, 27,
-                          "Usa", 0, 0, 4, 8, a, v, 104, 13, true,
+                          "Usa", 0, 0, 4, numAntiAir, a, v, 104, 13, true,
                           ShipType::Destroyer,
                           ModelType::Mahan, 12));
     return Mahan;
@@ -1762,9 +1832,20 @@ ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::list<std::unique
 std::unique_ptr<Destroyer>
 ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 14)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 21)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 75)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 81)));
+    int numAntiAir = 8;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
+
     std::unique_ptr<Destroyer> Gallant(
             new Destroyer(coordinates.x, coordinates.y, 4, 67, 1913, 22,
-                          "Uk", 0, 0, 4, 8, a, v, 99, 10, true,
+                          "Uk", 0, 0, 4, numAntiAir, a, v, 99, 10, true,
                           ShipType::Destroyer,
                           ModelType::Gallant, 8));
     return Gallant;
@@ -1773,9 +1854,20 @@ ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 std::unique_ptr<Destroyer>
 ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 14)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 40)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 40)));
+    a.emplace_back(std::move(cf.createLight(coordinates.x + 3, coordinates.y + 81)));
+    int numAntiAir = 10;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
+
     std::unique_ptr<Destroyer> Campbelltown(
             new Destroyer(coordinates.x, coordinates.y, 4, 66, 1280, 19,
-                          "Uk", 4, 0, 0, 10, a, v, 96, 10, true,
+                          "Uk", 4, 0, 0, numAntiAir, a, v, 96, 10, true,
                           ShipType::Destroyer,
                           ModelType::Campbelltown, 6));
     return Campbelltown;
@@ -1784,9 +1876,18 @@ ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::list<std::
 std::unique_ptr<Destroyer>
 ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 31)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 72)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 98)));
+    int numAntiAir = 20;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Destroyer> Leone(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
-                          "Italy", 0, 0, 3, 20, a, v, 113, 13, true,
+                          "Italy", 0, 0, 3, numAntiAir, a, v, 113, 13, true,
                           ShipType::Destroyer,
                           ModelType::Leone, 6));
     return Leone;
@@ -1795,9 +1896,21 @@ ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::list<std::unique
 std::unique_ptr<Destroyer>
 ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 15)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 47)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 67)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 78)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 90)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 98)));
+    int numAntiAir = 20;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Destroyer> Fubuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
-                          "Japan", 0, 0, 6, 20, a, v, 118, 14, true,
+                          "Japan", 0, 0, 6, numAntiAir, a, v, 118, 14, true,
                           ShipType::Destroyer,
                           ModelType::Fubuki, 9));
     return Fubuki;
@@ -1806,9 +1919,19 @@ ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 std::unique_ptr<Destroyer>
 ShipFactory::akizukiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory cf;
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 22)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 29)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 95)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 104)));
+    int numAntiAir = 50;
+    WeaponFactory wf;
+    for (int i = 0; i < numAntiAir; i++) {
+        a.emplace_back(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Destroyer> Akizuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
-                          "Japan", 0, 0, 5, 50, a, v, 134, 12, true,
+                          "Japan", 0, 0, 5, numAntiAir, a, v, 134, 12, true,
                           ShipType::Destroyer,
                           ModelType::Akizuki, 4));
     return Akizuki;
