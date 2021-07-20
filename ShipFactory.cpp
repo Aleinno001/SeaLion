@@ -707,9 +707,18 @@ ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 std::unique_ptr<Battleship>
 ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 15, coordinates.y + 49)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 15, coordinates.y + 64)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 15, coordinates.y + 126)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 15, coordinates.y + 197)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 10;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Battleship> lion(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
-                           "Uk", 0, 4, 0, 10, a, v, 242, 39, true,
+                           "Uk", 0, 4, 0, numAntiAir, a, v, 242, 39, true,
                            ShipType::Battleship,
                            ModelType::Lion, 0));
     return lion;
@@ -718,9 +727,20 @@ ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 std::unique_ptr<Battleship>
 ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                 const sf::Vector2i &coordinates) const {
+    CannonFactory factory;
+
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 8, coordinates.y + 38)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 8, coordinates.y + 93)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 8, coordinates.y + 118)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x, coordinates.y + 64)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 17, coordinates.y + 64)));
+    WeaponFactory specialFactory;
+    int numAntiAir = 20;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Battleship> dreadNought(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
-                           "Uk", 0, 0, 5, 20, a, v, 158, 25, true,
+                           "Uk", 0, 5, 0, numAntiAir, a, v, 158, 25, true,
                            ShipType::Battleship,
                            ModelType::Dreadnought, 0));
     return dreadNought;
