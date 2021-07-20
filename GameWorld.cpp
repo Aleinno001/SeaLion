@@ -36,7 +36,7 @@ GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCr
 void
 GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
 
-    ShipFactory enemyFactory;
+    std::shared_ptr<ShipFactory> enemyFactory;
 
     Dice subDice(2);
 
