@@ -1479,8 +1479,39 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 std::unique_ptr<Battleship>
 ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                    std::list<std::unique_ptr<Vehicle>> &v) const {
+    CannonFactory factory;
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 10, coordinates.y + 61)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 10, coordinates.y + 83)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 10, coordinates.y + 83)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 10, coordinates.y + 146)));
+
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 2, coordinates.y + 95)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 2, coordinates.y + 165)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 24, coordinates.y + 95)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 24, coordinates.y + 165)));
+
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 3, coordinates.y + 104)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 3, coordinates.y + 109)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 3, coordinates.y + 115)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 3, coordinates.y + 122)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 3, coordinates.y + 130)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 3, coordinates.y + 136)));
+
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 26, coordinates.y + 104)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 26, coordinates.y + 109)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 26, coordinates.y + 115)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 26, coordinates.y + 122)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 26, coordinates.y + 130)));
+    a.emplace_back(std::move(factory.createLight(coordinates.x + 26, coordinates.y + 136)));
+
+
+    WeaponFactory specialFactory;
+    int numAntiAir = 32;
+    for (int i = 0; i < numAntiAir; i++)
+        a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Battleship> VittorioVeneto(
-            new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862, "Italy", 14, 3, 4, 32, a, v, 238,
+            new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862, "Italy", 12, 4, 4, numAntiAir, a, v, 238,
                            33,
                            true,
                            ShipType::Battleship, ModelType::VittorioVeneto, 1));
