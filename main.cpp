@@ -8,13 +8,98 @@ enum class windowMode {
     Fullscreen
 };
 
-int main() {
+std::vector<Fleet> alliedDummyFleet() {
     std::vector<Fleet> fleet;
-    Fleet submarineFleet;
-    submarineFleet.name = ModelType::I400;
-    submarineFleet.num = 1;
-    submarineFleet.type = ShipType::Submarine;
-    fleet.emplace_back(submarineFleet);
+    Fleet alliedFleet;
+
+    alliedFleet.name = ModelType::DaVinci;
+    alliedFleet.num = 1;
+    alliedFleet.type = ShipType::Submarine;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::Papa;
+    alliedFleet.num = 1;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::Impavido;
+    alliedFleet.num = 1;
+    alliedFleet.type = ShipType::Destroyer;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::PaoloEmilio;
+    alliedFleet.num = 1;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::Leone;
+    alliedFleet.num = 1;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::AlbertoDiGiussano;
+    alliedFleet.num = 1;
+    alliedFleet.type = ShipType::Cruiser;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::Gorizia;
+    alliedFleet.num = 1;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::Trento;
+    alliedFleet.num = 1;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::GiuseppeGaribaldi;
+    alliedFleet.num = 1;
+    alliedFleet.type = ShipType::AircraftCarrier;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::Cavour;
+    alliedFleet.num = 1;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::ImperatoreAugusto;
+    alliedFleet.num = 2;
+    alliedFleet.type = ShipType::Battleship;
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::MichelangeloBuonarroti;
+    alliedFleet.num = 1;
+
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::AndreaDoria;
+    alliedFleet.num = 1;
+
+
+    fleet.emplace_back(alliedFleet);
+
+    alliedFleet.name = ModelType::VittorioVeneto;
+    alliedFleet.num = 1;
+
+
+    fleet.emplace_back(alliedFleet);
+
+
+    return fleet;
+
+
+}
+
+int main() {
+    std::vector<Fleet> fleet = alliedDummyFleet();
+
+
     sf::Vector2i boundaries(1920, 1080);
     int a, b, c, d, e;
     int width, height, tileDim;
@@ -87,3 +172,5 @@ int main() {
     }
     return 0;
 }
+
+
