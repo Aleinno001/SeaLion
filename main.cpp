@@ -104,11 +104,11 @@ int main() {
     int a, b, c, d, e;
     int width, height, tileDim;
     windowMode videoMode = windowMode::Windowed;
-    a = 1;
-    b = 1;
-    c = 1;
-    d = 1;
-    e = 1;
+    a = 2;
+    b = 2;
+    c = 2;
+    d = 2;
+    e = 2;
 
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -125,7 +125,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Close, settings);
     window.setPosition(sf::Vector2i(0, 0));
 
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Japan, FactionType::Italy, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Italy, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
     while (window.isOpen()) {
         sf::Event event;
@@ -157,14 +157,20 @@ int main() {
         for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
 
-            /*for(auto itArsenal = it->get()->getArsenalList().begin(); itArsenal!= it->get()->getArsenalList().end(); ++itArsenal){
-                window.draw(itArsenal->get().);
-            }*/
+            for (auto itArsenal = it->get()->getArsenalList().begin();
+                 itArsenal != it->get()->getArsenalList().end(); ++itArsenal) {
+                window.draw(itArsenal->get()->getSprite());
+            }
 
         }
 
         for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
+
+            for (auto itArsenal = it->get()->getArsenalList().begin();
+                 itArsenal != it->get()->getArsenalList().end(); ++itArsenal) {
+                window.draw(itArsenal->get()->getSprite());
+            }
 
         }
 

@@ -26,6 +26,8 @@ protected:
     int width;
     sf::Vector2i pos;
     std::string textureName;
+    sf::Texture texture;
+    sf::Sprite sprite;
 public:
     //TODO implementare i metodi
 
@@ -69,7 +71,7 @@ public:
 
     void setAmmoType(const Bullet &ammoType);
 
-
+    const sf::Sprite &getSprite() const;
 };
 
 #endif //SEALION_ARSENAL_H

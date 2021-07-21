@@ -40,25 +40,27 @@ Arsenal::Arsenal(const float range, const int reload, int speed, int dispersion,
                                         ammoDeceleration(decelleration), firepower(power), numAmmo(num), length(le),
                                         width(wi), textureName(texName) {
     ammoType = type;
-
-    //setUpSprite(texName); TODO da rifare
-
-
     pos = sf::Vector2i(posX, posY);
 
 
 }
 
 bool Arsenal::setUpSprite(std::string textureName) {
-    /*
+    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    std::string unitTestingPath = "UnitTesting";
+    std::size_t found = currentDir.find(unitTestingPath);
+    if (found != std::string::npos) {
+        currentDir.erase(found);
+        currentDir.pop_back();
+    }
+    textureName = currentDir + "/../Res/Weaponry/" + textureName + ".png";
     if (!texture.loadFromFile(textureName)) {
-        throw std::runtime_error("Path to tile filename invalid, for the arsenal object sprite");
+        throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 0, length, width));
+    sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
-    */
 }
 
 void Arsenal::openFire(Vehicle enemy) {
@@ -87,6 +89,10 @@ bool Arsenal::engage(Vehicle enemy) {
 
 void Arsenal::rotate() {
 
+}
+
+const sf::Sprite &Arsenal::getSprite() const {
+    return sprite;
 }
 
 
