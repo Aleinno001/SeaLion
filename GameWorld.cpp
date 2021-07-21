@@ -39,15 +39,15 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 
     std::shared_ptr<ShipFactory> enemyFactory(new ShipFactory(0, 0));
 
-    Dice subDice(2);
+    Dice subDice(2, 23);
 
     submarineRandomizer(numEnemySub, subDice, enemyFactory);
 
-    Dice batDice(4);
+    Dice batDice(4, 345);
 
     battleshipRandomizer(numEnemyBat, batDice, enemyFactory);
 
-    Dice tripleDice(3);
+    Dice tripleDice(3, 52);
 
     cruiserRandomizer(numEnemyCru, tripleDice, enemyFactory);
 
@@ -62,7 +62,7 @@ void GameWorld::setUpTiles(
         int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
-    Dice dice(300);
+    Dice dice(300, 8734);
     std::string path = "seaBlock.png";
     bool collision = false;
     int resTile;
