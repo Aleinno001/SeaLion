@@ -19,10 +19,10 @@ int main() {
     int a, b, c, d, e;
     int width, height, tileDim;
     windowMode videoMode = windowMode::Windowed;
-    a = 1;
-    b = 2;
-    c = 3;
-    d = 4;
+    a = 5;
+    b = 5;
+    c = 5;
+    d = 5;
     e = 5;
 
     sf::ContextSettings settings;
