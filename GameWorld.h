@@ -60,7 +60,6 @@ private:
     int gridLength;
     int mapWidth{1920};
     int mapHeight{1080};
-public:
     std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
 
 public:

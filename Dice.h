@@ -13,7 +13,7 @@ class Dice {
 private:
     int numFaces;
 public:
-    Dice(int num);
+    Dice(int num, int seedMult);
 
     ~Dice() = default;
 

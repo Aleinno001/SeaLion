@@ -2105,15 +2105,14 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
     Dice percentage(3);
     int xMap = map.getMapWidth();
     int yMap = map.getMapHeight();
+
     if (offset.x >= xMap - (xMap * 0.03)) {
 
         offset.x = ((percentage.roll(1) + 1) / 100) * xMap;
         offset.y = offset.y + (yMap * 0.24);
 
     } else {
-
-        offset.x = offset.x + ((percentage.roll(1) + 1) / 100) * xMap;
-
+        offset.x = offset.x + ((percentage.roll(1) + 1) * xMap) / 100;
     }
 
     return offset;
