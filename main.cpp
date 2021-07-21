@@ -19,11 +19,11 @@ int main() {
     int a, b, c, d, e;
     int width, height, tileDim;
     windowMode videoMode = windowMode::Windowed;
-    a = 10;
-    b = 10;
-    c = 10;
-    d = 10;
-    e = 10;
+    a = 1;
+    b = 1;
+    c = 1;
+    d = 1;
+    e = 1;
 
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -79,7 +79,7 @@ int main() {
         }
 
         for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
-
+            window.draw(it->get()->getSprite());
 
         }
 
