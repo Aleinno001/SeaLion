@@ -2102,13 +2102,13 @@ ShipFactory::akizukiBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
 
 
-    Dice percentage(3);
+    Dice percentage(3, offset.x + 1);
     int xMap = map.getMapWidth();
     int yMap = map.getMapHeight();
 
     if (offset.x >= xMap - (xMap * 0.03)) {
 
-        offset.x = ((percentage.roll(1) + 1) / 100) * xMap;
+        offset.x = ((percentage.roll(1) + 1) * xMap) / 100;
         offset.y = offset.y + (yMap * 0.24);
 
     } else {
@@ -2125,7 +2125,7 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
 sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
 
 
-    Dice percentage(3);
+    Dice percentage(3, offsetAllied.x + 1);
     int xMap = map.getMapWidth();
     int yMap = map.getMapHeight();
     if (offsetAllied.y == 0) {
@@ -2133,12 +2133,12 @@ sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
     }
     if (offsetAllied.x >= xMap - (xMap * 0.03)) {
 
-        offsetAllied.x = ((percentage.roll(1) + 1) / 100) * xMap;
+        offsetAllied.x = ((percentage.roll(1) + 1) * xMap) / 100;
         offsetAllied.y -= yMap * 0.24;
 
     } else {
 
-        offsetAllied.x = offsetAllied.x + ((percentage.roll(1) + 1) / 100) * xMap;
+        offsetAllied.x = offsetAllied.x + ((percentage.roll(1) + 1) * xMap) / 100;
 
     }
 
