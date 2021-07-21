@@ -29,14 +29,15 @@ void
 GameWorld::setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
                              std::vector<Fleet> &fleet) {
 
-    setUpAlliedFleet(fleet);
     setUpEnemyFleet(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir);
+    setUpAlliedFleet(fleet);
+
 }
 
 void
 GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir) {
 
-    std::shared_ptr<ShipFactory> enemyFactory(new ShipFactory);
+    std::shared_ptr<ShipFactory> enemyFactory(new ShipFactory(0, 0));
 
     Dice subDice(2);
 
@@ -259,7 +260,7 @@ void GameWorld::italianBattleshipInizializer(int &numBat, std::shared_ptr<ShipFa
 void
 GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
 
-    ShipFactory alliedFactory;
+    ShipFactory alliedFactory(0, 0);
 
     for (auto iterator:fleet) {
         switch (iterator.type) {

@@ -40,15 +40,14 @@ public:
 
     std::unique_ptr<WarShip> createAlliedDestroyer(ModelType type, GameWorld &map) override;
 
-    ShipFactory() = default;
+    ShipFactory(int x, int y) : offset(x, y), offsetAllied(x, y) {};
 
 private:
-    sf::Vector2i offset{0, 0};
-    sf::Vector2i offsetAllied{0, 0};
+    sf::Vector2i offset;
+    sf::Vector2i offsetAllied;
 
     sf::Vector2i randomizeEnemyPositions(GameWorld &map);
 
-    sf::Vector2i randomizeAlliedPositions(GameWorld &map);
 
     std::unique_ptr<Submarine>
     i400Builder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
@@ -259,6 +258,8 @@ private:
     std::unique_ptr<Battleship>
     ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                     const sf::Vector2i &coordinates) const;
+
+    sf::Vector2i randomizeAlliedPositions(GameWorld &map);
 };
 
 
