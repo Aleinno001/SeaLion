@@ -17,9 +17,9 @@ int Dice::roll(int rolls) const {
     return roll;
 }
 
-Dice::Dice(int num) {
+Dice::Dice(int num, int seedMult) {
     unsigned seed;
     numFaces = num;
-    seed = time(0);
-    srand(seed);
+    seed = time(nullptr);
+    srand(seedMult * seed);
 }

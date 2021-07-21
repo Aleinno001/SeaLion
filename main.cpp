@@ -63,7 +63,7 @@ int main() {
         window.clear();
         for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) {
             for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
-                window.draw(gameWorld.tiles[i][j]->sprite);
+                window.draw(gameWorld.getTiles()[i][j]->getSprite());
 
             }
 
