@@ -9,7 +9,7 @@ HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int d
                            int wi, std::string texName) : Arsenal(range, reload, speed, dispersion, type,
                                                                   decelleration, power, num, posX, posY, le, wi,
                                                                   texName) {
-
+    setUpSprite(texName);
 };
 
 HeavlyCannon::~HeavlyCannon() {

@@ -38,8 +38,8 @@ Arsenal::Arsenal(const float range, const int reload, int speed, int dispersion,
                  std::string texName) : rangeOfFire(range), reloadTime(reload),
                                         ammoSpeed(speed), maximumDispersion(dispersion),
                                         ammoDeceleration(decelleration), firepower(power), numAmmo(num), length(le),
-                                        width(wi), textureName(texName) {
-    ammoType = type;
+                                        width(wi), textureName(texName), ammoType(type) {
+
     pos = sf::Vector2i(posX, posY);
 
 
@@ -95,9 +95,10 @@ const sf::Sprite &Arsenal::getSprite() const {
     return sprite;
 }
 
-std::string Arsenal::getType() const {
+const std::string &Arsenal::getTextureName() const {
     return textureName;
 }
+
 
 
 

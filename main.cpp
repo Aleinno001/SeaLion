@@ -157,19 +157,26 @@ int main() {
         for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
 
-            for (auto itArsenal = it->get()->getArsenalList().begin();
-                 itArsenal != it->get()->getArsenalList().end(); ++itArsenal) {
+            auto itArsenal = it->get()->getArsenalList().begin();
+
+            while (!itArsenal->get()->getTextureName().compare("AntiAircraft")) {
+
                 window.draw(itArsenal->get()->getSprite());
+                ++itArsenal;
             }
+
 
         }
 
         for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
 
-            for (auto itArsenal = it->get()->getArsenalList().begin();
-                 itArsenal != it->get()->getArsenalList().end(); ++itArsenal) {
+            auto itArsenal = it->get()->getArsenalList().begin();
+
+            while (!itArsenal->get()->getTextureName().compare("AntiAircraft")) {
+
                 window.draw(itArsenal->get()->getSprite());
+                ++itArsenal;
             }
 
         }

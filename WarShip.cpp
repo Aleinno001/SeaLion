@@ -31,8 +31,8 @@ const int WarShip::getNumHCannons() const {
 
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
-                 std::list<std::unique_ptr<Arsenal>> &arsenalList,
-                 std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+                 std::list<std::unique_ptr<Arsenal>> &arsenal,
+                 std::list<std::unique_ptr<Vehicle>> &vehicle, int le, int wi,
                  bool col, ShipType sh, ModelType mo) : Vehicle(x, y, ac, maxVel, hp,
                                                                 le, wi, col, nat),
                                                         armour(arm),
@@ -40,6 +40,11 @@ WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                                                         numHCannons(numH), numMCannons(numM), numAntiAircraft(numAA),
                                                         shipType(sh), modelType(mo) {
 
+    /* for(auto it = arsenal.begin(); it!=arsenal.end(); ++it )
+         arsenalList.emplace_back(std::move(it->get()));
+
+  */
+    arsenalList.push_back(std::move(arsenal.front()));
 
 }
 

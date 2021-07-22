@@ -21,6 +21,6 @@ std::unique_ptr<Arsenal> CannonFactory::createMedium(int posX, int posY) const {
 std::unique_ptr<Arsenal> CannonFactory::createHeavly(int posX, int posY) const {
     StandardBullet b;
     std::unique_ptr<HeavlyCannon> heavlyCannon(
-            new HeavlyCannon(450, 9, 150, 9, b, 0.5, 200, 80, posX, posY, 28, 15, "lightCannon"));
+            new HeavlyCannon(450, 9, 150, 9, b, 0.5, 200, 80, posX, posY, 28, 15, "HeavlyCannon"));
     return std::move(heavlyCannon);
 }

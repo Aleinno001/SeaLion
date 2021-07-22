@@ -9,7 +9,7 @@ MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int
                              int wi, std::string texName) : Arsenal(range, reload, speed, dispersion, type,
                                                                     decelleration, power, num, posX, posY, le, wi,
                                                                     texName) {
-
+    setUpSprite(texName);
 }
 
 MediumCannnon::~MediumCannnon() {

@@ -73,7 +73,7 @@ public:
 
     const sf::Sprite &getSprite() const;
 
-    std::string getType() const;
+    const std::string &getTextureName() const;
 };
 
 #endif //SEALION_ARSENAL_H
