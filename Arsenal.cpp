@@ -95,6 +95,10 @@ const sf::Sprite &Arsenal::getSprite() const {
     return sprite;
 }
 
+std::string Arsenal::getType() const {
+    return textureName;
+}
+
 
 
 

@@ -72,6 +72,8 @@ public:
     void setAmmoType(const Bullet &ammoType);
 
     const sf::Sprite &getSprite() const;
+
+    std::string getType() const;
 };
 
 #endif //SEALION_ARSENAL_H
