@@ -156,27 +156,31 @@ int main() {
 
         for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
+            //auto itArsenal = it->get()->getArsenalList().begin();
 
-            auto itArsenal = it->get()->getArsenalList().begin();
 
-            while (!itArsenal->get()->getTextureName().compare("AntiAircraft")) {
 
-                window.draw(itArsenal->get()->getSprite());
-                ++itArsenal;
+            //for(auto itArsenal = it->get()->getArsenalList().begin();itArsenal->get()->getTextureName()!="AntiAircraft" && itArsenal->get()->getTextureName()!="TorpedoTube";++itArsenal){
+            //window.draw(itArsenal->get()->getSprite());
+            //}
+
+            for (auto const &itArsenal : it->get()->getArsenalList()) {
+
+                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                    std::cerr << "cicla?" << std::endl;
+                    window.draw(itArsenal->getSprite());
+                }
             }
-
-
         }
 
         for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
 
-            auto itArsenal = it->get()->getArsenalList().begin();
+            for (auto const &itArsenal : it->get()->getArsenalList()) {
 
-            while (!itArsenal->get()->getTextureName().compare("AntiAircraft")) {
-
-                window.draw(itArsenal->get()->getSprite());
-                ++itArsenal;
+                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                    window.draw(itArsenal->getSprite());
+                }
             }
 
         }

@@ -40,7 +40,7 @@ Arsenal::Arsenal(const float range, const int reload, int speed, int dispersion,
                                         ammoDeceleration(decelleration), firepower(power), numAmmo(num), length(le),
                                         width(wi), textureName(texName), ammoType(type) {
 
-    pos = sf::Vector2i(posX, posY);
+    pos = sf::Vector2f(posX, posY);
 
 
 }
@@ -53,8 +53,9 @@ bool Arsenal::setUpSprite(std::string textureName) {
         currentDir.erase(found);
         currentDir.pop_back();
     }
-    textureName = currentDir + "/../Res/Weaponry/" + textureName + ".png";
-    if (!texture.loadFromFile(textureName)) {
+    std::string textPath;
+    textPath = currentDir + "/../Res/Weaponry/" + textureName + ".png";
+    if (!texture.loadFromFile(textPath)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);

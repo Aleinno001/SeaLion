@@ -24,7 +24,7 @@ protected:
     int numAmmo;
     int length;
     int width;
-    sf::Vector2i pos;
+    sf::Vector2f pos;
     std::string textureName;
     sf::Texture texture;
     sf::Sprite sprite;

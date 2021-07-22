@@ -39,12 +39,11 @@ WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                                                         numLCannons(numL),
                                                         numHCannons(numH), numMCannons(numM), numAntiAircraft(numAA),
                                                         shipType(sh), modelType(mo) {
+    arsenalList = std::move(arsenal);
+    /*for (auto const& itArsenal : arsenal) {
+         arsenalList=itArsenal;
+     }*/
 
-    /* for(auto it = arsenal.begin(); it!=arsenal.end(); ++it )
-         arsenalList.emplace_back(std::move(it->get()));
-
-  */
-    arsenalList.push_back(std::move(arsenal.front()));
 
 }
 

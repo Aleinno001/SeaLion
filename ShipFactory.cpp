@@ -1458,8 +1458,9 @@ ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
     a.emplace_back(std::move(cf.createLight(coordinates.x, coordinates.y + 98)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 107)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 18, coordinates.y + 98)));
-    for (int i = 0; i < antiAir; i++)
+    for (int i = 0; i < antiAir; i++) {
         a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+    }
     std::unique_ptr<Cruiser> Gorizia(
             new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, antiAir, a, v, 183,
                         22,
@@ -2114,7 +2115,6 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
     } else {
 
         offset.x = offset.x + ((percentage.roll(1) + 1) * xMap / 100);
-        std::cerr << ((percentage.roll(1) + 1) * xMap / 100) << std::endl;
 
     }
 

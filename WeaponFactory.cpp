@@ -9,7 +9,8 @@ std::unique_ptr<Arsenal> WeaponFactory::createSpecialWeapon(WeaponType type) con
     StandardBullet b;
     if (type == WeaponType::antiAir) {
         std::unique_ptr<AntiAircraft> specialCannon(
-                new AntiAircraft(250, 3, 250, 5, b, 0.3, 50, 200, 4, 4, "AntiAircraft"));
+                new AntiAircraft(250, 3, 250, 5, b, 0.3, 50, 200, 4, 4,
+                                 "AntiAircraft"));  //TODO sistemare i valori di danno etc
         return std::move(specialCannon);
     } else {
         std::unique_ptr<TorpedoTube> specialCannon(

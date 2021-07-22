@@ -10,6 +10,7 @@ HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int d
                                                                   decelleration, power, num, posX, posY, le, wi,
                                                                   texName) {
     setUpSprite(texName);
+    sprite.setPosition(pos);
 };
 
 HeavlyCannon::~HeavlyCannon() {

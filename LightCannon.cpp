@@ -5,9 +5,11 @@
 #include "LightCannon.h"
 
 LightCannon::LightCannon(float range, const int reload, int speed, int dispersion, Bullet type,
-                         float decelleration, int power, int num, int x, int y, int le, int wi, std::string texName)
-        : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, x, y, le, wi, texName) {
+                         float decelleration, int power, int num, int posX, int posY, int le, int wi,
+                         std::string texName)
+        : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, posX, posY, le, wi, texName) {
     setUpSprite(texName);
+    sprite.setPosition(pos);
 }
 
 LightCannon::~LightCannon() {

@@ -10,6 +10,7 @@ MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int
                                                                     decelleration, power, num, posX, posY, le, wi,
                                                                     texName) {
     setUpSprite(texName);
+    sprite.setPosition(pos);
 }
 
 MediumCannnon::~MediumCannnon() {
