@@ -335,23 +335,23 @@ ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
                                                                                                                         std::move(
                                                                                                                                 cf.createMedium(
                                                                                                                                         coordinates.x +
-                                                                                                                                        7,
+                                                                                                                                        6,
                                                                                                                                         coordinates.y +
-                                                                                                                                        29)));
-                                                                                                                a.emplace_back(
-                                                                                                                        std::move(
-                                                                                                                                cf.createMedium(
-                                                                                                                                        coordinates.x +
-                                                                                                                                        7,
-                                                                                                                                        coordinates.y +
-                                                                                                                                        37)));
+                                                                                                                                        21)));
                                                                                                                 a.emplace_back(
                                                                                                                         std::move(
                                                                                                                                 cf.createMedium(
                                                                                                                                         coordinates.x +
                                                                                                                                         6,
                                                                                                                                         coordinates.y +
-                                                                                                                                        98)));
+                                                                                                                                        34)));
+                                                                                                                a.emplace_back(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        coordinates.x +
+                                                                                                                                        6,
+                                                                                                                                        coordinates.y +
+                                                                                                                                        111)));
                                                                                                                 a.emplace_back(
                                                                                                                         std::move(
                                                                                                                                 cf.createLight(
@@ -394,7 +394,6 @@ ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
                                                                                                                             std::move(
                                                                                                                                     factory.createSpecialWeapon(
                                                                                                                                             WeaponType::antiAir)));
-
                                                                                                                 std::unique_ptr<Cruiser> saintLouis(
                                                                                                                         new Cruiser(
                                                                                                                                 coordinates.x,
