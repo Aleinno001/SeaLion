@@ -104,11 +104,11 @@ int main() {
     int a, b, c, d, e;
     int width, height, tileDim;
     windowMode videoMode = windowMode::Windowed;
-    a = 5;
-    b = 5;
-    c = 5;
-    d = 5;
-    e = 5;
+    a = 3;
+    b = 3;
+    c = 3;
+    d = 3;
+    e = 2;
 
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -125,7 +125,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Close, settings);
     window.setPosition(sf::Vector2i(0, 0));
 
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Japan, FactionType::Italy, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Usa, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
     while (window.isOpen()) {
         sf::Event event;
