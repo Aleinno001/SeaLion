@@ -1691,10 +1691,10 @@ ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 4;
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 42)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 56)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 126)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 137)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 8, coordinates.y + 35)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 8, coordinates.y + 64)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 8, coordinates.y + 126)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 8, coordinates.y + 148)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 97)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 2, coordinates.y + 87)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 2, coordinates.y + 78)));
