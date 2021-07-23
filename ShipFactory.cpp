@@ -651,8 +651,9 @@ std::unique_ptr<Battleship>
 ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                                   const sf::Vector2i &coordinates) const {
     CannonFactory factory;
-    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 12, coordinates.y + 147)));
-    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 12, coordinates.y + 173)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 8, coordinates.y + 56)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 8, coordinates.y + 145)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 8, coordinates.y + 171)));
     a.emplace_back(std::move(factory.createLight(coordinates.x + 5, coordinates.y + 81)));
     a.emplace_back(std::move(factory.createLight(coordinates.x + 22, coordinates.y + 81)));
     a.emplace_back(std::move(factory.createLight(coordinates.x + 5, coordinates.y + 101)));
