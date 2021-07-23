@@ -425,9 +425,9 @@ ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 9;
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 9, coordinates.y + 179)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 60)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 6, coordinates.y + 77)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 6, coordinates.y + 179)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 60)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 10, coordinates.y + 77)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 11, coordinates.y + 91)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 1, coordinates.y + 105)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 23, coordinates.y + 105)));
@@ -677,10 +677,10 @@ ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
                             const sf::Vector2i &coordinates) const {
     //TODO concludere tutte le aggiunte necessarie
     CannonFactory factory;
-    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 68)));
-    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 88)));
-    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 183)));
-    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 13, coordinates.y + 203)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 11, coordinates.y + 60)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 11, coordinates.y + 88)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 11, coordinates.y + 183)));
+    a.emplace_back(std::move(factory.createHeavly(coordinates.x + 11, coordinates.y + 210)));
     a.emplace_back(std::move(factory.createMedium(coordinates.x + 2, coordinates.y + 111)));
     a.emplace_back(std::move(factory.createMedium(coordinates.x + 30, coordinates.y + 111)));
     a.emplace_back(std::move(factory.createMedium(coordinates.x + 5, coordinates.y + 125)));
@@ -1371,9 +1371,9 @@ ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::u
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 12;
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 8, coordinates.y + 121)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 8, coordinates.y + 50)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 8, coordinates.y + 41)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 121)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 50)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 9, coordinates.y + 38)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 73)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 82)));
     a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 90)));
