@@ -8,6 +8,7 @@
 #include <memory>
 #include "Arsenal.h"
 
+
 class ArsenalFactory {
 public:
     virtual std::unique_ptr<Arsenal> createLight(int posX, int posY) const = 0;

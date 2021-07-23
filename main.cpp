@@ -167,7 +167,6 @@ int main() {
             for (auto const &itArsenal : it->get()->getArsenalList()) {
 
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
-                    std::cerr << "cicla?" << std::endl;
                     window.draw(itArsenal->getSprite());
                 }
             }

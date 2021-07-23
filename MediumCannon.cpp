@@ -11,6 +11,7 @@ MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int
                                                                     texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
+    sprite.setOrigin((wi - 1) / 2, le / 2);
 }
 
 MediumCannnon::~MediumCannnon() {

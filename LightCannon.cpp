@@ -10,6 +10,7 @@ LightCannon::LightCannon(float range, const int reload, int speed, int dispersio
         : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, posX, posY, le, wi, texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
+    sprite.setOrigin(wi / 2, le / 2);
 }
 
 LightCannon::~LightCannon() {

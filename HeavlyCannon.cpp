@@ -11,6 +11,7 @@ HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int d
                                                                   texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
+    sprite.setOrigin((wi - 1) / 2, le / 2);
 };
 
 HeavlyCannon::~HeavlyCannon() {

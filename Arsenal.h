@@ -9,6 +9,7 @@
 #include <string>
 #include "Vehicle.h"
 #include "Bullet.h"
+#include "SFML/Graphics.hpp"
 
 class WarShip;
 

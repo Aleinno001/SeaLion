@@ -550,7 +550,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
         case ModelType::Yamato: {
             std::unique_ptr<Battleship> yamato = yamatoBuilder(coordinates, a, v);
-            yamato->getSprite().setOrigin(0, yamato->getLength());
+            yamato->getSprite().setOrigin(yamato->getWidth() / 2, yamato->getLength() / 2);
             yamato->getSprite().setRotation(180);
             return std::move(yamato);
         }
@@ -1831,29 +1831,34 @@ ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 40;
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 71)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 93)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 184)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 16, coordinates.y + 176)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 16, coordinates.y + 118)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 13, coordinates.y + 161)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 13, coordinates.y + 150)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 13, coordinates.y + 138)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 157)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 5, coordinates.y + 146)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 4, coordinates.y + 130)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 25, coordinates.y + 161)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 25, coordinates.y + 150)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 26, coordinates.y + 138)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 29, coordinates.y + 157)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 29, coordinates.y + 146)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 32, coordinates.y + 130)));
+    int shipWidth = 41;
+    int shipHeight = 263;
+    int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
+    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 71)));
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 93)));
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 184)));
+    a.emplace_back(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 176)));
+    a.emplace_back(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 118)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 161)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 150)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 138)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 157)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 146)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 130)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 161)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 150)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 26, cannonPosY + 138)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 157)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 146)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 130)));
     for (int i = 0; i < antiAir; i++)
         a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
 
     std::unique_ptr<Battleship> Yamato(
-            new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir, a, v, 263,
-                           41,
+            new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir, a, v,
+                           shipHeight,
+                           shipWidth,
                            true,
                            ShipType::Battleship, ModelType::Yamato, 3));
     return Yamato;
@@ -1865,18 +1870,22 @@ ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::list<std::unique_p
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 19;
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 37)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 51)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 113)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 125)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 9, coordinates.y + 102)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 9, coordinates.y + 80)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 12, coordinates.y + 71)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 12, coordinates.y + 62)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 30, coordinates.y + 102)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 32, coordinates.y + 80)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 28, coordinates.y + 71)));
-    a.emplace_back(std::move(cf.createLight(coordinates.x + 27, coordinates.y + 62)));
+    int shipWidth = 43;
+    int shipHeight = 220;
+    int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
+    int cannonPosY = coordinates.y - (shipHeight) / 2;
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 37)));
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 51)));
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 113)));
+    a.emplace_back(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 125)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 9, cannonPosY + 102)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 9, cannonPosY + 80)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 12, cannonPosY + 71)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 12, cannonPosY + 62)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 30, cannonPosY + 102)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 80)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 28, cannonPosY + 71)));
+    a.emplace_back(std::move(cf.createLight(cannonPosX + 27, cannonPosY + 62)));
     for (int i = 0; i < antiAir; i++)
         a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Battleship> Ise(
@@ -2115,7 +2124,9 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
     Dice percentage(3, offset.x + 1);
     int xMap = map.getMapWidth();
     int yMap = map.getMapHeight();
-
+    if (offset.y == 0) {
+        offset.y = (yMap * 0.24) / 2;
+    }
     if (offset.x >= xMap - (xMap * 0.03)) {
 
         offset.x = ((percentage.roll(1) + 1) * xMap / 100);
