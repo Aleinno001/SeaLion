@@ -925,7 +925,7 @@ void GameWorld::setMapHeight(int mapHeight) {
 }
 
 bool GameWorld::isInStrip(int i, int tileDim) {
-    return i > 0.26 * (mapHeight / tileDim) && i < mapHeight / tileDim - 0.26 * (mapHeight / tileDim);
+    return i > 0.28 * (mapHeight / tileDim) && i < mapHeight / tileDim - 0.28 * (mapHeight / tileDim);
 }
 
 
