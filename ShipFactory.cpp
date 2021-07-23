@@ -188,8 +188,9 @@ ShipFactory::midwayBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
                            const sf::Vector2i &coordinates) const {
     CannonFactory factory;
     WeaponFactory specialFactory;
-    a.emplace_back(std::move(factory.createLight(coordinates.x + 35, coordinates.y + 79)));
-    a.emplace_back(std::move(factory.createLight(coordinates.x + 14, coordinates.y + 230)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 72, coordinates.y + 187)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 14, coordinates.y + 230)));
+    a.emplace_back(std::move(factory.createMedium(coordinates.x + 69, coordinates.y + 100)));
     int numAntiAir = 15;
     for (int i = 0; i < numAntiAir; i++)
         a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
@@ -934,10 +935,10 @@ std::unique_ptr<Destroyer>
 ShipFactory::simsBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                          const sf::Vector2i &coordinates) const {
     CannonFactory cf;
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 16)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 12)));
     a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 23)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 81)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 89)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 78)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 5, coordinates.y + 90)));
     int numAntiAir = 16;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
@@ -956,11 +957,11 @@ std::unique_ptr<Destroyer>
 ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
     CannonFactory cf;
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 93)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 87)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 73)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 17)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 24)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 97)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 85)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 73)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 15)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 27)));
     int numAntiAir = 14;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
@@ -1974,10 +1975,10 @@ std::unique_ptr<Destroyer>
 ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 11)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 20)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 85)));
-    a.emplace_back(std::move(cf.createMedium(coordinates.x + 4, coordinates.y + 76)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 11)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 37)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 90)));
+    a.emplace_back(std::move(cf.createMedium(coordinates.x + 3, coordinates.y + 72)));
     int numAntiAir = 8;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
