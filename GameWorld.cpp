@@ -126,41 +126,44 @@ void GameWorld::setUpTiles(
                        j <= (waveColumn + 3 + (resTile % 3))) {
                     path = "seaWaveBlock.png";
                     tileType = TileType::Wave;
-                collision = false;
-            } else if (resTile == 298 && !isWhirlpoolCluster && maxWhirlpoolCluster != 0) {         //Whirlplool
-                whirlpoolColumn = j;
-                whirlpoolTilesInARow = 2;
+                    collision = false;
+                } else if (resTile == 298 && !isWhirlpoolCluster && maxWhirlpoolCluster != 0 &&
+                           isInStrip(i, tileDim)) {         //Whirlplool
+                    whirlpoolColumn = j;
+                    whirlpoolTilesInARow = 2;
                     isWhirlpoolCluster = true;
                     path = "seaWhirlpoolBlock.png";
                     tileType = TileType::Whirlpool;
-                collision = false;
-            } else if (isWhirlpoolCluster && whirlpoolTilesInAColumn > 1 &&
-                       j >= whirlpoolColumn - (resTile % 3) &&
-                       j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 3))) {
+                    collision = false;
+                } else if (isWhirlpoolCluster && whirlpoolTilesInAColumn > 1 &&
+                           j >= whirlpoolColumn - (resTile % 3) &&
+                           j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 3)) && isInStrip(i, tileDim)) {
                     path = "seaWhirlpoolBlock.png";
                     tileType = TileType::Whirlpool;
-                collision = false;
-            } else if (whirlpoolTilesInAColumn == 1 && j >= whirlpoolColumn - (resTile % 3) &&
-                       j <= (whirlpoolColumn + 2 + (resTile % 3))) {
+                    collision = false;
+                } else if (whirlpoolTilesInAColumn == 1 && j >= whirlpoolColumn - (resTile % 3) &&
+                           j <= (whirlpoolColumn + 2 + (resTile % 3)) && isInStrip(i, tileDim)) {
                     path = "seaWhirlpoolBlock.png";
                     tileType = TileType::Whirlpool;
-                collision = false;
-            } else if (resTile == 297 && !isDirtCluster && maxDirtCluster != 0) {         //Dirt
-                dirtColumn = j;
-                dirtTilesInARow = 2;
+                    collision = false;
+                } else if (resTile == 297 && !isDirtCluster && maxDirtCluster != 0 &&
+                           isInStrip(i, tileDim)) {         //Dirt
+                    dirtColumn = j;
+                    dirtTilesInARow = 2;
                     isDirtCluster = true;
                     path = "dirtBlock.png";
                     tileType = TileType::Dirt;
-                collision = true;
-            } else if (isDirtCluster && dirtTilesInAColumn > 1 &&
-                       j >= dirtColumn - (resTile % 3) && j <= (dirtColumn + dirtTilesInARow + (resTile % 3))) {
+                    collision = true;
+                } else if (isDirtCluster && dirtTilesInAColumn > 1 &&
+                           j >= dirtColumn - (resTile % 3) && j <= (dirtColumn + dirtTilesInARow + (resTile % 3)) &&
+                           isInStrip(i, tileDim)) {
 
                     path = "dirtBlock.png";
                     tileType = TileType::Dirt;
-                collision = true;
+                    collision = true;
 
                 } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 3) &&
-                           j <= (dirtColumn + 3 + (resTile % 3))) {
+                           j <= (dirtColumn + 3 + (resTile % 3)) && isInStrip(i, tileDim)) {
                     path = "dirtBlock.png";
                     tileType = TileType::Dirt;
                     collision = true;
@@ -919,6 +922,10 @@ void GameWorld::setMapWidth(int mapWidth) {
 
 void GameWorld::setMapHeight(int mapHeight) {
     GameWorld::mapHeight = mapHeight;
+}
+
+bool GameWorld::isInStrip(int i, int tileDim) {
+    return i > 0.26 * (mapHeight / tileDim) && i < mapHeight / tileDim - 0.26 * (mapHeight / tileDim);
 }
 
 

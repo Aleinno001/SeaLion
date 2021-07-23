@@ -79,6 +79,7 @@ public:
     void setUpTiles(int &tileDim);
 
 private:
+    bool isInStrip(int i, int tileDim);
 
     void submarineRandomizer(int &enemySub, Dice &subDice, std::shared_ptr<ShipFactory> enemyFactory);
 
