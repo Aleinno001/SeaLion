@@ -1669,11 +1669,11 @@ ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 6;
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 32)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 13, coordinates.y + 45)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 100)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 125)));
-    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 14, coordinates.y + 139)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 10, coordinates.y + 25)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 10, coordinates.y + 45)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 10, coordinates.y + 90)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 10, coordinates.y + 115)));
+    a.emplace_back(std::move(cf.createHeavly(coordinates.x + 10, coordinates.y + 140)));
     for (int i = 0; i < antiAir; i++)
         a.emplace_back(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Battleship> NewYork(
