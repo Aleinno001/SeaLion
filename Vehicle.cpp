@@ -104,7 +104,7 @@ const sf::Texture &Vehicle::getTexture() const {
     return texture;
 }
 
-const sf::Sprite &Vehicle::getSprite() const {
+sf::Sprite &Vehicle::getSprite() {
     return sprite;
 }
 

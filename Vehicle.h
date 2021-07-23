@@ -70,7 +70,7 @@ public:
 
     const sf::Texture &getTexture() const;
 
-    const sf::Sprite &getSprite() const;
+    sf::Sprite &getSprite();
 
     const sf::Vector2f &getPos() const;
 };

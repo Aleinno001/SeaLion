@@ -17,6 +17,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
             std::unique_ptr<Submarine> i400 = i400Builder(a, v, coordinates);
 
 
+
             return std::move(i400);
         }
         case ModelType::typeb1: {
@@ -135,6 +136,8 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         case ModelType::Tahio: {
             std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
 
+            tahio->getSprite().setOrigin(0, tahio->getLength());
+            tahio->getSprite().setRotation(180);
 
             return std::move(tahio);
         }
@@ -142,6 +145,9 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
         case ModelType::Hiryu: {
             std::unique_ptr<AircraftCarrier> hiryu = hiryuBuilder(coordinates, a, v);
+            hiryu->getSprite().setOrigin(0, hiryu->getLength());
+            hiryu->getSprite().setRotation(180);
+
             return std::move(hiryu);
         }
 
@@ -544,6 +550,8 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
         case ModelType::Yamato: {
             std::unique_ptr<Battleship> yamato = yamatoBuilder(coordinates, a, v);
+            yamato->getSprite().setOrigin(0, yamato->getLength());
+            yamato->getSprite().setRotation(180);
             return std::move(yamato);
         }
 
