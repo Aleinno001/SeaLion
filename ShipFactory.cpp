@@ -1334,50 +1334,58 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
     switch (type) {
 
         case ModelType::I400: {
-            std::unique_ptr<Submarine> i400 = i400Builder(a, v, coordinates);
+            std::unique_ptr<WarShip> i400 = i400Builder(a, v, coordinates);
             i400->getSprite().setOrigin(i400->getWidth() / 2, i400->getLength() / 2);
+            repositionAlliedShip(i400);
             return std::move(i400);
         }
 
         case ModelType::typeb1: {
-            std::unique_ptr<Submarine> typeb1 = typeb1Builder(a, v, coordinates);
+            std::unique_ptr<WarShip> typeb1 = typeb1Builder(a, v, coordinates);
             typeb1->getSprite().setOrigin(typeb1->getWidth() / 2, typeb1->getLength() / 2);
+            repositionAlliedShip(typeb1);
             return std::move(typeb1);
         }
 
         case ModelType::DaVinci: {
-            std::unique_ptr<Submarine> DaVinci = DaVinciBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> DaVinci = DaVinciBuilder(a, v, coordinates);
             DaVinci->getSprite().setOrigin(DaVinci->getWidth() / 2, DaVinci->getLength() / 2);
+            repositionAlliedShip(DaVinci);
             return std::move(DaVinci);
         }
 
         case ModelType::Papa: {
-            std::unique_ptr<Submarine> papa = papaBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> papa = papaBuilder(coordinates, a, v);
             papa->getSprite().setOrigin(papa->getWidth() / 2, papa->getLength() / 2);
+            repositionAlliedShip(papa);
             return std::move(papa);
         }
 
         case ModelType::Triton: {
-            std::unique_ptr<Submarine> triton = tritonBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> triton = tritonBuilder(a, v, coordinates);
             triton->getSprite().setOrigin(triton->getWidth() / 2, triton->getLength() / 2);
+            repositionAlliedShip(triton);
             return std::move(triton);
         }
 
         case ModelType::Trenchant: {
-            std::unique_ptr<Submarine> trenchant = trenchantBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> trenchant = trenchantBuilder(coordinates, a, v);
             trenchant->getSprite().setOrigin(trenchant->getWidth() / 2, trenchant->getLength() / 2);
+            repositionAlliedShip(trenchant);
             return std::move(trenchant);
         }
 
         case ModelType::Gato: {
-            std::unique_ptr<Submarine> gato = gatoBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> gato = gatoBuilder(a, v, coordinates);
             gato->getSprite().setOrigin(gato->getWidth() / 2, gato->getLength() / 2);
+            repositionAlliedShip(gato);
             return std::move(gato);
         }
 
         case ModelType::Narwhal: {
-            std::unique_ptr<Submarine> narwhal = narwhalBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> narwhal = narwhalBuilder(coordinates, a, v);
             narwhal->getSprite().setOrigin(narwhal->getWidth() / 2, narwhal->getLength() / 2);
+            repositionAlliedShip(narwhal);
             return std::move(narwhal);
         }
     }
@@ -1444,55 +1452,63 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
     switch (type) {
 
         case ModelType::Tahio: {
-            std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> tahio = tahioBuilder(a, v, coordinates);
             tahio->getSprite().setOrigin(tahio->getWidth() / 2, tahio->getLength() / 2);
+            repositionAlliedShip(tahio);
             return std::move(tahio);
         }
 
 
 
         case ModelType::Hiryu: {
-            std::unique_ptr<AircraftCarrier> hiryu = hiryuBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> hiryu = hiryuBuilder(coordinates, a, v);
             hiryu->getSprite().setOrigin(hiryu->getWidth() / 2, hiryu->getLength() / 2);
+            repositionAlliedShip(hiryu);
             return std::move(hiryu);
         }
 
         case ModelType::GiuseppeGaribaldi: {
-            std::unique_ptr<AircraftCarrier> giuseppeGaribaldi = giuseppeGaribaldiBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> giuseppeGaribaldi = giuseppeGaribaldiBuilder(a, v, coordinates);
             giuseppeGaribaldi->getSprite().setOrigin(giuseppeGaribaldi->getWidth() / 2,
                                                      giuseppeGaribaldi->getLength() / 2);
+            repositionAlliedShip(giuseppeGaribaldi);
             return std::move(giuseppeGaribaldi);
         }
 
         case ModelType::Cavour: {
-            std::unique_ptr<AircraftCarrier> cavour = cavourBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> cavour = cavourBuilder(coordinates, a, v);
             cavour->getSprite().setOrigin(cavour->getWidth() / 2, cavour->getLength() / 2);
+            repositionAlliedShip(cavour);
             return std::move(cavour);
         }
 
         case ModelType::ArkRoyal: {
-            std::unique_ptr<AircraftCarrier> arkRoyal = arkRoyalBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> arkRoyal = arkRoyalBuilder(a, v, coordinates);
             arkRoyal->getSprite().setOrigin(arkRoyal->getWidth() / 2, arkRoyal->getLength() / 2);
+            repositionAlliedShip(arkRoyal);
             return std::move(arkRoyal);
         }
 
 
         case ModelType::Indomitable: {
-            std::unique_ptr<AircraftCarrier> indomitable = indomitableBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> indomitable = indomitableBuilder(coordinates, a, v);
             indomitable->getSprite().setOrigin(indomitable->getWidth() / 2, indomitable->getLength() / 2);
+            repositionAlliedShip(indomitable);
             return std::move(indomitable);
         }
 
         case ModelType::Midway: {
-            std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> midway = midwayBuilder(a, v, coordinates);
             midway->getSprite().setOrigin(midway->getWidth() / 2, midway->getLength() / 2);
+            repositionAlliedShip(midway);
             return std::move(midway);
         }
 
         case ModelType::FranklinDRoosevelt: {
-            std::unique_ptr<AircraftCarrier> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates, a, v);
             franklinDRoosevelt->getSprite().setOrigin(franklinDRoosevelt->getWidth() / 2,
                                                       franklinDRoosevelt->getLength() / 2);
+            repositionAlliedShip(franklinDRoosevelt);
             return std::move(franklinDRoosevelt);
         }
 
@@ -1616,82 +1632,94 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
     switch (type) {
 
         case ModelType::Ijn: {
-            std::unique_ptr<Cruiser> ijn = ijnBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> ijn = ijnBuilder(coordinates, a, v);
             ijn->getSprite().setOrigin(ijn->getWidth() / 2, ijn->getLength() / 2);
+            repositionAlliedShip(ijn);
             return std::move(ijn);
         }
 
         case ModelType::IsuzuNagara: {
-            std::unique_ptr<Cruiser> isuzuNagara = isuzuNagaraBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> isuzuNagara = isuzuNagaraBuilder(coordinates, a, v);
             isuzuNagara->getSprite().setOrigin(isuzuNagara->getWidth() / 2, isuzuNagara->getLength() / 2);
+            repositionAlliedShip(isuzuNagara);
             return std::move(isuzuNagara);
         }
 
         case ModelType::Takao: {
-            std::unique_ptr<Cruiser> takao = takaoBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> takao = takaoBuilder(a, v, coordinates);
             takao->getSprite().setOrigin(takao->getWidth() / 2, takao->getLength() / 2);
+            repositionAlliedShip(takao);
             return std::move(takao);
         }
 
         case ModelType::AlbertoDiGiussano: {
-            std::unique_ptr<Cruiser> albertoDiGiussano = albertoDiGiussanoBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> albertoDiGiussano = albertoDiGiussanoBuilder(a, v, coordinates);
             albertoDiGiussano->getSprite().setOrigin(albertoDiGiussano->getWidth() / 2,
                                                      albertoDiGiussano->getLength() / 2);
+            repositionAlliedShip(albertoDiGiussano);
             return std::move(albertoDiGiussano);
         }
 
         case ModelType::Gorizia: {
-            std::unique_ptr<Cruiser> gorizia = goriziaBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> gorizia = goriziaBuilder(coordinates, a, v);
             gorizia->getSprite().setOrigin(gorizia->getWidth() / 2, gorizia->getLength() / 2);
+            repositionAlliedShip(gorizia);
             return std::move(gorizia);
         }
 
 
         case ModelType::Trento: {
-            std::unique_ptr<Cruiser> trento = trentoBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> trento = trentoBuilder(a, v, coordinates);
             trento->getSprite().setOrigin(trento->getWidth() / 2, trento->getLength() / 2);
+            repositionAlliedShip(trento);
             return std::move(trento);
         }
 
 
         case ModelType::Belfast: {
-            std::unique_ptr<Cruiser> belfast = belfastBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> belfast = belfastBuilder(coordinates, a, v);
             belfast->getSprite().setOrigin(belfast->getWidth() / 2, belfast->getLength() / 2);
+            repositionAlliedShip(belfast);
             return std::move(belfast);
         }
 
         case ModelType::Danae: {
-            std::unique_ptr<Cruiser> danae = danaeBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> danae = danaeBuilder(a, v, coordinates);
             danae->getSprite().setOrigin(danae->getWidth() / 2, danae->getLength() / 2);
+            repositionAlliedShip(danae);
             return std::move(danae);
         }
 
 
         case ModelType::Tiger59: {
-            std::unique_ptr<Cruiser> tiger59 = tiger59Builder(coordinates, a, v);
+            std::unique_ptr<WarShip> tiger59 = tiger59Builder(coordinates, a, v);
             tiger59->getSprite().setOrigin(tiger59->getWidth() / 2, tiger59->getLength() / 2);
+            repositionAlliedShip(tiger59);
             return std::move(tiger59);
         }
 
 
         case ModelType::Alaska: {
-            std::unique_ptr<Cruiser> alaska = alaskaBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> alaska = alaskaBuilder(a, v, coordinates);
             alaska->getSprite().setOrigin(alaska->getWidth() / 2, alaska->getLength() / 2);
+            repositionAlliedShip(alaska);
             return std::move(alaska);
         }
 
 
         case ModelType::NewOrleans: {
-            std::unique_ptr<Cruiser> newOrleans = newOrleansBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> newOrleans = newOrleansBuilder(coordinates, a, v);
             newOrleans->getSprite().setOrigin(newOrleans->getWidth() / 2, newOrleans->getLength() / 2);
+            repositionAlliedShip(newOrleans);
             return std::move(newOrleans);
         }
 
 
         case ModelType::StLouis: {
 
-            std::unique_ptr<Cruiser> saintLouis = stLouisBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> saintLouis = stLouisBuilder(a, v, coordinates);
             saintLouis->getSprite().setOrigin(saintLouis->getWidth() / 2, saintLouis->getLength() / 2);
+            repositionAlliedShip(saintLouis);
             return std::move(saintLouis);
         }
 
@@ -1903,32 +1931,37 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
     switch (type) {
 
         case ModelType::ISE: {
-            std::unique_ptr<Battleship> ise = iseBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> ise = iseBuilder(coordinates, a, v);
             ise->getSprite().setOrigin(ise->getWidth() / 2, ise->getLength() / 2);
+            repositionAlliedShip(ise);
             return std::move(ise);
         }
 
         case ModelType::Kongo: {
-            std::unique_ptr<Battleship> kongo = kongoBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> kongo = kongoBuilder(a, v, coordinates);
             kongo->getSprite().setOrigin(kongo->getWidth() / 2, kongo->getLength() / 2);
+            repositionAlliedShip(kongo);
             return std::move(kongo);
         }
 
         case ModelType::Musashi: {
             std::unique_ptr<Battleship> musashi = musashiBuilder(a, v, coordinates);
             musashi->getSprite().setOrigin(musashi->getWidth() / 2, musashi->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(musashi);
         }
 
         case ModelType::Yamato: {
             std::unique_ptr<Battleship> yamato = yamatoBuilder(coordinates, a, v);
             yamato->getSprite().setOrigin(yamato->getWidth() / 2, yamato->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(yamato);
         }
 
         case ModelType::AndreaDoria: {
             std::unique_ptr<Battleship> andreaDoria = andreaDoriaBuilder(coordinates, a, v);
             andreaDoria->getSprite().setOrigin(andreaDoria->getWidth() / 2, andreaDoria->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(andreaDoria);
         }
 
@@ -1936,6 +1969,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
             std::unique_ptr<Battleship> imperatoreAugusto = imperatoreAugustoBuilder(a, v, coordinates);
             imperatoreAugusto->getSprite().setOrigin(imperatoreAugusto->getWidth() / 2,
                                                      imperatoreAugusto->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(imperatoreAugusto);
         }
 
@@ -1943,12 +1977,14 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
             std::unique_ptr<Battleship> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates, a, v);
             michelangeloBuonarroti->getSprite().setOrigin(michelangeloBuonarroti->getWidth() / 2,
                                                           michelangeloBuonarroti->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(michelangeloBuonarroti);
         }
 
         case ModelType::VittorioVeneto: {
             std::unique_ptr<Battleship> vittorioVeneto = vittorioVenetoBuilder(coordinates, a, v);
             vittorioVeneto->getSprite().setOrigin(vittorioVeneto->getWidth() / 2, vittorioVeneto->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(vittorioVeneto);
         }
 
@@ -1956,6 +1992,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         case ModelType::Dreadnought: {
             std::unique_ptr<Battleship> dreadNought = dreadNoughtBuilder(a, v, coordinates);
             dreadNought->getSprite().setOrigin(dreadNought->getWidth() / 2, dreadNought->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(dreadNought);
         }
 
@@ -1963,6 +2000,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         case ModelType::Hood: {
             std::unique_ptr<Battleship> hood = hoodBuilder(coordinates, a, v);
             hood->getSprite().setOrigin(hood->getWidth() / 2, hood->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(hood);
         }
 
@@ -1970,29 +2008,34 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         case ModelType::IronDuke: {
             std::unique_ptr<Battleship> ironDuke = ironDukeBuilder(a, v, coordinates);
             ironDuke->getSprite().setOrigin(ironDuke->getWidth() / 2, ironDuke->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(ironDuke);
         }
         case ModelType::Lion: {
             std::unique_ptr<Battleship> lion = lionBuilder(a, v, coordinates);
             lion->getSprite().setOrigin(lion->getWidth() / 2, lion->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(lion);
         }
 
         case ModelType::Arizona: {
             std::unique_ptr<Battleship> arizona = arizonaBuilder(coordinates, a, v);
             arizona->getSprite().setOrigin(arizona->getWidth() / 2, arizona->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(arizona);
         }
 
         case ModelType::Montana: {
             std::unique_ptr<Battleship> montana = montanaBuilder(a, v, coordinates);
             montana->getSprite().setOrigin(montana->getWidth() / 2, montana->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(montana);
         }
 
         case ModelType::NewYork: {
             std::unique_ptr<Battleship> newYork = newYorkBuilder(coordinates, a, v);
             newYork->getSprite().setOrigin(newYork->getWidth() / 2, newYork->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(newYork);
         }
 
@@ -2000,6 +2043,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
         case ModelType::NorthCarolina: {
             std::unique_ptr<Battleship> northCarolina = northCarolinaBuilder(a, v, coordinates);
             northCarolina->getSprite().setOrigin(northCarolina->getWidth() / 2, northCarolina->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(northCarolina);
         }
 
@@ -2318,22 +2362,25 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
     switch (type) {
 
         case ModelType::Akizuki: {
-            std::unique_ptr<Destroyer> akizuki = akizukiBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> akizuki = akizukiBuilder(coordinates, a, v);
             akizuki->getSprite().setOrigin(akizuki->getWidth() / 2, akizuki->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(akizuki);
         }
 
 
         case ModelType::Fubuki: {
-            std::unique_ptr<Destroyer> fubuki = fubukiBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> fubuki = fubukiBuilder(coordinates, a, v);
             fubuki->getSprite().setOrigin(fubuki->getWidth() / 2, fubuki->getLength() / 2);
+            repositionAlliedShip(fubuki);
             return std::move(fubuki);
         }
 
 
         case ModelType::Yukikaze: {
-            std::unique_ptr<Destroyer> yukikaze = yukikazeBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> yukikaze = yukikazeBuilder(a, v, coordinates);
             yukikaze->getSprite().setOrigin(yukikaze->getWidth() / 2, yukikaze->getLength() / 2);
+            repositionAlliedShip(yukikaze);
             return std::move(yukikaze);
         }
 
@@ -2341,6 +2388,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Impavido: {
             std::unique_ptr<Destroyer> impavido = impavidoBuilder(a, v, coordinates);
             impavido->getSprite().setOrigin(impavido->getWidth() / 2, impavido->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(impavido);
         }
 
@@ -2348,11 +2396,13 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Leone: {
             std::unique_ptr<Destroyer> leone = leoneBuilder(coordinates, a, v);
             leone->getSprite().setOrigin(leone->getWidth() / 2, leone->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(leone);
         }
         case ModelType::PaoloEmilio: {
             std::unique_ptr<Destroyer> paoloEmilio = paoloEmilioBuilder(a, v, coordinates);
             paoloEmilio->getSprite().setOrigin(paoloEmilio->getWidth() / 2, paoloEmilio->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(paoloEmilio);
         }
 
@@ -2360,6 +2410,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Campbelltown: {
             std::unique_ptr<Destroyer> campbelltown = campbeltownBuilder(coordinates, a, v);
             campbelltown->getSprite().setOrigin(campbelltown->getWidth() / 2, campbelltown->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(campbelltown);
         }
 
@@ -2367,6 +2418,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Gallant: {
             std::unique_ptr<Destroyer> gallant = gallandBuilder(coordinates, a, v);
             gallant->getSprite().setOrigin(gallant->getWidth() / 2, gallant->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(gallant);
         }
 
@@ -2374,6 +2426,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Jutland: {
             std::unique_ptr<Destroyer> jutLand = jutlandBuilder(a, v, coordinates);
             jutLand->getSprite().setOrigin(jutLand->getWidth() / 2, jutLand->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(jutLand);
         }
 
@@ -2381,6 +2434,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Fletcher: {
             std::unique_ptr<Destroyer> fletcher = fletcherBuilder(a, v, coordinates);
             fletcher->getSprite().setOrigin(fletcher->getWidth() / 2, fletcher->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(fletcher);
         }
 
@@ -2388,6 +2442,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Mahan: {
             std::unique_ptr<Destroyer> mahan = mahanBuilder(coordinates, a, v);
             mahan->getSprite().setOrigin(mahan->getWidth() / 2, mahan->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(mahan);
         }
 
@@ -2395,6 +2450,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
         case ModelType::Sims: {
             std::unique_ptr<Destroyer> sims = simsBuilder(a, v, coordinates);
             sims->getSprite().setOrigin(sims->getWidth() / 2, sims->getLength() / 2);
+            repositionAlliedShip(akizuki);
             return std::move(sims);
         }
 
@@ -2622,5 +2678,10 @@ std::unique_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::unique_ptr<WarSh
 }
 
 std::unique_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::unique_ptr<WarShip> &ship) {
-
+    //sposta la nave in giu di lunghezza mezzi
+    ship->getSprite().move(0, -ship->getLength() / 2);
+    for (auto &it:ship->getArsenalList()) {
+        it->getSprite().move(0, -ship->getLength() / 2);
+    }
+    return ship;
 }
