@@ -2724,9 +2724,9 @@ std::unique_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::unique_ptr<WarSh
 
 std::unique_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::unique_ptr<WarShip> &ship) {
     //sposta la nave in giu di lunghezza mezzi
-    ship->getSprite().move(0, -ship->getLength() / 2);
+    ship->getSprite().move(0, ship->getLength() / 1.5);
     for (auto &it:ship->getArsenalList()) {
-        it->getSprite().move(0, -ship->getLength() / 2);
+        it->getSprite().move(0, ship->getLength() / 1.5);
     }
     return ship;
 }
