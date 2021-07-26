@@ -167,7 +167,7 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         case ModelType::Tahio: {
             std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
 
-            tahio->getSprite().setOrigin(0, tahio->getLength());
+            tahio->getSprite().setOrigin(tahio->getWidth() / 2, tahio->getLength() / 2);
             tahio->getSprite().setRotation(180);
 
             return std::move(tahio);
@@ -176,7 +176,7 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
         case ModelType::Hiryu: {
             std::unique_ptr<AircraftCarrier> hiryu = hiryuBuilder(coordinates, a, v);
-            hiryu->getSprite().setOrigin(0, hiryu->getLength());
+            hiryu->getSprite().setOrigin(hiryu->getWidth() / 2, hiryu->getLength() / 2);
             hiryu->getSprite().setRotation(180);
 
             return std::move(hiryu);
@@ -184,7 +184,8 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
         case ModelType::GiuseppeGaribaldi: {
             std::unique_ptr<AircraftCarrier> giuseppeGaribaldi = giuseppeGaribaldiBuilder(a, v, coordinates);
-            giuseppeGaribaldi->getSprite().setOrigin(0, giuseppeGaribaldi->getLength());
+            giuseppeGaribaldi->getSprite().setOrigin(giuseppeGaribaldi->getWidth() / 2,
+                                                     giuseppeGaribaldi->getLength() / 2);
             giuseppeGaribaldi->getSprite().setRotation(180);
 
             return std::move(giuseppeGaribaldi);
@@ -193,14 +194,14 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         case ModelType::Cavour: {
             std::unique_ptr<AircraftCarrier> cavour = cavourBuilder(coordinates, a, v);
 
-            cavour->getSprite().setOrigin(0, cavour->getLength());
+            cavour->getSprite().setOrigin(cavour->getWidth() / 2, cavour->getLength() / 2);
             cavour->getSprite().setRotation(180);
 
             return std::move(cavour);
         }
         case ModelType::ArkRoyal: {
             std::unique_ptr<AircraftCarrier> arkRoyal = arkRoyalBuilder(a, v, coordinates);
-            arkRoyal->getSprite().setOrigin(0, arkRoyal->getLength());
+            arkRoyal->getSprite().setOrigin(arkRoyal->getWidth() / 2, arkRoyal->getLength() / 2);
             arkRoyal->getSprite().setRotation(180);
             return std::move(arkRoyal);
         }
@@ -208,7 +209,7 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         case ModelType::Indomitable: {
 
             std::unique_ptr<AircraftCarrier> indomitable = indomitableBuilder(coordinates, a, v);
-            indomitable->getSprite().setOrigin(0, indomitable->getLength());
+            indomitable->getSprite().setOrigin(indomitable->getWidth() / 2, indomitable->getLength() / 2);
             indomitable->getSprite().setRotation(180);
 
             return std::move(indomitable);
@@ -217,7 +218,7 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
         case ModelType::Midway: {
             std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
 
-            midway->getSprite().setOrigin(0, midway->getLength());
+            midway->getSprite().setOrigin(midway->getWidth() / 2, midway->getLength() / 2);
             midway->getSprite().setRotation(180);
 
             return std::move(midway);
@@ -225,7 +226,8 @@ std::unique_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, Game
 
         case ModelType::FranklinDRoosevelt: {
             std::unique_ptr<AircraftCarrier> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates, a, v);
-            franklinDRoosevelt->getSprite().setOrigin(0, franklinDRoosevelt->getLength());
+            franklinDRoosevelt->getSprite().setOrigin(franklinDRoosevelt->getWidth() / 2,
+                                                      franklinDRoosevelt->getLength() / 2);
             franklinDRoosevelt->getSprite().setRotation(180);
 
             return std::move(franklinDRoosevelt);
@@ -1242,7 +1244,7 @@ ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::lis
 std::unique_ptr<Destroyer>
 ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
                              const sf::Vector2i &coordinates) const {
-    
+
     CannonFactory cf;
     int shipWidth = 15;
     int shipHeight = 131;
