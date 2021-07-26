@@ -1478,16 +1478,21 @@ std::unique_ptr<AircraftCarrier>
 ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
-    a.emplace_back(std::move(factory.createMedium(coordinates.x + 55, coordinates.y + 92)));
-    a.emplace_back(std::move(factory.createMedium(coordinates.x + 56, coordinates.y + 179)));
+    int shipWidth = 70;
+    int shipHeight = 295;
+    int cannonPosX = coordinates.x - (shipWidth) / 2;
+    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
+    a.emplace_back(std::move(factory.createMedium(cannonPosX + 55, cannonPosY + 92)));
+    a.emplace_back(std::move(factory.createMedium(cannonPosX + 56, cannonPosY + 179)));
     WeaponFactory specialFactory;
     int numAntiAir = 8;
     for (int i = 0; i < numAntiAir; i++)
         a.emplace_back(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
 
     std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir, a, v, 295,
-                                70,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir, a, v,
+                                shipHeight,
+                                shipWidth,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
     return FranklinDRoosevelt;
