@@ -121,9 +121,9 @@ public:
 
     const int getNumHCannons() const;
 
-    const std::list<std::unique_ptr<Arsenal>> &getArsenalList() const;
+    std::list<std::unique_ptr<Arsenal>> &getArsenalList();
 
-    const std::list<std::unique_ptr<Vehicle>> &getVehicleList() const;
+    std::list<std::unique_ptr<Vehicle>> &getVehicleList();
 
     virtual ~WarShip() = default;
 

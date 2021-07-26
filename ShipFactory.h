@@ -260,6 +260,10 @@ private:
                     sf::Vector2i &coordinates) const;
 
     sf::Vector2i randomizeAlliedPositions(GameWorld &map);
+
+    std::unique_ptr<WarShip> &repositionEnemyShip(std::unique_ptr<WarShip> &ship);
+
+    std::unique_ptr<WarShip> &repositionAlliedShip(std::unique_ptr<WarShip> &ship);
 };
 
 

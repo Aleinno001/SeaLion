@@ -92,7 +92,7 @@ void Arsenal::rotate() {
 
 }
 
-const sf::Sprite &Arsenal::getSprite() const {
+sf::Sprite &Arsenal::getSprite() {
     return sprite;
 }
 

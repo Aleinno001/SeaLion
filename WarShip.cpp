@@ -55,11 +55,11 @@ ModelType WarShip::getModelType() const {
     return modelType;
 }
 
-const std::list<std::unique_ptr<Arsenal>> &WarShip::getArsenalList() const {
+std::list<std::unique_ptr<Arsenal>> &WarShip::getArsenalList() {
     return arsenalList;
 }
 
-const std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() const {
+std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 

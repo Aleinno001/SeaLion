@@ -72,7 +72,7 @@ public:
 
     void setAmmoType(const Bullet &ammoType);
 
-    const sf::Sprite &getSprite() const;
+    sf::Sprite &getSprite();
 
     const std::string &getTextureName() const;
 };
