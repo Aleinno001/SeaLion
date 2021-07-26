@@ -111,102 +111,102 @@ private:
     franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                   std::list<std::unique_ptr<Vehicle>> &v) const;
 
-    std::unique_ptr<Cruiser> ijnBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Cruiser> ijnBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                         std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Cruiser>
     takaoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                 const sf::Vector2i &coordinates) const;
+                 sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Cruiser>
-    isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    isuzuNagaraBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                        std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Cruiser>
     albertoDiGiussanoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const;
+                             sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Cruiser> goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Cruiser> goriziaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                             std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Cruiser>
     trentoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                  const sf::Vector2i &coordinates) const;
+                  sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Cruiser> belfastBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Cruiser> belfastBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                             std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Cruiser>
     danaeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                 const sf::Vector2i &coordinates) const;
+                 sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Cruiser> tiger59Builder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Cruiser> tiger59Builder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                             std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Cruiser>
     alaskaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                  const sf::Vector2i &coordinates) const;
+                  sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Cruiser>
-    newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    newOrleansBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                       std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Cruiser>
     stLouisBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                   const sf::Vector2i &coordinates) const;
+                   sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Battleship> iseBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Battleship> iseBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     musashiBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                   const sf::Vector2i &coordinates) const;
+                   sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Battleship> yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Battleship> yamatoBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                               std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     kongoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                 const sf::Vector2i &coordinates) const;
+                 sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Battleship>
-    andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    andreaDoriaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                        std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     imperatoreAugustoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const;
+                             sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Battleship>
-    michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                   std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                       const sf::Vector2i &coordinates) const;
+                       sf::Vector2i &coordinates) const;
 
-    std::unique_ptr<Battleship> hoodBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    std::unique_ptr<Battleship> hoodBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                             std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                const sf::Vector2i &coordinates) const;
+                sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Battleship>
-    arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    arizonaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                    std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                   const sf::Vector2i &coordinates) const;
+                   sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Battleship>
-    newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    newYorkBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                    std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                         const sf::Vector2i &coordinates) const;
+                         sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Destroyer> akizukiBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                               std::list<std::unique_ptr<Vehicle>> &v) const;
@@ -252,12 +252,12 @@ private:
                 sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Battleship>
-    vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+    vittorioVenetoBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const;
 
     std::unique_ptr<Battleship>
     ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                    const sf::Vector2i &coordinates) const;
+                    sf::Vector2i &coordinates) const;
 
     sf::Vector2i randomizeAlliedPositions(GameWorld &map);
 };

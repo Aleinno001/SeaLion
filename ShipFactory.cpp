@@ -348,7 +348,7 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
     std::list<std::unique_ptr<Arsenal>> a;
     std::list<std::unique_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
-
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::Takao: {
@@ -436,19 +436,21 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
     }
 
 }
-                                                                                                            //TODO aggiungere aerei
+
+//TODO aggiungere aerei
 std::unique_ptr<Cruiser>
 ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                            const sf::Vector2i &coordinates) const {
+                            sf::Vector2i &coordinates) const {
 
-                                                                                                                int shipWidth = 20;
-                                                                                                                int shipHeight = 130;
-                                                                                                                int cannonPosX =
-                                                                                                                        coordinates.x -
-                                                                                                                        (shipWidth) /
-                                                                                                                        2;
-                                                                                                                int cannonPosY =
-                                                                                                                        coordinates.y -
+    int shipWidth = 20;
+    int shipHeight = 130;
+    coordinates.y = coordinates.y + shipHeight / 2;
+    int cannonPosX =
+            coordinates.x -
+            (shipWidth) /
+            2;
+    int cannonPosY =
+            coordinates.y -
                                                                                                                         (shipHeight) /
                                                                                                                         2;
 
@@ -545,11 +547,12 @@ ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 
 std::unique_ptr<Cruiser>
 ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                           const sf::Vector2i &coordinates) const {
+                           sf::Vector2i &coordinates) const {
     WeaponFactory factory;
 
     int shipWidth = 28;
     int shipHeight = 246;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -575,11 +578,12 @@ ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 
 std::unique_ptr<Cruiser>
 ShipFactory::danaeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                          const sf::Vector2i &coordinates) const {
+                          sf::Vector2i &coordinates) const {
     WeaponFactory factory;
 
     int shipWidth = 14;
     int shipHeight = 136;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -603,11 +607,12 @@ ShipFactory::danaeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std:
 
 std::unique_ptr<Cruiser>
 ShipFactory::trentoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                           const sf::Vector2i &coordinates) const {
+                           sf::Vector2i &coordinates) const {
     WeaponFactory factory;
 
     int shipWidth = 25;
     int shipHeight = 197;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
 
@@ -634,11 +639,12 @@ ShipFactory::trentoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std
 
 std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(std::list<std::unique_ptr<Arsenal>> &a,
                                                                std::list<std::unique_ptr<Vehicle>> &v,
-                                                               const sf::Vector2i &coordinates) const {
+                                                               sf::Vector2i &coordinates) const {
     WeaponFactory factory;
 
     int shipWidth = 15;
     int shipHeight = 169;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -662,11 +668,12 @@ std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(std::list<std::un
 
 std::unique_ptr<Cruiser>
 ShipFactory::takaoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                          const sf::Vector2i &coordinates) const {
+                          sf::Vector2i &coordinates) const {
     WeaponFactory factory;
 
     int shipWidth = 25;
     int shipHeight = 193;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
 
@@ -694,6 +701,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
     std::list<std::unique_ptr<Arsenal>> a;
     std::list<std::unique_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::Yamato: {
@@ -806,10 +814,11 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
 std::unique_ptr<Battleship>
 ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const {
+                             sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 190;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 41)));
@@ -831,10 +840,11 @@ ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 
 std::unique_ptr<Battleship>
 ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                                  const sf::Vector2i &coordinates) const {
+                                  sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 32;
     int shipHeight = 222;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 56)));
@@ -861,11 +871,12 @@ ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::l
 
 std::unique_ptr<Battleship>
 ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                            const sf::Vector2i &coordinates) const {
+                            sf::Vector2i &coordinates) const {
     //TODO concludere tutte le aggiunte necessarie
     CannonFactory factory;
     int shipWidth = 37;
     int shipHeight = 281;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 60)));
@@ -897,10 +908,11 @@ ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 
 std::unique_ptr<Battleship>
 ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                         const sf::Vector2i &coordinates) const {
+                         sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 242;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 49)));
@@ -921,10 +933,11 @@ ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 
 std::unique_ptr<Battleship>
 ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                                const sf::Vector2i &coordinates) const {
+                                sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 25;
     int shipHeight = 158;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 38)));
@@ -946,10 +959,11 @@ ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::lis
 
 std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::list<std::unique_ptr<Arsenal>> &a,
                                                                   std::list<std::unique_ptr<Vehicle>> &v,
-                                                                  const sf::Vector2i &coordinates) const {
+                                                                  sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 274;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 67)));
@@ -998,10 +1012,11 @@ std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::list<std:
 
 std::unique_ptr<Battleship>
 ShipFactory::kongoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                          const sf::Vector2i &coordinates) const {
+                          sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 31;
     int shipHeight = 222;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 43)));
@@ -1029,10 +1044,11 @@ ShipFactory::kongoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std:
 
 std::unique_ptr<Battleship>
 ShipFactory::musashiBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                            const sf::Vector2i &coordinates) const {
+                            sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 244;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 67)));
@@ -1313,6 +1329,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
     std::list<std::unique_ptr<Vehicle>> v;
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::I400: {
@@ -1354,7 +1371,6 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
         case ModelType::Gato: {
             std::unique_ptr<Submarine> gato = gatoBuilder(a, v, coordinates);
             gato->getSprite().setOrigin(gato->getWidth() / 2, gato->getLength() / 2);
-
             return std::move(gato);
         }
 
@@ -1423,14 +1439,12 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
     std::list<std::unique_ptr<Vehicle>> v;
-    coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::Tahio: {
             std::unique_ptr<AircraftCarrier> tahio = tahioBuilder(a, v, coordinates);
             tahio->getSprite().setOrigin(tahio->getWidth() / 2, tahio->getLength() / 2);
-
-
             return std::move(tahio);
         }
 
@@ -1439,7 +1453,6 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
         case ModelType::Hiryu: {
             std::unique_ptr<AircraftCarrier> hiryu = hiryuBuilder(coordinates, a, v);
             hiryu->getSprite().setOrigin(hiryu->getWidth() / 2, hiryu->getLength() / 2);
-
             return std::move(hiryu);
         }
 
@@ -1447,22 +1460,18 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
             std::unique_ptr<AircraftCarrier> giuseppeGaribaldi = giuseppeGaribaldiBuilder(a, v, coordinates);
             giuseppeGaribaldi->getSprite().setOrigin(giuseppeGaribaldi->getWidth() / 2,
                                                      giuseppeGaribaldi->getLength() / 2);
-
-
             return std::move(giuseppeGaribaldi);
         }
 
         case ModelType::Cavour: {
             std::unique_ptr<AircraftCarrier> cavour = cavourBuilder(coordinates, a, v);
             cavour->getSprite().setOrigin(cavour->getWidth() / 2, cavour->getLength() / 2);
-
             return std::move(cavour);
         }
 
         case ModelType::ArkRoyal: {
             std::unique_ptr<AircraftCarrier> arkRoyal = arkRoyalBuilder(a, v, coordinates);
             arkRoyal->getSprite().setOrigin(arkRoyal->getWidth() / 2, arkRoyal->getLength() / 2);
-
             return std::move(arkRoyal);
         }
 
@@ -1470,14 +1479,12 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
         case ModelType::Indomitable: {
             std::unique_ptr<AircraftCarrier> indomitable = indomitableBuilder(coordinates, a, v);
             indomitable->getSprite().setOrigin(indomitable->getWidth() / 2, indomitable->getLength() / 2);
-
             return std::move(indomitable);
         }
 
         case ModelType::Midway: {
             std::unique_ptr<AircraftCarrier> midway = midwayBuilder(a, v, coordinates);
             midway->getSprite().setOrigin(midway->getWidth() / 2, midway->getLength() / 2);
-
             return std::move(midway);
         }
 
@@ -1485,7 +1492,6 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
             std::unique_ptr<AircraftCarrier> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates, a, v);
             franklinDRoosevelt->getSprite().setOrigin(franklinDRoosevelt->getWidth() / 2,
                                                       franklinDRoosevelt->getLength() / 2);
-
             return std::move(franklinDRoosevelt);
         }
 
@@ -1605,6 +1611,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
     std::list<std::unique_ptr<Vehicle>> v;
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::Ijn: {
@@ -1642,7 +1649,6 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
         case ModelType::Trento: {
             std::unique_ptr<Cruiser> trento = trentoBuilder(a, v, coordinates);
             trento->getSprite().setOrigin(trento->getWidth() / 2, trento->getLength() / 2);
-
             return std::move(trento);
         }
 
@@ -1685,7 +1691,6 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
             std::unique_ptr<Cruiser> saintLouis = stLouisBuilder(a, v, coordinates);
             saintLouis->getSprite().setOrigin(saintLouis->getWidth() / 2, saintLouis->getLength() / 2);
-
             return std::move(saintLouis);
         }
 
@@ -1696,12 +1701,13 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
 
 std::unique_ptr<Cruiser>
-ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
     int shipWidth = 25;
     int shipHeight = 178;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -1727,12 +1733,13 @@ ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::u
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::tiger59Builder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
     int shipWidth = 19;
     int shipHeight = 169;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
 
@@ -1759,12 +1766,13 @@ ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::belfastBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
     int shipWidth = 27;
     int shipHeight = 187;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
 
@@ -1791,12 +1799,13 @@ ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::goriziaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
     int shipWidth = 22;
     int shipHeight = 183;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -1824,12 +1833,13 @@ ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
     int shipWidth = 14;
     int shipHeight = 159;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
 
@@ -1854,12 +1864,13 @@ ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::ijnBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::ijnBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                         std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
     int shipWidth = 26;
     int shipHeight = 204;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -1887,6 +1898,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
     std::list<std::unique_ptr<Vehicle>> v;
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::ISE: {
@@ -1996,11 +2008,12 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                    std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 33;
     int shipHeight = 238;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 61)));
@@ -2043,12 +2056,13 @@ ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<st
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::newYorkBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
     int shipWidth = 35;
     int shipHeight = 175;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int antiAir = 6;
@@ -2068,12 +2082,13 @@ ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::arizonaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
     int shipWidth = 32;
     int shipHeight = 185;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int antiAir = 4;
@@ -2100,12 +2115,13 @@ ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::hoodBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                          std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
     int shipWidth = 34;
     int shipHeight = 262;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int antiAir = 20;
@@ -2125,11 +2141,12 @@ ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::list<std::unique_
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 35;
     int shipHeight = 246;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 62)));
@@ -2176,11 +2193,12 @@ ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std:
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 29;
     int shipHeight = 176;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 46)));
@@ -2219,13 +2237,14 @@ ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::yamatoBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 40;
     int shipWidth = 41;
     int shipHeight = 263;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     a.emplace_back(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 71)));
@@ -2258,13 +2277,14 @@ ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::iseBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                         std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 19;
     int shipWidth = 43;
     int shipHeight = 220;
+    coordinates.y = coordinates.y + shipHeight / 2;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     a.emplace_back(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 37)));
@@ -2293,7 +2313,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     std::list<std::unique_ptr<Arsenal>> a; //TODO da sistemare con factory
     std::list<std::unique_ptr<Vehicle>> v;
-
+    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
 
         case ModelType::Akizuki: {
@@ -2573,7 +2593,7 @@ sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
     int xMap = map.getMapWidth();
     int yMap = map.getMapHeight();
     if (offsetAllied.y == 0) {
-        offsetAllied.y = yMap - yMap * 0.28;
+        offsetAllied.y = yMap - (yMap * 0.28) / 2;
     }
     if (offsetAllied.x >= xMap - (xMap * 0.03)) {
 
