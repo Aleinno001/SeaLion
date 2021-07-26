@@ -2386,71 +2386,71 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 
 
         case ModelType::Impavido: {
-            std::unique_ptr<Destroyer> impavido = impavidoBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> impavido = impavidoBuilder(a, v, coordinates);
             impavido->getSprite().setOrigin(impavido->getWidth() / 2, impavido->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(impavido);
             return std::move(impavido);
         }
 
 
         case ModelType::Leone: {
-            std::unique_ptr<Destroyer> leone = leoneBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> leone = leoneBuilder(coordinates, a, v);
             leone->getSprite().setOrigin(leone->getWidth() / 2, leone->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(leone);
             return std::move(leone);
         }
         case ModelType::PaoloEmilio: {
-            std::unique_ptr<Destroyer> paoloEmilio = paoloEmilioBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> paoloEmilio = paoloEmilioBuilder(a, v, coordinates);
             paoloEmilio->getSprite().setOrigin(paoloEmilio->getWidth() / 2, paoloEmilio->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(paoloEmilio);
             return std::move(paoloEmilio);
         }
 
 
         case ModelType::Campbelltown: {
-            std::unique_ptr<Destroyer> campbelltown = campbeltownBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> campbelltown = campbeltownBuilder(coordinates, a, v);
             campbelltown->getSprite().setOrigin(campbelltown->getWidth() / 2, campbelltown->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(campbelltown);
             return std::move(campbelltown);
         }
 
 
         case ModelType::Gallant: {
-            std::unique_ptr<Destroyer> gallant = gallandBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> gallant = gallandBuilder(coordinates, a, v);
             gallant->getSprite().setOrigin(gallant->getWidth() / 2, gallant->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(gallant);
             return std::move(gallant);
         }
 
 
         case ModelType::Jutland: {
-            std::unique_ptr<Destroyer> jutLand = jutlandBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> jutLand = jutlandBuilder(a, v, coordinates);
             jutLand->getSprite().setOrigin(jutLand->getWidth() / 2, jutLand->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(jutLand);
             return std::move(jutLand);
         }
 
 
         case ModelType::Fletcher: {
-            std::unique_ptr<Destroyer> fletcher = fletcherBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> fletcher = fletcherBuilder(a, v, coordinates);
             fletcher->getSprite().setOrigin(fletcher->getWidth() / 2, fletcher->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(fletcher);
             return std::move(fletcher);
         }
 
 
         case ModelType::Mahan: {
-            std::unique_ptr<Destroyer> mahan = mahanBuilder(coordinates, a, v);
+            std::unique_ptr<WarShip> mahan = mahanBuilder(coordinates, a, v);
             mahan->getSprite().setOrigin(mahan->getWidth() / 2, mahan->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(mahan);
             return std::move(mahan);
         }
 
 
         case ModelType::Sims: {
-            std::unique_ptr<Destroyer> sims = simsBuilder(a, v, coordinates);
+            std::unique_ptr<WarShip> sims = simsBuilder(a, v, coordinates);
             sims->getSprite().setOrigin(sims->getWidth() / 2, sims->getLength() / 2);
-            repositionAlliedShip(akizuki);
+            repositionAlliedShip(sims);
             return std::move(sims);
         }
 
