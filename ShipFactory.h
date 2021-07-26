@@ -116,7 +116,7 @@ private:
 
     std::unique_ptr<Cruiser>
     takaoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                 const sf::Vector2i &coordinates) const;
+                 sf::Vector2i &coordinates) const;
 
     std::unique_ptr<Cruiser>
     isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
