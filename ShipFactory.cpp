@@ -2610,5 +2610,10 @@ sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
 
 }
 
+void repositionEnemyShip(std::unique_ptr<WarShip> &ship, std::list<std::unique_ptr<Arsenal>> &a) {
+    //sposta la nave in giu di lunghezza mezzi
+}
 
+void repositionAlliedShip(std::unique_ptr<WarShip> &ship, std::list<std::unique_ptr<Arsenal>> &a) {
 
+}
