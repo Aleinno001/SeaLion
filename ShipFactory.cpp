@@ -807,7 +807,7 @@ std::unique_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
 
 std::unique_ptr<Battleship>
 ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const {
+                             sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 190;
@@ -833,7 +833,7 @@ ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 
 std::unique_ptr<Battleship>
 ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                                  const sf::Vector2i &coordinates) const {
+                                  sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 32;
     int shipHeight = 222;
@@ -864,7 +864,7 @@ ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::l
 
 std::unique_ptr<Battleship>
 ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                            const sf::Vector2i &coordinates) const {
+                            sf::Vector2i &coordinates) const {
     //TODO concludere tutte le aggiunte necessarie
     CannonFactory factory;
     int shipWidth = 37;
@@ -901,7 +901,7 @@ ShipFactory::montanaBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 
 std::unique_ptr<Battleship>
 ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                         const sf::Vector2i &coordinates) const {
+                         sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 242;
@@ -926,7 +926,7 @@ ShipFactory::lionBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 
 std::unique_ptr<Battleship>
 ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                                const sf::Vector2i &coordinates) const {
+                                sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 25;
     int shipHeight = 158;
@@ -952,7 +952,7 @@ ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::lis
 
 std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(std::list<std::unique_ptr<Arsenal>> &a,
                                                                   std::list<std::unique_ptr<Vehicle>> &v,
-                                                                  const sf::Vector2i &coordinates) const {
+                                                                  sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 274;
@@ -1037,7 +1037,7 @@ ShipFactory::kongoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std:
 
 std::unique_ptr<Battleship>
 ShipFactory::musashiBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                            const sf::Vector2i &coordinates) const {
+                            sf::Vector2i &coordinates) const {
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 244;
@@ -1164,7 +1164,7 @@ std::unique_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld 
 
 std::unique_ptr<Destroyer>
 ShipFactory::simsBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                         const sf::Vector2i &coordinates) const {
+                         sf::Vector2i &coordinates) const {
     CannonFactory cf;
     int shipWidth = 16;
     int shipHeight = 106;
@@ -1191,7 +1191,7 @@ ShipFactory::simsBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::
 
 std::unique_ptr<Destroyer>
 ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const {
+                             sf::Vector2i &coordinates) const {
     CannonFactory cf;
     int shipWidth = 12;
     int shipHeight = 114;
@@ -1219,7 +1219,7 @@ ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 
 std::unique_ptr<Destroyer>
 ShipFactory::jutlandBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                            const sf::Vector2i &coordinates) const {
+                            sf::Vector2i &coordinates) const {
     CannonFactory cf;
     int shipWidth = 13;
     int shipHeight = 116;
@@ -1240,7 +1240,7 @@ ShipFactory::jutlandBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<st
 
 std::unique_ptr<Destroyer>
 ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                                const sf::Vector2i &coordinates) const {
+                                sf::Vector2i &coordinates) const {
     CannonFactory cf;
     int shipWidth = 15;
     int shipHeight = 172;
@@ -1266,7 +1266,7 @@ ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::lis
 
 std::unique_ptr<Destroyer>
 ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const {
+                             sf::Vector2i &coordinates) const {
 
     CannonFactory cf;
     int shipWidth = 15;
@@ -1294,7 +1294,7 @@ ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<s
 
 std::unique_ptr<Destroyer>
 ShipFactory::yukikazeBuilder(std::list<std::unique_ptr<Arsenal>> &a, std::list<std::unique_ptr<Vehicle>> &v,
-                             const sf::Vector2i &coordinates) const {
+                             sf::Vector2i &coordinates) const {
     CannonFactory cf;
     int shipWidth = 12;
     int shipHeight = 119;
@@ -1378,7 +1378,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, Game
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::narwhalBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     int shipWidth = 13;
@@ -1395,7 +1395,7 @@ ShipFactory::narwhalBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Submarine>
-ShipFactory::trenchantBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::trenchantBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                               std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     int shipWidth = 14;
@@ -1504,7 +1504,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 70;
@@ -1529,14 +1529,15 @@ ShipFactory::franklinDelanoRoosveltBuilder(const sf::Vector2i &coordinates, std:
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::indomitableBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
 
 
     int shipWidth = 41;
     int shipHeight = 230;
-    coordinates.y = coordinates.y + (shipHeight / 2);
+    coordinates.y
+            = coordinates.y + (shipHeight / 2);
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -1556,7 +1557,7 @@ ShipFactory::indomitableBuilder(const sf::Vector2i &coordinates, std::list<std::
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::cavourBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
 
@@ -1585,13 +1586,14 @@ ShipFactory::cavourBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 }
 
 std::unique_ptr<AircraftCarrier>
-ShipFactory::hiryuBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::hiryuBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
 
     int shipWidth = 39;
     int shipHeight = 222;
-    coordinates.y = coordinates.y + (shipHeight / 2);
+    coordinates.y
+            = coordinates.y + (shipHeight / 2);
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
@@ -1707,7 +1709,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWo
 
 
 std::unique_ptr<Cruiser>
-ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
@@ -1739,7 +1741,7 @@ ShipFactory::newOrleansBuilder(const sf::Vector2i &coordinates, std::list<std::u
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::tiger59Builder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
@@ -1772,7 +1774,7 @@ ShipFactory::tiger59Builder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::belfastBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
@@ -1805,7 +1807,7 @@ ShipFactory::belfastBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::goriziaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
@@ -1839,7 +1841,7 @@ ShipFactory::goriziaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
@@ -1870,7 +1872,7 @@ ShipFactory::isuzuNagaraBuilder(const sf::Vector2i &coordinates, std::list<std::
 }
 
 std::unique_ptr<Cruiser>
-ShipFactory::ijnBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::ijnBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                         std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
 
@@ -2014,7 +2016,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, Gam
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                    std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 33;
@@ -2062,7 +2064,7 @@ ShipFactory::vittorioVenetoBuilder(const sf::Vector2i &coordinates, std::list<st
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::newYorkBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
@@ -2088,7 +2090,7 @@ ShipFactory::newYorkBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::arizonaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
@@ -2121,7 +2123,7 @@ ShipFactory::arizonaBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::hoodBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                          std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
@@ -2147,7 +2149,7 @@ ShipFactory::hoodBuilder(const sf::Vector2i &coordinates, std::list<std::unique_
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 35;
@@ -2199,7 +2201,7 @@ ShipFactory::michelangeloBuonarrotiBuilder(const sf::Vector2i &coordinates, std:
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory factory;
     int shipWidth = 29;
@@ -2243,7 +2245,7 @@ ShipFactory::andreaDoriaBuilder(const sf::Vector2i &coordinates, std::list<std::
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::yamatoBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
@@ -2283,7 +2285,7 @@ ShipFactory::yamatoBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 }
 
 std::unique_ptr<Battleship>
-ShipFactory::iseBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::iseBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                         std::list<std::unique_ptr<Vehicle>> &v) const {
     WeaponFactory factory;
     CannonFactory cf;
@@ -2410,7 +2412,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, Game
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::mahanBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
     int shipWidth = 13;
@@ -2437,7 +2439,7 @@ ShipFactory::mahanBuilder(const sf::Vector2i &coordinates, std::list<std::unique
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::gallandBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
     int shipWidth = 10;
@@ -2464,7 +2466,7 @@ ShipFactory::gallandBuilder(const sf::Vector2i &coordinates, std::list<std::uniq
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::campbeltownBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                                 std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
     int shipWidth = 10;
@@ -2491,7 +2493,7 @@ ShipFactory::campbeltownBuilder(const sf::Vector2i &coordinates, std::list<std::
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::leoneBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                           std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
     int shipWidth = 13;
@@ -2516,7 +2518,7 @@ ShipFactory::leoneBuilder(const sf::Vector2i &coordinates, std::list<std::unique
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::fubukiBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                            std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
     int shipWidth = 14;
@@ -2544,7 +2546,7 @@ ShipFactory::fubukiBuilder(const sf::Vector2i &coordinates, std::list<std::uniqu
 }
 
 std::unique_ptr<Destroyer>
-ShipFactory::akizukiBuilder(const sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
+ShipFactory::akizukiBuilder(sf::Vector2i &coordinates, std::list<std::unique_ptr<Arsenal>> &a,
                             std::list<std::unique_ptr<Vehicle>> &v) const {
     CannonFactory cf;
     int shipWidth = 12;
