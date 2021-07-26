@@ -345,14 +345,14 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 
         case ModelType::Takao: {
             std::unique_ptr<Cruiser> takao = takaoBuilder(a, v, coordinates);
-            takao->getSprite().setOrigin(0, takao->getLength());
+            takao->getSprite().setOrigin(takao->getWidth() / 2, takao->getLength() / 2);
             takao->getSprite().setRotation(180);
             return std::move(takao);
         }
 
         case ModelType::IsuzuNagara: {
             std::unique_ptr<Cruiser> isuzuNagara = isuzuNagaraBuilder(coordinates, a, v);
-            isuzuNagara->getSprite().setOrigin(0, isuzuNagara->getLength());
+            isuzuNagara->getSprite().setOrigin(isuzuNagara->getWidth() / 2, isuzuNagara->getLength() / 2);
             isuzuNagara->getSprite().setRotation(180);
             return std::move(isuzuNagara);
         }
@@ -360,7 +360,7 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 
         case ModelType::Ijn: {
             std::unique_ptr<Cruiser> ijn = ijnBuilder(coordinates, a, v);
-            ijn->getSprite().setOrigin(0, ijn->getLength());
+            ijn->getSprite().setOrigin(ijn->getWidth() / 2, ijn->getLength() / 2);
             ijn->getSprite().setRotation(180);
             return std::move(ijn);
         }
@@ -368,59 +368,60 @@ std::unique_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
 
         case ModelType::AlbertoDiGiussano: {
             std::unique_ptr<Cruiser> albertoDiGiussano = albertoDiGiussanoBuilder(a, v, coordinates);
-            albertoDiGiussano->getSprite().setOrigin(0, albertoDiGiussano->getLength());
+            albertoDiGiussano->getSprite().setOrigin(albertoDiGiussano->getWidth() / 2,
+                                                     albertoDiGiussano->getLength() / 2);
             albertoDiGiussano->getSprite().setRotation(180);
             return std::move(albertoDiGiussano);
         }
 
         case ModelType::Gorizia: {
             std::unique_ptr<Cruiser> gorizia = goriziaBuilder(coordinates, a, v);
-            gorizia->getSprite().setOrigin(0, gorizia->getLength());
+            gorizia->getSprite().setOrigin(gorizia->getWidth() / 2, gorizia->getLength() / 2);
             gorizia->getSprite().setRotation(180);
             return std::move(gorizia);
         }
 
         case ModelType::Trento: {
             std::unique_ptr<Cruiser> trento = trentoBuilder(a, v, coordinates);
-            trento->getSprite().setOrigin(0, trento->getLength());
+            trento->getSprite().setOrigin(trento->getWidth() / 2, trento->getLength() / 2);
             trento->getSprite().setRotation(180);
             return std::move(trento);
         }
         case ModelType::Belfast: {
             std::unique_ptr<Cruiser> belfast = belfastBuilder(coordinates, a, v);
-            belfast->getSprite().setOrigin(0, belfast->getLength());
+            belfast->getSprite().setOrigin(belfast->getWidth() / 2, belfast->getLength() / 2);
             belfast->getSprite().setRotation(180);
             return std::move(belfast);
         }
 
         case ModelType::Danae: {
             std::unique_ptr<Cruiser> danae = danaeBuilder(a, v, coordinates);
-            danae->getSprite().setOrigin(0, danae->getLength());
+            danae->getSprite().setOrigin(danae->getWidth() / 2, danae->getLength() / 2);
             danae->getSprite().setRotation(180);
             return std::move(danae);
         }
 
         case ModelType::Tiger59: {
             std::unique_ptr<Cruiser> tiger59 = tiger59Builder(coordinates, a, v);
-            tiger59->getSprite().setOrigin(0, tiger59->getLength());
+            tiger59->getSprite().setOrigin(tiger59->getWidth() / 2, tiger59->getLength() / 2);
             tiger59->getSprite().setRotation(180);
             return std::move(tiger59);
         }
         case ModelType::Alaska: {
             std::unique_ptr<Cruiser> alaska = alaskaBuilder(a, v, coordinates);
-            alaska->getSprite().setOrigin(0, alaska->getLength());
+            alaska->getSprite().setOrigin(alaska->getWidth() / 2, alaska->getLength() / 2);
             alaska->getSprite().setRotation(180);
             return std::move(alaska);
         }
         case ModelType::NewOrleans: {
             std::unique_ptr<Cruiser> newOrleans = newOrleansBuilder(coordinates, a, v);
-            newOrleans->getSprite().setOrigin(0, newOrleans->getLength());
+            newOrleans->getSprite().setOrigin(newOrleans->getWidth() / 2, newOrleans->getLength() / 2);
             newOrleans->getSprite().setRotation(180);
             return std::move(newOrleans);
         }
         case ModelType::StLouis: {
             std::unique_ptr<Cruiser> saintLouis = stLouisBuilder(a, v, coordinates);
-            saintLouis->getSprite().setOrigin(0, saintLouis->getLength());
+            saintLouis->getSprite().setOrigin(saintLouis->getWidth() / 2, saintLouis->getLength() / 2);
             saintLouis->getSprite().setRotation(180);
             return std::move(saintLouis);
         }
