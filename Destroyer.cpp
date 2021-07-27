@@ -80,13 +80,6 @@ void Destroyer::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Destroyer::attach() {
-    Vehicle::attach();
-}
-
-void Destroyer::detach() {
-    Vehicle::detach();
-}
 
 void Destroyer::stopMove() {
 

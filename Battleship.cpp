@@ -87,13 +87,7 @@ void Battleship::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Battleship::attach() {
-    Vehicle::attach();
-}
 
-void Battleship::detach() {
-    Vehicle::detach();
-}
 
 void Battleship::stopMove() {
 
