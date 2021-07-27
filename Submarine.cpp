@@ -68,13 +68,6 @@ void Submarine::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Submarine::attach() {
-    Vehicle::attach();
-}
-
-void Submarine::detach() {
-    Vehicle::detach();
-}
 
 void Submarine::stopMove() {
 
@@ -84,16 +77,20 @@ void Submarine::ceaseFire() {
 
 }
 
-void Submarine::registerArsenals(std::unique_ptr<Arsenal> observer) {
+//void Submarine::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
-void Submarine::removeArsenals(std::unique_ptr<Arsenal> observer) {
+//void Submarine::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
 void Submarine::notifyArsenals() {
-
+    std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    while (it != arsenalList.end()) {
+        (*it)->update(static_cast<std::unique_ptr<WarShip>>(this));
+        ++it;
+    }
 }
 
 void Submarine::rotate() {
