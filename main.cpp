@@ -122,7 +122,7 @@ int main() {
     width = desktop.width;
     height = desktop.height;
     tileDim = 30;  //FIXME adattabile a tutte le risoluzioni
-    window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Close, settings);
+    window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Default, settings);
     window.setPosition(sf::Vector2i(0, 0));
 
     GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Japan, FactionType::Italy, 8, boundaries, width,
@@ -135,14 +135,13 @@ int main() {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F11 &&
                        videoMode == windowMode::Fullscreen) {
-                window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Close, settings);
+                window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Default, settings);
                 videoMode = windowMode::Windowed;
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F11 &&
                        videoMode == windowMode::Windowed) {
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             }
-            window.setPosition(sf::Vector2i(0, 0));
         }
 
         window.clear();
