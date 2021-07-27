@@ -77,13 +77,6 @@ void Cruiser::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Cruiser::attach() {
-    Vehicle::attach();
-}
-
-void Cruiser::detach() {
-    Vehicle::detach();
-}
 
 void Cruiser::stopMove() {
 
