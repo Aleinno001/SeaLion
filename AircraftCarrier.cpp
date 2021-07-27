@@ -70,13 +70,6 @@ void AircraftCarrier::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void AircraftCarrier::attach() {
-    Vehicle::attach();
-}
-
-void AircraftCarrier::detach() {
-    Vehicle::detach();
-}
 
 void AircraftCarrier::stopMove() {
 
@@ -96,6 +89,12 @@ void AircraftCarrier::removeArsenals(std::unique_ptr<Arsenal> observer) {
 }
 
 void AircraftCarrier::notifyArsenals() {
+
+    std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    while (it != arsenalList.end()) {
+        (*it)->update(static_cast<std::unique_ptr<WarShip>>(this));
+        ++it;
+    }
 
 }
 
