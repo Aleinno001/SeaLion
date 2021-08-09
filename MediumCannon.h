@@ -33,6 +33,8 @@ private:
     bool engage(Vehicle enemy) override;
 
     void rotate() override;
+
+    void resetOrigin() override;
 };
 
 

@@ -100,6 +100,14 @@ const std::string &Arsenal::getTextureName() const {
     return textureName;
 }
 
+int Arsenal::getLength() const {
+    return length;
+}
+
+int Arsenal::getWidth() const {
+    return width;
+}
+
 
 
 

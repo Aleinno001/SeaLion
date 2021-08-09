@@ -11,7 +11,7 @@ MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int
                                                                     texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
-    sprite.setOrigin((wi - 1) / 2, le / 2);
+    resetOrigin();
 }
 
 MediumCannnon::~MediumCannnon() {
@@ -44,4 +44,8 @@ bool MediumCannnon::engage(Vehicle enemy) {
 
 void MediumCannnon::rotate() {
     Arsenal::rotate();
+}
+
+void MediumCannnon::resetOrigin() {
+    sprite.setOrigin((width - 1) / 2, (width - 1) / 2);
 }

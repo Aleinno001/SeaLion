@@ -34,6 +34,8 @@ private:
     void rotate() override;
 
     bool setUpSprite(std::string textureName) override;
+
+    void resetOrigin() override;
 };
 
 

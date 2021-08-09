@@ -75,6 +75,12 @@ public:
     sf::Sprite &getSprite();
 
     const std::string &getTextureName() const;
+
+    virtual void resetOrigin() = 0;
+
+    int getLength() const;
+
+    int getWidth() const;
 };
 
 #endif //SEALION_ARSENAL_H

@@ -33,6 +33,7 @@ private:
 
     void rotate() override;
 
+    void resetOrigin() override;
 };
 
 

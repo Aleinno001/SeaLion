@@ -11,7 +11,7 @@ HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int d
                                                                   texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
-    sprite.setOrigin((wi - 1) / 2, le / 2);
+    resetOrigin();
 };
 
 HeavlyCannon::~HeavlyCannon() {
@@ -44,4 +44,8 @@ bool HeavlyCannon::engage(Vehicle enemy) {
 
 void HeavlyCannon::rotate() {
     Arsenal::rotate();
+}
+
+void HeavlyCannon::resetOrigin() {
+    sprite.setOrigin((width - 1) / 2, (width - 1) / 2);
 }

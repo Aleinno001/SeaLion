@@ -2537,6 +2537,8 @@ std::unique_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::unique_ptr<WarSh
     ship->getSprite().move(0, ship->getLength() / 2);
     for (auto &it:ship->getArsenalList()) {
         it->getSprite().move(0, ship->getLength() / 2);
+        it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
+                             (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
     }
     return ship;
 }
@@ -2546,6 +2548,7 @@ std::unique_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::unique_ptr<WarS
     ship->getSprite().move(0, -ship->getLength() / 2);
     for (auto &it:ship->getArsenalList()) {
         it->getSprite().move(0, -ship->getLength() / 2);
+        it->getSprite().rotate(180);
     }
     return ship;
 }

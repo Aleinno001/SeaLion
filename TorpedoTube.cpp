@@ -43,3 +43,7 @@ bool TorpedoTube::engage(Vehicle enemy) {
 void TorpedoTube::rotate() {
 
 }
+
+void TorpedoTube::resetOrigin() {
+
+}

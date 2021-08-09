@@ -10,7 +10,7 @@ LightCannon::LightCannon(float range, const int reload, int speed, int dispersio
         : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, posX, posY, le, wi, texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
-    sprite.setOrigin(wi / 2, le / 2);
+    resetOrigin();
 }
 
 LightCannon::~LightCannon() {
@@ -44,5 +44,10 @@ bool LightCannon::engage(Vehicle enemy) {
 void LightCannon::rotate() {
     Arsenal::rotate();
 }
+
+void LightCannon::resetOrigin() {
+    sprite.setOrigin(width / 2, width / 2);
+}
+
 
 

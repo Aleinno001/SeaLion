@@ -47,3 +47,7 @@ void AntiAircraft::rotate() {
 bool AntiAircraft::setUpSprite(std::string textureName) {
     return Arsenal::setUpSprite(textureName);
 }
+
+void AntiAircraft::resetOrigin() {
+
+}
