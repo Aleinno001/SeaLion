@@ -28,13 +28,7 @@ void AntiAircraft::update(std::unique_ptr<WarShip> theChangedSubject) {
 
 }
 
-void AntiAircraft::attach() {
 
-}
-
-void AntiAircraft::detach() {
-
-}
 
 bool AntiAircraft::engage(Vehicle enemy) {
     return false;

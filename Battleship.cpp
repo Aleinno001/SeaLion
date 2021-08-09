@@ -110,7 +110,7 @@ void Battleship::notifyArsenals() {
 
     std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
     while (it != arsenalList.end()) {
-        (*it)->update(static_cast<std::unique_ptr<WarShip>>(this));
+        (*it)->update(this);
         ++it;
     }
 

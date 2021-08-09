@@ -32,12 +32,12 @@ public:
 
     void update(bool isDead) override;
 
-    void attach(std::unique_ptr<Arsenal> gun) override {
-        arsenalList.push_back(gun);
+    void attach(Arsenal *gun) override {
+        //arsenalList.push_back(gun);
     };
 
-    void detach(std::unique_ptr<Arsenal> gun) override {
-        arsenalList.remove(gun);
+    void detach(Arsenal *gun) override {
+        //arsenalList.remove(gun);
 
     };
 

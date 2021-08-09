@@ -8,6 +8,7 @@
 
 #include "Arsenal.h"
 #include "Bullet.h"
+#include "WarShip.h"
 
 class HeavlyCannon : public Arsenal {
 public:
@@ -15,20 +16,25 @@ public:
 
 
     HeavlyCannon(const float range, const int reload, int speed, int dispersion, Bullet type,
-                 float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
+                 float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName,
+                 WarShip &sub);
 
     ~HeavlyCannon() override;
 
 private:
+
+    WarShip &subject_;
+
     bool shoreBombardment();
 
     void openFire(Vehicle enemy) override;
 
-    void update(std::unique_ptr<WarShip> theChangedSubject) override;
+    void update() override;
 
-    void attach() override;
 
-    void detach() override;
+    void removeMeFromTheList() {
+        subject_.detach(this);
+    }
 
     bool engage(Vehicle enemy) override;
 

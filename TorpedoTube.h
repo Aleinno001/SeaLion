@@ -25,9 +25,7 @@ private:
 
     void update(std::unique_ptr<WarShip> theChangedSubject) override;
 
-    void attach() override;
 
-    void detach() override;
 
     bool engage(Vehicle enemy) override;
 

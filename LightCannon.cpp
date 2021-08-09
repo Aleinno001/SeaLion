@@ -6,8 +6,10 @@
 
 LightCannon::LightCannon(float range, const int reload, int speed, int dispersion, Bullet type,
                          float decelleration, int power, int num, int posX, int posY, int le, int wi,
-                         std::string texName)
-        : Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, posX, posY, le, wi, texName) {
+                         std::string texName, WarShip &sub)
+        : subject_(sub),
+          Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, posX, posY, le, wi, texName) {
+    subject_.attach(this);
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();
@@ -25,8 +27,8 @@ void LightCannon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void LightCannon::update(std::unique_ptr<WarShip> theChangedSubject) {
-
+void LightCannon::update() {
+    //TODO Implementa l'aggiormnameto delle coordinate del cannone leggero
 }
 
 

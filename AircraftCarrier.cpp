@@ -79,15 +79,6 @@ void AircraftCarrier::ceaseFire() {
 
 }
 
-void AircraftCarrier::registerArsenals(std::unique_ptr<Arsenal> observer) {
-
-
-}
-
-void AircraftCarrier::removeArsenals(std::unique_ptr<Arsenal> observer) {
-
-}
-
 void AircraftCarrier::notifyArsenals() {
 
     std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();

@@ -44,11 +44,6 @@ public:
 
     void ceaseFire() override;
 
-    void registerArsenals(std::unique_ptr<Arsenal> observer) override;
-
-    void removeArsenals(std::unique_ptr<Arsenal> observer) override;
-
-
 
     ~AircraftCarrier() override;
 

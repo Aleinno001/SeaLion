@@ -28,13 +28,7 @@ void TorpedoTube::update(std::unique_ptr<WarShip> theChangedSubject) {
 
 }
 
-void TorpedoTube::attach() {
 
-}
-
-void TorpedoTube::detach() {
-
-}
 
 bool TorpedoTube::engage(Vehicle enemy) {
     return false;

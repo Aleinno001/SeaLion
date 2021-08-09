@@ -7,6 +7,7 @@
 
 #include "Arsenal.h"
 #include <SFML/Graphics.hpp>
+#include "WarShip.h"
 
 class LightCannon : public Arsenal {
 public:
@@ -14,17 +15,23 @@ public:
 
     LightCannon(float range, const int reload, int speed, int dispersion,
                 Bullet type, float decelleration, int power, int num, int posX, int posY, int le, int wi,
-                std::string texName);
+                std::string texName, WarShip &sub);
 
     ~LightCannon() override;
 
 private:
+
+    WarShip &subject_;
+
     bool accuracy();
 
     void openFire(Vehicle enemy) override;
 
-    void update(std::unique_ptr<WarShip> theChangedSubject) override;
+    void update() override;
 
+    void removeMeFromTheList() {
+        subject_.detach(this);
+    }
 
     bool engage(Vehicle enemy) override;
 

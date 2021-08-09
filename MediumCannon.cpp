@@ -6,9 +6,13 @@
 
 MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int dispersion,
                              Bullet type, float decelleration, int power, int num, int posX, int posY, int le,
-                             int wi, std::string texName) : Arsenal(range, reload, speed, dispersion, type,
-                                                                    decelleration, power, num, posX, posY, le, wi,
-                                                                    texName) {
+                             int wi, std::string texName, WarShip &sub) : subject_(sub),
+                                                                          Arsenal(range, reload, speed, dispersion,
+                                                                                  type,
+                                                                                  decelleration, power, num, posX, posY,
+                                                                                  le, wi,
+                                                                                  texName) {
+    subject_.attach(this);
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();
@@ -26,8 +30,8 @@ void MediumCannnon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void MediumCannnon::update(std::unique_ptr<WarShip> theChangedSubject) {
-
+void MediumCannnon::update() {
+    //TODO Implementa l'aggiormnameto delle coordinate del cannone medio
 }
 
 

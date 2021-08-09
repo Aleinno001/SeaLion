@@ -103,15 +103,11 @@ public:
 
     virtual void ceaseFire() = 0;
 
-    virtual void registerArsenals(std::unique_ptr<Arsenal> observer) = 0;
-
-    virtual void removeArsenals(std::unique_ptr<Arsenal> observer) = 0;
-
     virtual void notifyArsenals() = 0;//    Metodi per design pattern observer
 
-    virtual void attach(std::unique_ptr<Arsenal> gun) = 0;//    Metodi per design pattern observer
+    virtual void attach(Arsenal *gun) = 0;//    Metodi per design pattern observer
 
-    virtual void detach(std::unique_ptr<Arsenal> gun) = 0;//    Metodi per design pattern observer
+    virtual void detach(Arsenal *gun) = 0;//    Metodi per design pattern observer
 
     const int getArmour() const;
 

@@ -6,12 +6,18 @@
 
 HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int dispersion,
                            Bullet type, float decelleration, int power, int num, int posX, int posY, int le,
-                           int wi, std::string texName) : Arsenal(range, reload, speed, dispersion, type,
-                                                                  decelleration, power, num, posX, posY, le, wi,
-                                                                  texName) {
+                           int wi, std::string texName, WarShip &sub) : subject_(sub),
+                                                                        Arsenal(range, reload, speed, dispersion, type,
+                                                                                decelleration, power, num, posX, posY,
+                                                                                le, wi,
+                                                                                texName) {
+
+
+    subject_.attach(this);
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();
+
 };
 
 HeavlyCannon::~HeavlyCannon() {
@@ -26,17 +32,7 @@ void HeavlyCannon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void HeavlyCannon::update(std::unique_ptr<WarShip> theChangedSubject) {
 
-}
-
-void HeavlyCannon::attach() {
-    Arsenal::attach();
-}
-
-void HeavlyCannon::detach() {
-    Arsenal::detach();
-}
 
 bool HeavlyCannon::engage(Vehicle enemy) {
     return Arsenal::engage(enemy);
@@ -48,4 +44,9 @@ void HeavlyCannon::rotate() {
 
 void HeavlyCannon::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (width - 1) / 2);
+}
+
+void HeavlyCannon::update() {
+    //TODO Implementa l'aggiormnameto delle coordinate del cannone pesante
+
 }
