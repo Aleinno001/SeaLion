@@ -39,11 +39,9 @@ public:
 
     virtual void openFire(Vehicle enemy);
 
-    virtual void update(std::unique_ptr<WarShip> theChangedSubject) = 0;
+    virtual void update(std::unique_ptr<WarShip> theChangedSubject) = 0; //Metodo per design pattern observer
 
-    virtual void attach();
 
-    virtual void detach();
 
     virtual bool engage(Vehicle enemy);
 

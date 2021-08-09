@@ -29,13 +29,7 @@ void LightCannon::update(std::unique_ptr<WarShip> theChangedSubject) {
 
 }
 
-void LightCannon::attach() {
-    Arsenal::attach();
-}
 
-void LightCannon::detach() {
-    Arsenal::detach();
-}
 
 bool LightCannon::engage(Vehicle enemy) {
     return Arsenal::engage(enemy);

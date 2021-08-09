@@ -87,13 +87,7 @@ void Battleship::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Battleship::attach() {
-    Vehicle::attach();
-}
 
-void Battleship::detach() {
-    Vehicle::detach();
-}
 
 void Battleship::stopMove() {
 
@@ -103,15 +97,23 @@ void Battleship::ceaseFire() {
 
 }
 
-void Battleship::registerArsenals(std::unique_ptr<Arsenal> observer) {
+//void Battleship::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
-void Battleship::removeArsenals(std::unique_ptr<Arsenal> observer) {
+//void Battleship::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
 void Battleship::notifyArsenals() {
+
+
+    std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    while (it != arsenalList.end()) {
+        (*it)->update(static_cast<std::unique_ptr<WarShip>>(this));
+        ++it;
+    }
+
 
 }
 

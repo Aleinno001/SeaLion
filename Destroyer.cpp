@@ -80,13 +80,6 @@ void Destroyer::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Destroyer::attach() {
-    Vehicle::attach();
-}
-
-void Destroyer::detach() {
-    Vehicle::detach();
-}
 
 void Destroyer::stopMove() {
 
@@ -96,15 +89,21 @@ void Destroyer::ceaseFire() {
 
 }
 
-void Destroyer::registerArsenals(std::unique_ptr<Arsenal> observer) {
+//void Destroyer::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
-void Destroyer::removeArsenals(std::unique_ptr<Arsenal> observer) {
+//void Destroyer::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
 void Destroyer::notifyArsenals() {
+
+    std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    while (it != arsenalList.end()) {
+        (*it)->update(static_cast<std::unique_ptr<WarShip>>(this));
+        ++it;
+    }
 
 }
 

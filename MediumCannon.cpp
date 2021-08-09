@@ -30,13 +30,7 @@ void MediumCannnon::update(std::unique_ptr<WarShip> theChangedSubject) {
 
 }
 
-void MediumCannnon::attach() {
-    Arsenal::attach();
-}
 
-void MediumCannnon::detach() {
-    Arsenal::detach();
-}
 
 bool MediumCannnon::engage(Vehicle enemy) {
     return Arsenal::engage(enemy);

@@ -77,13 +77,6 @@ void Cruiser::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Cruiser::attach() {
-    Vehicle::attach();
-}
-
-void Cruiser::detach() {
-    Vehicle::detach();
-}
 
 void Cruiser::stopMove() {
 
@@ -93,16 +86,21 @@ void Cruiser::ceaseFire() {
 
 }
 
-void Cruiser::registerArsenals(std::unique_ptr<Arsenal> observer) {
+//void Cruiser::registerArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
-void Cruiser::removeArsenals(std::unique_ptr<Arsenal> observer) {
+//void Cruiser::removeArsenals(std::unique_ptr<Arsenal> observer) {
 
-}
+//}
 
 void Cruiser::notifyArsenals() {
 
+    std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    while (it != arsenalList.end()) {
+        (*it)->update(static_cast<std::unique_ptr<WarShip>>(this));
+        ++it;
+    }
 }
 
 Cruiser::~Cruiser() {

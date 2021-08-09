@@ -26,9 +26,19 @@ public:
 
     void update(bool isDead) override;
 
-    void attach() override;
+    void attach(std::unique_ptr<Arsenal> gun) override {
+        arsenalList.push_back(gun);
+    };
 
-    void detach() override;
+    void detach(std::unique_ptr<Arsenal> gun) override {
+        arsenalList.remove(gun);
+    };
+
+    void notifyArsenals() override;
+
+    int HowManyObserver() {
+        return arsenalList.size();
+    }
 
     void stopMove() override;
 
@@ -38,7 +48,7 @@ public:
 
     void removeArsenals(std::unique_ptr<Arsenal> observer) override;
 
-    void notifyArsenals() override;
+
 
     ~AircraftCarrier() override;
 

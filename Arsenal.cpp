@@ -76,13 +76,7 @@ void Arsenal::setAmmoType(const Bullet &ammoType) {
     Arsenal::ammoType = ammoType;
 }
 
-void Arsenal::attach() {
 
-}
-
-void Arsenal::detach() {
-
-}
 
 bool Arsenal::engage(Vehicle enemy) {
     return false;
