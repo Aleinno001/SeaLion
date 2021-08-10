@@ -66,17 +66,13 @@ ShipFactory::gatoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int shipWidth = 9;
     int shipHeight = 95;
 
-    int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
-    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-
-
     std::unique_ptr<Submarine> Gato(
             new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, v, shipHeight, shipWidth,
                           true,
                           ShipType::Submarine, ModelType::Gato, 6, false));
 
     for (int i = 0; i < 6; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo, Gato);
+        factory.createSpecialWeapon(WeaponType::torpedo, *Gato);
 
     return Gato;
 }
@@ -91,7 +87,7 @@ ShipFactory::tritonBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     for (int i = 0; i < 6; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
 
     std::unique_ptr<Submarine> Triton(
             new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, v, shipHeight, shipWidth,
@@ -110,7 +106,7 @@ ShipFactory::DaVinciBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     for (int i = 0; i < 8; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
 
     std::unique_ptr<Submarine> DaVinci(
             new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, v, shipHeight, shipWidth,
@@ -129,7 +125,7 @@ ShipFactory::typeb1Builder(std::list<std::unique_ptr<Vehicle>> &v,
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     for (int i = 0; i < 6; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
 
     std::unique_ptr<Submarine> typeb1(
             new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, v, shipHeight, shipWidth,
@@ -149,7 +145,7 @@ ShipFactory::i400Builder(std::list<std::unique_ptr<Vehicle>> &v,
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     for (int i = 0; i < 8; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
 
     std::unique_ptr<Submarine> i400(
             new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, v, shipHeight, shipWidth,
@@ -236,7 +232,7 @@ ShipFactory::midwayBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     factory.createMedium(cannonPosX + 69, cannonPosY + 100)));
     int numAntiAir = 15;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
                                                              "Usa", 2, 0, 0, numAntiAir, v, shipHeight, shipWidth,
                                                              true,
@@ -261,7 +257,7 @@ ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 4;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<AircraftCarrier> arkRoyal(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
                                 "Uk", 2, 0, 0, numAntiAir, v, shipHeight, shipWidth, true, ShipType::AircraftCarrier,
@@ -309,7 +305,7 @@ ShipFactory::tahioBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 20;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, numAntiAir, v,
                                 shipHeight,
@@ -482,7 +478,7 @@ ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Vehicle>> &v,
                                                                                                                     a.emplace_back(
                                                                                                                             std::move(
                                                                                                                                     factory.createSpecialWeapon(
-                                                                                                                                            WeaponType::antiAir)));
+                                                                                                                                            WeaponType::antiAir);
                                                                                                                 std::unique_ptr<Cruiser> saintLouis(
                                                                                                                         new Cruiser(
                                                                                                                                 coordinates.x,
@@ -530,7 +526,7 @@ ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     cf.createLight(cannonPosX + 23, cannonPosY + 150)));
     cf.createLight(cannonPosX + 11, cannonPosY + 172)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> alaska(new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918,
                                                 "Usa", 6, 1, 2, antiAir, v, shipHeight, shipWidth, true,
                                                 ShipType::Cruiser,
@@ -560,7 +556,7 @@ ShipFactory::danaeBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     cf.createLight(cannonPosX + 5, cannonPosY + 33)));
     cf.createLight(cannonPosX + 5, cannonPosY + 19)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> danae(new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190,
                                                "Uk", 6, 0, 1, antiAir, v, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
@@ -592,7 +588,7 @@ ShipFactory::trentoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     cf.createLight(cannonPosX + 3, cannonPosY + 111)));
     cf.createLight(cannonPosX + 18, cannonPosY + 111)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> trento(new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120,
                                                 "Italy", 6, 0, 4, antiAir, v, shipHeight, shipWidth, true,
                                                 ShipType::Cruiser,
@@ -621,7 +617,7 @@ std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(
     cf.createLight(cannonPosX + 10, cannonPosY + 93)));
     cf.createLight(cannonPosX + 6, cannonPosY + 112)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84,
                                                            "Italy", 3, 0, 4, antiAir, v, shipHeight, shipWidth, true,
                                                            ShipType::Cruiser,
@@ -652,7 +648,7 @@ ShipFactory::takaoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     cf.createLight(cannonPosX + 3, cannonPosY + 96)));
     cf.createLight(cannonPosX + 18, cannonPosY + 96)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
                                                "Japan", 4, 0, 5, antiAir, v, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
@@ -774,7 +770,7 @@ ShipFactory::ironDukeBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 15;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> ironDuke(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
                            "Uk", 0, 5, 0, numAntiAir, v, shipHeight, shipWidth, true,
@@ -804,7 +800,7 @@ ShipFactory::northCarolinaBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 34;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<Battleship> northCarolina(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
@@ -842,7 +838,7 @@ ShipFactory::montanaBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 80;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<Battleship> montana(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
@@ -869,7 +865,7 @@ ShipFactory::lionBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 10;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> lion(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
                            "Uk", 0, 4, 0, numAntiAir, v, shipHeight, shipWidth, true,
@@ -895,7 +891,7 @@ ShipFactory::dreadNoughtBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 20;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> dreadNought(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
                            "Uk", 0, 5, 0, numAntiAir, v, shipHeight, shipWidth, true,
@@ -947,7 +943,7 @@ std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(
     WeaponFactory specialFactory;
     int numAntiAir = 12;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<Battleship> imperatoreAugusto(
             new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126,
@@ -981,7 +977,7 @@ ShipFactory::kongoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 18;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
                                                      "Japan", 6, 4, 0, numAntiAir, v, shipHeight, shipWidth, true,
                                                      ShipType::Battleship,
@@ -1015,7 +1011,7 @@ ShipFactory::musashiBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     WeaponFactory specialFactory;
     int numAntiAir = 30;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<Battleship> musashi(new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540,
                                                        "Japan", 6, 3, 2, numAntiAir, v, shipHeight, shipWidth, true,
@@ -1120,7 +1116,7 @@ ShipFactory::simsBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int numAntiAir = 16;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
 
     std::unique_ptr<Destroyer> sims(
@@ -1148,7 +1144,7 @@ ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int numAntiAir = 14;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
 
     std::unique_ptr<Destroyer> fletcher(
@@ -1196,7 +1192,7 @@ ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int numAntiAir = 12;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Destroyer> paoloEmilio(
             new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
@@ -1224,7 +1220,7 @@ ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int numAntiAir = 40;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Destroyer> impavido(
             new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
@@ -1250,7 +1246,7 @@ ShipFactory::yukikazeBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int numAntiAir = 32;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Destroyer> yukikaze(
             new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
@@ -1328,7 +1324,7 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates,
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     for (int i = 0; i < 4; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
     std::unique_ptr<Submarine> Narwhal(
             new Submarine(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, v, shipHeight, shipWidth,
                           true,
@@ -1346,7 +1342,7 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates,
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     for (int i = 0; i < 5; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
     std::unique_ptr<Submarine> Trenchant(
             new Submarine(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, v, shipHeight, shipWidth,
                           true,
@@ -1364,7 +1360,7 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates,
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     for (int i = 0; i < 10; i++)
-        factory.createSpecialWeapon(WeaponType::torpedo)));
+        factory.createSpecialWeapon(WeaponType::torpedo);
     std::unique_ptr<Submarine> Papa(
             new Submarine(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, v, shipHeight, shipWidth,
                           true,
@@ -1449,7 +1445,7 @@ ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 8;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir, v,
@@ -1477,7 +1473,7 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 6;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<AircraftCarrier> Indomitable(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir, v,
                                 shipHeight,
@@ -1505,7 +1501,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 3;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<AircraftCarrier> Cavour(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir, v,
@@ -1532,7 +1528,7 @@ ShipFactory::hiryuBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 2;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<AircraftCarrier> Hiryu(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir, v,
@@ -1658,7 +1654,7 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 17, cannonPosY + 82)));
     cf.createLight(cannonPosX + 17, cannonPosY + 90)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> NewOrleans(
             new Cruiser(coordinates.x, coordinates.y, 3, 61, 12663, 476, "Usa", 6, 0, 3, antiAir, v, shipHeight,
                         shipWidth,
@@ -1691,7 +1687,7 @@ ShipFactory::tiger59Builder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 13, cannonPosY + 92)));
     cf.createLight(cannonPosX + 13, cannonPosY + 75)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> Tiger59(
             new Cruiser(coordinates.x, coordinates.y, 3, 58, 12080, 191, "Uk", 6, 0, 4, antiAir, v, shipHeight,
                         shipWidth,
@@ -1724,7 +1720,7 @@ ShipFactory::belfastBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 18, cannonPosY + 107)));
     cf.createLight(cannonPosX + 18, cannonPosY + 95)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> Belfast(
             new Cruiser(coordinates.x, coordinates.y, 3, 59, 11550, 228, "Uk", 6, 0, 4, antiAir, v, shipHeight,
                         shipWidth,
@@ -1757,7 +1753,7 @@ ShipFactory::goriziaBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 18, cannonPosY + 107)));
     cf.createLight(cannonPosX + 18, cannonPosY + 98)));
     for (int i = 0; i < antiAir; i++) {
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Cruiser> Gorizia(
             new Cruiser(coordinates.x, coordinates.y, 3, 59, 14330, 370, "Italy", 6, 0, 4, antiAir, v, shipHeight,
@@ -1790,7 +1786,7 @@ ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 3, cannonPosY + 30)));
     cf.createLight(cannonPosX + 6, cannonPosY + 30)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> IsuzuNagara(
             new Cruiser(coordinates.x, coordinates.y, 3, 67, 5700, 90, "Japan", 5, 0, 3, antiAir, v, shipHeight,
                         shipWidth,
@@ -1822,7 +1818,7 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 20, cannonPosY + 102)));
     cf.createLight(cannonPosX + 20, cannonPosY + 115)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Cruiser> Ijn(
             new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 230, "Japan", 4, 0, 4, antiAir, v, shipHeight,
                         shipWidth,
@@ -1979,7 +1975,7 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 32;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
 
     std::unique_ptr<Battleship> VittorioVeneto(
             new Battleship(coordinates.x, coordinates.y, 1, 56, 45963, 862, "Italy", 12, 4, 4, numAntiAir, v,
@@ -2007,7 +2003,7 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates,
     cf.createHeavly(cannonPosX + 10, cannonPosY + 115)));
     cf.createHeavly(cannonPosX + 10, cannonPosY + 140)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> NewYork(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
                            "Usa", 0, 5, 0, antiAir, v, shipHeight, shipWidth, true,
@@ -2040,7 +2036,7 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 23, cannonPosY + 78)));
     cf.createLight(cannonPosX + 21, cannonPosY + 69)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> Arizona(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
                            "Usa", 8, 4, 0, antiAir, v, 185, 32, true,
@@ -2067,7 +2063,7 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates,
     cf.createMedium(cannonPosX + 13, cannonPosY + 65)));
 
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> Hood(
             new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800, "Uk", 0, 2, 2, antiAir, v, shipHeight,
                            shipWidth,
@@ -2118,7 +2114,7 @@ ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 14;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> MichelangeloBuonarroti(
             new Battleship(coordinates.x, coordinates.y, 1, 61, 42533, 837, "Italy", 12, 3, 6, numAntiAir, v,
                            shipHeight,
@@ -2162,7 +2158,7 @@ ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates,
     WeaponFactory specialFactory;
     int numAntiAir = 13;
     for (int i = 0; i < numAntiAir; i++)
-        specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+        specialFactory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> AndreaDoria(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir, v,
                            shipHeight,
@@ -2184,25 +2180,7 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates,
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    cf.createHeavly(cannonPosX + 13, cannonPosY + 71)));
-    cf.createHeavly(cannonPosX + 13, cannonPosY + 93)));
-    cf.createHeavly(cannonPosX + 14, cannonPosY + 184)));
-    cf.createMedium(cannonPosX + 16, cannonPosY + 176)));
-    cf.createMedium(cannonPosX + 16, cannonPosY + 118)));
-    cf.createLight(cannonPosX + 13, cannonPosY + 161)));
-    cf.createLight(cannonPosX + 13, cannonPosY + 150)));
-    cf.createLight(cannonPosX + 13, cannonPosY + 138)));
-    cf.createLight(cannonPosX + 5, cannonPosY + 157)));
-    cf.createLight(cannonPosX + 5, cannonPosY + 146)));
-    cf.createLight(cannonPosX + 4, cannonPosY + 130)));
-    cf.createLight(cannonPosX + 25, cannonPosY + 161)));
-    cf.createLight(cannonPosX + 25, cannonPosY + 150)));
-    cf.createLight(cannonPosX + 26, cannonPosY + 138)));
-    cf.createLight(cannonPosX + 29, cannonPosY + 157)));
-    cf.createLight(cannonPosX + 29, cannonPosY + 146)));
-    cf.createLight(cannonPosX + 32, cannonPosY + 130)));
-    for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+
 
     std::unique_ptr<Battleship> Yamato(
             new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir, v,
@@ -2210,6 +2188,26 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::Yamato, 3));
+
+    cf.createHeavly(cannonPosX + 13, cannonPosY + 71, *Yamato);
+    cf.createHeavly(cannonPosX + 13, cannonPosY + 93, *Yamato);
+    cf.createHeavly(cannonPosX + 14, cannonPosY + 184, *Yamato);
+    cf.createMedium(cannonPosX + 16, cannonPosY + 176, *Yamato);
+    cf.createMedium(cannonPosX + 16, cannonPosY + 118, *Yamato);
+    cf.createLight(cannonPosX + 13, cannonPosY + 161, *Yamato);
+    cf.createLight(cannonPosX + 13, cannonPosY + 150, *Yamato);
+    cf.createLight(cannonPosX + 13, cannonPosY + 138, *Yamato);
+    cf.createLight(cannonPosX + 5, cannonPosY + 157, *Yamato);
+    cf.createLight(cannonPosX + 5, cannonPosY + 146, *Yamato);
+    cf.createLight(cannonPosX + 4, cannonPosY + 130, *Yamato);
+    cf.createLight(cannonPosX + 25, cannonPosY + 161, *Yamato);
+    cf.createLight(cannonPosX + 25, cannonPosY + 150, *Yamato);
+    cf.createLight(cannonPosX + 26, cannonPosY + 138, *Yamato);
+    cf.createLight(cannonPosX + 29, cannonPosY + 157, *Yamato);
+    cf.createLight(cannonPosX + 29, cannonPosY + 146, *Yamato);
+    cf.createLight(cannonPosX + 32, cannonPosY + 130, *Yamato);
+    for (int i = 0; i < antiAir; i++)
+        factory.createSpecialWeapon(WeaponType::antiAir);
     return Yamato;
 }
 
@@ -2237,7 +2235,7 @@ ShipFactory::iseBuilder(sf::Vector2i &coordinates,
     cf.createLight(cannonPosX + 28, cannonPosY + 71)));
     cf.createLight(cannonPosX + 27, cannonPosY + 62)));
     for (int i = 0; i < antiAir; i++)
-        factory.createSpecialWeapon(WeaponType::antiAir)));
+        factory.createSpecialWeapon(WeaponType::antiAir);
     std::unique_ptr<Battleship> Ise(
             new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, antiAir, v, shipHeight,
                            shipWidth,
@@ -2355,7 +2353,7 @@ ShipFactory::mahanBuilder(sf::Vector2i &coordinates,
     int numAntiAir = 8;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
 
     std::unique_ptr<Destroyer> Mahan(
@@ -2382,7 +2380,7 @@ ShipFactory::gallandBuilder(sf::Vector2i &coordinates,
     int numAntiAir = 8;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
 
     std::unique_ptr<Destroyer> Gallant(
@@ -2409,7 +2407,7 @@ ShipFactory::campbeltownBuilder(sf::Vector2i &coordinates,
     int numAntiAir = 10;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
 
     std::unique_ptr<Destroyer> Campbelltown(
@@ -2435,7 +2433,7 @@ ShipFactory::leoneBuilder(sf::Vector2i &coordinates,
     int numAntiAir = 20;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Destroyer> Leone(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
@@ -2463,7 +2461,7 @@ ShipFactory::fubukiBuilder(sf::Vector2i &coordinates,
     int numAntiAir = 20;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Destroyer> Fubuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 70, 2080, 26,
@@ -2489,7 +2487,7 @@ ShipFactory::akizukiBuilder(sf::Vector2i &coordinates,
     int numAntiAir = 50;
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        wf.createSpecialWeapon(WeaponType::antiAir)));
+        wf.createSpecialWeapon(WeaponType::antiAir);
     }
     std::unique_ptr<Destroyer> Akizuki(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 3759, 33,
