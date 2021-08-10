@@ -89,7 +89,7 @@ protected:
     const int numMCannons;
     const int numHCannons;
     const int numAntiAircraft;
-    std::list<std::unique_ptr<Arsenal>> arsenalList;
+    std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::unique_ptr<Vehicle>> vehicleList;
 
 public:
@@ -105,9 +105,9 @@ public:
 
     virtual void notifyArsenals() = 0;//    Metodi per design pattern observer
 
-    virtual void attach(Arsenal *gun) = 0;//    Metodi per design pattern observer
+    virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
-    virtual void detach(Arsenal *gun) = 0;//    Metodi per design pattern observer
+    virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
     const int getArmour() const;
 

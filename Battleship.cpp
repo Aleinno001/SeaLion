@@ -108,9 +108,9 @@ void Battleship::ceaseFire() {
 void Battleship::notifyArsenals() {
 
 
-    std::list<std::unique_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    std::list<std::shared_ptr<Arsenal>>::iterator it = arsenalList.begin();
     while (it != arsenalList.end()) {
-        (*it)->update(this);
+        (*it)->update();
         ++it;
     }
 

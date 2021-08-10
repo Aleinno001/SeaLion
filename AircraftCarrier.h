@@ -26,11 +26,11 @@ public:
 
     void update(bool isDead) override;
 
-    void attach(std::unique_ptr<Arsenal> gun) override {
+    void attach(const std::shared_ptr<Arsenal> &gun) override {
         arsenalList.push_back(gun);
     };
 
-    void detach(std::unique_ptr<Arsenal> gun) override {
+    void detach(const std::shared_ptr<Arsenal> &gun) override {
         arsenalList.remove(gun);
     };
 
