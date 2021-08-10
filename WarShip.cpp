@@ -55,7 +55,7 @@ ModelType WarShip::getModelType() const {
     return modelType;
 }
 
-std::list<std::unique_ptr<Arsenal>> &WarShip::getArsenalList() {
+std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
     return arsenalList;
 }
 
