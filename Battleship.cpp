@@ -11,10 +11,10 @@ float Battleship::calcSpeed(Map battleSea) {
 */
 
 Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int arm, std::string nat, int numL,
-                       int numH, int numM, int numAa, std::list<std::unique_ptr<Arsenal>> &arsenalList,
+                       int numH, int numM, int numAa,
                        std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi, bool col, ShipType sh,
                        ModelType mo, int numInterceptors) : WarShip(x, y, ac, maxVel, hp, arm, nat, numL, numH, numM,
-                                                                    numAa, arsenalList, vehicleList, le, wi, col, sh,
+                                                                    numAa, vehicleList, le, wi, col, sh,
                                                                     mo), numInterceptors(numInterceptors) {
     std::string textureName;
     switch (mo) {
