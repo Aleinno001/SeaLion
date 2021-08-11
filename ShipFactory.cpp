@@ -66,10 +66,6 @@ ShipFactory::gatoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int shipWidth = 9;
     int shipHeight = 95;
 
-    int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
-    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    
-
     std::unique_ptr<Submarine> Gato(
             new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Gato, 6, false));
@@ -969,26 +965,27 @@ ShipFactory::kongoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    ->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 43)));
-    ->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 56)));
-    ->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 131)));
-    ->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 169)));
-
-    ->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 81)));
-    ->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 95)));
-    ->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 129)));
-    ->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 81)));
-    ->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 95)));
-    ->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 129)));
-
-    WeaponFactory specialFactory;
     int numAntiAir = 18;
-    for (int i = 0; i < numAntiAir; i++)
-        ->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
                                                      "Japan", 6, 4, 0, numAntiAir,  v, shipHeight, shipWidth, true,
                                                      ShipType::Battleship,
                                                      ModelType::Kongo, 0));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 43)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 56)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 131)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 169)));
+
+    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 81)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 95)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 129)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 81)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 95)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 129)));
+
+    WeaponFactory specialFactory;
+
+    for (int i = 0; i < numAntiAir; i++)
+        kongo->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
     return kongo;
 }
 
@@ -2180,25 +2177,7 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates,
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    ->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 71)));
-    ->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 93)));
-    ->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 184)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 176)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 118)));
-    ->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 161)));
-    ->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 150)));
-    ->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 138)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 157)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 146)));
-    ->attach(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 130)));
-    ->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 161)));
-    ->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 150)));
-    ->attach(std::move(cf.createLight(cannonPosX + 26, cannonPosY + 138)));
-    ->attach(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 157)));
-    ->attach(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 146)));
-    ->attach(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 130)));
-    for (int i = 0; i < antiAir; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+
 
     std::unique_ptr<Battleship> Yamato(
             new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir,  v,
@@ -2206,6 +2185,25 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::Yamato, 3));
+    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 71)));
+    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 93)));
+    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 184)));
+    Yamato->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 176)));
+    Yamato->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 118)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 161)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 150)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 138)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 157)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 146)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 130)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 161)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 150)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 26, cannonPosY + 138)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 157)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 146)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 130)));
+    for (int i = 0; i < antiAir; i++)
+        Yamato->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
     return Yamato;
 }
 
