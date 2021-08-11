@@ -87,12 +87,14 @@ ShipFactory::tritonBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    for (int i = 0; i < 6; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
 
     std::unique_ptr<Submarine> Triton(
             new Submarine(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Triton, 6, false));
+
+    for (int i = 0; i < 6; i++)
+        Triton->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
     return Triton;
 }
 
