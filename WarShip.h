@@ -95,7 +95,6 @@ protected:
 public:
     WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
             std::string nat, int numL, int numH, int numM, int numAA,
-            std::list<std::unique_ptr<Arsenal>> &arsenalList,
             std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
             bool col, ShipType sh, ModelType mo);
 
