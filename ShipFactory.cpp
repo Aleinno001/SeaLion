@@ -237,9 +237,9 @@ ShipFactory::midwayBuilder(std::list<std::unique_ptr<Vehicle>> &v,
                                                              true,
                                                              ShipType::AircraftCarrier, ModelType::Midway, 14));
 
-    mid->attach(std::move(factory.createMedium(cannonPosX + 72, cannonPosY + 187)));
-    mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230)));
-    mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100)));
+    mid->attach(std::move(factory.createMedium(cannonPosX + 72, cannonPosY + 187,*mid)));
+    mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230,*mid)));
+    mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100,*mid)));
 
     for (int i = 0; i < numAntiAir; i++)
         mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
@@ -258,16 +258,18 @@ ShipFactory::arkRoyalBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
 
-    ->attach(std::move(factory.createLight(cannonPosX + 7, cannonPosY + 85)));
-    ->attach(std::move(factory.createLight(cannonPosX + 28, cannonPosY + 85)));
+
     WeaponFactory specialFactory;
     int numAntiAir = 4;
-    for (int i = 0; i < numAntiAir; i++)
-        ->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<AircraftCarrier> arkRoyal(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, 20,
                                 "Uk", 2, 0, 0, numAntiAir,  v, shipHeight, shipWidth, true, ShipType::AircraftCarrier,
                                 ModelType::ArkRoyal, 7));
+    arkRoyal->attach(std::move(factory.createLight(cannonPosX + 7, cannonPosY + 85,*arkRoyal)));
+    arkRoyal->attach(std::move(factory.createLight(cannonPosX + 28, cannonPosY + 85,*arkRoyal)));
+    for (int i = 0; i < numAntiAir; i++)
+        arkRoyal->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*arkRoyal)));
     return arkRoyal;
 }
 
@@ -282,15 +284,17 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
-    ->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 41)));
-    ->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 69)));
-    ->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 98)));
+
 
     std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0,  v, shipHeight,
                                 shipWidth,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
+
+    GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 41,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 69,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 98,*GiuseppeGaribaldi)));
     return GiuseppeGaribaldi;
 }
 
@@ -306,18 +310,22 @@ ShipFactory::tahioBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
 
-    ->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 55)));
-    ->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 218)));
+
     WeaponFactory specialFactory;
     int numAntiAir = 20;
-    for (int i = 0; i < numAntiAir; i++)
-        ->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<AircraftCarrier> Tahio(
             new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, numAntiAir,  v,
                                 shipHeight,
                                 shipWidth,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::Tahio, 7));
+
+    Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 55,*Tahio)));
+    Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 218,*Tahio)));
+
+    for (int i = 0; i < numAntiAir; i++)
+        Tahio->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Tahio)));
     return Tahio;
 }
 
@@ -422,69 +430,8 @@ ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Vehicle>> &v,
                                                                                                                 WeaponFactory factory;
                                                                                                                 CannonFactory cf;
                                                                                                                 int antiAir = 8;
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createMedium(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        6,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        21)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createMedium(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        6,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        34)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createMedium(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        6,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        111)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createLight(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        1,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        71)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createLight(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        15,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        71)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createLight(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        8,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        80)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createLight(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        2,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        41)));
-                                                                                                                ->attach(
-                                                                                                                        std::move(
-                                                                                                                                cf.createLight(
-                                                                                                                                        cannonPosX +
-                                                                                                                                        16,
-                                                                                                                                        cannonPosY +
-                                                                                                                                        41)));
-                                                                                                                for (int i = 0;
-                                                                                                                     i <
-                                                                                                                     antiAir; i++)
-                                                                                                                    ->attach(
-                                                                                                                            std::move(
-                                                                                                                                    factory.createSpecialWeapon(
-                                                                                                                                            WeaponType::antiAir)));
+
+
                                                                                                                 std::unique_ptr<Cruiser> saintLouis(
                                                                                                                         new Cruiser(
                                                                                                                                 coordinates.x,
@@ -506,6 +453,69 @@ ShipFactory::stLouisBuilder(std::list<std::unique_ptr<Vehicle>> &v,
                                                                                                                                 ShipType::Cruiser,
                                                                                                                                 ModelType::StLouis,
                                                                                                                                 0));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        6,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        21,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        6,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        34,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createMedium(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        6,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        111,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        1,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        71,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        15,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        71,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        8,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        80,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        2,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        41,*saintLouis)));
+                                                                                                                saintLouis->attach(
+                                                                                                                        std::move(
+                                                                                                                                cf.createLight(
+                                                                                                                                        cannonPosX +
+                                                                                                                                        16,
+                                                                                                                                        cannonPosY +
+                                                                                                                                        41,*saintLouis)));
+                                                                                                                for (int i = 0;
+                                                                                                                i <
+                                                                                                                antiAir; i++)
+                                                                                                                    saintLouis->attach(
+                                                                                                                            std::move(
+                                                                                                                                    factory.createSpecialWeapon(
+                                                                                                                                            WeaponType::antiAir,*saintLouis)));
                                                                                                                 return saintLouis;
                                                                                                             }
 
@@ -522,21 +532,25 @@ ShipFactory::alaskaBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     CannonFactory cf;
     int antiAir = 9;
-    ->attach(std::move(cf.createHeavly(cannonPosX + 6, cannonPosY + 179)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 60)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 77)));
-    ->attach(std::move(cf.createLight(cannonPosX + 11, cannonPosY + 91)));
-    ->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 105)));
-    ->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 105)));
-    ->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 149)));
-    ->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 150)));
-    ->attach(std::move(cf.createLight(cannonPosX + 11, cannonPosY + 172)));
-    for (int i = 0; i < antiAir; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+
+
     std::unique_ptr<Cruiser> alaska(new Cruiser(coordinates.x, coordinates.y, 3, 61, 34803, 918,
                                                 "Usa", 6, 1, 2, antiAir,  v, shipHeight, shipWidth, true,
                                                 ShipType::Cruiser,
-                                                ModelType::Alask 4));
+                                                ModelType::Alaska,4));
+    alaska->attach(std::move(cf.createHeavly(cannonPosX + 6, cannonPosY + 179,*alaska)));
+    alaska->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 60,*alaska)));
+    alaska->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 77,*alaska)));
+    alaska->attach(std::move(cf.createLight(cannonPosX + 11, cannonPosY + 91,*alaska)));
+    alaska->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 105,*alaska)));
+    alaska->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 105,*alaska)));
+    alaska->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 149,*alaska)));
+    alaska->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 150,*alaska)));
+    alaska->attach(std::move(cf.createLight(cannonPosX + 11, cannonPosY + 172,*alaska)));
+
+    for (int i = 0; i < antiAir; i++)
+        alaska->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*alaska)));
+
     return alaska;
 }
 
