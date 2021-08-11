@@ -70,7 +70,7 @@ ShipFactory::gatoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
             new Submarine(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Gato, 6, false));
     for (int i = 0; i < 6; i++)
-        Gato->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+        Gato->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo,*Gato)));
     return Gato;
 }
 
@@ -90,7 +90,7 @@ ShipFactory::tritonBuilder(std::list<std::unique_ptr<Vehicle>> &v,
                           ShipType::Submarine, ModelType::Triton, 6, false));
 
     for (int i = 0; i < 6; i++)
-        Triton->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+        Triton->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo,*Triton)));
     return Triton;
 }
 
@@ -103,12 +103,14 @@ ShipFactory::DaVinciBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    for (int i = 0; i < 8; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
 
     std::unique_ptr<Submarine> DaVinci(
             new Submarine(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::DaVinci, 8, false));
+
+    for (int i = 0; i < 8; i++)
+        DaVinci->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo,*DaVinci)));
+
     return DaVinci;
 }
 
@@ -121,14 +123,16 @@ ShipFactory::typeb1Builder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    for (int i = 0; i < 6; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
 
     std::unique_ptr<Submarine> typeb1(
             new Submarine(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0,  v, shipHeight, shipWidth,
                           true,
                           ShipType::Submarine, ModelType::typeb1, 6,
                           false));
+
+    for (int i = 0; i < 6; i++)
+        typeb1->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo,*typeb1)));
+
     return typeb1;
 }
 
@@ -141,13 +145,14 @@ ShipFactory::i400Builder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    for (int i = 0; i < 8; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo)));
+
 
     std::unique_ptr<Submarine> i400(
             new Submarine(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0,  v, shipHeight, shipWidth,
                           true,
                           ShipType::Submarine, ModelType::I400, 8, false));
+    for (int i = 0; i < 8; i++)
+        i400->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo,*i400)));
     return i400;
 }
 
@@ -224,16 +229,20 @@ ShipFactory::midwayBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
 
     WeaponFactory specialFactory;
-    ->attach(std::move(factory.createMedium(cannonPosX + 72, cannonPosY + 187)));
-    ->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230)));
-    ->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100)));
+
     int numAntiAir = 15;
-    for (int i = 0; i < numAntiAir; i++)
-        ->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 640000, 520,
                                                              "Usa", 2, 0, 0, numAntiAir,  v, shipHeight, shipWidth,
                                                              true,
                                                              ShipType::AircraftCarrier, ModelType::Midway, 14));
+
+    mid->attach(std::move(factory.createMedium(cannonPosX + 72, cannonPosY + 187)));
+    mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230)));
+    mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100)));
+
+    for (int i = 0; i < numAntiAir; i++)
+        mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
     return mid;
 }
 
