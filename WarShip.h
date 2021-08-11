@@ -121,7 +121,7 @@ public:
 
     const int getNumHCannons() const;
 
-    std::list<std::shared_ptr<Arsenal>> &getArsenalList();
+    std::list<std::unique_ptr<Arsenal>> &getArsenalList();
 
     std::list<std::unique_ptr<Vehicle>> &getVehicleList();
 
