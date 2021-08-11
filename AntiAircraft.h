@@ -7,24 +7,30 @@
 
 #include "Arsenal.h"
 #include <iostream>
-
+#include "WarShip.h"
 
 class AntiAircraft : public Arsenal {
 public:
     //TODO implementare
 
     AntiAircraft(const float range, const int reload, int speed, int dispersion, Bullet type,
-                 float decelleration, int power, int num, int le, int wi, std::string texName);
+                 float decelleration, int power, int num, int le, int wi, std::string texName, WarShip &sub);
 
     ~AntiAircraft() override;
 
 private:
+    WarShip &subject_;
+
     bool airStrafe();
 
     void openFire(Vehicle enemy) override;
 
-    void update(std::unique_ptr<WarShip> theChangedSubject) override;
+    void update() override;
 
+
+    void removeMeFromTheList() {
+        subject_.detach(std::shared_ptr<Arsenal>(this));
+    }
 
     bool engage(Vehicle enemy) override;
 

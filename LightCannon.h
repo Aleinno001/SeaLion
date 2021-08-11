@@ -30,7 +30,7 @@ private:
     void update() override;
 
     void removeMeFromTheList() {
-        subject_.detach(std::shared_ptr<Arsenal>(this));
+        subject_.detach(this);
     }
 
     bool engage(Vehicle enemy) override;

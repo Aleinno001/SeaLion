@@ -6,7 +6,7 @@
 #define SEALION_TORPEDOTUBE_H
 
 #include "Arsenal.h"
-
+#include "WarShip.h"
 class TorpedoTube : public Arsenal {
 public:
     //TODO implementare
@@ -14,18 +14,22 @@ public:
 
 
     TorpedoTube(const float range, const int reload, int speed, int dispersion, Bullet type,
-                float decelleration, int power, int num, int le, int wi, std::string texName);
+                float decelleration, int power, int num, int le, int wi, std::string texName, WarShip &sub);
 
     ~TorpedoTube() override;
 
 private:
+    WarShip &subject_;
+
     bool accuracy();
 
     void openFire(Vehicle enemy) override;
 
-    void update(std::unique_ptr<WarShip> theChangedSubject) override;
+    void update() override;
 
-
+    void removeMeFromTheList() {
+        subject_.detach(std::shared_ptr<Arsenal>(this));
+    }
 
     bool engage(Vehicle enemy) override;
 
