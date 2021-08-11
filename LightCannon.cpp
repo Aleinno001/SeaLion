@@ -9,7 +9,6 @@ LightCannon::LightCannon(float range, const int reload, int speed, int dispersio
                          std::string texName, WarShip &sub)
         : subject_(sub),
           Arsenal(range, reload, speed, dispersion, type, decelleration, power, num, posX, posY, le, wi, texName) {
-    subject_.attach(std::shared_ptr<Arsenal>(this));
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();

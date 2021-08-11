@@ -12,7 +12,6 @@ MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int
                                                                                   decelleration, power, num, posX, posY,
                                                                                   le, wi,
                                                                                   texName) {
-    subject_.attach(std::shared_ptr<Arsenal>(this));
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();

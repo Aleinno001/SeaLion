@@ -13,7 +13,6 @@ HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int d
                                                                                 texName) {
 
 
-    subject_.attach(std::shared_ptr<Arsenal>(this));
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();
