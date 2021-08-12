@@ -1145,21 +1145,24 @@ ShipFactory::simsBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    ->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 12)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 23)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 78)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 90)));
+
     int numAntiAir = 16;
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
-        ->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
-    }
+
 
     std::unique_ptr<Destroyer> sims(
             new Destroyer(coordinates.x, coordinates.y, 4, 69, 2293, 30,
                           "Usa", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Sims, 8));
+    sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 12,*sims)));
+    sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 23,*sims)));
+    sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 78,*sims)));
+    sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 90,*sims)));
+
+    for (int i = 0; i < numAntiAir; i++) {
+        sims->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*sims)));
+    }
     return sims;
 }
 
@@ -1172,22 +1175,24 @@ ShipFactory::fletcherBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 97)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 85)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 73)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 15)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 27)));
+
     int numAntiAir = 14;
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
-        ->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
-    }
+
 
     std::unique_ptr<Destroyer> fletcher(
             new Destroyer(coordinates.x, coordinates.y, 4, 68, 2500, 33,
                           "Usa", 0, 0, 5, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Fletcher, 10));
+    fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 97,*fletcher)));
+    fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 85,*fletcher)));
+    fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 73,*fletcher)));
+    fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 15,*fletcher)));
+    fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 27,*fletcher)));
+    for (int i = 0; i < numAntiAir; i++) {
+        fletcher->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*fletcher)));
+    }
     return fletcher;
 }
 
@@ -1197,18 +1202,23 @@ ShipFactory::jutlandBuilder(std::list<std::unique_ptr<Vehicle>> &v,
     CannonFactory cf;
     int shipWidth = 13;
     int shipHeight = 116;
-
+    WeaponFactory wf;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 18)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 28)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 95)));
+
+    int numAntiAir = 16;
 
     std::unique_ptr<Destroyer> jutLand(
             new Destroyer(coordinates.x, coordinates.y, 4, 66, 2480, 26,
-                          "Uk", 0, 0, 3, 16,  v, shipHeight, shipWidth, true,
+                          "Uk", 0, 0, 3, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Jutland, 10));
+    jutLand->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 18,*jutLand)));
+    jutLand->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 28,*jutLand)));
+    jutLand->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 95,*jutLand)));
+    for (int i = 0; i < numAntiAir; i++) {
+        jutLand->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*jutLand)));
+    }
     return jutLand;
 }
 
@@ -1221,20 +1231,23 @@ ShipFactory::paoloEmilioBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 28)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 36)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 132)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 140)));
+
     int numAntiAir = 12;
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
-        ->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
-    }
+
     std::unique_ptr<Destroyer> paoloEmilio(
             new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
                           "Italy", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 8));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 28,*paoloEmilio)));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 36,*paoloEmilio)));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 132,*paoloEmilio)));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 140,*paoloEmilio)));
+
+    for (int i = 0; i < numAntiAir; i++) {
+        paoloEmilio->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*paoloEmilio)));
+    }
     return paoloEmilio;
 }
 
@@ -1248,21 +1261,23 @@ ShipFactory::impavidoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 17)));
-    ->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 67)));
-    ->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 79)));
-    ->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 67)));
-    ->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 79)));
+
     int numAntiAir = 40;
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
-        ->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
-    }
+
     std::unique_ptr<Destroyer> impavido(
             new Destroyer(coordinates.x, coordinates.y, 4, 63, 3941, 36,
                           "Italy", 4, 0, 1, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 6));
+    impavido->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 17,*impavido)));
+    impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 67,*impavido)));
+    impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 79,*impavido)));
+    impavido->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 67,*impavido)));
+    impavido->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 79,*impavido)));
+    for (int i = 0; i < numAntiAir; i++) {
+        impavido->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*impavido)));
+    }
     return impavido;
 }
 
@@ -1275,20 +1290,22 @@ ShipFactory::yukikazeBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 16)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 51)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 70)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 93)));
+
     int numAntiAir = 32;
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
-        ->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir)));
-    }
+
     std::unique_ptr<Destroyer> yukikaze(
             new Destroyer(coordinates.x, coordinates.y, 4, 65, 2530, 26,
                           "Japan", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Yukikaze, 8));
+    yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 16,*yukikaze)));
+    yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 51,*yukikaze)));
+    yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 70,*yukikaze)));
+    yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 93,*yukikaze)));
+    for (int i = 0; i < numAntiAir; i++) {
+        yukikaze->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*yukikaze)));
+    }
     return yukikaze;
 }
 
