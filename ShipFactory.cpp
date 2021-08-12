@@ -1722,7 +1722,7 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates,
     NewOrleans->attach(std::move(cf.createLight(cannonPosX + 17, cannonPosY + 82,*NewOrleans)));
     NewOrleans->attach(std::move(cf.createLight(cannonPosX + 17, cannonPosY + 90,*NewOrleans)));
     for (int i = 0; i < antiAir; i++)
-        NewOrleans->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+        NewOrleans->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*NewOrleans)));
     return NewOrleans;
 }
 

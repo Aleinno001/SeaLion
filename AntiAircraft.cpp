@@ -10,8 +10,6 @@ AntiAircraft::AntiAircraft(const float range, const int reload, int speed, int d
                                                                         Arsenal(range, reload, speed, dispersion, type,
                                                                                 decelleration, power, num, 0, 0, le, wi,
                                                                                 texName) {
-    subject_.attach(std::shared_ptr<Arsenal>(this));
-
 }
 
 AntiAircraft::~AntiAircraft() {
