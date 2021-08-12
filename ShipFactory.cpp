@@ -567,19 +567,21 @@ ShipFactory::danaeBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     CannonFactory cf;
     int antiAir = 7;
-    ->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 111)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 102)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 120)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 74)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 45)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 33)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 19)));
-    for (int i = 0; i < antiAir; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Cruiser> danae(new Cruiser(coordinates.x, coordinates.y, 3, 54, 5925, 190,
                                                "Uk", 6, 0, 1, antiAir,  v, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
                                                ModelType::Danae, 0));
+
+    danae->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 111,*danae)));
+    danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 102,*danae)));
+    danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 120,*danae)));
+    danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 74,*danae)));
+    danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 45,*danae)));
+    danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 33,*danae)));
+    danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 19,*danae)));
+    for (int i = 0; i < antiAir; i++)
+        danae->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*danae)));
     return danae;
 }
 
@@ -596,22 +598,24 @@ ShipFactory::trentoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     CannonFactory cf;
     int antiAir = 12;
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 44)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 52)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 143)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 153)));
-    ->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 68)));
-    ->attach(std::move(cf.createLight(cannonPosX + 15, cannonPosY + 68)));
-    ->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 84)));
-    ->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 84)));
-    ->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 111)));
-    ->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 111)));
-    for (int i = 0; i < antiAir; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+
+
     std::unique_ptr<Cruiser> trento(new Cruiser(coordinates.x, coordinates.y, 3, 66, 13548, 120,
                                                 "Italy", 6, 0, 4, antiAir,  v, shipHeight, shipWidth, true,
                                                 ShipType::Cruiser,
                                                 ModelType::Trento, 2));
+    trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 44,*trento)));
+    trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 52,*trento)));
+    trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 143,*trento)));
+    trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 153,*trento)));
+    trento->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 68,*trento)));
+    trento->attach(std::move(cf.createLight(cannonPosX + 15, cannonPosY + 68,*trento)));
+    trento->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 84,*trento)));
+    trento->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 84,*trento)));
+    trento->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 111,*trento)));
+    trento->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 111,*trento)));
+    for (int i = 0; i < antiAir; i++)
+        trento->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*trento)));
     return trento;
 }
 
@@ -628,19 +632,25 @@ std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(
 
     CannonFactory cf;
     int antiAir = 12;
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 18)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 28)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 121)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 135)));
-    ->attach(std::move(cf.createLight(cannonPosX, cannonPosY + 93)));
-    ->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 93)));
-    ->attach(std::move(cf.createLight(cannonPosX + 6, cannonPosY + 112)));
-    for (int i = 0; i < antiAir; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+
+
+
+
     std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(coordinates.x, coordinates.y, 3, 69, 6950, 84,
                                                            "Italy", 3, 0, 4, antiAir,  v, shipHeight, shipWidth, true,
                                                            ShipType::Cruiser,
                                                            ModelType::AlbertoDiGiussano, 1));
+
+    albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 18,*albertoDiGiussano)));
+    albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 28,*albertoDiGiussano)));
+    albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 121,*albertoDiGiussano)));
+    albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 135,*albertoDiGiussano)));
+    albertoDiGiussano->attach(std::move(cf.createLight(cannonPosX, cannonPosY + 93,*albertoDiGiussano)));
+    albertoDiGiussano->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 93,*albertoDiGiussano)));
+    albertoDiGiussano->attach(std::move(cf.createLight(cannonPosX + 6, cannonPosY + 112,*albertoDiGiussano)));
+
+    for (int i = 0; i < antiAir; i++)
+        albertoDiGiussano->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*albertoDiGiussano)));
     return albertoDiGiussano;
 }
 
@@ -657,21 +667,22 @@ ShipFactory::takaoBuilder(std::list<std::unique_ptr<Vehicle>> &v,
 
     CannonFactory cf;
     int antiAir = 16;
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 36)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 44)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 53)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 137)));
-    ->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 145)));
-    ->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 82)));
-    ->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 82)));
-    ->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 96)));
-    ->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 96)));
-    for (int i = 0; i < antiAir; i++)
-        ->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir)));
+
     std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
                                                "Japan", 4, 0, 5, antiAir,  v, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
                                                ModelType::Takao, 2));
+    takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 36,*takao)));
+    takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 44,*takao)));
+    takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 53,*takao)));
+    takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 137,*takao)));
+    takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 145,*takao)));
+    takao ->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 82,*takao)));
+    takao->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 82,*takao)));
+    takao->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 96,*takao)));
+    takao->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 96,*takao)));
+    for (int i = 0; i < antiAir; i++)
+        takao->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*takao)));
     return takao;
 }
 
