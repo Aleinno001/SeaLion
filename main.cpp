@@ -127,9 +127,10 @@ int main() {
 
     GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Italy, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
+    std::shared_ptr<WarShip> selectedWarShip(nullptr);
     while (window.isOpen()) {
         sf::Event event;
-        std::shared_ptr<WarShip> selectedWarShip(nullptr);
+
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed ||
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
@@ -155,15 +156,18 @@ int main() {
                             for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it) {
                                std::cerr<<"Cerco nave"<<std::endl;
                                 if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
-                                    std::cerr<<found<<std::endl;
+
                                     selectedWarShip.reset(it->get());
                                     found=true;
+                                    std::cerr<<found<<" "<<it->get()<<std::endl;
+
 
                                 }
 
                             }
                         }else{
                             std::cerr<<selectedWarShip.get()->getPosX()<<std::endl;
+
                             selectedWarShip=nullptr;
                         }
 
