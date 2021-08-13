@@ -124,7 +124,9 @@ public:
 
     std::list<std::unique_ptr<Vehicle>> &getVehicleList();
 
-    virtual ~WarShip() = default;
+    virtual ~WarShip(){
+
+    };
 
     const std::string getNationality() {
         return nationality;

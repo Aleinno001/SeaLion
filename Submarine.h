@@ -40,7 +40,9 @@ public:
 
     };
 
-    ~Submarine() override = default;
+    ~Submarine() override{
+
+    };
 
     void stopMove() override;
 

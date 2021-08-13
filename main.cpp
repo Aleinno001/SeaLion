@@ -141,6 +141,20 @@ int main() {
                        videoMode == windowMode::Windowed) {
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
+            }else if(event.type == sf::Event::MouseButtonPressed){
+                switch(event.key.code)
+                {
+                    case sf::Mouse::Left:
+
+                        break;
+                    case sf::Mouse::Right:
+
+                        break;
+                }
+            }else if(event.type==sf::Event::MouseWheelMoved){
+
+            }else if(event.type==sf::Event::MouseMoved){
+
             }
         }
 
