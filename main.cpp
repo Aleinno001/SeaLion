@@ -129,6 +129,7 @@ int main() {
                                     height, tileDim);
     while (window.isOpen()) {
         sf::Event event;
+        std::shared_ptr<WarShip> selectedWarShip(nullptr);
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed ||
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
@@ -144,9 +145,30 @@ int main() {
             }else if(event.type == sf::Event::MouseButtonPressed){
                 switch(event.key.code)
                 {
-                    case sf::Mouse::Left:
+                    case sf::Mouse::Left:{
 
-                        break;
+                        sf::Vector2i coords(event.mouseButton.x,event.mouseButton.y);
+
+                        if(selectedWarShip == nullptr /*FIXME Controllare che la nave selezionata non sia stata distrutta*/){
+                            auto translated_pos = window.mapPixelToCoords(coords);
+                            bool found = false;
+                            for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it) {
+                               std::cerr<<"Cerco nave"<<std::endl;
+                                if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
+                                    std::cerr<<found<<std::endl;
+                                    selectedWarShip.reset(it->get());
+                                    found=true;
+
+                                }
+
+                            }
+                        }else{
+                            std::cerr<<selectedWarShip.get()->getPosX()<<std::endl;
+                            selectedWarShip=nullptr;
+                        }
+
+                    }break;
+
                     case sf::Mouse::Right:
 
                         break;
