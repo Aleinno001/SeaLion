@@ -61,4 +61,8 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 
+void WarShip::move(sf::Vector2i coordinates) {
+    //TODO implementare lo spostamento
+}
+
 

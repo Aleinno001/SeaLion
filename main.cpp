@@ -96,6 +96,27 @@ std::vector<Fleet> alliedDummyFleet() {
 
 }
 
+class shipComparator {
+public:
+    bool operator()(const std::_List_iterator<std::unique_ptr<WarShip>> &first, const std::_List_iterator<std::unique_ptr<WarShip>> &second) const {
+        if (first->get()->getSprite().getPosition().x>second->get()->getSprite().getPosition().x || first->get()->getSprite().getPosition().y>second->get()->getSprite().getPosition().y)
+            return false;
+        return true;
+    }
+
+};
+
+void update(std::multimap< std::_List_iterator<std::unique_ptr<WarShip>>,sf::Vector2i,shipComparator> movingShips){
+    for (auto it = movingShips.begin(); it != movingShips.end();) {
+        if(static_cast<sf::Vector2i>(it->first->get()->getSprite().getPosition())==it->second){
+            it=movingShips.erase(it);
+        }else{
+            it->first->get()->move(it->second);
+            ++it;
+        }
+    }
+}
+
 int main() {
     std::vector<Fleet> fleet = alliedDummyFleet();
 
@@ -130,6 +151,8 @@ int main() {
     int shipCounter = 0;
     bool found = false;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
+    //std::list<std::_List_iterator<std::unique_ptr<WarShip>>> movingShips;
+    std::multimap< std::_List_iterator<std::unique_ptr<WarShip>>,sf::Vector2i,shipComparator> movingShips;
     while (window.isOpen()) {
         sf::Event event;
 
@@ -153,6 +176,7 @@ int main() {
                         sf::Vector2i coords(event.mouseButton.x,event.mouseButton.y);
 
                             if(found == false){
+                                itSecondClick = gameWorld.getAlliedFleet().begin();
                                 auto translated_pos = window.mapPixelToCoords(coords);
 
                                 for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it) {
@@ -180,13 +204,14 @@ int main() {
                                 /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
                                 std::cerr << itSecondClick->get()->getArmour()<< " " << std::endl;
 
-
-
-
+                                if(!(movingShips.find(itSecondClick)==movingShips.end())){
+                                    auto it=movingShips.find(itSecondClick);
+                                    it->second=coords;
+                                }else{
+                                    movingShips.insert(std::make_pair(itSecondClick,coords));
+                                }
                                 shipCounter=0;
                                 found=false;
-                                itSecondClick = gameWorld.getAlliedFleet().begin();
-
                             }
 
 
@@ -245,9 +270,12 @@ int main() {
 
         }
 
+        update(movingShips);
+
         window.display();
     }
     return 0;
 }
+
 
 
