@@ -62,7 +62,10 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
 }
 
 void WarShip::move(sf::Vector2i coordinates) {
+
     //TODO implementare lo spostamento
+    sprite.setPosition(coordinates.x,coordinates.y);
+
 }
 
 
