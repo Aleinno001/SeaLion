@@ -156,7 +156,7 @@ int main() {
 
                                 for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it) {
                                     std::cerr<<"Cerco nave"<<std::endl;
-                                    shipCounter++;
+
                                     if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
 
 
@@ -164,8 +164,9 @@ int main() {
                                         std::cerr<<found<<" "<<it->get()<<std::endl;
 
 
+                                    }else{
+                                        shipCounter++;
                                     }
-
                                 }
                             }else{
                                 int miniCounter = 0;
@@ -176,7 +177,7 @@ int main() {
                                 }
                                 /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
                                 /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
-
+                                std::cerr << it->get()->getArmour()<< " " << std::endl;
 
 
 
