@@ -127,7 +127,8 @@ int main() {
 
     GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Italy, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
-    std::shared_ptr<WarShip> selectedWarShip(nullptr);
+    int shipCounter = 0;
+    bool found = false;
     while (window.isOpen()) {
         sf::Event event;
 
@@ -150,26 +151,44 @@ int main() {
 
                         sf::Vector2i coords(event.mouseButton.x,event.mouseButton.y);
 
-                        if(selectedWarShip == nullptr /*FIXME Controllare che la nave selezionata non sia stata distrutta*/){
-                            auto translated_pos = window.mapPixelToCoords(coords);
-                            bool found = false;
-                            for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it) {
-                               std::cerr<<"Cerco nave"<<std::endl;
-                                if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
+                            if(found == false){
+                                auto translated_pos = window.mapPixelToCoords(coords);
 
-                                    selectedWarShip.reset(it->get());
-                                    found=true;
-                                    std::cerr<<found<<" "<<it->get()<<std::endl;
+                                for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it) {
+                                    std::cerr<<"Cerco nave"<<std::endl;
+                                    shipCounter++;
+                                    if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
 
+
+                                        found=true;
+                                        std::cerr<<found<<" "<<it->get()<<std::endl;
+
+
+                                    }
 
                                 }
+                            }else{
+                                int miniCounter = 0;
+                                auto it = gameWorld.getAlliedFleet().begin();
+                                while(miniCounter<shipCounter){
+                                    ++it;
+                                    miniCounter++;
+                                }
+                                /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
+                                /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
+
+
+
+
+
+                                shipCounter=0;
+                                found=false;
 
                             }
-                        }else{
-                            std::cerr<<selectedWarShip.get()->getPosX()<<std::endl;
 
-                            selectedWarShip=nullptr;
-                        }
+
+
+
 
                     }break;
 
