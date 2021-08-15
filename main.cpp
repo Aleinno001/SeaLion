@@ -129,6 +129,7 @@ int main() {
                                     height, tileDim);
     int shipCounter = 0;
     bool found = false;
+    auto itSecondClick = gameWorld.getAlliedFleet().begin();
     while (window.isOpen()) {
         sf::Event event;
 
@@ -170,20 +171,21 @@ int main() {
                                 }
                             }else{
                                 int miniCounter = 0;
-                                auto it = gameWorld.getAlliedFleet().begin();
+
                                 while(miniCounter<shipCounter){
-                                    ++it;
+                                    ++itSecondClick;
                                     miniCounter++;
                                 }
                                 /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
                                 /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
-                                std::cerr << it->get()->getArmour()<< " " << std::endl;
+                                std::cerr << itSecondClick->get()->getArmour()<< " " << std::endl;
 
 
 
 
                                 shipCounter=0;
                                 found=false;
+                                itSecondClick = gameWorld.getAlliedFleet().begin();
 
                             }
 

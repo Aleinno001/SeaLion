@@ -482,6 +482,33 @@ BonusFactory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BonusFactory.cpp.s
 .PHONY : BonusFactory.cpp.s
 
+Bullet.o: Bullet.cpp.o
+
+.PHONY : Bullet.o
+
+# target to build an object file
+Bullet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bullet.cpp.o
+.PHONY : Bullet.cpp.o
+
+Bullet.i: Bullet.cpp.i
+
+.PHONY : Bullet.i
+
+# target to preprocess a source file
+Bullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bullet.cpp.i
+.PHONY : Bullet.cpp.i
+
+Bullet.s: Bullet.cpp.s
+
+.PHONY : Bullet.s
+
+# target to generate assembly for a file
+Bullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Bullet.cpp.s
+.PHONY : Bullet.cpp.s
+
 CannonFactory.o: CannonFactory.cpp.o
 
 .PHONY : CannonFactory.o
@@ -536,6 +563,33 @@ Cruiser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Cruiser.cpp.s
 .PHONY : Cruiser.cpp.s
 
+CurrentDir.o: CurrentDir.cpp.o
+
+.PHONY : CurrentDir.o
+
+# target to build an object file
+CurrentDir.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/CurrentDir.cpp.o
+.PHONY : CurrentDir.cpp.o
+
+CurrentDir.i: CurrentDir.cpp.i
+
+.PHONY : CurrentDir.i
+
+# target to preprocess a source file
+CurrentDir.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/CurrentDir.cpp.i
+.PHONY : CurrentDir.cpp.i
+
+CurrentDir.s: CurrentDir.cpp.s
+
+.PHONY : CurrentDir.s
+
+# target to generate assembly for a file
+CurrentDir.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/CurrentDir.cpp.s
+.PHONY : CurrentDir.cpp.s
+
 Destroyer.o: Destroyer.cpp.o
 
 .PHONY : Destroyer.o
@@ -589,6 +643,33 @@ Dice.s: Dice.cpp.s
 Dice.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Dice.cpp.s
 .PHONY : Dice.cpp.s
+
+ExplosiveBullet.o: ExplosiveBullet.cpp.o
+
+.PHONY : ExplosiveBullet.o
+
+# target to build an object file
+ExplosiveBullet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ExplosiveBullet.cpp.o
+.PHONY : ExplosiveBullet.cpp.o
+
+ExplosiveBullet.i: ExplosiveBullet.cpp.i
+
+.PHONY : ExplosiveBullet.i
+
+# target to preprocess a source file
+ExplosiveBullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ExplosiveBullet.cpp.i
+.PHONY : ExplosiveBullet.cpp.i
+
+ExplosiveBullet.s: ExplosiveBullet.cpp.s
+
+.PHONY : ExplosiveBullet.s
+
+# target to generate assembly for a file
+ExplosiveBullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ExplosiveBullet.cpp.s
+.PHONY : ExplosiveBullet.cpp.s
 
 Fighter.o: Fighter.cpp.o
 
@@ -779,6 +860,33 @@ MediumCannon.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/MediumCannon.cpp.s
 .PHONY : MediumCannon.cpp.s
 
+PiercingBullet.o: PiercingBullet.cpp.o
+
+.PHONY : PiercingBullet.o
+
+# target to build an object file
+PiercingBullet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/PiercingBullet.cpp.o
+.PHONY : PiercingBullet.cpp.o
+
+PiercingBullet.i: PiercingBullet.cpp.i
+
+.PHONY : PiercingBullet.i
+
+# target to preprocess a source file
+PiercingBullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/PiercingBullet.cpp.i
+.PHONY : PiercingBullet.cpp.i
+
+PiercingBullet.s: PiercingBullet.cpp.s
+
+.PHONY : PiercingBullet.s
+
+# target to generate assembly for a file
+PiercingBullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/PiercingBullet.cpp.s
+.PHONY : PiercingBullet.cpp.s
+
 QuickRepair.o: QuickRepair.cpp.o
 
 .PHONY : QuickRepair.o
@@ -940,6 +1048,33 @@ SpeedBoost.s: SpeedBoost.cpp.s
 SpeedBoost.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SpeedBoost.cpp.s
 .PHONY : SpeedBoost.cpp.s
+
+StandardBullet.o: StandardBullet.cpp.o
+
+.PHONY : StandardBullet.o
+
+# target to build an object file
+StandardBullet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/StandardBullet.cpp.o
+.PHONY : StandardBullet.cpp.o
+
+StandardBullet.i: StandardBullet.cpp.i
+
+.PHONY : StandardBullet.i
+
+# target to preprocess a source file
+StandardBullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/StandardBullet.cpp.i
+.PHONY : StandardBullet.cpp.i
+
+StandardBullet.s: StandardBullet.cpp.s
+
+.PHONY : StandardBullet.s
+
+# target to generate assembly for a file
+StandardBullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/StandardBullet.cpp.s
+.PHONY : StandardBullet.cpp.s
 
 Submarine.o: Submarine.cpp.o
 
@@ -1200,18 +1335,27 @@ help:
 	@echo "... BonusFactory.o"
 	@echo "... BonusFactory.i"
 	@echo "... BonusFactory.s"
+	@echo "... Bullet.o"
+	@echo "... Bullet.i"
+	@echo "... Bullet.s"
 	@echo "... CannonFactory.o"
 	@echo "... CannonFactory.i"
 	@echo "... CannonFactory.s"
 	@echo "... Cruiser.o"
 	@echo "... Cruiser.i"
 	@echo "... Cruiser.s"
+	@echo "... CurrentDir.o"
+	@echo "... CurrentDir.i"
+	@echo "... CurrentDir.s"
 	@echo "... Destroyer.o"
 	@echo "... Destroyer.i"
 	@echo "... Destroyer.s"
 	@echo "... Dice.o"
 	@echo "... Dice.i"
 	@echo "... Dice.s"
+	@echo "... ExplosiveBullet.o"
+	@echo "... ExplosiveBullet.i"
+	@echo "... ExplosiveBullet.s"
 	@echo "... Fighter.o"
 	@echo "... Fighter.i"
 	@echo "... Fighter.s"
@@ -1233,6 +1377,9 @@ help:
 	@echo "... MediumCannon.o"
 	@echo "... MediumCannon.i"
 	@echo "... MediumCannon.s"
+	@echo "... PiercingBullet.o"
+	@echo "... PiercingBullet.i"
+	@echo "... PiercingBullet.s"
 	@echo "... QuickRepair.o"
 	@echo "... QuickRepair.i"
 	@echo "... QuickRepair.s"
@@ -1251,6 +1398,9 @@ help:
 	@echo "... SpeedBoost.o"
 	@echo "... SpeedBoost.i"
 	@echo "... SpeedBoost.s"
+	@echo "... StandardBullet.o"
+	@echo "... StandardBullet.i"
+	@echo "... StandardBullet.s"
 	@echo "... Submarine.o"
 	@echo "... Submarine.i"
 	@echo "... Submarine.s"

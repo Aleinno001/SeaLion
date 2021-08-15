@@ -488,6 +488,12 @@
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/BonusFactory.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Bullet.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Bullet.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/CannonFactory.cpp">
 			<Option target="core"/>
 		</Unit>
@@ -500,6 +506,12 @@
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Cruiser.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/CurrentDir.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/CurrentDir.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Destroyer.cpp">
 			<Option target="core"/>
 		</Unit>
@@ -510,6 +522,12 @@
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Dice.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/ExplosiveBullet.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/ExplosiveBullet.h">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Fighter.cpp">
@@ -557,6 +575,12 @@
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Observer.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/PiercingBullet.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/PiercingBullet.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/QuickRepair.cpp">
 			<Option target="core"/>
 		</Unit>
@@ -594,6 +618,12 @@
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/SpeedBoost.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/StandardBullet.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/StandardBullet.h">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/Submarine.cpp">

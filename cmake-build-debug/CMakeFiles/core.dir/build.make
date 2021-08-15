@@ -492,6 +492,71 @@ CMakeFiles/core.dir/GameWorld.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/GameWorld.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/GameWorld.cpp -o CMakeFiles/core.dir/GameWorld.cpp.s
 
+CMakeFiles/core.dir/Bullet.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/Bullet.cpp.o: ../Bullet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/core.dir/Bullet.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/Bullet.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/Bullet.cpp
+
+CMakeFiles/core.dir/Bullet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/Bullet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/Bullet.cpp > CMakeFiles/core.dir/Bullet.cpp.i
+
+CMakeFiles/core.dir/Bullet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/Bullet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/Bullet.cpp -o CMakeFiles/core.dir/Bullet.cpp.s
+
+CMakeFiles/core.dir/PiercingBullet.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/PiercingBullet.cpp.o: ../PiercingBullet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/core.dir/PiercingBullet.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/PiercingBullet.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/PiercingBullet.cpp
+
+CMakeFiles/core.dir/PiercingBullet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/PiercingBullet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/PiercingBullet.cpp > CMakeFiles/core.dir/PiercingBullet.cpp.i
+
+CMakeFiles/core.dir/PiercingBullet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/PiercingBullet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/PiercingBullet.cpp -o CMakeFiles/core.dir/PiercingBullet.cpp.s
+
+CMakeFiles/core.dir/StandardBullet.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/StandardBullet.cpp.o: ../StandardBullet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/core.dir/StandardBullet.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/StandardBullet.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/StandardBullet.cpp
+
+CMakeFiles/core.dir/StandardBullet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/StandardBullet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/StandardBullet.cpp > CMakeFiles/core.dir/StandardBullet.cpp.i
+
+CMakeFiles/core.dir/StandardBullet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/StandardBullet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/StandardBullet.cpp -o CMakeFiles/core.dir/StandardBullet.cpp.s
+
+CMakeFiles/core.dir/ExplosiveBullet.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/ExplosiveBullet.cpp.o: ../ExplosiveBullet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/core.dir/ExplosiveBullet.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/ExplosiveBullet.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/ExplosiveBullet.cpp
+
+CMakeFiles/core.dir/ExplosiveBullet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/ExplosiveBullet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/ExplosiveBullet.cpp > CMakeFiles/core.dir/ExplosiveBullet.cpp.i
+
+CMakeFiles/core.dir/ExplosiveBullet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/ExplosiveBullet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/ExplosiveBullet.cpp -o CMakeFiles/core.dir/ExplosiveBullet.cpp.s
+
+CMakeFiles/core.dir/CurrentDir.cpp.o: CMakeFiles/core.dir/flags.make
+CMakeFiles/core.dir/CurrentDir.cpp.o: ../CurrentDir.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/core.dir/CurrentDir.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/CurrentDir.cpp.o -c /home/pala/CLionProjects/Projects/SeaLion/CurrentDir.cpp
+
+CMakeFiles/core.dir/CurrentDir.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/CurrentDir.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/CurrentDir.cpp > CMakeFiles/core.dir/CurrentDir.cpp.i
+
+CMakeFiles/core.dir/CurrentDir.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/CurrentDir.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/CurrentDir.cpp -o CMakeFiles/core.dir/CurrentDir.cpp.s
+
 # Object files for target core
 core_OBJECTS = \
 "CMakeFiles/core.dir/WarShip.cpp.o" \
@@ -525,7 +590,12 @@ core_OBJECTS = \
 "CMakeFiles/core.dir/TorpedoBomber.cpp.o" \
 "CMakeFiles/core.dir/AirplaneFactory.cpp.o" \
 "CMakeFiles/core.dir/GameTile.cpp.o" \
-"CMakeFiles/core.dir/GameWorld.cpp.o"
+"CMakeFiles/core.dir/GameWorld.cpp.o" \
+"CMakeFiles/core.dir/Bullet.cpp.o" \
+"CMakeFiles/core.dir/PiercingBullet.cpp.o" \
+"CMakeFiles/core.dir/StandardBullet.cpp.o" \
+"CMakeFiles/core.dir/ExplosiveBullet.cpp.o" \
+"CMakeFiles/core.dir/CurrentDir.cpp.o"
 
 # External object files for target core
 core_EXTERNAL_OBJECTS =
@@ -562,9 +632,14 @@ libcore.a: CMakeFiles/core.dir/TorpedoBomber.cpp.o
 libcore.a: CMakeFiles/core.dir/AirplaneFactory.cpp.o
 libcore.a: CMakeFiles/core.dir/GameTile.cpp.o
 libcore.a: CMakeFiles/core.dir/GameWorld.cpp.o
+libcore.a: CMakeFiles/core.dir/Bullet.cpp.o
+libcore.a: CMakeFiles/core.dir/PiercingBullet.cpp.o
+libcore.a: CMakeFiles/core.dir/StandardBullet.cpp.o
+libcore.a: CMakeFiles/core.dir/ExplosiveBullet.cpp.o
+libcore.a: CMakeFiles/core.dir/CurrentDir.cpp.o
 libcore.a: CMakeFiles/core.dir/build.make
 libcore.a: CMakeFiles/core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Linking CXX static library libcore.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Linking CXX static library libcore.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core.dir/link.txt --verbose=$(VERBOSE)
 
