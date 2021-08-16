@@ -62,9 +62,52 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
 }
 
 void WarShip::move(sf::Vector2i coordinates) {
-
+/*
     //TODO implementare lo spostamento
-    sprite.setPosition(coordinates.x,coordinates.y);
+    //sprite.setPosition(coordinates.x,coordinates.y);
+
+
+    float dx =   coordinates.x-posX ;
+    float dy =   coordinates.y-posY ;
+
+    float rotation = (-atan2(dx,dy)) * 180 / M_PI;
+
+
+
+
+
+    sprite.rotate((rotation+180)/60);
+
+    //sprite.setPosition(coordinates.x,coordinates.y);
+
+    //
+    // sprite.move(0.0008*(dx/sqrt((2*maxSpeed/acceleration)))/60,0.0008*(dy/sqrt((2*maxSpeed/acceleration))));
+    sf::Vector2f nextPos;
+
+    nextPos = std::(sprite.getPosition(),coordinates,maxSpeed/60);
+    */
+double mx;
+    if(coordinates.x < sprite.getPosition().x){
+        if(coordinates.y< sprite.getPosition().y){
+            //secondo quadrante
+
+
+        }else{
+            //terzo quadrante
+
+
+        }
+    }else if(coordinates.y<sprite.getPosition().y){
+        //primo quandrante
+        mx = (coordinates.y-sprite.getPosition().y)/(coordinates.x -sprite.getPosition().x);
+        mx = atan(mx);
+        mx = 90 - mx;
+
+
+
+    }else{
+        //quarto quadrante
+    }
 
 }
 

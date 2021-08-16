@@ -101,15 +101,7 @@ typedef struct iteratorPositions{
     sf::Vector2i pos;
 };
 
-class shipComparator {
-public:
-    bool operator()(const std::_List_iterator<std::unique_ptr<WarShip>> &first, const std::_List_iterator<std::unique_ptr<WarShip>> &second) const {
-        if (first->get()->getSprite().getPosition().x>second->get()->getSprite().getPosition().x || first->get()->getSprite().getPosition().y>second->get()->getSprite().getPosition().y)
-            return false;
-        return true;
-    }
 
-};
 
 void update( std::list<iteratorPositions> lst){
     if(!lst.empty()){

@@ -11,6 +11,8 @@
 #include <list>
 #include "Vehicle.h"
 #include "Arsenal.h"
+#include <math.h>
+
 
 enum class ShipType {
     Battleship,

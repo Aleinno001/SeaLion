@@ -15,7 +15,7 @@ protected:
     int posX;
     int posY;
     float acceleration;
-    const float maxSpeed{0}; //FIXME valore di default di velocità
+    const float maxSpeed; //FIXME valore di default di velocità
     int hp;
     int length;
     int width;
