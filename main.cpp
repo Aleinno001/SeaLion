@@ -96,6 +96,11 @@ std::vector<Fleet> alliedDummyFleet() {
 
 }
 
+typedef struct iteratorPositions{
+    std::_List_iterator<std::unique_ptr<WarShip>> it;
+    sf::Vector2i pos;
+};
+
 class shipComparator {
 public:
     bool operator()(const std::_List_iterator<std::unique_ptr<WarShip>> &first, const std::_List_iterator<std::unique_ptr<WarShip>> &second) const {
@@ -106,14 +111,16 @@ public:
 
 };
 
-void update(std::multimap< std::_List_iterator<std::unique_ptr<WarShip>>,sf::Vector2i,shipComparator> movingShips){
-    for (auto it = movingShips.begin(); it != movingShips.end();) {
-        if(static_cast<sf::Vector2i>(it->first->get()->getSprite().getPosition())==it->second){
-            it=movingShips.erase(it);
-            std::cerr<<"cancella"<<std::endl;
-        }else{
-            it->first->get()->move(it->second);
-            ++it;
+void update( std::list<iteratorPositions> lst){
+    if(!lst.empty()){
+        for (auto iter = lst.begin(); iter != lst.end();) {
+            if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
+                iter=lst.erase(iter);
+                std::cerr<<"cancella"<<std::endl;
+            }else{
+                iter->it->get()->move(iter->pos);
+                ++iter;
+            }
         }
     }
 }
@@ -153,7 +160,8 @@ int main() {
     bool found = false;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     //std::list<std::_List_iterator<std::unique_ptr<WarShip>>> movingShips;
-    std::multimap< std::_List_iterator<std::unique_ptr<WarShip>>,sf::Vector2i,shipComparator> movingShips;
+    //std::multimap< std::_List_iterator<std::unique_ptr<WarShip>>,sf::Vector2i,shipComparator> movingShips;
+    std::list<iteratorPositions> lst;
     while (window.isOpen()) {
         sf::Event event;
 
@@ -214,7 +222,10 @@ int main() {
                                     movingShips.insert(std::make_pair(itSecondClick,coords));
                                 }
                                 */
-                                movingShips.insert(std::make_pair(itSecondClick,coords));
+                                iteratorPositions itPos;
+                                itPos.it = itSecondClick;
+                                itPos.pos = coords;
+                                lst.push_back(itPos);
                                 shipCounter=0;
                                 found=false;
                             }
@@ -275,7 +286,7 @@ int main() {
 
         }
 
-        update(movingShips);
+        update(lst);
 
         window.display();
     }
