@@ -116,7 +116,7 @@ mx = (-atan2(dy, dx)) * 180 / M_PI;
 
         }else{
             //terzo quadrante
-            /
+
 
             mx = mx-180;
 
