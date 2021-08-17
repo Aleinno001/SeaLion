@@ -110,7 +110,7 @@ void update( std::list<iteratorPositions> lst){
                 iter=lst.erase(iter);
                 std::cerr<<"cancella"<<std::endl;
             }else{
-                iter->it->get()->move(iter->pos);
+                iter->it->get()->move(iter->pos,0);
                 ++iter;
             }
         }
