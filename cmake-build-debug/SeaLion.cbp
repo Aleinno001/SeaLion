@@ -644,6 +644,30 @@
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/TorpedoTube.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/AircraftCarrierFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/AircraftCarrierTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/BattleshipFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/BattleshipTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/CruiserFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/CruiserTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/DestroyerFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/DestroyerTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameTileFixture.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
@@ -653,7 +677,10 @@
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldFixture.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
-		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/GameWorldTest.cpp">
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/SubmarineFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/SubmarineTest.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock-all.cc">

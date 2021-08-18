@@ -15,12 +15,20 @@ protected:
     int posX;
     int posY;
     float acceleration;
+public:
+    float getCurrentSpeed() const;
+
+protected:
     const float maxSpeed;
     float currentSpeed{0};//FIXME valore di default di velocità
     int hp;
     int length;
     int width;
     bool collision;
+public:
+    const std::string &getNationality() const;
+
+protected:
     const std::string nationality;
     sf::Texture texture;
     sf::Sprite sprite;
@@ -53,6 +61,9 @@ public:
 
     virtual ~Vehicle() = default;
 
+    bool getCol(){
+        return collision;
+    }
     int getPosX() const;
 
     int getPosY() const;
