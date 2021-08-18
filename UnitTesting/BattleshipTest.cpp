@@ -22,7 +22,6 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(montana->getNumLCannons(),0);
     ASSERT_EQ(montana->getNumHCannons(),4);
     ASSERT_EQ(montana->getNumMCannons(),10);
-
     ASSERT_EQ(montana->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(montana->getWidth(),shipWidth);
     ASSERT_EQ(montana->getLength(),shipHeight);
@@ -52,7 +51,6 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(imperatoreAugusto->getNumLCannons(),16);
     ASSERT_EQ(imperatoreAugusto->getNumHCannons(),4);
     ASSERT_EQ(imperatoreAugusto->getNumMCannons(),10);
-
     ASSERT_EQ(imperatoreAugusto->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(imperatoreAugusto->getWidth(),shipWidth);
     ASSERT_EQ(imperatoreAugusto->getLength(),shipHeight);
@@ -81,7 +79,6 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(kongo->getNumLCannons(),6);
     ASSERT_EQ(kongo->getNumHCannons(),4);
     ASSERT_EQ(kongo->getNumMCannons(),0);
-
     ASSERT_EQ(kongo->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(kongo->getWidth(),shipWidth);
     ASSERT_EQ(kongo->getLength(),shipHeight);
@@ -111,7 +108,6 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(musashi->getNumLCannons(),6);
     ASSERT_EQ(musashi->getNumHCannons(),3);
     ASSERT_EQ(musashi->getNumMCannons(),2);
-
     ASSERT_EQ(musashi->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(musashi->getWidth(),shipWidth);
     ASSERT_EQ(musashi->getLength(),shipHeight);
@@ -119,6 +115,35 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(musashi->getShipType(),ShipType::Battleship);
     ASSERT_EQ(musashi->getModelType(),ModelType::Musashi);
     ASSERT_EQ(musashi->getNumInterceptors(),2);
+    
+    shipWidth = 25;
+    shipHeight = 158;
+
+  
+    numAntiAir = 20;
+    std::unique_ptr<Battleship> dreadNought(
+            new Battleship(1000,1000, 1, 39, 21060, 837,
+                           "Uk", 0, 5, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           ShipType::Battleship,
+                           ModelType::Dreadnought, 0));
+    
+    ASSERT_EQ(dreadNought->getPos().x,1000);
+    ASSERT_EQ(dreadNought->getPos().y,1000);
+    ASSERT_EQ(dreadNought->getAcceleration(),1);
+    ASSERT_EQ(dreadNought->getMaxSpeed(),39);
+    ASSERT_EQ(dreadNought->getHp(),21060);
+    ASSERT_EQ(dreadNought->getArmour(),837);
+    ASSERT_EQ(dreadNought->getNationality(),"Uk");
+    ASSERT_EQ(dreadNought->getNumLCannons(),0);
+    ASSERT_EQ(dreadNought->getNumHCannons(),5);
+    ASSERT_EQ(dreadNought->getNumMCannons(),0);
+    ASSERT_EQ(dreadNought->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(dreadNought->getWidth(),shipWidth);
+    ASSERT_EQ(dreadNought->getLength(),shipHeight);
+    ASSERT_EQ(dreadNought->getCol(),true);
+    ASSERT_EQ(dreadNought->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(dreadNought->getModelType(),ModelType::Dreadnought);
+    ASSERT_EQ(dreadNought->getNumInterceptors(),0);
 
 
 
