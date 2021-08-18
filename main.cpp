@@ -198,7 +198,7 @@ int main() {
                                 }
                             }else{
                                 int miniCounter = 0;
-
+                                bool foundIter = false;
                                 while(miniCounter<shipCounter-1){
                                     ++itSecondClick;
                                     miniCounter++;
@@ -206,14 +206,25 @@ int main() {
                                 /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
                                 /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
                                 std::cerr << itSecondClick->get()->getArmour()<< " " << std::endl;
+
+                                for(auto iter = lst.begin(); iter != lst.end() && foundIter==false; ++iter)
+                                {
+                                    if(iter->it==itSecondClick){
+                                        foundIter = true;
+                                        lst.erase(iter);
+                                    }
+
+                                }
+
                                 /*
-                                if(!(movingShips.find(itSecondClick)==movingShips.end())){
+                                if(!(lst.(itSecondClick)=){
                                     auto it=movingShips.find(itSecondClick);
                                     it->second=coords;
                                 }else{
                                     movingShips.insert(std::make_pair(itSecondClick,coords));
                                 }
                                 */
+
                                 iteratorPositions itPos;
                                 itPos.it = itSecondClick;
                                 itPos.pos = coords;
