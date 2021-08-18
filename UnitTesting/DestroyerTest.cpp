@@ -5,7 +5,7 @@
 #include "../Destroyer.h"
 
 
-TEST(Battleship, Constructor) {
+TEST(Destroyer, Constructor) {
 
 
 }

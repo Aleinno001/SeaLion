@@ -5,7 +5,7 @@
 #include "../Submarine.h"
 
 
-TEST(Battleship, Constructor) {
+TEST(Submarine, Constructor) {
 
 
 }
