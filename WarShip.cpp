@@ -61,7 +61,7 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 
-void WarShip::move(sf::Vector2i coordinates,int oneTimePad) {
+void WarShip::move(sf::Vector2i coordinates) {
 /*
     //TODO implementare lo spostamento
     //sprite.setPosition(coordinates.x,coordinates.y);
@@ -87,6 +87,7 @@ void WarShip::move(sf::Vector2i coordinates,int oneTimePad) {
     nextPos = std::(sprite.getPosition(),coordinates,maxSpeed/60);
 
 */
+/*
 
 int mx;
 int dy = coordinates.y - sprite.getPosition().y;
@@ -173,30 +174,29 @@ mx = (-atan2(dy, dx)) * 180 / M_PI;
     }
 
 
-/*
+*/
 int mx;
 int dy = coordinates.y - sprite.getPosition().y;
 int dx = coordinates.x - sprite.getPosition().x;
-bool response = false;
-if(oneTimePad == 0){
-    response = abs(sprite.getRotation()-mx)>=180;
-    oneTimePad = 1;
-}
-mx=atan2(dy,dx)*180/M_PI;
+
+mx = 90 + atan2(dy,dx)*180/M_PI;
 if(mx<0){
     mx=360+mx;
 }
-mx=mx+90;
+//mx=mx+90;
+std::cerr << mx << std::endl;
+std::cerr << sprite.getRotation() << std::endl;
 
-if( response == true && sprite.getRotation() != mx){
-
-    sprite.rotate(-1);
+if(sprite.getRotation() != mx){
+    if(mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0){
+    sprite.rotate(1);
 
 
 }else{
-    sprite.rotate(1);
-}
- */
+    sprite.rotate(-1);
 }
 
+}
+
+}
 
