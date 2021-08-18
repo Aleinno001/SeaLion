@@ -6,7 +6,7 @@
 #define SEALION_WARSHIP_H
 
 #include <string>
-#include <memory.h>
+#include <memory>
 #include <vector>
 #include <list>
 #include "Vehicle.h"

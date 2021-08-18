@@ -48,6 +48,8 @@ struct Fleet {
 };
 
 class GameWorld {
+public:
+    std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
 
 private:
 
@@ -60,12 +62,9 @@ private:
     int gridLength;
     int mapWidth{1920};
     int mapHeight{1080};
-    std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
+
 public:
 
-    std::vector<std::vector<std::unique_ptr<GameTile>>> getTiles(){
-        return tiles;
-    }
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
               std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,
               int &width, int &height, int &tileDim);
