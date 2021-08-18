@@ -174,6 +174,36 @@ TEST(Battleship, Constructor) {
 
 
 
+    shipWidth = 32;
+    shipHeight = 222;
+    numAntiAir = 34;
+
+    std::unique_ptr<Battleship> northCarolina(
+            new Battleship(1000,1000, 1, 52, 45500, 1224,
+                           "Usa", 6, 2, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           ShipType::Battleship,
+                           ModelType::NorthCarolina, 3));
+
+
+    ASSERT_EQ(montana->getPos().x,1000);
+    ASSERT_EQ(montana->getPos().y,1000);
+    ASSERT_EQ(montana->getAcceleration(),1);
+    ASSERT_EQ(montana->getMaxSpeed(),52);
+    ASSERT_EQ(montana->getHp(),45500);
+    ASSERT_EQ(montana->getArmour(),1224);
+    ASSERT_EQ(montana->getNationality(),"Usa");
+    ASSERT_EQ(montana->getNumLCannons(),6);
+    ASSERT_EQ(montana->getNumHCannons(),2);
+    ASSERT_EQ(montana->getNumMCannons(),0);
+    ASSERT_EQ(montana->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(montana->getWidth(),shipWidth);
+    ASSERT_EQ(montana->getLength(),shipHeight);
+    ASSERT_EQ(montana->getCol(),true);
+    ASSERT_EQ(montana->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(montana->getModelType(),ModelType::NorthCarolina);
+    ASSERT_EQ(montana->getNumInterceptors(),3);
+
+
 
 
 
