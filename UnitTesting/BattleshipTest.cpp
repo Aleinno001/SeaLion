@@ -20,8 +20,9 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(montana->getArmour(),1810);
     ASSERT_EQ(montana->getNationality(),"Usa");
     ASSERT_EQ(montana->getNumLCannons(),0);
-    ASSERT_EQ(montana->getNumMCannons(),4);
-    ASSERT_EQ(montana->getNumHCannons(),10);
+    ASSERT_EQ(montana->getNumHCannons(),4);
+    ASSERT_EQ(montana->getNumMCannons(),10);
+
     ASSERT_EQ(montana->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(montana->getWidth(),shipWidth);
     ASSERT_EQ(montana->getLength(),shipHeight);
@@ -49,8 +50,9 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(imperatoreAugusto->getArmour(),1126);
     ASSERT_EQ(imperatoreAugusto->getNationality(),"Italy");
     ASSERT_EQ(imperatoreAugusto->getNumLCannons(),16);
-    ASSERT_EQ(imperatoreAugusto->getNumMCannons(),4);
-    ASSERT_EQ(imperatoreAugusto->getNumHCannons(),10);
+    ASSERT_EQ(imperatoreAugusto->getNumHCannons(),4);
+    ASSERT_EQ(imperatoreAugusto->getNumMCannons(),10);
+
     ASSERT_EQ(imperatoreAugusto->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(imperatoreAugusto->getWidth(),shipWidth);
     ASSERT_EQ(imperatoreAugusto->getLength(),shipHeight);
@@ -77,8 +79,9 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(kongo->getArmour(),592);
     ASSERT_EQ(kongo->getNationality(),"Japan");
     ASSERT_EQ(kongo->getNumLCannons(),6);
-    ASSERT_EQ(kongo->getNumMCannons(),4);
-    ASSERT_EQ(kongo->getNumHCannons(),0);
+    ASSERT_EQ(kongo->getNumHCannons(),4);
+    ASSERT_EQ(kongo->getNumMCannons(),0);
+
     ASSERT_EQ(kongo->getNumAntiAircraft(),numAntiAir);
     ASSERT_EQ(kongo->getWidth(),shipWidth);
     ASSERT_EQ(kongo->getLength(),shipHeight);
@@ -86,6 +89,36 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(kongo->getShipType(),ShipType::Battleship);
     ASSERT_EQ(kongo->getModelType(),ModelType::Kongo);
     ASSERT_EQ(kongo->getNumInterceptors(),0);
+    
+    shipWidth = 39;
+    shipHeight = 244;
+
+
+    numAntiAir = 30;
+
+    std::unique_ptr<Battleship> musashi(new Battleship(1000,1000, 1, 51, 72809, 1540,
+                                                       "Japan", 6, 3, 2, numAntiAir,  v, shipHeight, shipWidth, true,
+                                                       ShipType::Battleship,
+                                                       ModelType::Musashi, 2));
+    
+    ASSERT_EQ(musashi->getPos().x,1000);
+    ASSERT_EQ(musashi->getPos().y,1000);
+    ASSERT_EQ(musashi->getAcceleration(),1);
+    ASSERT_EQ(musashi->getMaxSpeed(),51);
+    ASSERT_EQ(musashi->getHp(),72809);
+    ASSERT_EQ(musashi->getArmour(),1540);
+    ASSERT_EQ(musashi->getNationality(),"Japan");
+    ASSERT_EQ(musashi->getNumLCannons(),6);
+    ASSERT_EQ(musashi->getNumHCannons(),3);
+    ASSERT_EQ(musashi->getNumMCannons(),2);
+
+    ASSERT_EQ(musashi->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(musashi->getWidth(),shipWidth);
+    ASSERT_EQ(musashi->getLength(),shipHeight);
+    ASSERT_EQ(musashi->getCol(),true);
+    ASSERT_EQ(musashi->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(musashi->getModelType(),ModelType::Musashi);
+    ASSERT_EQ(musashi->getNumInterceptors(),2);
 
 
 
