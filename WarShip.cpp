@@ -200,3 +200,7 @@ if(sprite.getRotation() != mx){
 
 }
 
+const int WarShip::getNumAntiAircraft() const {
+    return numAntiAircraft;
+}
+

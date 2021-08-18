@@ -13,6 +13,8 @@ private:
 
 
     int numInterceptors;
+public:
+    int getNumInterceptors() const;
 
 
 public:

@@ -91,6 +91,10 @@ protected:
     const int numMCannons;
     const int numHCannons;
     const int numAntiAircraft;
+public:
+    const int getNumAntiAircraft() const;
+
+protected:
 
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::unique_ptr<Vehicle>> vehicleList;

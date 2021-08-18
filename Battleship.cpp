@@ -129,6 +129,10 @@ bool Battleship::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
+int Battleship::getNumInterceptors() const {
+    return numInterceptors;
+}
+
 
 
 

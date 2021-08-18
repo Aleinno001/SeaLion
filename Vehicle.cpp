@@ -112,3 +112,11 @@ const sf::Vector2f &Vehicle::getPos() const {
     return pos;
 }
 
+float Vehicle::getCurrentSpeed() const {
+    return currentSpeed;
+}
+
+const std::string &Vehicle::getNationality() const {
+    return nationality;
+}
+
