@@ -144,6 +144,34 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(dreadNought->getShipType(),ShipType::Battleship);
     ASSERT_EQ(dreadNought->getModelType(),ModelType::Dreadnought);
     ASSERT_EQ(dreadNought->getNumInterceptors(),0);
+    
+    shipWidth = 39;
+    shipHeight = 242;
+    numAntiAir = 10;
+    std::unique_ptr<Battleship> lion(
+            new Battleship(1000,1000, 1, 52, 49670, 944,
+                           "Uk", 0, 4, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           ShipType::Battleship,
+                           ModelType::Lion, 0));
+    
+    ASSERT_EQ(lion->getPos().x,1000);
+    ASSERT_EQ(lion->getPos().y,1000);
+    ASSERT_EQ(lion->getAcceleration(),1);
+    ASSERT_EQ(lion->getMaxSpeed(),52);
+    ASSERT_EQ(lion->getHp(),49670);
+    ASSERT_EQ(lion->getArmour(),944);
+    ASSERT_EQ(lion->getNationality(),"Uk");
+    ASSERT_EQ(lion->getNumLCannons(),0);
+    ASSERT_EQ(lion->getNumHCannons(),4);
+    ASSERT_EQ(lion->getNumMCannons(),0);
+    ASSERT_EQ(lion->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(lion->getWidth(),shipWidth);
+    ASSERT_EQ(lion->getLength(),shipHeight);
+    ASSERT_EQ(lion->getCol(),true);
+    ASSERT_EQ(lion->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(lion->getModelType(),ModelType::Lion);
+    ASSERT_EQ(lion->getNumInterceptors(),0);
+
 
 
 

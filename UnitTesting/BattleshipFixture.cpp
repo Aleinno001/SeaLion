@@ -11,14 +11,10 @@ protected:
 protected:
     virtual void SetUp() {
 
-
-
-}
+    }
 
 Battleship c;
 };
 
-TEST_F(BattleshipSuite, Constructor) {
 
-}
 
