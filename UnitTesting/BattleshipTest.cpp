@@ -185,23 +185,23 @@ TEST(Battleship, Constructor) {
                            ModelType::NorthCarolina, 3));
 
 
-    ASSERT_EQ(montana->getPos().x,1000);
-    ASSERT_EQ(montana->getPos().y,1000);
-    ASSERT_EQ(montana->getAcceleration(),1);
-    ASSERT_EQ(montana->getMaxSpeed(),52);
-    ASSERT_EQ(montana->getHp(),45500);
-    ASSERT_EQ(montana->getArmour(),1224);
-    ASSERT_EQ(montana->getNationality(),"Usa");
-    ASSERT_EQ(montana->getNumLCannons(),6);
-    ASSERT_EQ(montana->getNumHCannons(),2);
-    ASSERT_EQ(montana->getNumMCannons(),0);
-    ASSERT_EQ(montana->getNumAntiAircraft(),numAntiAir);
-    ASSERT_EQ(montana->getWidth(),shipWidth);
-    ASSERT_EQ(montana->getLength(),shipHeight);
-    ASSERT_EQ(montana->getCol(),true);
-    ASSERT_EQ(montana->getShipType(),ShipType::Battleship);
-    ASSERT_EQ(montana->getModelType(),ModelType::NorthCarolina);
-    ASSERT_EQ(montana->getNumInterceptors(),3);
+    ASSERT_EQ(northCarolina->getPos().x,1000);
+    ASSERT_EQ(northCarolina->getPos().y,1000);
+    ASSERT_EQ(northCarolina->getAcceleration(),1);
+    ASSERT_EQ(northCarolina->getMaxSpeed(),52);
+    ASSERT_EQ(northCarolina->getHp(),45500);
+    ASSERT_EQ(northCarolina->getArmour(),1224);
+    ASSERT_EQ(northCarolina->getNationality(),"Usa");
+    ASSERT_EQ(northCarolina->getNumLCannons(),6);
+    ASSERT_EQ(northCarolina->getNumHCannons(),2);
+    ASSERT_EQ(northCarolina->getNumMCannons(),0);
+    ASSERT_EQ(northCarolina->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(northCarolina->getWidth(),shipWidth);
+    ASSERT_EQ(northCarolina->getLength(),shipHeight);
+    ASSERT_EQ(northCarolina->getCol(),true);
+    ASSERT_EQ(northCarolina->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(northCarolina->getModelType(),ModelType::NorthCarolina);
+    ASSERT_EQ(northCarolina->getNumInterceptors(),3);
 
 
 
@@ -216,23 +216,23 @@ TEST(Battleship, Constructor) {
                            ShipType::Battleship,
                            ModelType::IronDuke, 0));
 
-    ASSERT_EQ(montana->getPos().x,1000);
-    ASSERT_EQ(montana->getPos().y,1000);
-    ASSERT_EQ(montana->getAcceleration(),1);
-    ASSERT_EQ(montana->getMaxSpeed(),39);
-    ASSERT_EQ(montana->getHp(),29500);
-    ASSERT_EQ(montana->getArmour(),826);
-    ASSERT_EQ(montana->getNationality(),"Uk");
-    ASSERT_EQ(montana->getNumLCannons(),0);
-    ASSERT_EQ(montana->getNumHCannons(),5);
-    ASSERT_EQ(montana->getNumMCannons(),0);
-    ASSERT_EQ(montana->getNumAntiAircraft(),numAntiAir);
-    ASSERT_EQ(montana->getWidth(),shipWidth);
-    ASSERT_EQ(montana->getLength(),shipHeight);
-    ASSERT_EQ(montana->getCol(),true);
-    ASSERT_EQ(montana->getShipType(),ShipType::Battleship);
-    ASSERT_EQ(montana->getModelType(),ModelType::IronDuke);
-    ASSERT_EQ(montana->getNumInterceptors(),0);
+    ASSERT_EQ(ironDuke->getPos().x,1000);
+    ASSERT_EQ(ironDuke->getPos().y,1000);
+    ASSERT_EQ(ironDuke->getAcceleration(),1);
+    ASSERT_EQ(ironDuke->getMaxSpeed(),39);
+    ASSERT_EQ(ironDuke->getHp(),29500);
+    ASSERT_EQ(ironDuke->getArmour(),826);
+    ASSERT_EQ(ironDuke->getNationality(),"Uk");
+    ASSERT_EQ(ironDuke->getNumLCannons(),0);
+    ASSERT_EQ(ironDuke->getNumHCannons(),5);
+    ASSERT_EQ(ironDuke->getNumMCannons(),0);
+    ASSERT_EQ(ironDuke->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(ironDuke->getWidth(),shipWidth);
+    ASSERT_EQ(ironDuke->getLength(),shipHeight);
+    ASSERT_EQ(ironDuke->getCol(),true);
+    ASSERT_EQ(ironDuke->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(ironDuke->getModelType(),ModelType::IronDuke);
+    ASSERT_EQ(ironDuke->getNumInterceptors(),0);
 
 
 
