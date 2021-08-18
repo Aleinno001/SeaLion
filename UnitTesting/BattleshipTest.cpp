@@ -58,7 +58,34 @@ TEST(Battleship, Constructor) {
     ASSERT_EQ(imperatoreAugusto->getShipType(),ShipType::Battleship);
     ASSERT_EQ(imperatoreAugusto->getModelType(),ModelType::ImperatoreAugusto);
     ASSERT_EQ(imperatoreAugusto->getNumInterceptors(),0);
+    
+    shipWidth = 31;
+    shipHeight = 222;
 
+    
+    numAntiAir = 18;
+    std::unique_ptr<Battleship> kongo(new Battleship(1000, 1000, 1, 56, 37187, 592,
+                                                     "Japan", 6, 4, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                                                     ShipType::Battleship,
+                                                     ModelType::Kongo, 0));
+    
+    ASSERT_EQ(kongo->getPos().x,1000);
+    ASSERT_EQ(kongo->getPos().y,1000);
+    ASSERT_EQ(kongo->getAcceleration(),1);
+    ASSERT_EQ(kongo->getMaxSpeed(),56);
+    ASSERT_EQ(kongo->getHp(),37187);
+    ASSERT_EQ(kongo->getArmour(),592);
+    ASSERT_EQ(kongo->getNationality(),"Japan");
+    ASSERT_EQ(kongo->getNumLCannons(),6);
+    ASSERT_EQ(kongo->getNumMCannons(),4);
+    ASSERT_EQ(kongo->getNumHCannons(),0);
+    ASSERT_EQ(kongo->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(kongo->getWidth(),shipWidth);
+    ASSERT_EQ(kongo->getLength(),shipHeight);
+    ASSERT_EQ(kongo->getCol(),true);
+    ASSERT_EQ(kongo->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(kongo->getModelType(),ModelType::Kongo);
+    ASSERT_EQ(kongo->getNumInterceptors(),0);
 
 
 
