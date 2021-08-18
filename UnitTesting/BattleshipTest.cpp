@@ -207,4 +207,35 @@ TEST(Battleship, Constructor) {
 
 
 
+    shipWidth = 39;
+    shipHeight = 190;
+    numAntiAir = 15;
+    std::unique_ptr<Battleship> ironDuke(
+            new Battleship(1000, 1000, 1, 39, 29500, 826,
+                           "Uk", 0, 5, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           ShipType::Battleship,
+                           ModelType::IronDuke, 0));
+
+    ASSERT_EQ(montana->getPos().x,1000);
+    ASSERT_EQ(montana->getPos().y,1000);
+    ASSERT_EQ(montana->getAcceleration(),1);
+    ASSERT_EQ(montana->getMaxSpeed(),39);
+    ASSERT_EQ(montana->getHp(),29500);
+    ASSERT_EQ(montana->getArmour(),826);
+    ASSERT_EQ(montana->getNationality(),"Uk");
+    ASSERT_EQ(montana->getNumLCannons(),0);
+    ASSERT_EQ(montana->getNumHCannons(),5);
+    ASSERT_EQ(montana->getNumMCannons(),0);
+    ASSERT_EQ(montana->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(montana->getWidth(),shipWidth);
+    ASSERT_EQ(montana->getLength(),shipHeight);
+    ASSERT_EQ(montana->getCol(),true);
+    ASSERT_EQ(montana->getShipType(),ShipType::Battleship);
+    ASSERT_EQ(montana->getModelType(),ModelType::IronDuke);
+    ASSERT_EQ(montana->getNumInterceptors(),0);
+
+
+
+
+
 }
