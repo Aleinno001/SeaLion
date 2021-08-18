@@ -61,142 +61,47 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 
-void WarShip::move(sf::Vector2i coordinates) {
-/*
-    //TODO implementare lo spostamento
-    //sprite.setPosition(coordinates.x,coordinates.y);
+void WarShip::move(sf::Vector2<double> coordinates) {
 
-
-    float dx =   coordinates.x-posX ;
-    float dy =   coordinates.y-posY ;
-
-    float rotation = (-atan2(dx,dy)) * 180 / M_PI;
-
-
-
-
-
-    sprite.rotate((rotation+180)/60);
-
-    //sprite.setPosition(coordinates.x,coordinates.y);
-
-    //
-    // sprite.move(0.0008*(dx/sqrt((2*maxSpeed/acceleration)))/60,0.0008*(dy/sqrt((2*maxSpeed/acceleration))));
-    sf::Vector2f nextPos;
-
-    nextPos = std::(sprite.getPosition(),coordinates,maxSpeed/60);
-
-*/
-/*
-
-int mx;
-int dy = coordinates.y - sprite.getPosition().y;
-int dx = coordinates.x - sprite.getPosition().x;
-mx = (-atan2(dy, dx)) * 180 / M_PI;
-
-    if(coordinates.x < sprite.getPosition().x){
-
-        if(coordinates.y < sprite.getPosition().y){
-            //secondo quadrante
-            mx = (mx -90);
-            if(360 - sprite.getRotation()!=mx){
-
-                if(360 - sprite.getRotation()>mx && sprite.getRotation()!=0){
-
-                    sprite.rotate(1);
-
-
-                }else{
-
-                    sprite.rotate(-1);
-
-                }
-
-            }
-
-
-        }else{
-            //terzo quadrante
-
-
-            mx = mx-180;
-
-            if(360-sprite.getRotation()!=mx){
-
-                if(360-sprite.getRotation()>mx && sprite.getRotation() != 0){
-
-                    sprite.rotate(1);
-                    std::cerr<<mx<<std::endl;
-                    std::cerr<<sprite.getRotation()<<std::endl;
-
-
-                }else{
-
-                    sprite.rotate(-1);
-                    std::cerr<<mx<<std::endl;
-                    std::cerr<<sprite.getRotation()<<std::endl;
-
-
-                }
-
-            }
-
-
-        }
-    }else if(coordinates.y<sprite.getPosition().y){
-        //primo quandrante
-
-        mx = 90 - mx;
-
-        if(sprite.getRotation()!=mx)
-        {
-            if(sprite.getRotation()>mx){
-
-                sprite.rotate(-1);
-
-
-            }else{
-
-                sprite.rotate(1);
-
-            }
-        }
-
-
-
-
-    }else{
-        //quarto quadrante
-        dx = -dx;
-        dy = -dy;
-
-
-    }
-
-
-*/
-int mx;
-int dy = coordinates.y - sprite.getPosition().y;
-int dx = coordinates.x - sprite.getPosition().x;
-
+double mx;
+double dy = coordinates.y - sprite.getPosition().y;
+double dx = coordinates.x - sprite.getPosition().x;
+sf::Vector2f newPos;
+float deltaTime;
 mx = 90 + atan2(dy,dx)*180/M_PI;
+/*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
+
+currentSpeed += acceleration/60;
+
+newPos.x = sprite.getPosition().x + cosf(sprite.getRotation()*M_PI/180) * deltaTime * currentSpeed;
+newPos.y = sprite.getPosition().y + sinf(sprite.getRotation()*M_PI/180) * deltaTime * currentSpeed;
+
+std::cerr << deltaTime << std::endl;
+sprite.setPosition(newPos);
+*/
+
+
+
 if(mx<0){
     mx=360+mx;
 }
-//mx=mx+90;
-std::cerr << mx << std::endl;
-std::cerr << sprite.getRotation() << std::endl;
 
 if(sprite.getRotation() != mx){
     if(mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0){
-    sprite.rotate(1);
+    sprite.rotate(0.1);
 
 
 }else{
-    sprite.rotate(-1);
+    sprite.rotate(-0.1);
 }
 
 }
+    if(sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&  sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1){
+        sprite.setPosition(coordinates.x, coordinates.y);
+    }else{
+        sprite.move(cosf64x(sprite.getRotation())*0.3, sinf64x(sprite.getRotation())*0.3);
+    }
+
+
 
 }
-

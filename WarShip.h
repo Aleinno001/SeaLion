@@ -6,7 +6,7 @@
 #define SEALION_WARSHIP_H
 
 #include <string>
-#include <memory.h>
+#include <memory>
 #include <vector>
 #include <list>
 #include "Vehicle.h"
@@ -101,7 +101,7 @@ public:
             std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
             bool col, ShipType sh, ModelType mo);
 
-    virtual void move(sf::Vector2i coordinates);
+    virtual void move(sf::Vector2 <double> coordinates);
 
     virtual void stopMove() = 0;
 

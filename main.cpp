@@ -98,7 +98,7 @@ std::vector<Fleet> alliedDummyFleet() {
 
 typedef struct iteratorPositions{
     std::_List_iterator<std::unique_ptr<WarShip>> it;
-    sf::Vector2i pos;
+    sf::Vector2 <double> pos;
 };
 
 
@@ -110,7 +110,7 @@ void update( std::list<iteratorPositions> lst){
                 iter=lst.erase(iter);
                 std::cerr<<"cancella"<<std::endl;
             }else{
-                iter->it->get()->move(iter->pos,0);
+                iter->it->get()->move(iter->pos);
                 ++iter;
             }
         }
@@ -174,11 +174,11 @@ int main() {
                 {
                     case sf::Mouse::Left:{
 
-                        sf::Vector2i coords(event.mouseButton.x,event.mouseButton.y);
+                        sf::Vector2 <double> coords(event.mouseButton.x,event.mouseButton.y);
 
                             if(found == false){
                                 itSecondClick = gameWorld.getAlliedFleet().begin();
-                                auto translated_pos = window.mapPixelToCoords(coords);
+                                auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
 
                                 for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it,shipCounter++) {
                                     std::cerr<<"Cerco nave"<<std::endl;
