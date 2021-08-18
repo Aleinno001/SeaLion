@@ -7,7 +7,7 @@
 
 TEST(GameTile, Constructor) {
 
-    GameTile c("seaWhirlpoolBlock.png", 1, 2, true, true, TileType::Whirlpool); //TODO risolvere problema path
+    GameTile c("seaWhirlpoolBlock.png", 1, 2, true, true, TileType::Whirlpool);
     ASSERT_EQ(c.isPassable, true);
     ASSERT_EQ(c.isExit, true);
     ASSERT_EQ(c.getPos(), sf::Vector2f(1, 2));
