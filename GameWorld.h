@@ -61,8 +61,11 @@ private:
     int mapWidth{1920};
     int mapHeight{1080};
     std::vector<std::vector<std::unique_ptr<GameTile>>> tiles;
-
 public:
+
+    std::vector<std::vector<std::unique_ptr<GameTile>>> getTiles(){
+        return tiles;
+    }
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
               std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,
               int &width, int &height, int &tileDim);
@@ -77,6 +80,7 @@ public:
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
 
     void setUpTiles(int &tileDim);
+
 
 private:
     bool isInStrip(int i, int tileDim);

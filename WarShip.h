@@ -6,7 +6,7 @@
 #define SEALION_WARSHIP_H
 
 #include <string>
-#include <memory>
+#include <memory.h>
 #include <vector>
 #include <list>
 #include "Vehicle.h"
@@ -91,6 +91,7 @@ protected:
     const int numMCannons;
     const int numHCannons;
     const int numAntiAircraft;
+
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::unique_ptr<Vehicle>> vehicleList;
 
