@@ -27,8 +27,6 @@ const int WarShip::getNumMCannons() const {
 const int WarShip::getNumHCannons() const {
     return numHCannons;
 }
-
-
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
                  std::list<std::unique_ptr<Vehicle>> &vehicle, int le, int wi,
@@ -99,7 +97,7 @@ if(sprite.getRotation() != mx){
     if(sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&  sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1){
         sprite.setPosition(coordinates.x, coordinates.y);
     }else{
-        sprite.move(cosf64x(sprite.getRotation())*0.3, sinf64x(sprite.getRotation())*0.3);
+        sprite.move(cosf64x(sprite.getRotation()*180/M_PI)*(-0.3), sinf64x(sprite.getRotation()*180/M_PI)*0.3);
     }
 
 
