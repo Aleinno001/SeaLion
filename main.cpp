@@ -103,7 +103,7 @@ typedef struct iteratorPositions{
 
 
 
-void update( std::list<iteratorPositions> lst,double dt){
+void update( std::list<iteratorPositions> lst, double dt){
     if(!lst.empty()){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){

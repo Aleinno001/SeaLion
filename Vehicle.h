@@ -15,6 +15,7 @@ protected:
     int posX;
     int posY;
     float acceleration;
+    bool isRotating {true};
 public:
     float getCurrentSpeed() const;
 
