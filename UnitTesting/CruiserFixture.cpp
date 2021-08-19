@@ -17,8 +17,6 @@ protected:
 Cruiser c;
 };
 
-TEST_F(CruiserSuite, Constructor) {
 
-}
 
 

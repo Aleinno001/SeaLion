@@ -17,6 +17,4 @@ protected:
 Destroyer c;
 };
 
-TEST_F(DestroyerSuite, Constructor) {
 
-}

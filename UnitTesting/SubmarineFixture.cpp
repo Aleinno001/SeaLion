@@ -17,6 +17,4 @@ protected:
 Battleship c;
 };
 
-TEST_F(SubmarineSuite, Constructor) {
 
-}

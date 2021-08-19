@@ -17,7 +17,4 @@ protected:
 AircraftCarrier c;
 };
 
-TEST_F(AircraftCarrierSuite, Constructor) {
-
-}
 

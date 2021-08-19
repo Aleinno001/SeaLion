@@ -100,5 +100,9 @@ bool AircraftCarrier::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
+int AircraftCarrier::getNumPlanes() const {
+    return numPlanes;
+}
+
 
 
