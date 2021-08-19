@@ -153,7 +153,7 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(impavido->getAcceleration(),4);
     ASSERT_EQ(impavido->getMaxSpeed(),63);
     ASSERT_EQ(impavido->getHp(),3941);
-    ASSERT_EQ(impavido->getArmour(),63);
+    ASSERT_EQ(impavido->getArmour(),36);
     ASSERT_EQ(impavido->getNationality(),"Italy");
     ASSERT_EQ(impavido->getNumLCannons(),4);
     ASSERT_EQ(impavido->getNumHCannons(),0);
