@@ -408,7 +408,8 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(Ijn->getShipType(),ShipType::Cruiser);
     ASSERT_EQ(Ijn->getModelType(),ModelType::Ijn);
     ASSERT_EQ(Ijn->getNumPlanes(),2);
-    
+
+
     
     
     
