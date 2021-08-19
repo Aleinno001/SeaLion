@@ -153,7 +153,7 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(impavido->getAcceleration(),4);
     ASSERT_EQ(impavido->getMaxSpeed(),63);
     ASSERT_EQ(impavido->getHp(),3941);
-    ASSERT_EQ(impavido->getArmour(),63);
+    ASSERT_EQ(impavido->getArmour(),36);
     ASSERT_EQ(impavido->getNationality(),"Italy");
     ASSERT_EQ(impavido->getNumLCannons(),4);
     ASSERT_EQ(impavido->getNumHCannons(),0);
@@ -287,6 +287,96 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Campbelltown->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(Campbelltown->getModelType(),ModelType::Campbelltown);
     ASSERT_EQ(Campbelltown->getNumTorpedoTubes(),6);
+    
+    shipWidth = 13;
+    shipHeight = 113;
+    numAntiAir = 20;
+    
+    std::unique_ptr<Destroyer> Leone(
+            new Destroyer(1000,1000, 4, 61, 2326, 22,
+                          "Italy", 0, 0, 3, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Leone, 6));
+    
+    
+    ASSERT_EQ(Leone->getPos().x,1000);
+    ASSERT_EQ(Leone->getPos().y,1000);
+    ASSERT_EQ(Leone->getAcceleration(),4);
+    ASSERT_EQ(Leone->getMaxSpeed(),61);
+    ASSERT_EQ(Leone->getHp(),2326);
+    ASSERT_EQ(Leone->getArmour(),22);
+    ASSERT_EQ(Leone->getNationality(),"Italy");
+    ASSERT_EQ(Leone->getNumLCannons(),0);
+    ASSERT_EQ(Leone->getNumHCannons(),0);
+    ASSERT_EQ(Leone->getNumMCannons(),3);
+    ASSERT_EQ(Leone->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Leone->getWidth(),shipWidth);
+    ASSERT_EQ(Leone->getLength(),shipHeight);
+    ASSERT_EQ(Leone->getCol(),true);
+    ASSERT_EQ(Leone->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Leone->getModelType(),ModelType::Leone);
+    ASSERT_EQ(Leone->getNumTorpedoTubes(),6);
+
+    shipWidth = 14;
+    shipHeight = 118;
+    numAntiAir = 20;
+
+    std::unique_ptr<Destroyer> Fubuki(
+            new Destroyer(1000,1000, 4, 70, 2080, 26,
+                          "Japan", 0, 0, 6, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Fubuki, 9));
+    
+    
+    ASSERT_EQ(Fubuki->getPos().x,1000);
+    ASSERT_EQ(Fubuki->getPos().y,1000);
+    ASSERT_EQ(Fubuki->getAcceleration(),4);
+    ASSERT_EQ(Fubuki->getMaxSpeed(),70);
+    ASSERT_EQ(Fubuki->getHp(),2080);
+    ASSERT_EQ(Fubuki->getArmour(),26);
+    ASSERT_EQ(Fubuki->getNationality(),"Japan");
+    ASSERT_EQ(Fubuki->getNumLCannons(),0);
+    ASSERT_EQ(Fubuki->getNumHCannons(),0);
+    ASSERT_EQ(Fubuki->getNumMCannons(),6);
+    ASSERT_EQ(Fubuki->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Fubuki->getWidth(),shipWidth);
+    ASSERT_EQ(Fubuki->getLength(),shipHeight);
+    ASSERT_EQ(Fubuki->getCol(),true);
+    ASSERT_EQ(Fubuki->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Fubuki->getModelType(),ModelType::Fubuki);
+    ASSERT_EQ(Fubuki->getNumTorpedoTubes(),9);
+    
+    shipWidth = 12;
+    shipHeight = 134;
+
+
+    numAntiAir = 50;
+    std::unique_ptr<Destroyer> Akizuki(
+            new Destroyer(1000,1000, 4, 61, 3759, 33,
+                          "Japan", 0, 0, 5, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Akizuki, 4));
+    
+    ASSERT_EQ(Akizuki->getPos().x,1000);
+    ASSERT_EQ(Akizuki->getPos().y,1000);
+    ASSERT_EQ(Akizuki->getAcceleration(),4);
+    ASSERT_EQ(Akizuki->getMaxSpeed(),61);
+    ASSERT_EQ(Akizuki->getHp(),3759);
+    ASSERT_EQ(Akizuki->getArmour(),33);
+    ASSERT_EQ(Akizuki->getNationality(),"Japan");
+    ASSERT_EQ(Akizuki->getNumLCannons(),0);
+    ASSERT_EQ(Akizuki->getNumHCannons(),0);
+    ASSERT_EQ(Akizuki->getNumMCannons(),5);
+    ASSERT_EQ(Akizuki->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Akizuki->getWidth(),shipWidth);
+    ASSERT_EQ(Akizuki->getLength(),shipHeight);
+    ASSERT_EQ(Akizuki->getCol(),true);
+    ASSERT_EQ(Akizuki->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Akizuki->getModelType(),ModelType::Akizuki);
+    ASSERT_EQ(Akizuki->getNumTorpedoTubes(),4);
+
+
+    
     
 
 
