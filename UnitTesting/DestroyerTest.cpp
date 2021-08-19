@@ -102,6 +102,40 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(jutLand->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(jutLand->getModelType(),ModelType::Jutland);
     ASSERT_EQ(jutLand->getNumTorpedoTubes(),10);
+    
+    shipWidth = 15;
+    shipHeight = 172;
+
+    
+    numAntiAir = 12;
+
+    std::unique_ptr<Destroyer> paoloEmilio(
+            new Destroyer(1000,1000, 4, 76, 5420, 66,
+                          "Italy", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Impavido, 8));
+    
+    
+    ASSERT_EQ(paoloEmilio->getPos().x,1000);
+    ASSERT_EQ(paoloEmilio->getPos().y,1000);
+    ASSERT_EQ(paoloEmilio->getAcceleration(),4);
+    ASSERT_EQ(paoloEmilio->getMaxSpeed(),76);
+    ASSERT_EQ(paoloEmilio->getHp(),5420);
+    ASSERT_EQ(paoloEmilio->getArmour(),66);
+    ASSERT_EQ(paoloEmilio->getNationality(),"Italy");
+    ASSERT_EQ(paoloEmilio->getNumLCannons(),0);
+    ASSERT_EQ(paoloEmilio->getNumHCannons(),0);
+    ASSERT_EQ(paoloEmilio->getNumMCannons(),4);
+    ASSERT_EQ(paoloEmilio->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(paoloEmilio->getWidth(),shipWidth);
+    ASSERT_EQ(paoloEmilio->getLength(),shipHeight);
+    ASSERT_EQ(paoloEmilio->getCol(),true);
+    ASSERT_EQ(paoloEmilio->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(paoloEmilio->getModelType(),ModelType::Impavido);
+    ASSERT_EQ(paoloEmilio->getNumTorpedoTubes(),8);
+
+
+    
 
 
 
