@@ -288,6 +288,37 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Campbelltown->getModelType(),ModelType::Campbelltown);
     ASSERT_EQ(Campbelltown->getNumTorpedoTubes(),6);
     
+    shipWidth = 13;
+    shipHeight = 113;
+    numAntiAir = 20;
+    
+    std::unique_ptr<Destroyer> Leone(
+            new Destroyer(1000,1000, 4, 61, 2326, 22,
+                          "Italy", 0, 0, 3, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Leone, 6));
+    
+    
+    ASSERT_EQ(Leone->getPos().x,1000);
+    ASSERT_EQ(Leone->getPos().y,1000);
+    ASSERT_EQ(Leone->getAcceleration(),4);
+    ASSERT_EQ(Leone->getMaxSpeed(),61);
+    ASSERT_EQ(Leone->getHp(),2326);
+    ASSERT_EQ(Leone->getArmour(),22);
+    ASSERT_EQ(Leone->getNationality(),"Italy");
+    ASSERT_EQ(Leone->getNumLCannons(),0);
+    ASSERT_EQ(Leone->getNumHCannons(),0);
+    ASSERT_EQ(Leone->getNumMCannons(),3);
+    ASSERT_EQ(Leone->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Leone->getWidth(),shipWidth);
+    ASSERT_EQ(Leone->getLength(),shipHeight);
+    ASSERT_EQ(Leone->getCol(),true);
+    ASSERT_EQ(Leone->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Leone->getModelType(),ModelType::Leone);
+    ASSERT_EQ(Leone->getNumTorpedoTubes(),6);
+    
+    
+    
 
 
 }
