@@ -258,6 +258,36 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Gallant->getModelType(),ModelType::Gallant);
     ASSERT_EQ(Gallant->getNumTorpedoTubes(),8);
     
+   
+    shipWidth = 10;
+    shipHeight = 96;
+
+    numAntiAir = 10;
+    std::unique_ptr<Destroyer> Campbelltown(
+            new Destroyer(1000,1000, 4, 66, 1280, 19,
+                          "Uk", 4, 0, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Campbelltown, 6));
+   
+   
+    ASSERT_EQ(Campbelltown->getPos().x,1000);
+    ASSERT_EQ(Campbelltown->getPos().y,1000);
+    ASSERT_EQ(Campbelltown->getAcceleration(),4);
+    ASSERT_EQ(Campbelltown->getMaxSpeed(),66);
+    ASSERT_EQ(Campbelltown->getHp(),1280);
+    ASSERT_EQ(Campbelltown->getArmour(),19);
+    ASSERT_EQ(Campbelltown->getNationality(),"Uk");
+    ASSERT_EQ(Campbelltown->getNumLCannons(),4);
+    ASSERT_EQ(Campbelltown->getNumHCannons(),0);
+    ASSERT_EQ(Campbelltown->getNumMCannons(),0);
+    ASSERT_EQ(Campbelltown->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Campbelltown->getWidth(),shipWidth);
+    ASSERT_EQ(Campbelltown->getLength(),shipHeight);
+    ASSERT_EQ(Campbelltown->getCol(),true);
+    ASSERT_EQ(Campbelltown->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Campbelltown->getModelType(),ModelType::Campbelltown);
+    ASSERT_EQ(Campbelltown->getNumTorpedoTubes(),6);
+    
 
 
 }
