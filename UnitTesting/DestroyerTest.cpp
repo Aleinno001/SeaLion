@@ -197,6 +197,38 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(yukikaze->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(yukikaze->getModelType(),ModelType::Yukikaze);
     ASSERT_EQ(yukikaze->getNumTorpedoTubes(),8);
+    
+    
+    shipWidth = 13;
+    shipHeight = 104;
+    numAntiAir = 8;
+    
+    std::unique_ptr<Destroyer> Mahan(
+            new Destroyer(1000,1000,4, 69, 2137, 27,
+                          "Usa", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Mahan, 12));
+    
+    
+    ASSERT_EQ(Mahan->getPos().x,1000);
+    ASSERT_EQ(Mahan->getPos().y,1000);
+    ASSERT_EQ(Mahan->getAcceleration(),4);
+    ASSERT_EQ(Mahan->getMaxSpeed(),69);
+    ASSERT_EQ(Mahan->getHp(),2137);
+    ASSERT_EQ(Mahan->getArmour(),27);
+    ASSERT_EQ(Mahan->getNationality(),"Usa");
+    ASSERT_EQ(Mahan->getNumLCannons(),0);
+    ASSERT_EQ(Mahan->getNumHCannons(),0);
+    ASSERT_EQ(Mahan->getNumMCannons(),4);
+    ASSERT_EQ(Mahan->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Mahan->getWidth(),shipWidth);
+    ASSERT_EQ(Mahan->getLength(),shipHeight);
+    ASSERT_EQ(Mahan->getCol(),true);
+    ASSERT_EQ(Mahan->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Mahan->getModelType(),ModelType::Mahan);
+    ASSERT_EQ(Mahan->getNumTorpedoTubes(),12);
+    
+    
 
 
 }
