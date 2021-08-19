@@ -66,6 +66,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     double dy = coordinates.y - sprite.getPosition().y;
     double dx = coordinates.x - sprite.getPosition().x;
     sf::Vector2f newPos;
+    bool isRotating = false;
     float deltaTime;
     mx = 90 + atan2(dy, dx) * 180 / M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
@@ -84,23 +85,28 @@ sprite.setPosition(newPos);
         mx = 360 + mx;
     }
 
-    if (abs(sprite.getRotation() - mx) >= 1) {
+
+    if (abs(sprite.getRotation() - mx) >= 0.06) {
         if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
             sprite.rotate(0.1);
-
+            if (!(abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height/2 && abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height/2))
+                isRotating = true;
 
         } else {
             sprite.rotate(-0.1);
+            if (!(abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height/2 && abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height/2))
+                isRotating = true;
         }
     }
-    if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
-        sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
-        sprite.setPosition(coordinates.x, coordinates.y);
-    } else {
-        sprite.move(-cosf(sprite.getRotation() * 360 / M_PI) * dt * maxSpeed,
-                    sinf(sprite.getRotation() * 360 / M_PI) * dt * maxSpeed);
+    if (!isRotating) {
+        if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
+            sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
+            sprite.setPosition(coordinates.x, coordinates.y);
+        } else {
+            sprite.move(-cosf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed,
+                        sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
+        }
     }
-
 
 }
 
