@@ -1155,6 +1155,7 @@ ShipFactory::simsBuilder(std::list<std::unique_ptr<Vehicle>> &v,
                           "Usa", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Sims, 8));
+
     sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 12,*sims)));
     sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 23,*sims)));
     sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 78,*sims)));

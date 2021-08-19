@@ -176,7 +176,7 @@ TEST(Submarine, Constructor) {
     ASSERT_EQ(Narwhal->getCol(),true);
     ASSERT_EQ(Narwhal->getShipType(),ShipType::Submarine);
     ASSERT_EQ(Narwhal->getModelType(),ModelType::Narwhal);
-    ASSERT_EQ(Narwhal->getNumTorpedoTubes(),6);
+    ASSERT_EQ(Narwhal->getNumTorpedoTubes(),4);
     ASSERT_EQ(Narwhal->isSubmerged1(),false);
 
     shipWidth = 14;
@@ -219,66 +219,25 @@ TEST(Submarine, Constructor) {
                           ShipType::Submarine, ModelType::Papa,10, false));
 
 
-    ASSERT_EQ(Gato->getPos().x,1000);
-    ASSERT_EQ(Gato->getPos().y,1000);
-    ASSERT_EQ(Gato->getAcceleration(),2);
-    ASSERT_EQ(Gato->getMaxSpeed(),82);
-    ASSERT_EQ(Gato->getHp(),7100);
-    ASSERT_EQ(Gato->getArmour(),0);
-    ASSERT_EQ(Gato->getNationality(),"Italy");
-    ASSERT_EQ(Gato->getNumLCannons(),0);
-    ASSERT_EQ(Gato->getNumHCannons(),0);
-    ASSERT_EQ(Gato->getNumMCannons(),0);
-    ASSERT_EQ(Gato->getNumAntiAircraft(),0);
-    ASSERT_EQ(Gato->getWidth(),shipWidth);
-    ASSERT_EQ(Gato->getLength(),shipHeight);
-    ASSERT_EQ(Gato->getCol(),true);
-    ASSERT_EQ(Gato->getShipType(),ShipType::Submarine);
-    ASSERT_EQ(Gato->getModelType(),ModelType::Papa);
-    ASSERT_EQ(Gato->getNumTorpedoTubes(),10);
-    ASSERT_EQ(Gato->isSubmerged1(),false);
+    ASSERT_EQ(Papa->getPos().x,1000);
+    ASSERT_EQ(Papa->getPos().y,1000);
+    ASSERT_EQ(Papa->getAcceleration(),2);
+    ASSERT_EQ(Papa->getMaxSpeed(),82);
+    ASSERT_EQ(Papa->getHp(),7100);
+    ASSERT_EQ(Papa->getArmour(),0);
+    ASSERT_EQ(Papa->getNationality(),"Italy");
+    ASSERT_EQ(Papa->getNumLCannons(),0);
+    ASSERT_EQ(Papa->getNumHCannons(),0);
+    ASSERT_EQ(Papa->getNumMCannons(),0);
+    ASSERT_EQ(Papa->getNumAntiAircraft(),0);
+    ASSERT_EQ(Papa->getWidth(),shipWidth);
+    ASSERT_EQ(Papa->getLength(),shipHeight);
+    ASSERT_EQ(Papa->getCol(),true);
+    ASSERT_EQ(Papa->getShipType(),ShipType::Submarine);
+    ASSERT_EQ(Papa->getModelType(),ModelType::Papa);
+    ASSERT_EQ(Papa->getNumTorpedoTubes(),10);
+    ASSERT_EQ(Papa->isSubmerged1(),false);
 
-
-
-    ASSERT_EQ(Gato->getPos().x,1000);
-    ASSERT_EQ(Gato->getPos().y,1000);
-    ASSERT_EQ(Gato->getAcceleration(),2);
-    ASSERT_EQ(Gato->getMaxSpeed(),37);
-    ASSERT_EQ(Gato->getHp(),2460);
-    ASSERT_EQ(Gato->getArmour(),0);
-    ASSERT_EQ(Gato->getNationality(),"Usa");
-    ASSERT_EQ(Gato->getNumLCannons(),0);
-    ASSERT_EQ(Gato->getNumHCannons(),0);
-    ASSERT_EQ(Gato->getNumMCannons(),0);
-    ASSERT_EQ(Gato->getNumAntiAircraft(),0);
-    ASSERT_EQ(Gato->getWidth(),shipWidth);
-    ASSERT_EQ(Gato->getLength(),shipHeight);
-    ASSERT_EQ(Gato->getCol(),true);
-    ASSERT_EQ(Gato->getShipType(),ShipType::Submarine);
-    ASSERT_EQ(Gato->getModelType(),ModelType::Gato);
-    ASSERT_EQ(Gato->getNumTorpedoTubes(),6);
-    ASSERT_EQ(Gato->isSubmerged1(),false);
-
-
-
-    ASSERT_EQ(Gato->getPos().x,1000);
-    ASSERT_EQ(Gato->getPos().y,1000);
-    ASSERT_EQ(Gato->getAcceleration(),2);
-    ASSERT_EQ(Gato->getMaxSpeed(),37);
-    ASSERT_EQ(Gato->getHp(),2460);
-    ASSERT_EQ(Gato->getArmour(),0);
-    ASSERT_EQ(Gato->getNationality(),"Usa");
-    ASSERT_EQ(Gato->getNumLCannons(),0);
-    ASSERT_EQ(Gato->getNumHCannons(),0);
-    ASSERT_EQ(Gato->getNumMCannons(),0);
-    ASSERT_EQ(Gato->getNumAntiAircraft(),0);
-    ASSERT_EQ(Gato->getWidth(),shipWidth);
-    ASSERT_EQ(Gato->getLength(),shipHeight);
-    ASSERT_EQ(Gato->getCol(),true);
-    ASSERT_EQ(Gato->getShipType(),ShipType::Submarine);
-    ASSERT_EQ(Gato->getModelType(),ModelType::Gato);
-    ASSERT_EQ(Gato->getNumTorpedoTubes(),6);
-    ASSERT_EQ(Gato->isSubmerged1(),false);
 
 
 

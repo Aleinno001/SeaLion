@@ -22,6 +22,7 @@ public:
 
 
     //float calcSpeed() override;
+    int getNumTorpedoTubes() const;
 
     void attack(Vehicle target) override;
 
