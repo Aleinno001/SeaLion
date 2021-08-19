@@ -45,8 +45,6 @@ TEST(Destroyer, Constructor) {
     shipWidth = 12;
     shipHeight = 114;
 
-   
-
     numAntiAir = 14;
 
 
@@ -74,7 +72,38 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(fletcher->getModelType(),ModelType::Fletcher);
     ASSERT_EQ(fletcher->getNumTorpedoTubes(),10);
 
+     shipWidth = 13;
+     shipHeight = 116;
+
+     numAntiAir = 16;
+
+    std::unique_ptr<Destroyer> jutLand(
+            new Destroyer(1000,1000, 4, 66, 2480, 26,
+                          "Uk", 0, 0, 3, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Jutland, 10));
     
+    
+    
+    ASSERT_EQ(jutLand->getPos().x,1000);
+    ASSERT_EQ(jutLand->getPos().y,1000);
+    ASSERT_EQ(jutLand->getAcceleration(),4);
+    ASSERT_EQ(jutLand->getMaxSpeed(),66);
+    ASSERT_EQ(jutLand->getHp(),2480);
+    ASSERT_EQ(jutLand->getArmour(),26);
+    ASSERT_EQ(jutLand->getNationality(),"Uk");
+    ASSERT_EQ(jutLand->getNumLCannons(),0);
+    ASSERT_EQ(jutLand->getNumHCannons(),0);
+    ASSERT_EQ(jutLand->getNumMCannons(),3);
+    ASSERT_EQ(jutLand->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(jutLand->getWidth(),shipWidth);
+    ASSERT_EQ(jutLand->getLength(),shipHeight);
+    ASSERT_EQ(jutLand->getCol(),true);
+    ASSERT_EQ(jutLand->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(jutLand->getModelType(),ModelType::Jutland);
+    ASSERT_EQ(jutLand->getNumTorpedoTubes(),10);
+
+
 
 
 
