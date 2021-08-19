@@ -316,6 +316,36 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Leone->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(Leone->getModelType(),ModelType::Leone);
     ASSERT_EQ(Leone->getNumTorpedoTubes(),6);
+
+    shipWidth = 14;
+    shipHeight = 118;
+    numAntiAir = 20;
+
+    std::unique_ptr<Destroyer> Fubuki(
+            new Destroyer(1000,1000, 4, 70, 2080, 26,
+                          "Japan", 0, 0, 6, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Fubuki, 9));
+    
+    
+    ASSERT_EQ(Fubuki->getPos().x,1000);
+    ASSERT_EQ(Fubuki->getPos().y,1000);
+    ASSERT_EQ(Fubuki->getAcceleration(),4);
+    ASSERT_EQ(Fubuki->getMaxSpeed(),70);
+    ASSERT_EQ(Fubuki->getHp(),2080);
+    ASSERT_EQ(Fubuki->getArmour(),26);
+    ASSERT_EQ(Fubuki->getNationality(),"Japan");
+    ASSERT_EQ(Fubuki->getNumLCannons(),0);
+    ASSERT_EQ(Fubuki->getNumHCannons(),0);
+    ASSERT_EQ(Fubuki->getNumMCannons(),6);
+    ASSERT_EQ(Fubuki->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Fubuki->getWidth(),shipWidth);
+    ASSERT_EQ(Fubuki->getLength(),shipHeight);
+    ASSERT_EQ(Fubuki->getCol(),true);
+    ASSERT_EQ(Fubuki->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Fubuki->getModelType(),ModelType::Fubuki);
+    ASSERT_EQ(Fubuki->getNumTorpedoTubes(),9);
+
     
     
     
