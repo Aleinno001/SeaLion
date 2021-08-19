@@ -272,16 +272,16 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(Tiger59->getHp(),12080);
     ASSERT_EQ(Tiger59->getArmour(),191);
     ASSERT_EQ(Tiger59->getNationality(),"Uk");
-    ASSERT_EQ(Tiger59->getNumLCannons(),5);
-    ASSERT_EQ(Tiger59->getNumHCannons(),4);
-    ASSERT_EQ(Tiger59->getNumMCannons(),3);
+    ASSERT_EQ(Tiger59->getNumLCannons(),6);
+    ASSERT_EQ(Tiger59->getNumHCannons(),0);
+    ASSERT_EQ(Tiger59->getNumMCannons(),4);
     ASSERT_EQ(Tiger59->getNumAntiAircraft(),antiAir);
     ASSERT_EQ(Tiger59->getWidth(),shipWidth);
     ASSERT_EQ(Tiger59->getLength(),shipHeight);
     ASSERT_EQ(Tiger59->getCol(),true);
     ASSERT_EQ(Tiger59->getShipType(),ShipType::Cruiser);
     ASSERT_EQ(Tiger59->getModelType(),ModelType::Tiger59);
-    ASSERT_EQ(Tiger59->getNumPlanes(),0);
+    ASSERT_EQ(Tiger59->getNumPlanes(),2);
     
     
     shipWidth = 27;
@@ -341,7 +341,7 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(Gorizia->getLength(),shipHeight);
     ASSERT_EQ(Gorizia->getCol(),true);
     ASSERT_EQ(Gorizia->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(Gorizia->getModelType(),ModelType::StLouis);
+    ASSERT_EQ(Gorizia->getModelType(),ModelType::Gorizia);
     ASSERT_EQ(Gorizia->getNumPlanes(),0);
     
     
@@ -367,7 +367,7 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(IsuzuNagara->getArmour(),90);
     ASSERT_EQ(IsuzuNagara->getNationality(),"Japan");
     ASSERT_EQ(IsuzuNagara->getNumLCannons(),5);
-    ASSERT_EQ(IsuzuNagara->getNumHCannons(),4);
+    ASSERT_EQ(IsuzuNagara->getNumHCannons(),0);
     ASSERT_EQ(IsuzuNagara->getNumMCannons(),3);
     ASSERT_EQ(IsuzuNagara->getNumAntiAircraft(),antiAir);
     ASSERT_EQ(IsuzuNagara->getWidth(),shipWidth);
@@ -413,52 +413,8 @@ TEST(Cruiser, Constructor) {
     
     
     
-    
-    
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
-    
-    
-    
-    
-    
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
-    
-    
-    
+
     
 
 }
 
-*/

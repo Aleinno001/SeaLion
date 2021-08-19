@@ -25,6 +25,14 @@ public:
 
     void submerge();
 
+    bool isSubmerged1() const {
+        return isSubmerged;
+    }
+
+    int getNumTorpedoTubes() const {
+        return numTorpedoTubes;
+    }
+
     void attack(Vehicle target) override;
 
     void calculateDistance(Vehicle target) override;
