@@ -105,7 +105,7 @@ public:
             std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
             bool col, ShipType sh, ModelType mo);
 
-    virtual void move(sf::Vector2 <double> coordinates);
+    virtual void move(sf::Vector2 <double> coordinates,double dt);
 
     virtual void stopMove() = 0;
 

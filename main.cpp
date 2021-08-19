@@ -103,14 +103,14 @@ typedef struct iteratorPositions{
 
 
 
-void update( std::list<iteratorPositions> lst){
+void update( std::list<iteratorPositions> lst,double dt){
     if(!lst.empty()){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
                 iter=lst.erase(iter);
                 std::cerr<<"cancella"<<std::endl;
             }else{
-                iter->it->get()->move(iter->pos);
+                iter->it->get()->move(iter->pos,dt);
                 ++iter;
             }
         }
@@ -137,7 +137,7 @@ int main() {
     settings.antialiasingLevel = 0;
     settings.majorVersion = 2;
     settings.minorVersion = 1;
-
+    sf::Clock clock;
     sf::RenderWindow window;
     auto desktop = sf::VideoMode::getDesktopMode();
     width = desktop.width;
@@ -289,7 +289,7 @@ int main() {
 
         }
 
-        update(lst);
+        update(lst,clock.restart().asSeconds());
 
         window.display();
     }
