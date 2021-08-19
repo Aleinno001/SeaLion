@@ -165,14 +165,38 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(impavido->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(impavido->getModelType(),ModelType::Impavido);
     ASSERT_EQ(impavido->getNumTorpedoTubes(),6);
-    
-    
-    
 
-    
+    shipWidth = 12;
+    shipHeight = 119;
 
 
 
+    numAntiAir = 32;
+
+
+    std::unique_ptr<Destroyer> yukikaze(
+            new Destroyer(1000,1000, 4, 65, 2530, 26,
+                          "Japan", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Yukikaze, 8));
+    
+    ASSERT_EQ(yukikaze->getPos().x,1000);
+    ASSERT_EQ(yukikaze->getPos().y,1000);
+    ASSERT_EQ(yukikaze->getAcceleration(),4);
+    ASSERT_EQ(yukikaze->getMaxSpeed(),65);
+    ASSERT_EQ(yukikaze->getHp(),2530);
+    ASSERT_EQ(yukikaze->getArmour(),26);
+    ASSERT_EQ(yukikaze->getNationality(),"Japan");
+    ASSERT_EQ(yukikaze->getNumLCannons(),0);
+    ASSERT_EQ(yukikaze->getNumHCannons(),0);
+    ASSERT_EQ(yukikaze->getNumMCannons(),4);
+    ASSERT_EQ(yukikaze->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(yukikaze->getWidth(),shipWidth);
+    ASSERT_EQ(yukikaze->getLength(),shipHeight);
+    ASSERT_EQ(yukikaze->getCol(),true);
+    ASSERT_EQ(yukikaze->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(yukikaze->getModelType(),ModelType::Yukikaze);
+    ASSERT_EQ(yukikaze->getNumTorpedoTubes(),8);
 
 
 }
