@@ -68,7 +68,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     sf::Vector2f newPos;
     bool isRotating = false;
     float deltaTime;
-    mx = 90 + atan2(dy, dx) * 180 / M_PI;
+    mx = atan2(dy, dx) * 180 / M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
 
 currentSpeed += acceleration/60;
@@ -82,7 +82,7 @@ sprite.setPosition(newPos);
     if (mx < 0) {
         mx = 360 + mx;
     }
-
+/*
     if (abs(sprite.getRotation() - mx) >= 0.06) {
         if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
             sprite.rotate(0.1);
@@ -102,11 +102,15 @@ sprite.setPosition(newPos);
             currentSpeed=0;
         } else {
             currentSpeed+=acceleration;
-            sprite.move(-cosf(sprite.getRotation() * 180 / M_PI) * dt * currentSpeed,
-                        sinf(sprite.getRotation() * 180 / M_PI) * dt * currentSpeed);
+            sprite.move(-cosf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed,
+                        sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
         }
     }
+*/
 
+    sprite.move(-std::cos(3.14159265 * sprite.getRotation() / 180.f) * maxSpeed * dt,
+                std::sin(3.14159265 * sprite.getRotation() / 180.f) * maxSpeed * dt);
+    sprite.setRotation(mx + 90);
 }
 
 const int WarShip::getNumAntiAircraft() const {

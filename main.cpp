@@ -172,10 +172,11 @@ int main() {
                     case sf::Mouse::Left:{
 
                         sf::Vector2 <double> coords(event.mouseButton.x,event.mouseButton.y);
-
+                        auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
                             if(found == false){
+
                                 itSecondClick = gameWorld.getAlliedFleet().begin();
-                                auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
+
 
                                 for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it,shipCounter++) {
                                     std::cerr<<"Cerco nave"<<std::endl;
