@@ -214,49 +214,74 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(takao->getModelType(),ModelType::Takao);
     ASSERT_EQ(takao->getNumPlanes(),2);
     
+    shipWidth = 25;
+    shipHeight = 178;
+
     
-    
-    
-    
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
+    antiAir = 12;
+
+    std::unique_ptr<Cruiser> NewOrleans(
+            new Cruiser(1000,1000, 3, 61, 12663, 476, "Usa", 6, 0, 3, antiAir,  v, shipHeight,
+                        shipWidth,
+                        true,
+                        ShipType::Cruiser, ModelType::NewOrleans, 0));
     
     
     
     
     
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
+    ASSERT_EQ(NewOrleans->getPos().x,1000);
+    ASSERT_EQ(NewOrleans->getPos().y,1000);
+    ASSERT_EQ(NewOrleans->getAcceleration(),3);
+    ASSERT_EQ(NewOrleans->getMaxSpeed(),61);
+    ASSERT_EQ(NewOrleans->getHp(),12663);
+    ASSERT_EQ(NewOrleans->getArmour(),476);
+    ASSERT_EQ(NewOrleans->getNationality(),"Usa");
+    ASSERT_EQ(NewOrleans->getNumLCannons(),6);
+    ASSERT_EQ(NewOrleans->getNumHCannons(),0);
+    ASSERT_EQ(NewOrleans->getNumMCannons(),3);
+    ASSERT_EQ(NewOrleans->getNumAntiAircraft(),antiAir);
+    ASSERT_EQ(NewOrleans->getWidth(),shipWidth);
+    ASSERT_EQ(NewOrleans->getLength(),shipHeight);
+    ASSERT_EQ(NewOrleans->getCol(),true);
+    ASSERT_EQ(NewOrleans->getShipType(),ShipType::Cruiser);
+    ASSERT_EQ(NewOrleans->getModelType(),ModelType::NewOrleans);
+    ASSERT_EQ(NewOrleans->getNumPlanes(),0);
+
+
+    shipWidth = 19;
+
+    shipHeight = 169;
+
+    antiAir = 7;
+
+    std::unique_ptr<Cruiser> Tiger59(
+            new Cruiser(1000, 1000, 3, 58, 12080, 191, "Uk", 6, 0, 4, antiAir,  v, shipHeight,
+                        shipWidth,
+                        true,
+                        ShipType::Cruiser, ModelType::Tiger59, 2));
+    
+    
+    
+    
+    
+    ASSERT_EQ(Tiger59->getPos().x,1000);
+    ASSERT_EQ(Tiger59->getPos().y,1000);
+    ASSERT_EQ(Tiger59->getAcceleration(),3);
+    ASSERT_EQ(Tiger59->getMaxSpeed(),58);
+    ASSERT_EQ(Tiger59->getHp(),12080);
+    ASSERT_EQ(Tiger59->getArmour(),191);
+    ASSERT_EQ(Tiger59->getNationality(),"Uk");
+    ASSERT_EQ(Tiger59->getNumLCannons(),5);
+    ASSERT_EQ(Tiger59->getNumHCannons(),4);
+    ASSERT_EQ(Tiger59->getNumMCannons(),3);
+    ASSERT_EQ(Tiger59->getNumAntiAircraft(),antiAir);
+    ASSERT_EQ(Tiger59->getWidth(),shipWidth);
+    ASSERT_EQ(Tiger59->getLength(),shipHeight);
+    ASSERT_EQ(Tiger59->getCol(),true);
+    ASSERT_EQ(Tiger59->getShipType(),ShipType::Cruiser);
+    ASSERT_EQ(Tiger59->getModelType(),ModelType::Tiger59);
+    ASSERT_EQ(Tiger59->getNumPlanes(),0);
     
     
     
