@@ -121,3 +121,7 @@ bool Destroyer::setUpSprite(std::string textureName) {
     return Vehicle::setUpSprite(textureName);
 }
 
+int Destroyer::getNumTorpedoTubes() const {
+    return numTorpedoTubes;
+}
+
