@@ -43,7 +43,7 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(saintLouis->getArmour(),280);
     ASSERT_EQ(saintLouis->getNationality(),"Usa");
     ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
+    ASSERT_EQ(saintLouis->getNumHCannons(),0);
     ASSERT_EQ(saintLouis->getNumMCannons(),3);
     ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
     ASSERT_EQ(saintLouis->getWidth(),shipWidth);
@@ -125,66 +125,94 @@ TEST(Cruiser, Constructor) {
                                                 ModelType::Trento, 2));
     
     
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),66);
-    ASSERT_EQ(saintLouis->getHp(),13548);
-    ASSERT_EQ(saintLouis->getArmour(),120);
-    ASSERT_EQ(saintLouis->getNationality(),"Italy");
-    ASSERT_EQ(saintLouis->getNumLCannons(),6);
-    ASSERT_EQ(saintLouis->getNumHCannons(),0);
-    ASSERT_EQ(saintLouis->getNumMCannons(),4);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::Trento);
-    ASSERT_EQ(saintLouis->getNumPlanes(),2);
+    
+    ASSERT_EQ(trento->getPos().x,1000);
+    ASSERT_EQ(trento->getPos().y,1000);
+    ASSERT_EQ(trento->getAcceleration(),3);
+    ASSERT_EQ(trento->getMaxSpeed(),66);
+    ASSERT_EQ(trento->getHp(),13548);
+    ASSERT_EQ(trento->getArmour(),120);
+    ASSERT_EQ(trento->getNationality(),"Italy");
+    ASSERT_EQ(trento->getNumLCannons(),6);
+    ASSERT_EQ(trento->getNumHCannons(),0);
+    ASSERT_EQ(trento->getNumMCannons(),4);
+    ASSERT_EQ(trento->getNumAntiAircraft(),antiAir);
+    ASSERT_EQ(trento->getWidth(),shipWidth);
+    ASSERT_EQ(trento->getLength(),shipHeight);
+    ASSERT_EQ(trento->getCol(),true);
+    ASSERT_EQ(trento->getShipType(),ShipType::Cruiser);
+    ASSERT_EQ(trento->getModelType(),ModelType::Trento);
+    ASSERT_EQ(trento->getNumPlanes(),2);
+    
+    
+    shipWidth = 15;
+    shipHeight = 169;
+
+
+
+    antiAir = 12;
+
+
+
+
+    std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(1000,1000, 3, 69, 6950, 84,
+                                                           "Italy", 3, 0, 4, antiAir,  v, shipHeight, shipWidth, true,
+                                                           ShipType::Cruiser,
+                                                           ModelType::AlbertoDiGiussano, 1));
+    
+    
+    ASSERT_EQ(albertoDiGiussano->getPos().x,1000);
+    ASSERT_EQ(albertoDiGiussano->getPos().y,1000);
+    ASSERT_EQ(albertoDiGiussano->getAcceleration(),3);
+    ASSERT_EQ(albertoDiGiussano->getMaxSpeed(),69);
+    ASSERT_EQ(albertoDiGiussano->getHp(),6950);
+    ASSERT_EQ(albertoDiGiussano->getArmour(),84);
+    ASSERT_EQ(albertoDiGiussano->getNationality(),"Italy");
+    ASSERT_EQ(albertoDiGiussano->getNumLCannons(),3);
+    ASSERT_EQ(albertoDiGiussano->getNumHCannons(),0);
+    ASSERT_EQ(albertoDiGiussano->getNumMCannons(),4);
+    ASSERT_EQ(albertoDiGiussano->getNumAntiAircraft(),antiAir);
+    ASSERT_EQ(albertoDiGiussano->getWidth(),shipWidth);
+    ASSERT_EQ(albertoDiGiussano->getLength(),shipHeight);
+    ASSERT_EQ(albertoDiGiussano->getCol(),true);
+    ASSERT_EQ(albertoDiGiussano->getShipType(),ShipType::Cruiser);
+    ASSERT_EQ(albertoDiGiussano->getModelType(),ModelType::AlbertoDiGiussano);
+    ASSERT_EQ(albertoDiGiussano->getNumPlanes(),1);
     
     
     
+   
+    shipWidth = 25;
+    shipHeight = 193;
+
     
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
+    
+    antiAir = 16;
+
+    std::unique_ptr<Cruiser> takao(new Cruiser(1000,1000, 3, 66, 15500, 237,
+                                               "Japan", 4, 0, 5, antiAir,  v, shipHeight, shipWidth, true,
+                                               ShipType::Cruiser,
+                                               ModelType::Takao, 2));
     
     
     
-    
-    
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
+    ASSERT_EQ(takao->getPos().x,1000);
+    ASSERT_EQ(takao->getPos().y,1000);
+    ASSERT_EQ(takao->getAcceleration(),3);
+    ASSERT_EQ(takao->getMaxSpeed(),66);
+    ASSERT_EQ(takao->getHp(),15500);
+    ASSERT_EQ(takao->getArmour(),237);
+    ASSERT_EQ(takao->getNationality(),"Japan");
+    ASSERT_EQ(takao->getNumLCannons(),4);
+    ASSERT_EQ(takao->getNumHCannons(),0);
+    ASSERT_EQ(takao->getNumMCannons(),5);
+    ASSERT_EQ(takao->getNumAntiAircraft(),antiAir);
+    ASSERT_EQ(takao->getWidth(),shipWidth);
+    ASSERT_EQ(takao->getLength(),shipHeight);
+    ASSERT_EQ(takao->getCol(),true);
+    ASSERT_EQ(takao->getShipType(),ShipType::Cruiser);
+    ASSERT_EQ(takao->getModelType(),ModelType::Takao);
+    ASSERT_EQ(takao->getNumPlanes(),2);
     
     
     
@@ -364,3 +392,4 @@ TEST(Cruiser, Constructor) {
 
 }
 
+*/
