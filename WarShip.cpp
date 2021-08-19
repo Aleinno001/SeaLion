@@ -79,12 +79,9 @@ newPos.y = sprite.getPosition().y + sinf(sprite.getRotation()*M_PI/180) * deltaT
 std::cerr << deltaTime << std::endl;
 sprite.setPosition(newPos);
 */
-
-    std::cerr << dt << std::endl;
     if (mx < 0) {
         mx = 360 + mx;
     }
-
 
     if (abs(sprite.getRotation() - mx) >= 0.06) {
         if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
@@ -102,9 +99,11 @@ sprite.setPosition(newPos);
         if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
             sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
             sprite.setPosition(coordinates.x, coordinates.y);
+            currentSpeed=0;
         } else {
-            sprite.move(-cosf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed,
-                        sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
+            currentSpeed+=acceleration;
+            sprite.move(-cosf(sprite.getRotation() * 180 / M_PI) * dt * currentSpeed,
+                        sinf(sprite.getRotation() * 180 / M_PI) * dt * currentSpeed);
         }
     }
 
