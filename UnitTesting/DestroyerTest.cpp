@@ -229,6 +229,35 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Mahan->getNumTorpedoTubes(),12);
     
     
+    shipWidth = 10;
+    shipHeight = 99;
+    numAntiAir = 8;
+
+    std::unique_ptr<Destroyer> Gallant(
+            new Destroyer(1000,1000, 4, 67, 1913, 22,
+                          "Japan", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Gallant, 8));
+    
+    
+    ASSERT_EQ(Gallant->getPos().x,1000);
+    ASSERT_EQ(Gallant->getPos().y,1000);
+    ASSERT_EQ(Gallant->getAcceleration(),4);
+    ASSERT_EQ(Gallant->getMaxSpeed(),67);
+    ASSERT_EQ(Gallant->getHp(),1913);
+    ASSERT_EQ(Gallant->getArmour(),22);
+    ASSERT_EQ(Gallant->getNationality(),"Japan");
+    ASSERT_EQ(Gallant->getNumLCannons(),0);
+    ASSERT_EQ(Gallant->getNumHCannons(),0);
+    ASSERT_EQ(Gallant->getNumMCannons(),4);
+    ASSERT_EQ(Gallant->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Gallant->getWidth(),shipWidth);
+    ASSERT_EQ(Gallant->getLength(),shipHeight);
+    ASSERT_EQ(Gallant->getCol(),true);
+    ASSERT_EQ(Gallant->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Gallant->getModelType(),ModelType::Gallant);
+    ASSERT_EQ(Gallant->getNumTorpedoTubes(),8);
+    
 
 
 }
