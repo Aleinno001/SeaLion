@@ -108,7 +108,6 @@ void update( std::list<iteratorPositions> lst, double dt){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
                 iter=lst.erase(iter);
-                std::cerr<<"cancella"<<std::endl;
             }else{
                 iter->it->get()->move(iter->pos,dt);
                 ++iter;
@@ -151,8 +150,6 @@ int main() {
     int shipCounter = 0;
     bool found = false;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
-    //std::list<std::_List_iterator<std::unique_ptr<WarShip>>> movingShips;
-    //std::multimap< std::_List_iterator<std::unique_ptr<WarShip>>,sf::Vector2i,shipComparator> movingShips;
     std::list<iteratorPositions> lst;
     while (window.isOpen()) {
         sf::Event event;
