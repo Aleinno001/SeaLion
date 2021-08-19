@@ -113,3 +113,7 @@ bool Cruiser::canEngage(Vehicle target) {
     return Vehicle::canEngage(target);
 }
 
+int Cruiser::getNumPlanes() const {
+    return numPlanes;
+}
+
