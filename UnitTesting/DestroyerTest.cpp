@@ -41,4 +41,41 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(sims->getModelType(),ModelType::Sims);
     ASSERT_EQ(sims->getNumTorpedoTubes(),8);
 
+
+    shipWidth = 12;
+    shipHeight = 114;
+
+   
+
+    numAntiAir = 14;
+
+
+    std::unique_ptr<Destroyer> fletcher(
+            new Destroyer(1000,1000, 4, 68, 2500, 33,
+                          "Usa", 0, 0, 5, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Fletcher, 10));
+    
+    ASSERT_EQ(fletcher->getPos().x,1000);
+    ASSERT_EQ(fletcher->getPos().y,1000);
+    ASSERT_EQ(fletcher->getAcceleration(),4);
+    ASSERT_EQ(fletcher->getMaxSpeed(),68);
+    ASSERT_EQ(fletcher->getHp(),2500);
+    ASSERT_EQ(fletcher->getArmour(),33);
+    ASSERT_EQ(fletcher->getNationality(),"Usa");
+    ASSERT_EQ(fletcher->getNumLCannons(),0);
+    ASSERT_EQ(fletcher->getNumHCannons(),0);
+    ASSERT_EQ(fletcher->getNumMCannons(),5);
+    ASSERT_EQ(fletcher->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(fletcher->getWidth(),shipWidth);
+    ASSERT_EQ(fletcher->getLength(),shipHeight);
+    ASSERT_EQ(fletcher->getCol(),true);
+    ASSERT_EQ(fletcher->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(fletcher->getModelType(),ModelType::Fletcher);
+    ASSERT_EQ(fletcher->getNumTorpedoTubes(),10);
+
+    
+
+
+
 }
