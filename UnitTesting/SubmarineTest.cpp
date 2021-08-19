@@ -61,26 +61,33 @@ TEST(Submarine, Constructor) {
     ASSERT_EQ(Triton->isSubmerged1(),false);
 
 
+    shipWidth = 9;
+    shipHeight = 77;
 
 
-    ASSERT_EQ(Gato->getPos().x,1000);
-    ASSERT_EQ(Gato->getPos().y,1000);
-    ASSERT_EQ(Gato->getAcceleration(),2);
-    ASSERT_EQ(Gato->getMaxSpeed(),37);
-    ASSERT_EQ(Gato->getHp(),2460);
-    ASSERT_EQ(Gato->getArmour(),0);
-    ASSERT_EQ(Gato->getNationality(),"Usa");
-    ASSERT_EQ(Gato->getNumLCannons(),0);
-    ASSERT_EQ(Gato->getNumHCannons(),0);
-    ASSERT_EQ(Gato->getNumMCannons(),0);
-    ASSERT_EQ(Gato->getNumAntiAircraft(),0);
-    ASSERT_EQ(Gato->getWidth(),shipWidth);
-    ASSERT_EQ(Gato->getLength(),shipHeight);
-    ASSERT_EQ(Gato->getCol(),true);
-    ASSERT_EQ(Gato->getShipType(),ShipType::Submarine);
-    ASSERT_EQ(Gato->getModelType(),ModelType::Gato);
-    ASSERT_EQ(Gato->getNumTorpedoTubes(),6);
-    ASSERT_EQ(Gato->isSubmerged1(),false);
+
+    std::unique_ptr<Submarine> DaVinci(
+            new Submarine(1000,1000, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+                          ShipType::Submarine, ModelType::DaVinci, 8, false));
+
+    ASSERT_EQ(DaVinci->getPos().x,1000);
+    ASSERT_EQ(DaVinci->getPos().y,1000);
+    ASSERT_EQ(DaVinci->getAcceleration(),2);
+    ASSERT_EQ(DaVinci->getMaxSpeed(),15);
+    ASSERT_EQ(DaVinci->getHp(),1489);
+    ASSERT_EQ(DaVinci->getArmour(),0);
+    ASSERT_EQ(DaVinci->getNationality(),"Italy");
+    ASSERT_EQ(DaVinci->getNumLCannons(),0);
+    ASSERT_EQ(DaVinci->getNumHCannons(),0);
+    ASSERT_EQ(DaVinci->getNumMCannons(),0);
+    ASSERT_EQ(DaVinci->getNumAntiAircraft(),0);
+    ASSERT_EQ(DaVinci->getWidth(),shipWidth);
+    ASSERT_EQ(DaVinci->getLength(),shipHeight);
+    ASSERT_EQ(DaVinci->getCol(),true);
+    ASSERT_EQ(DaVinci->getShipType(),ShipType::Submarine);
+    ASSERT_EQ(DaVinci->getModelType(),ModelType::DaVinci);
+    ASSERT_EQ(DaVinci->getNumTorpedoTubes(),8);
+    ASSERT_EQ(DaVinci->isSubmerged1(),false);
 
 
 
