@@ -345,6 +345,35 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Fubuki->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(Fubuki->getModelType(),ModelType::Fubuki);
     ASSERT_EQ(Fubuki->getNumTorpedoTubes(),9);
+    
+    shipWidth = 12;
+    shipHeight = 134;
+
+
+    numAntiAir = 50;
+    std::unique_ptr<Destroyer> Akizuki(
+            new Destroyer(1000,1000, 4, 61, 3759, 33,
+                          "Japan", 0, 0, 5, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Akizuki, 4));
+    
+    ASSERT_EQ(Akizuki->getPos().x,1000);
+    ASSERT_EQ(Akizuki->getPos().y,1000);
+    ASSERT_EQ(Akizuki->getAcceleration(),4);
+    ASSERT_EQ(Akizuki->getMaxSpeed(),61);
+    ASSERT_EQ(Akizuki->getHp(),3759);
+    ASSERT_EQ(Akizuki->getArmour(),33);
+    ASSERT_EQ(Akizuki->getNationality(),"Japan");
+    ASSERT_EQ(Akizuki->getNumLCannons(),0);
+    ASSERT_EQ(Akizuki->getNumHCannons(),0);
+    ASSERT_EQ(Akizuki->getNumMCannons(),5);
+    ASSERT_EQ(Akizuki->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Akizuki->getWidth(),shipWidth);
+    ASSERT_EQ(Akizuki->getLength(),shipHeight);
+    ASSERT_EQ(Akizuki->getCol(),true);
+    ASSERT_EQ(Akizuki->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(Akizuki->getModelType(),ModelType::Akizuki);
+    ASSERT_EQ(Akizuki->getNumTorpedoTubes(),4);
 
     
     
