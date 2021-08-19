@@ -59,13 +59,12 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 
-void WarShip::move(sf::Vector2<double> coordinates) {
+void WarShip::move(sf::Vector2<double> coordinates,double dt) {
 
 double mx;
 double dy = coordinates.y - sprite.getPosition().y;
 double dx = coordinates.x - sprite.getPosition().x;
 sf::Vector2f newPos;
-float deltaTime;
 mx = 90 + atan2(dy,dx)*180/M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
 
@@ -78,26 +77,25 @@ std::cerr << deltaTime << std::endl;
 sprite.setPosition(newPos);
 */
 
-
-
+std::cerr<<dt<<std::endl;
 if(mx<0){
     mx=360+mx;
 }
 
 if(sprite.getRotation() != mx){
     if(mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0){
-    sprite.rotate(0.1);
+        sprite.rotate(0.1);
 
 
 }else{
-    sprite.rotate(-0.1);
+        sprite.rotate(-0.1);
 }
 
 }
     if(sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&  sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1){
         sprite.setPosition(coordinates.x, coordinates.y);
     }else{
-        sprite.move(cosf64x(sprite.getRotation()*180/M_PI)*(-0.3), sinf64x(sprite.getRotation()*180/M_PI)*0.3);
+        sprite.move(cosf(sprite.getRotation()*180/M_PI)*dt*maxSpeed, sinf(sprite.getRotation()*180/M_PI)*dt*maxSpeed);
     }
 
 
