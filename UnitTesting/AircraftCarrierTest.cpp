@@ -238,23 +238,30 @@ TEST(AircraftCarrier, Constructor) {
                                 ShipType::AircraftCarrier, ModelType::Hiryu, 6));
 
 
-    ASSERT_EQ(mid->getPos().x,1000);
-    ASSERT_EQ(mid->getPos().y,1000);
-    ASSERT_EQ(mid->getAcceleration(),1);
-    ASSERT_EQ(mid->getMaxSpeed(),63);
-    ASSERT_EQ(mid->getHp(),20570);
-    ASSERT_EQ(mid->getArmour(),70);
-    ASSERT_EQ(mid->getNationality(),"Japan");
-    ASSERT_EQ(mid->getNumLCannons(),2);
-    ASSERT_EQ(mid->getNumHCannons(),0);
-    ASSERT_EQ(mid->getNumMCannons(),0);
-    ASSERT_EQ(mid->getNumAntiAircraft(),numAntiAir);
-    ASSERT_EQ(mid->getWidth(),shipWidth);
-    ASSERT_EQ(mid->getLength(),shipHeight);
-    ASSERT_EQ(mid->getCol(),true);
-    ASSERT_EQ(mid->getShipType(),ShipType::AircraftCarrier);
-    ASSERT_EQ(mid->getModelType(),ModelType::Hiryu);
-    ASSERT_EQ(mid->getNumPlanes(),6);
+    ASSERT_EQ(Hiryu->getPos().x,1000);
+    ASSERT_EQ(Hiryu->getPos().y,1000);
+    ASSERT_EQ(Hiryu->getAcceleration(),1);
+    ASSERT_EQ(Hiryu->getMaxSpeed(),63);
+    ASSERT_EQ(Hiryu->getHp(),20570);
+    ASSERT_EQ(Hiryu->getArmour(),70);
+    ASSERT_EQ(Hiryu->getNationality(),"Japan");
+    ASSERT_EQ(Hiryu->getNumLCannons(),2);
+    ASSERT_EQ(Hiryu->getNumHCannons(),0);
+    ASSERT_EQ(Hiryu->getNumMCannons(),0);
+    ASSERT_EQ(Hiryu->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(Hiryu->getWidth(),shipWidth);
+    ASSERT_EQ(Hiryu->getLength(),shipHeight);
+    ASSERT_EQ(Hiryu->getCol(),true);
+    ASSERT_EQ(Hiryu->getShipType(),ShipType::AircraftCarrier);
+    ASSERT_EQ(Hiryu->getModelType(),ModelType::Hiryu);
+    ASSERT_EQ(Hiryu->getNumPlanes(),6);
+    
+    
+
+    
+    
+    
+    
 
 
 
