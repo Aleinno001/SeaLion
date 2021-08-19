@@ -133,7 +133,41 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(paoloEmilio->getShipType(),ShipType::Destroyer);
     ASSERT_EQ(paoloEmilio->getModelType(),ModelType::Impavido);
     ASSERT_EQ(paoloEmilio->getNumTorpedoTubes(),8);
+    
+    
+    
+    shipWidth = 15;
+    shipHeight = 131;
 
+    numAntiAir = 40;
+    
+
+    std::unique_ptr<Destroyer> impavido(
+            new Destroyer(1000,1000, 4, 63, 3941, 36,
+                          "Italy", 4, 0, 1, numAntiAir,  v, shipHeight, shipWidth, true,
+                          ShipType::Destroyer,
+                          ModelType::Impavido, 6));
+    
+    ASSERT_EQ(impavido->getPos().x,1000);
+    ASSERT_EQ(impavido->getPos().y,1000);
+    ASSERT_EQ(impavido->getAcceleration(),4);
+    ASSERT_EQ(impavido->getMaxSpeed(),63);
+    ASSERT_EQ(impavido->getHp(),3941);
+    ASSERT_EQ(impavido->getArmour(),63);
+    ASSERT_EQ(impavido->getNationality(),"Italy");
+    ASSERT_EQ(impavido->getNumLCannons(),4);
+    ASSERT_EQ(impavido->getNumHCannons(),0);
+    ASSERT_EQ(impavido->getNumMCannons(),1);
+    ASSERT_EQ(impavido->getNumAntiAircraft(),numAntiAir);
+    ASSERT_EQ(impavido->getWidth(),shipWidth);
+    ASSERT_EQ(impavido->getLength(),shipHeight);
+    ASSERT_EQ(impavido->getCol(),true);
+    ASSERT_EQ(impavido->getShipType(),ShipType::Destroyer);
+    ASSERT_EQ(impavido->getModelType(),ModelType::Impavido);
+    ASSERT_EQ(impavido->getNumTorpedoTubes(),6);
+    
+    
+    
 
     
 
