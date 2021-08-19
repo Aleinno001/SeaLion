@@ -27,6 +27,7 @@ const int WarShip::getNumMCannons() const {
 const int WarShip::getNumHCannons() const {
     return numHCannons;
 }
+
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
                  std::list<std::unique_ptr<Vehicle>> &vehicle, int le, int wi,
@@ -59,13 +60,14 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 
-void WarShip::move(sf::Vector2<double> coordinates,double dt) {
+void WarShip::move(sf::Vector2<double> coordinates, double dt) {
 
-double mx;
-double dy = coordinates.y - sprite.getPosition().y;
-double dx = coordinates.x - sprite.getPosition().x;
-sf::Vector2f newPos;
-mx = 90 + atan2(dy,dx)*180/M_PI;
+    double mx;
+    double dy = coordinates.y - sprite.getPosition().y;
+    double dx = coordinates.x - sprite.getPosition().x;
+    sf::Vector2f newPos;
+    float deltaTime;
+    mx = 90 + atan2(dy, dx) * 180 / M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
 
 currentSpeed += acceleration/60;
@@ -77,27 +79,34 @@ std::cerr << deltaTime << std::endl;
 sprite.setPosition(newPos);
 */
 
-std::cerr<<dt<<std::endl;
-if(mx<0){
-    mx=360+mx;
-}
-
-if(sprite.getRotation() != mx){
-    if(mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0){
-        sprite.rotate(0.1);
-
-
-}else{
-        sprite.rotate(-0.1);
-}
-
-}
-    if(sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&  sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1){
-        sprite.setPosition(coordinates.x, coordinates.y);
-    }else{
-        sprite.move(cosf(sprite.getRotation()*180/M_PI)*dt*maxSpeed, sinf(sprite.getRotation()*180/M_PI)*dt*maxSpeed);
+    std::cerr << dt << std::endl;
+    if (mx < 0) {
+        mx = 360 + mx;
     }
 
+    if (abs(sprite.getRotation() - mx) >= 1 && isRotating){
+        isRotating = true;
+            if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
+                sprite.rotate(1);
+
+
+            } else {
+                sprite.rotate(-1);
+            }
+
+    } else {
+        isRotating = false;
+    }
+    if (!isRotating) {
+        std::cerr << "sono dentro" << std::endl;
+        if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
+            sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
+            sprite.setPosition(coordinates.x, coordinates.y);
+        } else {
+            sprite.move(cosf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed,
+                        sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
+        }
+    }
 
 
 }
