@@ -145,7 +145,7 @@ int main() {
     tileDim = 30;  //FIXME adattabile a tutte le risoluzioni
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Default, settings);
     window.setPosition(sf::Vector2i(0, 0));
-
+    window.setVerticalSyncEnabled(true);
     GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Italy, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
     int shipCounter = 0;
