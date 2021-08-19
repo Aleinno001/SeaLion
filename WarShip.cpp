@@ -84,28 +84,21 @@ sprite.setPosition(newPos);
         mx = 360 + mx;
     }
 
-    if (abs(sprite.getRotation() - mx) >= 1 && isRotating){
-        isRotating = true;
-            if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
-                sprite.rotate(1);
+    if (abs(sprite.getRotation() - mx) >= 1) {
+        if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
+            sprite.rotate(0.1);
 
 
-            } else {
-                sprite.rotate(-1);
-            }
-
-    } else {
-        isRotating = false;
-    }
-    if (!isRotating) {
-        std::cerr << "sono dentro" << std::endl;
-        if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
-            sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
-            sprite.setPosition(coordinates.x, coordinates.y);
         } else {
-            sprite.move(cosf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed,
-                        sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
+            sprite.rotate(-0.1);
         }
+    }
+    if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
+        sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
+        sprite.setPosition(coordinates.x, coordinates.y);
+    } else {
+        sprite.move(-cosf(sprite.getRotation() * 360 / M_PI) * dt * maxSpeed,
+                    sinf(sprite.getRotation() * 360 / M_PI) * dt * maxSpeed);
     }
 
 
