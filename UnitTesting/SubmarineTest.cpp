@@ -89,26 +89,34 @@ TEST(Submarine, Constructor) {
     ASSERT_EQ(DaVinci->getNumTorpedoTubes(),8);
     ASSERT_EQ(DaVinci->isSubmerged1(),false);
 
+    
+    shipWidth = 10;
+    shipHeight = 111;
 
+    std::unique_ptr<Submarine> typeb1(
+            new Submarine(1000,1000, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0,  v, shipHeight, shipWidth,
+                          true,
+                          ShipType::Submarine, ModelType::typeb1, 6,
+                          false));
 
-    ASSERT_EQ(Gato->getPos().x,1000);
-    ASSERT_EQ(Gato->getPos().y,1000);
-    ASSERT_EQ(Gato->getAcceleration(),2);
-    ASSERT_EQ(Gato->getMaxSpeed(),37);
-    ASSERT_EQ(Gato->getHp(),2460);
-    ASSERT_EQ(Gato->getArmour(),0);
-    ASSERT_EQ(Gato->getNationality(),"Usa");
-    ASSERT_EQ(Gato->getNumLCannons(),0);
-    ASSERT_EQ(Gato->getNumHCannons(),0);
-    ASSERT_EQ(Gato->getNumMCannons(),0);
-    ASSERT_EQ(Gato->getNumAntiAircraft(),0);
-    ASSERT_EQ(Gato->getWidth(),shipWidth);
-    ASSERT_EQ(Gato->getLength(),shipHeight);
-    ASSERT_EQ(Gato->getCol(),true);
-    ASSERT_EQ(Gato->getShipType(),ShipType::Submarine);
-    ASSERT_EQ(Gato->getModelType(),ModelType::Gato);
-    ASSERT_EQ(Gato->getNumTorpedoTubes(),6);
-    ASSERT_EQ(Gato->isSubmerged1(),false);
+    ASSERT_EQ(typeb1->getPos().x,1000);
+    ASSERT_EQ(typeb1->getPos().y,1000);
+    ASSERT_EQ(typeb1->getAcceleration(),2);
+    ASSERT_EQ(typeb1->getMaxSpeed(),44);
+    ASSERT_EQ(typeb1->getHp(),3713);
+    ASSERT_EQ(typeb1->getArmour(),0);
+    ASSERT_EQ(typeb1->getNationality(),"Japan");
+    ASSERT_EQ(typeb1->getNumLCannons(),0);
+    ASSERT_EQ(typeb1->getNumHCannons(),0);
+    ASSERT_EQ(typeb1->getNumMCannons(),0);
+    ASSERT_EQ(typeb1->getNumAntiAircraft(),0);
+    ASSERT_EQ(typeb1->getWidth(),shipWidth);
+    ASSERT_EQ(typeb1->getLength(),shipHeight);
+    ASSERT_EQ(typeb1->getCol(),true);
+    ASSERT_EQ(typeb1->getShipType(),ShipType::Submarine);
+    ASSERT_EQ(typeb1->getModelType(),ModelType::typeb1);
+    ASSERT_EQ(typeb1->getNumTorpedoTubes(),6);
+    ASSERT_EQ(typeb1->isSubmerged1(),false);
 
 
 
