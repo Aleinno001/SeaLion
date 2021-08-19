@@ -179,28 +179,33 @@ TEST(Submarine, Constructor) {
     ASSERT_EQ(Narwhal->getNumTorpedoTubes(),6);
     ASSERT_EQ(Narwhal->isSubmerged1(),false);
 
+    shipWidth = 14;
+    shipHeight = 85;
+
+    std::unique_ptr<Submarine> Trenchant(
+            new Submarine(1000,1000, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+                          ShipType::Submarine, ModelType::Trenchant, 5, false));
 
 
 
-
-    ASSERT_EQ(Gato->getPos().x,1000);
-    ASSERT_EQ(Gato->getPos().y,1000);
-    ASSERT_EQ(Gato->getAcceleration(),2);
-    ASSERT_EQ(Gato->getMaxSpeed(),37);
-    ASSERT_EQ(Gato->getHp(),2460);
-    ASSERT_EQ(Gato->getArmour(),0);
-    ASSERT_EQ(Gato->getNationality(),"Usa");
-    ASSERT_EQ(Gato->getNumLCannons(),0);
-    ASSERT_EQ(Gato->getNumHCannons(),0);
-    ASSERT_EQ(Gato->getNumMCannons(),0);
-    ASSERT_EQ(Gato->getNumAntiAircraft(),0);
-    ASSERT_EQ(Gato->getWidth(),shipWidth);
-    ASSERT_EQ(Gato->getLength(),shipHeight);
-    ASSERT_EQ(Gato->getCol(),true);
-    ASSERT_EQ(Gato->getShipType(),ShipType::Submarine);
-    ASSERT_EQ(Gato->getModelType(),ModelType::Gato);
-    ASSERT_EQ(Gato->getNumTorpedoTubes(),6);
-    ASSERT_EQ(Gato->isSubmerged1(),false);
+    ASSERT_EQ(Trenchant->getPos().x,1000);
+    ASSERT_EQ(Trenchant->getPos().y,1000);
+    ASSERT_EQ(Trenchant->getAcceleration(),2);
+    ASSERT_EQ(Trenchant->getMaxSpeed(),56);
+    ASSERT_EQ(Trenchant->getHp(),5800);
+    ASSERT_EQ(Trenchant->getArmour(),0);
+    ASSERT_EQ(Trenchant->getNationality(),"Uk");
+    ASSERT_EQ(Trenchant->getNumLCannons(),0);
+    ASSERT_EQ(Trenchant->getNumHCannons(),0);
+    ASSERT_EQ(Trenchant->getNumMCannons(),0);
+    ASSERT_EQ(Trenchant->getNumAntiAircraft(),0);
+    ASSERT_EQ(Trenchant->getWidth(),shipWidth);
+    ASSERT_EQ(Trenchant->getLength(),shipHeight);
+    ASSERT_EQ(Trenchant->getCol(),true);
+    ASSERT_EQ(Trenchant->getShipType(),ShipType::Submarine);
+    ASSERT_EQ(Trenchant->getModelType(),ModelType::Trenchant);
+    ASSERT_EQ(Trenchant->getNumTorpedoTubes(),5);
+    ASSERT_EQ(Trenchant->isSubmerged1(),false);
 
 
 
