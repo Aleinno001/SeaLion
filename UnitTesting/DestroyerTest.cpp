@@ -375,7 +375,7 @@ TEST(Destroyer, Constructor) {
     ASSERT_EQ(Akizuki->getModelType(),ModelType::Akizuki);
     ASSERT_EQ(Akizuki->getNumTorpedoTubes(),4);
 
-    
+
     
     
 
