@@ -284,40 +284,58 @@ TEST(Cruiser, Constructor) {
     ASSERT_EQ(Tiger59->getNumPlanes(),0);
     
     
+    shipWidth = 27;
+    shipHeight = 187;
+    antiAir = 12;
+
+    std::unique_ptr<Cruiser> Belfast(
+            new Cruiser(1000,1000, 3, 59, 11550, 228, "Uk", 6, 0, 4, antiAir,  v, shipHeight,
+                        shipWidth,
+                        true,
+                        ShipType::Cruiser, ModelType::Belfast, 1));
+    
+    
+    ASSERT_EQ(Belfast->getPos().x,1000);
+    ASSERT_EQ(Belfast->getPos().y,1000);
+    ASSERT_EQ(Belfast->getAcceleration(),3);
+    ASSERT_EQ(Belfast->getMaxSpeed(),59);
+    ASSERT_EQ(Belfast->getHp(),11550);
+    ASSERT_EQ(Belfast->getArmour(),228);
+    ASSERT_EQ(Belfast->getNationality(),"Uk");
+    ASSERT_EQ(Belfast->getNumLCannons(),6);
+    ASSERT_EQ(Belfast->getNumHCannons(),0);
+    ASSERT_EQ(Belfast->getNumMCannons(),4);
+    ASSERT_EQ(Belfast->getNumAntiAircraft(),antiAir);
+    ASSERT_EQ(Belfast->getWidth(),shipWidth);
+    ASSERT_EQ(Belfast->getLength(),shipHeight);
+    ASSERT_EQ(Belfast->getCol(),true);
+    ASSERT_EQ(Belfast->getShipType(),ShipType::Cruiser);
+    ASSERT_EQ(Belfast->getModelType(),ModelType::Belfast);
+    ASSERT_EQ(Belfast->getNumPlanes(),1);
     
     
     
+    shipWidth = 22;
+    shipHeight = 183;
+
+    antiAir = 12;
+
+    std::unique_ptr<Cruiser> Gorizia(
+            new Cruiser(1000,1000, 3, 59, 14330, 370, "Italy", 6, 0, 4, antiAir,  v, shipHeight,
+                        shipWidth,
+                        true,
+                        ShipType::Cruiser, ModelType::Gorizia, 0));
+
     ASSERT_EQ(saintLouis->getPos().x,1000);
     ASSERT_EQ(saintLouis->getPos().y,1000);
     ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
-    ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
-    ASSERT_EQ(saintLouis->getWidth(),shipWidth);
-    ASSERT_EQ(saintLouis->getLength(),shipHeight);
-    ASSERT_EQ(saintLouis->getCol(),true);
-    ASSERT_EQ(saintLouis->getShipType(),ShipType::Cruiser);
-    ASSERT_EQ(saintLouis->getModelType(),ModelType::StLouis);
-    ASSERT_EQ(saintLouis->getNumPlanes(),0);
-    
-    
-    
-    
-    ASSERT_EQ(saintLouis->getPos().x,1000);
-    ASSERT_EQ(saintLouis->getPos().y,1000);
-    ASSERT_EQ(saintLouis->getAcceleration(),3);
-    ASSERT_EQ(saintLouis->getMaxSpeed(),41);
-    ASSERT_EQ(saintLouis->getHp(),11013);
-    ASSERT_EQ(saintLouis->getArmour(),280);
-    ASSERT_EQ(saintLouis->getNationality(),"Usa");
-    ASSERT_EQ(saintLouis->getNumLCannons(),5);
-    ASSERT_EQ(saintLouis->getNumHCannons(),4);
-    ASSERT_EQ(saintLouis->getNumMCannons(),3);
+    ASSERT_EQ(saintLouis->getMaxSpeed(),59);
+    ASSERT_EQ(saintLouis->getHp(),14330);
+    ASSERT_EQ(saintLouis->getArmour(),370);
+    ASSERT_EQ(saintLouis->getNationality(),"Italy");
+    ASSERT_EQ(saintLouis->getNumLCannons(),6);
+    ASSERT_EQ(saintLouis->getNumHCannons(),0);
+    ASSERT_EQ(saintLouis->getNumMCannons(),4);
     ASSERT_EQ(saintLouis->getNumAntiAircraft(),antiAir);
     ASSERT_EQ(saintLouis->getWidth(),shipWidth);
     ASSERT_EQ(saintLouis->getLength(),shipHeight);
