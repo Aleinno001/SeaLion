@@ -65,9 +65,8 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     double mx;
     double dy = coordinates.y - sprite.getPosition().y;
     double dx = coordinates.x - sprite.getPosition().x;
-    sf::Vector2f newPos;
-    bool isRotating = false;
-    float deltaTime;
+    int rotatingInPlaceMult = 1;
+
     mx = 90 + atan2(dy, dx) * 180 / M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
 
@@ -110,24 +109,30 @@ sprite.setPosition(newPos);
 
 */
     if (currentSpeed <= maxSpeed) {
-        currentSpeed = currentSpeed + acceleration / 10;
+        currentSpeed = currentSpeed + acceleration / 100;
     }
     sf::Vector2f vel;
-    if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)){
-        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt;
-        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt;
+    if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)) {
+        if (abs(sprite.getRotation() - mx) >= 40) {
+            rotatingInPlaceMult = 3;
+            if(currentSpeed > maxSpeed/3)
+            currentSpeed = currentSpeed - acceleration/50;
+        }
+        if((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height/1.5 && abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height/1.5)){
+            if(currentSpeed > acceleration / 100){
+                currentSpeed = currentSpeed - acceleration/50;
+            }
+        }
+        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration/10;
+        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration/10;
         sprite.setPosition(sprite.getPosition() + vel);
         if (abs(sprite.getRotation() - mx) >= 1.5) {
-            if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
-                sprite.rotate(currentSpeed/150);
+            if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
+                sprite.rotate(currentSpeed * acceleration * sqrt(acceleration) * rotatingInPlaceMult/ 6000);
+            } else if (sprite.getRotation() > 180 && mx < 180) {
+                sprite.rotate(currentSpeed * acceleration * sqrt(acceleration) * rotatingInPlaceMult/ 6000);
             } else {
-                sprite.rotate(-currentSpeed/150);
-            }
-        } else {
-            if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
-                sprite.rotate(currentSpeed/400);
-            } else {
-                sprite.rotate(-currentSpeed/400);
+                sprite.rotate(-currentSpeed * acceleration * sqrt(acceleration) * rotatingInPlaceMult/ 6000);
             }
         }
     } else {
