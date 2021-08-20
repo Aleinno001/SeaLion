@@ -68,7 +68,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     sf::Vector2f newPos;
     bool isRotating = false;
     float deltaTime;
-    mx = atan2(dy, dx) * 180 / M_PI;
+    mx = 90 + atan2(dy, dx) * 180 / M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
 
 currentSpeed += acceleration/60;
@@ -82,6 +82,7 @@ sprite.setPosition(newPos);
     if (mx < 0) {
         mx = 360 + mx;
     }
+
 /*
     if (abs(sprite.getRotation() - mx) >= 0.06) {
         if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
@@ -97,7 +98,7 @@ sprite.setPosition(newPos);
     }
     if (!isRotating) {
         if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
-            sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
+        sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
             sprite.setPosition(coordinates.x, coordinates.y);
             currentSpeed=0;
         } else {
@@ -106,11 +107,36 @@ sprite.setPosition(newPos);
                         sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
         }
     }
-*/
 
-    sprite.move(-std::cos(3.14159265 * sprite.getRotation() / 180.f) * maxSpeed * dt,
-                std::sin(3.14159265 * sprite.getRotation() / 180.f) * maxSpeed * dt);
-    sprite.setRotation(mx + 90);
+*/
+    if (currentSpeed <= maxSpeed) {
+        currentSpeed = currentSpeed + acceleration / 10;
+    }
+    sf::Vector2f vel;
+    if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)){
+        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt;
+        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt;
+        sprite.setPosition(sprite.getPosition() + vel);
+        if (abs(sprite.getRotation() - mx) >= 1.5) {
+            if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
+                sprite.rotate(currentSpeed/150);
+            } else {
+                sprite.rotate(-currentSpeed/150);
+            }
+        } else {
+            if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
+                sprite.rotate(currentSpeed/400);
+            } else {
+                sprite.rotate(-currentSpeed/400);
+            }
+        }
+    } else {
+        currentSpeed = 0;
+    }
+/*
+    sprite.move(-std::cos(180.f * sprite.getRotation() / M_PI) * maxSpeed * dt,
+            std::sin(180.f * sprite.getRotation() / M_PI) * maxSpeed * dt);
+    sprite.setRotation(mx + 90);*/
 }
 
 const int WarShip::getNumAntiAircraft() const {
