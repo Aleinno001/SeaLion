@@ -65,7 +65,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     double mx;
     double dy = coordinates.y - sprite.getPosition().y;
     double dx = coordinates.x - sprite.getPosition().x;
-    int rotatingInPlaceMult = 1;
+    float rotatingInPlaceMult = 1;
 
     mx = 90 + atan2(dy, dx) * 180 / M_PI;
 /*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
@@ -128,11 +128,11 @@ sprite.setPosition(newPos);
         sprite.setPosition(sprite.getPosition() + vel);
         if (abs(sprite.getRotation() - mx) >= 1.5) {
             if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
-                sprite.rotate(currentSpeed * acceleration * sqrt(acceleration) * rotatingInPlaceMult/ 6000);
+                sprite.rotate(currentSpeed * acceleration  * rotatingInPlaceMult/ 8000);
             } else if (sprite.getRotation() > 180 && mx < 180) {
-                sprite.rotate(currentSpeed * acceleration * sqrt(acceleration) * rotatingInPlaceMult/ 6000);
+                sprite.rotate(currentSpeed * acceleration * rotatingInPlaceMult/ 8000);
             } else {
-                sprite.rotate(-currentSpeed * acceleration * sqrt(acceleration) * rotatingInPlaceMult/ 6000);
+                sprite.rotate(-currentSpeed * acceleration * rotatingInPlaceMult/ 8000);
             }
         }
     } else {
