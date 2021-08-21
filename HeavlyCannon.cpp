@@ -32,7 +32,6 @@ void HeavlyCannon::openFire(Vehicle enemy) {
 }
 
 
-
 bool HeavlyCannon::engage(Vehicle enemy) {
     return Arsenal::engage(enemy);
 }
@@ -45,10 +44,28 @@ void HeavlyCannon::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (width - 1) / 2);
 }
 
-void HeavlyCannon::update(sf::Vector2f &vel,double mx) {
+void HeavlyCannon::update(sf::Vector2f &vel, double mx) {
     //TODO Implementa l'aggiormnameto delle coordinate del cannone pesante
-    sprite.setPosition(sprite.getPosition()+vel);
-    sprite.setRotation(sprite.getRotation()+mx);
-
-
+    sprite.setPosition(sprite.getPosition() + vel);
+    sprite.setRotation(sprite.getRotation() + mx);
+    sf::Transform t;
+    t.rotate(mx,subject_.getSprite().getOrigin());
+    sf::Rect<float> new_rect = t.transformRect(sprite.getGlobalBounds());
+    sprite.setPosition(new_rect.left - new_rect.width,new_rect.top - new_rect.height);
+    /*float side = sqrt(pow(sprite.getPosition().x - subject_.getSprite().getPosition().x, 2) +
+                      pow(sprite.getPosition().y - subject_.getSprite().getPosition().y, 2));
+    float distance;
+    float dx, dy;
+    //sprite.getTransform().transformPoint(subject_.getSprite().getOrigin());
+    std::cerr << "pattume : " << (pow(sprite.getPosition().x - subject_.getSprite().getPosition().x, 2) +
+                                  pow(sprite.getPosition().y - subject_.getSprite().getPosition().y, 2)) << std::endl;
+    std::cerr << "side: " << side << std::endl;
+    distance = sqrt(pow(side, 2) + pow(side, 2) - 2 * side * side * std::cos(mx));
+    std::cerr << "distance:" << distance << std::endl;
+    dx = distance * std::sin(mx);
+    dy = distance * std::cos(mx);
+    std::cerr << dx << "," << dy << std::endl;
+    sprite.setPosition(sprite.getPosition().x + dx, sprite.getPosition().y + dy);
+    // sprite.setRotation(mx);
+*/
 }

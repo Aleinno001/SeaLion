@@ -66,48 +66,14 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     double dy = coordinates.y - sprite.getPosition().y;
     double dx = coordinates.x - sprite.getPosition().x;
     float rotatingInPlaceMult = 1;
+    double deltaMx;
 
     mx = 90 + atan2(dy, dx) * 180 / M_PI;
-/*deltaTime = sqrt((2*(sqrt(dx^2 + dy^2)))/acceleration);
 
-currentSpeed += acceleration/60;
-
-newPos.x = sprite.getPosition().x + cosf(sprite.getRotation()*M_PI/180) * deltaTime * currentSpeed;
-newPos.y = sprite.getPosition().y + sinf(sprite.getRotation()*M_PI/180) * deltaTime * currentSpeed;
-
-std::cerr << deltaTime << std::endl;
-sprite.setPosition(newPos);
-*/
     if (mx < 0) {
         mx = 360 + mx;
     }
 
-/*
-    if (abs(sprite.getRotation() - mx) >= 0.06) {
-        if (mx - sprite.getRotation() <= 180 && (mx - sprite.getRotation()) > 0) {
-            sprite.rotate(0.1);
-            if (!(abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height/2 && abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height/2))
-                isRotating = true;
-
-        } else {
-            sprite.rotate(-0.1);
-            if (!(abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height/2 && abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height/2))
-                isRotating = true;
-        }
-    }
-    if (!isRotating) {
-        if (sprite.getPosition().x < coordinates.x + 1 && sprite.getPosition().x > coordinates.x - 1 &&
-        sprite.getPosition().y < coordinates.y + 1 && sprite.getPosition().y > coordinates.y - 1) {
-            sprite.setPosition(coordinates.x, coordinates.y);
-            currentSpeed=0;
-        } else {
-            currentSpeed+=acceleration;
-            sprite.move(-cosf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed,
-                        sinf(sprite.getRotation() * 180 / M_PI) * dt * maxSpeed);
-        }
-    }
-
-*/
     if (currentSpeed <= maxSpeed) {
         currentSpeed = currentSpeed + acceleration / 100;
     }
@@ -115,33 +81,35 @@ sprite.setPosition(newPos);
     if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)) {
         if (abs(sprite.getRotation() - mx) >= 40) {
             rotatingInPlaceMult = 3;
-            if(currentSpeed > maxSpeed/3)
-            currentSpeed = currentSpeed - acceleration/50;
+            if (currentSpeed > maxSpeed / 3)
+                currentSpeed = currentSpeed - acceleration / 50;
         }
-        if((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height/1.5 && abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height/1.5)){
-            if(currentSpeed > acceleration / 100){
-                currentSpeed = currentSpeed - acceleration/50;
+        if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 1.5 &&
+             abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height / 1.5)) {
+            if (currentSpeed > acceleration / 100) {
+                currentSpeed = currentSpeed - acceleration / 50;
             }
         }
-        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration/10;
-        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration/10;
+        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
         sprite.setPosition(sprite.getPosition() + vel);
         if (abs(sprite.getRotation() - mx) >= 1.5) {
             if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
-                sprite.rotate(currentSpeed * acceleration  * rotatingInPlaceMult/ 8000);
+                deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 80;
+                sprite.rotate(deltaMx);
             } else if (sprite.getRotation() > 180 && mx < 180) {
-                sprite.rotate(currentSpeed * acceleration * rotatingInPlaceMult/ 8000);
+                deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 80;
+                sprite.rotate(deltaMx);
             } else {
-                sprite.rotate(-currentSpeed * acceleration * rotatingInPlaceMult/ 8000);
+                deltaMx = - currentSpeed * acceleration * rotatingInPlaceMult / 80;
+                sprite.rotate(deltaMx);
             }
         }
     } else {
         currentSpeed = 0;
     }
-/*
-    sprite.move(-std::cos(180.f * sprite.getRotation() / M_PI) * maxSpeed * dt,
-            std::sin(180.f * sprite.getRotation() / M_PI) * maxSpeed * dt);
-    sprite.setRotation(mx + 90);*/
+
+    notifyArsenals(vel, deltaMx);
 }
 
 const int WarShip::getNumAntiAircraft() const {
