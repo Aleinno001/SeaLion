@@ -38,7 +38,6 @@ void TorpedoTube::resetOrigin() {
 
 }
 
-void TorpedoTube::update() {
-
+void TorpedoTube::update(sf::Vector2f &vel, double mx) {
 
 }

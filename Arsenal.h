@@ -39,7 +39,7 @@ public:
 
     virtual void openFire(Vehicle enemy);
 
-    virtual void update() = 0; //Metodo per design pattern observer
+    virtual void update(sf::Vector2f &vel,double mx) = 0; //Metodo per design pattern observer
 
 
 

@@ -25,7 +25,7 @@ private:
 
     void openFire(Vehicle enemy) override;
 
-    void update() override;
+    void update(sf::Vector2f &vel,double mx) override;
 
     void removeMeFromTheList() {
         subject_.detach(std::shared_ptr<Arsenal>(this));

@@ -43,6 +43,8 @@ void AntiAircraft::resetOrigin() {
 
 }
 
-void AntiAircraft::update() {
+void AntiAircraft::update(sf::Vector2f &vel, double mx) {
 
 }
+
+
