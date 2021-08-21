@@ -26,7 +26,7 @@ void LightCannon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void LightCannon::update() {
+void LightCannon::update(sf::Vector2f &vel,double mx) {
     //TODO Implementa l'aggiormnameto delle coordinate del cannone leggero
 }
 

@@ -29,7 +29,7 @@ void MediumCannnon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void MediumCannnon::update() {
+void MediumCannnon::update(sf::Vector2f &vel,double mx) {
     //TODO Implementa l'aggiormnameto delle coordinate del cannone medio
 }
 
