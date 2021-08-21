@@ -47,7 +47,7 @@ public:
 
     //void removeArsenals(std::unique_ptr<Arsenal> observer) override;
 
-    void notifyArsenals() override;
+    void notifyArsenals(sf::Vector2f &vel,double mx) override;
 
     ~Destroyer() override;
 

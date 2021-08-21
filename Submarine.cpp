@@ -83,10 +83,10 @@ void Submarine::ceaseFire() {
 
 //}
 
-void Submarine::notifyArsenals() {
+void Submarine::notifyArsenals(sf::Vector2f &vel,double mx) {
     std::list<std::shared_ptr<Arsenal>>::iterator it = arsenalList.begin();
     while (it != arsenalList.end()) {
-        (*it)->update();
+        (*it)->update(vel,mx);
         ++it;
     }
 }

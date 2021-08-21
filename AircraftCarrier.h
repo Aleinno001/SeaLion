@@ -36,7 +36,7 @@ public:
         arsenalList.remove(gun);
     };
 
-    void notifyArsenals() override;
+    void notifyArsenals(sf::Vector2f &vel,double mx) override;
 
     int HowManyObserver() {
         return arsenalList.size();

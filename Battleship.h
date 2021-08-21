@@ -61,6 +61,7 @@ protected:
 
 public:
 
+    void notifyArsenals(sf::Vector2f &vel, double mx);
 };
 
 

@@ -111,7 +111,7 @@ public:
 
     virtual void ceaseFire() = 0;
 
-    virtual void notifyArsenals() = 0;//    Metodi per design pattern observer
+    virtual void notifyArsenals(sf::Vector2f &vel,double mx) = 0;//    Metodi per design pattern observer
 
     virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
