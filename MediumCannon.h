@@ -39,6 +39,8 @@ private:
     void rotate() override;
 
     void resetOrigin() override;
+
+    void update(sf::Vector2f &vel, double mx);
 };
 
 
