@@ -29,7 +29,7 @@ private:
 
     void openFire(Vehicle enemy) override;
 
-    void update() override;
+
 
 
     void removeMeFromTheList() {

@@ -50,7 +50,7 @@ public:
 
 
 
-    void notifyArsenals() override;
+
 
     ~Battleship() override;
 
