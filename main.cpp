@@ -110,7 +110,9 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
 
             if(iter != iterSecond){
                if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
-                    iter->it->get()//TODO setCol
+                    iter->it->get()->setCollision(false);
+                    iterSecond->it->get()->setCollision(false);
+                    std::cerr<<"COLLISIONNNNN"<<std::endl;
                }
             }
 
