@@ -123,7 +123,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)
 
 
 
-void update( std::list<iteratorPositions> &lst, double dt,std::list<std::_List_iterator<std::unique_ptr<WarShip>>> &fullNavyCollision){
+void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPositions> &fullNavyCollision){
     if(!lst.empty()){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
@@ -176,13 +176,19 @@ int main() {
     int shipCounter = 0;
     bool found = false;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
+    auto itAllied = gameWorld.getAlliedFleet().begin();
+    auto itEnemy = gameWorld.getAlliedFleet().begin();
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
-    for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
-
+    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) {
+        iteratorPositions itPos;
+        itPos.it = itAllied;
+        fullNavyCollision.push_back(itPos);
     }
-    for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
-
+    for (itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
+        iteratorPositions itPos;
+        itPos.it = itEnemy;
+        fullNavyCollision.push_back(itPos);
     }
     while (window.isOpen()) {
         sf::Event event;
@@ -247,14 +253,7 @@ int main() {
 
                                 }
 
-                                /*
-                                if(!(lst.(itSecondClick)=){
-                                    auto it=movingShips.find(itSecondClick);
-                                    it->second=coords;
-                                }else{
-                                    movingShips.insert(std::make_pair(itSecondClick,coords));
-                                }
-                                */
+
 
                                 iteratorPositions itPos;
                                 itPos.it = itSecondClick;
