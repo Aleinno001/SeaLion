@@ -52,21 +52,4 @@ void HeavlyCannon::update(sf::Vector2f &vel, double mx) {
     rotation.rotate(mx, subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
-
-    /*float side = sqrt(pow(sprite.getPosition().x - subject_.getSprite().getPosition().x, 2) +
-                      pow(sprite.getPosition().y - subject_.getSprite().getPosition().y, 2));
-    float distance;
-    float dx, dy;
-    //sprite.getTransform().transformPoint(subject_.getSprite().getOrigin());
-    std::cerr << "pattume : " << (pow(sprite.getPosition().x - subject_.getSprite().getPosition().x, 2) +
-                                  pow(sprite.getPosition().y - subject_.getSprite().getPosition().y, 2)) << std::endl;
-    std::cerr << "side: " << side << std::endl;
-    distance = sqrt(pow(side, 2) + pow(side, 2) - 2 * side * side * std::cos(mx));
-    std::cerr << "distance:" << distance << std::endl;
-    dx = distance * std::sin(mx);
-    dy = distance * std::cos(mx);
-    std::cerr << dx << "," << dy << std::endl;
-    sprite.setPosition(sprite.getPosition().x + dx, sprite.getPosition().y + dy);
-    // sprite.setRotation(mx);
-*/
 }
