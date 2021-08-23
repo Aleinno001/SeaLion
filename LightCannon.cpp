@@ -27,9 +27,12 @@ void LightCannon::openFire(Vehicle enemy) {
 }
 
 void LightCannon::update(sf::Vector2f &vel,double mx) {
-    //TODO Implementa l'aggiormnameto delle coordinate del cannone leggero
-    sprite.setPosition(sprite.getPosition()+vel);
-    sprite.setRotation(sprite.getRotation()+mx);
+    sprite.setPosition(sprite.getPosition() + vel);
+    sprite.setRotation(sprite.getRotation() + mx);
+    sf::Transform rotation;
+    rotation.rotate(mx, subject_.getSprite().getPosition());
+    sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
+    sprite.setPosition(newPosition);
 }
 
 

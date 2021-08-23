@@ -45,7 +45,6 @@ void HeavlyCannon::resetOrigin() {
 }
 
 void HeavlyCannon::update(sf::Vector2f &vel, double mx) {
-    //TODO Implementa l'aggiornameto delle coordinate del cannone pesante
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
     sf::Transform rotation;
