@@ -38,7 +38,7 @@ protected:
     //SpriteSheet sprite
     virtual void rotate();
 
-    virtual bool canEngage(Vehicle target);
+
 
 public:
 
