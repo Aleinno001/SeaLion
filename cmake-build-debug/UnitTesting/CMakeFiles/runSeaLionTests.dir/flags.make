@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/pala/CLionProjects/Projects/SeaLion/SFML_INCLUDE_DIR -isystem /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/include -isystem /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest
+CXX_INCLUDES = -I/home/pala/CLionProjects/SeaLion/SFML_INCLUDE_DIR -isystem /home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/include -isystem /home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest
 
 CXX_FLAGS =  -std=c++11 -pthread -std=c++11 -std=c++11 -pthread -g -std=gnu++14
 

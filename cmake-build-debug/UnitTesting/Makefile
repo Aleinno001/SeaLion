@@ -57,10 +57,10 @@ RM = /snap/clion/162/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
+CMAKE_SOURCE_DIR = /home/pala/CLionProjects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pala/CLionProjects/SeaLion/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting//CMakeFiles/progress.marks
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles 0
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting//CMakeFiles/progress.marks
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/clean
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/preinstall
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/preinstall
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 UnitTesting/CMakeFiles/runSeaLionTests.dir/rule:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/CMakeFiles/runSeaLionTests.dir/rule
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/CMakeFiles/runSeaLionTests.dir/rule
 .PHONY : UnitTesting/CMakeFiles/runSeaLionTests.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/rule
 
 # fast build rule for target.
 runSeaLionTests/fast:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/build
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/build
 .PHONY : runSeaLionTests/fast
 
 AircraftCarrierFixture.o: AircraftCarrierFixture.cpp.o
@@ -180,7 +180,7 @@ AircraftCarrierFixture.o: AircraftCarrierFixture.cpp.o
 
 # target to build an object file
 AircraftCarrierFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.o
 .PHONY : AircraftCarrierFixture.cpp.o
 
 AircraftCarrierFixture.i: AircraftCarrierFixture.cpp.i
@@ -188,7 +188,7 @@ AircraftCarrierFixture.i: AircraftCarrierFixture.cpp.i
 
 # target to preprocess a source file
 AircraftCarrierFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.i
 .PHONY : AircraftCarrierFixture.cpp.i
 
 AircraftCarrierFixture.s: AircraftCarrierFixture.cpp.s
@@ -196,7 +196,7 @@ AircraftCarrierFixture.s: AircraftCarrierFixture.cpp.s
 
 # target to generate assembly for a file
 AircraftCarrierFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.s
 .PHONY : AircraftCarrierFixture.cpp.s
 
 AircraftCarrierTest.o: AircraftCarrierTest.cpp.o
@@ -204,7 +204,7 @@ AircraftCarrierTest.o: AircraftCarrierTest.cpp.o
 
 # target to build an object file
 AircraftCarrierTest.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.o
 .PHONY : AircraftCarrierTest.cpp.o
 
 AircraftCarrierTest.i: AircraftCarrierTest.cpp.i
@@ -212,7 +212,7 @@ AircraftCarrierTest.i: AircraftCarrierTest.cpp.i
 
 # target to preprocess a source file
 AircraftCarrierTest.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.i
 .PHONY : AircraftCarrierTest.cpp.i
 
 AircraftCarrierTest.s: AircraftCarrierTest.cpp.s
@@ -220,7 +220,7 @@ AircraftCarrierTest.s: AircraftCarrierTest.cpp.s
 
 # target to generate assembly for a file
 AircraftCarrierTest.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.s
 .PHONY : AircraftCarrierTest.cpp.s
 
 BattleshipFixture.o: BattleshipFixture.cpp.o
@@ -228,7 +228,7 @@ BattleshipFixture.o: BattleshipFixture.cpp.o
 
 # target to build an object file
 BattleshipFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.o
 .PHONY : BattleshipFixture.cpp.o
 
 BattleshipFixture.i: BattleshipFixture.cpp.i
@@ -236,7 +236,7 @@ BattleshipFixture.i: BattleshipFixture.cpp.i
 
 # target to preprocess a source file
 BattleshipFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.i
 .PHONY : BattleshipFixture.cpp.i
 
 BattleshipFixture.s: BattleshipFixture.cpp.s
@@ -244,7 +244,7 @@ BattleshipFixture.s: BattleshipFixture.cpp.s
 
 # target to generate assembly for a file
 BattleshipFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.s
 .PHONY : BattleshipFixture.cpp.s
 
 BattleshipTest.o: BattleshipTest.cpp.o
@@ -252,7 +252,7 @@ BattleshipTest.o: BattleshipTest.cpp.o
 
 # target to build an object file
 BattleshipTest.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.o
 .PHONY : BattleshipTest.cpp.o
 
 BattleshipTest.i: BattleshipTest.cpp.i
@@ -260,7 +260,7 @@ BattleshipTest.i: BattleshipTest.cpp.i
 
 # target to preprocess a source file
 BattleshipTest.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.i
 .PHONY : BattleshipTest.cpp.i
 
 BattleshipTest.s: BattleshipTest.cpp.s
@@ -268,7 +268,7 @@ BattleshipTest.s: BattleshipTest.cpp.s
 
 # target to generate assembly for a file
 BattleshipTest.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.s
 .PHONY : BattleshipTest.cpp.s
 
 CruiserFixture.o: CruiserFixture.cpp.o
@@ -276,7 +276,7 @@ CruiserFixture.o: CruiserFixture.cpp.o
 
 # target to build an object file
 CruiserFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.o
 .PHONY : CruiserFixture.cpp.o
 
 CruiserFixture.i: CruiserFixture.cpp.i
@@ -284,7 +284,7 @@ CruiserFixture.i: CruiserFixture.cpp.i
 
 # target to preprocess a source file
 CruiserFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.i
 .PHONY : CruiserFixture.cpp.i
 
 CruiserFixture.s: CruiserFixture.cpp.s
@@ -292,7 +292,7 @@ CruiserFixture.s: CruiserFixture.cpp.s
 
 # target to generate assembly for a file
 CruiserFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.s
 .PHONY : CruiserFixture.cpp.s
 
 CruiserTest.o: CruiserTest.cpp.o
@@ -300,7 +300,7 @@ CruiserTest.o: CruiserTest.cpp.o
 
 # target to build an object file
 CruiserTest.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.o
 .PHONY : CruiserTest.cpp.o
 
 CruiserTest.i: CruiserTest.cpp.i
@@ -308,7 +308,7 @@ CruiserTest.i: CruiserTest.cpp.i
 
 # target to preprocess a source file
 CruiserTest.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.i
 .PHONY : CruiserTest.cpp.i
 
 CruiserTest.s: CruiserTest.cpp.s
@@ -316,7 +316,7 @@ CruiserTest.s: CruiserTest.cpp.s
 
 # target to generate assembly for a file
 CruiserTest.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.s
 .PHONY : CruiserTest.cpp.s
 
 DestroyerFixture.o: DestroyerFixture.cpp.o
@@ -324,7 +324,7 @@ DestroyerFixture.o: DestroyerFixture.cpp.o
 
 # target to build an object file
 DestroyerFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.o
 .PHONY : DestroyerFixture.cpp.o
 
 DestroyerFixture.i: DestroyerFixture.cpp.i
@@ -332,7 +332,7 @@ DestroyerFixture.i: DestroyerFixture.cpp.i
 
 # target to preprocess a source file
 DestroyerFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.i
 .PHONY : DestroyerFixture.cpp.i
 
 DestroyerFixture.s: DestroyerFixture.cpp.s
@@ -340,7 +340,7 @@ DestroyerFixture.s: DestroyerFixture.cpp.s
 
 # target to generate assembly for a file
 DestroyerFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.s
 .PHONY : DestroyerFixture.cpp.s
 
 DestroyerTest.o: DestroyerTest.cpp.o
@@ -348,7 +348,7 @@ DestroyerTest.o: DestroyerTest.cpp.o
 
 # target to build an object file
 DestroyerTest.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.o
 .PHONY : DestroyerTest.cpp.o
 
 DestroyerTest.i: DestroyerTest.cpp.i
@@ -356,7 +356,7 @@ DestroyerTest.i: DestroyerTest.cpp.i
 
 # target to preprocess a source file
 DestroyerTest.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.i
 .PHONY : DestroyerTest.cpp.i
 
 DestroyerTest.s: DestroyerTest.cpp.s
@@ -364,7 +364,7 @@ DestroyerTest.s: DestroyerTest.cpp.s
 
 # target to generate assembly for a file
 DestroyerTest.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.s
 .PHONY : DestroyerTest.cpp.s
 
 GameTileFixture.o: GameTileFixture.cpp.o
@@ -372,7 +372,7 @@ GameTileFixture.o: GameTileFixture.cpp.o
 
 # target to build an object file
 GameTileFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o
 .PHONY : GameTileFixture.cpp.o
 
 GameTileFixture.i: GameTileFixture.cpp.i
@@ -380,7 +380,7 @@ GameTileFixture.i: GameTileFixture.cpp.i
 
 # target to preprocess a source file
 GameTileFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.i
 .PHONY : GameTileFixture.cpp.i
 
 GameTileFixture.s: GameTileFixture.cpp.s
@@ -388,7 +388,7 @@ GameTileFixture.s: GameTileFixture.cpp.s
 
 # target to generate assembly for a file
 GameTileFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.s
 .PHONY : GameTileFixture.cpp.s
 
 GameTileTest.o: GameTileTest.cpp.o
@@ -396,7 +396,7 @@ GameTileTest.o: GameTileTest.cpp.o
 
 # target to build an object file
 GameTileTest.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o
 .PHONY : GameTileTest.cpp.o
 
 GameTileTest.i: GameTileTest.cpp.i
@@ -404,7 +404,7 @@ GameTileTest.i: GameTileTest.cpp.i
 
 # target to preprocess a source file
 GameTileTest.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.i
 .PHONY : GameTileTest.cpp.i
 
 GameTileTest.s: GameTileTest.cpp.s
@@ -412,7 +412,7 @@ GameTileTest.s: GameTileTest.cpp.s
 
 # target to generate assembly for a file
 GameTileTest.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.s
 .PHONY : GameTileTest.cpp.s
 
 GameWorldFixture.o: GameWorldFixture.cpp.o
@@ -420,7 +420,7 @@ GameWorldFixture.o: GameWorldFixture.cpp.o
 
 # target to build an object file
 GameWorldFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o
 .PHONY : GameWorldFixture.cpp.o
 
 GameWorldFixture.i: GameWorldFixture.cpp.i
@@ -428,7 +428,7 @@ GameWorldFixture.i: GameWorldFixture.cpp.i
 
 # target to preprocess a source file
 GameWorldFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.i
 .PHONY : GameWorldFixture.cpp.i
 
 GameWorldFixture.s: GameWorldFixture.cpp.s
@@ -436,7 +436,7 @@ GameWorldFixture.s: GameWorldFixture.cpp.s
 
 # target to generate assembly for a file
 GameWorldFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s
 .PHONY : GameWorldFixture.cpp.s
 
 SubmarineFixture.o: SubmarineFixture.cpp.o
@@ -444,7 +444,7 @@ SubmarineFixture.o: SubmarineFixture.cpp.o
 
 # target to build an object file
 SubmarineFixture.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.o
 .PHONY : SubmarineFixture.cpp.o
 
 SubmarineFixture.i: SubmarineFixture.cpp.i
@@ -452,7 +452,7 @@ SubmarineFixture.i: SubmarineFixture.cpp.i
 
 # target to preprocess a source file
 SubmarineFixture.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.i
 .PHONY : SubmarineFixture.cpp.i
 
 SubmarineFixture.s: SubmarineFixture.cpp.s
@@ -460,7 +460,7 @@ SubmarineFixture.s: SubmarineFixture.cpp.s
 
 # target to generate assembly for a file
 SubmarineFixture.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.s
 .PHONY : SubmarineFixture.cpp.s
 
 SubmarineTest.o: SubmarineTest.cpp.o
@@ -468,7 +468,7 @@ SubmarineTest.o: SubmarineTest.cpp.o
 
 # target to build an object file
 SubmarineTest.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.o
 .PHONY : SubmarineTest.cpp.o
 
 SubmarineTest.i: SubmarineTest.cpp.i
@@ -476,7 +476,7 @@ SubmarineTest.i: SubmarineTest.cpp.i
 
 # target to preprocess a source file
 SubmarineTest.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.i
 .PHONY : SubmarineTest.cpp.i
 
 SubmarineTest.s: SubmarineTest.cpp.s
@@ -484,15 +484,39 @@ SubmarineTest.s: SubmarineTest.cpp.s
 
 # target to generate assembly for a file
 SubmarineTest.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.s
 .PHONY : SubmarineTest.cpp.s
+
+__/Collision.o: __/Collision.cpp.o
+.PHONY : __/Collision.o
+
+# target to build an object file
+__/Collision.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.o
+.PHONY : __/Collision.cpp.o
+
+__/Collision.i: __/Collision.cpp.i
+.PHONY : __/Collision.i
+
+# target to preprocess a source file
+__/Collision.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.i
+.PHONY : __/Collision.cpp.i
+
+__/Collision.s: __/Collision.cpp.s
+.PHONY : __/Collision.s
+
+# target to generate assembly for a file
+__/Collision.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.s
+.PHONY : __/Collision.cpp.s
 
 runAllTests.o: runAllTests.cpp.o
 .PHONY : runAllTests.o
 
 # target to build an object file
 runAllTests.cpp.o:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o
 .PHONY : runAllTests.cpp.o
 
 runAllTests.i: runAllTests.cpp.i
@@ -500,7 +524,7 @@ runAllTests.i: runAllTests.cpp.i
 
 # target to preprocess a source file
 runAllTests.cpp.i:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.i
 .PHONY : runAllTests.cpp.i
 
 runAllTests.s: runAllTests.cpp.s
@@ -508,7 +532,7 @@ runAllTests.s: runAllTests.cpp.s
 
 # target to generate assembly for a file
 runAllTests.cpp.s:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.s
 .PHONY : runAllTests.cpp.s
 
 # Help Target
@@ -563,6 +587,9 @@ help:
 	@echo "... SubmarineTest.o"
 	@echo "... SubmarineTest.i"
 	@echo "... SubmarineTest.s"
+	@echo "... __/Collision.o"
+	@echo "... __/Collision.i"
+	@echo "... __/Collision.s"
 	@echo "... runAllTests.o"
 	@echo "... runAllTests.i"
 	@echo "... runAllTests.s"
@@ -577,6 +604,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

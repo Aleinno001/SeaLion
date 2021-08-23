@@ -1,4 +1,4 @@
-# Install script for directory: /home/pala/CLionProjects/Projects/SeaLion/UnitTesting
+# Install script for directory: /home/pala/CLionProjects/SeaLion/UnitTesting
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/cmake_install.cmake")
+  include("/home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/cmake_install.cmake")
 
 endif()
 
