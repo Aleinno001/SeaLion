@@ -102,14 +102,16 @@ typedef struct iteratorPositions{
     sf::Vector2 <double> pos;
 };
 
-void collisonControl(std::list<iteratorPositions> &fullNavyCollision)
+void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
 {
     for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
 
         for(auto iterSecond = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
 
             if(iter != iterSecond){
-               // TODO if(Collision::PixelPerfectTest())
+               if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
+                    iter->it->get()//TODO setCol
+               }
             }
 
         }

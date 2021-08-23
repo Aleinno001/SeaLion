@@ -120,3 +120,7 @@ const std::string &Vehicle::getNationality() const {
     return nationality;
 }
 
+void Vehicle::setCollision(bool collision) {
+    Vehicle::collision = collision;
+}
+

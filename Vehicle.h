@@ -49,6 +49,8 @@ public:
 
     virtual bool setUpSprite(std::string textureName);
 
+    void setCollision(bool collision);
+
     virtual void attack(Vehicle target);
 
     virtual void calculateDistance(Vehicle target);
