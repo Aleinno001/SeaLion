@@ -8,7 +8,27 @@ enum class windowMode {
     Windowed,
     Fullscreen
 };
+typedef struct iteratorPositions{
+    std::_List_iterator<std::unique_ptr<WarShip>> it;
+    sf::Vector2 <double> pos;
+};
 
+auto f = [](std::list<iteratorPositions> fullNavyCollision){
+    for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+
+        for(auto iterSecond = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+
+            if(iter != iterSecond){
+                if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
+                    iter->it->get()->setCollision(false);
+                    iterSecond->it->get()->setCollision(false);
+                    std::cerr<<"COLLISIONNNNN"<<std::endl;
+                }
+            }
+
+        }
+    }
+};
 std::vector<Fleet> alliedDummyFleet() {
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
@@ -97,11 +117,8 @@ std::vector<Fleet> alliedDummyFleet() {
 
 }
 
-typedef struct iteratorPositions{
-    std::_List_iterator<std::unique_ptr<WarShip>> it;
-    sf::Vector2 <double> pos;
-};
 
+/*
 void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
 {
     for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
@@ -119,7 +136,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
         }
     }
 }
-
+*/
 
 
 
@@ -141,7 +158,7 @@ void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPosi
         }
     }
 
-    collisonControl(fullNavyCollision);
+    std::thread thread_collision(f,std::ref(fullNavyCollision));
 
 
 
