@@ -103,7 +103,7 @@ typedef struct iteratorPositions{
 
 
 
-void update( std::list<iteratorPositions> lst, double dt, GameWorld& gameWorld){
+void update( std::list<iteratorPositions> lst, double dt){
     if(!lst.empty()){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
@@ -113,11 +113,6 @@ void update( std::list<iteratorPositions> lst, double dt, GameWorld& gameWorld){
                 ++iter;
             }
         }
-    }
-    auto enemyListStart = gameWorld.getEnemyFleet().begin();
-    auto enemyListEnd = gameWorld.getEnemyFleet().end();
-    for(auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter){
-        iter->get()->searchTarget(enemyListStart, enemyListEnd);
     }
 }
 
@@ -292,7 +287,7 @@ int main() {
 
         }
 
-        update(lst,clock.restart().asSeconds(), gameWorld);
+        update(lst,clock.restart().asSeconds());
 
         window.display();
     }

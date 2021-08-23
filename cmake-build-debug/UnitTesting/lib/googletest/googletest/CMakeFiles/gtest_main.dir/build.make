@@ -53,10 +53,10 @@ RM = /snap/clion/162/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pala/CLionProjects/Projects/SeaLion
+CMAKE_SOURCE_DIR = /home/pala/CLionProjects/SeaLion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pala/CLionProjects/SeaLion/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/depend.make
@@ -68,16 +68,16 @@ include UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/flags.ma
 
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/flags.make
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: ../UnitTesting/lib/googletest/googletest/src/gtest_main.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc
 
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gtest_main.dir/src/gtest_main.cc.i"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc > CMakeFiles/gtest_main.dir/src/gtest_main.cc.i
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc > CMakeFiles/gtest_main.dir/src/gtest_main.cc.i
 
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtest_main.dir/src/gtest_main.cc.s"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.s
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.s
 
 # Object files for target gtest_main
 gtest_main_OBJECTS = \
@@ -89,19 +89,19 @@ gtest_main_EXTERNAL_OBJECTS =
 lib/libgtest_maind.a: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
 lib/libgtest_maind.a: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build.make
 lib/libgtest_maind.a: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../../../lib/libgtest_maind.a"
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && $(CMAKE_COMMAND) -P CMakeFiles/gtest_main.dir/cmake_clean_target.cmake
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gtest_main.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../../../lib/libgtest_maind.a"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && $(CMAKE_COMMAND) -P CMakeFiles/gtest_main.dir/cmake_clean_target.cmake
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gtest_main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build: lib/libgtest_maind.a
 .PHONY : UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build
 
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && $(CMAKE_COMMAND) -P CMakeFiles/gtest_main.dir/cmake_clean.cmake
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest && $(CMAKE_COMMAND) -P CMakeFiles/gtest_main.dir/cmake_clean.cmake
 .PHONY : UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/clean
 
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/depend:
-	cd /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pala/CLionProjects/Projects/SeaLion /home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest /home/pala/CLionProjects/Projects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pala/CLionProjects/SeaLion /home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest /home/pala/CLionProjects/SeaLion/cmake-build-debug /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/depend
 

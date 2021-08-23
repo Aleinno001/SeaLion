@@ -3,7 +3,7 @@
 //
 
 #include "Vehicle.h"
-
+#include "Collision.h"
 void Vehicle::rotate() {
 
 }
@@ -56,7 +56,7 @@ bool Vehicle::setUpSprite(std::string textureName) {
         currentDir.pop_back();
     }
     textureName = currentDir + "/../Res/" + nationality + "/" + textureName + ".png";
-    if (!texture.loadFromFile(textureName)) {
+    if (!Collision::CreateTextureAndBitmask(texture,textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
@@ -115,5 +115,9 @@ float Vehicle::getCurrentSpeed() const {
 
 const std::string &Vehicle::getNationality() const {
     return nationality;
+}
+
+void Vehicle::setCollision(bool collision) {
+    Vehicle::collision = collision;
 }
 

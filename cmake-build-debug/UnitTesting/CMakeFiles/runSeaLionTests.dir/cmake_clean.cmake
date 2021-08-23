@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.o"
+  "CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o"
   "runSeaLionTests"
   "runSeaLionTests.pdb"

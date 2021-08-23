@@ -76,6 +76,9 @@ CMakeFiles/core.dir/CannonFactory.cpp.o: \
  ../StandardBullet.h \
  ../Vehicle.h \
  ../WarShip.h
+CMakeFiles/core.dir/Collision.cpp.o: \
+ ../Collision.cpp \
+ ../Collision.h
 CMakeFiles/core.dir/Cruiser.cpp.o: \
  ../Arsenal.h \
  ../Bullet.h \
@@ -295,6 +298,7 @@ CMakeFiles/core.dir/TorpedoTube.cpp.o: \
  ../Vehicle.h \
  ../WarShip.h
 CMakeFiles/core.dir/Vehicle.cpp.o: \
+ ../Collision.h \
  ../CurrentDir.h \
  ../Vehicle.cpp \
  ../Vehicle.h

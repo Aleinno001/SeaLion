@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/core.dir/BonusFactory.cpp.o"
   "CMakeFiles/core.dir/Bullet.cpp.o"
   "CMakeFiles/core.dir/CannonFactory.cpp.o"
+  "CMakeFiles/core.dir/Collision.cpp.o"
   "CMakeFiles/core.dir/Cruiser.cpp.o"
   "CMakeFiles/core.dir/CurrentDir.cpp.o"
   "CMakeFiles/core.dir/Destroyer.cpp.o"

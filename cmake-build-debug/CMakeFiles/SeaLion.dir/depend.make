@@ -10,6 +10,7 @@ CMakeFiles/SeaLion.dir/main.cpp.o: \
  ../Battleship.h \
  ../Bullet.h \
  ../CannonFactory.h \
+ ../Collision.h \
  ../Cruiser.h \
  ../CurrentDir.h \
  ../Destroyer.h \
