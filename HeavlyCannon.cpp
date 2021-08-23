@@ -45,13 +45,14 @@ void HeavlyCannon::resetOrigin() {
 }
 
 void HeavlyCannon::update(sf::Vector2f &vel, double mx) {
-    //TODO Implementa l'aggiormnameto delle coordinate del cannone pesante
+    //TODO Implementa l'aggiornameto delle coordinate del cannone pesante
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
-    sf::Transform t;
-    t.rotate(mx,subject_.getSprite().getOrigin());
-    sf::Rect<float> new_rect = t.transformRect(sprite.getGlobalBounds());
-    sprite.setPosition(new_rect.left - new_rect.width,new_rect.top - new_rect.height);
+    sf::Transform rotation;
+    rotation.rotate(mx, subject_.getSprite().getPosition());
+    sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
+    sprite.setPosition(newPosition);
+
     /*float side = sqrt(pow(sprite.getPosition().x - subject_.getSprite().getPosition().x, 2) +
                       pow(sprite.getPosition().y - subject_.getSprite().getPosition().y, 2));
     float distance;
