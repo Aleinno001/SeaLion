@@ -2,7 +2,8 @@
 #include "SFML/Graphics.hpp"
 #include <SFML/Window.hpp>
 #include "GameWorld.h"
-
+#include <thread>
+#include "Collision.h"
 enum class windowMode {
     Windowed,
     Fullscreen
@@ -101,19 +102,44 @@ typedef struct iteratorPositions{
     sf::Vector2 <double> pos;
 };
 
+void collisonControl(std::list<iteratorPositions> &fullNavyCollision)
+{
+    for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+
+        for(auto iterSecond = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+
+            if(iter != iterSecond){
+               // TODO if(Collision::PixelPerfectTest())
+            }
+
+        }
+    }
+}
 
 
-void update( std::list<iteratorPositions> lst, double dt){
+
+
+
+
+
+
+void update( std::list<iteratorPositions> &lst, double dt,std::list<std::_List_iterator<std::unique_ptr<WarShip>>> &fullNavyCollision){
     if(!lst.empty()){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
                 iter=lst.erase(iter);
-            }else{
+            }else if(iter->it->get()->getCol()){
                 iter->it->get()->move(iter->pos,dt);
                 ++iter;
+            }else{
+                std::cerr<<" COLLISION "<<std::endl;
             }
         }
     }
+
+
+
+
 }
 
 int main() {
@@ -151,6 +177,13 @@ int main() {
     bool found = false;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     std::list<iteratorPositions> lst;
+    std::list<iteratorPositions> fullNavyCollision;
+    for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
+
+    }
+    for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
+
+    }
     while (window.isOpen()) {
         sf::Event event;
 
@@ -287,7 +320,7 @@ int main() {
 
         }
 
-        update(lst,clock.restart().asSeconds());
+        update(lst,clock.restart().asSeconds(),fullNavyCollision);
 
         window.display();
     }
