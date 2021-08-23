@@ -141,6 +141,8 @@ void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPosi
         }
     }
 
+    collisonControl(fullNavyCollision);
+
 
 
 
