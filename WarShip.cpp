@@ -129,8 +129,9 @@ std::_List_iterator<std::unique_ptr<WarShip>> WarShip::searchTarget(std::_List_i
             sf::IntRect rect (iter -> get()->getSprite().getPosition().x - side/2, iter -> get()->getSprite().getPosition().y - side/2, side, side);
             for(int j = 1; j <= 360; j++){
                 for(auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter){
-                    if(rect.intersects(enemyIter->get()->getSprite().getTextureRect()))
-                        if(canEngage(enemyIter))                    //TODO completare
+                    if (rect.intersects(enemyIter->get()->getSprite().getTextureRect())) {
+                        if (canEngage(enemyIter)) {}
+                    }//TODO completare
                 }
 
             }

@@ -125,12 +125,12 @@ void Battleship::rotate() {
     Vehicle::rotate();
 }
 
-bool Battleship::canEngage(Vehicle target) {
-    return Vehicle::canEngage(target);
-}
-
 int Battleship::getNumInterceptors() const {
     return numInterceptors;
+}
+
+bool Battleship::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
+    return WarShip::canEngage(target);
 }
 
 

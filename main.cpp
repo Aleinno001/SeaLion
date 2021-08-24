@@ -29,6 +29,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision){
         }
     }
 };
+
 std::vector<Fleet> alliedDummyFleet() {
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
@@ -158,11 +159,6 @@ void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPosi
         }
     }
 
-
-
-
-
-
 }
 
 int main() {
@@ -213,8 +209,10 @@ int main() {
         itPos.it = itEnemy;
         fullNavyCollision.push_back(itPos);
     }
+
     std::thread thread_collision(f,std::ref(fullNavyCollision));
     thread_collision.detach();
+    
     while (window.isOpen()) {
         sf::Event event;
 

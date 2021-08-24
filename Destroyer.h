@@ -56,7 +56,7 @@ public:
 protected:
     void rotate() override;
 
-    bool canEngage(Vehicle target) override;
+    bool canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) override;
 };
 
 

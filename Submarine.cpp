@@ -95,8 +95,8 @@ void Submarine::rotate() {
     Vehicle::rotate();
 }
 
-bool Submarine::canEngage(Vehicle target) {
-    return Vehicle::canEngage(target);
+bool Submarine::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
+    return WarShip::canEngage(target);
 }
 
 

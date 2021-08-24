@@ -96,8 +96,8 @@ void AircraftCarrier::rotate() {
     Vehicle::rotate();
 }
 
-bool AircraftCarrier::canEngage(Vehicle target) {
-    return Vehicle::canEngage(target);
+bool AircraftCarrier::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
+    return WarShip::canEngage(target);
 }
 
 int AircraftCarrier::getNumPlanes() const {

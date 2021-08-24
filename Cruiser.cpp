@@ -109,8 +109,8 @@ void Cruiser::rotate() {
     Vehicle::rotate();
 }
 
-bool Cruiser::canEngage(Vehicle target) {
-    return Vehicle::canEngage(target);
+bool Cruiser::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
+    return WarShip::canEngage(target);
 }
 
 int Cruiser::getNumPlanes() const {

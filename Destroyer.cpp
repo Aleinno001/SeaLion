@@ -113,8 +113,8 @@ void Destroyer::rotate() {
     Vehicle::rotate();
 }
 
-bool Destroyer::canEngage(Vehicle target) {
-    return Vehicle::canEngage(target);
+bool Destroyer::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
+    return WarShip::canEngage(target);
 }
 
 bool Destroyer::setUpSprite(std::string textureName) {
