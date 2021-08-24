@@ -145,18 +145,26 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
 
 
 
-void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPositions> &fullNavyCollision){
-    if(!lst.empty()){
+void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision,
+            GameWorld &gameWorld) {
+    if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
-            if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
-                iter=lst.erase(iter);
-            }else if(iter->it->get()->getCol()){
-                iter->it->get()->move(iter->pos,dt);
+            if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
+                iter->it->get()->getSprite().getPosition().y == iter->pos.y) {
+                iter = lst.erase(iter);
+            } else if (iter->it->get()->getCol()) {
+                iter->it->get()->move(iter->pos, dt);
                 ++iter;
-            }else{
-                std::cerr<<" COLLISION "<<std::endl;
+            } else {
+                std::cerr << " COLLISION " << std::endl;
             }
         }
+    }
+
+    auto enemyIterStart = gameWorld.getAlliedFleet().begin();
+    auto enemyIterEnd = gameWorld.getAlliedFleet().end();
+    for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
+        iter->get()->searchTarget(enemyIterStart, enemyIterEnd);
     }
 
 }
@@ -342,7 +350,7 @@ int main() {
 
         }
 
-        update(lst,clock.restart().asSeconds(),fullNavyCollision);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld);
 
         window.display();
     }

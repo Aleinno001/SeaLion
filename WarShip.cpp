@@ -170,6 +170,7 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
         side = sqrt(2 * pow(iter->get()->getRangeOfFire(), 2));
         sf::IntRect rect(iter->get()->getSprite().getPosition().x - side / 2,
                          iter->get()->getSprite().getPosition().y - side / 2, side, side);
+        std::cerr << rect.left << ", " << rect.top << std::endl;
         for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
             std::cerr << "FORRRRRRRR" << std::endl;
             if (rect.intersects(enemyIter->get()->getSprite().getTextureRect())) {
@@ -178,9 +179,9 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
                     attack(enemyIter);
                     result = true;
                 }
+
             }
         }
     }
 
-    return result;
 }
