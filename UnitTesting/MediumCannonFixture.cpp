@@ -3,10 +3,10 @@
 //
 
 #include "gtest/gtest.h"
-#include "../LightCannon.h"
+#include "../MediumCannon.h"
 
 
-class LightCannonSuite : public ::testing::Test {
+class MediumCannonSuite : public ::testing::Test {
 protected:
 
 protected:
@@ -15,6 +15,5 @@ protected:
 
 
 }
-
-LightCannon c;
+MediumCannnon c;
 };

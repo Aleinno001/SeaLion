@@ -1,13 +1,13 @@
 //
 // Created by pala on 8/24/21.
 //
-
 #include "gtest/gtest.h"
+#include "../MediumCannon.h"
 #include "../LightCannon.h"
 #include "../AircraftCarrier.h"
 #include "../CannonFactory.h"
-
-TEST(LightCannon, Constructor) {
+TEST(MediumCannon, Constructor) {
+    /*
     StandardBullet b;
     std::list<std::unique_ptr<Vehicle>> v;
     int posX = 700;
@@ -45,16 +45,5 @@ TEST(LightCannon, Constructor) {
     ASSERT_EQ(lightCannon->getLength(),6);
     ASSERT_EQ( lightCannon->getWidth(),4);
     ASSERT_EQ( lightCannon->getTextureName(),"LightCannon");
-
-
-
-
-
-
-
-
-
-
-
-
+    */
 }
