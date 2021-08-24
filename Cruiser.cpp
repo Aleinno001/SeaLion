@@ -63,10 +63,6 @@ Cruiser::Cruiser(int x, int y, float ac, const float maxVel, int hp, int arm,
     }
 }
 
-void Cruiser::attack(Vehicle target) {
-    Vehicle::attack(target);
-}
-
 void Cruiser::calculateDistance(Vehicle target) {
     Vehicle::calculateDistance(target);
 }
@@ -107,10 +103,6 @@ Cruiser::~Cruiser() {
 
 void Cruiser::rotate() {
     Vehicle::rotate();
-}
-
-bool Cruiser::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
-    return WarShip::canEngage(target);
 }
 
 int Cruiser::getNumPlanes() const {

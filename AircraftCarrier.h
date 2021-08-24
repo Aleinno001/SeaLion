@@ -22,8 +22,6 @@ public:
 
     //float calcSpeed() override;
 
-    void attack(Vehicle target) override;
-
     void calculateDistance(Vehicle target) override;
 
     void update(bool isDead) override;
@@ -52,7 +50,6 @@ public:
 protected:
     void rotate() override;
 
-    bool canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) override;
 };
 
 

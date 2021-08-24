@@ -57,9 +57,6 @@ float AircraftCarrier::calcSpeed(Map battleSea) {
     return Vehicle::calcSpeed(battleSea);
 }
 */
-void AircraftCarrier::attack(Vehicle target) {
-    Vehicle::attack(target);
-}
 
 void AircraftCarrier::calculateDistance(Vehicle target) {
     Vehicle::calculateDistance(target);
@@ -94,10 +91,6 @@ AircraftCarrier::~AircraftCarrier() {
 
 void AircraftCarrier::rotate() {
     Vehicle::rotate();
-}
-
-bool AircraftCarrier::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
-    return WarShip::canEngage(target);
 }
 
 int AircraftCarrier::getNumPlanes() const {

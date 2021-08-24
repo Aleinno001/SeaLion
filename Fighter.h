@@ -17,7 +17,7 @@ private:
 
     //float calcSpeed();
 
-    void attack(Vehicle target) override;
+    void attack(Vehicle target);
 
     void calculateDistance(Vehicle target) override;
 

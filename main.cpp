@@ -4,25 +4,26 @@
 #include "GameWorld.h"
 #include <thread>
 #include "Collision.h"
+
 enum class windowMode {
     Windowed,
     Fullscreen
 };
-typedef struct iteratorPositions{
+typedef struct iteratorPositions {
     std::_List_iterator<std::unique_ptr<WarShip>> it;
-    sf::Vector2 <double> pos;
+    sf::Vector2<double> pos;
 };
 
-auto f = [](std::list<iteratorPositions> fullNavyCollision){
-    for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+auto f = [](std::list<iteratorPositions> fullNavyCollision) {
+    for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
 
-        for(auto iterSecond = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+        for (auto iterSecond = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
 
-            if(iter != iterSecond){
-                if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
+            if (iter != iterSecond) {
+                if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond->it->get()->getSprite())) {
                     iter->it->get()->setCollision(false);
                     iterSecond->it->get()->setCollision(false);
-                    std::cerr<<"COLLISIONNNNN"<<std::endl;
+                    std::cerr << "COLLISIONNNNN" << std::endl;
                 }
             }
 
@@ -145,20 +146,26 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
 
 
 
-void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPositions> &fullNavyCollision){
-    if(!lst.empty()){
+void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision,
+            GameWorld &gameWorld) {
+    if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
-            if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
-                iter=lst.erase(iter);
-            }else if(iter->it->get()->getCol()){
-                iter->it->get()->move(iter->pos,dt);
+            if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
+                iter->it->get()->getSprite().getPosition().y == iter->pos.y) {
+                iter = lst.erase(iter);
+            } else if (iter->it->get()->getCol()) {
+                iter->it->get()->move(iter->pos, dt);
                 ++iter;
-            }else{
-                std::cerr<<" COLLISION "<<std::endl;
+            } else {
+                std::cerr << " COLLISION " << std::endl;
             }
         }
     }
-
+    auto enemyIterStart = gameWorld.getAlliedFleet().begin();
+    auto enemyIterEnd = gameWorld.getAlliedFleet().end();
+    for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
+        iter->get()->searchTarget(enemyIterStart, enemyIterEnd);
+    }
 }
 
 int main() {
@@ -210,9 +217,9 @@ int main() {
         fullNavyCollision.push_back(itPos);
     }
 
-    std::thread thread_collision(f,std::ref(fullNavyCollision));
+    std::thread thread_collision(f, std::ref(fullNavyCollision));
     thread_collision.detach();
-    
+
     while (window.isOpen()) {
         sf::Event event;
 
@@ -228,77 +235,73 @@ int main() {
                        videoMode == windowMode::Windowed) {
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
-            }else if(event.type == sf::Event::MouseButtonPressed){
-                switch(event.key.code)
-                {
-                    case sf::Mouse::Left:{
+            } else if (event.type == sf::Event::MouseButtonPressed) {
+                switch (event.key.code) {
+                    case sf::Mouse::Left: {
 
-                        sf::Vector2 <double> coords(event.mouseButton.x,event.mouseButton.y);
+                        sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
                         auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
-                            if(found == false){
+                        if (found == false) {
 
-                                itSecondClick = gameWorld.getAlliedFleet().begin();
-
-
-                                for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it,shipCounter++) {
-                                    std::cerr<<"Cerco nave"<<std::endl;
-
-                                    if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
+                            itSecondClick = gameWorld.getAlliedFleet().begin();
 
 
-                                        found=true;
-                                        std::cerr<<found<<" "<<it->get()<<std::endl;
+                            for (auto it = gameWorld.getAlliedFleet().begin();
+                                 it != gameWorld.getAlliedFleet().end() && found == false; ++it, shipCounter++) {
+                                std::cerr << "Cerco nave" << std::endl;
+
+                                if (it->get()->getSprite().getGlobalBounds().contains(translated_pos)) {
 
 
-                                    }
+                                    found = true;
+                                    std::cerr << found << " " << it->get() << std::endl;
 
-                                }
-                                if(found==false){
-                                    shipCounter=0;
-                                }
-                            }else{
-                                int miniCounter = 0;
-                                bool foundIter = false;
-                                while(miniCounter<shipCounter-1){
-                                    ++itSecondClick;
-                                    miniCounter++;
-                                }
-                                /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
-                                /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
-                                std::cerr << itSecondClick->get()->getArmour()<< " " << std::endl;
-
-                                for(auto iter = lst.begin(); iter != lst.end() && foundIter==false; ++iter)
-                                {
-                                    if(iter->it==itSecondClick){
-                                        foundIter = true;
-                                        lst.erase(iter);
-                                    }
 
                                 }
 
+                            }
+                            if (found == false) {
+                                shipCounter = 0;
+                            }
+                        } else {
+                            int miniCounter = 0;
+                            bool foundIter = false;
+                            while (miniCounter < shipCounter - 1) {
+                                ++itSecondClick;
+                                miniCounter++;
+                            }
+                            /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
+                            /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
+                            std::cerr << itSecondClick->get()->getArmour() << " " << std::endl;
 
+                            for (auto iter = lst.begin(); iter != lst.end() && foundIter == false; ++iter) {
+                                if (iter->it == itSecondClick) {
+                                    foundIter = true;
+                                    lst.erase(iter);
+                                }
 
-                                iteratorPositions itPos;
-                                itPos.it = itSecondClick;
-                                itPos.pos = coords;
-                                lst.push_back(itPos);
-                                shipCounter=0;
-                                found=false;
                             }
 
 
+                            iteratorPositions itPos;
+                            itPos.it = itSecondClick;
+                            itPos.pos = coords;
+                            lst.push_back(itPos);
+                            shipCounter = 0;
+                            found = false;
+                        }
 
 
-
-                    }break;
+                    }
+                        break;
 
                     case sf::Mouse::Right:
 
                         break;
                 }
-            }else if(event.type==sf::Event::MouseWheelMoved){
+            } else if (event.type == sf::Event::MouseWheelMoved) {
 
-            }else if(event.type==sf::Event::MouseMoved){
+            } else if (event.type == sf::Event::MouseMoved) {
 
             }
         }
@@ -342,7 +345,7 @@ int main() {
 
         }
 
-        update(lst,clock.restart().asSeconds(),fullNavyCollision);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld);
 
         window.display();
     }

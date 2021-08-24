@@ -54,10 +54,6 @@ Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int arm
     }
 }
 
-void Submarine::attack(Vehicle target) {
-    Vehicle::attack(target);
-}
-
 void Submarine::calculateDistance(Vehicle target) {
     Vehicle::calculateDistance(target);
 }

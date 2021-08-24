@@ -16,7 +16,6 @@ void Fighter::fight(Vehicle enemy) {
 }
 
 void Fighter::attack(Vehicle target) {
-    Vehicle::attack(target);
 }
 
 void Fighter::calculateDistance(Vehicle target) {

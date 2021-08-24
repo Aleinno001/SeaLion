@@ -75,10 +75,6 @@ Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int a
     }
 }
 
-void Battleship::attack(Vehicle target) {
-    Vehicle::attack(target);
-}
-
 void Battleship::calculateDistance(Vehicle target) {
     Vehicle::calculateDistance(target);
 }
@@ -129,9 +125,7 @@ int Battleship::getNumInterceptors() const {
     return numInterceptors;
 }
 
-bool Battleship::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
-    return WarShip::canEngage(target);
-}
+
 
 
 
