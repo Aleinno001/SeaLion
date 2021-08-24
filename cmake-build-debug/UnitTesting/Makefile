@@ -439,6 +439,54 @@ GameWorldFixture.cpp.s:
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s
 .PHONY : GameWorldFixture.cpp.s
 
+LightCannonFixture.o: LightCannonFixture.cpp.o
+.PHONY : LightCannonFixture.o
+
+# target to build an object file
+LightCannonFixture.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o
+.PHONY : LightCannonFixture.cpp.o
+
+LightCannonFixture.i: LightCannonFixture.cpp.i
+.PHONY : LightCannonFixture.i
+
+# target to preprocess a source file
+LightCannonFixture.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.i
+.PHONY : LightCannonFixture.cpp.i
+
+LightCannonFixture.s: LightCannonFixture.cpp.s
+.PHONY : LightCannonFixture.s
+
+# target to generate assembly for a file
+LightCannonFixture.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.s
+.PHONY : LightCannonFixture.cpp.s
+
+LightCannonTests.o: LightCannonTests.cpp.o
+.PHONY : LightCannonTests.o
+
+# target to build an object file
+LightCannonTests.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o
+.PHONY : LightCannonTests.cpp.o
+
+LightCannonTests.i: LightCannonTests.cpp.i
+.PHONY : LightCannonTests.i
+
+# target to preprocess a source file
+LightCannonTests.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.i
+.PHONY : LightCannonTests.cpp.i
+
+LightCannonTests.s: LightCannonTests.cpp.s
+.PHONY : LightCannonTests.s
+
+# target to generate assembly for a file
+LightCannonTests.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.s
+.PHONY : LightCannonTests.cpp.s
+
 SubmarineFixture.o: SubmarineFixture.cpp.o
 .PHONY : SubmarineFixture.o
 
@@ -581,6 +629,12 @@ help:
 	@echo "... GameWorldFixture.o"
 	@echo "... GameWorldFixture.i"
 	@echo "... GameWorldFixture.s"
+	@echo "... LightCannonFixture.o"
+	@echo "... LightCannonFixture.i"
+	@echo "... LightCannonFixture.s"
+	@echo "... LightCannonTests.o"
+	@echo "... LightCannonTests.i"
+	@echo "... LightCannonTests.s"
 	@echo "... SubmarineFixture.o"
 	@echo "... SubmarineFixture.i"
 	@echo "... SubmarineFixture.s"

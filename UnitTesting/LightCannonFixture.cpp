@@ -1,6 +1,7 @@
 //
-// Created by pala on 8/18/21.
+// Created by pala on 8/24/21.
 //
+
 #include "gtest/gtest.h"
 #include "../Cruiser.h"
 
@@ -16,7 +17,3 @@ protected:
 
 Cruiser c;
 };
-
-
-
-
