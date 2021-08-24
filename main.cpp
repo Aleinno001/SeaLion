@@ -144,7 +144,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
 
 
 
-void update( std::list<iteratorPositions> &lst, double dt){
+void update( std::list<iteratorPositions> &lst, double dt,std::list<iteratorPositions> &fullNavyCollision){
     if(!lst.empty()){
         for (auto iter = lst.begin(); iter != lst.end();) {
             if((iter->it->get()->getSprite().getPosition().x)==iter->pos.x && iter->it->get()->getSprite().getPosition().y==iter->pos.y){
@@ -158,8 +158,7 @@ void update( std::list<iteratorPositions> &lst, double dt){
         }
     }
 
-
-
+    std::thread thread_collision(f,std::ref(fullNavyCollision));
 
 
 
@@ -214,8 +213,6 @@ int main() {
         itPos.it = itEnemy;
         fullNavyCollision.push_back(itPos);
     }
-    std::thread thread_collision(f,std::ref(fullNavyCollision)); //Tread separato che verifica costantemente se avvengono collisioni tra tutte le navi di gioco
-    thread_collision.detach();
     while (window.isOpen()) {
         sf::Event event;
 
@@ -345,7 +342,7 @@ int main() {
 
         }
 
-        update(lst,clock.restart().asSeconds());
+        update(lst,clock.restart().asSeconds(),fullNavyCollision);
 
         window.display();
     }
