@@ -102,6 +102,10 @@ int Arsenal::getWidth() const {
     return width;
 }
 
+const sf::Vector2f &Arsenal::getPos() const {
+    return pos;
+}
+
 
 
 

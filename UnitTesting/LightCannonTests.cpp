@@ -35,6 +35,11 @@ TEST(LightCannon, Constructor) {
     ASSERT_EQ(lightCannon->getAmmoSpeed(),250);
     ASSERT_EQ(lightCannon->getMaximumDispersion(),5);
     ASSERT_EQ(lightCannon->getAmmoDeceleration(),0.3);
+    ASSERT_EQ(lightCannon->getFirepower(),50);
+    ASSERT_EQ(lightCannon->getNumAmmo(),200);
+    ASSERT_EQ(lightCannon->getPos().x,posX+2);
+    ASSERT_EQ(lightCannon->getPos().y,posY+3);
+
 
 
 

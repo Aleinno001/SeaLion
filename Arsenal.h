@@ -40,7 +40,7 @@ public:
     virtual void openFire(Vehicle enemy);
 
     virtual void update(sf::Vector2f &vel,double mx) = 0; //Metodo per design pattern observer
-
+    const sf::Vector2f &getPos() const;
 
 
     virtual bool engage(Vehicle enemy);
