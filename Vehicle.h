@@ -51,7 +51,7 @@ public:
 
     void setCollision(bool collision);
 
-    virtual void attack(Vehicle target);
+    virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>>  target);
 
     virtual void calculateDistance(Vehicle target);
 

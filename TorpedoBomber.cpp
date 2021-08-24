@@ -27,7 +27,7 @@ void TorpedoBomber::calculateDistance(Vehicle target) {
 }
 
 void TorpedoBomber::attack(Vehicle target) {
-    Vehicle::attack(target);
+
 }
 
 void TorpedoBomber::update(bool isDead) {

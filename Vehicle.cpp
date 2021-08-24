@@ -2,6 +2,7 @@
 // Created by davide on 02/07/21.
 //
 
+#include <list>
 #include "Vehicle.h"
 #include "Collision.h"
 void Vehicle::rotate() {
@@ -26,7 +27,7 @@ Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
 
 }
 
-void Vehicle::attack(Vehicle target) {
+void Vehicle::attack(std::_List_iterator<std::unique_ptr<Vehicle>> target) {
 
 }
 

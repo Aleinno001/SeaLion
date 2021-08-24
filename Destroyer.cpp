@@ -66,10 +66,6 @@ Destroyer::Destroyer(int x, int y, float ac, const float maxVel, int hp, int arm
     }
 }
 
-void Destroyer::attack(Vehicle target) {
-    Vehicle::attack(target);
-}
-
 void Destroyer::calculateDistance(Vehicle target) {
     Vehicle::calculateDistance(target);
 }

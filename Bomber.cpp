@@ -9,7 +9,6 @@ void Bomber::bombard(Vehicle enemy) {
 }
 
 void Bomber::attack(Vehicle target) {
-    Vehicle::attack(target);
 }
 
 void Bomber::calculateDistance(Vehicle target) {

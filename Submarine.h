@@ -33,8 +33,6 @@ public:
         return numTorpedoTubes;
     }
 
-    void attack(Vehicle target) override;
-
     void calculateDistance(Vehicle target) override;
 
     void update(bool isDead) override;
