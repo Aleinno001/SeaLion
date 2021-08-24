@@ -5,5 +5,43 @@
 #include "gtest/gtest.h"
 #include "../GameTile.h"
 TEST(LightCannon, Constructor) {
+    StandardBullet b;
+    std::list<std::unique_ptr<Vehicle>> v;
+    int posX = 700;
+    int posY = 700;
+    sf::Vector2i coordinates;
+    coordinates.x = 1000;
+    coordinates.y = 1000;
+    int shipWidth = 44;
+    int shipHeight = 180;
+    CannonFactory factory;
+
+
+
+    std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, v, shipHeight,
+                                shipWidth,
+                                true,
+                                ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
+
+
+
+
+    std::unique_ptr<LightCannon> lightCannon(
+            new LightCannon(250, 3, 250, 5, b, 0.3, 50, 200, posX + 2, posY + 3, 6, 4, "LightCannon",*GiuseppeGaribaldi));
+
+    ASSERT_EQ(lightCannon->getRangeOfFire(),250);
+    ASSERT_EQ(lightCannon->getReloadTime(),3);
+    ASSERT_EQ(lightCannon->getAmmoSpeed(),250);
+    ASSERT_EQ(lightCannon->getMaximumDispersion(),5);
+    ASSERT_EQ(lightCannon->getAmmoDeceleration(),0.3);
+
+
+
+
+
+
+
+
 
 }
