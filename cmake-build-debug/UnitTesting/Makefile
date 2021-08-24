@@ -487,6 +487,54 @@ LightCannonTests.cpp.s:
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.s
 .PHONY : LightCannonTests.cpp.s
 
+MediumCannonFixture.o: MediumCannonFixture.cpp.o
+.PHONY : MediumCannonFixture.o
+
+# target to build an object file
+MediumCannonFixture.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o
+.PHONY : MediumCannonFixture.cpp.o
+
+MediumCannonFixture.i: MediumCannonFixture.cpp.i
+.PHONY : MediumCannonFixture.i
+
+# target to preprocess a source file
+MediumCannonFixture.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.i
+.PHONY : MediumCannonFixture.cpp.i
+
+MediumCannonFixture.s: MediumCannonFixture.cpp.s
+.PHONY : MediumCannonFixture.s
+
+# target to generate assembly for a file
+MediumCannonFixture.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.s
+.PHONY : MediumCannonFixture.cpp.s
+
+MediumCannonTests.o: MediumCannonTests.cpp.o
+.PHONY : MediumCannonTests.o
+
+# target to build an object file
+MediumCannonTests.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o
+.PHONY : MediumCannonTests.cpp.o
+
+MediumCannonTests.i: MediumCannonTests.cpp.i
+.PHONY : MediumCannonTests.i
+
+# target to preprocess a source file
+MediumCannonTests.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.i
+.PHONY : MediumCannonTests.cpp.i
+
+MediumCannonTests.s: MediumCannonTests.cpp.s
+.PHONY : MediumCannonTests.s
+
+# target to generate assembly for a file
+MediumCannonTests.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.s
+.PHONY : MediumCannonTests.cpp.s
+
 SubmarineFixture.o: SubmarineFixture.cpp.o
 .PHONY : SubmarineFixture.o
 
@@ -635,6 +683,12 @@ help:
 	@echo "... LightCannonTests.o"
 	@echo "... LightCannonTests.i"
 	@echo "... LightCannonTests.s"
+	@echo "... MediumCannonFixture.o"
+	@echo "... MediumCannonFixture.i"
+	@echo "... MediumCannonFixture.s"
+	@echo "... MediumCannonTests.o"
+	@echo "... MediumCannonTests.i"
+	@echo "... MediumCannonTests.s"
 	@echo "... SubmarineFixture.o"
 	@echo "... SubmarineFixture.i"
 	@echo "... SubmarineFixture.s"

@@ -261,6 +261,58 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.s"
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/SeaLion/Collision.cpp -o CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.s
 
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o: ../UnitTesting/LightCannonFixture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o -c /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonFixture.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.i"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonFixture.cpp > CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.s"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonFixture.cpp -o CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o: ../UnitTesting/LightCannonTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o -c /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonTests.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.i"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonTests.cpp > CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.s"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonTests.cpp -o CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o: ../UnitTesting/MediumCannonFixture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o -c /home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonFixture.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.i"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonFixture.cpp > CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.s"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonFixture.cpp -o CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.s
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o: UnitTesting/CMakeFiles/runSeaLionTests.dir/flags.make
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o: ../UnitTesting/MediumCannonTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o -c /home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonTests.cpp
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.i"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonTests.cpp > CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.i
+
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.s"
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonTests.cpp -o CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.s
+
 # Object files for target runSeaLionTests
 runSeaLionTests_OBJECTS = \
 "CMakeFiles/runSeaLionTests.dir/runAllTests.cpp.o" \
@@ -277,7 +329,11 @@ runSeaLionTests_OBJECTS = \
 "CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.o" \
 "CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.o" \
 "CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.o" \
-"CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.o"
+"CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o" \
+"CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o"
 
 # External object files for target runSeaLionTests
 runSeaLionTests_EXTERNAL_OBJECTS =
@@ -297,6 +353,10 @@ UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserT
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.o
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.o
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/__/Collision.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o
+UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make
 UnitTesting/runSeaLionTests: lib/libgtestd.a
 UnitTesting/runSeaLionTests: lib/libgtest_maind.a
@@ -306,7 +366,7 @@ UnitTesting/runSeaLionTests: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 UnitTesting/runSeaLionTests: libcore.a
 UnitTesting/runSeaLionTests: lib/libgtestd.a
 UnitTesting/runSeaLionTests: UnitTesting/CMakeFiles/runSeaLionTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable runSeaLionTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable runSeaLionTests"
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug/UnitTesting && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/runSeaLionTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

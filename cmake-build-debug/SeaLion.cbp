@@ -691,6 +691,12 @@
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonTests.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonTests.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/SubmarineFixture.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>

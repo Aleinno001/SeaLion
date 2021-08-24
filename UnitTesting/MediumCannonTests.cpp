@@ -4,10 +4,10 @@
 #include "gtest/gtest.h"
 #include "../MediumCannon.h"
 #include "../LightCannon.h"
-#include "../AircraftCarrier.h"
+#include "../Cruiser.h"
 #include "../CannonFactory.h"
 TEST(MediumCannon, Constructor) {
-    /*
+
     StandardBullet b;
     std::list<std::unique_ptr<Vehicle>> v;
     int posX = 700;
@@ -18,32 +18,31 @@ TEST(MediumCannon, Constructor) {
     int shipWidth = 44;
     int shipHeight = 180;
     CannonFactory factory;
+    int antiAir = 10;
 
 
+   
 
-    std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, v, shipHeight,
-                                shipWidth,
-                                true,
-                                ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
-
-
+    std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
+                                               "Japan", 4, 0, 5, antiAir,  v, shipHeight, shipWidth, true,
+                                               ShipType::Cruiser,
+                                               ModelType::Takao, 2));
 
 
-    std::unique_ptr<LightCannon> lightCannon(
-            new LightCannon(250, 3, 250, 5, b, 0.3, 50, 200, posX + 2, posY + 3, 6, 4, "LightCannon",*GiuseppeGaribaldi));
+    std::unique_ptr<MediumCannnon> mediumCannon(
+            new MediumCannnon(350, 6, 200, 7, b, 0.4, 100, 140, posX + 3, posY + 7, 14, 7, "MediumCannon",*takao));
+    
+    ASSERT_EQ(mediumCannon->getRangeOfFire(),350);
+    ASSERT_EQ(mediumCannon->getReloadTime(),6);
+    ASSERT_EQ(mediumCannon->getAmmoSpeed(),200);
+    ASSERT_EQ(mediumCannon->getMaximumDispersion(),7);
+    ASSERT_EQ(mediumCannon->getAmmoDeceleration(),0.4);
+    ASSERT_EQ(mediumCannon->getFirepower(),100);
+    ASSERT_EQ(mediumCannon->getNumAmmo(),140);
+    ASSERT_EQ(mediumCannon->getPos().x,posX+3);
+    ASSERT_EQ(mediumCannon->getPos().y,posY+7);
+    ASSERT_EQ(mediumCannon->getLength(),14);
+    ASSERT_EQ( mediumCannon->getWidth(),7);
+    ASSERT_EQ( mediumCannon->getTextureName(),"MediumCannon");
 
-    ASSERT_EQ(lightCannon->getRangeOfFire(),250);
-    ASSERT_EQ(lightCannon->getReloadTime(),3);
-    ASSERT_EQ(lightCannon->getAmmoSpeed(),250);
-    ASSERT_EQ(lightCannon->getMaximumDispersion(),5);
-    ASSERT_EQ(lightCannon->getAmmoDeceleration(),0.3);
-    ASSERT_EQ(lightCannon->getFirepower(),50);
-    ASSERT_EQ(lightCannon->getNumAmmo(),200);
-    ASSERT_EQ(lightCannon->getPos().x,posX+2);
-    ASSERT_EQ(lightCannon->getPos().y,posY+3);
-    ASSERT_EQ(lightCannon->getLength(),6);
-    ASSERT_EQ( lightCannon->getWidth(),4);
-    ASSERT_EQ( lightCannon->getTextureName(),"LightCannon");
-    */
 }

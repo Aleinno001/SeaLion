@@ -332,9 +332,9 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc
+/home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest_main.cc
 cstdio
 -
 gtest/gtest.h
-/home/pala/CLionProjects/Projects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest/gtest.h
+/home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googletest/src/gtest/gtest.h
 
