@@ -8,9 +8,6 @@ void Vehicle::rotate() {
 
 }
 
-bool Vehicle::canEngage(Vehicle target) {
-    return false;
-}
 
 /*
 float Vehicle::calcSpeed() {

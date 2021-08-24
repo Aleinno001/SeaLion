@@ -129,9 +129,13 @@ public:
 
     const int getNumHCannons() const;
 
+    virtual bool canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target);
+
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 
     std::list<std::unique_ptr<Vehicle>> &getVehicleList();
+
+    std::_List_iterator<std::unique_ptr<WarShip>> searchTarget (std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart, std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd);
 
     virtual ~WarShip(){
 
