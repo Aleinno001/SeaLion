@@ -39,6 +39,11 @@ TEST(LightCannon, Constructor) {
     ASSERT_EQ(lightCannon->getNumAmmo(),200);
     ASSERT_EQ(lightCannon->getPos().x,posX+2);
     ASSERT_EQ(lightCannon->getPos().y,posY+3);
+    ASSERT_EQ(lightCannon->getLength(),6);
+    ASSERT_EQ( lightCannon->getWidth(),4);
+    ASSERT_EQ( lightCannon->getTextureName(),"LightCannon");
+
+
 
 
 
