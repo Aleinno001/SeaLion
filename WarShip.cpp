@@ -125,7 +125,7 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target) {
     double mx;
     double dy;
     double dx;
-    std::cerr << "Sono dentro l'attacck siiiium"<< std::endl;
+
     for (auto iter = target->get()->arsenalList.begin(); iter != target->get()->arsenalList.end(); ++iter) {
         side = sqrt(2 * pow(iter->get()->getRangeOfFire(), 2));
         sf::IntRect rect(iter->get()->getSprite().getPosition().x - side / 2,
@@ -139,7 +139,7 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target) {
         }
 
         if (rect.intersects(target->get()->getSprite().getTextureRect())) {
-            std::cerr << "Ho intercettato siiiium"<< std::endl;
+
             if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
                 sprite.rotate(1);
             } else if (sprite.getRotation() > 180 && mx < 180) {
@@ -153,7 +153,7 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target) {
 
 bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                            std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd) {
-    std::cerr << "Sono dentro il search Target siiiiiiiiii" << std::endl;
+
     bool result = false;
     auto iter = arsenalList.begin();
     int numIter = 0;
@@ -165,16 +165,16 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
         numIter = numLCannons;
     }
     for (int i = 0; i < numIter; i++, ++iter) {
-        std::cerr << "Sono dentro l'if del searche  siiiiiiiiii" << std::endl;
+
         float side;
         side = sqrt(2 * pow(iter->get()->getRangeOfFire(), 2));
         sf::IntRect rect(iter->get()->getSprite().getPosition().x - side / 2,
                          iter->get()->getSprite().getPosition().y - side / 2, side, side);
-        std::cerr << rect.left << ", " << rect.top << std::endl;
+
         for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
-            std::cerr << "FORRRRRRRR" << std::endl;
+
             if (rect.intersects(enemyIter->get()->getSprite().getTextureRect())) {
-                std::cerr << "Intersect bro" << std::endl;
+
                 if (canEngage(enemyIter)) {
                     attack(enemyIter);
                     result = true;

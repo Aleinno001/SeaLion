@@ -155,18 +155,17 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
                 iter->it->get()->getSprite().getPosition().y == iter->pos.y) {
                 iter = lst.erase(iter);
-            } else if (iter->it->get()->getCol()) {
+            } else {
                 iter->it->get()->move(iter->pos, dt);
                 ++iter;
-            } else {
-                std::cerr << " COLLISION " << std::endl;
             }
         }
+        std::thread thread_collision(f,std::ref(fullNavyCollision));
+        thread_collision.detach();
     }
 
 
-     std::thread thread_collision(f,std::ref(fullNavyCollision));
-     thread_collision.detach();
+
 
     //collisonControl(fullNavyCollision);
 
@@ -230,7 +229,8 @@ int main() {
     }
 
 
-    
+
+
     while (window.isOpen()) {
         sf::Event event;
 
