@@ -13,13 +13,12 @@ typedef struct iteratorPositions{
     sf::Vector2 <double> pos;
 };
 
-/*
 auto f = [](std::list<iteratorPositions> fullNavyCollision){
     for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
 
-        for(auto iterSecond = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+        for(auto iterSecond = fullNavyCollision.begin();iterSecond!=fullNavyCollision.end();++iterSecond){
 
-            if(iter != iterSecond){
+            if(iter->it->get() != iterSecond->it->get()){
                 if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
                     iter->it->get()->setCollision(false);
                     iterSecond->it->get()->setCollision(false);
@@ -30,7 +29,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision){
         }
     }
 };
- */
+
 
 std::vector<Fleet> alliedDummyFleet() {
     std::vector<Fleet> fleet;
@@ -121,7 +120,7 @@ std::vector<Fleet> alliedDummyFleet() {
 }
 
 
-
+/*
 void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
 {
     for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
@@ -142,7 +141,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
     }
 }
 
-
+*/
 
 
 
@@ -165,16 +164,11 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
         }
     }
 
-    /*
-     *std::thread thread_collision(f,std::ref(fullNavyCollision));
-     *thread_collision.detach();
-     *
-     *
-     *
-     *
-     *
-     * */
-    collisonControl(fullNavyCollision);
+
+     std::thread thread_collision(f,std::ref(fullNavyCollision));
+     thread_collision.detach();
+
+    //collisonControl(fullNavyCollision);
 
 
     auto enemyIterStart = gameWorld.getAlliedFleet().begin();
