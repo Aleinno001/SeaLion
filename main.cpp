@@ -161,6 +161,9 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
         }
     }
 
+    std::thread thread_collision(f,std::ref(fullNavyCollision));
+    thread_collision.detach();
+
     auto enemyIterStart = gameWorld.getAlliedFleet().begin();
     auto enemyIterEnd = gameWorld.getAlliedFleet().end();
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
@@ -218,8 +221,7 @@ int main() {
         fullNavyCollision.push_back(itPos);
     }
 
-    std::thread thread_collision(f,std::ref(fullNavyCollision));
-    thread_collision.detach();
+
     
     while (window.isOpen()) {
         sf::Event event;
