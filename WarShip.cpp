@@ -61,55 +61,56 @@ std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
 }
 
 void WarShip::move(sf::Vector2<double> coordinates, double dt) {
+    if(collision) {
+        double mx;
+        double dy = coordinates.y - sprite.getPosition().y;
+        double dx = coordinates.x - sprite.getPosition().x;
+        float rotatingInPlaceMult = 1;
+        double deltaMx;
 
-    double mx;
-    double dy = coordinates.y - sprite.getPosition().y;
-    double dx = coordinates.x - sprite.getPosition().x;
-    float rotatingInPlaceMult = 1;
-    double deltaMx;
+        mx = 90 + atan2(dy, dx) * 180 / M_PI;
 
-    mx = 90 + atan2(dy, dx) * 180 / M_PI;
-
-    if (mx < 0) {
-        mx = 360 + mx;
-    }
-
-    if (currentSpeed <= maxSpeed) {
-        currentSpeed = currentSpeed + acceleration / 100;
-    }
-    sf::Vector2f vel;
-    if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)) {
-        if (abs(sprite.getRotation() - mx) >= 25) {
-            rotatingInPlaceMult = 3;
-            if (currentSpeed > maxSpeed / 4)
-                currentSpeed = currentSpeed - acceleration / 100;
+        if (mx < 0) {
+            mx = 360 + mx;
         }
-        if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
-             abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height / 2)) {
-            if (currentSpeed > acceleration / 100) {
-                currentSpeed = currentSpeed - acceleration / 100;
+
+        if (currentSpeed <= maxSpeed) {
+            currentSpeed = currentSpeed + acceleration / 100;
+        }
+        sf::Vector2f vel;
+        if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)) {
+            if (abs(sprite.getRotation() - mx) >= 25) {
+                rotatingInPlaceMult = 3;
+                if (currentSpeed > maxSpeed / 4)
+                    currentSpeed = currentSpeed - acceleration / 100;
             }
-        }
-        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
-        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
-        sprite.setPosition(sprite.getPosition() + vel);
-        if (abs(sprite.getRotation() - mx) >= 1.5) {
-            if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
-                deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
-                sprite.rotate(deltaMx);
-            } else if (sprite.getRotation() > 180 && mx < 180) {
-                deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
-                sprite.rotate(deltaMx);
-            } else {
-                deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 4000;
-                sprite.rotate(deltaMx);
+            if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
+                 abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height / 2)) {
+                if (currentSpeed > acceleration / 100) {
+                    currentSpeed = currentSpeed - acceleration / 100;
+                }
             }
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            sprite.setPosition(sprite.getPosition() + vel);
+            if (abs(sprite.getRotation() - mx) >= 1.5) {
+                if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
+                    deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+                    sprite.rotate(deltaMx);
+                } else if (sprite.getRotation() > 180 && mx < 180) {
+                    deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+                    sprite.rotate(deltaMx);
+                } else {
+                    deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+                    sprite.rotate(deltaMx);
+                }
+            }
+        } else {
+            currentSpeed = 0;
         }
-    } else {
-        currentSpeed = 0;
-    }
 
-    notifyArsenals(vel, deltaMx);
+        notifyArsenals(vel, deltaMx);
+    }
 }
 
 const int WarShip::getNumAntiAircraft() const {
