@@ -15,8 +15,9 @@ typedef struct iteratorPositions{
     sf::Vector2 <double> pos;
 };
 
-auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,int tileDim){ //Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
-    for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter)
+auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,int tileDim,sf::RenderWindow &window){ //Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
+    for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
+
         for (auto &iterSecond: fullNavyCollision) {
 
             if (iter->it->get() != iterSecond.it->get()) {
@@ -28,6 +29,13 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
             }
 
         }
+
+        if((iter->it->get()->getSprite().getPosition().x - iter->it->get()->getSprite().getLocalBounds().width/2 <= 0) || (iter->it->get()->getSprite().getPosition().y - iter->it->get()->getSprite().getLocalBounds().height/2 <=0 )|| (iter->it->get()->getSprite().getPosition().x + iter->it->get()->getSprite().getLocalBounds().width/2 >= window.getSize().x )||(iter->it->get()->getSprite().getPosition().y + iter->it->get()->getSprite().getLocalBounds().height/2 >= window.getSize().y)){
+            iter->it->get()->setCollision(false);
+        }
+
+
+    }
 
     for(auto & iterNavy : fullNavyCollision){
 
@@ -46,6 +54,8 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
         }
 
     }
+
+
 
 
 
@@ -170,7 +180,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision,GameWorld &
 
 
 void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision,
-            GameWorld &gameWorld,int tileDim) {
+            GameWorld &gameWorld,int tileDim,sf::RenderWindow &window) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -181,7 +191,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
                 ++iter;
             }
         }
-        std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim);
+        std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim,std::ref(window));
         thread_collision.detach();
     }
 
@@ -376,7 +386,7 @@ int main() {
 
         }
 
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld,tileDim);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld,tileDim,window);
 
         window.display();
     }
