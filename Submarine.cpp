@@ -90,9 +90,9 @@ void Submarine::notifyArsenals(sf::Vector2f &vel,double mx) {
 void Submarine::rotate() {
     Vehicle::rotate();
 }
-
+/*
 bool Submarine::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {
     return WarShip::canEngage(target);
 }
 
-
+*/

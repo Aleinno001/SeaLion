@@ -11,8 +11,8 @@
 #include <list>
 #include "Vehicle.h"
 #include "Arsenal.h"
+#include "GameTile.h"
 #include <math.h>
-
 
 enum class ShipType {
     Battleship,
@@ -91,6 +91,7 @@ protected:
     const int numMCannons;
     const int numHCannons;
     const int numAntiAircraft;
+    bool concealed{false};
 public:
     const int getNumAntiAircraft() const;
 
@@ -129,17 +130,21 @@ public:
 
     const int getNumHCannons() const;
 
-    virtual bool canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target);
+    virtual bool
+    canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter, std::_List_iterator<std::unique_ptr<WarShip>> target,
+              const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);
 
-    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>>  target);
+    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>> target);
 
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 
     std::list<std::unique_ptr<Vehicle>> &getVehicleList();
 
-    bool searchTarget (std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart, std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd);
+    bool searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
+                      std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
+                      const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);
 
-    virtual ~WarShip(){
+    virtual ~WarShip() {
 
     };
 
@@ -154,6 +159,10 @@ public:
     ShipType getShipType() const;
 
     ModelType getModelType() const;
+
+    bool isConcealed() const;
+
+    void setConcealed(bool isConcealed);
 };
 
 
