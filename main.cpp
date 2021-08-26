@@ -4,30 +4,51 @@
 #include "GameWorld.h"
 #include <thread>
 #include "Collision.h"
+
 enum class windowMode {
     Windowed,
     Fullscreen
 };
+
 typedef struct iteratorPositions{
     std::_List_iterator<std::unique_ptr<WarShip>> it;
     sf::Vector2 <double> pos;
 };
 
-auto f = [](std::list<iteratorPositions> fullNavyCollision){
-    for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,int tileDim){ //Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
+    for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter)
+        for (auto &iterSecond: fullNavyCollision) {
 
-        for(auto iterSecond = fullNavyCollision.begin();iterSecond!=fullNavyCollision.end();++iterSecond){
-
-            if(iter->it->get() != iterSecond->it->get()){
-                if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
+            if (iter->it->get() != iterSecond.it->get()) {
+                if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite())) {
                     iter->it->get()->setCollision(false);
-                    iterSecond->it->get()->setCollision(false);
-                    std::cerr<<"COLLISIONNNNN"<<std::endl;
+                    iterSecond.it->get()->setCollision(false);
+                    std::cerr << "COLLISIONNNNN" << std::endl;
                 }
             }
 
         }
+
+    for(auto & iterNavy : fullNavyCollision){
+
+        for (int row = 0; row < (gameWorld.getMapHeight()/tileDim); row++){
+
+            for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+
+                if(gameWorld.tiles[row][column]->getTileType()==TileType::Dirt && Collision::PixelPerfectTest(iterNavy.it->get()->getSprite(),gameWorld.tiles[row][column]->getSprite())){//Se il blocco è di terra e se avviene la collisione
+                    iterNavy.it->get()->setCollision(false);
+                    gameWorld.tiles[row][column]->setIsPassable(false);
+                    std::cerr<<"COLLISIONNNNN_ROAD"<<std::endl;
+                }
+
+            }
+
+        }
+
     }
+
+
+
 };
 
 
@@ -121,7 +142,7 @@ std::vector<Fleet> alliedDummyFleet() {
 
 
 /*
-void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
+void collisonControl(std::list<iteratorPositions> &fullNavyCollision,GameWorld &gameWorld)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
 {
     for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
 
@@ -149,7 +170,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision)//Scorre la
 
 
 void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision,
-            GameWorld &gameWorld) {
+            GameWorld &gameWorld,int tileDim) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -160,7 +181,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
                 ++iter;
             }
         }
-        std::thread thread_collision(f, std::ref(fullNavyCollision));
+        std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim);
         thread_collision.detach();
     }
 
@@ -213,10 +234,11 @@ int main() {
     bool found = false;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     auto itAllied = gameWorld.getAlliedFleet().begin();
-    auto itEnemy = gameWorld.getAlliedFleet().begin();
+    auto itEnemy = gameWorld.getEnemyFleet().begin();
+    auto itTiles = gameWorld.getTiles().begin();
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
-    
+
     for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) {
         iteratorPositions itPos;
         itPos.it = itAllied;
@@ -227,6 +249,9 @@ int main() {
         itPos.it = itEnemy;
         fullNavyCollision.push_back(itPos);
     }
+
+
+
 
 
     while (window.isOpen()) {
@@ -330,13 +355,6 @@ int main() {
 
         for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
             window.draw(it->get()->getSprite());
-            //auto itArsenal = it->get()->getArsenalList().begin();
-
-
-
-            //for(auto itArsenal = it->get()->getArsenalList().begin();itArsenal->get()->getTextureName()!="AntiAircraft" && itArsenal->get()->getTextureName()!="TorpedoTube";++itArsenal){
-            //window.draw(itArsenal->get()->getSprite());
-            //}
 
             for (auto const &itArsenal : it->get()->getArsenalList()) {
 
@@ -358,7 +376,7 @@ int main() {
 
         }
 
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld,tileDim);
 
         window.display();
     }

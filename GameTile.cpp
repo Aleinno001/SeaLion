@@ -73,3 +73,7 @@ TileType GameTile::getTileType() const {
     return tileType;
 }
 
+bool GameTile::getIsPassable() const {
+    return isPassable;
+}
+
