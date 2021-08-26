@@ -30,7 +30,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                 }
 
             }
-            /*
+            //controlla le eventuali collisioni ai bordi della finestra di gioco
             if (((iter->it->get()->getSprite().getPosition().x -
                   iter->it->get()->getSprite().getLocalBounds().width / 2) <= 0) ||
                 ((iter->it->get()->getSprite().getPosition().y -
@@ -42,7 +42,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                 iter->it->get()->setCollision(false);
                 std::cerr << "BORDER COLLISION" << std::endl;
             }
-            */
+
 
         }
 
@@ -243,7 +243,7 @@ int main() {
     width = desktop.width;
     height = desktop.height;
     tileDim = 30;  //FIXME adattabile a tutte le risoluzioni
-    window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Default, settings);
+    window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Italy, FactionType::Italy, 8, boundaries, width,
