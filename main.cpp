@@ -16,50 +16,58 @@ typedef struct iteratorPositions{
 };
 
 auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,int tileDim,sf::RenderWindow &window){ //Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
-    for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
+    while(window.isOpen()) {
+        for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
 
-        for (auto &iterSecond: fullNavyCollision) {
+            for (auto &iterSecond: fullNavyCollision) {
 
-            if (iter->it->get() != iterSecond.it->get()) {
-                if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite())) {
-                    iter->it->get()->setCollision(false);
-                    iterSecond.it->get()->setCollision(false);
-                    std::cerr << "COLLISIONNNNN" << std::endl;
+                if (iter->it->get() != iterSecond.it->get()) {
+                    if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite())) {
+                        iter->it->get()->setCollision(false);
+                        iterSecond.it->get()->setCollision(false);
+                        std::cerr << "COLLISIONNNNN" << std::endl;
+                    }
                 }
+
+            }
+            /*
+            if (((iter->it->get()->getSprite().getPosition().x -
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) <= 0) ||
+                ((iter->it->get()->getSprite().getPosition().y -
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) <= 0) ||
+                ((iter->it->get()->getSprite().getPosition().x +
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) >= window.getSize().x) ||
+                ((iter->it->get()->getSprite().getPosition().y +
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) >= window.getSize().y)) {
+                iter->it->get()->setCollision(false);
+                std::cerr << "BORDER COLLISION" << std::endl;
+            }
+            */
+
+        }
+
+        for (auto &iterNavy: fullNavyCollision) {
+
+            for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++) {
+
+                for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+
+                    if (gameWorld.tiles[row][column]->getTileType() == TileType::Dirt &&
+                        Collision::PixelPerfectTest(iterNavy.it->get()->getSprite(),
+                                                    gameWorld.tiles[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
+                        iterNavy.it->get()->setCollision(false);
+                        gameWorld.tiles[row][column]->setIsPassable(false);
+                        std::cerr << "COLLISIONNNNN_ROAD" << std::endl;
+                    }
+
+                }
+
             }
 
         }
 
-        if(((iter->it->get()->getSprite().getPosition().x - iter->it->get()->getSprite().getLocalBounds().width/2) <= 0) || ((iter->it->get()->getSprite().getPosition().y - iter->it->get()->getSprite().getLocalBounds().height/2) <=0 )|| ((iter->it->get()->getSprite().getPosition().x + iter->it->get()->getSprite().getLocalBounds().width/2) >= window.getSize().x )||((iter->it->get()->getSprite().getPosition().y + iter->it->get()->getSprite().getLocalBounds().height/2) >= window.getSize().y)){
-            iter->it->get()->setCollision(false);
-            std::cerr<<"BORDER COLLISION"<<std::endl;
-        }
-
 
     }
-
-    for(auto & iterNavy : fullNavyCollision){
-
-        for (int row = 0; row < (gameWorld.getMapHeight()/tileDim); row++){
-
-            for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
-
-                if(gameWorld.tiles[row][column]->getTileType()==TileType::Dirt && Collision::PixelPerfectTest(iterNavy.it->get()->getSprite(),gameWorld.tiles[row][column]->getSprite())){//Se il blocco è di terra e se avviene la collisione
-                    iterNavy.it->get()->setCollision(false);
-                    gameWorld.tiles[row][column]->setIsPassable(false);
-                    std::cerr<<"COLLISIONNNNN_ROAD"<<std::endl;
-                }
-
-            }
-
-        }
-
-    }
-
-
-
-
-
 };
 
 
@@ -192,8 +200,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
                 ++iter;
             }
         }
-        std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim,std::ref(window));
-        thread_collision.detach();
+
     }
 
 
@@ -264,7 +271,8 @@ int main() {
 
 
 
-
+    std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim,std::ref(window));
+    thread_collision.detach();
     while (window.isOpen()) {
         sf::Event event;
 
