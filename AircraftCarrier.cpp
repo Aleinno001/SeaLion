@@ -77,7 +77,7 @@ void AircraftCarrier::ceaseFire() {
 
 void AircraftCarrier::notifyArsenals(sf::Vector2f &vel,double mx) {
 
-    std::list<std::shared_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    auto it = arsenalList.begin();
     while (it != arsenalList.end()) {
         (*it)->update(vel,mx);
         ++it;
@@ -96,6 +96,16 @@ void AircraftCarrier::rotate() {
 int AircraftCarrier::getNumPlanes() const {
     return numPlanes;
 }
+
+void AircraftCarrier::notifyPlanes(sf::Vector2f &vel, double mx) {
+    auto it = vehicleList.begin();
+    while (it != vehicleList.end()) {
+        (*it)->updatePlanes(vel,mx);
+        ++it;
+    }
+}
+
+
 
 
 

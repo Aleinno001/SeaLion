@@ -31,7 +31,7 @@ public:
 
     void update(bool isDead) override;
 
-    void update() override;
+    void updatePlanes(sf::Vector2f &vel,double mx) override;
 
 
     ~Bomber() override;

@@ -28,6 +28,7 @@ private:
 
     void update(bool isDead) override;
 
+    void updatePlanes(sf::Vector2f &vel,double mx) override;
 
 
     ~TorpedoBomber() override;

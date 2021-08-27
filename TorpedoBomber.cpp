@@ -39,3 +39,7 @@ void TorpedoBomber::update(bool isDead) {
 TorpedoBomber::~TorpedoBomber() {
 
 }
+
+void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
+
+}

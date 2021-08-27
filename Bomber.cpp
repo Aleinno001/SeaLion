@@ -33,6 +33,7 @@ Bomber::Bomber(int x, int y, float ac1, float maxVel1, int hp, int le,
 
 }
 
-void Bomber::update() {
+void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
 
 }
+

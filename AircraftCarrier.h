@@ -36,6 +36,16 @@ public:
 
     void notifyArsenals(sf::Vector2f &vel,double mx) override;
 
+    void notifyPlanes(sf::Vector2f &vel, double mx) override;
+
+    void attachPlanes(const std::shared_ptr<WarPlanes> &warPlanes) override{
+        vehicleList.push_back(warPlanes);
+    };
+
+    void detachPlanes(const std::shared_ptr<WarPlanes> &warPlanes) override{
+        vehicleList.push_back(warPlanes);
+    };
+
     int HowManyObserver() {
         return arsenalList.size();
     }

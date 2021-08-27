@@ -6,10 +6,12 @@
 #define SEALION_WARPLANES_H
 
 
+#include <SFML/System/Vector2.hpp>
+
 class WarPlanes {
 public:
     virtual ~WarPlanes()=default;
-    virtual void update()=0;
+    virtual void updatePlanes(sf::Vector2f &vel,double mx)=0;
 };
 
 

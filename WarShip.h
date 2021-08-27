@@ -11,6 +11,7 @@
 #include <list>
 #include "Vehicle.h"
 #include "Arsenal.h"
+#include "WarPlanes.h"
 #include <math.h>
 
 
@@ -97,12 +98,12 @@ public:
 protected:
 
     std::list<std::shared_ptr<Arsenal>> arsenalList;
-    std::list<std::unique_ptr<Vehicle>> vehicleList;
+    std::list<std::shared_ptr<WarPlanes>> vehicleList;
 
 public:
     WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
             std::string nat, int numL, int numH, int numM, int numAA,
-            std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+            int le, int wi,
             bool col, ShipType sh, ModelType mo);
 
     virtual void move(sf::Vector2 <double> coordinates,double dt);
@@ -116,6 +117,13 @@ public:
     virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
     virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
+
+
+    virtual void notifyPlanes(sf::Vector2f &vel,double mx)=0;//    Metodi per design pattern observer
+
+    virtual void attachPlanes(const std::shared_ptr<WarPlanes> &gun)=0;//    Metodi per design pattern observer
+
+    virtual void detachPlanes(const std::shared_ptr<WarPlanes> &gun)=0;//    Metodi per design pattern observer
 
     const int getArmour() const;
 

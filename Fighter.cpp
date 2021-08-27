@@ -30,3 +30,7 @@ void Fighter::update(bool isDead) {
 Fighter::~Fighter() {
 
 }
+
+void Fighter::updatePlanes(sf::Vector2f &vel,double mx) {
+
+}

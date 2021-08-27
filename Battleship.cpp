@@ -104,7 +104,7 @@ void Battleship::ceaseFire() {
 void Battleship::notifyArsenals(sf::Vector2f &vel,double mx) {
 
 
-    std::list<std::shared_ptr<Arsenal>>::iterator it = arsenalList.begin();
+    auto it = arsenalList.begin();
     while (it != arsenalList.end()) {
         (*it)->update(vel,mx);
         ++it;
@@ -123,6 +123,16 @@ void Battleship::rotate() {
 
 int Battleship::getNumInterceptors() const {
     return numInterceptors;
+}
+
+void Battleship::notifyPlanes(sf::Vector2f &vel, double mx) {
+    auto it = vehicleList.begin();
+    while (it != vehicleList.end()) {
+        (*it)->updatePlanes(vel,mx);
+        ++it;
+    }
+
+
 }
 
 
