@@ -66,7 +66,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
         double dy = coordinates.y - sprite.getPosition().y;
         double dx = coordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
-        double deltaMx;
+        double deltaMx = 0;
 
         mx = 90 + atan2(dy, dx) * 180 / M_PI;
 
@@ -121,43 +121,70 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
     bool result = true;
-    float m, q, y, x;
-    sf::Vector2f coords(x, y);
+    float m, q, y, x, dx, dy;
+    float inc;
     if (!target->get()->isConcealed()) {
+        dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
+        dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
         for (int i = 0; i < tileVector.size(); i++) {
             for (int j = 0; j < tileVector[i].size(); j++) {
                 if (target->get()->getSprite().getPosition().x != iter->get()->getSprite().getPosition().x) {
-                    m = (target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y) /
-                        (target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x);
-                    q = iter->get()->getSprite().getPosition().y - m * (iter->get()->getSprite().getPosition().x);
+                    m = -(dy / dx);
+                    q = -iter->get()->getSprite().getPosition().y - m * (iter->get()->getSprite().getPosition().x);
                 } else {
                     //TODO caso retta verticale
+                    m = 0;
+                    q = target->get()->getSprite().getPosition().y;
                 }
                 x = iter->get()->getSprite().getPosition().x;
-                while (static_cast<int>(x) != static_cast<int>(target->get()->getSprite().getPosition().x)) {
-                    y = m * x + q;
-                    coords.x = x;
-                    coords.y = y;
+                if (abs(dx) > abs(dy)) {
+                    inc = dx / 30;
+                } else {
+                    inc = dy / 30;
+                    inc = dx * inc / dy;
+                }
+                int i = 0;
+                while (abs(x - target->get()->getSprite().getPosition().x) > inc ||
+                       abs(y - target->get()->getSprite().getPosition().y) > inc) {
+                    i++;
+                    std::cerr << "i: " << i << std::endl;
+                    y = -(m * x + q);
+                    std::cerr << "inc: " << inc << std::endl;
+                    std::cerr << "dx: " << dx << std::endl;
+                    std::cerr << "dy: " << dy << std::endl;
+                    std::cerr << "x: " << x << std::endl;
+                    std::cerr << "y: " << y << std::endl;
+                    std::cerr << "I'm in the while" << std::endl;
                     if ((tileVector[i][j]->getSprite().getPosition().x < x &&
                          (tileVector[i][j]->getSprite().getPosition().x +
                           tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
                         (tileVector[i][j]->getSprite().getPosition().y < y &&
                          (tileVector[i][j]->getSprite().getPosition().y +
                           tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
+                        std::cerr << "I'm in the tile" << std::endl;
                         if (!tileVector[i][j]->isPassable) {
+                            std::cerr << "Bro swag non girare " << std::endl;
                             return result = false;
                         }
                     }
-                    if (x > target->get()->getSprite().getPosition().x) {
-                        x--;
+                    if (m != 0) {
+                        if (x > target->get()->getSprite().getPosition().x) {
+                            x = x + inc;
+                        } else {
+                            x = x - inc;
+                        }
                     } else {
-                        x++;
+                        if (y < target->get()->getSprite().getPosition().y) {
+                            q = q + inc;
+                        } else {
+                            q = q - inc;
+                        }
                     }
                 }
             }
         }
     }
-    return result;                //TODO da implementare
+    return result;
 }
 
 void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target) {
@@ -170,7 +197,7 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target) {
         dy = target->get()->getSprite().getPosition().y - iter.get()->getSprite().getPosition().y;
         dx = target->get()->getSprite().getPosition().x - iter.get()->getSprite().getPosition().x;
         mx = -90 + atan2(dy, dx) * 180 / M_PI;
-        //FIXME i cannoni ruotano nel verso sbagliato
+
         if (mx < 0) {
             mx = 360 + mx;
         }
