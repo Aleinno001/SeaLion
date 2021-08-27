@@ -126,7 +126,7 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
     if (!target->get()->isConcealed()) {
         dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
         dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
-        for (int i = 0; i < tileVector.size(); i++) {
+        for (int i = 0; i < tileVector.size(); i++) {                   //FIXME scorre male
             for (int j = 0; j < tileVector[i].size(); j++) {
                 if (target->get()->getSprite().getPosition().x != iter->get()->getSprite().getPosition().x) {
                     m = -(dy / dx);
