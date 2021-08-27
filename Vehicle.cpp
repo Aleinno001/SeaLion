@@ -39,13 +39,6 @@ void Vehicle::update(bool isDead) {
 
 }
 
-void Vehicle::attach() {
-
-}
-
-void Vehicle::detach() {
-
-}
 
 bool Vehicle::setUpSprite(std::string textureName) {
 

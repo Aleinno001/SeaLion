@@ -57,9 +57,7 @@ public:
 
     virtual void update(bool isDead);
 
-    virtual void attach();
 
-    virtual void detach();
 
     virtual ~Vehicle() = default;
 
