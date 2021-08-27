@@ -5,7 +5,7 @@
 #include "TorpedoBomber.h"
 
 TorpedoBomber::TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int le, int wi, bool col,
-                             float ac, const float maxVel, int HP, int length, int numTorpedos, int damage,
+                             float ac, int length, int numTorpedos, int damage,
                              std::string nat,WarShip &subject) : Vehicle(x,
                                                         y,
                                                         ac1,
@@ -13,7 +13,7 @@ TorpedoBomber::TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int
                                                         hp,
                                                         le,
                                                         wi,
-                                                        col, nat),subject_(subject) {
+                                                        col, nat),subject_(subject),numTorpedos(numTorpedos),torpedoDamage(damage) {
 
 }
 

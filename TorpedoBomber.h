@@ -16,7 +16,7 @@ private:
     WarShip &subject_;
 private:
     TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int le, int wi, bool col,
-                  float ac, const float maxVel, int HP, int length, int numTorpedos, int damage, std::string nat,WarShip &subject);
+                  float ac, int length, int numTorpedos, int damage, std::string nat,WarShip &subject);
 
     void launchTorpedo(Vehicle enemy);
 
