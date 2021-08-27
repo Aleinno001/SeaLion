@@ -56,9 +56,7 @@ std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
     return arsenalList;
 }
 
-std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
-    return vehicleList;
-}
+
 
 void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     if (collision) {   //FIXME da rivedere il comportamento post impatto

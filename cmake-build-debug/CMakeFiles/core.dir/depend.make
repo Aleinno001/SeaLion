@@ -8,6 +8,7 @@ CMakeFiles/core.dir/AircraftCarrier.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/AirplaneFactory.cpp.o: \
  ../AbstractAirplaneFactory.h \
@@ -22,6 +23,7 @@ CMakeFiles/core.dir/AntiAircraft.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Arsenal.cpp.o: \
  ../Arsenal.cpp \
@@ -36,12 +38,17 @@ CMakeFiles/core.dir/Battleship.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Bomber.cpp.o: \
+ ../Arsenal.h \
  ../Bomber.cpp \
  ../Bomber.h \
+ ../Bullet.h \
  ../CurrentDir.h \
- ../Vehicle.h
+ ../Vehicle.h \
+ ../WarPlanes.h \
+ ../WarShip.h
 CMakeFiles/core.dir/Bonus.cpp.o: \
  ../Arsenal.h \
  ../Bonus.cpp \
@@ -49,6 +56,7 @@ CMakeFiles/core.dir/Bonus.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/BonusFactory.cpp.o: \
  ../AbstractBonusFactory.h \
@@ -59,6 +67,7 @@ CMakeFiles/core.dir/BonusFactory.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Bullet.cpp.o: \
  ../Bullet.cpp \
@@ -75,6 +84,7 @@ CMakeFiles/core.dir/CannonFactory.cpp.o: \
  ../MediumCannon.h \
  ../StandardBullet.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Collision.cpp.o: \
  ../Collision.cpp \
@@ -86,6 +96,7 @@ CMakeFiles/core.dir/Cruiser.cpp.o: \
  ../Cruiser.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/CurrentDir.cpp.o: \
  ../CurrentDir.cpp \
@@ -97,6 +108,7 @@ CMakeFiles/core.dir/Destroyer.cpp.o: \
  ../Destroyer.cpp \
  ../Destroyer.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Dice.cpp.o: \
  ../Dice.cpp \
@@ -106,10 +118,14 @@ CMakeFiles/core.dir/ExplosiveBullet.cpp.o: \
  ../ExplosiveBullet.cpp \
  ../ExplosiveBullet.h
 CMakeFiles/core.dir/Fighter.cpp.o: \
+ ../Arsenal.h \
+ ../Bullet.h \
  ../CurrentDir.h \
  ../Fighter.cpp \
  ../Fighter.h \
- ../Vehicle.h
+ ../Vehicle.h \
+ ../WarPlanes.h \
+ ../WarShip.h
 CMakeFiles/core.dir/FireExtinguisher.cpp.o: \
  ../Arsenal.h \
  ../Bonus.h \
@@ -118,6 +134,7 @@ CMakeFiles/core.dir/FireExtinguisher.cpp.o: \
  ../FireExtinguisher.cpp \
  ../FireExtinguisher.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/GameTile.cpp.o: \
  ../AbstractShipFactory.h \
@@ -143,6 +160,7 @@ CMakeFiles/core.dir/GameTile.cpp.o: \
  ../Submarine.h \
  ../TorpedoTube.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h \
  ../WeaponFactory.h
 CMakeFiles/core.dir/GameWorld.cpp.o: \
@@ -170,6 +188,7 @@ CMakeFiles/core.dir/GameWorld.cpp.o: \
  ../Submarine.h \
  ../TorpedoTube.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h \
  ../WeaponFactory.h
 CMakeFiles/core.dir/HeavlyCannon.cpp.o: \
@@ -179,6 +198,7 @@ CMakeFiles/core.dir/HeavlyCannon.cpp.o: \
  ../HeavlyCannon.cpp \
  ../HeavlyCannon.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/LightCannon.cpp.o: \
  ../Arsenal.h \
@@ -187,6 +207,7 @@ CMakeFiles/core.dir/LightCannon.cpp.o: \
  ../LightCannon.cpp \
  ../LightCannon.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/MediumCannon.cpp.o: \
  ../Arsenal.h \
@@ -195,6 +216,7 @@ CMakeFiles/core.dir/MediumCannon.cpp.o: \
  ../MediumCannon.cpp \
  ../MediumCannon.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/PiercingBullet.cpp.o: \
  ../Bullet.h \
@@ -208,6 +230,7 @@ CMakeFiles/core.dir/QuickRepair.cpp.o: \
  ../QuickRepair.cpp \
  ../QuickRepair.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Radar.cpp.o: \
  ../Arsenal.h \
@@ -217,6 +240,7 @@ CMakeFiles/core.dir/Radar.cpp.o: \
  ../Radar.cpp \
  ../Radar.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/ShipFactory.cpp.o: \
  ../AbstractShipFactory.h \
@@ -243,6 +267,7 @@ CMakeFiles/core.dir/ShipFactory.cpp.o: \
  ../Submarine.h \
  ../TorpedoTube.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h \
  ../WeaponFactory.h
 CMakeFiles/core.dir/SmokeScreen.cpp.o: \
@@ -253,6 +278,7 @@ CMakeFiles/core.dir/SmokeScreen.cpp.o: \
  ../SmokeScreen.cpp \
  ../SmokeScreen.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Sonar.cpp.o: \
  ../Arsenal.h \
@@ -262,6 +288,7 @@ CMakeFiles/core.dir/Sonar.cpp.o: \
  ../Sonar.cpp \
  ../Sonar.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/SpeedBoost.cpp.o: \
  ../Arsenal.h \
@@ -271,6 +298,7 @@ CMakeFiles/core.dir/SpeedBoost.cpp.o: \
  ../SpeedBoost.cpp \
  ../SpeedBoost.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/StandardBullet.cpp.o: \
  ../Bullet.h \
@@ -283,12 +311,17 @@ CMakeFiles/core.dir/Submarine.cpp.o: \
  ../Submarine.cpp \
  ../Submarine.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/TorpedoBomber.cpp.o: \
+ ../Arsenal.h \
+ ../Bullet.h \
  ../CurrentDir.h \
  ../TorpedoBomber.cpp \
  ../TorpedoBomber.h \
- ../Vehicle.h
+ ../Vehicle.h \
+ ../WarPlanes.h \
+ ../WarShip.h
 CMakeFiles/core.dir/TorpedoTube.cpp.o: \
  ../Arsenal.h \
  ../Bullet.h \
@@ -296,6 +329,7 @@ CMakeFiles/core.dir/TorpedoTube.cpp.o: \
  ../TorpedoTube.cpp \
  ../TorpedoTube.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h
 CMakeFiles/core.dir/Vehicle.cpp.o: \
  ../Collision.h \
@@ -310,12 +344,17 @@ CMakeFiles/core.dir/View.cpp.o: \
  ../Vehicle.h \
  ../View.cpp \
  ../View.h \
+ ../WarPlanes.h \
  ../WarShip.h
+CMakeFiles/core.dir/WarPlanes.cpp.o: \
+ ../WarPlanes.cpp \
+ ../WarPlanes.h
 CMakeFiles/core.dir/WarShip.cpp.o: \
  ../Arsenal.h \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.cpp \
  ../WarShip.h
 CMakeFiles/core.dir/WeaponFactory.cpp.o: \
@@ -327,6 +366,7 @@ CMakeFiles/core.dir/WeaponFactory.cpp.o: \
  ../StandardBullet.h \
  ../TorpedoTube.h \
  ../Vehicle.h \
+ ../WarPlanes.h \
  ../WarShip.h \
  ../WeaponFactory.cpp \
  ../WeaponFactory.h
