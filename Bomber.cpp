@@ -4,7 +4,7 @@
 
 #include "Bomber.h"
 
-void Bomber::bombard(Vehicle enemy) {
+void Bomber::bombard(Vehicle &enemy) {
 
 }
 
@@ -26,9 +26,9 @@ Bomber::~Bomber() {
 }
 
 Bomber::Bomber(int x, int y, float ac1, float maxVel1, int hp, int le,
-               int wi, bool col, double X, double Y, float ac, const float maxVel, int HP,
+               int wi, bool col, float ac, const float maxVel, int HP,
                int length, int numBombs, int damage, std::string nat,WarShip &subject) : Vehicle(x, y, ac1, maxVel1, hp, le, wi, col,
-                                                                                nat), subject_(subject) {
+                                                                                nat), subject_(subject),bombDamage(damage),numBombs(numBombs) {
 
 
 }

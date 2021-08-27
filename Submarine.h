@@ -52,7 +52,7 @@ public:
     };
 
     void detachPlanes(const std::shared_ptr<WarPlanes> &warPlanes) override{
-        vehicleList.push_back(warPlanes);
+        vehicleList.remove(warPlanes);
     };
 
     ~Submarine() override{

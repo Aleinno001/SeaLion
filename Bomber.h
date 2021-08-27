@@ -18,10 +18,10 @@ private:
 public:
     //TODO Implementare i metodi
     Bomber(int x, int y, float ac1, float maxVel1, int hp, int le,
-           int wi, bool col, double X, double Y, float ac, const float maxVel, int HP,
+           int wi, bool col, float ac, const float maxVel, int HP,
            int length, int numBombs, int damage, std::string nat,WarShip &subject);
 
-    void bombard(Vehicle enemy);
+    void bombard(Vehicle &enemy);
 
     //float calcSpeed();
 
@@ -30,7 +30,9 @@ public:
     void calculateDistance(Vehicle target) override;
 
     void update(bool isDead) override;
-
+    void removeMeFromTheList() {
+        subject_.detachPlanes(std::shared_ptr<WarPlanes>(this));
+    }
     void updatePlanes(sf::Vector2f &vel,double mx) override;
 
 

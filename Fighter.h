@@ -12,7 +12,7 @@
 class Fighter : public Vehicle,WarPlanes {
 public:
     Fighter(int x, int y, float ac1, float maxVel1, int hp,
-            int le, int wi, bool col, double X, double Y, float ac,
+            int le, int wi, bool col,float ac,
             const float maxVel, int HP, int length, std::string nat,WarShip &subject);
 
 private:
@@ -28,7 +28,9 @@ private:
 
     void updatePlanes(sf::Vector2f &vel,double mx) override;
 
-
+    void removeMeFromTheList() {
+        subject_.detachPlanes(std::shared_ptr<WarPlanes>(this));
+    }
     ~Fighter() override;
 private:
     WarShip &subject_;
