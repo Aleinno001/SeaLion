@@ -32,13 +32,13 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
             }
             //controlla le eventuali collisioni ai bordi della finestra di gioco
             if (((iter->it->get()->getSprite().getPosition().x -
-                  iter->it->get()->getSprite().getLocalBounds().width / 2) <= 0) ||
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) < 0) ||
                 ((iter->it->get()->getSprite().getPosition().y -
-                  iter->it->get()->getSprite().getLocalBounds().height / 2) <= 0) ||
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) < 0) ||
                 ((iter->it->get()->getSprite().getPosition().x +
-                  iter->it->get()->getSprite().getLocalBounds().width / 2) >= window.getSize().x) ||
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
                 ((iter->it->get()->getSprite().getPosition().y +
-                  iter->it->get()->getSprite().getLocalBounds().height / 2) >= window.getSize().y)) {
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
                 iter->it->get()->setCollision(false);
                 std::cerr << "BORDER_COLLISION" << std::endl;
             }
