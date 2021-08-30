@@ -73,6 +73,9 @@ Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int a
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;
     }
+
+
+
 }
 
 void Battleship::calculateDistance(Vehicle target) {

@@ -6,16 +6,16 @@
 #define SEALION_FIGHTER_H
 
 #include "Vehicle.h"
-#include "WarPlanes.h"
+
 #include "WarShip.h"
 
-class Fighter : public Vehicle,WarPlanes {
+class Fighter : public Vehicle{
 public:
-    Fighter(int x, int y, float ac1, float maxVel1, int hp,
-            int le, int wi, bool col,float ac,
-            const float maxVel, int HP, int length, std::string nat,WarShip &subject);
-
+    Fighter(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat, WarShip &subject);
+    ~Fighter() override;
 private:
+
+
     void fight(Vehicle enemy);
 
     //float calcSpeed();
@@ -29,9 +29,10 @@ private:
     void updatePlanes(sf::Vector2f &vel,double mx) override;
 
     void removeMeFromTheList() {
-        subject_.detachPlanes(std::shared_ptr<WarPlanes>(this));
+        subject_.detachPlanes(std::shared_ptr<Vehicle>(this));
     }
-    ~Fighter() override;
+
+
 private:
     WarShip &subject_;
 };

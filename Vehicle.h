@@ -57,7 +57,7 @@ public:
 
     virtual void update(bool isDead);
 
-
+    virtual void updatePlanes(sf::Vector2f &vel,double mx); //metodo per design pattern observer tra Planes e Warship
 
     virtual ~Vehicle() = default;
 

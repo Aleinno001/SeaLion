@@ -38,11 +38,11 @@ public:
     };
     void notifyPlanes(sf::Vector2f &vel, double mx) override;
 
-    void attachPlanes(const std::shared_ptr<WarPlanes> &warPlanes) override{
+    void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
         vehicleList.push_back(warPlanes);
     };
 
-    void detachPlanes(const std::shared_ptr<WarPlanes> &warPlanes) override{
+    void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
         vehicleList.remove(warPlanes);
     };
     void stopMove() override;

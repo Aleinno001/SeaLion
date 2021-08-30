@@ -4,20 +4,13 @@
 
 #include "TorpedoBomber.h"
 
-TorpedoBomber::TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int le, int wi, bool col,
-                             float ac, int length, int numTorpedos, int damage,
-                             std::string nat,WarShip &subject) : Vehicle(x,
-                                                        y,
-                                                        ac1,
-                                                        maxVel1,
-                                                        hp,
-                                                        le,
-                                                        wi,
-                                                        col, nat),subject_(subject),numTorpedos(numTorpedos),torpedoDamage(damage) {
+TorpedoBomber::TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col,
+                             int numTorpedos, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),numTorpedos(numTorpedos),torpedoDamage(damage)  {
+
 
 }
 
-void TorpedoBomber::launchTorpedo(Vehicle enemy) {
+void TorpedoBomber::launchTorpedo(Vehicle &enemy) {
 
 }
 

@@ -6,13 +6,14 @@
 #define SEALION_WARSHIP_H
 
 #include <string>
-#include <memory>
+
 #include <vector>
 #include <list>
 #include "Vehicle.h"
 #include "Arsenal.h"
-#include "WarPlanes.h"
+
 #include <math.h>
+#include <memory>
 
 
 enum class ShipType {
@@ -98,7 +99,7 @@ public:
 protected:
 
     std::list<std::shared_ptr<Arsenal>> arsenalList;
-    std::list<std::shared_ptr<WarPlanes>> vehicleList;
+    std::list<std::shared_ptr<Vehicle>> vehicleList;
 
 public:
     WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
@@ -121,9 +122,9 @@ public:
 
     virtual void notifyPlanes(sf::Vector2f &vel,double mx)=0;//    Metodi per design pattern observer
 
-    virtual void attachPlanes(const std::shared_ptr<WarPlanes> &warPlanes)=0;//    Metodi per design pattern observer
+    virtual void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
 
-    virtual void detachPlanes(const std::shared_ptr<WarPlanes> &warPlanes)=0;//    Metodi per design pattern observer
+    virtual void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
 
     const int getArmour() const;
 
