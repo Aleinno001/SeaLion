@@ -5,7 +5,14 @@
 #include "Fighter.h"
 
 Fighter::Fighter(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject) {
+    std::string textureName="Fighter.png";
 
+    try {
+        setUpSprite("WarPlanes/" + textureName);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Wrong texture name" << std::endl;
+    }
 }
 
 void Fighter::fight(Vehicle enemy) {
