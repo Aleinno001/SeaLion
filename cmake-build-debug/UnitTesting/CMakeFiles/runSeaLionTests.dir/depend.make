@@ -367,10 +367,10 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
  ../Arsenal.h \
  ../Bullet.h \
- ../Cruiser.h \
  ../CurrentDir.h \
  ../Dice.h \
  ../GameTile.h \
+ ../LightCannon.h \
  ../UnitTesting/LightCannonFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h

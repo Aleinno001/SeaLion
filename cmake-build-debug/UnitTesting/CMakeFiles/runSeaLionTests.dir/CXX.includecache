@@ -332,10 +332,6 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/home/pala/CLionProjects/SeaLion/AircraftCarrier.h
-WarShip.h
-/home/pala/CLionProjects/SeaLion/WarShip.h
-
 /home/pala/CLionProjects/SeaLion/Arsenal.h
 cstdlib
 -
@@ -367,6 +363,10 @@ HeavlyCannon.h
 /home/pala/CLionProjects/SeaLion/HeavlyCannon.h
 StandardBullet.h
 /home/pala/CLionProjects/SeaLion/StandardBullet.h
+
+/home/pala/CLionProjects/SeaLion/Cruiser.h
+WarShip.h
+/home/pala/CLionProjects/SeaLion/WarShip.h
 
 /home/pala/CLionProjects/SeaLion/CurrentDir.h
 stdio.h
@@ -432,13 +432,15 @@ WarShip.h
 Bullet.h
 /home/pala/CLionProjects/SeaLion/Bullet.h
 
-/home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonTests.cpp
+/home/pala/CLionProjects/SeaLion/UnitTesting/MediumCannonTests.cpp
 gtest/gtest.h
 /home/pala/CLionProjects/SeaLion/UnitTesting/gtest/gtest.h
+../MediumCannon.h
+/home/pala/CLionProjects/SeaLion/MediumCannon.h
 ../LightCannon.h
 /home/pala/CLionProjects/SeaLion/LightCannon.h
-../AircraftCarrier.h
-/home/pala/CLionProjects/SeaLion/AircraftCarrier.h
+../Cruiser.h
+/home/pala/CLionProjects/SeaLion/Cruiser.h
 ../CannonFactory.h
 /home/pala/CLionProjects/SeaLion/CannonFactory.h
 

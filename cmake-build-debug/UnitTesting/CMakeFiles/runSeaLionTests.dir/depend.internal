@@ -367,10 +367,10 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h
  /home/pala/CLionProjects/SeaLion/Arsenal.h
  /home/pala/CLionProjects/SeaLion/Bullet.h
- /home/pala/CLionProjects/SeaLion/Cruiser.h
  /home/pala/CLionProjects/SeaLion/CurrentDir.h
  /home/pala/CLionProjects/SeaLion/Dice.h
  /home/pala/CLionProjects/SeaLion/GameTile.h
+ /home/pala/CLionProjects/SeaLion/LightCannon.h
  /home/pala/CLionProjects/SeaLion/UnitTesting/LightCannonFixture.cpp
  /home/pala/CLionProjects/SeaLion/Vehicle.h
  /home/pala/CLionProjects/SeaLion/WarShip.h

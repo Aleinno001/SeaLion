@@ -31,13 +31,13 @@ TEST(LightCannon, Constructor) {
 
 
     std::unique_ptr<LightCannon> lightCannon(
-            new LightCannon(250, 3, 250, 5, b, 0.3, 50, 200, posX + 2, posY + 3, 6, 4, "LightCannon",*GiuseppeGaribaldi));
+            new LightCannon(250, 3, 250, 5, b, static_cast<float>(0.3), 50, 200, posX + 2, posY + 3, 6, 4, "LightCannon",*GiuseppeGaribaldi));
 
     ASSERT_EQ(lightCannon->getRangeOfFire(),250);
     ASSERT_EQ(lightCannon->getReloadTime(),3);
     ASSERT_EQ(lightCannon->getAmmoSpeed(),250);
     ASSERT_EQ(lightCannon->getMaximumDispersion(),5);
-    ASSERT_EQ(lightCannon->getAmmoDeceleration(),0.3);
+    ASSERT_EQ(lightCannon->getAmmoDeceleration(),static_cast<float>(0.3));
     ASSERT_EQ(lightCannon->getFirepower(),50);
     ASSERT_EQ(lightCannon->getNumAmmo(),200);
     ASSERT_EQ(lightCannon->getPos().x,posX+2);
