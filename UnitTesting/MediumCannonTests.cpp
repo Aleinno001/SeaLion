@@ -24,7 +24,7 @@ TEST(MediumCannon, Constructor) {
    
 
     std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
-                                               "Japan", 4, 0, 5, antiAir,  v, shipHeight, shipWidth, true,
+                                               "Japan", 4, 0, 5, antiAir, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
                                                ModelType::Takao, 2));
 

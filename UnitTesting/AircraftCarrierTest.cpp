@@ -10,9 +10,9 @@ TEST(AircraftCarrier, Constructor) {
     int shipWidth = 84;
     int shipHeight = 296;
     int numAntiAir = 15;
-    std::list<std::unique_ptr<Vehicle>> v;
+    
     std::unique_ptr<AircraftCarrier> mid(new AircraftCarrier(1000, 1000, 1, 61, 640000, 520,
-                                                             "Usa", 2, 0, 0, numAntiAir,  v, shipHeight, shipWidth,
+                                                             "Usa", 2, 0, 0, numAntiAir, shipHeight, shipWidth,
                                                              true,
                                                              ShipType::AircraftCarrier, ModelType::Midway, 14));
     
@@ -40,7 +40,7 @@ TEST(AircraftCarrier, Constructor) {
 
     std::unique_ptr<AircraftCarrier> arkRoyal(
             new AircraftCarrier(1000,1000, 1, 56, 28160, 20,
-                                "Uk", 2, 0, 0, numAntiAir,  v, shipHeight, shipWidth, true, ShipType::AircraftCarrier,
+                                "Uk", 2, 0, 0, numAntiAir, shipHeight, shipWidth, true, ShipType::AircraftCarrier,
                                 ModelType::ArkRoyal, 7));
     
     ASSERT_EQ(arkRoyal->getPos().x,1000);
@@ -68,7 +68,7 @@ TEST(AircraftCarrier, Constructor) {
 
 
     std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
-            new AircraftCarrier(1000, 1000, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0,  v, shipHeight,
+            new AircraftCarrier(1000, 1000, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, shipHeight,
                                 shipWidth,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
@@ -98,7 +98,7 @@ TEST(AircraftCarrier, Constructor) {
     numAntiAir = 20;
 
     std::unique_ptr<AircraftCarrier> Tahio(
-            new AircraftCarrier(1000, 1000, 1, 61, 37866, 304, "Japan", 2, 0, 0, numAntiAir,  v,
+            new AircraftCarrier(1000, 1000, 1, 61, 37866, 304, "Japan", 2, 0, 0, numAntiAir,
                                 shipHeight,
                                 shipWidth,
                                 true,
@@ -132,7 +132,7 @@ TEST(AircraftCarrier, Constructor) {
 
 
     std::unique_ptr<AircraftCarrier> FranklinDRoosevelt(
-            new AircraftCarrier(1000,1000, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir,  v,
+            new AircraftCarrier(1000,1000, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir,
                                 shipHeight,
                                 shipWidth,
                                 true,
@@ -162,7 +162,7 @@ TEST(AircraftCarrier, Constructor) {
     numAntiAir = 6;
 
     std::unique_ptr<AircraftCarrier> Indomitable(
-            new AircraftCarrier(1000,1000, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir,  v,
+            new AircraftCarrier(1000,1000, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir,
                                 shipHeight,
                                 shipWidth,
                                 true,
@@ -197,7 +197,7 @@ TEST(AircraftCarrier, Constructor) {
 
 
     std::unique_ptr<AircraftCarrier> Cavour(
-            new AircraftCarrier(1000, 1000, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir,  v,
+            new AircraftCarrier(1000, 1000, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir,
                                 shipHeight,
                                 shipWidth,
                                 true,
@@ -231,7 +231,7 @@ TEST(AircraftCarrier, Constructor) {
 
 
     std::unique_ptr<AircraftCarrier> Hiryu(
-            new AircraftCarrier(1000, 1000, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir,  v,
+            new AircraftCarrier(1000, 1000, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir,
                                 shipHeight,
                                 shipWidth,
                                 true,

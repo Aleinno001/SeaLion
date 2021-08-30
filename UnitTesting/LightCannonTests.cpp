@@ -22,7 +22,7 @@ TEST(LightCannon, Constructor) {
 
 
     std::unique_ptr<AircraftCarrier> GiuseppeGaribaldi(
-            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, v, shipHeight,
+            new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, shipHeight,
                                 shipWidth,
                                 true,
                                 ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));

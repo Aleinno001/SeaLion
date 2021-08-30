@@ -9,8 +9,8 @@ TEST(Battleship, Constructor) {
     int numAntiAir = 80;
     int shipWidth = 37;
     int shipHeight = 281;
-    std::list<std::unique_ptr<Vehicle>> v;
-    std::unique_ptr<Battleship> montana(new Battleship(1000,1000,1, 52, 72104, 1810,"Usa", 0, 4, 10, numAntiAir, v, shipHeight, shipWidth, true,ShipType::Battleship,ModelType::Montana, 2));
+
+    std::unique_ptr<Battleship> montana(new Battleship(1000,1000,1, 52, 72104, 1810,"Usa", 0, 4, 10, numAntiAir, shipHeight, shipWidth, true,ShipType::Battleship,ModelType::Montana, 2));
 
     ASSERT_EQ(montana->getPos().x,1000);
     ASSERT_EQ(montana->getPos().y,1000);
@@ -37,7 +37,7 @@ TEST(Battleship, Constructor) {
 
     std::unique_ptr<Battleship> imperatoreAugusto(
             new Battleship(1000,1000, 1, 57, 65232, 1126,
-                           "Italy", 16, 4, 10, numAntiAir,  v, shipHeight, shipWidth, true,
+                           "Italy", 16, 4, 10, numAntiAir,  shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::ImperatoreAugusto, 0));
 
@@ -65,7 +65,7 @@ TEST(Battleship, Constructor) {
     
     numAntiAir = 18;
     std::unique_ptr<Battleship> kongo(new Battleship(1000, 1000, 1, 56, 37187, 592,
-                                                     "Japan", 6, 4, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                                                     "Japan", 6, 4, 0, numAntiAir,  shipHeight, shipWidth, true,
                                                      ShipType::Battleship,
                                                      ModelType::Kongo, 0));
     
@@ -94,7 +94,7 @@ TEST(Battleship, Constructor) {
     numAntiAir = 30;
 
     std::unique_ptr<Battleship> musashi(new Battleship(1000,1000, 1, 51, 72809, 1540,
-                                                       "Japan", 6, 3, 2, numAntiAir,  v, shipHeight, shipWidth, true,
+                                                       "Japan", 6, 3, 2, numAntiAir,  shipHeight, shipWidth, true,
                                                        ShipType::Battleship,
                                                        ModelType::Musashi, 2));
     
@@ -123,7 +123,7 @@ TEST(Battleship, Constructor) {
     numAntiAir = 20;
     std::unique_ptr<Battleship> dreadNought(
             new Battleship(1000,1000, 1, 39, 21060, 837,
-                           "Uk", 0, 5, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           "Uk", 0, 5, 0, numAntiAir,  shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::Dreadnought, 0));
     
@@ -150,7 +150,7 @@ TEST(Battleship, Constructor) {
     numAntiAir = 10;
     std::unique_ptr<Battleship> lion(
             new Battleship(1000,1000, 1, 52, 49670, 944,
-                           "Uk", 0, 4, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           "Uk", 0, 4, 0, numAntiAir,  shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::Lion, 0));
     
@@ -180,7 +180,7 @@ TEST(Battleship, Constructor) {
 
     std::unique_ptr<Battleship> northCarolina(
             new Battleship(1000,1000, 1, 52, 45500, 1224,
-                           "Usa", 6, 2, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           "Usa", 6, 2, 0, numAntiAir,  shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::NorthCarolina, 3));
 
@@ -212,7 +212,7 @@ TEST(Battleship, Constructor) {
     numAntiAir = 15;
     std::unique_ptr<Battleship> ironDuke(
             new Battleship(1000, 1000, 1, 39, 29500, 826,
-                           "Uk", 0, 5, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           "Uk", 0, 5, 0, numAntiAir,  shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::IronDuke, 0));
 
@@ -242,7 +242,7 @@ TEST(Battleship, Constructor) {
     numAntiAir = 32;
 
     std::unique_ptr<Battleship> VittorioVeneto(
-            new Battleship(1000,1000, 1, 56, 45963, 862, "Italy", 12, 4, 4, numAntiAir,  v,
+            new Battleship(1000,1000, 1, 56, 45963, 862, "Italy", 12, 4, 4, numAntiAir, 
                            shipHeight,
                            shipWidth,
                            true,
@@ -273,7 +273,7 @@ TEST(Battleship, Constructor) {
 
     std::unique_ptr<Battleship> NewYork(
             new Battleship(1000,1000, 1, 39, 28822, 939,
-                           "Usa", 0, 5, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                           "Usa", 0, 5, 0, numAntiAir,  shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::NewYork, 0));
     
@@ -303,7 +303,7 @@ TEST(Battleship, Constructor) {
 
     std::unique_ptr<Battleship> Arizona(
             new Battleship(1000, 1000, 1, 39, 32429, 1536,
-                           "Usa", 8, 4, 0, numAntiAir,  v, 185, 32, true,
+                           "Usa", 8, 4, 0, numAntiAir,  185, 32, true,
                            ShipType::Battleship,
                            ModelType::Arizona, 0));    
     
@@ -332,7 +332,7 @@ TEST(Battleship, Constructor) {
     numAntiAir = 20;
 
     std::unique_ptr<Battleship> Hood(
-            new Battleship(1000,1000, 1, 54, 49136, 800, "Uk", 0, 2, 2,numAntiAir,  v, shipHeight,
+            new Battleship(1000,1000, 1, 54, 49136, 800, "Uk", 0, 2, 2,numAntiAir,  shipHeight,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::Hood, 0));
@@ -360,7 +360,7 @@ TEST(Battleship, Constructor) {
 
     numAntiAir = 14;
     std::unique_ptr<Battleship> MichelangeloBuonarroti(
-            new Battleship(1000,1000, 1, 61, 42533, 837, "Italy", 12, 3, 6, numAntiAir,  v,
+            new Battleship(1000,1000, 1, 61, 42533, 837, "Italy", 12, 3, 6, numAntiAir, 
                            shipHeight,
                            shipWidth,
                            true,
@@ -392,7 +392,7 @@ TEST(Battleship, Constructor) {
 
     numAntiAir = 13;
     std::unique_ptr<Battleship> AndreaDoria(
-            new Battleship(1000,1000, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir,  v,
+            new Battleship(1000,1000, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir, 
                            shipHeight,
                            shipWidth,
                            true,
@@ -423,7 +423,7 @@ TEST(Battleship, Constructor) {
 
 
     std::unique_ptr<Battleship> Yamato(
-            new Battleship(1000,1000, 1, 50, 71659, 1286, "Japan", 12, 3, 2, numAntiAir,  v,
+            new Battleship(1000,1000, 1, 50, 71659, 1286, "Japan", 12, 3, 2, numAntiAir, 
                            shipHeight,
                            shipWidth,
                            true,
@@ -455,7 +455,7 @@ TEST(Battleship, Constructor) {
  
     
     std::unique_ptr<Battleship> Ise(
-            new Battleship(1000,1000, 1, 45, 40444, 705, "Japan", 8, 4, 0, numAntiAir,  v, shipHeight,
+            new Battleship(1000,1000, 1, 45, 40444, 705, "Japan", 8, 4, 0, numAntiAir,  shipHeight,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::ISE, 2));

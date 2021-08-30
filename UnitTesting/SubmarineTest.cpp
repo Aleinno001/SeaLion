@@ -8,9 +8,9 @@
 TEST(Submarine, Constructor) {
     int shipWidth = 9;
     int shipHeight = 95;
-    std::list<std::unique_ptr<Vehicle>> v;
+
     std::unique_ptr<Submarine> Gato(
-            new Submarine(1000,1000, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+            new Submarine(1000,1000, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Gato, 6, false));
     
     ASSERT_EQ(Gato->getPos().x,1000);
@@ -38,7 +38,7 @@ TEST(Submarine, Constructor) {
 
 
     std::unique_ptr<Submarine> Triton(
-            new Submarine(1000,1000, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+            new Submarine(1000,1000, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Triton, 6, false));
 
     ASSERT_EQ(Triton->getPos().x,1000);
@@ -67,7 +67,7 @@ TEST(Submarine, Constructor) {
 
 
     std::unique_ptr<Submarine> DaVinci(
-            new Submarine(1000,1000, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+            new Submarine(1000,1000, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::DaVinci, 8, false));
 
     ASSERT_EQ(DaVinci->getPos().x,1000);
@@ -94,7 +94,7 @@ TEST(Submarine, Constructor) {
     shipHeight = 111;
 
     std::unique_ptr<Submarine> typeb1(
-            new Submarine(1000,1000, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0,  v, shipHeight, shipWidth,
+            new Submarine(1000,1000, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, shipHeight, shipWidth,
                           true,
                           ShipType::Submarine, ModelType::typeb1, 6,
                           false));
@@ -124,7 +124,7 @@ TEST(Submarine, Constructor) {
 
 
     std::unique_ptr<Submarine> i400(
-            new Submarine(1000,1000, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0,  v, shipHeight, shipWidth,
+            new Submarine(1000,1000, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, shipHeight, shipWidth,
                           true,
                           ShipType::Submarine, ModelType::I400, 8, false));
 
@@ -155,7 +155,7 @@ TEST(Submarine, Constructor) {
 
   
     std::unique_ptr<Submarine> Narwhal(
-            new Submarine(1000,1000, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+            new Submarine(1000,1000, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Narwhal, 4, false));
 
 
@@ -183,7 +183,7 @@ TEST(Submarine, Constructor) {
     shipHeight = 85;
 
     std::unique_ptr<Submarine> Trenchant(
-            new Submarine(1000,1000, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0,  v, shipHeight, shipWidth, true,
+            new Submarine(1000,1000, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, shipHeight, shipWidth, true,
                           ShipType::Submarine, ModelType::Trenchant, 5, false));
 
 
@@ -214,7 +214,7 @@ TEST(Submarine, Constructor) {
 
 
     std::unique_ptr<Submarine> Papa(
-            new Submarine(1000,1000, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0,  v, shipHeight, shipWidth,
+            new Submarine(1000,1000, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, shipHeight, shipWidth,
                           true,
                           ShipType::Submarine, ModelType::Papa,10, false));
 

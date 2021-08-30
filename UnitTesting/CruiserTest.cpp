@@ -3,6 +3,8 @@
 //
 #include "gtest/gtest.h"
 #include "../GameTile.h"
+#include "../Cruiser.h"
+#include "../CannonFactory.h"
 
 
 TEST(Cruiser, Constructor) {
@@ -11,7 +13,7 @@ TEST(Cruiser, Constructor) {
     int shipHeight = 130;
     int antiAir = 8;
     
-    std::list<std::unique_ptr<Vehicle>> v;
+
 
     std::unique_ptr<Cruiser> saintLouis(
             new Cruiser(
@@ -26,7 +28,7 @@ TEST(Cruiser, Constructor) {
                     0,
                     3,
                     antiAir,
-                    v,
+                  
                     shipHeight,
                     shipWidth,
                     true,
@@ -64,7 +66,7 @@ TEST(Cruiser, Constructor) {
 
 
     std::unique_ptr<Cruiser> alaska(new Cruiser(1000,1000, 3, 61, 34803, 918,
-                                                "Usa", 6, 1, 2, antiAir,  v, shipHeight, shipWidth, true,
+                                                "Usa", 6, 1, 2, antiAir, shipHeight, shipWidth, true,
                                                 ShipType::Cruiser,
                                                 ModelType::Alaska,4));
     
@@ -91,7 +93,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 7;
 
     std::unique_ptr<Cruiser> danae(new Cruiser(1000,1000, 3, 54, 5925, 190,
-                                               "Uk", 6, 0, 1, antiAir,  v, shipHeight, shipWidth, true,
+                                               "Uk", 6, 0, 1, antiAir, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
                                                ModelType::Danae, 0));
     
@@ -120,7 +122,7 @@ TEST(Cruiser, Constructor) {
 
 
     std::unique_ptr<Cruiser> trento(new Cruiser(1000,1000, 3, 66, 13548, 120,
-                                                "Italy", 6, 0, 4, antiAir,  v, shipHeight, shipWidth, true,
+                                                "Italy", 6, 0, 4, antiAir, shipHeight, shipWidth, true,
                                                 ShipType::Cruiser,
                                                 ModelType::Trento, 2));
     
@@ -156,7 +158,7 @@ TEST(Cruiser, Constructor) {
 
 
     std::unique_ptr<Cruiser> albertoDiGiussano(new Cruiser(1000,1000, 3, 69, 6950, 84,
-                                                           "Italy", 3, 0, 4, antiAir,  v, shipHeight, shipWidth, true,
+                                                           "Italy", 3, 0, 4, antiAir, shipHeight, shipWidth, true,
                                                            ShipType::Cruiser,
                                                            ModelType::AlbertoDiGiussano, 1));
     
@@ -190,7 +192,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 16;
 
     std::unique_ptr<Cruiser> takao(new Cruiser(1000,1000, 3, 66, 15500, 237,
-                                               "Japan", 4, 0, 5, antiAir,  v, shipHeight, shipWidth, true,
+                                               "Japan", 4, 0, 5, antiAir, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
                                                ModelType::Takao, 2));
     
@@ -221,7 +223,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 12;
 
     std::unique_ptr<Cruiser> NewOrleans(
-            new Cruiser(1000,1000, 3, 61, 12663, 476, "Usa", 6, 0, 3, antiAir,  v, shipHeight,
+            new Cruiser(1000,1000, 3, 61, 12663, 476, "Usa", 6, 0, 3, antiAir, shipHeight,
                         shipWidth,
                         true,
                         ShipType::Cruiser, ModelType::NewOrleans, 0));
@@ -256,7 +258,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 7;
 
     std::unique_ptr<Cruiser> Tiger59(
-            new Cruiser(1000, 1000, 3, 58, 12080, 191, "Uk", 6, 0, 4, antiAir,  v, shipHeight,
+            new Cruiser(1000, 1000, 3, 58, 12080, 191, "Uk", 6, 0, 4, antiAir, shipHeight,
                         shipWidth,
                         true,
                         ShipType::Cruiser, ModelType::Tiger59, 2));
@@ -289,7 +291,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 12;
 
     std::unique_ptr<Cruiser> Belfast(
-            new Cruiser(1000,1000, 3, 59, 11550, 228, "Uk", 6, 0, 4, antiAir,  v, shipHeight,
+            new Cruiser(1000,1000, 3, 59, 11550, 228, "Uk", 6, 0, 4, antiAir, shipHeight,
                         shipWidth,
                         true,
                         ShipType::Cruiser, ModelType::Belfast, 1));
@@ -321,7 +323,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 12;
 
     std::unique_ptr<Cruiser> Gorizia(
-            new Cruiser(1000,1000, 3, 59, 14330, 370, "Italy", 6, 0, 4, antiAir,  v, shipHeight,
+            new Cruiser(1000,1000, 3, 59, 14330, 370, "Italy", 6, 0, 4, antiAir, shipHeight,
                         shipWidth,
                         true,
                         ShipType::Cruiser, ModelType::Gorizia, 0));
@@ -352,7 +354,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 6;
 
     std::unique_ptr<Cruiser> IsuzuNagara(
-            new Cruiser(1000,1000, 3, 67, 5700, 90, "Japan", 5, 0, 3, antiAir,  v, shipHeight,
+            new Cruiser(1000,1000, 3, 67, 5700, 90, "Japan", 5, 0, 3, antiAir, shipHeight,
                         shipWidth,
                         true,
                         ShipType::Cruiser, ModelType::IsuzuNagara, 1));
@@ -385,7 +387,7 @@ TEST(Cruiser, Constructor) {
     antiAir = 10;
 
     std::unique_ptr<Cruiser> Ijn(
-            new Cruiser(1000,1000, 3, 66, 15500, 230, "Japan", 4, 0, 4, antiAir,  v, shipHeight,
+            new Cruiser(1000,1000, 3, 66, 15500, 230, "Japan", 4, 0, 4, antiAir, shipHeight,
                         shipWidth,
                         true,
                         ShipType::Cruiser, ModelType::Ijn, 2));

@@ -26,6 +26,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierFixture.cpp.o: \
  ../Arsenal.h \
  ../Bullet.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/AircraftCarrierFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -54,6 +56,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/AircraftCarrierTest.cpp.o: \
  ../Arsenal.h \
  ../Bullet.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/AircraftCarrierTest.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -82,6 +86,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipFixture.cpp.o: \
  ../Battleship.h \
  ../Bullet.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/BattleshipFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -110,6 +116,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.o: \
  ../Battleship.h \
  ../Bullet.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/BattleshipTest.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -138,6 +146,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserFixture.cpp.o: \
  ../Bullet.h \
  ../Cruiser.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/CruiserFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -162,31 +172,21 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/CruiserTest.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
- ../AbstractShipFactory.h \
- ../AircraftCarrier.h \
- ../AntiAircraft.h \
  ../Arsenal.h \
  ../ArsenalFactory.h \
- ../Battleship.h \
  ../Bullet.h \
  ../CannonFactory.h \
  ../Cruiser.h \
  ../CurrentDir.h \
- ../Destroyer.h \
  ../Dice.h \
  ../GameTile.h \
  ../HeavlyCannon.h \
  ../LightCannon.h \
  ../MediumCannon.h \
- ../ShipFactory.h \
- ../SpecialWeaponFactory.h \
  ../StandardBullet.h \
- ../Submarine.h \
- ../TorpedoTube.h \
  ../UnitTesting/CruiserTest.cpp \
  ../Vehicle.h \
- ../WarShip.h \
- ../WeaponFactory.h
+ ../WarShip.h
 UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
@@ -212,6 +212,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerFixture.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Destroyer.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/DestroyerFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -240,6 +242,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.o: \
  ../Bullet.h \
  ../CurrentDir.h \
  ../Destroyer.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/DestroyerTest.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -264,31 +268,10 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
- ../AbstractShipFactory.h \
- ../AircraftCarrier.h \
- ../AntiAircraft.h \
- ../Arsenal.h \
- ../ArsenalFactory.h \
- ../Battleship.h \
- ../Bullet.h \
- ../CannonFactory.h \
- ../Cruiser.h \
  ../CurrentDir.h \
- ../Destroyer.h \
  ../Dice.h \
  ../GameTile.h \
- ../HeavlyCannon.h \
- ../LightCannon.h \
- ../MediumCannon.h \
- ../ShipFactory.h \
- ../SpecialWeaponFactory.h \
- ../StandardBullet.h \
- ../Submarine.h \
- ../TorpedoTube.h \
- ../UnitTesting/GameTileFixture.cpp \
- ../Vehicle.h \
- ../WarShip.h \
- ../WeaponFactory.h
+ ../UnitTesting/GameTileFixture.cpp
 UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
@@ -310,31 +293,10 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
- ../AbstractShipFactory.h \
- ../AircraftCarrier.h \
- ../AntiAircraft.h \
- ../Arsenal.h \
- ../ArsenalFactory.h \
- ../Battleship.h \
- ../Bullet.h \
- ../CannonFactory.h \
- ../Cruiser.h \
  ../CurrentDir.h \
- ../Destroyer.h \
  ../Dice.h \
  ../GameTile.h \
- ../HeavlyCannon.h \
- ../LightCannon.h \
- ../MediumCannon.h \
- ../ShipFactory.h \
- ../SpecialWeaponFactory.h \
- ../StandardBullet.h \
- ../Submarine.h \
- ../TorpedoTube.h \
- ../UnitTesting/GameTileTest.cpp \
- ../Vehicle.h \
- ../WarShip.h \
- ../WeaponFactory.h
+ ../UnitTesting/GameTileTest.cpp
 UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
@@ -407,6 +369,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o: \
  ../Bullet.h \
  ../Cruiser.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/LightCannonFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -431,31 +395,87 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
- ../AbstractShipFactory.h \
  ../AircraftCarrier.h \
- ../AntiAircraft.h \
  ../Arsenal.h \
  ../ArsenalFactory.h \
- ../Battleship.h \
  ../Bullet.h \
  ../CannonFactory.h \
- ../Cruiser.h \
  ../CurrentDir.h \
- ../Destroyer.h \
  ../Dice.h \
  ../GameTile.h \
  ../HeavlyCannon.h \
  ../LightCannon.h \
  ../MediumCannon.h \
- ../ShipFactory.h \
- ../SpecialWeaponFactory.h \
  ../StandardBullet.h \
- ../Submarine.h \
- ../TorpedoTube.h \
  ../UnitTesting/LightCannonTests.cpp \
  ../Vehicle.h \
- ../WarShip.h \
- ../WeaponFactory.h
+ ../WarShip.h
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o: \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-message.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-param-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-test-part.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-typed-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_pred_impl.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_prod.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-filepath.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-param-util.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port-arch.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
+ ../Arsenal.h \
+ ../Bullet.h \
+ ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
+ ../MediumCannon.h \
+ ../UnitTesting/MediumCannonFixture.cpp \
+ ../Vehicle.h \
+ ../WarShip.h
+UnitTesting/CMakeFiles/runSeaLionTests.dir/MediumCannonTests.cpp.o: \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-message.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-param-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-test-part.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-typed-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_pred_impl.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_prod.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-filepath.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-param-util.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port-arch.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
+ ../Arsenal.h \
+ ../ArsenalFactory.h \
+ ../Bullet.h \
+ ../CannonFactory.h \
+ ../Cruiser.h \
+ ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
+ ../HeavlyCannon.h \
+ ../LightCannon.h \
+ ../MediumCannon.h \
+ ../StandardBullet.h \
+ ../UnitTesting/MediumCannonTests.cpp \
+ ../Vehicle.h \
+ ../WarShip.h
 UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
@@ -481,6 +501,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineFixture.cpp.o: \
  ../Battleship.h \
  ../Bullet.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../UnitTesting/SubmarineFixture.cpp \
  ../Vehicle.h \
  ../WarShip.h
@@ -508,6 +530,8 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.o: \
  ../Arsenal.h \
  ../Bullet.h \
  ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
  ../Submarine.h \
  ../UnitTesting/SubmarineTest.cpp \
  ../Vehicle.h \
