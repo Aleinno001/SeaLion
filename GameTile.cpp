@@ -27,7 +27,7 @@ GameTile::GameTile(std::string textureName, int x, int y, bool collision, bool e
     setUpSprite(textureName);
     pos = sf::Vector2f(x, y);
     sprite.setPosition(pos);
-    isPassable = collision;
+    isPassable = !collision;
     isExit = exit;
     tileType = tp;
 

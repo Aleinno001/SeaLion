@@ -11,9 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GameTile.h"
-#include "WarShip.h"
-#include "Vehicle.h"
-#include "ShipFactory.h"
+#include "CurrentDir.h"
 #include <string>
 #include <memory>
 #include <list>

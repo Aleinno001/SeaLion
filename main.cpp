@@ -212,7 +212,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
     auto enemyIterStart = gameWorld.getEnemyFleet().begin();
     auto enemyIterEnd = gameWorld.getEnemyFleet().end();
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
-        iter->get()->searchTarget(enemyIterStart, enemyIterEnd);
+        iter->get()->searchTarget(enemyIterStart, enemyIterEnd, gameWorld.getTiles());
     }
 
 }
