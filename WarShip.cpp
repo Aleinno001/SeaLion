@@ -121,69 +121,47 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
     bool result = true;
-    float m, q, y, x, dx, dy;
-    float inc;
+    float y, x;
     if (!target->get()->isConcealed()) {
-        dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-        dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
-        for (int i = 0; i < tileVector.size(); i++) {                   //FIXME scorre male
-            for (int j = 0; j < tileVector[i].size(); j++) {
-                if (target->get()->getSprite().getPosition().x != iter->get()->getSprite().getPosition().x) {
-                    m = -(dy / dx);
-                    q = -iter->get()->getSprite().getPosition().y - m * (iter->get()->getSprite().getPosition().x);
-                } else {
-                    //TODO caso retta verticale
-                    m = 0;
-                    q = target->get()->getSprite().getPosition().y;
-                }
-                x = iter->get()->getSprite().getPosition().x;
-                if (abs(dx) > abs(dy)) {
-                    inc = dx / 30;
-                } else {
-                    inc = dy / 30;
-                    inc = dx * inc / dy;
-                }
-                int i = 0;
-                while (abs(x - target->get()->getSprite().getPosition().x) > inc ||
-                       abs(y - target->get()->getSprite().getPosition().y) > inc) {
-                    i++;
-                    std::cerr << "i: " << i << std::endl;
-                    y = -(m * x + q);
-                    std::cerr << "inc: " << inc << std::endl;
-                    std::cerr << "dx: " << dx << std::endl;
-                    std::cerr << "dy: " << dy << std::endl;
-                    std::cerr << "x: " << x << std::endl;
-                    std::cerr << "y: " << y << std::endl;
-                    std::cerr << "I'm in the while" << std::endl;
-                    if ((tileVector[i][j]->getSprite().getPosition().x < x &&
-                         (tileVector[i][j]->getSprite().getPosition().x +
-                          tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
-                        (tileVector[i][j]->getSprite().getPosition().y < y &&
-                         (tileVector[i][j]->getSprite().getPosition().y +
-                          tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
-                        std::cerr << "I'm in the tile" << std::endl;
-                        if (!tileVector[i][j]->isPassable) {
-                            std::cerr << "Bro swag non girare " << std::endl;
-                            return result = false;
-                        }
-                    }
-                    if (m != 0) {
-                        if (x > target->get()->getSprite().getPosition().x) {
-                            x = x + inc;
-                        } else {
-                            x = x - inc;
-                        }
-                    } else {
-                        if (y < target->get()->getSprite().getPosition().y) {
-                            q = q + inc;
-                        } else {
-                            q = q - inc;
-                        }
-                    }
+        int i, j;
+        float mx;
+        x = iter->get()->getSprite().getPosition().x;
+        y = iter->get()->getSprite().getPosition().y;
+        double dy = target->get()->getSprite().getPosition().y- iter->get()->getSprite().getPosition().y;
+        double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
+        mx = 90 + atan2(dy, dx) * 180 / M_PI;
+
+        if (mx < 0) {
+            mx = 360 + mx;
+        }
+        int k = 0;
+        while (abs(target->get()->getSprite().getPosition().x - x) >= 15 || abs(target->get()->getSprite().getPosition().y - y) >= 15 ) {
+            k++;
+            std::cerr << "Y: " << y << std::endl;
+            x = x + sinf((M_PI / 180.f) * mx);
+            y = y - cosf((M_PI / 180.f) * mx);
+            std::cerr << "k: " << k << std::endl;
+            std::cerr << "x: " << x << std::endl;
+            std::cerr << "y: " << y << std::endl;
+            std::cerr << "I'm in the while" << std::endl;
+            i = y/30;
+            j = x/30;
+            if ((tileVector[i][j]->getSprite().getPosition().x < x &&
+                 (tileVector[i][j]->getSprite().getPosition().x +
+                  tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
+                (tileVector[i][j]->getSprite().getPosition().y < y &&
+                 (tileVector[i][j]->getSprite().getPosition().y +
+                  tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
+                std::cerr << "I'm in the tile" << std::endl;
+                if (!tileVector[i][j]->isPassable) {
+                    std::cerr << "Bro swag non girare " << std::endl;
+                    return result = false;
                 }
             }
         }
     }
+
+
     return result;
 }
 
