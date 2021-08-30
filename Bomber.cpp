@@ -27,7 +27,12 @@ Bomber::~Bomber() {
 
 
 void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
-
+    sprite.setPosition(sprite.getPosition() + vel);
+    sprite.setRotation(sprite.getRotation() + mx);
+    sf::Transform rotation;
+    rotation.rotate(mx, subject_.getSprite().getPosition());
+    sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
+    sprite.setPosition(newPosition);
 }
 
 Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),bombDamage(damage),numBombs(numBombs) {

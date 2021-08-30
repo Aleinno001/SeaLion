@@ -39,6 +39,10 @@ TorpedoBomber::~TorpedoBomber() {
 
 }
 
-void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
-
+void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {    sprite.setPosition(sprite.getPosition() + vel);
+    sprite.setRotation(sprite.getRotation() + mx);
+    sf::Transform rotation;
+    rotation.rotate(mx, subject_.getSprite().getPosition());
+    sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
+    sprite.setPosition(newPosition);
 }
