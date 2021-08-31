@@ -147,7 +147,7 @@ public:
 
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 
-    std::list<std::unique_ptr<Vehicle>> &getVehicleList();
+    const std::list<std::shared_ptr<Vehicle>> &getVehicleList() const;
 
     bool searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,

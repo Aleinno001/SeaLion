@@ -1562,14 +1562,18 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     Cavour->attach(std::move(factory.createLight(cannonPosX + 31, cannonPosY + 23,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 29, cannonPosY + 78,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 26, cannonPosY + 171,*Cavour)));
-    for (int i = 0; i < numAntiAir; i++)
-        Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
 
     Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+5,cannonPosY+30,*Cavour)));
     Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+5,cannonPosY+40,*Cavour)));
     Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+5,cannonPosY+50,*Cavour)));
     Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+5,cannonPosY+60,*Cavour)));
     Cavour->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+5,cannonPosY+70,*Cavour)));
+
+    for (int i = 0; i < numAntiAir; i++)
+        Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
+
+
+
     return Cavour;
 }
 

@@ -229,3 +229,8 @@ bool WarShip::isConcealed() const {
 void WarShip::setConcealed(bool isConcealed) {
     WarShip::concealed = isConcealed;
 }
+
+const std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList() const {
+    return vehicleList;
+}
+
