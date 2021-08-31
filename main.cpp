@@ -401,22 +401,31 @@ int main() {
 
         }
 
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld,tileDim,window);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
 
         sf::Time time = clock.getElapsedTime();
-        int fps = 1.0f/time.asSeconds();
+        int fps = 1.0f / time.asSeconds();
         std::string currentDir = CurrentDir::GetCurrentWorkingDir();
-        sf::Text text;
+        sf::Text fpsCount;
+        sf::Text fpsText;
         sf::Font arialFont;
-        if(!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")){
+        if (!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")) {
             std::cerr << "Impossibile caricare il font" << std::endl;
         }
-        text.setFont(arialFont);
-        text.setString(std::to_string(fps));
-        text.setCharacterSize(30);
-        text.setFillColor(sf::Color::Yellow);
-        text.setPosition(0,0);
-        window.draw(text);
+        fpsText.setFont(arialFont);
+        fpsText.setString("FPS:");
+        fpsText.setCharacterSize(20);
+        fpsText.setFillColor(sf::Color::Yellow);
+        fpsText.setPosition(0, 0);
+
+        fpsCount.setFont(arialFont);
+        fpsCount.setString(std::to_string(fps));
+        fpsCount.setCharacterSize(20);
+        fpsCount.setFillColor(sf::Color::Yellow);
+        fpsCount.setPosition(50, 0);
+
+        window.draw(fpsText);
+        window.draw(fpsCount);
 
         window.display();
     }
