@@ -22,5 +22,7 @@ std::unique_ptr<Vehicle> AirplaneFactory::createTorpedoBomber(int posX, int posY
 
 std::unique_ptr<Vehicle> AirplaneFactory::createFighter(int posX, int posY,WarShip &subject) {
 
+    std::unique_ptr<Fighter> fighter(new Fighter(posX,posY,5,80,300,27,15,true,"Fighter",subject));
+    return std::move(fighter);
 
 }
