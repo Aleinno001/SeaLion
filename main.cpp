@@ -378,26 +378,32 @@ int main() {
 
         }
 
-        for (auto it = gameWorld.getEnemyFleet().begin(); it != gameWorld.getEnemyFleet().end(); ++it) {
-            window.draw(it->get()->getSprite());
+        for (auto & it : gameWorld.getEnemyFleet()) {
+            window.draw(it->getSprite());
 
-            for (auto const &itArsenal : it->get()->getArsenalList()) {
-
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+            for (auto const &itArsenal : it->getArsenalList())
+                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube")
                     window.draw(itArsenal->getSprite());
-                }
-            }
+
+
+            if(it->getShipType()==ShipType::AircraftCarrier)
+                for(auto const &itPlanes : it->getVehicleList())
+                    window.draw(itPlanes->getSprite());
+
         }
 
-        for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end(); ++it) {
-            window.draw(it->get()->getSprite());
+        for (auto & it : gameWorld.getAlliedFleet()) {
+            window.draw(it->getSprite());
 
-            for (auto const &itArsenal : it->get()->getArsenalList()) {
-
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+            for (auto const &itArsenal : it->getArsenalList())
+                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube")
                     window.draw(itArsenal->getSprite());
-                }
-            }
+
+            if(it->getShipType()==ShipType::AircraftCarrier)
+                for(auto const &itPlanes : it->getVehicleList())
+                    window.draw(itPlanes->getSprite());
+
+
 
         }
 
