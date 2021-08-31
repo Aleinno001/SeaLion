@@ -36,7 +36,7 @@ void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
 }
 
 Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),bombDamage(damage),numBombs(numBombs) {
-    std::string textureName="Bomber.png";
+    std::string textureName="Bomber";
 
     try {
         setUpSprite("WarPlanes/" + textureName);
