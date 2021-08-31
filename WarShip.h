@@ -134,7 +134,7 @@ public:
     canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter, std::_List_iterator<std::unique_ptr<WarShip>> target,
               const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);
 
-    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>> target);
+    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>> target, std::_List_iterator<std::shared_ptr<Arsenal>> iter);
 
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 

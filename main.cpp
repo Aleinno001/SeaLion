@@ -40,7 +40,6 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                 ((iter->it->get()->getSprite().getPosition().y +
                   iter->it->get()->getSprite().getLocalBounds().height / 2) >= window.getSize().y)) {
                 iter->it->get()->setCollision(false);
-                std::cerr << "BORDER COLLISION" << std::endl;
             }
 
 
@@ -213,6 +212,12 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
     auto enemyIterEnd = gameWorld.getEnemyFleet().end();
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         iter->get()->searchTarget(enemyIterStart, enemyIterEnd, gameWorld.getTiles());
+    }
+
+    auto alliedIterStart = gameWorld.getAlliedFleet().begin();
+    auto alliedIterEnd = gameWorld.getAlliedFleet().end();
+    for (auto iter = gameWorld.getEnemyFleet().begin(); iter != gameWorld.getEnemyFleet().end(); ++iter) {
+        iter->get()->searchTarget(alliedIterStart, alliedIterEnd, gameWorld.getTiles());
     }
 
 }
@@ -396,6 +401,21 @@ int main() {
         }
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld,tileDim,window);
+
+        sf::Time time = clock.getElapsedTime();
+        int fps = 1.0f/time.asSeconds();
+        std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+        sf::Text text;
+        sf::Font arialFont;
+        if(!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")){
+            std::cerr << "Impossibile caricare il font" << std::endl;
+        }
+        text.setFont(arialFont);
+        text.setString(std::to_string(fps));
+        text.setCharacterSize(30);
+        text.setFillColor(sf::Color::Yellow);
+        text.setPosition(0,0);
+        window.draw(text);
 
         window.display();
     }
