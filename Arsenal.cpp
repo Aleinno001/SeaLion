@@ -34,10 +34,10 @@ int Arsenal::getNumAmmo() const {
 }
 
 Arsenal::Arsenal(const float range, const int reload, int speed, int dispersion, Bullet type,
-                 float decelleration, int power, int num, int posX, int posY, int le, int wi,
+                 float deceleration, int power, int num, int posX, int posY, int le, int wi,
                  std::string texName) : rangeOfFire(range), reloadTime(reload),
                                         ammoSpeed(speed), maximumDispersion(dispersion),
-                                        ammoDeceleration(decelleration), firepower(power), numAmmo(num), length(le),
+                                        ammoDeceleration(deceleration), firepower(power), numAmmo(num), length(le),
                                         width(wi), textureName(texName), ammoType(type) {
 
     pos = sf::Vector2f(posX, posY);

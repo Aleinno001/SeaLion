@@ -39,13 +39,6 @@ void Vehicle::update(bool isDead) {
 
 }
 
-void Vehicle::attach() {
-
-}
-
-void Vehicle::detach() {
-
-}
 
 bool Vehicle::setUpSprite(std::string textureName) {
 
@@ -120,5 +113,9 @@ const std::string &Vehicle::getNationality() const {
 
 void Vehicle::setCollision(bool collision) {
     Vehicle::collision = collision;
+}
+
+void Vehicle::updatePlanes(sf::Vector2f &vel, double mx) {
+
 }
 

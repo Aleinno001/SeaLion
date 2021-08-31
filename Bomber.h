@@ -8,17 +8,21 @@
 
 #include "Vehicle.h"
 
-class Bomber : public Vehicle {
+#include "WarShip.h"
+
+class Bomber : public Vehicle{
 private:
+
+
     int numBombs;
     int bombDamage;
-private:
+    WarShip &subject_;
+public:
     //TODO Implementare i metodi
-    Bomber(int x, int y, float ac1, float maxVel1, int hp, int le,
-           int wi, bool col, double X, double Y, float ac, const float maxVel, int HP,
-           int length, int numBombs, int damage, std::string nat);
+    Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,
+           std::string nat, WarShip &subject);
 
-    void bombard(Vehicle enemy);
+    void bombard(Vehicle &enemy);
 
     //float calcSpeed();
 
@@ -28,9 +32,14 @@ private:
 
     void update(bool isDead) override;
 
-    void attach() override;
 
-    void detach() override;
+    void removeMeFromTheList() {
+
+        subject_.detachPlanes(std::shared_ptr<Vehicle>(this));
+    }
+
+    void updatePlanes(sf::Vector2f &vel,double mx) override;
+
 
     ~Bomber() override;
 };

@@ -33,7 +33,7 @@ public:
     //TODO implementare i metodi
 
     Arsenal(const float range, const int reload, int speed, int dispersion, Bullet type,
-            float decelleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
+            float deceleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
     virtual ~Arsenal() = default;
 

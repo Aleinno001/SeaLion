@@ -30,7 +30,7 @@ const int WarShip::getNumHCannons() const {
 
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
-                 std::list<std::unique_ptr<Vehicle>> &vehicle, int le, int wi,
+                  int le, int wi,
                  bool col, ShipType sh, ModelType mo) : Vehicle(x, y, ac, maxVel, hp,
                                                                 le, wi, col, nat),
                                                         armour(arm),
@@ -56,9 +56,7 @@ std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
     return arsenalList;
 }
 
-std::list<std::unique_ptr<Vehicle>> &WarShip::getVehicleList() {
-    return vehicleList;
-}
+
 
 void WarShip::move(sf::Vector2<double> coordinates, double dt) {
     if (collision) {   //FIXME da rivedere il comportamento post impatto
@@ -110,6 +108,10 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
         }
 
         notifyArsenals(vel, deltaMx);
+
+        if(shipType==ShipType::AircraftCarrier)
+            notifyPlanes(vel, deltaMx);
+
     }
 }
 

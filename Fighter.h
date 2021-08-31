@@ -7,11 +7,14 @@
 
 #include "Vehicle.h"
 
-class Fighter : public Vehicle {
+#include "WarShip.h"
+
+class Fighter : public Vehicle{
+public:
+    Fighter(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat, WarShip &subject);
+    ~Fighter() override;
 private:
-    Fighter(int x, int y, float ac1, float maxVel1, int hp,
-            int le, int wi, bool col, double X, double Y, float ac,
-            const float maxVel, int HP, int length, std::string nat);
+
 
     void fight(Vehicle enemy);
 
@@ -23,11 +26,15 @@ private:
 
     void update(bool isDead) override;
 
-    void attach() override;
+    void updatePlanes(sf::Vector2f &vel,double mx) override;
 
-    void detach() override;
+    void removeMeFromTheList() {
+        subject_.detachPlanes(std::shared_ptr<Vehicle>(this));
+    }
 
-    ~Fighter() override;
+
+private:
+    WarShip &subject_;
 };
 
 #endif //SEALION_FIGHTER_H

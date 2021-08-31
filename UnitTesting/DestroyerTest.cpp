@@ -18,7 +18,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> sims(
             new Destroyer(1000,1000, 4, 69, 2293, 30,
-                          "Usa", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Usa", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Sims, 8));
 
@@ -50,7 +50,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> fletcher(
             new Destroyer(1000,1000, 4, 68, 2500, 33,
-                          "Usa", 0, 0, 5, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Usa", 0, 0, 5, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Fletcher, 10));
     
@@ -79,7 +79,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> jutLand(
             new Destroyer(1000,1000, 4, 66, 2480, 26,
-                          "Uk", 0, 0, 3, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Uk", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Jutland, 10));
     
@@ -111,7 +111,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> paoloEmilio(
             new Destroyer(1000,1000, 4, 76, 5420, 66,
-                          "Italy", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Italy", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 8));
     
@@ -144,7 +144,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> impavido(
             new Destroyer(1000,1000, 4, 63, 3941, 36,
-                          "Italy", 4, 0, 1, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Italy", 4, 0, 1, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 6));
     
@@ -176,7 +176,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> yukikaze(
             new Destroyer(1000,1000, 4, 65, 2530, 26,
-                          "Japan", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Japan", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Yukikaze, 8));
     
@@ -205,7 +205,7 @@ TEST(Destroyer, Constructor) {
     
     std::unique_ptr<Destroyer> Mahan(
             new Destroyer(1000,1000,4, 69, 2137, 27,
-                          "Usa", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Usa", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Mahan, 12));
     
@@ -235,7 +235,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> Gallant(
             new Destroyer(1000,1000, 4, 67, 1913, 22,
-                          "Japan", 0, 0, 4, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Japan", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Gallant, 8));
     
@@ -265,7 +265,7 @@ TEST(Destroyer, Constructor) {
     numAntiAir = 10;
     std::unique_ptr<Destroyer> Campbelltown(
             new Destroyer(1000,1000, 4, 66, 1280, 19,
-                          "Uk", 4, 0, 0, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Uk", 4, 0, 0, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Campbelltown, 6));
    
@@ -294,7 +294,7 @@ TEST(Destroyer, Constructor) {
     
     std::unique_ptr<Destroyer> Leone(
             new Destroyer(1000,1000, 4, 61, 2326, 22,
-                          "Italy", 0, 0, 3, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Italy", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Leone, 6));
     
@@ -323,7 +323,7 @@ TEST(Destroyer, Constructor) {
 
     std::unique_ptr<Destroyer> Fubuki(
             new Destroyer(1000,1000, 4, 70, 2080, 26,
-                          "Japan", 0, 0, 6, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Japan", 0, 0, 6, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Fubuki, 9));
     
@@ -353,7 +353,7 @@ TEST(Destroyer, Constructor) {
     numAntiAir = 50;
     std::unique_ptr<Destroyer> Akizuki(
             new Destroyer(1000,1000, 4, 61, 3759, 33,
-                          "Japan", 0, 0, 5, numAntiAir,  v, shipHeight, shipWidth, true,
+                          "Japan", 0, 0, 5, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Akizuki, 4));
     

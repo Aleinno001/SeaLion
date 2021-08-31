@@ -24,19 +24,19 @@ TEST(MediumCannon, Constructor) {
    
 
     std::unique_ptr<Cruiser> takao(new Cruiser(coordinates.x, coordinates.y, 3, 66, 15500, 237,
-                                               "Japan", 4, 0, 5, antiAir,  v, shipHeight, shipWidth, true,
+                                               "Japan", 4, 0, 5, antiAir, shipHeight, shipWidth, true,
                                                ShipType::Cruiser,
                                                ModelType::Takao, 2));
 
 
     std::unique_ptr<MediumCannnon> mediumCannon(
-            new MediumCannnon(350, 6, 200, 7, b, 0.4, 100, 140, posX + 3, posY + 7, 14, 7, "MediumCannon",*takao));
+            new MediumCannnon(350, 6, 200, 7, b, static_cast<float>(0.4), 100, 140, posX + 3, posY + 7, 14, 7, "MediumCannon",*takao));
     
     ASSERT_EQ(mediumCannon->getRangeOfFire(),350);
     ASSERT_EQ(mediumCannon->getReloadTime(),6);
     ASSERT_EQ(mediumCannon->getAmmoSpeed(),200);
     ASSERT_EQ(mediumCannon->getMaximumDispersion(),7);
-    ASSERT_EQ(mediumCannon->getAmmoDeceleration(),0.4);
+    ASSERT_EQ(mediumCannon->getAmmoDeceleration(),static_cast<float>(0.4));
     ASSERT_EQ(mediumCannon->getFirepower(),100);
     ASSERT_EQ(mediumCannon->getNumAmmo(),140);
     ASSERT_EQ(mediumCannon->getPos().x,posX+3);

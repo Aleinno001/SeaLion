@@ -4,7 +4,7 @@
 
 #include "Bomber.h"
 
-void Bomber::bombard(Vehicle enemy) {
+void Bomber::bombard(Vehicle &enemy) {
 
 }
 
@@ -19,21 +19,30 @@ void Bomber::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
-void Bomber::attach() {
-    Vehicle::attach();
-}
 
-void Bomber::detach() {
-    Vehicle::detach();
-}
 
 Bomber::~Bomber() {
 
 }
 
-Bomber::Bomber(int x, int y, float ac1, float maxVel1, int hp, int le,
-               int wi, bool col, double X, double Y, float ac, const float maxVel, int HP,
-               int length, int numBombs, int damage, std::string nat) : Vehicle(x, y, ac1, maxVel1, hp, le, wi, col,
-                                                                                nat) {
 
+void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
+    sprite.setPosition(sprite.getPosition() + vel);
+    sprite.setRotation(sprite.getRotation() + mx);
+    sf::Transform rotation;
+    rotation.rotate(mx, subject_.getSprite().getPosition());
+    sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
+    sprite.setPosition(newPosition);
 }
+
+Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),bombDamage(damage),numBombs(numBombs) {
+    std::string textureName="Bomber.png";
+
+    try {
+        setUpSprite("WarPlanes/" + textureName);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Wrong texture name" << std::endl;
+    }
+}
+

@@ -6,16 +6,28 @@
 #define SEALION_TORPEDOBOMBER_H
 
 #include "Vehicle.h"
+#include "WarShip.h"
 
-class TorpedoBomber : public Vehicle {
+
+class TorpedoBomber : public Vehicle{
 private:
+
+
     int numTorpedos;
     int torpedoDamage;
-private:
-    TorpedoBomber(int x, int y, float ac1, float maxVel1, int hp, int le, int wi, bool col, double X, double Y,
-                  float ac, const float maxVel, int HP, int length, int numTorpedos, int damage, std::string nat);
+    WarShip &subject_;
 
-    void launchTorpedo(Vehicle enemy);
+
+public:
+    TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numTorpedos, int damage,
+                  std::string nat, WarShip &subject);
+
+    void launchTorpedo(Vehicle &enemy);
+
+private:
+
+
+
 
     //float calcSpeed();
 
@@ -25,10 +37,12 @@ private:
 
     void update(bool isDead) override;
 
-    void attach() override;
+    void updatePlanes(sf::Vector2f &vel,double mx) override;
 
-    void detach() override;
-
+    void removeMeFromTheList() {
+        subject_.detachPlanes(std::shared_ptr<Vehicle>(this));
+    }
+public:
     ~TorpedoBomber() override;
 };
 

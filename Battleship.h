@@ -21,7 +21,7 @@ public:
 
     Battleship(int x, int y, float ac, const float maxVel, int hp, int arm,
                std::string nat, int numL, int numH, int numM, int numAA,
-               std::list<std::unique_ptr<Vehicle>> &vehicleList, int le, int wi,
+                int le, int wi,
                bool col, ShipType sh, ModelType mo, int numInterceptors);
 
     //float calcSpeed() override;
@@ -37,6 +37,19 @@ public:
     void detach(const std::shared_ptr<Arsenal> &gun) override {
         arsenalList.remove(gun);
     };
+
+
+    void notifyPlanes(sf::Vector2f &vel, double mx) override;
+
+    void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
+        vehicleList.push_back(warPlanes);
+    };
+
+    void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
+        vehicleList.remove(warPlanes);
+    };
+
+
 
     void stopMove() override;
 

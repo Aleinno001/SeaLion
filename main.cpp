@@ -25,21 +25,22 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                     if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite())) {
                         iter->it->get()->setCollision(false);
                         iterSecond.it->get()->setCollision(false);
-                        std::cerr << "COLLISIONNNNN" << std::endl;
+                        std::cerr << "NAVAL_COLLISION" << std::endl;
                     }
                 }
 
             }
             //controlla le eventuali collisioni ai bordi della finestra di gioco
             if (((iter->it->get()->getSprite().getPosition().x -
-                  iter->it->get()->getSprite().getLocalBounds().width / 2) <= 0) ||
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) < 0) ||
                 ((iter->it->get()->getSprite().getPosition().y -
-                  iter->it->get()->getSprite().getLocalBounds().height / 2) <= 0) ||
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) < 0) ||
                 ((iter->it->get()->getSprite().getPosition().x +
-                  iter->it->get()->getSprite().getLocalBounds().width / 2) >= window.getSize().x) ||
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
                 ((iter->it->get()->getSprite().getPosition().y +
-                  iter->it->get()->getSprite().getLocalBounds().height / 2) >= window.getSize().y)) {
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
                 iter->it->get()->setCollision(false);
+                std::cerr << "BORDER_COLLISION" << std::endl;
             }
 
 
@@ -56,7 +57,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                                                     gameWorld.tiles[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
                         iterNavy.it->get()->setCollision(false);
                         gameWorld.tiles[row][column]->setIsPassable(false);
-                        std::cerr << "COLLISIONNNNN_ROAD" << std::endl;
+                        std::cerr << "TILES_COLLISION" << std::endl;
                     }
 
                 }
