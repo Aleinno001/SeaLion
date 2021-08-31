@@ -793,18 +793,18 @@ ShipFactory::ironDukeBuilder(
     int numAntiAir = 15;
     std::unique_ptr<Battleship> ironDuke(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 29500, 826,
-                           "Uk", 0, 5, 0, numAntiAir,   shipHeight, shipWidth, true,
+                           "Uk", 0, 5, 0, numAntiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::IronDuke, 0));
-    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 41,*ironDuke)));
-    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 55,*ironDuke)));
-    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 107,*ironDuke)));
-    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 133,*ironDuke)));
-    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 141,*ironDuke)));
+    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 35, *ironDuke)));
+    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 49, *ironDuke)));
+    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 101, *ironDuke)));
+    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 127, *ironDuke)));
+    ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 135, *ironDuke)));
     WeaponFactory specialFactory;
 
     for (int i = 0; i < numAntiAir; i++)
-        ironDuke->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*ironDuke)));
+        ironDuke->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *ironDuke)));
     return ironDuke;
 }
 
@@ -821,22 +821,22 @@ ShipFactory::northCarolinaBuilder(
 
     std::unique_ptr<Battleship> northCarolina(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 45500, 1224,
-                           "Usa", 6, 2, 0, numAntiAir,   shipHeight, shipWidth, true,
+                           "Usa", 6, 2, 0, numAntiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::NorthCarolina, 3));
-    northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 56,*northCarolina)));
-    northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 145,*northCarolina)));
-    northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 171,*northCarolina)));
-    northCarolina->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 81,*northCarolina)));
-    northCarolina->attach(std::move(factory.createLight(cannonPosX + 22, cannonPosY + 81,*northCarolina)));
-    northCarolina->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 101,*northCarolina)));
-    northCarolina->attach(std::move(factory.createLight(cannonPosX + 22, cannonPosY + 101,*northCarolina)));
-    northCarolina->attach(std::move(factory.createLight(cannonPosX + 1, cannonPosY + 111,*northCarolina)));
-    northCarolina->attach(std::move(factory.createLight(cannonPosX + 26, cannonPosY + 111,*northCarolina)));
+    northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 50, *northCarolina)));
+    northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 139, *northCarolina)));
+    northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 165, *northCarolina)));
+    northCarolina->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 81, *northCarolina)));
+    northCarolina->attach(std::move(factory.createLight(cannonPosX + 22, cannonPosY + 81, *northCarolina)));
+    northCarolina->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 101, *northCarolina)));
+    northCarolina->attach(std::move(factory.createLight(cannonPosX + 22, cannonPosY + 101, *northCarolina)));
+    northCarolina->attach(std::move(factory.createLight(cannonPosX + 1, cannonPosY + 111, *northCarolina)));
+    northCarolina->attach(std::move(factory.createLight(cannonPosX + 26, cannonPosY + 111, *northCarolina)));
     WeaponFactory specialFactory;
 
     for (int i = 0; i < numAntiAir; i++)
-        northCarolina->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*northCarolina)));
+        northCarolina->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *northCarolina)));
     return northCarolina;
 }
 
@@ -854,23 +854,23 @@ ShipFactory::montanaBuilder(
 
     std::unique_ptr<Battleship> montana(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 72104, 1810,
-                           "Usa", 0, 4, 10, numAntiAir,   shipHeight, shipWidth, true,
+                           "Usa", 0, 4, 10, numAntiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::Montana, 2));
-    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 60,*montana)));
-    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 88,*montana)));
-    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 183,*montana)));
-    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 210,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 111,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 111,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 5, cannonPosY + 125,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 125,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 138,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 138,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 4, cannonPosY + 152,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 152,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 165,*montana)));
-    montana->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 165,*montana)));
+    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 54, *montana)));
+    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 82, *montana)));
+    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 177, *montana)));
+    montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 204, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 111, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 111, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 5, cannonPosY + 125, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 125, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 138, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 138, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 4, cannonPosY + 152, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 152, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 165, *montana)));
+    montana->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 165, *montana)));
     WeaponFactory specialFactory;
 
     for (int i = 0; i < numAntiAir; i++)
@@ -890,17 +890,17 @@ ShipFactory::lionBuilder(
     int numAntiAir = 10;
     std::unique_ptr<Battleship> lion(
             new Battleship(coordinates.x, coordinates.y, 1, 52, 49670, 944,
-                           "Uk", 0, 4, 0, numAntiAir,   shipHeight, shipWidth, true,
+                           "Uk", 0, 4, 0, numAntiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::Lion, 0));
-    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 49,*lion)));
-    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 64,*lion)));
-    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 126,*lion)));
-    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 197,*lion)));
+    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 43, *lion)));
+    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 58, *lion)));
+    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 120, *lion)));
+    lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 191, *lion)));
     WeaponFactory specialFactory;
 
     for (int i = 0; i < numAntiAir; i++)
-        lion->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*lion)));
+        lion->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *lion)));
     return lion;
 }
 
@@ -916,18 +916,18 @@ ShipFactory::dreadNoughtBuilder(
     int numAntiAir = 20;
     std::unique_ptr<Battleship> dreadNought(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 21060, 837,
-                           "Uk", 0, 5, 0, numAntiAir,   shipHeight, shipWidth, true,
+                           "Uk", 0, 5, 0, numAntiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::Dreadnought, 0));
-    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 38,*dreadNought)));
-    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 93,*dreadNought)));
-    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 118,*dreadNought)));
-    dreadNought->attach(std::move(factory.createHeavly(cannonPosX - 1, cannonPosY + 64,*dreadNought)));
-    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 64,*dreadNought)));
+    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 32, *dreadNought)));
+    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 87, *dreadNought)));
+    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 112, *dreadNought)));
+    dreadNought->attach(std::move(factory.createHeavly(cannonPosX - 1, cannonPosY + 58, *dreadNought)));
+    dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 58, *dreadNought)));
     WeaponFactory specialFactory;
 
     for (int i = 0; i < numAntiAir; i++)
-        dreadNought->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*dreadNought)));
+        dreadNought->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *dreadNought)));
     return dreadNought;
 }
 
@@ -944,23 +944,23 @@ std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(
 
     std::unique_ptr<Battleship> imperatoreAugusto(
             new Battleship(coordinates.x, coordinates.y, 1, 57, 65232, 1126,
-                           "Italy", 16, 4, 10, numAntiAir,   shipHeight, shipWidth, true,
+                           "Italy", 16, 4, 10, numAntiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::ImperatoreAugusto, 0));
-    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 67,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 86,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 185,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 205,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 109,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 118,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 161,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 170,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 109,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 118,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 161,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 170,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 16, cannonPosY + 108,*imperatoreAugusto)));
-    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 16, cannonPosY + 171,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 61,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 80,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 179,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 199,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 107,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 116,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 159,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 168,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 107,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 116,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 159,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 30, cannonPosY + 168,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 16, cannonPosY + 106,*imperatoreAugusto)));
+    imperatoreAugusto->attach(std::move(factory.createMedium(cannonPosX + 16, cannonPosY + 169,*imperatoreAugusto)));
 
     imperatoreAugusto->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 131,*imperatoreAugusto)));
     imperatoreAugusto->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 138,*imperatoreAugusto)));
@@ -996,20 +996,20 @@ ShipFactory::kongoBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 18;
     std::unique_ptr<Battleship> kongo(new Battleship(coordinates.x, coordinates.y, 1, 56, 37187, 592,
-                                                     "Japan", 6, 4, 0, numAntiAir,   shipHeight, shipWidth, true,
+                                                     "Japan", 6, 4, 0, numAntiAir, shipHeight, shipWidth, true,
                                                      ShipType::Battleship,
                                                      ModelType::Kongo, 0));
-    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 43,*kongo)));
-    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 56,*kongo)));
-    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 131,*kongo)));
-    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 169,*kongo)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 37, *kongo)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 50, *kongo)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 125, *kongo)));
+    kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 163, *kongo)));
 
-    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 81,*kongo)));
-    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 95,*kongo)));
-    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 129,*kongo)));
-    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 81,*kongo)));
-    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 95,*kongo)));
-    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 129,*kongo)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 81, *kongo)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 95, *kongo)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 2, cannonPosY + 129, *kongo)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 81, *kongo)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 95, *kongo)));
+    kongo->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 129, *kongo)));
 
     WeaponFactory specialFactory;
 
@@ -1030,22 +1030,22 @@ ShipFactory::musashiBuilder(
     int numAntiAir = 30;
 
     std::unique_ptr<Battleship> musashi(new Battleship(coordinates.x, coordinates.y, 1, 51, 72809, 1540,
-                                                       "Japan", 6, 3, 2, numAntiAir,   shipHeight, shipWidth, true,
+                                                       "Japan", 6, 3, 2, numAntiAir, shipHeight, shipWidth, true,
                                                        ShipType::Battleship,
                                                        ModelType::Musashi, 2));
-    musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 67,*musashi)));
-    musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 88,*musashi)));
-    musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 173,*musashi)));
+    musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 61, *musashi)));
+    musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 82, *musashi)));
+    musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 167, *musashi)));
 
-    musashi->attach(std::move(factory.createMedium(cannonPosX + 8, cannonPosY + 112,*musashi)));
-    musashi->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 112,*musashi)));
+    musashi->attach(std::move(factory.createMedium(cannonPosX + 8, cannonPosY + 112, *musashi)));
+    musashi->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 112, *musashi)));
 
-    musashi->attach(std::move(factory.createLight(cannonPosX, cannonPosY + 125,*musashi)));
-    musashi->attach(std::move(factory.createLight(cannonPosX, cannonPosY + 146,*musashi)));
-    musashi->attach(std::move(factory.createLight(cannonPosX + 34, cannonPosY + 125,*musashi)));
-    musashi->attach(std::move(factory.createLight(cannonPosX + 34, cannonPosY + 146,*musashi)));
-    musashi->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 95,*musashi)));
-    musashi->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 129,*musashi)));
+    musashi->attach(std::move(factory.createLight(cannonPosX, cannonPosY + 125, *musashi)));
+    musashi->attach(std::move(factory.createLight(cannonPosX, cannonPosY + 146, *musashi)));
+    musashi->attach(std::move(factory.createLight(cannonPosX + 34, cannonPosY + 125, *musashi)));
+    musashi->attach(std::move(factory.createLight(cannonPosX + 34, cannonPosY + 146, *musashi)));
+    musashi->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 95, *musashi)));
+    musashi->attach(std::move(factory.createLight(cannonPosX + 24, cannonPosY + 129, *musashi)));
 
     WeaponFactory specialFactory;
 
@@ -1236,16 +1236,16 @@ ShipFactory::paoloEmilioBuilder(
 
     std::unique_ptr<Destroyer> paoloEmilio(
             new Destroyer(coordinates.x, coordinates.y, 4, 76, 5420, 66,
-                          "Italy", 0, 0, 4, numAntiAir,   shipHeight, shipWidth, true,
+                          "Italy", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
-                          ModelType::Impavido, 8));
-    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 28,*paoloEmilio)));
-    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 36,*paoloEmilio)));
-    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 132,*paoloEmilio)));
-    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 140,*paoloEmilio)));
+                          ModelType::PaoloEmilio, 8));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 30, *paoloEmilio)));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 38, *paoloEmilio)));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 134, *paoloEmilio)));
+    paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 142, *paoloEmilio)));
 
     for (int i = 0; i < numAntiAir; i++) {
-        paoloEmilio->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*paoloEmilio)));
+        paoloEmilio->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *paoloEmilio)));
     }
     return paoloEmilio;
 }
@@ -1269,8 +1269,8 @@ ShipFactory::impavidoBuilder(
                           "Italy", 4, 0, 1, numAntiAir,   shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Impavido, 6));
-    impavido->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 17,*impavido)));
-    impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 67,*impavido)));
+    impavido->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 13, *impavido)));
+    impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 67, *impavido)));
     impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 79,*impavido)));
     impavido->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 67,*impavido)));
     impavido->attach(std::move(cf.createLight(cannonPosX + 10, cannonPosY + 79,*impavido)));
@@ -2006,15 +2006,15 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates) const {
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::VittorioVeneto, 1));
-    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 61,*VittorioVeneto)));
-    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 83,*VittorioVeneto)));
-    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 83,*VittorioVeneto)));
-    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 146,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 55,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 78,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 78,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 140,*VittorioVeneto)));
 
-    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 95,*VittorioVeneto)));
-    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 165,*VittorioVeneto)));
-    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 24, cannonPosY + 95,*VittorioVeneto)));
-    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 24, cannonPosY + 165,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 93,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 163,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 24, cannonPosY + 93,*VittorioVeneto)));
+    VittorioVeneto->attach(std::move(factory.createMedium(cannonPosX + 24, cannonPosY + 163,*VittorioVeneto)));
 
     VittorioVeneto->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 104,*VittorioVeneto)));
     VittorioVeneto->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 109,*VittorioVeneto)));
@@ -2051,16 +2051,16 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates) const {
 
     std::unique_ptr<Battleship> NewYork(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 28822, 939,
-                           "Usa", 0, 5, 0, antiAir,   shipHeight, shipWidth, true,
+                           "Usa", 0, 5, 0, antiAir, shipHeight, shipWidth, true,
                            ShipType::Battleship,
                            ModelType::NewYork, 0));
-    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 25,*NewYork)));
-    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 45,*NewYork)));
-    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 90,*NewYork)));
-    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 115,*NewYork)));
-    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 140,*NewYork)));
+    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 19, *NewYork)));
+    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 39, *NewYork)));
+    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 84, *NewYork)));
+    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 109, *NewYork)));
+    NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 134, *NewYork)));
     for (int i = 0; i < antiAir; i++)
-        NewYork->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*NewYork)));
+        NewYork->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *NewYork)));
     return NewYork;
 }
 
@@ -2077,23 +2077,23 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates) const {
 
     std::unique_ptr<Battleship> Arizona(
             new Battleship(coordinates.x, coordinates.y, 1, 39, 32429, 1536,
-                           "Usa", 8, 4, 0, antiAir,   185, 32, true,
+                           "Usa", 8, 4, 0, antiAir, 185, 32, true,
                            ShipType::Battleship,
                            ModelType::Arizona, 0));
-    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 35,*Arizona)));
-    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 64,*Arizona)));
-    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 126,*Arizona)));
-    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 148,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 97,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 2, cannonPosY + 87,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 2, cannonPosY + 78,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 69,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 97,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 26, cannonPosY + 87,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 78,*Arizona)));
-    Arizona->attach(std::move(cf.createLight(cannonPosX + 21, cannonPosY + 69,*Arizona)));
+    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 29, *Arizona)));
+    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 58, *Arizona)));
+    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 120, *Arizona)));
+    Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 142, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 97, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 2, cannonPosY + 87, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 2, cannonPosY + 78, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 69, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 97, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 26, cannonPosY + 87, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 23, cannonPosY + 78, *Arizona)));
+    Arizona->attach(std::move(cf.createLight(cannonPosX + 21, cannonPosY + 69, *Arizona)));
     for (int i = 0; i < antiAir; i++)
-        Arizona->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*Arizona)));
+        Arizona->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Arizona)));
     return Arizona;
 }
 
@@ -2109,17 +2109,17 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates) const {
     int antiAir = 20;
 
     std::unique_ptr<Battleship> Hood(
-            new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800, "Uk", 0, 2, 2, antiAir,   shipHeight,
+            new Battleship(coordinates.x, coordinates.y, 1, 54, 49136, 800, "Uk", 0, 2, 2, antiAir, shipHeight,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::Hood, 0));
-    Hood->attach(std::move(cf.createHeavly(cannonPosX + 9, cannonPosY + 213,*Hood)));
-    Hood->attach(std::move(cf.createHeavly(cannonPosX + 9, cannonPosY + 50,*Hood)));
-    Hood->attach(std::move(cf.createMedium(cannonPosX + 12, cannonPosY + 196,*Hood)));
-    Hood->attach(std::move(cf.createMedium(cannonPosX + 13, cannonPosY + 65,*Hood)));
+    Hood->attach(std::move(cf.createHeavly(cannonPosX + 9, cannonPosY + 207, *Hood)));
+    Hood->attach(std::move(cf.createHeavly(cannonPosX + 9, cannonPosY + 44, *Hood)));
+    Hood->attach(std::move(cf.createMedium(cannonPosX + 12, cannonPosY + 190, *Hood)));
+    Hood->attach(std::move(cf.createMedium(cannonPosX + 13, cannonPosY + 59, *Hood)));
 
     for (int i = 0; i < antiAir; i++)
-        Hood->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*Hood)));
+        Hood->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Hood)));
     return Hood;
 }
 
@@ -2138,18 +2138,18 @@ ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates) const {
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::MichelangeloBuonarroti, 1));
-    MichelangeloBuonarroti->attach(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 62,*MichelangeloBuonarroti)));
-    MichelangeloBuonarroti->attach(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 83,*MichelangeloBuonarroti)));
-    MichelangeloBuonarroti->attach(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 172,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 56,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 78,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 166,*MichelangeloBuonarroti)));
 
 
-    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 1, cannonPosY + 120,*MichelangeloBuonarroti)));
-    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 1, cannonPosY + 141,*MichelangeloBuonarroti)));
-    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 96,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 1, cannonPosY + 118,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 1, cannonPosY + 139,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 2, cannonPosY + 95,*MichelangeloBuonarroti)));
 
-    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 120,*MichelangeloBuonarroti)));
-    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 141,*MichelangeloBuonarroti)));
-    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 96,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 118,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 139,*MichelangeloBuonarroti)));
+    MichelangeloBuonarroti->attach(std::move(factory.createMedium(cannonPosX + 27, cannonPosY + 94,*MichelangeloBuonarroti)));
 
     MichelangeloBuonarroti->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 106,*MichelangeloBuonarroti)));
     MichelangeloBuonarroti->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 112,*MichelangeloBuonarroti)));
@@ -2185,25 +2185,25 @@ ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 13;
     std::unique_ptr<Battleship> AndreaDoria(
-            new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir,  
+            new Battleship(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir,
                            shipHeight,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::AndreaDoria, 0));
-    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 46,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 60,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 124,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 138,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 39,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 53,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 117,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 131,*AndreaDoria)));
 
-    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 4, cannonPosY + 70,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 20, cannonPosY + 70,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 3, cannonPosY + 77,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 21, cannonPosY + 77,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 4, cannonPosY + 68,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 20, cannonPosY + 68,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 3, cannonPosY + 73,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createMedium(cannonPosX + 21, cannonPosY + 73,*AndreaDoria)));
 
-    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 85,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 91,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 97,*AndreaDoria)));
-    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 103,*AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 85, *AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 91, *AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 97, *AndreaDoria)));
+    AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 103, *AndreaDoria)));
     AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 3, cannonPosY + 109,*AndreaDoria)));
 
     AndreaDoria->attach(std::move(factory.createLight(cannonPosX + 22, cannonPosY + 85,*AndreaDoria)));
@@ -2232,24 +2232,24 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates) const {
 
 
     std::unique_ptr<Battleship> Yamato(
-            new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir,  
+            new Battleship(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir,
                            shipHeight,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::Yamato, 3));
-    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 71,*Yamato)));
-    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 93,*Yamato)));
-    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 184,*Yamato)));
-    Yamato->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 176,*Yamato)));
-    Yamato->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 118,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 161,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 150,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 138,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 157,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 146,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 130,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 161,*Yamato)));
-    Yamato->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 150,*Yamato)));
+    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 65, *Yamato)));
+    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 87, *Yamato)));
+    Yamato->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 178, *Yamato)));
+    Yamato->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 176, *Yamato)));
+    Yamato->attach(std::move(cf.createMedium(cannonPosX + 16, cannonPosY + 118, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 161, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 150, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 138, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 157, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 146, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 4, cannonPosY + 130, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 161, *Yamato)));
+    Yamato->attach(std::move(cf.createLight(cannonPosX + 25, cannonPosY + 150, *Yamato)));
     Yamato->attach(std::move(cf.createLight(cannonPosX + 26, cannonPosY + 138,*Yamato)));
     Yamato->attach(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 157,*Yamato)));
     Yamato->attach(std::move(cf.createLight(cannonPosX + 29, cannonPosY + 146,*Yamato)));
@@ -2269,26 +2269,26 @@ ShipFactory::iseBuilder(sf::Vector2i &coordinates) const {
 
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    
+
     std::unique_ptr<Battleship> Ise(
-            new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, antiAir,   shipHeight,
+            new Battleship(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, antiAir, shipHeight,
                            shipWidth,
                            true,
                            ShipType::Battleship, ModelType::ISE, 2));
-    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 37,*Ise)));
-    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 51,*Ise)));
-    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 113,*Ise)));
-    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 125,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 9, cannonPosY + 102,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 9, cannonPosY + 80,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 12, cannonPosY + 71,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 12, cannonPosY + 62,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 30, cannonPosY + 102,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 80,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 28, cannonPosY + 71,*Ise)));
-    Ise->attach(std::move(cf.createLight(cannonPosX + 27, cannonPosY + 62,*Ise)));
+    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 31, *Ise)));
+    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 45, *Ise)));
+    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 107, *Ise)));
+    Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 119, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 9, cannonPosY + 102, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 9, cannonPosY + 80, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 12, cannonPosY + 71, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 12, cannonPosY + 62, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 30, cannonPosY + 102, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 80, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 28, cannonPosY + 71, *Ise)));
+    Ise->attach(std::move(cf.createLight(cannonPosX + 27, cannonPosY + 62, *Ise)));
     for (int i = 0; i < antiAir; i++)
-        Ise->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir,*Ise)));
+        Ise->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Ise)));
     return Ise;
 }
 
@@ -2477,16 +2477,16 @@ ShipFactory::leoneBuilder(sf::Vector2i &coordinates) const {
     int numAntiAir = 20;
     std::unique_ptr<Destroyer> Leone(
             new Destroyer(coordinates.x, coordinates.y, 4, 61, 2326, 22,
-                          "Italy", 0, 0, 3, numAntiAir,   shipHeight, shipWidth, true,
+                          "Italy", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,
                           ShipType::Destroyer,
                           ModelType::Leone, 6));
-    Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 31,*Leone)));
-    Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 72,*Leone)));
-    Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 98,*Leone)));
+    Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 33, *Leone)));
+    Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 74, *Leone)));
+    Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 100, *Leone)));
 
     WeaponFactory wf;
     for (int i = 0; i < numAntiAir; i++) {
-        Leone->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir,*Leone)));
+        Leone->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Leone)));
     }
     return Leone;
 }
