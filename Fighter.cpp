@@ -5,7 +5,7 @@
 #include "Fighter.h"
 
 Fighter::Fighter(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject) {
-    std::string textureName="Fighter.png";
+    std::string textureName="Fighter";
 
     try {
         setUpSprite("WarPlanes/" + textureName);
