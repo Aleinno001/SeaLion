@@ -4,6 +4,7 @@
 
 #include "ShipFactory.h"
 #include "GameWorld.h"
+#include "AirplaneFactory.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -241,6 +242,7 @@ ShipFactory::midwayBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
+
     return mid;
 }
 
@@ -1538,7 +1540,7 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
 std::unique_ptr<AircraftCarrier>
 ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
     int shipWidth = 50;
     int shipHeight = 244;
 
@@ -1562,6 +1564,12 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     Cavour->attach(std::move(factory.createLight(cannonPosX + 26, cannonPosY + 171,*Cavour)));
     for (int i = 0; i < numAntiAir; i++)
         Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
+
+    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+5,cannonPosY+30,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+5,cannonPosY+40,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+5,cannonPosY+50,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+5,cannonPosY+60,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+5,cannonPosY+70,*Cavour)));
     return Cavour;
 }
 
