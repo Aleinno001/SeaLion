@@ -1563,11 +1563,11 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     Cavour->attach(std::move(factory.createLight(cannonPosX + 29, cannonPosY + 78,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 26, cannonPosY + 171,*Cavour)));
 
-    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+5,cannonPosY+30,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+5,cannonPosY+40,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+5,cannonPosY+50,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+5,cannonPosY+60,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+5,cannonPosY+70,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+18,cannonPosY+30,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+18,cannonPosY+60,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+18,cannonPosY+80,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+18,cannonPosY+90,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+18,cannonPosY+110,*Cavour)));
 
     for (int i = 0; i < numAntiAir; i++)
         Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
