@@ -277,7 +277,7 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(
                                                                        
                                                                        sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
     int shipWidth = 44;
     int shipHeight = 180;
 
@@ -295,6 +295,13 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 41,*GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 69,*GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 98,*GiuseppeGaribaldi)));
+
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+24,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+44,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+64,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+84,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+104,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+124,*GiuseppeGaribaldi)));
     return GiuseppeGaribaldi;
 }
 
