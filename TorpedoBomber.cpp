@@ -7,7 +7,7 @@
 TorpedoBomber::TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col,
                              int numTorpedos, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),numTorpedos(numTorpedos),torpedoDamage(damage)  {
 
-    std::string textureName="TorpedoBomber.png";
+    std::string textureName="TorpedoBomber";
 
     try {
         setUpSprite("WarPlanes/" + textureName);
@@ -39,7 +39,8 @@ TorpedoBomber::~TorpedoBomber() {
 
 }
 
-void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {    sprite.setPosition(sprite.getPosition() + vel);
+void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
+    sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
     sf::Transform rotation;
     rotation.rotate(mx, subject_.getSprite().getPosition());
