@@ -1568,7 +1568,7 @@ ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
 std::unique_ptr<AircraftCarrier>
 ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
 
     int shipWidth = 41;
     int shipHeight = 230;
@@ -1588,6 +1588,13 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
                                 ShipType::AircraftCarrier, ModelType::Indomitable, 5));
     Indomitable->attach(std::move(factory.createLight(cannonPosX + 6, cannonPosY + 38, *Indomitable)));
     Indomitable->attach(std::move(factory.createLight(cannonPosX + 31, cannonPosY + 38, *Indomitable)));
+
+    Indomitable->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+12,"Uk",*Indomitable)));
+    Indomitable->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+32,"Uk",*Indomitable)));
+    Indomitable->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+62,"Uk",*Indomitable)));
+    Indomitable->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+82,"Uk",*Indomitable)));
+    Indomitable->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+112,"Uk",*Indomitable)));
+
 
     for (int i = 0; i < numAntiAir; i++)
         Indomitable->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Indomitable)));
