@@ -10,17 +10,17 @@
 #include "Vehicle.h"
 #include "Bullet.h"
 #include "SFML/Graphics.hpp"
+#include <memory>
 
 class WarShip;
 
 class Arsenal {
 protected:
     float rangeOfFire;
-    int reloadTime;
-    int ammoSpeed;
+    float reloadTime;
+    float countdown{0};
     int maximumDispersion;
-    Bullet ammoType;
-    float ammoDeceleration;
+     std::shared_ptr<Bullet> ammoType;
     int firepower;
     int numAmmo;
     int length;
@@ -32,8 +32,7 @@ protected:
 public:
     //TODO implementare i metodi
 
-    Arsenal(const float range, const int reload, int speed, int dispersion, Bullet type,
-            float deceleration, int power, int num, int posX, int posY, int le, int wi, std::string texName);
+    Arsenal(const float range, float reload, int dispersion, std::shared_ptr<Bullet> type, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
     virtual ~Arsenal() = default;
 
@@ -60,7 +59,7 @@ public:
 
     int getMaximumDispersion() const;
 
-    const Bullet &getAmmoType() const;
+    std::shared_ptr<Bullet> getAmmoType() const;
 
     float getAmmoDeceleration() const;
 
@@ -68,7 +67,7 @@ public:
 
     int getNumAmmo() const;
 
-    void setAmmoType(const Bullet &ammoType);
+    void setAmmoType(const std::shared_ptr<Bullet> ammoType);
 
     sf::Sprite &getSprite();
 
@@ -79,6 +78,10 @@ public:
     int getLength() const;
 
     int getWidth() const;
+
+    float getCountdown() const;
+
+    void setCountdown(float countdown);
 };
 
 #endif //SEALION_ARSENAL_H

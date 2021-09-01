@@ -15,3 +15,5 @@ float ExplosiveBullet::getSpeedMult() const {
 float ExplosiveBullet::getPenetrationMult() const {
     return penetrationMult;
 }
+
+ExplosiveBullet::ExplosiveBullet(const std::string &bulletName, int width, int length) : Bullet(bulletName, width, length) {}

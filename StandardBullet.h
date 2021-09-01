@@ -10,11 +10,12 @@
 
 class StandardBullet : public Bullet {
 private:
-    float dmgMult = {1};
+    float dmgMult{1};
     float speedMult{1};
     float penetrationMult{1};
 public:
-    StandardBullet() = default;
+    StandardBullet(const std::string &bulletName, int width,
+                   int length);
 
     float getDmgMult() const;
 

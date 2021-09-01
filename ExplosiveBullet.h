@@ -6,6 +6,7 @@
 #define SEALION_EXPLOSIVEBULLET_H
 
 
+#include <string>
 #include "Bullet.h"
 
 class ExplosiveBullet : public Bullet {
@@ -14,6 +15,8 @@ private:
     float speedMult{0.8};
     float penetrationMult{0.8};
 public:
+    ExplosiveBullet(const std::string &bulletName, int width, int length);
+
     float getDmgMult() const;
 
     float getSpeedMult() const;

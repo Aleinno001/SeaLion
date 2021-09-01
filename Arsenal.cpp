@@ -2,6 +2,7 @@
 // Created by gabriele on 7/2/21.
 //
 
+
 #include "Arsenal.h"
 
 //getter
@@ -13,17 +14,11 @@ const int Arsenal::getReloadTime() const {
     return reloadTime;
 }
 
-int Arsenal::getAmmoSpeed() const {
-    return ammoSpeed;
-}
 
 int Arsenal::getMaximumDispersion() const {
     return maximumDispersion;
 }
 
-float Arsenal::getAmmoDeceleration() const {
-    return ammoDeceleration;
-}
 
 int Arsenal::getFirepower() const {
     return firepower;
@@ -33,11 +28,11 @@ int Arsenal::getNumAmmo() const {
     return numAmmo;
 }
 
-Arsenal::Arsenal(const float range, const int reload, int speed, int dispersion, Bullet type,
-                 float deceleration, int power, int num, int posX, int posY, int le, int wi,
+Arsenal::Arsenal(const float range, const float reload, int dispersion, std::shared_ptr<Bullet> type,
+                 int power, int num, int posX, int posY, int le, int wi,
                  std::string texName) : rangeOfFire(range), reloadTime(reload),
-                                        ammoSpeed(speed), maximumDispersion(dispersion),
-                                        ammoDeceleration(deceleration), firepower(power), numAmmo(num), length(le),
+                                        maximumDispersion(dispersion),
+                                        firepower(power), numAmmo(num), length(le),
                                         width(wi), textureName(texName), ammoType(type) {
 
     pos = sf::Vector2f(posX, posY);
@@ -68,14 +63,13 @@ void Arsenal::openFire(Vehicle enemy) {
 
 }
 
-const Bullet &Arsenal::getAmmoType() const {
+std::shared_ptr<Bullet> Arsenal::getAmmoType() const {
     return ammoType;
 }
 
-void Arsenal::setAmmoType(const Bullet &ammoType) {
+void Arsenal::setAmmoType(const std::shared_ptr<Bullet> ammoType) {
     Arsenal::ammoType = ammoType;
 }
-
 
 
 bool Arsenal::engage(Vehicle enemy) {
@@ -105,6 +99,15 @@ int Arsenal::getWidth() const {
 const sf::Vector2f &Arsenal::getPos() const {
     return pos;
 }
+
+float Arsenal::getCountdown() const {
+    return countdown;
+}
+
+void Arsenal::setCountdown(float countdown) {
+    Arsenal::countdown = countdown;
+}
+
 
 
 

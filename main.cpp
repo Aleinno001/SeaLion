@@ -212,13 +212,13 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
     auto enemyIterStart = gameWorld.getEnemyFleet().begin();
     auto enemyIterEnd = gameWorld.getEnemyFleet().end();
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
-        iter->get()->searchTarget(enemyIterStart, enemyIterEnd, gameWorld.getTiles());
+        iter->get()->searchTarget(enemyIterStart, enemyIterEnd, gameWorld.getTiles(), dt);
     }
 
     auto alliedIterStart = gameWorld.getAlliedFleet().begin();
     auto alliedIterEnd = gameWorld.getAlliedFleet().end();
     for (auto iter = gameWorld.getEnemyFleet().begin(); iter != gameWorld.getEnemyFleet().end(); ++iter) {
-        iter->get()->searchTarget(alliedIterStart, alliedIterEnd, gameWorld.getTiles());
+        iter->get()->searchTarget(alliedIterStart, alliedIterEnd, gameWorld.getTiles(), dt);
     }
 
 }
@@ -398,8 +398,13 @@ int main() {
             window.draw(it->getSprite());
 
             for (auto const &itArsenal : it->getArsenalList())
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube")
+                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     window.draw(itArsenal->getSprite());
+                    if(itArsenal->getAmmoType()->isArrived()){
+                        window.draw(itArsenal->getAmmoType()->getSprite());
+                        std::cerr << "Posizione: " << itArsenal->getAmmoType()->getSprite().getPosition().x << ", " << itArsenal->getAmmoType()->getSprite().getPosition().y << std::endl;
+                    }
+                }
 
             if(it->getShipType()==ShipType::AircraftCarrier)
                 for(auto const &itPlanes : it->getVehicleList())

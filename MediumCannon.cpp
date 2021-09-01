@@ -4,12 +4,12 @@
 
 #include "MediumCannon.h"
 
-MediumCannnon::MediumCannnon(const float range, const int reload, int speed, int dispersion,
-                             Bullet type, float decelleration, int power, int num, int posX, int posY, int le,
+MediumCannnon::MediumCannnon(const float range, const int reload, int dispersion,
+                             std::shared_ptr<Bullet> type, int power, int num, int posX, int posY, int le,
                              int wi, std::string texName, WarShip &sub) : subject_(sub),
-                                                                          Arsenal(range, reload, speed, dispersion,
+                                                                          Arsenal(range, reload, dispersion,
                                                                                   type,
-                                                                                  decelleration, power, num, posX, posY,
+                                                                                  power, num, posX, posY,
                                                                                   le, wi,
                                                                                   texName) {
     setUpSprite(texName);
@@ -29,7 +29,7 @@ void MediumCannnon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
 
-void MediumCannnon::update(sf::Vector2f &vel,double mx) {
+void MediumCannnon::update(sf::Vector2f &vel, double mx) {
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
     sf::Transform rotation;
@@ -37,7 +37,6 @@ void MediumCannnon::update(sf::Vector2f &vel,double mx) {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
-
 
 
 bool MediumCannnon::engage(Vehicle enemy) {

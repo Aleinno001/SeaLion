@@ -30,7 +30,7 @@ const int WarShip::getNumHCannons() const {
 
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
-                  int le, int wi,
+                 int le, int wi,
                  bool col, ShipType sh, ModelType mo) : Vehicle(x, y, ac, maxVel, hp,
                                                                 le, wi, col, nat),
                                                         armour(arm),
@@ -55,7 +55,6 @@ ModelType WarShip::getModelType() const {
 std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
     return arsenalList;
 }
-
 
 
 void WarShip::move(sf::Vector2<double> coordinates, double dt) {
@@ -109,7 +108,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
 
         notifyArsenals(vel, deltaMx);
 
-        if(shipType==ShipType::AircraftCarrier)
+        if (shipType == ShipType::AircraftCarrier)
             notifyPlanes(vel, deltaMx);
 
     }
@@ -160,7 +159,7 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
 }
 
 void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
-                     std::_List_iterator<std::shared_ptr<Arsenal>> iter) {
+                     std::_List_iterator<std::shared_ptr<Arsenal>> iter, float dt) {
     double mx;
     double dy;
     double dx;
@@ -188,12 +187,32 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
     }
      */
     iter->get()->getSprite().setRotation(mx);
+    if (abs(iter->get()->getCountdown() - dt) < dt) {
+        iter->get()->getAmmoType()->setStartPoint(iter->get()->getSprite().getPosition());
+        iter->get()->getAmmoType()->setTargetPoint(target->get()->getSprite().getPosition());
+        iter->get()->setCountdown(iter->get()->getReloadTime());
+        iter->get()->getAmmoType()->setArrived(false);
+        std::cerr << "Prima condizione " << std::endl;
+
+    } else {
+        iter->get()->setCountdown(iter->get()->getCountdown() - dt);
+    }
+
+    if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x - iter->get()->getAmmoType()->getTargetPoint().x) >
+         1 ||
+         abs(iter->get()->getAmmoType()->getSprite().getPosition().y - iter->get()->getAmmoType()->getTargetPoint().y) >
+         1) && !iter->get()->getAmmoType()->isArrived()) {
+        std::cerr << "Sono nella reach " << std::endl;
+        iter->get()->getAmmoType()->reachTarget();
+    } else {
+        iter->get()->getAmmoType()->setArrived(true);
+    }
 
 }
 
 bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                            std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
-                           const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
+                           const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector, float dt) {
     float distance = 0;
     bool result = false;
     auto iter = arsenalList.begin();
@@ -214,7 +233,7 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
             }
         }
         if (targetDistance != 999999) {
-            attack(target, iter);
+            attack(target, iter, dt);
             result = true;
         }
         targetDistance = 999999;

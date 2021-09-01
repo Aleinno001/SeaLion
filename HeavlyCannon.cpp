@@ -4,11 +4,11 @@
 
 #include "HeavlyCannon.h"
 
-HeavlyCannon::HeavlyCannon(const float range, const int reload, int speed, int dispersion,
-                           Bullet type, float decelleration, int power, int num, int posX, int posY, int le,
+HeavlyCannon::HeavlyCannon(const float range, const int reload,  int dispersion,
+                           std::shared_ptr<Bullet> type, int power, int num, int posX, int posY, int le,
                            int wi, std::string texName, WarShip &sub) : subject_(sub),
-                                                                        Arsenal(range, reload, speed, dispersion, type,
-                                                                                decelleration, power, num, posX, posY,
+                                                                        Arsenal(range, reload,dispersion, type,
+                                                                                power, num, posX, posY,
                                                                                 le, wi,
                                                                                 texName) {
 

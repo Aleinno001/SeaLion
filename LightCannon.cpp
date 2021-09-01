@@ -4,11 +4,11 @@
 
 #include "LightCannon.h"
 
-LightCannon::LightCannon(float range, const int reload, int speed, int dispersion, Bullet type,
-                         float deceleration, int power, int num, int posX, int posY, int le, int wi,
+LightCannon::LightCannon(float range, const int reload, int dispersion, std::shared_ptr<Bullet> type,
+                         int power, int num, int posX, int posY, int le, int wi,
                          std::string texName, WarShip &sub)
         : subject_(sub),
-          Arsenal(range, reload, speed, dispersion, type, deceleration, power, num, posX, posY, le, wi, texName) {
+          Arsenal(range, reload, dispersion, type, power, num, posX, posY, le, wi, texName) {
     setUpSprite(texName);
     sprite.setPosition(pos);
     resetOrigin();

@@ -143,7 +143,7 @@ public:
     canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter, std::_List_iterator<std::unique_ptr<WarShip>> target,
               const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);
 
-    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>> target, std::_List_iterator<std::shared_ptr<Arsenal>> iter);
+    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>> target, std::_List_iterator<std::shared_ptr<Arsenal>> iter, float dt);
 
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 
@@ -151,7 +151,7 @@ public:
 
     bool searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
-                      const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);
+                      const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector, float dt);
 
     virtual ~WarShip() {
 

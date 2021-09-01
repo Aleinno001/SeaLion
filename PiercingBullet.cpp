@@ -15,3 +15,6 @@ float PiercingBullet::getSpeedMult() const {
 float PiercingBullet::getPenetrationMult() const {
     return penetrationMult;
 }
+
+PiercingBullet::PiercingBullet(const std::string &bulletName, int width, int length) : Bullet(bulletName, width,
+                                                                                              length) {}
