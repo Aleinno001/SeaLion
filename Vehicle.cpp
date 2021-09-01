@@ -116,6 +116,5 @@ void Vehicle::setCollision(bool collision) {
 }
 
 void Vehicle::updatePlanes(sf::Vector2f &vel, double mx) {
-
 }
 

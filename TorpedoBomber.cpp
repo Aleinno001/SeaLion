@@ -11,6 +11,8 @@ TorpedoBomber::TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int l
 
     try {
         setUpSprite("WarPlanes/" + textureName);
+        sprite.setPosition(pos);
+        resetOrigin();
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;
@@ -46,4 +48,8 @@ void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
     rotation.rotate(mx, subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
+}
+
+void TorpedoBomber::resetOrigin() {
+    sprite.setOrigin((width - 1) / 2, (length - 1) / 2);
 }

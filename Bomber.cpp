@@ -40,9 +40,14 @@ Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, boo
 
     try {
         setUpSprite("WarPlanes/" + textureName);
+        sprite.setPosition(pos);
+        resetOrigin();
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;
     }
 }
 
+void Bomber::resetOrigin() {
+    sprite.setOrigin((width - 1) / 2, (length) / 2);
+}

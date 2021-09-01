@@ -40,7 +40,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                 ((iter->it->get()->getSprite().getPosition().y +
                   iter->it->get()->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
                 iter->it->get()->setCollision(false);
-                std::cerr << "BORDER_COLLISION" << std::endl;
+                //std::cerr << "BORDER_COLLISION" << std::endl;
             }
 
 
@@ -252,7 +252,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Uk, FactionType::Italy, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Italy, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
     int shipCounter = 0;
     bool found = false;
@@ -390,6 +390,8 @@ int main() {
                 for(auto const &itPlanes : it->getVehicleList())
                     window.draw(itPlanes->getSprite());
 
+
+
         }
 
         for (auto & it : gameWorld.getAlliedFleet()) {
@@ -402,6 +404,8 @@ int main() {
             if(it->getShipType()==ShipType::AircraftCarrier)
                 for(auto const &itPlanes : it->getVehicleList())
                     window.draw(itPlanes->getSprite());
+
+
 
 
 

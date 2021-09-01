@@ -35,6 +35,8 @@ private:
 
 private:
     WarShip &subject_;
+
+    void resetOrigin();
 };
 
 #endif //SEALION_FIGHTER_H

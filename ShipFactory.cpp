@@ -241,20 +241,20 @@ ShipFactory::midwayBuilder(
     mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230, *mid)));
     mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100, *mid)));
 
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+17,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+37,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+57,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+77,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+97,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+117,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+137,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+157,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+177,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+197,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+217,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+237,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+257,*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+277,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+17, "Usa", *mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+37,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+57,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+77,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+97,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+117,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+137,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+157,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+177,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+197,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+217,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+237,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+257,"Usa",*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+277,"Usa",*mid)));
 
     
     for (int i = 0; i < numAntiAir; i++)
@@ -312,12 +312,12 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 69, *GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 98, *GiuseppeGaribaldi)));
 
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+24,*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+44,*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+64,*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+84,*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+104,*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+124,*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+24,"Italy",*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+20,cannonPosY+44,"Italy",*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+64,"Italy",*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+84,"Italy",*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+104,"Italy",*GiuseppeGaribaldi)));
+    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+124,"Italy",*GiuseppeGaribaldi)));
     return GiuseppeGaribaldi;
 }
 
@@ -1585,11 +1585,11 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     Cavour->attach(std::move(factory.createLight(cannonPosX + 29, cannonPosY + 78,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 26, cannonPosY + 171,*Cavour)));
 
-    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+18,cannonPosY+30,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+18,cannonPosY+60,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+18,cannonPosY+80,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+18,cannonPosY+90,*Cavour)));
-    Cavour->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+18,cannonPosY+110,*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+18,cannonPosY+30,"Italy",*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+18,cannonPosY+60,"Italy",*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+18,cannonPosY+80,"Italy",*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+18,cannonPosY+90,"Italy",*Cavour)));
+    Cavour->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+18,cannonPosY+110,"Italy",*Cavour)));
 
     for (int i = 0; i < numAntiAir; i++)
         Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
@@ -2658,6 +2658,13 @@ std::unique_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::unique_ptr<WarSh
         it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
                              (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
     }
+
+    for (auto &it: ship->getVehicleList()) {
+        it->getSprite().move(0, ship->getLength() / 2);
+        it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
+                             (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
+        it->getSprite().rotate(180);
+    }
     return ship;
 }
 
@@ -2667,6 +2674,10 @@ std::unique_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::unique_ptr<WarS
     for (auto &it: ship->getArsenalList()) {
         it->getSprite().move(0, -ship->getLength() / 2);
         it->getSprite().rotate(180);
+    }
+    for (auto &it: ship->getVehicleList()) {
+        it->getSprite().move(0, -ship->getLength() / 2);
+
     }
     return ship;
 }

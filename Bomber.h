@@ -42,6 +42,8 @@ public:
 
 
     ~Bomber() override;
+
+    void resetOrigin();
 };
 
 

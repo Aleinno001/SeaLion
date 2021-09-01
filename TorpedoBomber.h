@@ -44,6 +44,8 @@ private:
     }
 public:
     ~TorpedoBomber() override;
+
+    void resetOrigin();
 };
 
 
