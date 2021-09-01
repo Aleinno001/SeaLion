@@ -334,7 +334,7 @@ std::unique_ptr<AircraftCarrier>
 ShipFactory::tahioBuilder(
         sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
 
     int shipWidth = 46;
     int shipHeight = 260;
@@ -356,6 +356,13 @@ ShipFactory::tahioBuilder(
     Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 55, *Tahio)));
     Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 218, *Tahio)));
 
+    Tahio->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+22,cannonPosY+14,"Japan",*Tahio)));
+    Tahio->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+22,cannonPosY+40,"Japan",*Tahio)));
+    Tahio->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+22,cannonPosY+65,"Japan",*Tahio)));
+    Tahio->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+22,cannonPosY+94,"Japan",*Tahio)));
+    Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+130,"Japan",*Tahio)));
+    Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+166,"Japan",*Tahio)));
+    Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+206,"Japan",*Tahio)));
     for (int i = 0; i < numAntiAir; i++)
         Tahio->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Tahio)));
     return Tahio;

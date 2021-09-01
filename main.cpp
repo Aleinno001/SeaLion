@@ -252,7 +252,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Uk, FactionType::Italy, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Japan, FactionType::Italy, 8, boundaries, width,
                                     height, tileDim);
     int shipCounter = 0;
     bool found = false;
