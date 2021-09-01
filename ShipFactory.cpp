@@ -1522,6 +1522,7 @@ std::unique_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
 std::unique_ptr<AircraftCarrier>
 ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
     CannonFactory factory;
+    AirplaneFactory airPlanesFactory;
     int shipWidth = 70;
     int shipHeight = 295;
 
@@ -1540,9 +1541,24 @@ ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
                                 ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 55, cannonPosY + 92, *FranklinDRoosevelt)));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 56, cannonPosY + 179, *FranklinDRoosevelt)));
+
+
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+12,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+32,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+52,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+72,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+92,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+112,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+132,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+152,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+172,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+192,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+212,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+232,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+252,"Usa",*FranklinDRoosevelt)));
+    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+272,"Usa",*FranklinDRoosevelt)));
     
-    
-    
+
     for (int i = 0; i < numAntiAir; i++)
         FranklinDRoosevelt->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *FranklinDRoosevelt)));
