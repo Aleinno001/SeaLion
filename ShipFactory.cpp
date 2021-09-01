@@ -1540,6 +1540,9 @@ ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
                                 ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 55, cannonPosY + 92, *FranklinDRoosevelt)));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 56, cannonPosY + 179, *FranklinDRoosevelt)));
+    
+    
+    
     for (int i = 0; i < numAntiAir; i++)
         FranklinDRoosevelt->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *FranklinDRoosevelt)));
@@ -1620,7 +1623,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
 std::unique_ptr<AircraftCarrier>
 ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
     int shipWidth = 39;
     int shipHeight = 222;
 
@@ -1640,6 +1643,14 @@ ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
                                 ShipType::AircraftCarrier, ModelType::Hiryu, 6));
     Hiryu->attach(std::move(factory.createLight(cannonPosX + 18, cannonPosY + 3, *Hiryu)));
     Hiryu->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 61, *Hiryu)));
+
+    Hiryu->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+32,"Japan",*Hiryu)));
+    Hiryu->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+58,"Japan",*Hiryu)));
+    Hiryu->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+86,"Japan",*Hiryu)));
+    Hiryu->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+114,"Japan",*Hiryu)));
+    Hiryu->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+145,"Japan",*Hiryu)));
+    Hiryu->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+176,"Japan",*Hiryu)));
+
     for (int i = 0; i < numAntiAir; i++)
         Hiryu->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Hiryu)));
     return Hiryu;
