@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/runSeaLionTests.dir/GameTileFixture.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/GameTileTest.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o"
+  "CMakeFiles/runSeaLionTests.dir/HeavlyCannonFixture.cpp.o"
+  "CMakeFiles/runSeaLionTests.dir/HeavlyCannonTest.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/LightCannonTests.cpp.o"
   "CMakeFiles/runSeaLionTests.dir/MediumCannonFixture.cpp.o"

@@ -268,7 +268,7 @@ std::unique_ptr<AircraftCarrier>
 ShipFactory::arkRoyalBuilder(
         sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
     int shipWidth = 38;
     int shipHeight = 240;
 
@@ -286,6 +286,14 @@ ShipFactory::arkRoyalBuilder(
                                 ModelType::ArkRoyal, 7));
     arkRoyal->attach(std::move(factory.createLight(cannonPosX + 7, cannonPosY + 85, *arkRoyal)));
     arkRoyal->attach(std::move(factory.createLight(cannonPosX + 28, cannonPosY + 85, *arkRoyal)));
+
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+15,"Uk",*arkRoyal)));
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+40,"Uk",*arkRoyal)));
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+65,"Uk",*arkRoyal)));
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+94,"Uk",*arkRoyal)));
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+130,"Uk",*arkRoyal)));
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+166,"Uk",*arkRoyal)));
+    arkRoyal->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+206,"Uk",*arkRoyal)));
     for (int i = 0; i < numAntiAir; i++)
         arkRoyal->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *arkRoyal)));
     return arkRoyal;

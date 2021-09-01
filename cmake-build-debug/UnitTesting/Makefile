@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/162/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/163/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/162/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/163/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,31 +68,31 @@ CMAKE_BINARY_DIR = /home/pala/CLionProjects/SeaLion/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/163/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/163/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/163/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/163/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/163/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -102,7 +102,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/163/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -112,13 +112,13 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/163/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/163/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -439,6 +439,54 @@ GameWorldFixture.cpp.s:
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.s
 .PHONY : GameWorldFixture.cpp.s
 
+HeavlyCannonFixture.o: HeavlyCannonFixture.cpp.o
+.PHONY : HeavlyCannonFixture.o
+
+# target to build an object file
+HeavlyCannonFixture.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonFixture.cpp.o
+.PHONY : HeavlyCannonFixture.cpp.o
+
+HeavlyCannonFixture.i: HeavlyCannonFixture.cpp.i
+.PHONY : HeavlyCannonFixture.i
+
+# target to preprocess a source file
+HeavlyCannonFixture.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonFixture.cpp.i
+.PHONY : HeavlyCannonFixture.cpp.i
+
+HeavlyCannonFixture.s: HeavlyCannonFixture.cpp.s
+.PHONY : HeavlyCannonFixture.s
+
+# target to generate assembly for a file
+HeavlyCannonFixture.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonFixture.cpp.s
+.PHONY : HeavlyCannonFixture.cpp.s
+
+HeavlyCannonTest.o: HeavlyCannonTest.cpp.o
+.PHONY : HeavlyCannonTest.o
+
+# target to build an object file
+HeavlyCannonTest.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonTest.cpp.o
+.PHONY : HeavlyCannonTest.cpp.o
+
+HeavlyCannonTest.i: HeavlyCannonTest.cpp.i
+.PHONY : HeavlyCannonTest.i
+
+# target to preprocess a source file
+HeavlyCannonTest.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonTest.cpp.i
+.PHONY : HeavlyCannonTest.cpp.i
+
+HeavlyCannonTest.s: HeavlyCannonTest.cpp.s
+.PHONY : HeavlyCannonTest.s
+
+# target to generate assembly for a file
+HeavlyCannonTest.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonTest.cpp.s
+.PHONY : HeavlyCannonTest.cpp.s
+
 LightCannonFixture.o: LightCannonFixture.cpp.o
 .PHONY : LightCannonFixture.o
 
@@ -677,6 +725,12 @@ help:
 	@echo "... GameWorldFixture.o"
 	@echo "... GameWorldFixture.i"
 	@echo "... GameWorldFixture.s"
+	@echo "... HeavlyCannonFixture.o"
+	@echo "... HeavlyCannonFixture.i"
+	@echo "... HeavlyCannonFixture.s"
+	@echo "... HeavlyCannonTest.o"
+	@echo "... HeavlyCannonTest.i"
+	@echo "... HeavlyCannonTest.s"
 	@echo "... LightCannonFixture.o"
 	@echo "... LightCannonFixture.i"
 	@echo "... LightCannonFixture.s"

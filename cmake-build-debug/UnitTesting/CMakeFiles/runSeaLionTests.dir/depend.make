@@ -344,6 +344,73 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o: \
  ../Vehicle.h \
  ../WarShip.h \
  ../WeaponFactory.h
+UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonFixture.cpp.o: \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-message.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-param-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-test-part.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-typed-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_pred_impl.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_prod.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-filepath.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-param-util.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port-arch.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
+ ../Arsenal.h \
+ ../Bullet.h \
+ ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
+ ../HeavlyCannon.h \
+ ../UnitTesting/HeavlyCannonFixture.cpp \
+ ../Vehicle.h \
+ ../WarShip.h
+UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonTest.cpp.o: \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-message.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-param-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-test-part.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-typed-test.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_pred_impl.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_prod.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-printers.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-filepath.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-internal.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-param-util.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port-arch.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h \
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h \
+ ../AircraftCarrier.h \
+ ../Arsenal.h \
+ ../ArsenalFactory.h \
+ ../Battleship.h \
+ ../Bullet.h \
+ ../CannonFactory.h \
+ ../CurrentDir.h \
+ ../Dice.h \
+ ../GameTile.h \
+ ../HeavlyCannon.h \
+ ../LightCannon.h \
+ ../MediumCannon.h \
+ ../StandardBullet.h \
+ ../UnitTesting/HeavlyCannonTest.cpp \
+ ../Vehicle.h \
+ ../WarShip.h
 UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o: \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h \
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h \
