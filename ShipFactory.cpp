@@ -220,7 +220,7 @@ std::unique_ptr<AircraftCarrier>
 ShipFactory::midwayBuilder(
         sf::Vector2i &coordinates) const {
     CannonFactory factory;
-
+    AirplaneFactory airPlanesFactory;
     int shipWidth = 84;
     int shipHeight = 296;
 
@@ -241,6 +241,22 @@ ShipFactory::midwayBuilder(
     mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230, *mid)));
     mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100, *mid)));
 
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+17,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+37,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+57,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+77,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+97,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+117,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+137,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+157,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+177,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+197,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+217,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+237,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+257,*mid)));
+    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+277,*mid)));
+
+    
     for (int i = 0; i < numAntiAir; i++)
         mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
 
