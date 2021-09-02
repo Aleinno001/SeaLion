@@ -14,17 +14,17 @@ class Vehicle {
 protected:
     int posX;
     int posY;
-    float acceleration;
+    double acceleration;
     bool death{false};
 public:
     float getCurrentSpeed() const;
 
 protected:
-    const float maxSpeed;
+    const double maxSpeed;
     float currentSpeed{0};//FIXME valore di default di velocità
     double hp;
-    int length;
-    int width;
+    unsigned int length;
+    unsigned int width;
     bool collision;
 public:
     const std::string &getNationality() const;

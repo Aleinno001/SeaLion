@@ -25,6 +25,9 @@ public:
     void bombard(Vehicle &enemy);
 
     //float calcSpeed();
+    int getNumBombs() const;
+
+    int getBombDamage() const;
 
     void attack(Vehicle target);
 
