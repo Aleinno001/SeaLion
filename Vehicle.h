@@ -15,6 +15,7 @@ protected:
     int posX;
     int posY;
     float acceleration;
+    bool death{false};
 public:
     float getCurrentSpeed() const;
 
@@ -49,6 +50,8 @@ public:
 
     virtual bool setUpSprite(std::string textureName);
 
+    void setDeath(bool death);
+
     void setCollision(bool collision);
 
     virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>>  target);
@@ -62,6 +65,8 @@ public:
     void setCurrentSpeed(float currentSpeed);
 
     virtual ~Vehicle() = default;
+
+
 
     bool getCol(){
         return collision;

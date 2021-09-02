@@ -122,3 +122,7 @@ void Vehicle::setCurrentSpeed(float currentSpeed) {
     Vehicle::currentSpeed = currentSpeed;
 }
 
+void Vehicle::setDeath(bool death) {
+    Vehicle::death = death;
+}
+

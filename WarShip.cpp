@@ -59,7 +59,7 @@ std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
 
 
 void WarShip::move(sf::Vector2<double> coordinates, double dt) {
-    if (collision) {   //FIXME da rivedere il comportamento post impatto
+    if (collision && !death) {   //FIXME da rivedere il comportamento post impatto
         double mx;
         double dy = coordinates.y - sprite.getPosition().y;
         double dx = coordinates.x - sprite.getPosition().x;
@@ -122,40 +122,42 @@ const int WarShip::getNumAntiAircraft() const {
 bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
-    bool result = true;
-    float y, x;
-    if (!target->get()->isConcealed()) {
-        int i, j;
-        float mx;
-        x = iter->get()->getSprite().getPosition().x;
-        y = iter->get()->getSprite().getPosition().y;
-        double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
-        double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-        mx = 90 + atan2(dy, dx) * 180 / M_PI;
+    bool result = false;
+    if(!death) {
+        result = true;
+        float y, x;
+        if (!target->get()->isConcealed()) {
+            int i, j;
+            float mx;
+            x = iter->get()->getSprite().getPosition().x;
+            y = iter->get()->getSprite().getPosition().y;
+            double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
+            double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
+            mx = 90 + atan2(dy, dx) * 180 / M_PI;
 
-        if (mx < 0) {
-            mx = 360 + mx;
-        }
-        while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
-               abs(target->get()->getSprite().getPosition().y - y) >= 1) {
-            x = x + sinf((M_PI / 180.f) * mx) * 2;
-            y = y - cosf((M_PI / 180.f) * mx) * 2;
-            i = y / 30;
-            j = x / 30;
-            if ((tileVector[i][j]->getSprite().getPosition().x < x &&
-                 (tileVector[i][j]->getSprite().getPosition().x +
-                  tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
-                (tileVector[i][j]->getSprite().getPosition().y < y &&
-                 (tileVector[i][j]->getSprite().getPosition().y +
-                  tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
-                if (!tileVector[i][j]->isPassable) {
-                    return result = false;
+            if (mx < 0) {
+                mx = 360 + mx;
+            }
+            while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
+                   abs(target->get()->getSprite().getPosition().y - y) >= 1) {
+                x = x + sinf((M_PI / 180.f) * mx) * 2;
+                y = y - cosf((M_PI / 180.f) * mx) * 2;
+                i = y / 30;
+                j = x / 30;
+                if ((tileVector[i][j]->getSprite().getPosition().x < x &&
+                     (tileVector[i][j]->getSprite().getPosition().x +
+                      tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
+                    (tileVector[i][j]->getSprite().getPosition().y < y &&
+                     (tileVector[i][j]->getSprite().getPosition().y +
+                      tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
+                    if (!tileVector[i][j]->isPassable) {
+                        return result = false;
+                    }
                 }
             }
         }
+
     }
-
-
     return result;
 }
 

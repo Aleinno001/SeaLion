@@ -70,42 +70,47 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
     }
 };
 
-auto tilesCheck = [](sf::RenderWindow &window,GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision,int tileDim){
+auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision,int tileDim){
     while(window.isOpen()){
 
-        for(auto &itNaval : fullNavyCollision)
+        for(auto &itNaval : fullNavyCollision) {
 
-            for(int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++)
+            if(itNaval.it->get()->getHp()>0) {
 
-                for(int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+                for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++)
 
-                    if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&
-                        Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
-                                                    gameWorld.tiles[row][column]->getSprite())){
+                    for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
 
-                        itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed()*0.80);
+                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&
+                            Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
+                                                        gameWorld.tiles[row][column]->getSprite())) {
+
+                            itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed() * 0.80);
 
 
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&
+                                   Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
+                                                               gameWorld.tiles[row][column]->getSprite())) {
 
-                    }else if(gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&
-                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
-                                                         gameWorld.tiles[row][column]->getSprite())){
+                            itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00001);
+                            std::cerr << itNaval.it->get()->getHp() << std::endl;
 
-                                        itNaval.it->get()->setDamage(itNaval.it->get()->getHp()*0.00001);
-                                        std::cerr<<itNaval.it->get()->getHp()<<std::endl;
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
+                                   Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
+                                                               gameWorld.tiles[row][column]->getSprite())) {
 
-                    }else if(gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
-                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
-                                                         gameWorld.tiles[row][column]->getSprite())){
+                            itNaval.it->get()->setConcealed(true);
 
-                        itNaval.it->get()->setConcealed(true);
-
-                    }else{
-                        itNaval.it->get()->setConcealed(false);
+                        } else {
+                            itNaval.it->get()->setConcealed(false);
+                        }
                     }
-                }
+            }else{
+                itNaval.it->get()->setCollision(false);
+                itNaval.it->get()->setDeath(true);
+            }
 
-
+        }
 
 
 
@@ -113,6 +118,9 @@ auto tilesCheck = [](sf::RenderWindow &window,GameWorld &gameWorld,std::list<ite
     }
 
 };
+
+
+
 std::vector<Fleet> alliedDummyFleet() {
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
@@ -320,7 +328,7 @@ int main() {
 
 
     std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim,std::ref(window));
-    std::thread thread_tiles_effect(tilesCheck,std::ref(window),std::ref(gameWorld),std::ref(fullNavyCollision),tileDim);
+    std::thread thread_tiles_effect(tilesCheckAndDeath,std::ref(window),std::ref(gameWorld),std::ref(fullNavyCollision),tileDim);
     thread_collision.detach();
     thread_tiles_effect.detach();
     while (window.isOpen()) {
