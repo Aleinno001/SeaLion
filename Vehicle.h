@@ -59,6 +59,8 @@ public:
 
     virtual void updatePlanes(sf::Vector2f &vel,double mx); //metodo per design pattern observer tra Planes e Warship
 
+    void setCurrentSpeed(float currentSpeed);
+
     virtual ~Vehicle() = default;
 
     bool getCol(){

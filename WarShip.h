@@ -121,6 +121,7 @@ public:
     virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
 
+
     virtual void notifyPlanes(sf::Vector2f &vel,double mx)=0;//    Metodi per design pattern observer
 
     virtual void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer

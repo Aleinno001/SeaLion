@@ -110,7 +110,8 @@ void GameWorld::setUpTiles(
                     path = "seaFoggyBlock.png";
                     tileType = TileType::Fog;
                     collision = false;
-                } else if (resTile == 300 && !isWaveCluster && maxWaveCluster != 0) {      //Wave
+                } else if (resTile == 300 && !isWaveCluster && maxWaveCluster != 0 &&
+                                                               isInStrip(i, tileDim)) {      //Wave
                     waveColumn = j;
                     waveTilesInARow = 3;
                     isWaveCluster = true;
@@ -118,12 +119,14 @@ void GameWorld::setUpTiles(
                     tileType = TileType::Wave;
                     collision = false;
                 } else if (isWaveCluster && waveTilesInAColumn > 1 &&
-                           j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3))) {
+                           j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3)) &&
+                                                              isInStrip(i, tileDim)) {
                     path = "seaWaveBlock.png";
                     tileType = TileType::Wave;
                 collision = false;
             } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 3) &&
-                       j <= (waveColumn + 3 + (resTile % 3))) {
+                       j <= (waveColumn + 3 + (resTile % 3))&&
+                       isInStrip(i, tileDim)) {
                     path = "seaWaveBlock.png";
                     tileType = TileType::Wave;
                     collision = false;
