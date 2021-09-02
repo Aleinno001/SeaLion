@@ -98,9 +98,10 @@ auto tilesCheck = [](sf::RenderWindow &window,GameWorld &gameWorld,std::list<ite
                              Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                          gameWorld.tiles[row][column]->getSprite())){
 
+                        itNaval.it->get()->setConcealed(true);
 
-
-
+                    }else{
+                        itNaval.it->get()->setConcealed(false);
                     }
                 }
 
