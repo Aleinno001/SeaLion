@@ -21,19 +21,19 @@ private:
     bool arrived {true};
     sf::Vector2f targetPoint;
     sf::Vector2f startPoint;
-    float currentSpeed{0};
-    float speed {200};
+    float currentSpeed;
+    float speed {100};
     float damage{};
     float penetration{};
     float speedMult {1};
-    float deceleration{1};
+    float deceleration{0.3};
     sf::Sprite sprite;
     sf::Texture texture;
     std::string bulletName;
     int width;
     int length;
 
-    bool setUpSprite(std::string textureName);
+    bool setUpSprite(const std::string& textureName);
 
     void resetOrigin();
 
@@ -49,6 +49,11 @@ public:
     bool isArrived() const;
 
     void setArrived(bool isArrived);
+
+    void hit();
+
+    void initializeBullet(sf::Vector2f startPoint, sf::Vector2f target);
+
 };
 
 

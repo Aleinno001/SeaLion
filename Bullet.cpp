@@ -3,17 +3,20 @@
 //
 
 
+#include <iostream>
 #include "Bullet.h"
 
 
 Bullet::Bullet(
-               const std::string &bulletName, int width, int length) :
-                                                bulletName(bulletName), width(width), length(length){
+        const std::string &bulletName, int width, int length) :
+        bulletName(bulletName), width(width), length(length) {
+    currentSpeed = 0;
     setUpSprite(bulletName);
+    sprite.setPosition(0, 0);
     resetOrigin();
 }
 
-bool Bullet::setUpSprite(std::string textureName) {
+bool Bullet::setUpSprite(const std::string& textureName) {
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
     std::size_t found = currentDir.find(unitTestingPath);
@@ -37,6 +40,7 @@ void Bullet::resetOrigin() {
 }
 
 void Bullet::reachTarget() {
+    std::cerr << "Sono nella reache target quella vera " << std::endl;
     float mx;
     sf::Vector2f vel;
 
@@ -48,16 +52,20 @@ void Bullet::reachTarget() {
         mx = 360 + mx;
     }
 
-    if(currentSpeed == 0){
+    if (currentSpeed == 0) {
         currentSpeed = speed;
     }
+    sprite.setRotation(mx);
     vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * speedMult / 10;
     vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * speedMult / 10;
+
+    std::cerr << "vel.x: " << vel.x << std::endl;
+    std::cerr << "vel.y: " << vel.y << std::endl;
 
     currentSpeed = currentSpeed - deceleration;
 
     sprite.setPosition(sprite.getPosition() + vel);
-    sprite.setRotation(sprite.getRotation() + mx);
+
 }
 
 void Bullet::setTargetPoint(const sf::Vector2f &targetPoint) {
@@ -66,6 +74,7 @@ void Bullet::setTargetPoint(const sf::Vector2f &targetPoint) {
 
 void Bullet::setStartPoint(const sf::Vector2f &startPoint) {
     Bullet::startPoint = startPoint;
+    sprite.setPosition(startPoint);
 }
 
 const sf::Sprite &Bullet::getSprite() const {
@@ -83,3 +92,17 @@ bool Bullet::isArrived() const {
 void Bullet::setArrived(bool isArrived) {
     Bullet::arrived = isArrived;
 }
+
+void Bullet::hit() {
+    arrived = true;
+    currentSpeed = 0;
+}
+
+void Bullet::initializeBullet(sf::Vector2f start, sf::Vector2f target) {
+    targetPoint = target;
+    startPoint = start;
+    arrived = false;
+    sprite.setPosition(startPoint);
+}
+
+

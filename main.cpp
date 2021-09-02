@@ -382,8 +382,12 @@ int main() {
             window.draw(it->getSprite());
 
             for (auto const &itArsenal : it->getArsenalList())
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube")
+                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     window.draw(itArsenal->getSprite());
+                    if(!itArsenal->getAmmoType()->isArrived()){
+                    window.draw(itArsenal->getAmmoType()->getSprite());
+                    }
+                }
 
 
             if(it->getShipType()==ShipType::AircraftCarrier)
@@ -400,7 +404,7 @@ int main() {
             for (auto const &itArsenal : it->getArsenalList())
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     window.draw(itArsenal->getSprite());
-                    if(itArsenal->getAmmoType()->isArrived()){
+                    if(!itArsenal->getAmmoType()->isArrived()){
                         window.draw(itArsenal->getAmmoType()->getSprite());
                         std::cerr << "Posizione: " << itArsenal->getAmmoType()->getSprite().getPosition().x << ", " << itArsenal->getAmmoType()->getSprite().getPosition().y << std::endl;
                     }

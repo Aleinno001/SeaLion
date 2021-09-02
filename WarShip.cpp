@@ -187,25 +187,45 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
     }
      */
     iter->get()->getSprite().setRotation(mx);
-    if (abs(iter->get()->getCountdown() - dt) < dt) {
-        iter->get()->getAmmoType()->setStartPoint(iter->get()->getSprite().getPosition());
-        iter->get()->getAmmoType()->setTargetPoint(target->get()->getSprite().getPosition());
-        iter->get()->setCountdown(iter->get()->getReloadTime());
-        iter->get()->getAmmoType()->setArrived(false);
-        std::cerr << "Prima condizione " << std::endl;
-
-    } else {
-        iter->get()->setCountdown(iter->get()->getCountdown() - dt);
-    }
-
-    if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x - iter->get()->getAmmoType()->getTargetPoint().x) >
-         1 ||
-         abs(iter->get()->getAmmoType()->getSprite().getPosition().y - iter->get()->getAmmoType()->getTargetPoint().y) >
-         1) && !iter->get()->getAmmoType()->isArrived()) {
-        std::cerr << "Sono nella reach " << std::endl;
-        iter->get()->getAmmoType()->reachTarget();
-    } else {
-        iter->get()->getAmmoType()->setArrived(true);
+    if (iter->get()->getNumAmmo() != 0) {
+        if (abs(iter->get()->getCountdown() - dt) <= dt) {
+            sf::Vector2f targetPosition;
+            iter->get()->setNumAmmo(iter->get()->getNumAmmo() - 1);
+            std::cerr << "Num Muni: " << iter->get()->getNumAmmo() << std::endl;
+            targetPosition = target->get()->getSprite().getPosition();
+            Dice dice(10, targetPosition.x);
+            float dx = targetPosition.x - iter->get()->getSprite().getPosition().x;
+            float dy = targetPosition.y - iter->get()->getSprite().getPosition().y;
+            float distance = sqrt(pow(dx, 2) + pow(dy, 2));
+            targetPosition.x +=
+                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * dice.roll(1) / 10) * distance /
+                    iter->get()->getRangeOfFire();
+            targetPosition.y +=
+                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * dice.roll(1) / 10) * distance /
+                    iter->get()->getRangeOfFire();
+            std::cerr << "TargetPosition y: " << targetPosition.y << std::endl;
+            std::cerr << "TargetPosition x: " << targetPosition.x << std::endl;
+            iter->get()->setCountdown(iter->get()->getReloadTime());
+            iter->get()->getAmmoType()->initializeBullet(iter->get()->getSprite().getPosition(),
+                                                         targetPosition);
+        } else {
+            iter->get()->setCountdown(iter->get()->getCountdown() - dt);
+        }
+        std::cerr << "getPosition.x - target.x: " << abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
+                                                         iter->get()->getAmmoType()->getTargetPoint().x) << std::endl;
+        std::cerr << "getPosition.y - target.y: " << abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
+                                                         iter->get()->getAmmoType()->getTargetPoint().y) << std::endl;
+        if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
+                 iter->get()->getAmmoType()->getTargetPoint().x) >
+             5 ||
+             abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
+                 iter->get()->getAmmoType()->getTargetPoint().y) >
+             5)) {
+            iter->get()->getAmmoType()->reachTarget();
+            std::cerr << "Sono dentroooooooo" << std::endl;
+        } else {
+            iter->get()->getAmmoType()->hit();
+        }
     }
 
 }

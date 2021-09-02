@@ -108,6 +108,10 @@ void Arsenal::setCountdown(float countdown) {
     Arsenal::countdown = countdown;
 }
 
+void Arsenal::setNumAmmo(int numAmmo) {
+    Arsenal::numAmmo = numAmmo;
+}
+
 
 
 

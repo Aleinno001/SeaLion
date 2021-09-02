@@ -82,6 +82,8 @@ public:
     float getCountdown() const;
 
     void setCountdown(float countdown);
+
+    void setNumAmmo(int numAmmo);
 };
 
 #endif //SEALION_ARSENAL_H
