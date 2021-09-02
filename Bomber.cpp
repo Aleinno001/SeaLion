@@ -51,3 +51,11 @@ Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, boo
 void Bomber::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (length) / 2);
 }
+
+int Bomber::getNumBombs() const {
+    return numBombs;
+}
+
+int Bomber::getBombDamage() const {
+    return bombDamage;
+}

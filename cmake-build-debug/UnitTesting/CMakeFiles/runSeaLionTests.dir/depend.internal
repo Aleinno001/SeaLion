@@ -344,6 +344,73 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/GameWorldFixture.cpp.o
  /home/pala/CLionProjects/SeaLion/Vehicle.h
  /home/pala/CLionProjects/SeaLion/WarShip.h
  /home/pala/CLionProjects/SeaLion/WeaponFactory.h
+UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonFixture.cpp.o
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-message.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-param-test.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-printers.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-test-part.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-typed-test.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_pred_impl.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_prod.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-port.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-filepath.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-internal.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-param-util.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port-arch.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h
+ /home/pala/CLionProjects/SeaLion/Arsenal.h
+ /home/pala/CLionProjects/SeaLion/Bullet.h
+ /home/pala/CLionProjects/SeaLion/CurrentDir.h
+ /home/pala/CLionProjects/SeaLion/Dice.h
+ /home/pala/CLionProjects/SeaLion/GameTile.h
+ /home/pala/CLionProjects/SeaLion/HeavlyCannon.h
+ /home/pala/CLionProjects/SeaLion/UnitTesting/HeavlyCannonFixture.cpp
+ /home/pala/CLionProjects/SeaLion/Vehicle.h
+ /home/pala/CLionProjects/SeaLion/WarShip.h
+UnitTesting/CMakeFiles/runSeaLionTests.dir/HeavlyCannonTest.cpp.o
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-message.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-param-test.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-printers.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-test-part.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-typed-test.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_pred_impl.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/gtest_prod.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-port.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-filepath.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-internal.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-param-util.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port-arch.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-port.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-string.h
+ ../UnitTesting/lib/googletest/googletest/include/gtest/internal/gtest-type-util.h
+ /home/pala/CLionProjects/SeaLion/AircraftCarrier.h
+ /home/pala/CLionProjects/SeaLion/Arsenal.h
+ /home/pala/CLionProjects/SeaLion/ArsenalFactory.h
+ /home/pala/CLionProjects/SeaLion/Battleship.h
+ /home/pala/CLionProjects/SeaLion/Bullet.h
+ /home/pala/CLionProjects/SeaLion/CannonFactory.h
+ /home/pala/CLionProjects/SeaLion/CurrentDir.h
+ /home/pala/CLionProjects/SeaLion/Dice.h
+ /home/pala/CLionProjects/SeaLion/GameTile.h
+ /home/pala/CLionProjects/SeaLion/HeavlyCannon.h
+ /home/pala/CLionProjects/SeaLion/LightCannon.h
+ /home/pala/CLionProjects/SeaLion/MediumCannon.h
+ /home/pala/CLionProjects/SeaLion/StandardBullet.h
+ /home/pala/CLionProjects/SeaLion/UnitTesting/HeavlyCannonTest.cpp
+ /home/pala/CLionProjects/SeaLion/Vehicle.h
+ /home/pala/CLionProjects/SeaLion/WarShip.h
 UnitTesting/CMakeFiles/runSeaLionTests.dir/LightCannonFixture.cpp.o
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-death-test.h
  ../UnitTesting/lib/googletest/googletest/include/gtest/gtest-matchers.h

@@ -26,7 +26,6 @@ CMakeFiles/SeaLion.dir/main.cpp.o: \
  ../Submarine.h \
  ../TorpedoTube.h \
  ../Vehicle.h \
- ../WarPlanes.h \
  ../WarShip.h \
  ../WeaponFactory.h \
  ../main.cpp

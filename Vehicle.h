@@ -14,16 +14,17 @@ class Vehicle {
 protected:
     int posX;
     int posY;
-    float acceleration;
+    double acceleration;
+    bool death{false};
 public:
     float getCurrentSpeed() const;
 
 protected:
-    const float maxSpeed;
+    const double maxSpeed;
     float currentSpeed{0};//FIXME valore di default di velocità
-    int hp;
-    int length;
-    int width;
+    double hp;
+    unsigned int length;
+    unsigned int width;
     bool collision;
 public:
     const std::string &getNationality() const;
@@ -49,6 +50,8 @@ public:
 
     virtual bool setUpSprite(std::string textureName);
 
+    void setDeath(bool death);
+
     void setCollision(bool collision);
 
     virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>>  target);
@@ -59,12 +62,20 @@ public:
 
     virtual void updatePlanes(sf::Vector2f &vel,double mx); //metodo per design pattern observer tra Planes e Warship
 
+    void setCurrentSpeed(float currentSpeed);
+
     virtual ~Vehicle() = default;
+
+
 
     bool getCol(){
         return collision;
     }
     int getPosX() const;
+
+    void setDamage(double damage){
+        hp=hp-damage;
+    }
 
     int getPosY() const;
 
@@ -72,7 +83,7 @@ public:
 
     const float getMaxSpeed() const;
 
-    int getHp() const;
+    double getHp() const;
 
     int getLength() const;
 

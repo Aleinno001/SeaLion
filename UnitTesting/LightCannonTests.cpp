@@ -9,7 +9,7 @@
 
 TEST(LightCannon, Constructor) {
     StandardBullet b;
-    std::list<std::unique_ptr<Vehicle>> v;
+
     int posX = 700;
     int posY = 700;
     sf::Vector2i coordinates;

@@ -75,7 +75,7 @@ const float Vehicle::getMaxSpeed() const {
     return maxSpeed;
 }
 
-int Vehicle::getHp() const {
+double Vehicle::getHp() const {
     return hp;
 }
 
@@ -116,5 +116,13 @@ void Vehicle::setCollision(bool collision) {
 }
 
 void Vehicle::updatePlanes(sf::Vector2f &vel, double mx) {
+}
+
+void Vehicle::setCurrentSpeed(float currentSpeed) {
+    Vehicle::currentSpeed = currentSpeed;
+}
+
+void Vehicle::setDeath(bool death) {
+    Vehicle::death = death;
 }
 
