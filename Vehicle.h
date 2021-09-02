@@ -21,7 +21,7 @@ public:
 protected:
     const float maxSpeed;
     float currentSpeed{0};//FIXME valore di default di velocità
-    int hp;
+    double hp;
     int length;
     int width;
     bool collision;
@@ -68,13 +68,17 @@ public:
     }
     int getPosX() const;
 
+    void setDamage(double damage){
+        hp=hp-damage;
+    }
+
     int getPosY() const;
 
     float getAcceleration() const;
 
     const float getMaxSpeed() const;
 
-    int getHp() const;
+    double getHp() const;
 
     int getLength() const;
 

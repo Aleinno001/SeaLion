@@ -83,12 +83,22 @@ auto tilesCheck = [](sf::RenderWindow &window,GameWorld &gameWorld,std::list<ite
                         Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                     gameWorld.tiles[row][column]->getSprite())){
 
-                        itNaval.it->get()->set;
-                        itNaval.it->get()->getSprite().setRotation(-10);
+                        itNaval->setCurrent
+
+
 
                     }else if(gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&
                              Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                          gameWorld.tiles[row][column]->getSprite())){
+
+                                        itNaval.it->get()->setDamage(itNaval.it->get()->getHp()*0.00001);
+                                        std::cerr<<itNaval.it->get()->getHp()<<std::endl;
+
+                    }else if(gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
+                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
+                                                         gameWorld.tiles[row][column]->getSprite())){
+
+
 
 
                     }

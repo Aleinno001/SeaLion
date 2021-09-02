@@ -75,7 +75,7 @@ const float Vehicle::getMaxSpeed() const {
     return maxSpeed;
 }
 
-int Vehicle::getHp() const {
+double Vehicle::getHp() const {
     return hp;
 }
 
