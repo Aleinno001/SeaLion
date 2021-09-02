@@ -24,6 +24,10 @@ public:
 
     void launchTorpedo(Vehicle &enemy);
 
+    int getNumTorpedos() const;
+
+    int getTorpedoDamage() const;
+
 private:
 
 

@@ -53,3 +53,11 @@ void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
 void TorpedoBomber::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (length - 1) / 2);
 }
+
+int TorpedoBomber::getNumTorpedos() const {
+    return numTorpedos;
+}
+
+int TorpedoBomber::getTorpedoDamage() const {
+    return torpedoDamage;
+}
