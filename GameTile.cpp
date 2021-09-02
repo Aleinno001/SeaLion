@@ -3,6 +3,7 @@
 //
 
 #include "GameTile.h"
+#include "Collision.h"
 
 
 bool GameTile::setUpSprite(std::string textureName) {
@@ -14,7 +15,7 @@ bool GameTile::setUpSprite(std::string textureName) {
         currentDir.pop_back();
     }
     textureName = currentDir + "/../Res/Tiles/" + textureName;
-    if (!texture.loadFromFile(textureName)) {
+    if (!Collision::CreateTextureAndBitmask(texture,textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);

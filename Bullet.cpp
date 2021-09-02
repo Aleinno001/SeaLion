@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "Bullet.h"
+#include "Collision.h"
 
 
 Bullet::Bullet(
@@ -26,7 +27,7 @@ bool Bullet::setUpSprite(const std::string& textureName) {
     }
     std::string textPath;
     textPath = currentDir + "/../Res/Bullet/" + textureName + ".png";
-    if (!texture.loadFromFile(textPath)) {
+    if (!Collision::CreateTextureAndBitmask(texture,textPath)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
