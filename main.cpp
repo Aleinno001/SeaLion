@@ -83,7 +83,7 @@ auto tilesCheck = [](sf::RenderWindow &window,GameWorld &gameWorld,std::list<ite
                         Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                     gameWorld.tiles[row][column]->getSprite())){
 
-                        itNaval->setCurrent
+                        itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed()*0.80);
 
 
 
