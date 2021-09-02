@@ -122,7 +122,7 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
     bool result = false;
-    if(!death) {
+    if (!death) {
         result = true;
         float y, x;
         if (!target->get()->isConcealed()) {
@@ -193,7 +193,6 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
         if (abs(iter->get()->getCountdown() - dt) <= dt) {
             sf::Vector2f targetPosition;
             iter->get()->setNumAmmo(iter->get()->getNumAmmo() - 1);
-            std::cerr << "Num Muni: " << iter->get()->getNumAmmo() << std::endl;
             targetPosition = target->get()->getSprite().getPosition();
             Dice dice(10, targetPosition.x);
             float dx = targetPosition.x - iter->get()->getSprite().getPosition().x;
@@ -205,18 +204,12 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
             targetPosition.y +=
                     (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * dice.roll(1) / 10) * distance /
                     iter->get()->getRangeOfFire();
-            std::cerr << "TargetPosition y: " << targetPosition.y << std::endl;
-            std::cerr << "TargetPosition x: " << targetPosition.x << std::endl;
             iter->get()->setCountdown(iter->get()->getReloadTime());
             iter->get()->getAmmoType()->initializeBullet(iter->get()->getSprite().getPosition(),
                                                          targetPosition);
         } else {
             iter->get()->setCountdown(iter->get()->getCountdown() - dt);
         }
-        std::cerr << "getPosition.x - target.x: " << abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
-                                                         iter->get()->getAmmoType()->getTargetPoint().x) << std::endl;
-        std::cerr << "getPosition.y - target.y: " << abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
-                                                         iter->get()->getAmmoType()->getTargetPoint().y) << std::endl;
         if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
                  iter->get()->getAmmoType()->getTargetPoint().x) >
              5 ||
@@ -224,7 +217,6 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
                  iter->get()->getAmmoType()->getTargetPoint().y) >
              5)) {
             iter->get()->getAmmoType()->reachTarget();
-            std::cerr << "Sono dentroooooooo" << std::endl;
         } else {
             iter->get()->getAmmoType()->hit();
         }
