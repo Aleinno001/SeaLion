@@ -7,7 +7,7 @@
 #include "../AircraftCarrier.h"
 #include "../AirplaneFactory.h"
 
-TEST(Fighter, Constructor) {
+TEST(Bomber, Constructor) {
 
     int posX = 700;
     int posY = 700;
