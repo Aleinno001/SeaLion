@@ -37,10 +37,8 @@ TEST(LightCannon, Constructor) {
 
     ASSERT_EQ(lightCannon->getRangeOfFire(),250);
     ASSERT_EQ(lightCannon->getReloadTime(),3);
-    ASSERT_EQ(lightCannon->getAmmoSpeed(),20);
     ASSERT_EQ(lightCannon->getAmmoType(),b);
-    ASSERT_EQ(lightCannon->getMaximumDispersion(),5);
-    ASSERT_EQ(lightCannon->getAmmoDeceleration(),static_cast<float>(0.3));
+    ASSERT_EQ(lightCannon->getMaximumDispersion(),20);
     ASSERT_EQ(lightCannon->getFirepower(),50);
     ASSERT_EQ(lightCannon->getNumAmmo(),200);
     ASSERT_EQ(lightCannon->getPos().x,posX+2);
