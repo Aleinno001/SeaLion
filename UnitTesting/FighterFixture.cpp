@@ -5,7 +5,7 @@
 #include "../Fighter.h"
 
 
-class LightCannonSuite : public ::testing::Test {
+class FighterSuite : public ::testing::Test {
 protected:
 
 protected:

@@ -2,10 +2,10 @@
 // Created by pala on 9/2/21.
 //
 #include "gtest/gtest.h"
-#include "../Bomber.h"
+#include "../TorpedoBomber.h"
 
 
-class BomberSuite : public ::testing::Test {
+class TorpedoBomberSuite : public ::testing::Test {
 protected:
 
 protected:
@@ -15,5 +15,5 @@ protected:
 
     }
 
-    Bomber c;
+    TorpedoBomber c;
 };
