@@ -10,7 +10,7 @@
 #include "LightCannon.h"
 #include "MediumCannon.h"
 #include "HeavlyCannon.h"
-#include "StandardBullet.h"
+
 
 class CannonFactory : public ArsenalFactory {
 public:

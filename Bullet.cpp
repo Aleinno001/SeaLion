@@ -9,8 +9,8 @@
 
 
 Bullet::Bullet(
-        const std::string &bulletName, int width, int length) :
-        bulletName(bulletName), width(width), length(length) {
+        const std::string bulletName, int width, int length,float dmgMult,float penetrationMult,float speedStart) :
+        bulletName(bulletName), width(width), length(length),dmgMult(dmgMult),penetrationMult(penetrationMult),speedMult(speedStart) {
     currentSpeed = 0;
     setUpSprite(bulletName);
     sprite.setPosition(0, 0);
@@ -101,5 +101,56 @@ void Bullet::initializeBullet(sf::Vector2f start, sf::Vector2f target) {
     arrived = false;
     sprite.setPosition(startPoint);
 }
+
+const sf::Vector2f &Bullet::getStartPoint() const {
+    return startPoint;
+}
+
+float Bullet::getCurrentSpeed() const {
+    return currentSpeed;
+}
+
+float Bullet::getSpeed() const {
+    return speed;
+}
+
+float Bullet::getDamage() const {
+    return damage;
+}
+
+
+float Bullet::getDeceleration() const {
+    return deceleration;
+}
+
+const sf::Texture &Bullet::getTexture() const {
+    return texture;
+}
+
+const std::string &Bullet::getBulletName() const {
+    return bulletName;
+}
+
+int Bullet::getWidth() const {
+    return width;
+}
+
+int Bullet::getLength() const {
+    return length;
+}
+
+float Bullet::getDmgMult() const {
+    return dmgMult;
+}
+
+float Bullet::getSpeedMult() const {
+    return speedMult;
+}
+
+float Bullet::getPenetrationMult() const {
+    return penetrationMult;
+}
+
+
 
 

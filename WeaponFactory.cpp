@@ -6,7 +6,7 @@
 
 
 std::unique_ptr<Arsenal> WeaponFactory::createSpecialWeapon(WeaponType type,WarShip &subject) const {
-    std::shared_ptr<Bullet> b(new StandardBullet("standardBullet", 3, 7));          //FIXME deve sparare siluri
+    std::shared_ptr<Bullet> b(new Bullet("standardBullet", 3, 7,1,1,1));          //FIXME deve sparare siluri
     if (type == WeaponType::antiAir) {
         std::unique_ptr<AntiAircraft> specialCannon(
                 new AntiAircraft(250, 3, 5, b, 50, 200, 4, 4,

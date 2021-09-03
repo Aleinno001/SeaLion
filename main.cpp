@@ -119,6 +119,55 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
 
 };
 
+auto checkHit = [](std::list<iteratorPositions> &fullNavy,sf::Window &window){
+    while(window.isOpen()){
+        for(auto &iteratorNavy:fullNavy){
+            for(auto &iteratorTarget:fullNavy){
+                if(iteratorNavy.it!=iteratorTarget.it){
+
+                    for(auto &iteratorCannons:iteratorNavy.it->get()->getArsenalList()){
+
+                        if(iteratorCannons->getTextureName()!="AntiAircraft" && iteratorCannons->getTextureName()!="TorpedoTube" && !iteratorCannons->getAmmoType()->isArrived()){
+                            if(Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),iteratorTarget.it->get()->getSprite())){
+                                double directDamage=0;
+                                Dice critical(3,iteratorCannons->getAmmoType()->getSprite().getPosition().y);
+                                if(iteratorCannons->getTextureName()=="HeavlyCannon"){
+
+                                    if(((critical.roll(1)-1)*((800*iteratorCannons->getAmmoType()->getPenetrationMult())*((iteratorCannons->getAmmoType()->getCurrentSpeed())/(iteratorCannons->getAmmoType()->getSpeed()*iteratorCannons->getAmmoType()->getSpeedMult()))))>iteratorTarget.it->get()->getArmour()){
+                                        directDamage=(critical.roll(1)-1)*iteratorCannons->getAmmoType()->getDmgMult()*iteratorCannons->getFirepower();
+                                    }
+
+                                }else if(iteratorCannons->getTextureName()=="MediumCannon"){
+                                    if(((critical.roll(1)-1)*((400*iteratorCannons->getAmmoType()->getPenetrationMult())*((iteratorCannons->getAmmoType()->getCurrentSpeed())/(iteratorCannons->getAmmoType()->getSpeed()*iteratorCannons->getAmmoType()->getSpeedMult()))))>iteratorTarget.it->get()->getArmour()){
+                                        directDamage=(critical.roll(1)-1)*iteratorCannons->getAmmoType()->getDmgMult()*iteratorCannons->getFirepower();
+                                    }
+
+                                }else{
+                                    if(((critical.roll(1)-1)*((200*iteratorCannons->getAmmoType()->getPenetrationMult())*((iteratorCannons->getAmmoType()->getCurrentSpeed())/(iteratorCannons->getAmmoType()->getSpeed()*iteratorCannons->getAmmoType()->getSpeedMult()))))>iteratorTarget.it->get()->getArmour()){
+                                        directDamage=(critical.roll(1)-1)*iteratorCannons->getAmmoType()->getDmgMult()*iteratorCannons->getFirepower();
+                                    }
+
+                                }
+                                iteratorCannons->getAmmoType()->setArrived(true);
+                                iteratorTarget.it->get()->setDamage(directDamage);
+                            }
+
+                        }
+
+                    }
+
+
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+};
 
 
 std::vector<Fleet> alliedDummyFleet() {
@@ -329,8 +378,10 @@ int main() {
 
     std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim,std::ref(window));
     std::thread thread_tiles_effect(tilesCheckAndDeath,std::ref(window),std::ref(gameWorld),std::ref(fullNavyCollision),tileDim);
+    std::thread thread_checkHit(checkHit,std::ref(fullNavyCollision),std::ref(window));
     thread_collision.detach();
     thread_tiles_effect.detach();
+    thread_checkHit.detach();
     while (window.isOpen()) {
         sf::Event event;
 

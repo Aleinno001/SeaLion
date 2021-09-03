@@ -14,7 +14,7 @@
 
 class Bullet {
 public:
-    Bullet(const std::string &bulletName, int width, int length);
+    Bullet(const std::string bulletName, int width, int length, float dmgMult,float penetrationMult,float speedStart);
     void reachTarget ();
 
 private:
@@ -24,9 +24,10 @@ private:
     float currentSpeed;
     float speed {100};
     float damage{};
-    float penetration{};
-    float speedMult {1};
     float deceleration{0.3};
+    float dmgMult{1};
+    float speedMult{1};
+    float penetrationMult{1};
     sf::Sprite sprite;
     sf::Texture texture;
     std::string bulletName;
@@ -51,6 +52,31 @@ public:
     void setArrived(bool isArrived);
 
     void hit();
+
+    const sf::Vector2f &getStartPoint() const;
+
+    float getCurrentSpeed() const;
+
+    float getSpeed() const;
+
+    float getDamage() const;
+
+    float getDmgMult() const;
+
+    float getSpeedMult() const;
+
+    float getPenetrationMult() const;
+
+
+    float getDeceleration() const;
+
+    const sf::Texture &getTexture() const;
+
+    const std::string &getBulletName() const;
+
+    int getWidth() const;
+
+    int getLength() const;
 
     void initializeBullet(sf::Vector2f startPoint, sf::Vector2f target);
 

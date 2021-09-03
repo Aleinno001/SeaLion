@@ -8,7 +8,7 @@
 #include <memory>
 #include "Arsenal.h"
 #include "SpecialWeaponFactory.h"
-#include "StandardBullet.h"
+
 #include "AntiAircraft.h"
 #include "TorpedoTube.h"
 
