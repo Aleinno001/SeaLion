@@ -37,6 +37,7 @@ TEST(MediumCannon, Constructor) {
     ASSERT_EQ(mediumCannon->getRangeOfFire(),350);
     ASSERT_EQ(mediumCannon->getReloadTime(),6);
     ASSERT_EQ(mediumCannon->getMaximumDispersion(),28);
+    ASSERT_EQ(mediumCannon->getAmmoType(),b);
     ASSERT_EQ(mediumCannon->getFirepower(),100);
     ASSERT_EQ(mediumCannon->getNumAmmo(),140);
     ASSERT_EQ(mediumCannon->getPos().x,posX+3);
