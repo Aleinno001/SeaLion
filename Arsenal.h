@@ -58,13 +58,9 @@ public:
 
     const int getRateOfFire() const;
 
-    int getAmmoSpeed() const;
-
     int getMaximumDispersion() const;
 
     std::shared_ptr<Bullet> getAmmoType() const;
-
-    float getAmmoDeceleration() const;
 
     int getFirepower() const;
 

@@ -41,7 +41,6 @@ void Bullet::resetOrigin() {
 }
 
 void Bullet::reachTarget() {
-    std::cerr << "Sono nella reache target quella vera " << std::endl;
     float mx;
     sf::Vector2f vel;
 
@@ -59,9 +58,6 @@ void Bullet::reachTarget() {
     sprite.setRotation(mx);
     vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * speedMult / 10;
     vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * speedMult / 10;
-
-    std::cerr << "vel.x: " << vel.x << std::endl;
-    std::cerr << "vel.y: " << vel.y << std::endl;
 
     currentSpeed = currentSpeed - deceleration;
 
