@@ -34,6 +34,9 @@ public:
 
     Arsenal(const float range, float reload, int dispersion, std::shared_ptr<Bullet> type, int power, int num, int posX, int posY, int le, int wi, std::string texName);
 
+    std::shared_ptr<Bullet> getAmmoType();
+
+
     virtual ~Arsenal() = default;
 
     virtual void openFire(Vehicle enemy);

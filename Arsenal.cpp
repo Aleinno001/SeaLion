@@ -112,6 +112,10 @@ void Arsenal::setNumAmmo(int numAmmo) {
     Arsenal::numAmmo = numAmmo;
 }
 
+std::shared_ptr<Bullet> Arsenal::getAmmoType() {
+    return ammoType;
+}
+
 
 
 

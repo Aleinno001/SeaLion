@@ -3,7 +3,7 @@
 //
 #include "gtest/gtest.h"
 #include "../MediumCannon.h"
-#include "../LightCannon.h"
+
 #include "../Cruiser.h"
 #include "../CannonFactory.h"
 TEST(MediumCannon, Constructor) {
