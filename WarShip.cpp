@@ -121,11 +121,10 @@ const int WarShip::getNumAntiAircraft() const {
 bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
-    bool result = false;
-    if (!death) {
-        result = true;
+        bool result = false;
         float y, x;
         if (!target->get()->isConcealed()) {
+            result = true;
             int i, j;
             float mx;
             x = iter->get()->getSprite().getPosition().x;
@@ -150,13 +149,14 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                      (tileVector[i][j]->getSprite().getPosition().y +
                       tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
                     if (!tileVector[i][j]->isPassable) {
-                        return result = false;
+                        result = false;
+                        return result;
                     }
                 }
             }
         }
 
-    }
+
     return result;
 }
 
@@ -227,31 +227,48 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
 bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                            std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
                            const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector, float dt) {
-    float distance = 0;
     bool result = false;
-    auto iter = arsenalList.begin();
-    int numIter = numLCannons + numMCannons + numHCannons;
+    if(!death) {
+        float distance = 0;
+        result = false;
+        auto iter = arsenalList.begin();
+        int numIter = numLCannons + numMCannons + numHCannons;
 
-    std::_List_iterator<std::unique_ptr<WarShip>> target;
-    float targetDistance = 999999;
-    for (int i = 0; i < numIter; i++, ++iter) {
-        for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
-            distance = sqrt(
-                    pow(enemyIter->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y, 2) +
-                    pow(enemyIter->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x, 2));
-            if (distance <= iter->get()->getRangeOfFire() && distance <= targetDistance) {
-                if (canEngage(iter, enemyIter, tileVector)) {
-                    target = enemyIter;
-                    targetDistance = distance;
+        std::_List_iterator<std::unique_ptr<WarShip>> target;
+        float targetDistance = 999999;
+        for (int i = 0; i < numIter; i++, ++iter) {
+            for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
+
+                    distance = sqrt(
+                            pow(enemyIter->get()->getSprite().getPosition().y -
+                                iter->get()->getSprite().getPosition().y,
+                                2) +
+                            pow(enemyIter->get()->getSprite().getPosition().x -
+                                iter->get()->getSprite().getPosition().x,
+                                2));
+                    if (distance <= iter->get()->getRangeOfFire() && distance <= targetDistance) {
+                        if (canEngage(iter, enemyIter, tileVector)) {
+                            target = enemyIter;
+                            targetDistance = distance;
+                        }
+                    }
+
+
+
+            }
+            if (targetDistance != 999999) {
+                if(!target->get()->death) {
+                    attack(target, iter, dt);
+                    result = true;
+                }else{
+                    iter->get()->getAmmoType()->reachTarget();
                 }
             }
+            targetDistance = 999999;
         }
-        if (targetDistance != 999999) {
-            attack(target, iter, dt);
-            result = true;
-        }
-        targetDistance = 999999;
     }
+
+
     return result;
 }
 

@@ -86,6 +86,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
                                                         gameWorld.tiles[row][column]->getSprite())) {
 
                             itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed() * 0.80);
+                            itNaval.it->get()->setConcealed(false);
 
 
                         } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&
@@ -93,6 +94,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
                                                                gameWorld.tiles[row][column]->getSprite())) {
 
                             itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00001);
+                            itNaval.it->get()->setConcealed(false);
                             std::cerr << itNaval.it->get()->getHp() << std::endl;
 
                         } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
@@ -108,6 +110,9 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
             }else{
                 itNaval.it->get()->setCollision(false);
                 itNaval.it->get()->setDeath(true);
+                for(auto &itCannons:itNaval.it->get()->getArsenalList()){
+                    itCannons->getAmmoType()->setArrived(true);
+                }
             }
 
         }
@@ -305,6 +310,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
 
 
 
+
     //collisonControl(fullNavyCollision);
 
 
@@ -312,6 +318,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
     auto enemyIterEnd = gameWorld.getEnemyFleet().end();
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         iter->get()->searchTarget(enemyIterStart, enemyIterEnd, gameWorld.getTiles(), dt);
+
     }
 
     auto alliedIterStart = gameWorld.getAlliedFleet().begin();
