@@ -26,7 +26,7 @@ bool LifeBar::setUpSprite(std::string textureName) {
 
 
 LifeBar::LifeBar(WarShip &subject):subject_(subject) {
-    subject_.attachBar(this);
+    //subject_.attachBar(this); TODO CONCLUDERE
     setUpSprite("lifeBar");
     life.setPosition(subject_.getSprite().getPosition().x+0.50*subject_.getWidth(),subject_.getSprite().getPosition().y+0.50*subject_.getLength());
 }
