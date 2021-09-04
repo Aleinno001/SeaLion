@@ -30,3 +30,13 @@ LifeBar::LifeBar(WarShip &subject):subject_(subject) {
     setUpSprite("lifeBar");
     life.setPosition(subject_.getSprite().getPosition().x+0.50*subject_.getWidth(),subject_.getSprite().getPosition().y+0.50*subject_.getLength());
 }
+
+void LifeBar::update(sf::Vector2f &vel, double mx) {
+    life.setPosition(life.getPosition() + vel);
+    life.setRotation(life.getRotation() + mx);
+    sf::Transform rotation;
+    rotation.rotate(mx, subject_.getSprite().getPosition());
+    sf::Vector2f newPosition = rotation.transformPoint(life.getPosition());
+    life.setPosition(newPosition);
+
+}

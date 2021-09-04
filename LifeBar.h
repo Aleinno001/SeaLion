@@ -20,6 +20,8 @@ private:
     bool setUpSprite(std::string textureName);
 public:
     LifeBar(WarShip &subject);
+
+    void update(sf::Vector2f &vel, double mx) override;
 };
 
 
