@@ -6,10 +6,20 @@
 #define SEALION_LIFEBAR_H
 
 
+#include <SFML/Graphics/Sprite.hpp>
 #include "BarInterface.h"
+#include "WarShip.h"
+
 
 class LifeBar: public BarInterface{
+private:
+    sf::Sprite life;
+    sf::Texture textureLife;
+    WarShip &subject_;
 
+    bool setUpSprite(std::string textureName);
+public:
+    LifeBar(WarShip &subject);
 };
 
 
