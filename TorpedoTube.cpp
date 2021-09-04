@@ -5,10 +5,10 @@
 #include "TorpedoTube.h"
 
 TorpedoTube::TorpedoTube(const float range, const int reload, int dispersion,
-                         std::shared_ptr<Bullet> type, int power, int num, int le,
+                         std::shared_ptr<Bullet> type, int power, int le,
                          int wi, std::string texName, WarShip &sub) : subject_(sub),
                                                                       Arsenal(range, reload, dispersion, type,
-                                                                              power, num, 0, 0, le, wi,
+                                                                              power, 0, 0, le, wi,
                                                                               texName) {
 }
 

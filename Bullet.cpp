@@ -33,6 +33,7 @@ bool Bullet::setUpSprite(const std::string& textureName) {
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
+    sprite.setScale(2, 2);
     return true;
 }
 

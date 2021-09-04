@@ -36,7 +36,7 @@ WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                                                         armour(arm),
                                                         numLCannons(numL),
                                                         numHCannons(numH), numMCannons(numM), numAntiAircraft(numAA),
-                                                        shipType(sh), modelType(mo) {
+                                                        shipType(sh), modelType(mo), concealed(false) {
     /*for (auto const& itArsenal : arsenal) {
          arsenalList=itArsenal;
      }*/
@@ -123,17 +123,17 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
         bool result = false;
         float y, x;
-        if (!target->get()->isConcealed()) {
-            result = true;
-            int i, j;
-            float mx;
-            x = iter->get()->getSprite().getPosition().x;
-            y = iter->get()->getSprite().getPosition().y;
-            double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
-            double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-            mx = 90 + atan2(dy, dx) * 180 / M_PI;
+    if (!target->get()->isConcealed() || concealed) {
+        result = true;
+        int i, j;
+        float mx;
+        x = iter->get()->getSprite().getPosition().x;
+        y = iter->get()->getSprite().getPosition().y;
+        double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
+        double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
+        mx = 90 + atan2(dy, dx) * 180 / M_PI;
 
-            if (mx < 0) {
+        if (mx < 0) {
                 mx = 360 + mx;
             }
             while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
@@ -155,8 +155,6 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                 }
             }
         }
-
-
     return result;
 }
 
@@ -172,37 +170,22 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
     if (mx < 0) {
         mx = 360 + mx;
     }
-
-    /*  //FIXME da sistemare la rotazione dei cannoni
-    if(abs(iter->get()->getSprite().getRotation() - mx) >= 1.5) {
-        if (((mx - iter->get()->getSprite().getRotation()) <= 180) &&
-            (mx - iter->get()->getSprite().getRotation()) > 0) {
-            std::cerr<<"If n.1"<<std::endl;
-            iter->get()->getSprite().rotate(1);
-        } else if (iter->get()->getSprite().getRotation() > 180 && mx < 180) {
-            std::cerr<<"If n.2"<<std::endl;
-            iter->get()->getSprite().rotate(1);
-        } else {
-            std::cerr<<"If n.3"<<std::endl;
-            iter->get()->getSprite().rotate(-1);
-        }
-    }
-     */
     iter->get()->getSprite().setRotation(mx);
-    if (iter->get()->getNumAmmo() != 0) {
+
         if (abs(iter->get()->getCountdown() - dt) <= dt) {
             sf::Vector2f targetPosition;
-            iter->get()->setNumAmmo(iter->get()->getNumAmmo() - 1);
             targetPosition = target->get()->getSprite().getPosition();
-            Dice dice(10, targetPosition.x);
+            Dice dice(11, targetPosition.x);
             float dx = targetPosition.x - iter->get()->getSprite().getPosition().x;
             float dy = targetPosition.y - iter->get()->getSprite().getPosition().y;
             float distance = sqrt(pow(dx, 2) + pow(dy, 2));
             targetPosition.x +=
-                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * dice.roll(1) / 10) * distance /
+                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * (dice.roll(1) - 1) / 10) *
+                    distance /
                     iter->get()->getRangeOfFire();
             targetPosition.y +=
-                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * dice.roll(1) / 10) * distance /
+                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * (dice.roll(1) - 1) / 10) *
+                    distance /
                     iter->get()->getRangeOfFire();
             iter->get()->setCountdown(iter->get()->getReloadTime());
             iter->get()->getAmmoType()->initializeBullet(iter->get()->getSprite().getPosition(),
@@ -220,7 +203,6 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
         } else {
             iter->get()->getAmmoType()->hit();
         }
-    }
 
 }
 
@@ -252,9 +234,6 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
                             targetDistance = distance;
                         }
                     }
-
-
-
             }
             if (targetDistance != 999999) {
                 if(!target->get()->death) {

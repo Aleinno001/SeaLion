@@ -93,7 +93,7 @@ protected:
     const int numMCannons;
     const int numHCannons;
     const int numAntiAircraft;
-    bool concealed{false};
+    bool concealed;
 public:
     const int getNumAntiAircraft() const;
 

@@ -24,15 +24,11 @@ int Arsenal::getFirepower() const {
     return firepower;
 }
 
-int Arsenal::getNumAmmo() const {
-    return numAmmo;
-}
-
 Arsenal::Arsenal(const float range, const float reload, int dispersion, std::shared_ptr<Bullet> type,
-                 int power, int num, int posX, int posY, int le, int wi,
+                 int power, int posX, int posY, int le, int wi,
                  std::string texName) : rangeOfFire(range), reloadTime(reload),
                                         maximumDispersion(dispersion),
-                                        firepower(power), numAmmo(num), length(le),
+                                        firepower(power), length(le),
                                         width(wi), textureName(texName), ammoType(type) {
 
     pos = sf::Vector2f(posX, posY);
@@ -106,10 +102,6 @@ float Arsenal::getCountdown() const {
 
 void Arsenal::setCountdown(float countdown) {
     Arsenal::countdown = countdown;
-}
-
-void Arsenal::setNumAmmo(int numAmmo) {
-    Arsenal::numAmmo = numAmmo;
 }
 
 std::shared_ptr<Bullet> Arsenal::getAmmoType() {
