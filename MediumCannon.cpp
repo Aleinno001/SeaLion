@@ -5,11 +5,11 @@
 #include "MediumCannon.h"
 
 MediumCannnon::MediumCannnon(const float range, const int reload, int dispersion,
-                             std::shared_ptr<Bullet> type, int power, int num, int posX, int posY, int le,
+                             std::shared_ptr<Bullet> type, int power, int posX, int posY, int le,
                              int wi, std::string texName, WarShip &sub) : subject_(sub),
                                                                           Arsenal(range, reload, dispersion,
                                                                                   type,
-                                                                                  power, num, posX, posY,
+                                                                                  power, posX, posY,
                                                                                   le, wi,
                                                                                   texName) {
     setUpSprite(texName);

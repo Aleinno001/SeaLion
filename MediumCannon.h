@@ -15,7 +15,7 @@ public:
 
 
     MediumCannnon(const float range, const int reload, int dispersion, std::shared_ptr<Bullet> type,
-                 int power, int num, int posX, int posY, int le, int wi, std::string texName,
+                  int power, int posX, int posY, int le, int wi, std::string texName,
                   WarShip &sub);
 
     ~MediumCannnon() override;

@@ -22,7 +22,6 @@ protected:
     int maximumDispersion;
      std::shared_ptr<Bullet> ammoType;
     int firepower;
-    int numAmmo;
     int length;
     int width;
     sf::Vector2f pos;
@@ -32,18 +31,18 @@ protected:
 public:
     //TODO implementare i metodi
 
-    Arsenal(const float range, float reload, int dispersion, std::shared_ptr<Bullet> type, int power, int num, int posX, int posY, int le, int wi, std::string texName);
+    Arsenal(const float range, float reload, int dispersion, std::shared_ptr<Bullet> type, int power, int posX,
+            int posY, int le, int wi, std::string texName);
 
     std::shared_ptr<Bullet> getAmmoType();
-
 
     virtual ~Arsenal() = default;
 
     virtual void openFire(Vehicle enemy);
 
     virtual void update(sf::Vector2f &vel,double mx) = 0; //Metodo per design pattern observer
-    const sf::Vector2f &getPos() const;
 
+    const sf::Vector2f &getPos() const;
 
     virtual bool engage(Vehicle enemy);
 
@@ -64,11 +63,7 @@ public:
 
     std::shared_ptr<Bullet> getAmmoType() const;
 
-    float getAmmoDeceleration() const;
-
     int getFirepower() const;
-
-    int getNumAmmo() const;
 
     void setAmmoType(const std::shared_ptr<Bullet> ammoType);
 
@@ -86,7 +81,6 @@ public:
 
     void setCountdown(float countdown);
 
-    void setNumAmmo(int numAmmo);
 };
 
 #endif //SEALION_ARSENAL_H

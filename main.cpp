@@ -4,6 +4,7 @@
 #include "GameWorld.h"
 #include <thread>
 #include "Collision.h"
+#include "Explosion.h"
 
 enum class windowMode {
     Windowed,
@@ -25,7 +26,6 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                     if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite())) {
                         iter->it->get()->setCollision(false);
                         iterSecond.it->get()->setCollision(false);
-                        std::cerr << "NAVAL_COLLISION" << std::endl;
                     }
                 }
 
@@ -40,7 +40,6 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                 ((iter->it->get()->getSprite().getPosition().y +
                   iter->it->get()->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
                 iter->it->get()->setCollision(false);
-                //std::cerr << "BORDER_COLLISION" << std::endl;
             }
 
 
@@ -57,7 +56,6 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision,GameWorld &gameWorld,
                                                     gameWorld.tiles[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
                         iterNavy.it->get()->setCollision(false);
                         gameWorld.tiles[row][column]->setIsPassable(false);
-                        std::cerr << "TILES_COLLISION" << std::endl;
                     }
 
                 }
@@ -95,7 +93,6 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
 
                             itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00001);
                             itNaval.it->get()->setConcealed(false);
-                            std::cerr << itNaval.it->get()->getHp() << std::endl;
 
                         } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
@@ -103,8 +100,6 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
 
                             itNaval.it->get()->setConcealed(true);
 
-                        } else {
-                            itNaval.it->get()->setConcealed(false);
                         }
                     }
             }else{
@@ -124,19 +119,23 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
 
 };
 
-auto checkHit = [](std::list<iteratorPositions> &fullNavy,sf::Window &window){
-    while(window.isOpen()){
-        for(auto &iteratorNavy:fullNavy){
-            for(auto &iteratorTarget:fullNavy){
-                if(iteratorNavy.it!=iteratorTarget.it){
+auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window, Explosion &explosion) {
+    while (window.isOpen()) {
+        unsigned int dt = 0;
+        bool hit = false;
+        for (auto &iteratorNavy: fullNavy) {
+            for (auto &iteratorTarget: fullNavy) {
+                if (iteratorNavy.it != iteratorTarget.it) {
 
-                    for(auto &iteratorCannons:iteratorNavy.it->get()->getArsenalList()){
-
-                        if(iteratorCannons->getTextureName()!="AntiAircraft" && iteratorCannons->getTextureName()!="TorpedoTube" && !iteratorCannons->getAmmoType()->isArrived()){
-                            if(Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),iteratorTarget.it->get()->getSprite())){
-                                double directDamage=0;
-                                Dice critical(3,iteratorCannons->getAmmoType()->getSprite().getPosition().y);
-                                if(iteratorCannons->getTextureName()=="HeavlyCannon"){
+                    for (auto &iteratorCannons: iteratorNavy.it->get()->getArsenalList()) {
+                        if (iteratorCannons->getTextureName() != "AntiAircraft" &&
+                            iteratorCannons->getTextureName() != "TorpedoTube" &&
+                            !iteratorCannons->getAmmoType()->isArrived()) {
+                            if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),
+                                                            iteratorTarget.it->get()->getSprite())) {
+                                double directDamage = 0;
+                                Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
+                                if (iteratorCannons->getTextureName() == "HeavlyCannon") {
 
                                     if(((critical.roll(1)-1)*((800*iteratorCannons->getAmmoType()->getPenetrationMult())*((iteratorCannons->getAmmoType()->getCurrentSpeed())/(iteratorCannons->getAmmoType()->getSpeed()*iteratorCannons->getAmmoType()->getSpeedMult()))))>iteratorTarget.it->get()->getArmour()){
                                         directDamage=(critical.roll(1)-1)*iteratorCannons->getAmmoType()->getDmgMult()*iteratorCannons->getFirepower();
@@ -155,13 +154,22 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy,sf::Window &window){
                                 }
                                 iteratorCannons->getAmmoType()->setArrived(true);
                                 iteratorTarget.it->get()->setDamage(directDamage);
+                                hit = true;
                             }
 
                         }
 
+                        //Explosione
+                        //FIXME bug dell'esplosione da risolvere
+                        if (hit) {
+                            explosion.setFrame((dt / 10), iteratorCannons->getAmmoType()->getSprite().getPosition());
+                        }
+                        if (dt < 6) {
+                            dt++;
+                        } else {
+                            dt = 0;
+                        }
                     }
-
-
                 }
             }
         }
@@ -275,10 +283,8 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision,GameWorld &
                if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
                     iter->it->get()->setCollision(false);
                     iterSecond->it->get()->setCollision(false);
-                    std::cerr<<"COLLISIONNNNN"<<std::endl;
                }
             }else{
-                std::cerr<<"Salto elemento";
             }
 
         }
@@ -366,6 +372,7 @@ int main() {
     auto itAllied = gameWorld.getAlliedFleet().begin();
     auto itEnemy = gameWorld.getEnemyFleet().begin();
     auto itTiles = gameWorld.getTiles().begin();
+    Explosion explosion;
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
 
@@ -384,8 +391,9 @@ int main() {
 
 
     std::thread thread_collision(f, std::ref(fullNavyCollision),std::ref(gameWorld),tileDim,std::ref(window));
-    std::thread thread_tiles_effect(tilesCheckAndDeath,std::ref(window),std::ref(gameWorld),std::ref(fullNavyCollision),tileDim);
-    std::thread thread_checkHit(checkHit,std::ref(fullNavyCollision),std::ref(window));
+    std::thread thread_tiles_effect(tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),
+                                    std::ref(fullNavyCollision), tileDim);
+    std::thread thread_checkHit(checkHit, std::ref(fullNavyCollision), std::ref(window), std::ref(explosion));
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
@@ -417,13 +425,11 @@ int main() {
 
 
                                 for (auto it = gameWorld.getAlliedFleet().begin(); it != gameWorld.getAlliedFleet().end() && found == false; ++it,shipCounter++) {
-                                    std::cerr<<"Cerco nave"<<std::endl;
 
                                     if(it->get()->getSprite().getGlobalBounds().contains(translated_pos)){
 
 
                                         found=true;
-                                        std::cerr<<found<<" "<<it->get()<<std::endl;
 
 
                                     }
@@ -441,7 +447,6 @@ int main() {
                                 }
                                 /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
                                 /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
-                                std::cerr << itSecondClick->get()->getArmour()<< " " << std::endl;
 
                                 for(auto iter = lst.begin(); iter != lst.end() && foundIter==false; ++iter)
                                 {
@@ -516,7 +521,6 @@ int main() {
                     window.draw(itArsenal->getSprite());
                     if(!itArsenal->getAmmoType()->isArrived()){
                         window.draw(itArsenal->getAmmoType()->getSprite());
-                        std::cerr << "Posizione: " << itArsenal->getAmmoType()->getSprite().getPosition().x << ", " << itArsenal->getAmmoType()->getSprite().getPosition().y << std::endl;
                     }
                 }
 
@@ -560,6 +564,3 @@ int main() {
     }
     return 0;
 }
-
-
-
