@@ -85,9 +85,7 @@ void AircraftCarrier::notifyArsenals(sf::Vector2f &vel,double mx) {
 
 }
 
-AircraftCarrier::~AircraftCarrier() {
-
-}
+AircraftCarrier::~AircraftCarrier() = default;
 
 void AircraftCarrier::rotate() {
     Vehicle::rotate();
@@ -103,6 +101,41 @@ void AircraftCarrier::notifyPlanes(sf::Vector2f &vel, double mx) {
         (*it)->updatePlanes(vel,mx);
         ++it;
     }
+}
+
+void AircraftCarrier::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+    vehicleList.remove(warPlanes);
+}
+
+void AircraftCarrier::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+    vehicleList.push_back(warPlanes);
+}
+
+void AircraftCarrier::detach(const std::shared_ptr<Arsenal> &gun) {
+    arsenalList.remove(gun);
+
+}
+
+void AircraftCarrier::attach(const std::shared_ptr<Arsenal> &gun) {
+    arsenalList.push_back(gun);
+
+}
+
+void AircraftCarrier::notifyBars(sf::Vector2f &vel, double mx) {
+    auto it = bars.begin();
+    while(it != bars.end()){
+        (*it)->updateBars(vel,mx);
+        ++it;
+    }
+}
+
+void AircraftCarrier::attachBar(const std::shared_ptr<BarInterface> &bar) {
+    bars.push_back(bar);
+}
+
+void AircraftCarrier::detachBar(const std::shared_ptr<BarInterface> &bar) {
+    bars.remove(bar);
+
 }
 
 

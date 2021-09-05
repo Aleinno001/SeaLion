@@ -147,11 +147,11 @@ void Battleship::notifyBars(sf::Vector2f &vel, double mx) {
 }
 
 void Battleship::attachBar(const std::shared_ptr<BarInterface> &bar) {
-
+    bars.push_back(bar);
 }
 
 void Battleship::detachBar(const std::shared_ptr<BarInterface> &bar) {
-
+    bars.remove(bar);
 }
 
 void Battleship::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
