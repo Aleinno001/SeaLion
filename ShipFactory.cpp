@@ -1008,6 +1008,8 @@ ShipFactory::dreadNoughtBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         dreadNought->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *dreadNought)));
+
+    LifeBar lifeBar(*dreadNought);
     return dreadNought;
 }
 
@@ -1063,6 +1065,8 @@ std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(
     for (int i = 0; i < numAntiAir; i++)
         imperatoreAugusto->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *imperatoreAugusto)));
+
+    LifeBar lifeBar(*imperatoreAugusto);
     return imperatoreAugusto;
 }
 
