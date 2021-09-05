@@ -580,6 +580,8 @@ ShipFactory::stLouisBuilder(
                 std::move(
                         factory.createSpecialWeapon(
                                 WeaponType::antiAir, *saintLouis)));
+
+    LifeBar lifeBar(*saintLouis);
     return saintLouis;
 }
 
@@ -614,7 +616,7 @@ ShipFactory::alaskaBuilder(
 
     for (int i = 0; i < antiAir; i++)
         alaska->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *alaska)));
-
+    LifeBar lifeBar(*alaska);
     return alaska;
 }
 
