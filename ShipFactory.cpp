@@ -1969,6 +1969,8 @@ ShipFactory::goriziaBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++) {
         Gorizia->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Gorizia)));
     }
+
+    LifeBar lifeBar(*Gorizia);
     return Gorizia;
 }
 
@@ -2000,6 +2002,8 @@ ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates) const {
     IsuzuNagara->attach(std::move(cf.createLight(cannonPosX + 6, cannonPosY + 30, *IsuzuNagara)));
     for (int i = 0; i < antiAir; i++)
         IsuzuNagara->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *IsuzuNagara)));
+
+    LifeBar lifeBar(*IsuzuNagara);
     return IsuzuNagara;
 }
 
