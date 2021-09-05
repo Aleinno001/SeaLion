@@ -126,3 +126,7 @@ void Vehicle::setDeath(bool death) {
     Vehicle::death = death;
 }
 
+bool Vehicle::isDeath() const {
+    return death;
+}
+

@@ -66,6 +66,7 @@ public:
 
     virtual ~Vehicle() = default;
 
+    bool isDeath() const;
 
 
     bool getCol(){

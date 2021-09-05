@@ -5,9 +5,10 @@
 #include "Explosion.h"
 
 
-Explosion::Explosion() {
+Explosion::Explosion(sf::Vector2f pos) {
     setUpSprite();
     resetOrigin();
+    sprite.setPosition(pos);
 }
 
 bool Explosion::setUpSprite() {
@@ -36,6 +37,10 @@ void Explosion::resetOrigin() {
 void Explosion::setFrame(int numFrame, sf::Vector2f pos) {
     sprite.setTextureRect(sf::IntRect(7 * numFrame, 0, 7 + 7 * numFrame, 7));
     sprite.setPosition(pos);
+}
+
+const sf::Sprite &Explosion::getSprite() const {
+    return sprite;
 }
 
 
