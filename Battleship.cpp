@@ -170,6 +170,17 @@ void Battleship::attach(const std::shared_ptr<Arsenal> &gun) {
     arsenalList.push_back(gun);
 }
 
+void Battleship::notifyBarsDamage() {
+
+    auto it = bars.begin();
+    while (it != bars.end()) {
+        (*it)->updateBarsDamage();
+        ++it;
+    }
+
+
+}
+
 
 
 

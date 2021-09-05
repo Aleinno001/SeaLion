@@ -50,6 +50,7 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
+    void notifyBarsDamage() override;
 
     void stopMove() override;
 
