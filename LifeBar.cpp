@@ -25,10 +25,13 @@ bool LifeBar::setUpSprite(std::string textureName) {
 }
 
 
-LifeBar::LifeBar(WarShip &subject):subject_(subject) {
+LifeBar::LifeBar(WarShip &subject):subject_(subject),r(36),g(189),b(36) {
     //subject_.attachBar(this); TODO CONCLUDERE
     setUpSprite("lifeBar");
     life.setPosition(subject_.getSprite().getPosition().x+0.50*subject_.getWidth(),subject_.getSprite().getPosition().y+0.50*subject_.getLength());
+
+    life.setColor(sf::Color(r,g,b));
+
 }
 
 
@@ -39,5 +42,12 @@ void LifeBar::updateBars(sf::Vector2f &vel, double mx) {
     rotation.rotate(mx, subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(life.getPosition());
     life.setPosition(newPosition);
+    double percentageLife = (subject_.getHp()*subject_.getMaxHp())/100;
+    if(percentageLife>(((subject_.getMaxHp()/2)*subject_.getMaxHp())/100){
+        life.setColor();
+    }
+
+
+
 
 }

@@ -17,12 +17,13 @@ float Vehicle::calcSpeed() {
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
                  bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
-                                              length(le), collision(col), width(wi), nationality(nat) {
+                                              length(le), collision(col), width(wi), nationality(nat),maxHP(HP) {
 
     //setUpSprite(texName);                     /TODO da modificare
 
     pos = sf::Vector2f(posX, posY);
     sprite.setPosition(pos);
+
 
 
 }
@@ -124,5 +125,9 @@ void Vehicle::setCurrentSpeed(float currentSpeed) {
 
 void Vehicle::setDeath(bool death) {
     Vehicle::death = death;
+}
+
+const double Vehicle::getMaxHp() const {
+    return maxHP;
 }
 

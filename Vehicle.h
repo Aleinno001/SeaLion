@@ -23,6 +23,7 @@ protected:
     const double maxSpeed;
     float currentSpeed{0};//FIXME valore di default di velocità
     double hp;
+    const double maxHP;
     unsigned int length;
     unsigned int width;
     bool collision;
@@ -58,6 +59,8 @@ public:
 
     virtual void calculateDistance(Vehicle target);
 
+    const double getMaxHp() const;
+
     virtual void update(bool isDead);
 
     virtual void updatePlanes(sf::Vector2f &vel,double mx); //metodo per design pattern observer tra Planes e Warship
@@ -75,6 +78,7 @@ public:
 
     void setDamage(double damage){
         hp=hp-damage;
+
     }
 
     int getPosY() const;
