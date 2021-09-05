@@ -14,7 +14,7 @@ bool LifeBar::setUpSprite(std::string textureName) {
         currentDir.erase(found);
         currentDir.pop_back();
     }
-    textureName = currentDir + "/../Res/Tiles/" + textureName;
+    textureName = currentDir + "/../Res/Tiles/" + textureName + ".png";
     if (!Collision::CreateTextureAndBitmask(textureLife,textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
