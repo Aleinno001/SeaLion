@@ -878,6 +878,7 @@ ShipFactory::ironDukeBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         ironDuke->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *ironDuke)));
+    LifeBar lifeBar(*ironDuke);
     return ironDuke;
 }
 
@@ -910,6 +911,8 @@ ShipFactory::northCarolinaBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         northCarolina->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *northCarolina)));
+
+    LifeBar lifeBar(*northCarolina);
     return northCarolina;
 }
 
