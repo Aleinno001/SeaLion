@@ -2286,6 +2286,8 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < antiAir; i++)
         Hood->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Hood)));
+
+    LifeBar lifeBar(*Hood);
     return Hood;
 }
 
@@ -2404,6 +2406,8 @@ ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         AndreaDoria->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *AndreaDoria)));
+
+    LifeBar lifeBar(*AndreaDoria);
     return AndreaDoria;
 }
 
