@@ -42,21 +42,21 @@ void LifeBar::updateBars(sf::Vector2f &vel, double mx,bool onlyMove) {
     rotation.rotate(mx, subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(life.getPosition());
     life.setPosition(newPosition);
-    double percentageLife = (subject_.getHp()*subject_.getMaxHp())/100;
-    double damageReceived = abs(subject_.getMaxHp()-subject_.getHp());
-    double percentageDamage = (damageReceived*subject_.getMaxHp())/100;
-    double fifty= ((subject_.getMaxHp()/2)*subject_.getMaxHp())/100;
+    if(!onlyMove) {
+        double percentageLife = (subject_.getHp() * subject_.getMaxHp()) / 100;
+        double damageReceived = abs(subject_.getMaxHp() - subject_.getHp());
+        double percentageDamage = (damageReceived * subject_.getMaxHp()) / 100;
+        double fifty = ((subject_.getMaxHp() / 2) * subject_.getMaxHp()) / 100;
 
-    if(percentageLife>fifty){
-        r=r+r*percentageDamage;
-        life.setColor(sf::Color(r,g,b));
-    }else{
-        g=g-g*percentageDamage;
-        life.setColor(sf::Color(r,g,b));
+        if (percentageLife > fifty) {
+            r = r + r * percentageDamage;
+            life.setColor(sf::Color(r, g, b));
+        } else {
+            g = g - g * percentageDamage;
+            life.setColor(sf::Color(r, g, b));
 
+        }
     }
-
-
 
 
 }
