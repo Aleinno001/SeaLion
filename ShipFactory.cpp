@@ -1898,6 +1898,8 @@ ShipFactory::tiger59Builder(sf::Vector2i &coordinates) const {
     Tiger59->attach(std::move(cf.createLight(cannonPosX + 13, cannonPosY + 75, *Tiger59)));
     for (int i = 0; i < antiAir; i++)
         Tiger59->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Tiger59)));
+
+    LifeBar lifeBar(*Tiger59);
     return Tiger59;
 }
 
@@ -1931,6 +1933,8 @@ ShipFactory::belfastBuilder(sf::Vector2i &coordinates) const {
     Belfast->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 95, *Belfast)));
     for (int i = 0; i < antiAir; i++)
         Belfast->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Belfast)));
+
+    LifeBar lifeBar(*Belfast);
     return Belfast;
 }
 
