@@ -44,7 +44,7 @@ public:
 
     void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
 
-    void notifyBars(sf::Vector2f &vel, double mx) override;
+    void notifyBars(sf::Vector2f &vel, double mx,bool onlyMove) override;
 
     void attachBar(const std::shared_ptr<BarInterface> &bar) override;
 

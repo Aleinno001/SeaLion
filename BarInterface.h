@@ -11,7 +11,7 @@
 class BarInterface {
 public:
     virtual ~BarInterface()= default;;
-    virtual void updateBars(sf::Vector2f &vel, double mx)=0;
+    virtual void updateBars(sf::Vector2f &vel, double mx, bool onlyMove)=0;
 
 
 };

@@ -25,7 +25,7 @@ bool LifeBar::setUpSprite(std::string textureName) {
 }
 
 
-LifeBar::LifeBar(WarShip &subject):subject_(subject),r(36),g(189),b(36) {
+LifeBar::LifeBar(WarShip &subject):subject_(subject),r(15),g(135),b(7) {
     //subject_.attachBar(this); TODO CONCLUDERE
     setUpSprite("lifeBar");
     life.setPosition(subject_.getSprite().getPosition().x+0.50*subject_.getWidth(),subject_.getSprite().getPosition().y+0.50*subject_.getLength());
@@ -35,7 +35,7 @@ LifeBar::LifeBar(WarShip &subject):subject_(subject),r(36),g(189),b(36) {
 }
 
 
-void LifeBar::updateBars(sf::Vector2f &vel, double mx) {
+void LifeBar::updateBars(sf::Vector2f &vel, double mx,bool onlyMove) {
     life.setPosition(life.getPosition() + vel);
     life.setRotation(life.getRotation() + mx);
     sf::Transform rotation;
