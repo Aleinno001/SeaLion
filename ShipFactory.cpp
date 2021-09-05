@@ -1659,6 +1659,7 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         Indomitable->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Indomitable)));
+    LifeBar lifeBar(*Indomitable);
     return Indomitable;
 }
 
@@ -1700,7 +1701,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
         Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
 
 
-
+    LifeBar lifeBar(*Cavour);
     return Cavour;
 }
 
