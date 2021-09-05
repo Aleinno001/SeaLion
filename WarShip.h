@@ -94,6 +94,7 @@ protected:
     const int numHCannons;
     const int numAntiAircraft;
     bool concealed;
+    bool selected {false};
 public:
     const int getNumAntiAircraft() const;
 
@@ -139,6 +140,10 @@ public:
     const int getNumMCannons() const;
 
     const int getNumHCannons() const;
+
+    void setSelected(bool selected);
+
+    bool isSelected() const;
 
     virtual bool
     canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter, std::_List_iterator<std::unique_ptr<WarShip>> target,

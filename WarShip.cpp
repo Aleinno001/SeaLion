@@ -264,3 +264,11 @@ const std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList() const {
     return vehicleList;
 }
 
+void WarShip::setSelected(bool selected) {
+    WarShip::selected = selected;
+}
+
+bool WarShip::isSelected() const {
+    return selected;
+}
+

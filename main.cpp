@@ -353,7 +353,9 @@ int main() {
     d = 3;
     e = 2;
 
-    sf::Color deathColor(140, 140, 140, 140);
+    sf::Color deathColor(140, 140, 140, 120);
+    sf::Color selectedColor(196, 255, 168, 255);
+    sf::Color removeColor(255, 255, 255, 255);
     sf::ContextSettings settings;
     settings.depthBits = 24;
     settings.stencilBits = 8;
@@ -435,9 +437,8 @@ int main() {
 
                                 if (it->get()->getSprite().getGlobalBounds().contains(translated_pos)) {
 
-
+                                    it->get()->setSelected(true);
                                     found = true;
-
 
                                 }
 
@@ -452,8 +453,8 @@ int main() {
                                 ++itSecondClick;
                                 miniCounter++;
                             }
-                            /*FIXME Controllare che la nave selezionata NON sia stata distrutta*/
-                            /*TODO Da gestire l'evento di selezionamento poi la nave viene distrutta e quindi deselezionare evitando di far effettuare il secondo click di spostamento */
+
+
 
                             for (auto iter = lst.begin(); iter != lst.end() && foundIter == false; ++iter) {
                                 if (iter->it == itSecondClick) {
@@ -470,6 +471,7 @@ int main() {
                             lst.push_back(itPos);
                             shipCounter = 0;
                             found = false;
+                            itPos.it->get()->setSelected(false);
                         }
 
 
@@ -500,6 +502,10 @@ int main() {
         for (auto &it: gameWorld.getEnemyFleet()) {
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
+            } else if(it.get()->isSelected()) {
+                it.get()->getSprite().setColor(selectedColor);
+            } else {
+                it.get()->getSprite().setColor(removeColor);
             }
             window.draw(it->getSprite());
 
@@ -508,6 +514,10 @@ int main() {
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     if (it.get()->isDeath()) {
                         itArsenal.get()->getSprite().setColor(deathColor);
+                    } else if(it.get()->isSelected()) {
+                        itArsenal.get()->getSprite().setColor(selectedColor);
+                    } else {
+                        itArsenal.get()->getSprite().setColor(removeColor);
                     }
                     window.draw(itArsenal->getSprite());
                     if (!itArsenal->getAmmoType()->isArrived()) {
@@ -516,16 +526,28 @@ int main() {
                 }
 
 
-            if (it->getShipType() == ShipType::AircraftCarrier)
-                for (auto const &itPlanes: it->getVehicleList())
+            if (it->getShipType() == ShipType::AircraftCarrier) {
+                for (auto const &itPlanes: it->getVehicleList()) {
+                    if (it.get()->isDeath()) {
+                        itPlanes.get()->getSprite().setColor(deathColor);
+                    } else if (it.get()->isSelected()) {
+                        itPlanes.get()->getSprite().setColor(selectedColor);
+                    } else {
+                        itPlanes.get()->getSprite().setColor(removeColor);
+                    }
                     window.draw(itPlanes->getSprite());
-
+                }
+            }
 
         }
 
         for (auto &it: gameWorld.getAlliedFleet()) {
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
+            } else if(it.get()->isSelected()) {
+                it.get()->getSprite().setColor(selectedColor);
+            } else {
+                it.get()->getSprite().setColor(removeColor);
             }
             window.draw(it->getSprite());
 
@@ -533,6 +555,10 @@ int main() {
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     if (it.get()->isDeath()) {
                         itArsenal.get()->getSprite().setColor(deathColor);
+                    } else if(it.get()->isSelected()) {
+                        itArsenal.get()->getSprite().setColor(selectedColor);
+                    } else {
+                        itArsenal.get()->getSprite().setColor(removeColor);
                     }
                     window.draw(itArsenal->getSprite());
                     if (!itArsenal->getAmmoType()->isArrived()) {
@@ -548,9 +574,18 @@ int main() {
                     }
                 }
 
-            if (it->getShipType() == ShipType::AircraftCarrier)
-                for (auto const &itPlanes: it->getVehicleList())
+            if (it->getShipType() == ShipType::AircraftCarrier) {
+                for (auto const &itPlanes: it->getVehicleList()) {
+                    if (it.get()->isDeath()) {
+                        itPlanes.get()->getSprite().setColor(deathColor);
+                    } else if (it.get()->isSelected()) {
+                        itPlanes.get()->getSprite().setColor(selectedColor);
+                    } else {
+                        itPlanes.get()->getSprite().setColor(removeColor);
+                    }
                     window.draw(itPlanes->getSprite());
+                }
+            }
 
 
         }
