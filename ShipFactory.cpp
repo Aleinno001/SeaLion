@@ -1251,6 +1251,8 @@ ShipFactory::simsBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         sims->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *sims)));
     }
+
+    LifeBar lifeBar(*sims);
     return sims;
 }
 
@@ -1281,6 +1283,7 @@ ShipFactory::fletcherBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         fletcher->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *fletcher)));
     }
+    LifeBar lifeBar(*fletcher);
     return fletcher;
 }
 
