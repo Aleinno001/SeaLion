@@ -1310,6 +1310,7 @@ ShipFactory::jutlandBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         jutLand->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *jutLand)));
     }
+    LifeBar lifeBar(*jutLand);
     return jutLand;
 }
 
@@ -1339,6 +1340,7 @@ ShipFactory::paoloEmilioBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         paoloEmilio->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *paoloEmilio)));
     }
+    LifeBar lifeBar(*paoloEmilio);
     return paoloEmilio;
 }
 
