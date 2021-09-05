@@ -276,6 +276,8 @@ ShipFactory::midwayBuilder(
     for (int i = 0; i < numAntiAir; i++)
         mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
 
+    LifeBar lifeBar(*mid);
+
     return mid;
 }
 
@@ -311,6 +313,8 @@ ShipFactory::arkRoyalBuilder(
     arkRoyal->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+206,"Uk",*arkRoyal)));
     for (int i = 0; i < numAntiAir; i++)
         arkRoyal->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *arkRoyal)));
+
+    LifeBar lifeBar(*arkRoyal);
     return arkRoyal;
 }
 
