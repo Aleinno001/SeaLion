@@ -156,3 +156,12 @@ void Cruiser::detachBar(const std::shared_ptr<BarInterface> &bar) {
 
 }
 
+void Cruiser::notifyBarsDamage() {
+    auto it = bars.begin();
+    while (it != bars.end()) {
+        (*it)->updateBarsDamage();
+        ++it;
+    }
+
+}
+

@@ -54,6 +54,8 @@ public:
 
     void notifyArsenals(sf::Vector2f &vel,double mx) override;
 
+    void notifyBarsDamage() override;
+
     ~Cruiser() override;
 
 protected:
