@@ -2718,6 +2718,8 @@ ShipFactory::fubukiBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Fubuki->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Fubuki)));
     }
+    LifeBar lifeBar(*Fubuki);
+
     return Fubuki;
 }
 
@@ -2744,6 +2746,7 @@ ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Akizuki->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Akizuki)));
     }
+    LifeBar lifeBar(*Akizuki);
     return Akizuki;
 }
 
