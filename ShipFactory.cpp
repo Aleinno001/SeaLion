@@ -2605,6 +2605,8 @@ ShipFactory::mahanBuilder(sf::Vector2i &coordinates) const {
         Mahan->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Mahan)));
     }
 
+
+    LifeBar lifeBar(*Mahan);
     return Mahan;
 }
 
@@ -2632,6 +2634,8 @@ ShipFactory::gallandBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Gallant->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Gallant)));
     }
+
+    LifeBar lifeBar(*Gallant);
     return Gallant;
 }
 
