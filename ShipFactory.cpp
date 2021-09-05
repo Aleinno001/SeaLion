@@ -2662,7 +2662,7 @@ ShipFactory::campbeltownBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Campbelltown->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Campbelltown)));
     }
-
+    LifeBar lifeBar(*Campbelltown);
     return Campbelltown;
 }
 
@@ -2688,6 +2688,8 @@ ShipFactory::leoneBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Leone->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Leone)));
     }
+
+    LifeBar lifeBar(*Leone);
     return Leone;
 }
 
