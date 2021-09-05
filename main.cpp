@@ -431,7 +431,7 @@ int main() {
 
                             itSecondClick = gameWorld.getAlliedFleet().begin();
 
-
+                            //FIXME cambiare nave selezionata
                             for (auto it = gameWorld.getAlliedFleet().begin();
                                  it != gameWorld.getAlliedFleet().end() && found == false; ++it, shipCounter++) {
 
