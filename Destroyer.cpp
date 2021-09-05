@@ -176,3 +176,14 @@ void Destroyer::detachBar(const std::shared_ptr<BarInterface> &bar) {
 
 }
 
+void Destroyer::notifyBarsDamage() {
+
+    auto it = bars.begin();
+    while (it != bars.end()) {
+        (*it)->updateBarsDamage();
+        ++it;
+    }
+
+
+}
+

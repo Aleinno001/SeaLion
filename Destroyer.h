@@ -41,6 +41,8 @@ public:
 
     void notifyBars(sf::Vector2f &vel, double mx) override;
 
+    void notifyBarsDamage() override;
+
     void attachBar(const std::shared_ptr<BarInterface> &bar) override;
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
