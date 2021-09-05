@@ -138,7 +138,7 @@ void Battleship::notifyPlanes(sf::Vector2f &vel, double mx) {
 
 }
 
-void Battleship::notifyBars(sf::Vector2f &vel, double mx,double damageReceived) {
+void Battleship::notifyBars(sf::Vector2f &vel, double mx, double damageReceived) {
     auto it = bars.begin();
     while(it != bars.end()){
         (*it)->updateBars(vel,mx);
