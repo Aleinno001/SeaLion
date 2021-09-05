@@ -1371,6 +1371,7 @@ ShipFactory::impavidoBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         impavido->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *impavido)));
     }
+    LifeBar lifeBar(*impavido);
     return impavido;
 }
 
@@ -1399,6 +1400,7 @@ ShipFactory::yukikazeBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         yukikaze->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *yukikaze)));
     }
+    LifeBar lifeBar(*yukikaze);
     return yukikaze;
 }
 
