@@ -353,6 +353,7 @@ int main() {
     d = 3;
     e = 2;
 
+    sf::Color deathColor(140, 140, 140, 140);
     sf::ContextSettings settings;
     settings.depthBits = 24;
     settings.stencilBits = 8;
@@ -497,14 +498,17 @@ int main() {
         }
 
         for (auto &it: gameWorld.getEnemyFleet()) {
-            if(it.get()->isDeath()){
-                it.get()->getSprite().setColor(sf::Color(0,0,0,255));
+            if (it.get()->isDeath()) {
+                it.get()->getSprite().setColor(deathColor);
             }
             window.draw(it->getSprite());
 
 
             for (auto const &itArsenal: it->getArsenalList())
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                    if (it.get()->isDeath()) {
+                        itArsenal.get()->getSprite().setColor(deathColor);
+                    }
                     window.draw(itArsenal->getSprite());
                     if (!itArsenal->getAmmoType()->isArrived()) {
                         window.draw(itArsenal->getAmmoType()->getSprite());
@@ -520,13 +524,16 @@ int main() {
         }
 
         for (auto &it: gameWorld.getAlliedFleet()) {
-            if(it.get()->isDeath()){
-                it.get()->getSprite().setColor(sf::Color(0,0,0,255));
+            if (it.get()->isDeath()) {
+                it.get()->getSprite().setColor(deathColor);
             }
             window.draw(it->getSprite());
 
             for (auto const &itArsenal: it->getArsenalList())
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                    if (it.get()->isDeath()) {
+                        itArsenal.get()->getSprite().setColor(deathColor);
+                    }
                     window.draw(itArsenal->getSprite());
                     if (!itArsenal->getAmmoType()->isArrived()) {
                         window.draw(itArsenal->getAmmoType()->getSprite());
