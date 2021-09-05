@@ -2223,6 +2223,8 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates) const {
     NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 134, *NewYork)));
     for (int i = 0; i < antiAir; i++)
         NewYork->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *NewYork)));
+
+    LifeBar lifeBar(*NewYork);
     return NewYork;
 }
 
@@ -2256,6 +2258,8 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates) const {
     Arizona->attach(std::move(cf.createLight(cannonPosX + 21, cannonPosY + 69, *Arizona)));
     for (int i = 0; i < antiAir; i++)
         Arizona->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Arizona)));
+
+    LifeBar lifeBar(*Arizona);
     return Arizona;
 }
 
