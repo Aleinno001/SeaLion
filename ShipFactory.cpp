@@ -951,6 +951,8 @@ ShipFactory::montanaBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         montana->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *montana)));
+
+    LifeBar lifeBar(*montana);
     return montana;
 }
 
@@ -977,6 +979,8 @@ ShipFactory::lionBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         lion->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *lion)));
+
+    LifeBar lifeBar(*lion);
     return lion;
 }
 
