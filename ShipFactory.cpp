@@ -1100,6 +1100,8 @@ ShipFactory::kongoBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         kongo->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *kongo)));
+
+    LifeBar lifeBar(*kongo);
     return kongo;
 }
 
@@ -1136,6 +1138,8 @@ ShipFactory::musashiBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         musashi->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *musashi)));
+
+    LifeBar lifeBar(*musashi);
     return musashi;
 }
 
