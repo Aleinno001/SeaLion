@@ -153,7 +153,7 @@ void Destroyer::detach(const std::shared_ptr<Arsenal> &gun) {
 
 }
 
-void Destroyer::notifyBars(sf::Vector2f &vel, double mx) {
+void Destroyer::notifyBars(sf::Vector2f &vel, double mx, double damageReceived) {
 
     auto it = bars.begin();
     while (it != bars.end()) {
