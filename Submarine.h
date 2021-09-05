@@ -37,19 +37,12 @@ public:
 
     void update(bool isDead) override;
 
-    void attach(const std::shared_ptr<Arsenal> &gun) override {
-        arsenalList.push_back(gun);
-    };
+    void attach(const std::shared_ptr<Arsenal> &gun) override;
 
-    void detach(const std::shared_ptr<Arsenal> &gun) override {
-        arsenalList.remove(gun);
-
-    };
+    void detach(const std::shared_ptr<Arsenal> &gun) override;
     void notifyPlanes(sf::Vector2f &vel, double mx) override;
 
-    void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
-        vehicleList.push_back(warPlanes);
-    };
+    void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
 
     void notifyBars(sf::Vector2f &vel, double mx) override;
 
@@ -57,9 +50,9 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
-    void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
-        vehicleList.remove(warPlanes);
-    };
+    void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
+
+
 
     ~Submarine() override{
 

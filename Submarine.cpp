@@ -104,14 +104,43 @@ void Submarine::notifyPlanes(sf::Vector2f &vel, double mx) {
 }
 
 void Submarine::notifyBars(sf::Vector2f &vel, double mx) {
-
+    auto it = bars.begin();
+    while (it != bars.end()) {
+        (*it)->updateBars(vel,mx);
+        ++it;
+    }
 }
 
 void Submarine::attachBar(const std::shared_ptr<BarInterface> &bar) {
-
+    bars.push_back(bar);
 }
 
 void Submarine::detachBar(const std::shared_ptr<BarInterface> &bar) {
+    bars.push_back(bar);
+}
+
+void Submarine::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+
+    vehicleList.push_back(warPlanes);
+
+}
+
+void Submarine::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+
+    vehicleList.remove(warPlanes);
+
+}
+
+void Submarine::detach(const std::shared_ptr<Arsenal> &gun) {
+
+    arsenalList.remove(gun);
+
+}
+
+void Submarine::attach(const std::shared_ptr<Arsenal> &gun) {
+
+
+    arsenalList.push_back(gun);
 
 }
 
