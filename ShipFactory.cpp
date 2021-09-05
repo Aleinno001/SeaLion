@@ -2448,6 +2448,8 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates) const {
     Yamato->attach(std::move(cf.createLight(cannonPosX + 32, cannonPosY + 130, *Yamato)));
     for (int i = 0; i < antiAir; i++)
         Yamato->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Yamato)));
+
+    LifeBar lifeBar(*Yamato);
     return Yamato;
 }
 
@@ -2481,6 +2483,8 @@ ShipFactory::iseBuilder(sf::Vector2i &coordinates) const {
     Ise->attach(std::move(cf.createLight(cannonPosX + 27, cannonPosY + 62, *Ise)));
     for (int i = 0; i < antiAir; i++)
         Ise->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Ise)));
+
+    LifeBar lifeBar(*Ise);
     return Ise;
 }
 
