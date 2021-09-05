@@ -1476,6 +1476,7 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates) const {
                           ShipType::Submarine, ModelType::Narwhal, 4, false));
     for (int i = 0; i < 4; i++)
         Narwhal->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Narwhal)));
+    LifeBar lifeBar(*Narwhal);
     return Narwhal;
 }
 
@@ -1493,6 +1494,8 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates) const {
                           ShipType::Submarine, ModelType::Trenchant, 5, false));
     for (int i = 0; i < 5; i++)
         Trenchant->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Trenchant)));
+
+    LifeBar lifeBar(*Trenchant);
     return Trenchant;
 }
 
