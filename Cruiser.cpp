@@ -108,11 +108,51 @@ int Cruiser::getNumPlanes() const {
     return numPlanes;
 }
 
+void Cruiser::attach(const std::shared_ptr<Arsenal> &gun) {
+
+    arsenalList.push_back(gun);
+
+}
+
 void Cruiser::notifyPlanes(sf::Vector2f &vel, double mx) {
     auto it = vehicleList.begin();
     while (it != vehicleList.end()) {
         (*it)->updatePlanes(vel,mx);
         ++it;
     }
+}
+
+void Cruiser::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+    vehicleList.remove(warPlanes);
+}
+
+void Cruiser::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+    vehicleList.push_back(warPlanes);
+}
+
+void Cruiser::detach(const std::shared_ptr<Arsenal> &gun) {
+
+    arsenalList.remove(gun);
+
+}
+
+void Cruiser::notifyBars(sf::Vector2f &vel, double mx) {
+    auto it = bars.begin();
+    while(it != bars.end()){
+        (*it)->updateBars(vel,mx);
+        ++it;
+    }
+
+}
+
+void Cruiser::attachBar(const std::shared_ptr<BarInterface> &bar) {
+    bars.push_back(bar);
+
+}
+
+void Cruiser::detachBar(const std::shared_ptr<BarInterface> &bar) {
+
+    bars.remove(bar);
+
 }
 
