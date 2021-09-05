@@ -23,7 +23,7 @@ public:
 
     void updateBars(sf::Vector2f &vel, double mx) override;
     void removeMe(){
-        subject_.detach(std::shared_ptr<>)
+        subject_.detachBar(std::shared_ptr<BarInterface>(this));
     }
 };
 

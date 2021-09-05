@@ -103,5 +103,17 @@ void Submarine::notifyPlanes(sf::Vector2f &vel, double mx) {
     }
 }
 
+void Submarine::notifyBars(sf::Vector2f &vel, double mx) {
+
+}
+
+void Submarine::attachBar(const std::shared_ptr<BarInterface> &bar) {
+
+}
+
+void Submarine::detachBar(const std::shared_ptr<BarInterface> &bar) {
+
+}
+
 
 

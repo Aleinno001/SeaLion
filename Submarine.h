@@ -51,6 +51,12 @@ public:
         vehicleList.push_back(warPlanes);
     };
 
+    void notifyBars(sf::Vector2f &vel, double mx) override;
+
+    void attachBar(const std::shared_ptr<BarInterface> &bar) override;
+
+    void detachBar(const std::shared_ptr<BarInterface> &bar) override;
+
     void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override{
         vehicleList.remove(warPlanes);
     };

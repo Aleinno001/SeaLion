@@ -129,3 +129,50 @@ void Destroyer::notifyPlanes(sf::Vector2f &vel, double mx) {
     }
 }
 
+void Destroyer::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+
+    vehicleList.push_back(warPlanes);
+
+}
+
+void Destroyer::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+
+    vehicleList.remove(warPlanes);
+
+}
+
+void Destroyer::attach(const std::shared_ptr<Arsenal> &gun) {
+
+    arsenalList.push_back(gun);
+
+}
+
+void Destroyer::detach(const std::shared_ptr<Arsenal> &gun) {
+
+    arsenalList.remove(gun);
+
+}
+
+void Destroyer::notifyBars(sf::Vector2f &vel, double mx) {
+
+    auto it = bars.begin();
+    while (it != bars.end()) {
+        (*it)->updateBars(vel,mx);
+        ++it;
+    }
+
+
+}
+
+void Destroyer::attachBar(const std::shared_ptr<BarInterface> &bar) {
+
+    bars.push_back(bar);
+
+}
+
+void Destroyer::detachBar(const std::shared_ptr<BarInterface> &bar) {
+
+    bars.remove(bar);
+
+}
+
