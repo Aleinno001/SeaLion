@@ -2035,6 +2035,8 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates) const {
     Ijn->attach(std::move(cf.createLight(cannonPosX + 20, cannonPosY + 115, *Ijn)));
     for (int i = 0; i < antiAir; i++)
         Ijn->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Ijn)));
+
+    LifeBar lifeBar(*Ijn);
     return Ijn;
 }
 
@@ -2194,6 +2196,7 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         VittorioVeneto->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *VittorioVeneto)));
+    LifeBar lifeBar(*VittorioVeneto);
     return VittorioVeneto;
 }
 
