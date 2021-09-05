@@ -121,10 +121,10 @@ void AircraftCarrier::attach(const std::shared_ptr<Arsenal> &gun) {
 
 }
 
-void AircraftCarrier::notifyBars(sf::Vector2f &vel, double mx,bool onlyMove) {
+void AircraftCarrier::notifyBars(sf::Vector2f &vel, double mx) {
     auto it = bars.begin();
     while(it != bars.end()){
-        (*it)->updateBars(vel,mx,onlyMove);
+        (*it)->updateBars(vel,mx);
         ++it;
     }
 }
@@ -135,6 +135,16 @@ void AircraftCarrier::attachBar(const std::shared_ptr<BarInterface> &bar) {
 
 void AircraftCarrier::detachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.remove(bar);
+
+}
+
+void AircraftCarrier::notifyBarsDamage() {
+
+    auto it = bars.begin();
+    while(it != bars.end()){
+        (*it)->updateBarsDamage();
+        ++it;
+    }
 
 }
 

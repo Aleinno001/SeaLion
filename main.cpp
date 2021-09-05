@@ -92,6 +92,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window,GameWorld &gameWorld,std::
                                                                gameWorld.tiles[row][column]->getSprite())) {
 
                             itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00001);
+                            itNaval.it->get()->notifyBarsDamage();
                             itNaval.it->get()->setConcealed(false);
 
                         } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
@@ -154,6 +155,7 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window, E
                                 }
                                 iteratorCannons->getAmmoType()->setArrived(true);
                                 iteratorTarget.it->get()->setDamage(directDamage);
+                                iteratorTarget.it->get()->notifyBarsDamage();
                                 hit = true;
                             }
 

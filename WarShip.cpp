@@ -107,6 +107,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
         }
 
         notifyArsenals(vel, deltaMx);
+        notifyBars(vel,deltaMx);
 
         if (shipType == ShipType::AircraftCarrier)
             notifyPlanes(vel, deltaMx);
