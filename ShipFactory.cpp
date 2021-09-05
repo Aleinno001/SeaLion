@@ -719,6 +719,7 @@ std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(
 
     for (int i = 0; i < antiAir; i++)
         albertoDiGiussano->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *albertoDiGiussano)));
+    LifeBar lifeBar(*albertoDiGiussano);
     return albertoDiGiussano;
 }
 
@@ -751,6 +752,8 @@ ShipFactory::takaoBuilder(
     takao->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 96, *takao)));
     for (int i = 0; i < antiAir; i++)
         takao->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *takao)));
+
+    LifeBar lifeBar(*takao);
     return takao;
 }
 
