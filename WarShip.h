@@ -130,7 +130,7 @@ public:
 
     virtual void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
 
-    virtual void notifyBars(sf::Vector2f &vel,double mx,double damageReceived)=0; //Metodo design pattern observer tra BarInterface e Warship
+    virtual void notifyBars(sf::Vector2f &vel,double mx)=0; //Metodo design pattern observer tra BarInterface e Warship
 
     virtual void attachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
 

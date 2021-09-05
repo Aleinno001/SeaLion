@@ -136,7 +136,7 @@ void Cruiser::detach(const std::shared_ptr<Arsenal> &gun) {
 
 }
 
-void Cruiser::notifyBars(sf::Vector2f &vel, double mx, double damageReceived) {
+void Cruiser::notifyBars(sf::Vector2f &vel, double mx) {
     auto it = bars.begin();
     while(it != bars.end()){
         (*it)->updateBars(vel,mx);
