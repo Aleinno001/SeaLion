@@ -13,6 +13,7 @@
 #include "Arsenal.h"
 
 #include "GameTile.h"
+#include "BarInterface.h"
 #include <math.h>
 #include <memory>
 
@@ -101,6 +102,7 @@ protected:
 
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::shared_ptr<Vehicle>> vehicleList;
+    std::list<std::shared_ptr<BarInterface>> bars;
 
 public:
     WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
@@ -127,6 +129,13 @@ public:
     virtual void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
 
     virtual void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
+
+    virtual void notifyBars(sf::Vector2f &vel,double mx)=0; //Metodo design pattern observer tra BarInterface e Warship
+
+    virtual void attachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
+
+    virtual void detachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
+
 
     const int getArmour() const;
 

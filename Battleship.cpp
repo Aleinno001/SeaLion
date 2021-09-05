@@ -138,6 +138,38 @@ void Battleship::notifyPlanes(sf::Vector2f &vel, double mx) {
 
 }
 
+void Battleship::notifyBars(sf::Vector2f &vel, double mx) {
+    auto it = bars.begin();
+    while(it != bars.end()){
+        (*it)->updateBars(vel,mx);
+        ++it;
+    }
+}
+
+void Battleship::attachBar(const std::shared_ptr<BarInterface> &bar) {
+
+}
+
+void Battleship::detachBar(const std::shared_ptr<BarInterface> &bar) {
+
+}
+
+void Battleship::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+    vehicleList.remove(warPlanes);
+}
+
+void Battleship::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
+    vehicleList.push_back(warPlanes);
+}
+
+void Battleship::detach(const std::shared_ptr<Arsenal> &gun) {
+    arsenalList.remove(gun);
+}
+
+void Battleship::attach(const std::shared_ptr<Arsenal> &gun) {
+    arsenalList.push_back(gun);
+}
+
 
 
 

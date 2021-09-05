@@ -21,7 +21,10 @@ private:
 public:
     LifeBar(WarShip &subject);
 
-    void update(sf::Vector2f &vel, double mx) override;
+    void updateBars(sf::Vector2f &vel, double mx) override;
+    void removeMe(){
+        subject_.detach(std::shared_ptr<>)
+    }
 };
 
 
