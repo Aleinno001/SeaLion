@@ -1738,6 +1738,7 @@ ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         Hiryu->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Hiryu)));
+    LifeBar lifeBar(*Hiryu);
     return Hiryu;
 }
 
@@ -1862,6 +1863,8 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates) const {
     NewOrleans->attach(std::move(cf.createLight(cannonPosX + 17, cannonPosY + 90, *NewOrleans)));
     for (int i = 0; i < antiAir; i++)
         NewOrleans->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *NewOrleans)));
+
+    LifeBar lifeBar(*NewOrleans);
     return NewOrleans;
 }
 
