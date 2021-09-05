@@ -271,6 +271,54 @@ BattleshipTest.cpp.s:
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BattleshipTest.cpp.s
 .PHONY : BattleshipTest.cpp.s
 
+BomberFixture.o: BomberFixture.cpp.o
+.PHONY : BomberFixture.o
+
+# target to build an object file
+BomberFixture.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BomberFixture.cpp.o
+.PHONY : BomberFixture.cpp.o
+
+BomberFixture.i: BomberFixture.cpp.i
+.PHONY : BomberFixture.i
+
+# target to preprocess a source file
+BomberFixture.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BomberFixture.cpp.i
+.PHONY : BomberFixture.cpp.i
+
+BomberFixture.s: BomberFixture.cpp.s
+.PHONY : BomberFixture.s
+
+# target to generate assembly for a file
+BomberFixture.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BomberFixture.cpp.s
+.PHONY : BomberFixture.cpp.s
+
+BomberTest.o: BomberTest.cpp.o
+.PHONY : BomberTest.o
+
+# target to build an object file
+BomberTest.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BomberTest.cpp.o
+.PHONY : BomberTest.cpp.o
+
+BomberTest.i: BomberTest.cpp.i
+.PHONY : BomberTest.i
+
+# target to preprocess a source file
+BomberTest.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BomberTest.cpp.i
+.PHONY : BomberTest.cpp.i
+
+BomberTest.s: BomberTest.cpp.s
+.PHONY : BomberTest.s
+
+# target to generate assembly for a file
+BomberTest.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/BomberTest.cpp.s
+.PHONY : BomberTest.cpp.s
+
 CruiserFixture.o: CruiserFixture.cpp.o
 .PHONY : CruiserFixture.o
 
@@ -366,6 +414,54 @@ DestroyerTest.s: DestroyerTest.cpp.s
 DestroyerTest.cpp.s:
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/DestroyerTest.cpp.s
 .PHONY : DestroyerTest.cpp.s
+
+FighterFixture.o: FighterFixture.cpp.o
+.PHONY : FighterFixture.o
+
+# target to build an object file
+FighterFixture.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/FighterFixture.cpp.o
+.PHONY : FighterFixture.cpp.o
+
+FighterFixture.i: FighterFixture.cpp.i
+.PHONY : FighterFixture.i
+
+# target to preprocess a source file
+FighterFixture.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/FighterFixture.cpp.i
+.PHONY : FighterFixture.cpp.i
+
+FighterFixture.s: FighterFixture.cpp.s
+.PHONY : FighterFixture.s
+
+# target to generate assembly for a file
+FighterFixture.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/FighterFixture.cpp.s
+.PHONY : FighterFixture.cpp.s
+
+FighterTest.o: FighterTest.cpp.o
+.PHONY : FighterTest.o
+
+# target to build an object file
+FighterTest.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/FighterTest.cpp.o
+.PHONY : FighterTest.cpp.o
+
+FighterTest.i: FighterTest.cpp.i
+.PHONY : FighterTest.i
+
+# target to preprocess a source file
+FighterTest.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/FighterTest.cpp.i
+.PHONY : FighterTest.cpp.i
+
+FighterTest.s: FighterTest.cpp.s
+.PHONY : FighterTest.s
+
+# target to generate assembly for a file
+FighterTest.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/FighterTest.cpp.s
+.PHONY : FighterTest.cpp.s
 
 GameTileFixture.o: GameTileFixture.cpp.o
 .PHONY : GameTileFixture.o
@@ -631,6 +727,54 @@ SubmarineTest.cpp.s:
 	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/SubmarineTest.cpp.s
 .PHONY : SubmarineTest.cpp.s
 
+TorpedoBomberFixture.o: TorpedoBomberFixture.cpp.o
+.PHONY : TorpedoBomberFixture.o
+
+# target to build an object file
+TorpedoBomberFixture.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/TorpedoBomberFixture.cpp.o
+.PHONY : TorpedoBomberFixture.cpp.o
+
+TorpedoBomberFixture.i: TorpedoBomberFixture.cpp.i
+.PHONY : TorpedoBomberFixture.i
+
+# target to preprocess a source file
+TorpedoBomberFixture.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/TorpedoBomberFixture.cpp.i
+.PHONY : TorpedoBomberFixture.cpp.i
+
+TorpedoBomberFixture.s: TorpedoBomberFixture.cpp.s
+.PHONY : TorpedoBomberFixture.s
+
+# target to generate assembly for a file
+TorpedoBomberFixture.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/TorpedoBomberFixture.cpp.s
+.PHONY : TorpedoBomberFixture.cpp.s
+
+TorpedoBomberTest.o: TorpedoBomberTest.cpp.o
+.PHONY : TorpedoBomberTest.o
+
+# target to build an object file
+TorpedoBomberTest.cpp.o:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/TorpedoBomberTest.cpp.o
+.PHONY : TorpedoBomberTest.cpp.o
+
+TorpedoBomberTest.i: TorpedoBomberTest.cpp.i
+.PHONY : TorpedoBomberTest.i
+
+# target to preprocess a source file
+TorpedoBomberTest.cpp.i:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/TorpedoBomberTest.cpp.i
+.PHONY : TorpedoBomberTest.cpp.i
+
+TorpedoBomberTest.s: TorpedoBomberTest.cpp.s
+.PHONY : TorpedoBomberTest.s
+
+# target to generate assembly for a file
+TorpedoBomberTest.cpp.s:
+	cd /home/pala/CLionProjects/SeaLion/cmake-build-debug && $(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/TorpedoBomberTest.cpp.s
+.PHONY : TorpedoBomberTest.cpp.s
+
 __/Collision.o: __/Collision.cpp.o
 .PHONY : __/Collision.o
 
@@ -704,6 +848,12 @@ help:
 	@echo "... BattleshipTest.o"
 	@echo "... BattleshipTest.i"
 	@echo "... BattleshipTest.s"
+	@echo "... BomberFixture.o"
+	@echo "... BomberFixture.i"
+	@echo "... BomberFixture.s"
+	@echo "... BomberTest.o"
+	@echo "... BomberTest.i"
+	@echo "... BomberTest.s"
 	@echo "... CruiserFixture.o"
 	@echo "... CruiserFixture.i"
 	@echo "... CruiserFixture.s"
@@ -716,6 +866,12 @@ help:
 	@echo "... DestroyerTest.o"
 	@echo "... DestroyerTest.i"
 	@echo "... DestroyerTest.s"
+	@echo "... FighterFixture.o"
+	@echo "... FighterFixture.i"
+	@echo "... FighterFixture.s"
+	@echo "... FighterTest.o"
+	@echo "... FighterTest.i"
+	@echo "... FighterTest.s"
 	@echo "... GameTileFixture.o"
 	@echo "... GameTileFixture.i"
 	@echo "... GameTileFixture.s"
@@ -749,6 +905,12 @@ help:
 	@echo "... SubmarineTest.o"
 	@echo "... SubmarineTest.i"
 	@echo "... SubmarineTest.s"
+	@echo "... TorpedoBomberFixture.o"
+	@echo "... TorpedoBomberFixture.i"
+	@echo "... TorpedoBomberFixture.s"
+	@echo "... TorpedoBomberTest.o"
+	@echo "... TorpedoBomberTest.i"
+	@echo "... TorpedoBomberTest.s"
 	@echo "... __/Collision.o"
 	@echo "... __/Collision.i"
 	@echo "... __/Collision.s"

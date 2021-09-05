@@ -153,12 +153,12 @@ UnitTesting/lib/googletest/googletest/clean: UnitTesting/lib/googletest/googlete
 CMakeFiles/core.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41 "Built target core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43 "Built target core"
 .PHONY : CMakeFiles/core.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 39
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 41
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/core.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/core.dir/rule
@@ -184,7 +184,7 @@ CMakeFiles/SeaLion.dir/all: CMakeFiles/core.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SeaLion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SeaLion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/SeaLion.dir/rule
@@ -207,12 +207,12 @@ UnitTesting/CMakeFiles/runSeaLionTests.dir/all: UnitTesting/lib/googletest/googl
 UnitTesting/CMakeFiles/runSeaLionTests.dir/all: CMakeFiles/core.dir/all
 	$(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f UnitTesting/CMakeFiles/runSeaLionTests.dir/build.make UnitTesting/CMakeFiles/runSeaLionTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71 "Built target runSeaLionTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79 "Built target runSeaLionTests"
 .PHONY : UnitTesting/CMakeFiles/runSeaLionTests.dir/all
 
 # Build rule for subdir invocation for target.
 UnitTesting/CMakeFiles/runSeaLionTests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 65
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 73
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UnitTesting/CMakeFiles/runSeaLionTests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles 0
 .PHONY : UnitTesting/CMakeFiles/runSeaLionTests.dir/rule
@@ -234,7 +234,7 @@ UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/all: UnitTesting
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/all: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=44,45 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=46,47 "Built target gmock_main"
 .PHONY : UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -260,7 +260,7 @@ UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/clean:
 UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/all: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/build.make UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/build.make UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=42,43 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=44,45 "Built target gmock"
 .PHONY : UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -286,7 +286,7 @@ UnitTesting/lib/googletest/googlemock/CMakeFiles/gmock.dir/clean:
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/all: UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=48,49 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=50,51 "Built target gtest_main"
 .PHONY : UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -312,7 +312,7 @@ UnitTesting/lib/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=46,47 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pala/CLionProjects/SeaLion/cmake-build-debug/CMakeFiles --progress-num=48,49 "Built target gtest"
 .PHONY : UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.

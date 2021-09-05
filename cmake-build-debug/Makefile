@@ -252,6 +252,30 @@ gtest/fast:
 	$(MAKE) $(MAKESILENT) -f UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build.make UnitTesting/lib/googletest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+AABullet.o: AABullet.cpp.o
+.PHONY : AABullet.o
+
+# target to build an object file
+AABullet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AABullet.cpp.o
+.PHONY : AABullet.cpp.o
+
+AABullet.i: AABullet.cpp.i
+.PHONY : AABullet.i
+
+# target to preprocess a source file
+AABullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AABullet.cpp.i
+.PHONY : AABullet.cpp.i
+
+AABullet.s: AABullet.cpp.s
+.PHONY : AABullet.s
+
+# target to generate assembly for a file
+AABullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/AABullet.cpp.s
+.PHONY : AABullet.cpp.s
+
 AircraftCarrier.o: AircraftCarrier.cpp.o
 .PHONY : AircraftCarrier.o
 
@@ -347,6 +371,30 @@ Arsenal.s: Arsenal.cpp.s
 Arsenal.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Arsenal.cpp.s
 .PHONY : Arsenal.cpp.s
+
+BarInterface.o: BarInterface.cpp.o
+.PHONY : BarInterface.o
+
+# target to build an object file
+BarInterface.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BarInterface.cpp.o
+.PHONY : BarInterface.cpp.o
+
+BarInterface.i: BarInterface.cpp.i
+.PHONY : BarInterface.i
+
+# target to preprocess a source file
+BarInterface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BarInterface.cpp.i
+.PHONY : BarInterface.cpp.i
+
+BarInterface.s: BarInterface.cpp.s
+.PHONY : BarInterface.s
+
+# target to generate assembly for a file
+BarInterface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/BarInterface.cpp.s
+.PHONY : BarInterface.cpp.s
 
 Battleship.o: Battleship.cpp.o
 .PHONY : Battleship.o
@@ -612,29 +660,29 @@ Dice.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Dice.cpp.s
 .PHONY : Dice.cpp.s
 
-ExplosiveBullet.o: ExplosiveBullet.cpp.o
-.PHONY : ExplosiveBullet.o
+Explosion.o: Explosion.cpp.o
+.PHONY : Explosion.o
 
 # target to build an object file
-ExplosiveBullet.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ExplosiveBullet.cpp.o
-.PHONY : ExplosiveBullet.cpp.o
+Explosion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Explosion.cpp.o
+.PHONY : Explosion.cpp.o
 
-ExplosiveBullet.i: ExplosiveBullet.cpp.i
-.PHONY : ExplosiveBullet.i
+Explosion.i: Explosion.cpp.i
+.PHONY : Explosion.i
 
 # target to preprocess a source file
-ExplosiveBullet.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ExplosiveBullet.cpp.i
-.PHONY : ExplosiveBullet.cpp.i
+Explosion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Explosion.cpp.i
+.PHONY : Explosion.cpp.i
 
-ExplosiveBullet.s: ExplosiveBullet.cpp.s
-.PHONY : ExplosiveBullet.s
+Explosion.s: Explosion.cpp.s
+.PHONY : Explosion.s
 
 # target to generate assembly for a file
-ExplosiveBullet.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ExplosiveBullet.cpp.s
-.PHONY : ExplosiveBullet.cpp.s
+Explosion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Explosion.cpp.s
+.PHONY : Explosion.cpp.s
 
 Fighter.o: Fighter.cpp.o
 .PHONY : Fighter.o
@@ -756,6 +804,30 @@ HeavlyCannon.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/HeavlyCannon.cpp.s
 .PHONY : HeavlyCannon.cpp.s
 
+LifeBar.o: LifeBar.cpp.o
+.PHONY : LifeBar.o
+
+# target to build an object file
+LifeBar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/LifeBar.cpp.o
+.PHONY : LifeBar.cpp.o
+
+LifeBar.i: LifeBar.cpp.i
+.PHONY : LifeBar.i
+
+# target to preprocess a source file
+LifeBar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/LifeBar.cpp.i
+.PHONY : LifeBar.cpp.i
+
+LifeBar.s: LifeBar.cpp.s
+.PHONY : LifeBar.s
+
+# target to generate assembly for a file
+LifeBar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/LifeBar.cpp.s
+.PHONY : LifeBar.cpp.s
+
 LightCannon.o: LightCannon.cpp.o
 .PHONY : LightCannon.o
 
@@ -803,30 +875,6 @@ MediumCannon.s: MediumCannon.cpp.s
 MediumCannon.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/MediumCannon.cpp.s
 .PHONY : MediumCannon.cpp.s
-
-PiercingBullet.o: PiercingBullet.cpp.o
-.PHONY : PiercingBullet.o
-
-# target to build an object file
-PiercingBullet.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/PiercingBullet.cpp.o
-.PHONY : PiercingBullet.cpp.o
-
-PiercingBullet.i: PiercingBullet.cpp.i
-.PHONY : PiercingBullet.i
-
-# target to preprocess a source file
-PiercingBullet.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/PiercingBullet.cpp.i
-.PHONY : PiercingBullet.cpp.i
-
-PiercingBullet.s: PiercingBullet.cpp.s
-.PHONY : PiercingBullet.s
-
-# target to generate assembly for a file
-PiercingBullet.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/PiercingBullet.cpp.s
-.PHONY : PiercingBullet.cpp.s
 
 QuickRepair.o: QuickRepair.cpp.o
 .PHONY : QuickRepair.o
@@ -972,30 +1020,6 @@ SpeedBoost.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/SpeedBoost.cpp.s
 .PHONY : SpeedBoost.cpp.s
 
-StandardBullet.o: StandardBullet.cpp.o
-.PHONY : StandardBullet.o
-
-# target to build an object file
-StandardBullet.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/StandardBullet.cpp.o
-.PHONY : StandardBullet.cpp.o
-
-StandardBullet.i: StandardBullet.cpp.i
-.PHONY : StandardBullet.i
-
-# target to preprocess a source file
-StandardBullet.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/StandardBullet.cpp.i
-.PHONY : StandardBullet.cpp.i
-
-StandardBullet.s: StandardBullet.cpp.s
-.PHONY : StandardBullet.s
-
-# target to generate assembly for a file
-StandardBullet.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/StandardBullet.cpp.s
-.PHONY : StandardBullet.cpp.s
-
 Submarine.o: Submarine.cpp.o
 .PHONY : Submarine.o
 
@@ -1019,6 +1043,30 @@ Submarine.s: Submarine.cpp.s
 Submarine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Submarine.cpp.s
 .PHONY : Submarine.cpp.s
+
+Torpedo.o: Torpedo.cpp.o
+.PHONY : Torpedo.o
+
+# target to build an object file
+Torpedo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Torpedo.cpp.o
+.PHONY : Torpedo.cpp.o
+
+Torpedo.i: Torpedo.cpp.i
+.PHONY : Torpedo.i
+
+# target to preprocess a source file
+Torpedo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Torpedo.cpp.i
+.PHONY : Torpedo.cpp.i
+
+Torpedo.s: Torpedo.cpp.s
+.PHONY : Torpedo.s
+
+# target to generate assembly for a file
+Torpedo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Torpedo.cpp.s
+.PHONY : Torpedo.cpp.s
 
 TorpedoBomber.o: TorpedoBomber.cpp.o
 .PHONY : TorpedoBomber.o
@@ -1207,6 +1255,9 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... runSeaLionTests"
+	@echo "... AABullet.o"
+	@echo "... AABullet.i"
+	@echo "... AABullet.s"
 	@echo "... AircraftCarrier.o"
 	@echo "... AircraftCarrier.i"
 	@echo "... AircraftCarrier.s"
@@ -1219,6 +1270,9 @@ help:
 	@echo "... Arsenal.o"
 	@echo "... Arsenal.i"
 	@echo "... Arsenal.s"
+	@echo "... BarInterface.o"
+	@echo "... BarInterface.i"
+	@echo "... BarInterface.s"
 	@echo "... Battleship.o"
 	@echo "... Battleship.i"
 	@echo "... Battleship.s"
@@ -1252,9 +1306,9 @@ help:
 	@echo "... Dice.o"
 	@echo "... Dice.i"
 	@echo "... Dice.s"
-	@echo "... ExplosiveBullet.o"
-	@echo "... ExplosiveBullet.i"
-	@echo "... ExplosiveBullet.s"
+	@echo "... Explosion.o"
+	@echo "... Explosion.i"
+	@echo "... Explosion.s"
 	@echo "... Fighter.o"
 	@echo "... Fighter.i"
 	@echo "... Fighter.s"
@@ -1270,15 +1324,15 @@ help:
 	@echo "... HeavlyCannon.o"
 	@echo "... HeavlyCannon.i"
 	@echo "... HeavlyCannon.s"
+	@echo "... LifeBar.o"
+	@echo "... LifeBar.i"
+	@echo "... LifeBar.s"
 	@echo "... LightCannon.o"
 	@echo "... LightCannon.i"
 	@echo "... LightCannon.s"
 	@echo "... MediumCannon.o"
 	@echo "... MediumCannon.i"
 	@echo "... MediumCannon.s"
-	@echo "... PiercingBullet.o"
-	@echo "... PiercingBullet.i"
-	@echo "... PiercingBullet.s"
 	@echo "... QuickRepair.o"
 	@echo "... QuickRepair.i"
 	@echo "... QuickRepair.s"
@@ -1297,12 +1351,12 @@ help:
 	@echo "... SpeedBoost.o"
 	@echo "... SpeedBoost.i"
 	@echo "... SpeedBoost.s"
-	@echo "... StandardBullet.o"
-	@echo "... StandardBullet.i"
-	@echo "... StandardBullet.s"
 	@echo "... Submarine.o"
 	@echo "... Submarine.i"
 	@echo "... Submarine.s"
+	@echo "... Torpedo.o"
+	@echo "... Torpedo.i"
+	@echo "... Torpedo.s"
 	@echo "... TorpedoBomber.o"
 	@echo "... TorpedoBomber.i"
 	@echo "... TorpedoBomber.s"

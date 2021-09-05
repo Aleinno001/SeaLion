@@ -7,6 +7,7 @@ CMakeFiles/SeaLion.dir/main.cpp.o: \
  ../AntiAircraft.h \
  ../Arsenal.h \
  ../ArsenalFactory.h \
+ ../BarInterface.h \
  ../Battleship.h \
  ../Bullet.h \
  ../CannonFactory.h \
@@ -15,6 +16,7 @@ CMakeFiles/SeaLion.dir/main.cpp.o: \
  ../CurrentDir.h \
  ../Destroyer.h \
  ../Dice.h \
+ ../Explosion.h \
  ../GameTile.h \
  ../GameWorld.h \
  ../HeavlyCannon.h \
@@ -22,7 +24,6 @@ CMakeFiles/SeaLion.dir/main.cpp.o: \
  ../MediumCannon.h \
  ../ShipFactory.h \
  ../SpecialWeaponFactory.h \
- ../StandardBullet.h \
  ../Submarine.h \
  ../TorpedoTube.h \
  ../Vehicle.h \

@@ -428,6 +428,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/AABullet.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/AABullet.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/AbstractAirplaneFactory.h">
 			<Option target="core"/>
 		</Unit>
@@ -462,6 +468,12 @@
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/ArsenalFactory.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/BarInterface.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/BarInterface.h">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/Battleship.cpp">
@@ -532,10 +544,10 @@
 		<Unit filename="/home/pala/CLionProjects/SeaLion/Dice.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/pala/CLionProjects/SeaLion/ExplosiveBullet.cpp">
+		<Unit filename="/home/pala/CLionProjects/SeaLion/Explosion.cpp">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/pala/CLionProjects/SeaLion/ExplosiveBullet.h">
+		<Unit filename="/home/pala/CLionProjects/SeaLion/Explosion.h">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/Fighter.cpp">
@@ -568,6 +580,12 @@
 		<Unit filename="/home/pala/CLionProjects/SeaLion/HeavlyCannon.h">
 			<Option target="core"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/LifeBar.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/LifeBar.h">
+			<Option target="core"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/LightCannon.cpp">
 			<Option target="core"/>
 		</Unit>
@@ -581,12 +599,6 @@
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/Observer.h">
-			<Option target="core"/>
-		</Unit>
-		<Unit filename="/home/pala/CLionProjects/SeaLion/PiercingBullet.cpp">
-			<Option target="core"/>
-		</Unit>
-		<Unit filename="/home/pala/CLionProjects/SeaLion/PiercingBullet.h">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/QuickRepair.cpp">
@@ -628,16 +640,16 @@
 		<Unit filename="/home/pala/CLionProjects/SeaLion/SpeedBoost.h">
 			<Option target="core"/>
 		</Unit>
-		<Unit filename="/home/pala/CLionProjects/SeaLion/StandardBullet.cpp">
-			<Option target="core"/>
-		</Unit>
-		<Unit filename="/home/pala/CLionProjects/SeaLion/StandardBullet.h">
-			<Option target="core"/>
-		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/Submarine.cpp">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/Submarine.h">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/Torpedo.cpp">
+			<Option target="core"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/Torpedo.h">
 			<Option target="core"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/TorpedoBomber.cpp">
@@ -664,6 +676,12 @@
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/BattleshipTest.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/BomberFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/BomberTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/CruiserFixture.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
@@ -674,6 +692,12 @@
 			<Option target="runSeaLionTests"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/DestroyerTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/FighterFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/FighterTest.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/GameTileFixture.cpp">
@@ -707,6 +731,12 @@
 			<Option target="runSeaLionTests"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/SubmarineTest.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/TorpedoBomberFixture.cpp">
+			<Option target="runSeaLionTests"/>
+		</Unit>
+		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/TorpedoBomberTest.cpp">
 			<Option target="runSeaLionTests"/>
 		</Unit>
 		<Unit filename="/home/pala/CLionProjects/SeaLion/UnitTesting/lib/googletest/googlemock/src/gmock-all.cc">

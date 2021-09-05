@@ -20,7 +20,7 @@ private:
     bool setUpSprite(std::string textureName);
 public:
 
-    LifeBar(WarShip &subject);
+    explicit LifeBar(WarShip &subject);
 
     void updateBars(sf::Vector2f &vel, double mx, bool onlyMove) override;
 

@@ -5,6 +5,7 @@
 #include "ShipFactory.h"
 #include "GameWorld.h"
 #include "AirplaneFactory.h"
+#include "LifeBar.h"
 
 
 std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -63,6 +64,7 @@ std::unique_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld 
 std::unique_ptr<Submarine>
 ShipFactory::gatoBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory factory;
+
     int shipWidth = 9;
     int shipHeight = 95;
 
@@ -71,6 +73,10 @@ ShipFactory::gatoBuilder(sf::Vector2i &coordinates) const {
                           ShipType::Submarine, ModelType::Gato, 6, false));
     for (int i = 0; i < 6; i++)
         Gato->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Gato)));
+
+    LifeBar lifeBar(*Gato);
+
+
     return Gato;
 }
 
@@ -90,6 +96,9 @@ ShipFactory::tritonBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < 6; i++)
         Triton->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Triton)));
+
+    LifeBar lifeBar(*Triton);
+
     return Triton;
 }
 
@@ -110,6 +119,8 @@ ShipFactory::DaVinciBuilder(
 
     for (int i = 0; i < 8; i++)
         DaVinci->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *DaVinci)));
+
+    LifeBar lifeBar(*DaVinci);
 
     return DaVinci;
 }
@@ -133,6 +144,8 @@ ShipFactory::typeb1Builder(
     for (int i = 0; i < 6; i++)
         typeb1->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *typeb1)));
 
+    LifeBar lifeBar(*typeb1);
+
     return typeb1;
 }
 
@@ -153,6 +166,8 @@ ShipFactory::i400Builder(
                           ShipType::Submarine, ModelType::I400, 8, false));
     for (int i = 0; i < 8; i++)
         i400->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *i400)));
+
+    LifeBar lifeBar(*i400);
     return i400;
 }
 

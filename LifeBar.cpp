@@ -26,10 +26,9 @@ bool LifeBar::setUpSprite(std::string textureName) {
 
 
 LifeBar::LifeBar(WarShip &subject):subject_(subject),r(15),g(135),b(7) {
-    //subject_.attachBar(this); TODO CONCLUDERE
+    subject_.attachBar(std::shared_ptr<BarInterface>(this)); 
     setUpSprite("lifeBar");
     life.setPosition(subject_.getSprite().getPosition().x+0.50*subject_.getWidth(),subject_.getSprite().getPosition().y+0.50*subject_.getLength());
-
     life.setColor(sf::Color(r,g,b));
 
 }
