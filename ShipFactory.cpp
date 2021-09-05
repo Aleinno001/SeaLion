@@ -648,6 +648,8 @@ ShipFactory::danaeBuilder(
     danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 19, *danae)));
     for (int i = 0; i < antiAir; i++)
         danae->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *danae)));
+
+    LifeBar lifeBar(*danae);
     return danae;
 }
 
@@ -682,6 +684,8 @@ ShipFactory::trentoBuilder(
     trento->attach(std::move(cf.createLight(cannonPosX + 18, cannonPosY + 111, *trento)));
     for (int i = 0; i < antiAir; i++)
         trento->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *trento)));
+
+    LifeBar lifeBar(*trento);
     return trento;
 }
 
