@@ -1514,6 +1514,7 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates) const {
                           ShipType::Submarine, ModelType::Papa, 10, false));
     for (int i = 0; i < 10; i++)
         Papa->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Papa)));
+    LifeBar lifeBar(*Papa);
     return Papa;
 }
 
@@ -1621,6 +1622,7 @@ ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++)
         FranklinDRoosevelt->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *FranklinDRoosevelt)));
+    LifeBar lifeBar(*FranklinDRoosevelt);
     return FranklinDRoosevelt;
 }
 
