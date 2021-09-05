@@ -346,6 +346,9 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(
     GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+15,cannonPosY+94,"Italy",*GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+130,"Italy",*GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+166,"Italy",*GiuseppeGaribaldi)));
+
+    LifeBar lifeBar(*GiuseppeGaribaldi);
+
     return GiuseppeGaribaldi;
 }
 
@@ -384,6 +387,9 @@ ShipFactory::tahioBuilder(
     Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+206,"Japan",*Tahio)));
     for (int i = 0; i < numAntiAir; i++)
         Tahio->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Tahio)));
+
+    LifeBar lifeBar(*Tahio);
+
     return Tahio;
 }
 
