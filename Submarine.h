@@ -52,7 +52,7 @@ public:
 
     void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
 
-
+    void notifyBarsDamage() override;
 
     ~Submarine() override{
 
