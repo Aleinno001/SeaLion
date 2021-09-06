@@ -74,7 +74,8 @@ ShipFactory::gatoBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < 6; i++)
         Gato->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Gato)));
 
-    LifeBar lifeBar(*Gato);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Gato));
+    Gato->attachBar(life);
 
 
     return Gato;
@@ -97,7 +98,8 @@ ShipFactory::tritonBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < 6; i++)
         Triton->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Triton)));
 
-    LifeBar lifeBar(*Triton);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Triton));
+    Triton->attachBar(life);
 
     return Triton;
 }
@@ -120,7 +122,8 @@ ShipFactory::DaVinciBuilder(
     for (int i = 0; i < 8; i++)
         DaVinci->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *DaVinci)));
 
-    LifeBar lifeBar(*DaVinci);
+    std::shared_ptr<LifeBar> life(new LifeBar(*DaVinci));
+    DaVinci->attachBar(life);
 
     return DaVinci;
 }
@@ -144,7 +147,8 @@ ShipFactory::typeb1Builder(
     for (int i = 0; i < 6; i++)
         typeb1->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *typeb1)));
 
-    LifeBar lifeBar(*typeb1);
+    std::shared_ptr<LifeBar> life(new LifeBar(*typeb1));
+    typeb1->attachBar(life);
 
     return typeb1;
 }
@@ -167,7 +171,8 @@ ShipFactory::i400Builder(
     for (int i = 0; i < 8; i++)
         i400->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *i400)));
 
-    LifeBar lifeBar(*i400);
+    std::shared_ptr<LifeBar> life(new LifeBar(*i400));
+    i400->attachBar(life);
     return i400;
 }
 
@@ -276,7 +281,8 @@ ShipFactory::midwayBuilder(
     for (int i = 0; i < numAntiAir; i++)
         mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
 
-    LifeBar lifeBar(*mid);
+    std::shared_ptr<LifeBar> life(new LifeBar(*mid));
+    mid->attachBar(life);
 
     return mid;
 }
@@ -314,7 +320,8 @@ ShipFactory::arkRoyalBuilder(
     for (int i = 0; i < numAntiAir; i++)
         arkRoyal->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *arkRoyal)));
 
-    LifeBar lifeBar(*arkRoyal);
+    std::shared_ptr<LifeBar> life(new LifeBar(*arkRoyal));
+    arkRoyal->attachBar(life);
     return arkRoyal;
 }
 
@@ -347,7 +354,8 @@ std::unique_ptr<AircraftCarrier> ShipFactory::giuseppeGaribaldiBuilder(
     GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+130,"Italy",*GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+166,"Italy",*GiuseppeGaribaldi)));
 
-    LifeBar lifeBar(*GiuseppeGaribaldi);
+    std::shared_ptr<LifeBar> life(new LifeBar(*GiuseppeGaribaldi));
+    GiuseppeGaribaldi->attachBar(life);
 
     return GiuseppeGaribaldi;
 }
@@ -388,7 +396,8 @@ ShipFactory::tahioBuilder(
     for (int i = 0; i < numAntiAir; i++)
         Tahio->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Tahio)));
 
-    LifeBar lifeBar(*Tahio);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Tahio));
+    Tahio->attachBar(life);
 
     return Tahio;
 }
@@ -581,7 +590,8 @@ ShipFactory::stLouisBuilder(
                         factory.createSpecialWeapon(
                                 WeaponType::antiAir, *saintLouis)));
 
-    LifeBar lifeBar(*saintLouis);
+    std::shared_ptr<LifeBar> life(new LifeBar(*saintLouis));
+    saintLouis->attachBar(life);
     return saintLouis;
 }
 
@@ -616,7 +626,8 @@ ShipFactory::alaskaBuilder(
 
     for (int i = 0; i < antiAir; i++)
         alaska->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *alaska)));
-    LifeBar lifeBar(*alaska);
+    std::shared_ptr<LifeBar> life(new LifeBar(*alaska));
+    alaska->attachBar(life);
     return alaska;
 }
 
@@ -649,7 +660,8 @@ ShipFactory::danaeBuilder(
     for (int i = 0; i < antiAir; i++)
         danae->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *danae)));
 
-    LifeBar lifeBar(*danae);
+    std::shared_ptr<LifeBar> life(new LifeBar(*danae));
+    danae->attachBar(life);
     return danae;
 }
 
@@ -685,7 +697,8 @@ ShipFactory::trentoBuilder(
     for (int i = 0; i < antiAir; i++)
         trento->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *trento)));
 
-    LifeBar lifeBar(*trento);
+    std::shared_ptr<LifeBar> life(new LifeBar(*trento));
+    trento->attachBar(life);
     return trento;
 }
 
@@ -719,7 +732,8 @@ std::unique_ptr<Cruiser> ShipFactory::albertoDiGiussanoBuilder(
 
     for (int i = 0; i < antiAir; i++)
         albertoDiGiussano->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *albertoDiGiussano)));
-    LifeBar lifeBar(*albertoDiGiussano);
+    std::shared_ptr<LifeBar> life(new LifeBar(*albertoDiGiussano));
+    albertoDiGiussano->attachBar(life);
     return albertoDiGiussano;
 }
 
@@ -753,7 +767,8 @@ ShipFactory::takaoBuilder(
     for (int i = 0; i < antiAir; i++)
         takao->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *takao)));
 
-    LifeBar lifeBar(*takao);
+    std::shared_ptr<LifeBar> life(new LifeBar(*takao));
+    takao->attachBar(life);
     return takao;
 }
 
@@ -878,7 +893,8 @@ ShipFactory::ironDukeBuilder(
 
     for (int i = 0; i < numAntiAir; i++)
         ironDuke->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *ironDuke)));
-    LifeBar lifeBar(*ironDuke);
+    std::shared_ptr<LifeBar> life(new LifeBar(*ironDuke));
+    ironDuke->attachBar(life);
     return ironDuke;
 }
 
@@ -912,7 +928,8 @@ ShipFactory::northCarolinaBuilder(
     for (int i = 0; i < numAntiAir; i++)
         northCarolina->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *northCarolina)));
 
-    LifeBar lifeBar(*northCarolina);
+    std::shared_ptr<LifeBar> life(new LifeBar(*northCarolina));
+    northCarolina->attachBar(life);
     return northCarolina;
 }
 
@@ -952,7 +969,8 @@ ShipFactory::montanaBuilder(
     for (int i = 0; i < numAntiAir; i++)
         montana->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *montana)));
 
-    LifeBar lifeBar(*montana);
+    std::shared_ptr<LifeBar> life(new LifeBar(*montana));
+    montana->attachBar(life);
     return montana;
 }
 
@@ -980,7 +998,8 @@ ShipFactory::lionBuilder(
     for (int i = 0; i < numAntiAir; i++)
         lion->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *lion)));
 
-    LifeBar lifeBar(*lion);
+    std::shared_ptr<LifeBar> life(new LifeBar(*lion));
+    lion->attachBar(life);
     return lion;
 }
 
@@ -1009,7 +1028,8 @@ ShipFactory::dreadNoughtBuilder(
     for (int i = 0; i < numAntiAir; i++)
         dreadNought->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *dreadNought)));
 
-    LifeBar lifeBar(*dreadNought);
+    std::shared_ptr<LifeBar> life(new LifeBar(*dreadNought));
+    dreadNought->attachBar(life);
     return dreadNought;
 }
 
@@ -1066,7 +1086,8 @@ std::unique_ptr<Battleship> ShipFactory::imperatoreAugustoBuilder(
         imperatoreAugusto->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *imperatoreAugusto)));
 
-    LifeBar lifeBar(*imperatoreAugusto);
+    std::shared_ptr<LifeBar> life(new LifeBar(*imperatoreAugusto));
+    imperatoreAugusto->attachBar(life);
     return imperatoreAugusto;
 }
 
@@ -1101,7 +1122,8 @@ ShipFactory::kongoBuilder(
     for (int i = 0; i < numAntiAir; i++)
         kongo->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *kongo)));
 
-    LifeBar lifeBar(*kongo);
+    std::shared_ptr<LifeBar> life(new LifeBar(*kongo));
+    kongo->attachBar(life);
     return kongo;
 }
 
@@ -1139,7 +1161,8 @@ ShipFactory::musashiBuilder(
     for (int i = 0; i < numAntiAir; i++)
         musashi->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *musashi)));
 
-    LifeBar lifeBar(*musashi);
+    std::shared_ptr<LifeBar> life(new LifeBar(*musashi));
+    musashi->attachBar(life);
     return musashi;
 }
 
@@ -1252,7 +1275,8 @@ ShipFactory::simsBuilder(
         sims->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *sims)));
     }
 
-    LifeBar lifeBar(*sims);
+    std::shared_ptr<LifeBar> life(new LifeBar(*sims));
+    sims->attachBar(life);
     return sims;
 }
 
@@ -1283,7 +1307,8 @@ ShipFactory::fletcherBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         fletcher->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *fletcher)));
     }
-    LifeBar lifeBar(*fletcher);
+    std::shared_ptr<LifeBar> life(new LifeBar(*fletcher));
+    fletcher->attachBar(life);
     return fletcher;
 }
 
@@ -1310,7 +1335,8 @@ ShipFactory::jutlandBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         jutLand->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *jutLand)));
     }
-    LifeBar lifeBar(*jutLand);
+    std::shared_ptr<LifeBar> life(new LifeBar(*jutLand));
+    jutLand->attachBar(life);
     return jutLand;
 }
 
@@ -1340,7 +1366,8 @@ ShipFactory::paoloEmilioBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         paoloEmilio->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *paoloEmilio)));
     }
-    LifeBar lifeBar(*paoloEmilio);
+    std::shared_ptr<LifeBar> life(new LifeBar(*paoloEmilio));
+    paoloEmilio->attachBar(life);
     return paoloEmilio;
 }
 
@@ -1371,7 +1398,8 @@ ShipFactory::impavidoBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         impavido->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *impavido)));
     }
-    LifeBar lifeBar(*impavido);
+    std::shared_ptr<LifeBar> life(new LifeBar(*impavido));
+    impavido->attachBar(life);
     return impavido;
 }
 
@@ -1400,7 +1428,8 @@ ShipFactory::yukikazeBuilder(
     for (int i = 0; i < numAntiAir; i++) {
         yukikaze->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *yukikaze)));
     }
-    LifeBar lifeBar(*yukikaze);
+    std::shared_ptr<LifeBar> life(new LifeBar(*yukikaze));
+    yukikaze->attachBar(life);
     return yukikaze;
 }
 
@@ -1476,7 +1505,8 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates) const {
                           ShipType::Submarine, ModelType::Narwhal, 4, false));
     for (int i = 0; i < 4; i++)
         Narwhal->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Narwhal)));
-    LifeBar lifeBar(*Narwhal);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Narwhal));
+    Narwhal->attachBar(life);
     return Narwhal;
 }
 
@@ -1495,7 +1525,8 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < 5; i++)
         Trenchant->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Trenchant)));
 
-    LifeBar lifeBar(*Trenchant);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Trenchant));
+    Trenchant->attachBar(life);
     return Trenchant;
 }
 
@@ -1514,7 +1545,8 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates) const {
                           ShipType::Submarine, ModelType::Papa, 10, false));
     for (int i = 0; i < 10; i++)
         Papa->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Papa)));
-    LifeBar lifeBar(*Papa);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Papa));
+    Papa->attachBar(life);
     return Papa;
 }
 
@@ -1622,7 +1654,8 @@ ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++)
         FranklinDRoosevelt->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *FranklinDRoosevelt)));
-    LifeBar lifeBar(*FranklinDRoosevelt);
+    std::shared_ptr<LifeBar> life(new LifeBar(*FranklinDRoosevelt));
+    FranklinDRoosevelt->attachBar(life);
     return FranklinDRoosevelt;
 }
 
@@ -1659,7 +1692,8 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         Indomitable->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Indomitable)));
-    LifeBar lifeBar(*Indomitable);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Indomitable));
+    Indomitable->attachBar(life);
     return Indomitable;
 }
 
@@ -1701,7 +1735,8 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
         Cavour->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour)));
 
 
-    LifeBar lifeBar(*Cavour);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Cavour));
+    Cavour->attachBar(life);
     return Cavour;
 }
 
@@ -1738,7 +1773,8 @@ ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         Hiryu->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Hiryu)));
-    LifeBar lifeBar(*Hiryu);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Hiryu));
+    Hiryu->attachBar(life);
     return Hiryu;
 }
 
@@ -1864,7 +1900,8 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         NewOrleans->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *NewOrleans)));
 
-    LifeBar lifeBar(*NewOrleans);
+    std::shared_ptr<LifeBar> life(new LifeBar(*NewOrleans));
+    NewOrleans->attachBar(life);
     return NewOrleans;
 }
 
@@ -1899,7 +1936,8 @@ ShipFactory::tiger59Builder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Tiger59->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Tiger59)));
 
-    LifeBar lifeBar(*Tiger59);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Tiger59));
+    Tiger59->attachBar(life);
     return Tiger59;
 }
 
@@ -1934,7 +1972,8 @@ ShipFactory::belfastBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Belfast->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Belfast)));
 
-    LifeBar lifeBar(*Belfast);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Belfast));
+    Belfast->attachBar(life);
     return Belfast;
 }
 
@@ -1970,7 +2009,8 @@ ShipFactory::goriziaBuilder(sf::Vector2i &coordinates) const {
         Gorizia->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Gorizia)));
     }
 
-    LifeBar lifeBar(*Gorizia);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Gorizia));
+    Gorizia->attachBar(life);
     return Gorizia;
 }
 
@@ -2003,7 +2043,8 @@ ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         IsuzuNagara->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *IsuzuNagara)));
 
-    LifeBar lifeBar(*IsuzuNagara);
+    std::shared_ptr<LifeBar> life(new LifeBar(*IsuzuNagara));
+    IsuzuNagara->attachBar(life);
     return IsuzuNagara;
 }
 
@@ -2036,7 +2077,8 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Ijn->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Ijn)));
 
-    LifeBar lifeBar(*Ijn);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Ijn));
+    Ijn->attachBar(life);
     return Ijn;
 }
 
@@ -2196,7 +2238,8 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates) const {
 
     for (int i = 0; i < numAntiAir; i++)
         VittorioVeneto->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *VittorioVeneto)));
-    LifeBar lifeBar(*VittorioVeneto);
+    std::shared_ptr<LifeBar> life(new LifeBar(*VittorioVeneto));
+    VittorioVeneto->attachBar(life);
     return VittorioVeneto;
 }
 
@@ -2224,7 +2267,8 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         NewYork->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *NewYork)));
 
-    LifeBar lifeBar(*NewYork);
+    std::shared_ptr<LifeBar> life(new LifeBar(*NewYork));
+    NewYork->attachBar(life);
     return NewYork;
 }
 
@@ -2259,7 +2303,8 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Arizona->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Arizona)));
 
-    LifeBar lifeBar(*Arizona);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Arizona));
+    Arizona->attachBar(life);
     return Arizona;
 }
 
@@ -2287,7 +2332,8 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Hood->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Hood)));
 
-    LifeBar lifeBar(*Hood);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Hood));
+    Hood->attachBar(life);
     return Hood;
 }
 
@@ -2362,6 +2408,9 @@ ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++)
         MichelangeloBuonarroti->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *MichelangeloBuonarroti)));
+
+    std::shared_ptr<LifeBar> life(new LifeBar(*MichelangeloBuonarroti));
+    MichelangeloBuonarroti->attachBar(life);
     return MichelangeloBuonarroti;
 }
 
@@ -2407,7 +2456,8 @@ ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++)
         AndreaDoria->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *AndreaDoria)));
 
-    LifeBar lifeBar(*AndreaDoria);
+    std::shared_ptr<LifeBar> life(new LifeBar(*AndreaDoria));
+    AndreaDoria->attachBar(life);
     return AndreaDoria;
 }
 
@@ -2449,7 +2499,8 @@ ShipFactory::yamatoBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Yamato->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Yamato)));
 
-    LifeBar lifeBar(*Yamato);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Yamato));
+    Yamato->attachBar(life);
     return Yamato;
 }
 
@@ -2484,7 +2535,8 @@ ShipFactory::iseBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < antiAir; i++)
         Ise->attach(std::move(factory.createSpecialWeapon(WeaponType::antiAir, *Ise)));
 
-    LifeBar lifeBar(*Ise);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Ise));
+    Ise->attachBar(life);
     return Ise;
 }
 
@@ -2605,8 +2657,8 @@ ShipFactory::mahanBuilder(sf::Vector2i &coordinates) const {
         Mahan->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Mahan)));
     }
 
-
-    LifeBar lifeBar(*Mahan);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Mahan));
+    Mahan->attachBar(life);
     return Mahan;
 }
 
@@ -2634,8 +2686,8 @@ ShipFactory::gallandBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Gallant->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Gallant)));
     }
-
-    LifeBar lifeBar(*Gallant);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Gallant));
+    Gallant->attachBar(life);
     return Gallant;
 }
 
@@ -2662,7 +2714,8 @@ ShipFactory::campbeltownBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Campbelltown->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Campbelltown)));
     }
-    LifeBar lifeBar(*Campbelltown);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Campbelltown));
+    Campbelltown->attachBar(life);
     return Campbelltown;
 }
 
@@ -2689,7 +2742,8 @@ ShipFactory::leoneBuilder(sf::Vector2i &coordinates) const {
         Leone->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Leone)));
     }
 
-    LifeBar lifeBar(*Leone);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Leone));
+    Leone->attachBar(life);
     return Leone;
 }
 
@@ -2718,8 +2772,8 @@ ShipFactory::fubukiBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Fubuki->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Fubuki)));
     }
-    LifeBar lifeBar(*Fubuki);
-
+    std::shared_ptr<LifeBar> life(new LifeBar(*Fubuki));
+    Fubuki->attachBar(life);
     return Fubuki;
 }
 
@@ -2746,7 +2800,8 @@ ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) const {
     for (int i = 0; i < numAntiAir; i++) {
         Akizuki->attach(std::move(wf.createSpecialWeapon(WeaponType::antiAir, *Akizuki)));
     }
-    LifeBar lifeBar(*Akizuki);
+    std::shared_ptr<LifeBar> life(new LifeBar(*Akizuki));
+    Akizuki->attachBar(life);
     return Akizuki;
 }
 

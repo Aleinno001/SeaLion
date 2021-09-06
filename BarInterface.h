@@ -6,14 +6,14 @@
 #define SEALION_BARINTERFACE_H
 
 
-#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics.hpp>
 
 class BarInterface {
 public:
     virtual ~BarInterface()= default;;
     virtual void updateBars(sf::Vector2f &vel, double mx)=0;
     virtual void updateBarsDamage()=0;
-    virtual sf::Sprite getSprite()=0;
+
 
 };
 
