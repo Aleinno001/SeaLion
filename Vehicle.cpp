@@ -131,3 +131,7 @@ const double Vehicle::getMaxHp() const {
     return maxHP;
 }
 
+bool Vehicle::isDeath() const {
+    return death;
+}
+

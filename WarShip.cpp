@@ -196,10 +196,10 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
         }
         if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
                  iter->get()->getAmmoType()->getTargetPoint().x) >
-             5 ||
+             10 ||
              abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
                  iter->get()->getAmmoType()->getTargetPoint().y) >
-             5)) {
+             10)) {
             iter->get()->getAmmoType()->reachTarget();
         } else {
             iter->get()->getAmmoType()->hit();
@@ -221,18 +221,19 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
         float targetDistance = 999999;
         for (int i = 0; i < numIter; i++, ++iter) {
             for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
-
-                    distance = sqrt(
-                            pow(enemyIter->get()->getSprite().getPosition().y -
-                                iter->get()->getSprite().getPosition().y,
-                                2) +
-                            pow(enemyIter->get()->getSprite().getPosition().x -
-                                iter->get()->getSprite().getPosition().x,
-                                2));
-                    if (distance <= iter->get()->getRangeOfFire() && distance <= targetDistance) {
-                        if (canEngage(iter, enemyIter, tileVector)) {
-                            target = enemyIter;
-                            targetDistance = distance;
+                    if(!enemyIter->get()->death || !iter->get()->getAmmoType()->isArrived()) {
+                        distance = sqrt(
+                                pow(enemyIter->get()->getSprite().getPosition().y -
+                                    iter->get()->getSprite().getPosition().y,
+                                    2) +
+                                pow(enemyIter->get()->getSprite().getPosition().x -
+                                    iter->get()->getSprite().getPosition().x,
+                                    2));
+                        if (distance <= iter->get()->getRangeOfFire() && distance <= targetDistance) {
+                            if (canEngage(iter, enemyIter, tileVector)) {
+                                target = enemyIter;
+                                targetDistance = distance;
+                            }
                         }
                     }
             }
@@ -266,5 +267,13 @@ const std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList() const {
 
 const std::list<std::shared_ptr<BarInterface>> &WarShip::getBars() const {
     return bars;
+}
+
+void WarShip::setSelected(bool selected) {
+    WarShip::selected = selected;
+}
+
+bool WarShip::isSelected() const {
+    return selected;
 }
 

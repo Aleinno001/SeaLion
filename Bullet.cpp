@@ -33,7 +33,7 @@ bool Bullet::setUpSprite(const std::string& textureName) {
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
-    sprite.setScale(2, 2);
+    sprite.setScale(1.5, 1.5);
     return true;
 }
 
@@ -97,6 +97,7 @@ void Bullet::hit() {
 }
 
 void Bullet::initializeBullet(sf::Vector2f start, sf::Vector2f target) {
+    currentSpeed = speed;
     targetPoint = target;
     startPoint = start;
     arrived = false;

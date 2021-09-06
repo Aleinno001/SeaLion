@@ -15,7 +15,7 @@ private:
     sf::Texture texture;
 
 public:
-    Explosion();
+    Explosion(sf::Vector2f pos);
 
 private:
     bool setUpSprite();
@@ -25,6 +25,8 @@ private:
 public:
 
     void setFrame(int numFrame, sf::Vector2f pos);
+
+    const sf::Sprite &getSprite() const;
 };
 
 
