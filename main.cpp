@@ -15,7 +15,7 @@ typedef struct iteratorPositions {
     std::_List_iterator<std::unique_ptr<WarShip>> it;
     sf::Vector2<double> pos;
 };
-
+//FIXME da sistemare il sistema di incaglio delle navi e il danno da speronamento
 auto f = [](std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim,
             sf::RenderWindow &window) { //Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
     while (window.isOpen()) {
@@ -427,54 +427,36 @@ int main() {
 
                         sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
                         auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
-                        if (found == false) {
 
-                            itSecondClick = gameWorld.getAlliedFleet().begin();
+                        found = false;
+                        for (auto it = gameWorld.getAlliedFleet().begin();
+                             it != gameWorld.getAlliedFleet().end() && !found; ++it, shipCounter++) {
 
-                            //FIXME cambiare nave selezionata
-                            for (auto it = gameWorld.getAlliedFleet().begin();
-                                 it != gameWorld.getAlliedFleet().end() && found == false; ++it, shipCounter++) {
-
-                                if (it->get()->getSprite().getGlobalBounds().contains(translated_pos)) {
-
-                                    it->get()->setSelected(true);
-                                    found = true;
-
-                                }
-
+                            if (it->get()->getSprite().getGlobalBounds().contains(translated_pos)) {
+                                itSecondClick->get()->setSelected(false);
+                                it->get()->setSelected(true);
+                                found = true;
+                                itSecondClick = it;
                             }
-                            if (found == false) {
-                                shipCounter = 0;
-                            }
-                        } else {
-                            int miniCounter = 0;
+                        }
+                        if (!found) {
                             bool foundIter = false;
-                            while (miniCounter < shipCounter - 1) {
-                                ++itSecondClick;
-                                miniCounter++;
-                            }
-
-
-
-                            for (auto iter = lst.begin(); iter != lst.end() && foundIter == false; ++iter) {
+                            for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
                                 if (iter->it == itSecondClick) {
                                     foundIter = true;
                                     lst.erase(iter);
                                 }
-
                             }
-
 
                             iteratorPositions itPos;
                             itPos.it = itSecondClick;
                             itPos.pos = coords;
                             lst.push_back(itPos);
-                            shipCounter = 0;
-                            found = false;
                             itPos.it->get()->setSelected(false);
                         }
-
-
+                        if (!found) {
+                            shipCounter = 0;
+                        }
                     }
                         break;
 
@@ -502,7 +484,7 @@ int main() {
         for (auto &it: gameWorld.getEnemyFleet()) {
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
-            } else if(it.get()->isSelected()) {
+            } else if (it.get()->isSelected()) {
                 it.get()->getSprite().setColor(selectedColor);
             } else {
                 it.get()->getSprite().setColor(removeColor);
@@ -514,7 +496,7 @@ int main() {
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     if (it.get()->isDeath()) {
                         itArsenal.get()->getSprite().setColor(deathColor);
-                    } else if(it.get()->isSelected()) {
+                    } else if (it.get()->isSelected()) {
                         itArsenal.get()->getSprite().setColor(selectedColor);
                     } else {
                         itArsenal.get()->getSprite().setColor(removeColor);
@@ -544,7 +526,7 @@ int main() {
         for (auto &it: gameWorld.getAlliedFleet()) {
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
-            } else if(it.get()->isSelected()) {
+            } else if (it.get()->isSelected()) {
                 it.get()->getSprite().setColor(selectedColor);
             } else {
                 it.get()->getSprite().setColor(removeColor);
@@ -555,7 +537,7 @@ int main() {
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     if (it.get()->isDeath()) {
                         itArsenal.get()->getSprite().setColor(deathColor);
-                    } else if(it.get()->isSelected()) {
+                    } else if (it.get()->isSelected()) {
                         itArsenal.get()->getSprite().setColor(selectedColor);
                     } else {
                         itArsenal.get()->getSprite().setColor(removeColor);
@@ -593,6 +575,7 @@ int main() {
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
 
+        //calcola e mostra fps
         sf::Time time = clock.getElapsedTime();
         int fps = 1.0f / time.asSeconds();
         std::string currentDir = CurrentDir::GetCurrentWorkingDir();
