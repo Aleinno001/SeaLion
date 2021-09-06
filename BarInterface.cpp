@@ -28,6 +28,6 @@ bool BarInterface::setUpSprite(std::string textureName) {
     return true;
 }
 
-const sf::Sprite &BarInterface::getSprite() const {
+sf::Sprite BarInterface::getSprite() const {
     return life;
 }

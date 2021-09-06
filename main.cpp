@@ -506,10 +506,16 @@ int main() {
                     }
                 }
 
+            for(auto const &itBars : it->getBars())
+                window.draw(itBars->getSprite());
 
             if(it->getShipType()==ShipType::AircraftCarrier)
                 for(auto const &itPlanes : it->getVehicleList())
                     window.draw(itPlanes->getSprite());
+
+
+
+
 
 
 
@@ -526,9 +532,14 @@ int main() {
                     }
                 }
 
+            for(auto const &itBars : it->getBars())
+                window.draw(itBars->getSprite());
+
             if(it->getShipType()==ShipType::AircraftCarrier)
                 for(auto const &itPlanes : it->getVehicleList())
                     window.draw(itPlanes->getSprite());
+
+
 
 
 
