@@ -59,3 +59,7 @@ void LifeBar::updateBarsDamage() {
 
     }
 }
+
+sf::Sprite LifeBar::getSprite() {
+    return life;
+}

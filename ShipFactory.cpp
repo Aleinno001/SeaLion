@@ -2828,5 +2828,8 @@ std::unique_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::unique_ptr<WarS
         it->getSprite().move(0, -ship->getLength() / 2);
 
     }
+    for (auto &it: ship->getBars()){
+        it->
+    }
     return ship;
 }

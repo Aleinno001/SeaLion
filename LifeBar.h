@@ -24,6 +24,8 @@ public:
 
     void updateBars(sf::Vector2f &vel, double mx) override;
 
+    sf::Sprite getSprite() override;
+
     void updateBarsDamage() override;
 
     void removeMe(){
