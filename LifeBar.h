@@ -13,18 +13,17 @@
 
 class LifeBar: public BarInterface{
 private:
-    sf::Sprite life;
-    sf::Texture textureLife;
+
     WarShip &subject_;
     int r,g,b;
-    bool setUpSprite(std::string textureName);
+
 public:
 
     explicit LifeBar(WarShip &subject);
 
     void updateBars(sf::Vector2f &vel, double mx) override;
 
-    sf::Sprite getSprite();
+
 
     void updateBarsDamage() override;
 

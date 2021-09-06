@@ -9,11 +9,19 @@
 #include <SFML/Graphics.hpp>
 
 class BarInterface {
+private:
+    sf::Texture textureLife;
+    bool setUpSprite(std::string textureName);
+
+protected:
+    sf::Sprite life;
 public:
-    virtual ~BarInterface()= default;;
+    BarInterface();
+    virtual ~BarInterface()= default;
     virtual void updateBars(sf::Vector2f &vel, double mx)=0;
     virtual void updateBarsDamage()=0;
 
+    const sf::Sprite &getSprite() const;
 
 };
 

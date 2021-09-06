@@ -6,28 +6,11 @@
 #include "Collision.h"
 
 
-bool LifeBar::setUpSprite(std::string textureName) {
-    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
-    std::string unitTestingPath = "UnitTesting";
-    std::size_t found = currentDir.find(unitTestingPath);
-    if (found != std::string::npos) {
-        currentDir.erase(found);
-        currentDir.pop_back();
-    }
-    textureName = currentDir + "/../Res/Tiles/" + textureName + ".png";
-    if (!Collision::CreateTextureAndBitmask(textureLife,textureName)) {
-        throw std::runtime_error("Path to tile filename invalid!!");
-    }
-    textureLife.setSmooth(true);
-    life.setTexture(textureLife);
-    life.setTextureRect(sf::IntRect(0, 0, 10, 20));
-    return true;
-}
 
 
-LifeBar::LifeBar(WarShip &subject):subject_(subject),r(15),g(135),b(7) {
-    //subject_.attachBar(std::shared_ptr<BarInterface>(this));
-    setUpSprite("lifeBar");
+
+LifeBar::LifeBar(WarShip &subject):BarInterface(),subject_(subject),r(15),g(135),b(7) {
+
     life.setPosition(subject_.getSprite().getPosition().x+0.50*subject_.getWidth(),subject_.getSprite().getPosition().y+0.50*subject_.getLength());
     life.setColor(sf::Color(r,g,b));
 
@@ -60,6 +43,4 @@ void LifeBar::updateBarsDamage() {
     }
 }
 
-sf::Sprite LifeBar::getSprite() {
-    return life;
-}
+
