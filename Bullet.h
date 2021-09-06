@@ -24,7 +24,7 @@ private:
     float currentSpeed;
     float speed {100};
     float damage{};
-    float deceleration{0.3};
+    float deceleration{1.3};
     float dmgMult{1};
     float speedMult{1};
     float penetrationMult{1};

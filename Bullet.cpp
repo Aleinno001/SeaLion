@@ -55,6 +55,9 @@ void Bullet::reachTarget() {
 
     if (currentSpeed == 0) {
         currentSpeed = speed;
+    } else if (currentSpeed < 0) {
+        currentSpeed = 0;
+        arrived = true;
     }
     sprite.setRotation(mx);
     vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * speedMult / 10;

@@ -194,16 +194,16 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
         } else {
             iter->get()->setCountdown(iter->get()->getCountdown() - dt);
         }
-        if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
-                 iter->get()->getAmmoType()->getTargetPoint().x) >
-             10 ||
-             abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
-                 iter->get()->getAmmoType()->getTargetPoint().y) >
-             10)) {
-            iter->get()->getAmmoType()->reachTarget();
-        } else {
-            iter->get()->getAmmoType()->hit();
-        }
+    if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
+             iter->get()->getAmmoType()->getTargetPoint().x) >
+         1 ||
+         abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
+             iter->get()->getAmmoType()->getTargetPoint().y) >
+         1)) {
+        iter->get()->getAmmoType()->reachTarget();
+    } else {
+        iter->get()->getAmmoType()->hit();
+    }
 
 }
 
@@ -229,7 +229,7 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
                                 pow(enemyIter->get()->getSprite().getPosition().x -
                                     iter->get()->getSprite().getPosition().x,
                                     2));
-                        if (distance <= iter->get()->getRangeOfFire() && distance <= targetDistance) {
+                        if ((distance <= iter->get()->getRangeOfFire() && distance <= targetDistance)) {
                             if (canEngage(iter, enemyIter, tileVector)) {
                                 target = enemyIter;
                                 targetDistance = distance;
@@ -238,12 +238,14 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
                     }
             }
             if (targetDistance != 999999) {
-                if(!target->get()->death) {
+                if (!target->get()->death) {
                     attack(target, iter, dt);
                     result = true;
-                }else{
+                } else {
                     iter->get()->getAmmoType()->reachTarget();
                 }
+            } else if (!iter->get()->getAmmoType()->isArrived()) {
+                iter->get()->getAmmoType()->reachTarget();
             }
             targetDistance = 999999;
         }
