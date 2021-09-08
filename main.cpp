@@ -94,7 +94,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                                gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
-                            itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00001);
+                            itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00003);
                             itNaval.it->get()->notifyBarsDamage();
 
 
@@ -523,8 +523,12 @@ int main() {
                     }
                 }
 
-            for(auto const &itBars : it->getBars())
+            for (auto const &itBars: it->getBars()) {
+                if (it.get()->isDeath()) {
+                    itBars->getSprite().setColor(sf::Color(255, 0, 0));
+                }
                 window.draw(itBars->getSprite());
+            }
 
             if (it->getShipType() == ShipType::AircraftCarrier) {
                 for (auto const &itPlanes: it->getVehicleList()) {
@@ -573,8 +577,12 @@ int main() {
                 }
 
 
-            for(auto const &itBars : it->getBars())
+            for (auto const &itBars: it->getBars()) {
+                if (it.get()->isDeath()) {
+                    itBars->getSprite().setColor(sf::Color(255, 0, 0));
+                }
                 window.draw(itBars->getSprite());
+            }
 
             if (it->getShipType() == ShipType::AircraftCarrier) {
                 for (auto const &itPlanes: it->getVehicleList()) {
@@ -588,10 +596,6 @@ int main() {
                     window.draw(itPlanes->getSprite());
                 }
             }
-
-
-
-
         }
 
 
