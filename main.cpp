@@ -95,6 +95,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
                                                                gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
                             itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00001);
+                            itNaval.it->get()->notifyBarsDamage();
 
 
                         } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
