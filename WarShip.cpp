@@ -267,7 +267,7 @@ const std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList() const {
     return vehicleList;
 }
 
-const std::list<std::shared_ptr<BarInterface>> &WarShip::getBars() const {
+std::list<std::shared_ptr<BarInterface>> &WarShip::getBars(){
     return bars;
 }
 

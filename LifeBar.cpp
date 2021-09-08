@@ -18,6 +18,8 @@ LifeBar::LifeBar(WarShip &subject):BarInterface(),subject_(subject),r(15),g(135)
 
 
 void LifeBar::updateBars(sf::Vector2f &vel, double mx) {
+    life.setPosition(subject_.getSprite().getPosition());
+    life.move(0.50*subject_.getWidth(),0);
     life.setPosition(life.getPosition() + vel);
     life.setRotation(life.getRotation() + mx);
     sf::Transform rotation;

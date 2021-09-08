@@ -115,7 +115,7 @@ public:
 
     virtual void stopMove() = 0;
 
-    const std::list<std::shared_ptr<BarInterface>> &getBars() const;
+    std::list<std::shared_ptr<BarInterface>> &getBars();
 
     virtual void ceaseFire() = 0;
 
