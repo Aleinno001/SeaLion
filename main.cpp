@@ -532,26 +532,29 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
 int main() {
     std::vector<Fleet> fleet = alliedDummyFleet();
     sf::Vector2i boundaries(1920, 1080);
-    int a, b, c, d, e;
-    int width, height, tileDim;
-    windowMode videoMode = windowMode::Windowed;
-    a = 3;
-    b = 3;
-    c = 3;
-    d = 3;
-    e = 2;
     sf::Color deathColor(100, 100, 100, 120);
     sf::Color selectedColor(196, 255, 168, 255);
     sf::Color concealedColor(250, 250, 250, 180);
     sf::Color removeColor(255, 255, 255, 255);
+    sf::Clock clock;
+    sf::RenderWindow window;
     sf::ContextSettings settings;
+    int numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir;
+    int width, height, tileDim;
+
+    numEnemySub = 3;
+    numEnemyBat = 3;
+    numEnemyCru = 3;
+    numEnemyDes = 3;
+    numEnemyAir = 2;
+   
     settings.depthBits = 24;
     settings.stencilBits = 8;
     settings.antialiasingLevel = 0;
     settings.majorVersion = 2;
     settings.minorVersion = 1;
-    sf::Clock clock;
-    sf::RenderWindow window;
+
+    windowMode videoMode = windowMode::Windowed;
     auto desktop = sf::VideoMode::getDesktopMode();
     width = desktop.width;
     height = desktop.height;
@@ -559,7 +562,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
                                     height, tileDim);
     int shipCounter = 0;
     bool found = false;
