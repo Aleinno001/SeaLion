@@ -23,10 +23,6 @@ void TorpedoBomber::launchTorpedo(Vehicle &enemy) {
 
 }
 
-void TorpedoBomber::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void TorpedoBomber::attack(Vehicle target) {
 
 }

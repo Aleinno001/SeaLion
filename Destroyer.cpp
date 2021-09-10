@@ -66,21 +66,8 @@ Destroyer::Destroyer(int x, int y, float ac, const float maxVel, int hp, int arm
     }
 }
 
-void Destroyer::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void Destroyer::update(bool isDead) {
     Vehicle::update(isDead);
-}
-
-
-void Destroyer::stopMove() {
-
-}
-
-void Destroyer::ceaseFire() {
-
 }
 
 //void Destroyer::registerArsenals(std::unique_ptr<Arsenal> observer) {
@@ -103,10 +90,6 @@ void Destroyer::notifyArsenals(sf::Vector2f &vel,double mx) {
 
 Destroyer::~Destroyer() {
 
-}
-
-void Destroyer::rotate() {
-    Vehicle::rotate();
 }
 /*
 bool Destroyer::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {

@@ -24,10 +24,6 @@ void Fighter::fight(Vehicle enemy) {
 void Fighter::attack(Vehicle target) {
 }
 
-void Fighter::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void Fighter::update(bool isDead) {
     Vehicle::update(isDead);
 }

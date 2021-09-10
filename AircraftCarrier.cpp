@@ -58,21 +58,8 @@ float AircraftCarrier::calcSpeed(Map battleSea) {
 }
 */
 
-void AircraftCarrier::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void AircraftCarrier::update(bool isDead) {
     Vehicle::update(isDead);
-}
-
-
-void AircraftCarrier::stopMove() {
-
-}
-
-void AircraftCarrier::ceaseFire() {
-
 }
 
 void AircraftCarrier::notifyArsenals(sf::Vector2f &vel,double mx) {
@@ -86,10 +73,6 @@ void AircraftCarrier::notifyArsenals(sf::Vector2f &vel,double mx) {
 }
 
 AircraftCarrier::~AircraftCarrier() = default;
-
-void AircraftCarrier::rotate() {
-    Vehicle::rotate();
-}
 
 int AircraftCarrier::getNumPlanes() const {
     return numPlanes;

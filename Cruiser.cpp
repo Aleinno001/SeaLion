@@ -62,21 +62,8 @@ Cruiser::Cruiser(int x, int y, float ac, const float maxVel, int hp, int arm,
     }
 }
 
-void Cruiser::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void Cruiser::update(bool isDead) {
     Vehicle::update(isDead);
-}
-
-
-void Cruiser::stopMove() {
-
-}
-
-void Cruiser::ceaseFire() {
-
 }
 
 //void Cruiser::registerArsenals(std::unique_ptr<Arsenal> observer) {
@@ -98,10 +85,6 @@ void Cruiser::notifyArsenals(sf::Vector2f &vel,double mx) {
 
 Cruiser::~Cruiser() {
 
-}
-
-void Cruiser::rotate() {
-    Vehicle::rotate();
 }
 
 int Cruiser::getNumPlanes() const {

@@ -11,10 +11,6 @@ void Bomber::bombard(Vehicle &enemy) {
 void Bomber::attack(Vehicle target) {
 }
 
-void Bomber::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void Bomber::update(bool isDead) {
     Vehicle::update(isDead);
 }

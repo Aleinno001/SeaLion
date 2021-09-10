@@ -33,8 +33,6 @@ public:
         return numTorpedoTubes;
     }
 
-    void calculateDistance(Vehicle target) override;
-
     void update(bool isDead) override;
 
     void attach(const std::shared_ptr<Arsenal> &gun) override;
@@ -58,19 +56,11 @@ public:
 
     };
 
-    void stopMove() override;
-
-    void ceaseFire() override;
-
     // void registerArsenals(std::unique_ptr<Arsenal> observer) override;
 
     //void removeArsenals(std::unique_ptr<Arsenal> observer) override;
 
     void notifyArsenals(sf::Vector2f &vel,double mx) override;
-
-
-protected:
-    void rotate() override;
 
     //bool canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) override;
 };

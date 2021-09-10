@@ -90,18 +90,7 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
             vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
-            if (abs(sprite.getRotation() - mx) >= 1.5) {
-                if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
-                    deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
-                    sprite.rotate(deltaMx);
-                } else if (sprite.getRotation() > 180 && mx < 180) {
-                    deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
-                    sprite.rotate(deltaMx);
-                } else {
-                    deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 4000;
-                    sprite.rotate(deltaMx);
-                }
-            }
+            deltaMx = rotate(mx, rotatingInPlaceMult);
         } else {
             currentSpeed = 0;
         }
@@ -111,7 +100,6 @@ void WarShip::move(sf::Vector2<double> coordinates, double dt) {
 
         if (shipType == ShipType::AircraftCarrier)
             notifyPlanes(vel, deltaMx);
-
     }
 }
 

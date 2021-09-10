@@ -20,11 +20,7 @@ public:
                int le, int wi,
               bool col, ShipType sh, ModelType mo, int torpedo);
 
-
-    //float calcSpeed() override;
     int getNumTorpedoTubes() const;
-
-    void calculateDistance(Vehicle target) override;
 
     void update(bool isDead) override;
 
@@ -47,10 +43,6 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
-    void stopMove() override;
-
-    void ceaseFire() override;
-
     //void registerArsenals(std::unique_ptr<Arsenal> observer) override;
 
     //void removeArsenals(std::unique_ptr<Arsenal> observer) override;
@@ -60,9 +52,6 @@ public:
     ~Destroyer() override;
 
     bool setUpSprite(std::string textureName) override;
-
-protected:
-    void rotate() override;
 
     //bool canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) override;
 };

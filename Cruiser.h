@@ -20,10 +20,6 @@ public:
              int le, int wi,
             bool col, ShipType sh, ModelType mo, int planes);
 
-    //float calcSpeed() override;
-
-    void calculateDistance(Vehicle target) override;
-
     void update(bool isDead) override;
 
     void attach(const std::shared_ptr<Arsenal> &gun) override;
@@ -44,10 +40,6 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
-    void stopMove() override;
-
-    void ceaseFire() override;
-
 //    void registerArsenals(std::unique_ptr<Arsenal> observer) override;
 
     //  void removeArsenals(std::unique_ptr<Arsenal> observer) override;
@@ -57,9 +49,6 @@ public:
     void notifyBarsDamage() override;
 
     ~Cruiser() override;
-
-protected:
-    void rotate() override;
 };
 
 

@@ -2,13 +2,7 @@
 // Created by davide on 02/07/21.
 //
 
-#include <list>
 #include "Vehicle.h"
-#include "Collision.h"
-void Vehicle::rotate() {
-
-}
-
 
 /*
 float Vehicle::calcSpeed() {
@@ -17,13 +11,13 @@ float Vehicle::calcSpeed() {
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
                  bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
-                                              length(le), collision(col), width(wi), nationality(nat),maxHP(HP) {
+                                              length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
+                                              currentSpeed(0) {
 
     //setUpSprite(texName);                     /TODO da modificare
 
     pos = sf::Vector2f(posX, posY);
     sprite.setPosition(pos);
-
 
 
 }
@@ -133,5 +127,22 @@ const double Vehicle::getMaxHp() const {
 
 bool Vehicle::isDeath() const {
     return death;
+}
+
+float Vehicle::rotate(float mx, float rotatingInPlaceMult) {
+    float deltaMx = 0;
+    if (abs(sprite.getRotation() - mx) >= 1.5) {
+        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            sprite.rotate(deltaMx);
+        } else if (sprite.getRotation() > 180 && mx < 180) {
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            sprite.rotate(deltaMx);
+        } else {
+            deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            sprite.rotate(deltaMx);
+        }
+    }
+    return deltaMx;
 }
 

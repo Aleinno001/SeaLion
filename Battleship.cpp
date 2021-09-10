@@ -74,26 +74,6 @@ Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int a
         std::cerr << "Wrong texture name" << std::endl;
     }
 
-
-
-}
-
-void Battleship::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
-void Battleship::update(bool isDead) {
-    Vehicle::update(isDead);
-}
-
-
-
-void Battleship::stopMove() {
-
-}
-
-void Battleship::ceaseFire() {
-
 }
 
 //void Battleship::registerArsenals(std::unique_ptr<Arsenal> observer) {
@@ -118,10 +98,6 @@ void Battleship::notifyArsenals(sf::Vector2f &vel,double mx) {
 
 Battleship::~Battleship() {
 
-}
-
-void Battleship::rotate() {
-    Vehicle::rotate();
 }
 
 int Battleship::getNumInterceptors() const {
