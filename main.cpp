@@ -203,6 +203,10 @@ gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &d
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
          std::list<iteratorPositions> &fullNavyCollision);
 
+void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
+                         std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
+                         std::list<iteratorPositions> &fullNavyCollision);
+
 std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
@@ -572,6 +576,25 @@ int main() {
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
 
+    prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
+
+
+    std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
+    std::thread thread_tiles_effect(tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),
+                                    std::ref(fullNavyCollision), tileDim);
+    std::thread thread_checkHit(checkHit, std::ref(fullNavyCollision), std::ref(window));
+    thread_collision.detach();
+    thread_tiles_effect.detach();
+    thread_checkHit.detach();
+
+    gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
+             window, gameWorld, shipCounter, found, clicked, itSecondClick, lst, fullNavyCollision);
+    return 0;
+}
+
+void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
+                         std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
+                         std::list<iteratorPositions> &fullNavyCollision) {
     for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
         iteratorPositions itPos;
         itPos.it = itAllied;
@@ -582,19 +605,6 @@ int main() {
         itPos.it = itEnemy;
         fullNavyCollision.push_back(itPos);
     }
-
-
-
-    std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
-    std::thread thread_tiles_effect(tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),
-                                    std::ref(fullNavyCollision), tileDim);
-    std::thread thread_checkHit(checkHit, std::ref(fullNavyCollision), std::ref(window));
-    thread_collision.detach();
-    thread_tiles_effect.detach();
-    thread_checkHit.detach();
-    gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, shipCounter, found, clicked, itSecondClick, lst, fullNavyCollision);
-    return 0;
 }
 
 void
