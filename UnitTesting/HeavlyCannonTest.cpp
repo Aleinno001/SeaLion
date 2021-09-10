@@ -29,17 +29,14 @@ TEST(HeavlyCannon, Constructor) {
                            ModelType::IronDuke, 0));
 
 
-    std::shared_ptr<Bullet> b(new StandardBullet("standardBullet", 3, 7));
+    std::shared_ptr<Bullet> b(new Bullet("standardBullet", 3, 7, 1, 1, 1));
     std::unique_ptr<HeavlyCannon> heavlyCannon(
-            new HeavlyCannon(450, 9, 36, std::move(b), 200, 80, posX + 7, posY + 14, 28, 15, "HeavlyCannon",*ironDuke));
+            new HeavlyCannon(450, 9, 36, std::move(b), 200, posX + 7, posY + 14, 28, 15, "HeavlyCannon",*ironDuke));
 
     ASSERT_EQ(heavlyCannon->getRangeOfFire(),450);
     ASSERT_EQ(heavlyCannon->getReloadTime(),9);
-
     ASSERT_EQ(heavlyCannon->getMaximumDispersion(),36);
-    ASSERT_EQ(heavlyCannon->getAmmoType(),b);
     ASSERT_EQ(heavlyCannon->getFirepower(),200);
-    ASSERT_EQ(heavlyCannon->getNumAmmo(),80);
     ASSERT_EQ(heavlyCannon->getPos().x,posX+7);
     ASSERT_EQ(heavlyCannon->getPos().y,posY+14);
     ASSERT_EQ(heavlyCannon->getLength(),28);

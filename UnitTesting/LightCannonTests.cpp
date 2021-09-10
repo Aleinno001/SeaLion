@@ -30,14 +30,13 @@ TEST(LightCannon, Constructor) {
 
 
 
-    std::shared_ptr<Bullet> b(new Bullet("standardBullet", 3, 7,1,1,1));
+    std::shared_ptr<Bullet> b(new Bullet("standardBullet", 3, 7, 1, 1, 1));
 
     std::unique_ptr<LightCannon> lightCannon(
             new LightCannon(250, 3, 20, std::move(b), 50, posX + 2, posY + 3, 6, 4, "LightCannon",*GiuseppeGaribaldi));
 
     ASSERT_EQ(lightCannon->getRangeOfFire(),250);
     ASSERT_EQ(lightCannon->getReloadTime(),3);
-    ASSERT_EQ(lightCannon->getAmmoType(),b);
     ASSERT_EQ(lightCannon->getMaximumDispersion(),20);
     ASSERT_EQ(lightCannon->getFirepower(),50);
     ASSERT_EQ(lightCannon->getPos().x,posX+2);
