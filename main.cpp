@@ -285,26 +285,7 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 }
 
 
-/*
-void collisonControl(std::list<iteratorPositions> &fullNavyCollision,GameWorld &gameWorld)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
-{
-    for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
 
-        for(auto iterSecond = fullNavyCollision.begin();iterSecond!=fullNavyCollision.end();++iterSecond){
-
-            if(iter->it->get() != iterSecond->it->get()){
-               if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
-                    iter->it->get()->setCollision(false);
-                    iterSecond->it->get()->setCollision(false);
-               }
-            }else{
-            }
-
-        }
-    }
-}
-
-*/
 
 
 
