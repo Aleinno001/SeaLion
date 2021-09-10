@@ -199,7 +199,7 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 void
 gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
-         sf::RenderWindow &window, GameWorld &gameWorld, int shipCounter, bool found, bool clicked,
+         sf::RenderWindow &window, GameWorld &gameWorld, bool found, bool clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
          std::list<iteratorPositions> &fullNavyCollision);
 
@@ -296,7 +296,7 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 }
 
 
-void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool found,bool clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,int shipCounter){
+void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool found,bool clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick){
     switch (event.key.code) {
         case sf::Mouse::Left: {
 
@@ -307,7 +307,7 @@ void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWo
 
             found = false;
             for (auto it = gameWorld.getAlliedFleet().begin();
-                 it != gameWorld.getAlliedFleet().end() && !found; ++it, shipCounter++) {
+                 it != gameWorld.getAlliedFleet().end() && !found; ++it) {
 
                 if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
                     !it->get()->isDeath()) {
@@ -564,9 +564,9 @@ int main() {
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
                                     height, tileDim);
-    int shipCounter = 0;
+
     bool found = false;
-    bool clicked = false;
+    bool clicked = true;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     auto itAllied = gameWorld.getAlliedFleet().begin();
     auto itEnemy = gameWorld.getEnemyFleet().begin();
@@ -591,7 +591,7 @@ int main() {
     thread_checkHit.detach();
 
     gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, shipCounter, found, clicked, itSecondClick, lst, fullNavyCollision);
+             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision);
     return 0;
 }
 
@@ -613,7 +613,7 @@ void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip
 void
 gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
-         sf::RenderWindow &window, GameWorld &gameWorld, int shipCounter, bool found, bool clicked,
+         sf::RenderWindow &window, GameWorld &gameWorld, bool found, bool clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
          std::list<iteratorPositions> &fullNavyCollision) {
     while (window.isOpen()) {
@@ -633,7 +633,7 @@ gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &d
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                manageSelection(window,event,gameWorld,found,clicked,lst,itSecondClick,shipCounter);
+                manageSelection(window,event,gameWorld,found,clicked,lst,itSecondClick);
             } else if (event.type == sf::Event::MouseWheelMoved) {
 
             } else if (event.type == sf::Event::MouseMoved) {
