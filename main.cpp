@@ -112,7 +112,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
                 itNaval.it->get()->setDeath(true);
                 for (auto &itCannons: itNaval.it->get()->getArsenalList()) {
                     itCannons->getAmmoType()->setArrived(true);
-
+                    itCannons->removeMeFromTheList();
                 }
             }
             if (!enteredFog) {

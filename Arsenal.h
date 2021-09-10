@@ -50,6 +50,8 @@ public:
 
     virtual bool setUpSprite(std::string textureName);
 
+    virtual void removeMeFromTheList()=0;//metodo per detach observer cannoni
+
     //getter
     const float getRangeOfFire() const;
 
