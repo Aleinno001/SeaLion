@@ -13,7 +13,7 @@
 
 class CurrentDir {
 public:
-    static std::string GetCurrentWorkingDir();
+    static std::string GetCurrentWorkingDir();  //Speciale metodo per ottenere la working directory attuale
 };
 
 

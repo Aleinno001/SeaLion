@@ -16,17 +16,10 @@
 #include "Dice.h"
 
 #include <stdio.h>
-/*
-// #define WINDOWS
-#ifdef WINDOWS
-#include <direct.h>
-#define GetCurrentDir _getcwd
-#else
-*/
+
 #include <unistd.h>
 
 #define GetCurrentDir getcwd
-//#endif
 
 #include<iostream>
 
@@ -36,10 +29,7 @@ enum class FactionType {
     Usa,
     Italy,
     Japan
-
 };
-
-
 
 struct Fleet {
     ModelType name;
@@ -72,16 +62,17 @@ public:
     GameWorld() = default;
 
     void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,
-                           std::vector<Fleet> &fleet);
+                           std::vector<Fleet> &fleet);   //Imposta lo stato delle navi ad inizio partita
 
-    void setUpAlliedFleet(std::vector<Fleet> &fleet);
+    void setUpAlliedFleet(std::vector<Fleet> &fleet);  //Crea la flotta alleata   //FIXME da rendere generalizzata
 
-    void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir);
+    void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes,
+                         int &numEnemyAir);  //Crea la flotta nemica
 
-    void setUpTiles(int &tileDim);
+    void setUpTiles(int &tileDim);  //Genera la mappa
 
 
-private:
+private:  //Inizializzatori delle navi
     bool isInStrip(int i, int tileDim);
 
     void submarineRandomizer(int &enemySub, Dice &subDice, std::shared_ptr<ShipFactory> enemyFactory);
@@ -140,10 +131,6 @@ public:
     FactionType getAlliedFaction() const;
 
     const sf::Vector2i &getExitPos() const;
-
-    const std::list<std::unique_ptr<WarShip>> &getAlliedFleet() const;
-
-    const std::list<std::unique_ptr<WarShip>> &getEnemyFleet() const;
 
     const std::vector<std::vector<std::unique_ptr<GameTile>>> &getTiles() const;
 

@@ -325,13 +325,6 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
 
     }
 
-
-
-
-
-    //collisonControl(fullNavyCollision);
-
-
     auto enemyIterStart = gameWorld.getEnemyFleet().begin();
     auto enemyIterEnd = gameWorld.getEnemyFleet().end();
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
@@ -487,12 +480,11 @@ int main() {
         }
 
         window.clear();
+
         for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) {
             for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
                 window.draw(gameWorld.getTiles()[i][j]->getSprite());
-
             }
-
         }
 
         for (auto &it: gameWorld.getEnemyFleet()) {
