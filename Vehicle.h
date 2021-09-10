@@ -26,6 +26,8 @@ protected:
     unsigned int length;
     unsigned int width;
     bool collision;
+    float posX;
+    float posY;
 public:
     const std::string &getNationality() const;
 

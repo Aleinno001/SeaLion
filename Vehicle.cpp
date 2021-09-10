@@ -10,13 +10,12 @@ float Vehicle::calcSpeed() {
 }
 */
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
-                 bool col, std::string nat) : acceleration(ac), maxSpeed(maxVel), hp(HP),
+                 bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
                                               length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
                                               currentSpeed(0) {
 
-    //setUpSprite(texName);                     /TODO da modificare
-
-
+    //setUpSprite(texName);
+    pos = sf::Vector2f(X, Y);
     sprite.setPosition(pos);
 
 
