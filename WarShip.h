@@ -172,9 +172,7 @@ public:
                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
                       const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector, float dt);
 
-    virtual ~WarShip() {
-
-    };
+    virtual ~WarShip()=default;
 
     const std::string getNationality() {
         return nationality;

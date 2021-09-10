@@ -32,8 +32,8 @@ void Vehicle::attack(std::_List_iterator<std::unique_ptr<Vehicle>> target) {
 
 }
 
-void Vehicle::calculateDistance(Vehicle target) {
-
+float Vehicle::calculateDistance(sf::Vector2f &first, sf::Vector2f &second) {
+    return sqrt(pow(first.y-second.y,2) + pow(first.x - second.x,2));
 }
 
 void Vehicle::update(bool isDead) {

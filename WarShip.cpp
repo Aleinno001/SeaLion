@@ -222,13 +222,9 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
         for (int i = 0; i < numIter; i++, ++iter) {
             for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
                     if(!enemyIter->get()->death || !iter->get()->getAmmoType()->isArrived()) {
-                        distance = sqrt(
-                                pow(enemyIter->get()->getSprite().getPosition().y -
-                                    iter->get()->getSprite().getPosition().y,
-                                    2) +
-                                pow(enemyIter->get()->getSprite().getPosition().x -
-                                    iter->get()->getSprite().getPosition().x,
-                                    2));
+                        distance = calculateDistance(
+                                const_cast<sf::Vector2f &>(enemyIter->get()->getSprite().getPosition()),
+                                const_cast<sf::Vector2f &>(iter->get()->getSprite().getPosition()));
                         if ((distance <= iter->get()->getRangeOfFire() && distance <= targetDistance)) {
                             if (canEngage(iter, enemyIter, tileVector)) {
                                 target = enemyIter;

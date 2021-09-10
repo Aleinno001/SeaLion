@@ -9,6 +9,9 @@
 #include <iostream>
 
 #include "CurrentDir.h"
+#include "WarShip.h"
+
+class WarShip;
 
 class Vehicle {
 protected:
@@ -57,7 +60,7 @@ public:
 
     virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>>  target);
 
-    virtual void calculateDistance(Vehicle target);
+    virtual float calculateDistance(sf::Vector2f &first,sf::Vector2f &second);
 
     const double getMaxHp() const;
 
