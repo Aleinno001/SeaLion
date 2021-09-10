@@ -29,17 +29,17 @@ TEST(MediumCannon, Constructor) {
                                                ModelType::Takao, 2));
 
 
-    std::shared_ptr<Bullet> b(new StandardBullet("standardBullet", 3, 7));
+    std::shared_ptr<Bullet> b(new Bullet("Bullet", 3, 7,1,1,1));
 
     std::unique_ptr<MediumCannnon> mediumCannon(
-            new MediumCannnon(350, 6, 28, std::move(b), 100, 140, posX + 3, posY + 7, 14, 7, "MediumCannon",*takao));
+            new MediumCannnon(350, 6, 28, std::move(b), 140, posX + 3, posY + 7, 14, 7, "MediumCannon",*takao));
     
     ASSERT_EQ(mediumCannon->getRangeOfFire(),350);
     ASSERT_EQ(mediumCannon->getReloadTime(),6);
     ASSERT_EQ(mediumCannon->getMaximumDispersion(),28);
     ASSERT_EQ(mediumCannon->getAmmoType(),b);
     ASSERT_EQ(mediumCannon->getFirepower(),100);
-    ASSERT_EQ(mediumCannon->getNumAmmo(),140);
+
     ASSERT_EQ(mediumCannon->getPos().x,posX+3);
     ASSERT_EQ(mediumCannon->getPos().y,posY+7);
     ASSERT_EQ(mediumCannon->getLength(),14);
