@@ -375,9 +375,8 @@ int main() {
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
                                     height, tileDim);
-    int shipCounter = 0;
     bool found = false;
-    bool clicked = false;
+    bool clicked = true;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     auto itAllied = gameWorld.getAlliedFleet().begin();
     auto itEnemy = gameWorld.getEnemyFleet().begin();
@@ -437,7 +436,7 @@ int main() {
 
                         found = false;
                         for (auto it = gameWorld.getAlliedFleet().begin();
-                             it != gameWorld.getAlliedFleet().end() && !found; ++it, shipCounter++) {
+                             it != gameWorld.getAlliedFleet().end() && !found; ++it) {
 
                             if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
                                 !it->get()->isDeath()) {
