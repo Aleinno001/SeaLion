@@ -443,7 +443,33 @@ void drawAndManageAlliedShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::
 
 }
 
+void fpsManagment(sf::RenderWindow &window,sf::Clock &clock){
+    sf::Time time = clock.getElapsedTime();
+    int fps = 1.0f / time.asSeconds();
+    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    sf::Text fpsCount;
+    sf::Text fpsText;
+    sf::Font arialFont;
+    if (!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")) {
+        std::cerr << "Impossibile caricare il font" << std::endl;
+    }
+    fpsText.setFont(arialFont);
+    fpsText.setString("FPS:");
+    fpsText.setCharacterSize(20);
+    fpsText.setFillColor(sf::Color::Yellow);
+    fpsText.setPosition(0, 0);
 
+    fpsCount.setFont(arialFont);
+    fpsCount.setString(std::to_string(fps));
+    fpsCount.setCharacterSize(20);
+    fpsCount.setFillColor(sf::Color::Yellow);
+    fpsCount.setPosition(50, 0);
+
+    window.draw(fpsText);
+    window.draw(fpsCount);
+    window.display();
+
+}
 
 
 void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
@@ -595,31 +621,8 @@ int main() {
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
 
-        //calcola e mostra fps con l'aggiunta dei font
-        sf::Time time = clock.getElapsedTime();
-        int fps = 1.0f / time.asSeconds();
-        std::string currentDir = CurrentDir::GetCurrentWorkingDir();
-        sf::Text fpsCount;
-        sf::Text fpsText;
-        sf::Font arialFont;
-        if (!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")) {
-            std::cerr << "Impossibile caricare il font" << std::endl;
-        }
-        fpsText.setFont(arialFont);
-        fpsText.setString("FPS:");
-        fpsText.setCharacterSize(20);
-        fpsText.setFillColor(sf::Color::Yellow);
-        fpsText.setPosition(0, 0);
 
-        fpsCount.setFont(arialFont);
-        fpsCount.setString(std::to_string(fps));
-        fpsCount.setCharacterSize(20);
-        fpsCount.setFillColor(sf::Color::Yellow);
-        fpsCount.setPosition(50, 0);
-
-        window.draw(fpsText);
-        window.draw(fpsCount);
-        window.display();
+       fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
 
     }
     return 0;
