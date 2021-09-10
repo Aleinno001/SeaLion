@@ -196,7 +196,7 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 };
 
 
-std::vector<Fleet> alliedDummyFleet() {
+std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
 
@@ -311,7 +311,7 @@ void collisonControl(std::list<iteratorPositions> &fullNavyCollision,GameWorld &
 
 
 
-void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision,
+void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
             GameWorld &gameWorld, int tileDim, sf::RenderWindow &window) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
@@ -398,7 +398,7 @@ int main() {
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
 
-    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) {
+    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
         iteratorPositions itPos;
         itPos.it = itAllied;
         fullNavyCollision.push_back(itPos);
@@ -441,7 +441,7 @@ int main() {
                         //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
 
                         sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
-                        auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
+                        auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
 
                         found = false;
                         for (auto it = gameWorld.getAlliedFleet().begin();
@@ -488,7 +488,7 @@ int main() {
         }
 
         window.clear();
-        for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) {
+        for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna mappa
             for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
                 window.draw(gameWorld.getTiles()[i][j]->getSprite());
 
@@ -496,7 +496,7 @@ int main() {
 
         }
 
-        for (auto &it: gameWorld.getEnemyFleet()) {
+        for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navi selezionate per lo spostamento e gestisci il colore per la selezione
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
             } else if (it.get()->isSelected()) {
@@ -509,7 +509,7 @@ int main() {
             window.draw(it->getSprite());
 
 
-            for (auto const &itArsenal: it->getArsenalList())
+            for (auto const &itArsenal: it->getArsenalList()) // disegna i cannoni e gestisci il colore per la selezione
                 if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                     if (it.get()->isDeath()) {
                         itArsenal.get()->getSprite().setColor(deathColor);
@@ -524,14 +524,14 @@ int main() {
                     }
                 }
 
-            for (auto const &itBars: it->getBars()) {
+            for (auto const &itBars: it->getBars()) { //disegna le barre di stato e imposta un colore predefinito
                 if (it.get()->isDeath()) {
                     itBars->getSprite().setColor(sf::Color(255, 0, 0));
                 }
                 window.draw(itBars->getSprite());
             }
 
-            if (it->getShipType() == ShipType::AircraftCarrier) {
+            if (it->getShipType() == ShipType::AircraftCarrier) { //disegna gli aerei e gestisci il colore per la selezione
                 for (auto const &itPlanes: it->getVehicleList()) {
                     if (it.get()->isDeath()) {
                         itPlanes.get()->getSprite().setColor(deathColor);
@@ -550,7 +550,7 @@ int main() {
 
         }
 
-        for (auto &it: gameWorld.getAlliedFleet()) {
+        for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
             } else if (it.get()->isSelected()) {
@@ -578,7 +578,7 @@ int main() {
                 }
 
 
-            for (auto const &itBars: it->getBars()) {
+            for (auto const &itBars: it->getBars()) { //disegna le barre di stato e impostane un colore predefinito se la nave viene distrutta
                 if (it.get()->isDeath()) {
                     itBars->getSprite().setColor(sf::Color(255, 0, 0));
                 }
@@ -602,7 +602,7 @@ int main() {
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
 
-        //calcola e mostra fps
+        //calcola e mostra fps con l'aggiunta dei font
         sf::Time time = clock.getElapsedTime();
         int fps = 1.0f / time.asSeconds();
         std::string currentDir = CurrentDir::GetCurrentWorkingDir();
