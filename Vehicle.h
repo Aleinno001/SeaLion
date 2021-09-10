@@ -46,7 +46,7 @@ public:
     Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
             bool col, std::string nat);
 
-    //virtual float calcSpeed(); //FIXME da rivedere il calcolo della velocità qua e nelle sottoclassi
+
 
     virtual bool setUpSprite(std::string textureName);
 
