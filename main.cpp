@@ -333,7 +333,62 @@ void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWo
 
 }
 
+void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor){
+    for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
+        if (it.get()->isDeath()) {
+            it.get()->getSprite().setColor(deathColor);
+        } else if (it.get()->isSelected()) {
+            it.get()->getSprite().setColor(selectedColor);
+        } else if (it->isConcealed()) {
+            it.get()->getSprite().setColor(concealedColor);
+        } else {
+            it.get()->getSprite().setColor(removeColor);
+        }
+        window.draw(it->getSprite());
 
+
+        for (auto const &itArsenal: it->getArsenalList()) // disegna i cannoni e gestisci il colore per la selezione
+            if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                if (it.get()->isDeath()) {
+                    itArsenal.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itArsenal.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itArsenal.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itArsenal->getSprite());
+                if (!itArsenal->getAmmoType()->isArrived()) {
+                    window.draw(itArsenal->getAmmoType()->getSprite());
+                }
+            }
+
+        for (auto const &itBars: it->getBars()) { //disegna le barre di stato e imposta un colore predefinito
+            if (it.get()->isDeath()) {
+                itBars->getSprite().setColor(sf::Color(255, 0, 0));
+            }
+            window.draw(itBars->getSprite());
+        }
+
+        if (it->getShipType() == ShipType::AircraftCarrier) { //disegna gli aerei e gestisci il colore per la selezione
+            for (auto const &itPlanes: it->getVehicleList()) {
+                if (it.get()->isDeath()) {
+                    itPlanes.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itPlanes.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itPlanes.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itPlanes->getSprite());
+            }
+        }
+
+
+
+
+
+    }
+
+}
 
 
 
@@ -473,7 +528,7 @@ int main() {
         }
 
         window.clear();
-        for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna mappa
+        for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
             for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
                 window.draw(gameWorld.getTiles()[i][j]->getSprite());
 
@@ -481,59 +536,7 @@ int main() {
 
         }
 
-        for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
-            if (it.get()->isDeath()) {
-                it.get()->getSprite().setColor(deathColor);
-            } else if (it.get()->isSelected()) {
-                it.get()->getSprite().setColor(selectedColor);
-            } else if (it->isConcealed()) {
-                it.get()->getSprite().setColor(concealedColor);
-            } else {
-                it.get()->getSprite().setColor(removeColor);
-            }
-            window.draw(it->getSprite());
-
-
-            for (auto const &itArsenal: it->getArsenalList()) // disegna i cannoni e gestisci il colore per la selezione
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
-                    if (it.get()->isDeath()) {
-                        itArsenal.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itArsenal.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itArsenal.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itArsenal->getSprite());
-                    if (!itArsenal->getAmmoType()->isArrived()) {
-                        window.draw(itArsenal->getAmmoType()->getSprite());
-                    }
-                }
-
-            for (auto const &itBars: it->getBars()) { //disegna le barre di stato e imposta un colore predefinito
-                if (it.get()->isDeath()) {
-                    itBars->getSprite().setColor(sf::Color(255, 0, 0));
-                }
-                window.draw(itBars->getSprite());
-            }
-
-            if (it->getShipType() == ShipType::AircraftCarrier) { //disegna gli aerei e gestisci il colore per la selezione
-                for (auto const &itPlanes: it->getVehicleList()) {
-                    if (it.get()->isDeath()) {
-                        itPlanes.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itPlanes.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itPlanes.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itPlanes->getSprite());
-                }
-            }
-
-
-
-
-
-        }
+        drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
         for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
             if (it.get()->isDeath()) {
