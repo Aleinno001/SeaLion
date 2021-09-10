@@ -15,8 +15,7 @@ class WarShip;
 
 class Vehicle {
 protected:
-    int posX;
-    int posY;
+
     double acceleration;
     bool death{false};
 public:
@@ -78,14 +77,14 @@ public:
     bool getCol(){
         return collision;
     }
-    int getPosX() const;
+
 
     void setDamage(double damage){
         hp=hp-damage;
 
     }
 
-    int getPosY() const;
+
 
     float getAcceleration() const;
 

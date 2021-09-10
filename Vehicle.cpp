@@ -60,13 +60,7 @@ bool Vehicle::setUpSprite(std::string textureName) {
     return true;
 }
 
-int Vehicle::getPosX() const {
-    return posX;
-}
 
-int Vehicle::getPosY() const {
-    return posY;
-}
 
 float Vehicle::getAcceleration() const {
     return acceleration;

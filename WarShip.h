@@ -142,6 +142,10 @@ public:
     virtual void detachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
 
 
+
+
+
+
     const int getArmour() const;
 
     const std::string &getName() const;
