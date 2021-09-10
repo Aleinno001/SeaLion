@@ -98,7 +98,7 @@ public:
 
     bool isCollision() const;
 
-    const sf::Texture &getTexture() const;
+
 
     sf::Sprite &getSprite();
 

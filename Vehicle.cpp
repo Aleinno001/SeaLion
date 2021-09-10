@@ -86,9 +86,7 @@ bool Vehicle::isCollision() const {
     return collision;
 }
 
-const sf::Texture &Vehicle::getTexture() const {
-    return texture;
-}
+
 
 sf::Sprite &Vehicle::getSprite() {
     return sprite;
