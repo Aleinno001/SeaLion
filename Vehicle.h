@@ -54,6 +54,10 @@ public:
 
     void setCollision(bool collision);
 
+
+    virtual void move(sf::Vector2 <double> coordinates,double dt){};//FIXME DA METTERE COME INTERFACCIA
+
+
     virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>>  target);
 
     virtual float calculateDistance(sf::Vector2f &first,sf::Vector2f &second);
