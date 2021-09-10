@@ -21,6 +21,10 @@ public:
 
     ~HeavlyCannon() override;
 
+
+    void removeMeFromTheList() {
+        subject_.detach(std::shared_ptr<Arsenal>(this));
+    }
 private:
 
     WarShip &subject_;
@@ -30,9 +34,7 @@ private:
     void openFire(Vehicle enemy) override;
 
 
-    void removeMeFromTheList() {
-        subject_.detach(std::shared_ptr<Arsenal>(this));
-    }
+
 
     bool engage(Vehicle enemy) override;
 
