@@ -17,8 +17,6 @@ protected:
 
     double acceleration;
     bool death{false};
-
-protected:
     const double maxSpeed;
     float currentSpeed;//FIXME valore di default di velocità
     double hp;
@@ -28,41 +26,37 @@ protected:
     bool collision;
     float posX;
     float posY;
-public:
-    const std::string &getNationality() const;
-
-protected:
     const std::string nationality;
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Vector2f pos;
 
+public:
+    const std::string &getNationality() const;
 
-    //SpriteSheet sprite
-    virtual float rotate(float mx, float rotatingInPlaceMult);
+protected:
 
+    virtual float rotate(float mx, float rotatingInPlaceMult);  //Ruota la sprite della nave soltanto
 
+    virtual bool setUpSprite(std::string textureName);
+
+    virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>> target);
+
+    virtual float calculateDistance(sf::Vector2f &first, sf::Vector2f &second);  //calcola la distanza tra due punti
+
+    virtual float
+    calculateMx(float dx, float dy);  //Calcola l'angolo da raggiungere (già tradotto secondo la logica della SFML)
 
 public:
 
     Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
             bool col, std::string nat);
 
-
-
-    virtual bool setUpSprite(std::string textureName);
-
     void setDeath(bool death);
 
     void setCollision(bool collision);
 
-
     virtual void move(sf::Vector2 <double> coordinates,double dt){};//FIXME DA METTERE COME INTERFACCIA
-
-
-    virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>>  target);
-
-    virtual float calculateDistance(sf::Vector2f &first,sf::Vector2f &second);
 
     const double getMaxHp() const;
 
@@ -76,22 +70,13 @@ public:
 
     bool isDeath() const;
 
-
     bool getCol() {
         return collision;
     }
 
-    float getCurrentSpeed() const;
-
-
-
-
     void setDamage(double damage) {
         hp = hp - damage;
-
     }
-
-
 
     float getAcceleration() const;
 
@@ -104,8 +89,6 @@ public:
     int getWidth() const;
 
     bool isCollision() const;
-
-
 
     sf::Sprite &getSprite();
 

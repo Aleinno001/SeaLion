@@ -4,29 +4,6 @@
 
 #include "WarShip.h"
 
-const int WarShip::getArmour() const {
-    return armour;
-}
-
-const std::string &WarShip::getName() const {
-    return name;
-}
-
-const std::string &WarShip::getNationality() const {
-    return nationality;
-}
-
-const int WarShip::getNumLCannons() const {
-    return numLCannons;
-}
-
-const int WarShip::getNumMCannons() const {
-    return numMCannons;
-}
-
-const int WarShip::getNumHCannons() const {
-    return numHCannons;
-}
 
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
@@ -37,11 +14,6 @@ WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                                                         numLCannons(numL),
                                                         numHCannons(numH), numMCannons(numM), numAntiAircraft(numAA),
                                                         shipType(sh), modelType(mo), concealed(false) {
-    /*for (auto const& itArsenal : arsenal) {
-         arsenalList=itArsenal;
-     }*/
-
-
 }
 
 ShipType WarShip::getShipType() const {
@@ -56,33 +28,33 @@ std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
     return arsenalList;
 }
 
-
-void WarShip::move(sf::Vector2<double> coordinates, double dt) {
-    if (collision && !death) {   //FIXME da rivedere il comportamento post impatto
+//FIXME da rivedere il comportamento post impatto
+void WarShip::move(sf::Vector2<double> coordinates,
+                   double dt) {    //Raggiunge il punto desiderato tramite rotazioni e spostamenti
+    if (collision && !death) {   //verifica morte e incagliamento
         double mx;
         double dy = coordinates.y - sprite.getPosition().y;
         double dx = coordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
         double deltaMx = 0;
 
-        mx = 90 + atan2(dy, dx) * 180 / M_PI;
-
-        if (mx < 0) {
-            mx = 360 + mx;
-        }
-
-        if (currentSpeed <= maxSpeed * 10) {  //FIXME togli il *10
+        mx = calculateMx(dx, dy);
+        //FIXME togli il *10
+        if (currentSpeed <= maxSpeed * 10) {
             currentSpeed = currentSpeed + acceleration / 100 * 10;
         }
         sf::Vector2f vel;
-        if (!(abs(coordinates.x - sprite.getPosition().x) < 1 && abs(coordinates.y - sprite.getPosition().y) < 1)) {
-            if (abs(sprite.getRotation() - mx) >= 25) {
+        if (!(abs(coordinates.x - sprite.getPosition().x) < 2 &&
+              abs(coordinates.y - sprite.getPosition().y) < 2)) {  //controlla se la nave ha raggiunto la destinazine
+            if (abs(sprite.getRotation() - mx) >=
+                25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
                 rotatingInPlaceMult = 3;
                 if (currentSpeed > maxSpeed / 4)
                     currentSpeed = currentSpeed - acceleration / 100;
             }
             if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
-                 abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height / 2)) {
+                 abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height /
+                                                               2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
                 if (currentSpeed > acceleration / 100) {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
@@ -109,10 +81,11 @@ const int WarShip::getNumAntiAircraft() const {
 
 bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
-                        const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {
-        bool result = false;
-        float y, x;
-    if (!target->get()->isConcealed() || concealed) {
+                        const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {  //Verifica la possibilità di sparare alle navi nemiche
+    bool result = false;
+    float y, x;
+    if (!target->get()->isConcealed() ||
+        concealed) {  //Non può sparare se il nemico è nascosto, almeno che non lo siano entrambi
         result = true;
         int i, j;
         float mx;
@@ -120,13 +93,9 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
         y = iter->get()->getSprite().getPosition().y;
         double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
         double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-        mx = 90 + atan2(dy, dx) * 180 / M_PI;
-
-        if (mx < 0) {
-                mx = 360 + mx;
-            }
-            while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
-                   abs(target->get()->getSprite().getPosition().y - y) >= 1) {
+        mx = calculateMx(dx, dy);
+        while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
+               abs(target->get()->getSprite().getPosition().y - y) >= 1) {
                 x = x + sinf((M_PI / 180.f) * mx) * 2;
                 y = y - cosf((M_PI / 180.f) * mx) * 2;
                 i = y / 30;
@@ -137,7 +106,7 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                     (tileVector[i][j]->getSprite().getPosition().y < y &&
                      (tileVector[i][j]->getSprite().getPosition().y +
                       tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
-                    if (!tileVector[i][j]->isPassable) {
+                    if (!tileVector[i][j]->isPassable) {    //Controlla se nella linea di tiro è presente una casella di terra
                         result = false;
                         return result;
                     }
@@ -148,46 +117,44 @@ bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
 }
 
 void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
-                     std::_List_iterator<std::shared_ptr<Arsenal>> iter, float dt) {
+                     std::_List_iterator<std::shared_ptr<Arsenal>> iter,
+                     float dt) {   //Si occupa di ruotare a sparare alle navi target
     double mx;
     double dy;
     double dx;
     dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
     dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-    mx = -90 + atan2(dy, dx) * 180 / M_PI;
-
-    if (mx < 0) {
-        mx = 360 + mx;
-    }
+    mx = -180 + calculateMx(dx, dy);
     iter->get()->getSprite().setRotation(mx);
 
-        if (abs(iter->get()->getCountdown() - dt) <= dt) {
-            sf::Vector2f targetPosition;
-            targetPosition = target->get()->getSprite().getPosition();
-            Dice dice(11, targetPosition.x);
-            float dx = targetPosition.x - iter->get()->getSprite().getPosition().x;
-            float dy = targetPosition.y - iter->get()->getSprite().getPosition().y;
-            float distance = sqrt(pow(dx, 2) + pow(dy, 2));
-            targetPosition.x +=
-                    (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * (dice.roll(1) - 1) / 10) *
-                    distance /
-                    iter->get()->getRangeOfFire();
+    if (abs(iter->get()->getCountdown() - dt) <=
+        dt) {  //Verifica che il cannone abbia ricaricato e quindi imposta lo stato di sparo
+        sf::Vector2f targetPosition;
+        targetPosition = target->get()->getSprite().getPosition();
+        Dice dice(11, targetPosition.x);
+        float dx = targetPosition.x - iter->get()->getSprite().getPosition().x;
+        float dy = targetPosition.y - iter->get()->getSprite().getPosition().y;
+        float distance = sqrt(pow(dx, 2) + pow(dy, 2));
+        targetPosition.x +=
+                (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * (dice.roll(1) - 1) / 10) *
+                distance /
+                iter->get()->getRangeOfFire();
             targetPosition.y +=
                     (pow(-1, dice.roll(1))) * (iter->get()->getMaximumDispersion() * (dice.roll(1) - 1) / 10) *
                     distance /
                     iter->get()->getRangeOfFire();
             iter->get()->setCountdown(iter->get()->getReloadTime());
-            iter->get()->getAmmoType()->initializeBullet(iter->get()->getSprite().getPosition(),
-                                                         targetPosition);
-        } else {
-            iter->get()->setCountdown(iter->get()->getCountdown() - dt);
-        }
+        iter->get()->getAmmoType()->initializeBullet(iter->get()->getSprite().getPosition(),
+                                                     targetPosition);
+    } else {
+        iter->get()->setCountdown(iter->get()->getCountdown() - dt);
+    }
     if ((abs(iter->get()->getAmmoType()->getSprite().getPosition().x -
              iter->get()->getAmmoType()->getTargetPoint().x) >
          1 ||
          abs(iter->get()->getAmmoType()->getSprite().getPosition().y -
              iter->get()->getAmmoType()->getTargetPoint().y) >
-         1)) {
+         1)) { //Controlla se il proiettile ha raggiunto le coordinate prefissate
         iter->get()->getAmmoType()->reachTarget();
     } else {
         iter->get()->getAmmoType()->hit();
@@ -197,9 +164,10 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
 
 bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                            std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
-                           const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector, float dt) {
+                           const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector,
+                           float dt) {   //Cerca un bersaglio nel raggio d'azione se possibile
     bool result = false;
-    if(!death) {
+    if (!death) {
         float distance = 0;
         result = false;
         auto iter = arsenalList.begin();
@@ -207,28 +175,30 @@ bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyLi
 
         std::_List_iterator<std::unique_ptr<WarShip>> target;
         float targetDistance = 999999;
-        for (int i = 0; i < numIter; i++, ++iter) {
+        for (int i = 0; i < numIter; i++, ++iter) {  //per tutti i cannoni
             for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
-                    if(!enemyIter->get()->death || !iter->get()->getAmmoType()->isArrived()) {
-                        distance = calculateDistance(
-                                const_cast<sf::Vector2f &>(enemyIter->get()->getSprite().getPosition()),
-                                const_cast<sf::Vector2f &>(iter->get()->getSprite().getPosition()));
-                        if ((distance <= iter->get()->getRangeOfFire() && distance <= targetDistance)) {
-                            if (canEngage(iter, enemyIter, tileVector)) {
-                                target = enemyIter;
-                                targetDistance = distance;
-                            }
+                if (!enemyIter->get()->death ||
+                    !iter->get()->getAmmoType()->isArrived()) {  //Permette al proiettile di raggiungere il bersaglio anche se la nave bersaglio muore
+                    distance = calculateDistance(
+                            const_cast<sf::Vector2f &>(enemyIter->get()->getSprite().getPosition()),
+                            const_cast<sf::Vector2f &>(iter->get()->getSprite().getPosition()));
+                    if ((distance <= iter->get()->getRangeOfFire() &&
+                         distance <= targetDistance)) {  //Salva il bersaglio più vicino che è possibile attaccare
+                        if (canEngage(iter, enemyIter, tileVector)) {
+                            target = enemyIter;
+                            targetDistance = distance;
                         }
                     }
+                }
             }
             if (targetDistance != 999999) {
                 if (!target->get()->death) {
                     attack(target, iter, dt);
                     result = true;
-                } else {
+                } else {  //Il proiettile può raggiungere il bersaglio anche se chi lo spara muore
                     iter->get()->getAmmoType()->reachTarget();
                 }
-            } else if (!iter->get()->getAmmoType()->isArrived()) {
+            } else if (!iter->get()->getAmmoType()->isArrived()) {  //Se il proiettile non ha raggiunto il bersaglio continua a viaggiare
                 iter->get()->getAmmoType()->reachTarget();
             }
             targetDistance = 999999;
@@ -261,5 +231,29 @@ void WarShip::setSelected(bool selected) {
 
 bool WarShip::isSelected() const {
     return selected;
+}
+
+const int WarShip::getArmour() const {
+    return armour;
+}
+
+const std::string &WarShip::getName() const {
+    return name;
+}
+
+const std::string &WarShip::getNationality() const {
+    return nationality;
+}
+
+const int WarShip::getNumLCannons() const {
+    return numLCannons;
+}
+
+const int WarShip::getNumMCannons() const {
+    return numMCannons;
+}
+
+const int WarShip::getNumHCannons() const {
+    return numHCannons;
 }
 

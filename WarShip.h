@@ -96,36 +96,38 @@ protected:
     const int numAntiAircraft;
     bool concealed;
     bool selected {false};
-public:
-    const int getNumAntiAircraft() const;
-
-protected:
-
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::shared_ptr<Vehicle>> vehicleList;
     std::list<std::shared_ptr<BarInterface>> bars;
 
 public:
+
     WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
             std::string nat, int numL, int numH, int numM, int numAA,
             int le, int wi,
             bool col, ShipType sh, ModelType mo);
 
-    virtual void move(sf::Vector2 <double> coordinates,double dt);
+    virtual ~WarShip() = default;
 
-    std::list<std::shared_ptr<BarInterface>> &getBars();
+    virtual void
+    move(sf::Vector2<double> coordinates, double dt);  //Raggiunge il punto desiderato tramite rotazioni e spostamenti
 
-    virtual void notifyArsenals(sf::Vector2f &vel,double mx) = 0;//    Metodi per design pattern observer
+    bool searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
+                      std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
+                      const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector,
+                      float dt);  //Cerca un bersaglio nel raggio d'azione se possibile
+
+    //Metodi relativi all'observer
+
+    virtual void notifyArsenals(sf::Vector2f &vel, double mx) = 0;//    Metodi per design pattern observer
 
     virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
     virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//    Metodi per design pattern observer
 
+    virtual void notifyPlanes(sf::Vector2f &vel, double mx) = 0;//    Metodi per design pattern observer
 
-
-    virtual void notifyPlanes(sf::Vector2f &vel,double mx)=0;//    Metodi per design pattern observer
-
-    virtual void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
+    virtual void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) = 0;//    Metodi per design pattern observer
 
     virtual void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes)=0;//    Metodi per design pattern observer
 
@@ -137,10 +139,9 @@ public:
 
     virtual void detachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
 
+    //Getter
 
-
-
-
+    const int getNumAntiAircraft() const;
 
     const int getArmour() const;
 
@@ -154,25 +155,19 @@ public:
 
     const int getNumHCannons() const;
 
-    void setSelected(bool selected);
+    std::list<std::shared_ptr<BarInterface>> &getBars();
 
     bool isSelected() const;
 
-    virtual bool
-    canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter, std::_List_iterator<std::unique_ptr<WarShip>> target,
-              const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);
+    ShipType getShipType() const;
 
-    virtual void attack(std::_List_iterator<std::unique_ptr<WarShip>> target, std::_List_iterator<std::shared_ptr<Arsenal>> iter, float dt);
+    ModelType getModelType() const;
+
+    bool isConcealed() const;
 
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 
     const std::list<std::shared_ptr<Vehicle>> &getVehicleList() const;
-
-    bool searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
-                      std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
-                      const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector, float dt);
-
-    virtual ~WarShip()=default;
 
     const std::string getNationality() {
         return nationality;
@@ -182,13 +177,21 @@ public:
         return name;
     }
 
-    ShipType getShipType() const;
-
-    ModelType getModelType() const;
-
-    bool isConcealed() const;
+    //Setter
 
     void setConcealed(bool isConcealed);
+
+    void setSelected(bool selected);
+
+protected:
+
+    virtual bool
+    canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter, std::_List_iterator<std::unique_ptr<WarShip>> target,
+              const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector);  //Verifica la possibilità di sparare alle navi nemiche
+
+    virtual void
+    attack(std::_List_iterator<std::unique_ptr<WarShip>> target, std::_List_iterator<std::shared_ptr<Arsenal>> iter,
+           float dt);  //Si occupa di ruotare a sparare alle navi target
 };
 
 
