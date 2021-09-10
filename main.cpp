@@ -547,7 +547,7 @@ int main() {
     numEnemyCru = 3;
     numEnemyDes = 3;
     numEnemyAir = 2;
-   
+
     settings.depthBits = 24;
     settings.stencilBits = 8;
     settings.antialiasingLevel = 0;

@@ -38,10 +38,6 @@ void GameTile::setIsPassable(bool isPassable) {
     GameTile::isPassable = isPassable;
 }
 
-void GameTile::setIsExit(bool isExit) {
-    GameTile::isExit = isExit;
-}
-
 void GameTile::setPos(const sf::Vector2f &pos) {
     GameTile::pos = pos;
 }
@@ -50,20 +46,12 @@ void GameTile::setTexture(const sf::Texture &texture) {
     GameTile::texture = texture;
 }
 
-void GameTile::setSprite(const sf::Sprite &sprite) {
-    GameTile::sprite = sprite;
-}
-
 void GameTile::setTileType(TileType tileType) {
     GameTile::tileType = tileType;
 }
 
 const sf::Vector2f &GameTile::getPos() const {
     return pos;
-}
-
-const sf::Texture &GameTile::getTexture() const {
-    return texture;
 }
 
 const sf::Sprite &GameTile::getSprite() const {

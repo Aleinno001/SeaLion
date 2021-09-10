@@ -3,21 +3,13 @@
 //
 
 #include "Vehicle.h"
-
-/*
-float Vehicle::calcSpeed() {
-    return 0;
-}
-*/
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
                  bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
                                               length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
                                               currentSpeed(0) {
 
-    //setUpSprite(texName);
     pos = sf::Vector2f(X, Y);
     sprite.setPosition(pos);
-
 
 }
 
@@ -25,8 +17,8 @@ void Vehicle::attack(std::_List_iterator<std::unique_ptr<Vehicle>> target) {
 
 }
 
-float Vehicle::calculateDistance(sf::Vector2f &first, sf::Vector2f &second) {
-    return sqrt(pow(first.y-second.y,2) + pow(first.x - second.x,2));
+float Vehicle::calculateDistance(sf::Vector2f &first, sf::Vector2f &second) {    //calcola la distanza tra due punti
+    return sqrt(pow(first.y - second.y, 2) + pow(first.x - second.x, 2));
 }
 
 void Vehicle::update(bool isDead) {
@@ -34,17 +26,17 @@ void Vehicle::update(bool isDead) {
 }
 
 
-bool Vehicle::setUpSprite(std::string textureName) {
+bool Vehicle::setUpSprite(std::string textureName) {  //Carica la sprite
 
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
     std::size_t found = currentDir.find(unitTestingPath);
-    if (found != std::string::npos) {
+    if (found != std::string::npos) {   //Permette il corretto caricamento anche nel caso in cui si avviino i test
         currentDir.erase(found);
         currentDir.pop_back();
     }
     textureName = currentDir + "/../Res/" + nationality + "/" + textureName + ".png";
-    if (!Collision::CreateTextureAndBitmask(texture,textureName)) {
+    if (!Collision::CreateTextureAndBitmask(texture, textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
@@ -79,18 +71,12 @@ bool Vehicle::isCollision() const {
     return collision;
 }
 
-
-
 sf::Sprite &Vehicle::getSprite() {
     return sprite;
 }
 
 const sf::Vector2f &Vehicle::getPos() const {
     return pos;
-}
-
-float Vehicle::getCurrentSpeed() const {
-    return currentSpeed;
 }
 
 const std::string &Vehicle::getNationality() const {
@@ -120,10 +106,12 @@ bool Vehicle::isDeath() const {
     return death;
 }
 
-float Vehicle::rotate(float mx, float rotatingInPlaceMult) {
+float Vehicle::rotate(float mx, float rotatingInPlaceMult) {  //rutoa la sprite della nave soltanto
     float deltaMx = 0;
-    if (abs(sprite.getRotation() - mx) >= 1.5) {
-        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) > 0) {
+    if (abs(sprite.getRotation() - mx) >=
+        1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
+                                                    0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
             deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
             sprite.rotate(deltaMx);
         } else if (sprite.getRotation() > 180 && mx < 180) {
@@ -135,5 +123,16 @@ float Vehicle::rotate(float mx, float rotatingInPlaceMult) {
         }
     }
     return deltaMx;
+}
+
+float Vehicle::calculateMx(float dx,
+                           float dy) {  //Calcola l'angolo da raggiungere (già tradotto secondo la logica della SFML)
+    float mx = 0;
+    mx = 90 + atan2(dy, dx) * 180 / M_PI;
+
+    if (mx < 0) {
+        mx = 360 + mx;
+    }
+    return mx;
 }
 

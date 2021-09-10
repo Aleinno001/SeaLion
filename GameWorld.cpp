@@ -20,8 +20,6 @@ GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &
         std::cerr << e.what() << std::endl;
         std::cerr << "Please change Warship type" << std::endl;
     }
-
-
 }
 
 
@@ -58,8 +56,8 @@ GameWorld::setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru,
 
 }
 
-void GameWorld::setUpTiles(
-        int &tileDim) { //FIXME Finire di aggiungere le tiles per poi migliorare l'uniformità della generazione
+void GameWorld::setUpTiles(  //Generazione mappa di gioco
+        int &tileDim) {
     tiles.clear();
     std::vector<std::unique_ptr<GameTile>> row;
     Dice dice(300, 8734);
@@ -101,17 +99,19 @@ void GameWorld::setUpTiles(
                     tileType = TileType::Fog;
                     collision = false;
                 } else if (isFogCluster && fogTilesInAColumn > 1 &&
-                           j >= fogColumn - (resTile % 5) && j <= (fogColumn + fogTilesInARow + (resTile % 5))) {
+                           j >= fogColumn - (resTile % 5) && j <= (fogColumn + fogTilesInARow + (resTile %
+                                                                                                 5))) { //Permette la generazione di cluster di nebbia per ighe
                     path = "seaFoggyBlock.png";
                     tileType = TileType::Fog;
                     collision = false;
                 } else if (fogTilesInAColumn == 1 && j >= fogColumn - (resTile % 4) &&
-                           j <= (fogColumn + 4 + (resTile % 4))) {
+                           j <= (fogColumn + 4 +
+                                 (resTile % 4))) {  //Permette la generazione di cluster di nebbia per colonne
                     path = "seaFoggyBlock.png";
                     tileType = TileType::Fog;
                     collision = false;
                 } else if (resTile == 300 && !isWaveCluster && maxWaveCluster != 0 &&
-                                                               isInStrip(i, tileDim)) {      //Wave
+                           isInStrip(i, tileDim)) {      //Wave
                     waveColumn = j;
                     waveTilesInARow = 3;
                     isWaveCluster = true;
@@ -120,13 +120,13 @@ void GameWorld::setUpTiles(
                     collision = false;
                 } else if (isWaveCluster && waveTilesInAColumn > 1 &&
                            j >= waveColumn - (resTile % 3) && j <= (waveColumn + waveTilesInARow + (resTile % 3)) &&
-                                                              isInStrip(i, tileDim)) {
+                           isInStrip(i, tileDim)) {  //Permette la generazione di cluster di onde per righe
                     path = "seaWaveBlock.png";
                     tileType = TileType::Wave;
-                collision = false;
-            } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 3) &&
-                       j <= (waveColumn + 3 + (resTile % 3))&&
-                       isInStrip(i, tileDim)) {
+                    collision = false;
+                } else if (waveTilesInAColumn == 1 && j >= waveColumn - (resTile % 3) &&
+                           j <= (waveColumn + 3 + (resTile % 3)) &&
+                           isInStrip(i, tileDim)) {   //Permette la generazione di cluster di onde per colonna
                     path = "seaWaveBlock.png";
                     tileType = TileType::Wave;
                     collision = false;
@@ -140,12 +140,14 @@ void GameWorld::setUpTiles(
                     collision = false;
                 } else if (isWhirlpoolCluster && whirlpoolTilesInAColumn > 1 &&
                            j >= whirlpoolColumn - (resTile % 3) &&
-                           j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 3)) && isInStrip(i, tileDim)) {
+                           j <= (whirlpoolColumn + whirlpoolTilesInARow + (resTile % 3)) &&
+                           isInStrip(i, tileDim)) {  //Permette la generazione di cluster di mulinelli per righe
                     path = "seaWhirlpoolBlock.png";
                     tileType = TileType::Whirlpool;
                     collision = false;
                 } else if (whirlpoolTilesInAColumn == 1 && j >= whirlpoolColumn - (resTile % 3) &&
-                           j <= (whirlpoolColumn + 2 + (resTile % 3)) && isInStrip(i, tileDim)) {
+                           j <= (whirlpoolColumn + 2 + (resTile % 3)) &&
+                           isInStrip(i, tileDim)) {    //Permette la generazione di cluster di mulinelli per colonna
                     path = "seaWhirlpoolBlock.png";
                     tileType = TileType::Whirlpool;
                     collision = false;
@@ -159,14 +161,15 @@ void GameWorld::setUpTiles(
                     collision = true;
                 } else if (isDirtCluster && dirtTilesInAColumn > 1 &&
                            j >= dirtColumn - (resTile % 3) && j <= (dirtColumn + dirtTilesInARow + (resTile % 3)) &&
-                           isInStrip(i, tileDim)) {
+                           isInStrip(i, tileDim)) {  //Permette la generazione di cluster di terra per righe
 
                     path = "dirtBlock.png";
                     tileType = TileType::Dirt;
                     collision = true;
 
                 } else if (dirtTilesInAColumn == 1 && j >= dirtColumn - (resTile % 3) &&
-                           j <= (dirtColumn + 3 + (resTile % 3)) && isInStrip(i, tileDim)) {
+                           j <= (dirtColumn + 3 + (resTile % 3)) &&
+                           isInStrip(i, tileDim)) {  //Permette la generazione di cluster di terra per colonne
                     path = "dirtBlock.png";
                     tileType = TileType::Dirt;
                     collision = true;
@@ -176,13 +179,11 @@ void GameWorld::setUpTiles(
                     collision = false;
                 }
 
-
                 std::unique_ptr<GameTile> tile(
                         new GameTile(path, tileDim * j, tileDim * i, collision, false, tileType));
                 row.push_back(std::move(tile));
-
-
             }
+            //Aggiorna lo stato dei cluster
         if (isFogCluster) {
             fogTilesInARow = 8;
             fogTilesInAColumn -= 1;
@@ -211,7 +212,6 @@ void GameWorld::setUpTiles(
             whirlpoolTilesInAColumn = resTile % 5 + 2;
         }
 
-
         if (isDirtCluster) {
             dirtTilesInARow = 5;
             dirtTilesInAColumn -= 1;
@@ -226,15 +226,9 @@ void GameWorld::setUpTiles(
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Please change the directory" << std::endl;
-
     }
 
 }
-
-
-
-
-
 
 void GameWorld::italianBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory,
                                              Dice &dice) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
@@ -877,14 +871,6 @@ FactionType GameWorld::getAlliedFaction() const {
 
 const sf::Vector2i &GameWorld::getExitPos() const {
     return exitPos;
-}
-
-const std::list<std::unique_ptr<WarShip>> &GameWorld::getAlliedFleet() const {
-    return alliedFleet;
-}
-
-const std::list<std::unique_ptr<WarShip>> &GameWorld::getEnemyFleet() const {
-    return enemyFleet;
 }
 
 const std::vector<std::vector<std::unique_ptr<GameTile>>> &GameWorld::getTiles() const {

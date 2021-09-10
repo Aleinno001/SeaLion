@@ -7,7 +7,6 @@
 
 #include <SFML/Graphics.hpp>
 
-
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GameTile.h"
@@ -17,9 +16,6 @@
 #include <list>
 #include "Dice.h"
 #include <iostream>
-
-
-
 
 enum class TileType {
     Sea,
@@ -32,9 +28,6 @@ enum class TileType {
 class GameTile {
 public:
     bool isPassable;
-
-
-
     bool isExit;
     sf::Vector2f pos;
     sf::Texture texture;
@@ -51,21 +44,15 @@ public:
 
     void setIsPassable(bool isPassable);
 
-    void setIsExit(bool isExit);
-
     bool getIsPassable() const;
 
     void setPos(const sf::Vector2f &pos);
 
     void setTexture(const sf::Texture &texture);
 
-    void setSprite(const sf::Sprite &sprite);
-
     void setTileType(TileType tileType);
 
     const sf::Vector2f &getPos() const;
-
-    const sf::Texture &getTexture() const;
 
     const sf::Sprite &getSprite() const;
 
