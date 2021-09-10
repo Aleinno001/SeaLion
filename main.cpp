@@ -390,6 +390,58 @@ void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::C
 
 }
 
+void drawAndManageAlliedShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor){
+    for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
+        if (it.get()->isDeath()) {
+            it.get()->getSprite().setColor(deathColor);
+        } else if (it.get()->isSelected()) {
+            it.get()->getSprite().setColor(selectedColor);
+        } else if (it->isConcealed()) {
+            it.get()->getSprite().setColor(concealedColor);
+        } else {
+            it.get()->getSprite().setColor(removeColor);
+        }
+        window.draw(it->getSprite());
+
+        for (auto const &itArsenal: it->getArsenalList())
+            if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                if (it.get()->isDeath()) {
+                    itArsenal.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itArsenal.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itArsenal.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itArsenal->getSprite());
+                if (!itArsenal->getAmmoType()->isArrived()) {
+                    window.draw(itArsenal->getAmmoType()->getSprite());
+                }
+            }
+
+
+        for (auto const &itBars: it->getBars()) { //disegna le barre di stato e impostane un colore predefinito se la nave viene distrutta
+            if (it.get()->isDeath()) {
+                itBars->getSprite().setColor(sf::Color(255, 0, 0));
+            }
+            window.draw(itBars->getSprite());
+        }
+
+        if (it->getShipType() == ShipType::AircraftCarrier) {
+            for (auto const &itPlanes: it->getVehicleList()) {
+                if (it.get()->isDeath()) {
+                    itPlanes.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itPlanes.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itPlanes.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itPlanes->getSprite());
+            }
+        }
+    }
+
+
+}
 
 
 
@@ -538,54 +590,7 @@ int main() {
 
         drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
-        for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
-            if (it.get()->isDeath()) {
-                it.get()->getSprite().setColor(deathColor);
-            } else if (it.get()->isSelected()) {
-                it.get()->getSprite().setColor(selectedColor);
-            } else if (it->isConcealed()) {
-                it.get()->getSprite().setColor(concealedColor);
-            } else {
-                it.get()->getSprite().setColor(removeColor);
-            }
-            window.draw(it->getSprite());
-
-            for (auto const &itArsenal: it->getArsenalList())
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
-                    if (it.get()->isDeath()) {
-                        itArsenal.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itArsenal.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itArsenal.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itArsenal->getSprite());
-                    if (!itArsenal->getAmmoType()->isArrived()) {
-                        window.draw(itArsenal->getAmmoType()->getSprite());
-                    }
-                }
-
-
-            for (auto const &itBars: it->getBars()) { //disegna le barre di stato e impostane un colore predefinito se la nave viene distrutta
-                if (it.get()->isDeath()) {
-                    itBars->getSprite().setColor(sf::Color(255, 0, 0));
-                }
-                window.draw(itBars->getSprite());
-            }
-
-            if (it->getShipType() == ShipType::AircraftCarrier) {
-                for (auto const &itPlanes: it->getVehicleList()) {
-                    if (it.get()->isDeath()) {
-                        itPlanes.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itPlanes.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itPlanes.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itPlanes->getSprite());
-                }
-            }
-        }
+        drawAndManageAlliedShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
