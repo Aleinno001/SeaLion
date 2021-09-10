@@ -196,6 +196,13 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 };
 
 
+void
+gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
+         sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
+         sf::RenderWindow &window, GameWorld &gameWorld, int shipCounter, bool found, bool clicked,
+         std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
+         std::list<iteratorPositions> &fullNavyCollision);
+
 std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
@@ -585,6 +592,17 @@ int main() {
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
+    gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
+             window, gameWorld, shipCounter, found, clicked, itSecondClick, lst, fullNavyCollision);
+    return 0;
+}
+
+void
+gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
+         sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
+         sf::RenderWindow &window, GameWorld &gameWorld, int shipCounter, bool found, bool clicked,
+         std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
+         std::list<iteratorPositions> &fullNavyCollision) {
     while (window.isOpen()) {
         sf::Event event;
 
@@ -626,5 +644,4 @@ int main() {
         fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
 
     }
-    return 0;
 }
