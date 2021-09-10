@@ -471,6 +471,15 @@ void fpsManagment(sf::RenderWindow &window,sf::Clock &clock){
 
 }
 
+void drawMap(sf::RenderWindow &window,GameWorld &gameWorld){
+    for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
+        for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
+            window.draw(gameWorld.getTiles()[i][j]->getSprite());
+
+        }
+
+    }
+}
 
 void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
             GameWorld &gameWorld, int tileDim, sf::RenderWindow &window) {
@@ -511,8 +520,6 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
 
 int main() {
     std::vector<Fleet> fleet = alliedDummyFleet();
-
-
     sf::Vector2i boundaries(1920, 1080);
     int a, b, c, d, e;
     int width, height, tileDim;
@@ -522,7 +529,6 @@ int main() {
     c = 3;
     d = 3;
     e = 2;
-
     sf::Color deathColor(100, 100, 100, 120);
     sf::Color selectedColor(196, 255, 168, 255);
     sf::Color concealedColor(250, 250, 250, 180);
@@ -606,13 +612,8 @@ int main() {
         }
 
         window.clear();
-        for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
-            for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
-                window.draw(gameWorld.getTiles()[i][j]->getSprite());
 
-            }
-
-        }
+        drawMap(window,gameWorld);
 
         drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
@@ -622,7 +623,7 @@ int main() {
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
 
 
-       fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
+        fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
 
     }
     return 0;
