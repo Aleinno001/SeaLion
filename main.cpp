@@ -285,6 +285,53 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 }
 
 
+void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool found,bool clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,int shipCounter){
+    switch (event.key.code) {
+        case sf::Mouse::Left: {
+
+            //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
+
+            sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
+            auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
+
+            found = false;
+            for (auto it = gameWorld.getAlliedFleet().begin();
+                 it != gameWorld.getAlliedFleet().end() && !found; ++it, shipCounter++) {
+
+                if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
+                    !it->get()->isDeath()) {
+                    itSecondClick->get()->setSelected(false);
+                    it->get()->setSelected(true);
+                    found = true;
+                    clicked = false;
+                    itSecondClick = it;
+                }
+            }
+            if (!found && !clicked) {
+                bool foundIter = false;
+                for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
+                    if (iter->it == itSecondClick) {
+                        foundIter = true;
+                        lst.erase(iter);
+                    }
+                }
+
+                iteratorPositions itPos;
+                itPos.it = itSecondClick;
+                itPos.pos = coords;
+                lst.push_back(itPos);
+                itPos.it->get()->setSelected(false);
+                clicked = true;
+            }
+        }
+            break;
+
+        case sf::Mouse::Right:
+
+            break;
+    }
+
+}
 
 
 
@@ -416,50 +463,7 @@ int main() {
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                switch (event.key.code) {
-                    case sf::Mouse::Left: {
-
-                        //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
-
-                        sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
-                        auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
-
-                        found = false;
-                        for (auto it = gameWorld.getAlliedFleet().begin();
-                             it != gameWorld.getAlliedFleet().end() && !found; ++it, shipCounter++) {
-
-                            if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
-                                !it->get()->isDeath()) {
-                                itSecondClick->get()->setSelected(false);
-                                it->get()->setSelected(true);
-                                found = true;
-                                clicked = false;
-                                itSecondClick = it;
-                            }
-                        }
-                        if (!found && !clicked) {
-                            bool foundIter = false;
-                            for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
-                                if (iter->it == itSecondClick) {
-                                    foundIter = true;
-                                    lst.erase(iter);
-                                }
-                            }
-
-                            iteratorPositions itPos;
-                            itPos.it = itSecondClick;
-                            itPos.pos = coords;
-                            lst.push_back(itPos);
-                            itPos.it->get()->setSelected(false);
-                            clicked = true;
-                        }
-                    }
-                        break;
-
-                    case sf::Mouse::Right:
-
-                        break;
-                }
+                manageSelection(window,event,gameWorld,found,clicked,lst,itSecondClick,shipCounter);
             } else if (event.type == sf::Event::MouseWheelMoved) {
 
             } else if (event.type == sf::Event::MouseMoved) {
@@ -477,7 +481,7 @@ int main() {
 
         }
 
-        for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navi selezionate per lo spostamento e gestisci il colore per la selezione
+        for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
             if (it.get()->isDeath()) {
                 it.get()->getSprite().setColor(deathColor);
             } else if (it.get()->isSelected()) {
