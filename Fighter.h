@@ -22,8 +22,6 @@ private:
 
     void attack(Vehicle target);
 
-    void calculateDistance(Vehicle target) override;
-
     void update(bool isDead) override;
 
     void updatePlanes(sf::Vector2f &vel,double mx) override;

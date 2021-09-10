@@ -437,7 +437,7 @@ int main() {
                 switch (event.key.code) {
                     case sf::Mouse::Left: {
 
-                        //FIXME le hitbox della selezione delle navi è enorme per navi grandi
+                        //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
 
                         sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
                         auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));

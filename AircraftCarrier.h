@@ -20,10 +20,6 @@ public:
                      int le, int wi,
                     bool col, ShipType sh, ModelType mo, int planes);
 
-    //float calcSpeed() override;
-
-    void calculateDistance(Vehicle target) override;
-
     void update(bool isDead) override;
 
     void attach(const std::shared_ptr<Arsenal> &gun) override;
@@ -52,15 +48,7 @@ public:
     }
 
 
-    void stopMove() override;
-
-    void ceaseFire() override;
-
-
     ~AircraftCarrier() override;
-
-protected:
-    void rotate() override;
 
 };
 

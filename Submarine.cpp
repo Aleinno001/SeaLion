@@ -54,21 +54,8 @@ Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int arm
     }
 }
 
-void Submarine::calculateDistance(Vehicle target) {
-    Vehicle::calculateDistance(target);
-}
-
 void Submarine::update(bool isDead) {
     Vehicle::update(isDead);
-}
-
-
-void Submarine::stopMove() {
-
-}
-
-void Submarine::ceaseFire() {
-
 }
 
 //void Submarine::registerArsenals(std::unique_ptr<Arsenal> observer) {
@@ -85,10 +72,6 @@ void Submarine::notifyArsenals(sf::Vector2f &vel,double mx) {
         (*it)->update(vel,mx);
         ++it;
     }
-}
-
-void Submarine::rotate() {
-    Vehicle::rotate();
 }
 /*
 bool Submarine::canEngage(std::_List_iterator<std::unique_ptr<WarShip>> target) {

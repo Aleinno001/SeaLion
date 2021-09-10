@@ -113,11 +113,7 @@ public:
 
     virtual void move(sf::Vector2 <double> coordinates,double dt);
 
-    virtual void stopMove() = 0;
-
     std::list<std::shared_ptr<BarInterface>> &getBars();
-
-    virtual void ceaseFire() = 0;
 
     virtual void notifyArsenals(sf::Vector2f &vel,double mx) = 0;//    Metodi per design pattern observer
 

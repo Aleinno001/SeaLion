@@ -24,25 +24,16 @@ public:
                 int le, int wi,
                bool col, ShipType sh, ModelType mo, int numInterceptors);
 
-    //float calcSpeed() override;
-
-    void calculateDistance(Vehicle target) override;
-
-    void update(bool isDead) override;
-
     void attach(const std::shared_ptr<Arsenal> &gun) override;
 
     void detach(const std::shared_ptr<Arsenal> &gun) override;
-
 
     void notifyPlanes(sf::Vector2f &vel, double mx) override;
 
     void attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
 
 
-
     void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
-
 
     void notifyBars(sf::Vector2f &vel, double mx) override;
 
@@ -52,22 +43,11 @@ public:
 
     void notifyBarsDamage() override;
 
-    void stopMove() override;
-
-    void ceaseFire() override;
-
     // void registerPlanes(std::unique_ptr<Vehicle> observer) override;
 
     // void removePlanes(std::unique_ptr<Vehicle> observer) override;
 
-
-
-
-
     ~Battleship() override;
-
-protected:
-    void rotate() override;
 
 public:
 

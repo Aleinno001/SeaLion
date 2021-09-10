@@ -7,23 +7,20 @@
 
 #include "SFML/Graphics.hpp"
 #include <iostream>
-
+#include <list>
 #include "CurrentDir.h"
-#include "WarShip.h"
-
-class WarShip;
+#include "Collision.h"
+#include <math.h>
 
 class Vehicle {
 protected:
 
     double acceleration;
     bool death{false};
-public:
-    float getCurrentSpeed() const;
 
 protected:
     const double maxSpeed;
-    float currentSpeed{0};//FIXME valore di default di velocità
+    float currentSpeed;//FIXME valore di default di velocità
     double hp;
     const double maxHP;
     unsigned int length;
@@ -40,7 +37,7 @@ protected:
 
 
     //SpriteSheet sprite
-    virtual void rotate();
+    virtual float rotate(float mx, float rotatingInPlaceMult);
 
 
 
@@ -74,13 +71,17 @@ public:
     bool isDeath() const;
 
 
-    bool getCol(){
+    bool getCol() {
         return collision;
     }
 
+    float getCurrentSpeed() const;
 
-    void setDamage(double damage){
-        hp=hp-damage;
+
+
+
+    void setDamage(double damage) {
+        hp = hp - damage;
 
     }
 
