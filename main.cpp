@@ -140,10 +140,12 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
                                 !iteratorTarget.it->get()->isDeath()) {
                                 double directDamage = 0;
                                 Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
-                                if (iteratorCannons->getTextureName() == "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
+                                if (iteratorCannons->getTextureName() ==
+                                    "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
 
                                     if (((critical.roll(1) - 1) *
-                                         ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) * //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                         ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
@@ -153,9 +155,11 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
                                                 iteratorCannons->getFirepower();
                                     }
 
-                                } else if (iteratorCannons->getTextureName() == "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
+                                } else if (iteratorCannons->getTextureName() ==
+                                           "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
                                     if (((critical.roll(1) - 1) *
-                                         ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *  //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                         ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
@@ -167,7 +171,8 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 
                                 } else {  //Applica gli effetti del cannone pesante se la nave spara col cannone leggero
                                     if (((critical.roll(1) - 1) *
-                                         ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) * //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                         ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
@@ -186,6 +191,7 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 
                         }
                     }
+
                 }
             }
         }
