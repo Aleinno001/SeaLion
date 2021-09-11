@@ -7,10 +7,12 @@
 
 
 #include "WarShip.h"
+#include "MvcSubject.h"
 
-class AircraftCarrier : public WarShip {
+class AircraftCarrier : public WarShip, public MvcSubject {
 private:
     int numPlanes;
+    std::list<std::shared_ptr<MvcObserver>> listMvcObservers; //Lista di Viste per design pattern MVC
 public:
     int getNumPlanes() const;
 
@@ -42,6 +44,11 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
+    void notifyMvcObserver() override;
+
+    void addObserver(std::shared_ptr<MvcObserver> o) override;
+
+    void removeObserver(std::shared_ptr<MvcObserver> o) override;
 
     int HowManyGuns() {
         return arsenalList.size();

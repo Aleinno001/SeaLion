@@ -131,6 +131,19 @@ void AircraftCarrier::notifyBarsDamage() {
 
 }
 
+void AircraftCarrier::notifyMvcObserver() {
+    for(auto &it:listMvcObservers)
+        it->updateMvcObserver();
+}
+
+void AircraftCarrier::addObserver(std::shared_ptr<MvcObserver> o) {
+
+}
+
+void AircraftCarrier::removeObserver(std::shared_ptr<MvcObserver> o) {
+
+}
+
 
 
 

@@ -6,6 +6,9 @@
 #define SEALION_MVCSUBJECT_H
 
 
+#include <memory>
+#include "MvcObserver.h"
+
 class MvcSubject {
 public:
     virtual ~MvcSubject() = default;
