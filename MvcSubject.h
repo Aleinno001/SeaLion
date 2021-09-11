@@ -7,6 +7,11 @@
 
 
 class MvcSubject {
+public:
+    virtual ~MvcSubject() = default;
+    virtual void notifyMvcObserver() = 0;
+    virtual void addObserver(std::shared_ptr<MvcObserver> o) = 0;
+    virtual void removeObserver(std::shared_ptr<MvcObserver> o) = 0;
 
 };
 
