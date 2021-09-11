@@ -46,7 +46,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld
 
 
         }
-
+        //controllo cllisioni con blocchi di terra
         for (auto &iterNavy: fullNavyCollision) {
 
             for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++) {
@@ -71,7 +71,7 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld
 };
 
 auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
-                             std::list<iteratorPositions> &fullNavyCollision, int tileDim) {
+                             std::list<iteratorPositions> &fullNavyCollision, int tileDim) { //thread per il controllo e l'applicazione degli effetti tiles
     bool enteredFog = false;
     while (window.isOpen()) {
 
@@ -83,14 +83,14 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
 
                     for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
 
-                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&
+                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&        //Applica i relativi effetti se la tile è di mare mosso
                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                         gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
                             itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed() * 0.80);
 
 
-                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&  //Apllica i seguenti effetti se la tile è di tipo muninello
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                                gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
@@ -98,7 +98,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
                             itNaval.it->get()->notifyBarsDamage();
 
 
-                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&  //applica i seguenti effetti se la tile è di nebbia
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                                gameWorld.tiles[row][column]->getSprite())) {
 
@@ -107,15 +107,16 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
 
                         }
                     }
-            } else {
+            } else { //controla se la nave è distrutta e applioca i relativi effetti
                 itNaval.it->get()->setCollision(true);
                 itNaval.it->get()->setDeath(true);
                 for (auto &itCannons: itNaval.it->get()->getArsenalList()) {
                     itCannons->getAmmoType()->setArrived(true);
+                    //FIXME itCannons->removeMeFromTheList();
                 }
             }
             if (!enteredFog) {
-                itNaval.it->get()->setConcealed(false);
+                itNaval.it->get()->setConcealed(false); //effetti contrari alla nebbia applicati se la nave non si trova sulla nebbia
             }
         }
 
@@ -130,7 +131,7 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
             for (auto &iteratorTarget: fullNavy) {
                 if (iteratorNavy.it != iteratorTarget.it) {
 
-                    for (auto &iteratorCannons: iteratorNavy.it->get()->getArsenalList()) {
+                    for (auto &iteratorCannons: iteratorNavy.it->get()->getArsenalList()) { // controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
                         if (iteratorCannons->getTextureName() != "AntiAircraft" &&
                             iteratorCannons->getTextureName() != "TorpedoTube" &&
                             !iteratorCannons->getAmmoType()->isArrived()) {
@@ -139,10 +140,10 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
                                 !iteratorTarget.it->get()->isDeath()) {
                                 double directDamage = 0;
                                 Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
-                                if (iteratorCannons->getTextureName() == "HeavlyCannon") {
+                                if (iteratorCannons->getTextureName() == "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
 
                                     if (((critical.roll(1) - 1) *
-                                         ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                         ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) * //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
@@ -152,9 +153,9 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
                                                 iteratorCannons->getFirepower();
                                     }
 
-                                } else if (iteratorCannons->getTextureName() == "MediumCannon") {
+                                } else if (iteratorCannons->getTextureName() == "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
                                     if (((critical.roll(1) - 1) *
-                                         ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                         ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *  //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
@@ -164,9 +165,9 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
                                                 iteratorCannons->getFirepower();
                                     }
 
-                                } else {
+                                } else {  //Applica gli effetti del cannone pesante se la nave spara col cannone leggero
                                     if (((critical.roll(1) - 1) *
-                                         ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                         ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) * //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
@@ -195,7 +196,18 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 };
 
 
-std::vector<Fleet> alliedDummyFleet() {
+void
+gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
+         sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
+         sf::RenderWindow &window, GameWorld &gameWorld, bool found, bool clicked,
+         std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
+         std::list<iteratorPositions> &fullNavyCollision);
+
+void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
+                         std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
+                         std::list<iteratorPositions> &fullNavyCollision);
+
+std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
     std::vector<Fleet> fleet;
     Fleet alliedFleet;
 
@@ -284,33 +296,203 @@ std::vector<Fleet> alliedDummyFleet() {
 }
 
 
-/*
-void collisonControl(std::list<iteratorPositions> &fullNavyCollision,GameWorld &gameWorld)//Scorre la lista di iteratori che puntano ad ogni nave di gioco e ogni sprite di ogni nave verrà controllata con ogni sprite di nave tranne se stessa per verificare l'avvenuta collisione
-{
-    for(auto iter = fullNavyCollision.begin();iter!=fullNavyCollision.end();++iter){
+void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool found,bool clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick){
+    switch (event.key.code) {
+        case sf::Mouse::Left: {
 
-        for(auto iterSecond = fullNavyCollision.begin();iterSecond!=fullNavyCollision.end();++iterSecond){
+            //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
 
-            if(iter->it->get() != iterSecond->it->get()){
-               if(Collision::PixelPerfectTest(iter->it->get()->getSprite(),iterSecond->it->get()->getSprite())){
-                    iter->it->get()->setCollision(false);
-                    iterSecond->it->get()->setCollision(false);
-               }
-            }else{
+            sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
+            auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
+
+            found = false;
+            for (auto it = gameWorld.getAlliedFleet().begin();
+                 it != gameWorld.getAlliedFleet().end() && !found; ++it) {
+
+                if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
+                    !it->get()->isDeath()) {
+                    itSecondClick->get()->setSelected(false);
+                    it->get()->setSelected(true);
+                    found = true;
+                    clicked = false;
+                    itSecondClick = it;
+                }
+            }
+            if (!found && !clicked) {
+                bool foundIter = false;
+                for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
+                    if (iter->it == itSecondClick) {
+                        foundIter = true;
+                        lst.erase(iter);
+                    }
+                }
+
+                iteratorPositions itPos;
+                itPos.it = itSecondClick;
+                itPos.pos = coords;
+                lst.push_back(itPos);
+                itPos.it->get()->setSelected(false);
+                clicked = true;
+            }
+        }
+            break;
+
+        case sf::Mouse::Right:
+
+            break;
+    }
+
+}
+
+void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor){
+    for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
+        if (it.get()->isDeath()) {
+            it.get()->getSprite().setColor(deathColor);
+        } else if (it.get()->isSelected()) {
+            it.get()->getSprite().setColor(selectedColor);
+        } else if (it->isConcealed()) {
+            it.get()->getSprite().setColor(concealedColor);
+        } else {
+            it.get()->getSprite().setColor(removeColor);
+        }
+        window.draw(it->getSprite());
+
+
+        for (auto const &itArsenal: it->getArsenalList()) // disegna i cannoni e gestisci il colore per la selezione
+            if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                if (it.get()->isDeath()) {
+                    itArsenal.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itArsenal.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itArsenal.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itArsenal->getSprite());
+                if (!itArsenal->getAmmoType()->isArrived()) {
+                    window.draw(itArsenal->getAmmoType()->getSprite());
+                }
             }
 
+        for (auto const &itBars: it->getBars()) { //disegna le barre di stato e imposta un colore predefinito
+            if (it.get()->isDeath()) {
+                itBars->getSprite().setColor(sf::Color(255, 0, 0));
+            }
+            window.draw(itBars->getSprite());
         }
+
+        if (it->getShipType() == ShipType::AircraftCarrier) { //disegna gli aerei e gestisci il colore per la selezione
+            for (auto const &itPlanes: it->getVehicleList()) {
+                if (it.get()->isDeath()) {
+                    itPlanes.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itPlanes.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itPlanes.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itPlanes->getSprite());
+            }
+        }
+
+
+
+
+
+    }
+
+}
+
+void drawAndManageAlliedShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor){
+    for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
+        if (it.get()->isDeath()) {
+            it.get()->getSprite().setColor(deathColor);
+        } else if (it.get()->isSelected()) {
+            it.get()->getSprite().setColor(selectedColor);
+        } else if (it->isConcealed()) {
+            it.get()->getSprite().setColor(concealedColor);
+        } else {
+            it.get()->getSprite().setColor(removeColor);
+        }
+        window.draw(it->getSprite());
+
+        for (auto const &itArsenal: it->getArsenalList())
+            if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
+                if (it.get()->isDeath()) {
+                    itArsenal.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itArsenal.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itArsenal.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itArsenal->getSprite());
+                if (!itArsenal->getAmmoType()->isArrived()) {
+                    window.draw(itArsenal->getAmmoType()->getSprite());
+                }
+            }
+
+
+        for (auto const &itBars: it->getBars()) { //disegna le barre di stato e impostane un colore predefinito se la nave viene distrutta
+            if (it.get()->isDeath()) {
+                itBars->getSprite().setColor(sf::Color(255, 0, 0));
+            }
+            window.draw(itBars->getSprite());
+        }
+
+        if (it->getShipType() == ShipType::AircraftCarrier) {
+            for (auto const &itPlanes: it->getVehicleList()) {
+                if (it.get()->isDeath()) {
+                    itPlanes.get()->getSprite().setColor(deathColor);
+                } else if (it.get()->isSelected()) {
+                    itPlanes.get()->getSprite().setColor(selectedColor);
+                } else {
+                    itPlanes.get()->getSprite().setColor(removeColor);
+                }
+                window.draw(itPlanes->getSprite());
+            }
+        }
+    }
+
+
+}
+
+void fpsManagment(sf::RenderWindow &window,sf::Clock &clock){
+    sf::Time time = clock.getElapsedTime();
+    int fps = 1.0f / time.asSeconds();
+    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    sf::Text fpsCount;
+    sf::Text fpsText;
+    sf::Font arialFont;
+    if (!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")) {
+        std::cerr << "Impossibile caricare il font" << std::endl;
+    }
+    fpsText.setFont(arialFont);
+    fpsText.setString("FPS:");
+    fpsText.setCharacterSize(20);
+    fpsText.setFillColor(sf::Color::Yellow);
+    fpsText.setPosition(0, 0);
+
+    fpsCount.setFont(arialFont);
+    fpsCount.setString(std::to_string(fps));
+    fpsCount.setCharacterSize(20);
+    fpsCount.setFillColor(sf::Color::Yellow);
+    fpsCount.setPosition(50, 0);
+
+    window.draw(fpsText);
+    window.draw(fpsCount);
+    window.display();
+
+}
+
+void drawMap(sf::RenderWindow &window,GameWorld &gameWorld){
+    for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
+        for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
+            window.draw(gameWorld.getTiles()[i][j]->getSprite());
+
+        }
+
     }
 }
 
-*/
-
-
-
-
-
-
-void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision,
+void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
             GameWorld &gameWorld, int tileDim, sf::RenderWindow &window) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
@@ -324,6 +506,13 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
         }
 
     }
+
+
+
+
+
+    //collisonControl(fullNavyCollision);
+
 
     auto enemyIterStart = gameWorld.getEnemyFleet().begin();
     auto enemyIterEnd = gameWorld.getEnemyFleet().end();
@@ -342,30 +531,30 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
 
 int main() {
     std::vector<Fleet> fleet = alliedDummyFleet();
-
-
     sf::Vector2i boundaries(1920, 1080);
-    int a, b, c, d, e;
-    int width, height, tileDim;
-    windowMode videoMode = windowMode::Windowed;
-    a = 3;
-    b = 3;
-    c = 3;
-    d = 3;
-    e = 2;
-
     sf::Color deathColor(100, 100, 100, 120);
     sf::Color selectedColor(196, 255, 168, 255);
     sf::Color concealedColor(250, 250, 250, 180);
     sf::Color removeColor(255, 255, 255, 255);
+    sf::Clock clock;
+    sf::RenderWindow window;
     sf::ContextSettings settings;
+    int numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir;
+    int width, height, tileDim;
+
+    numEnemySub = 3;
+    numEnemyBat = 3;
+    numEnemyCru = 3;
+    numEnemyDes = 3;
+    numEnemyAir = 2;
+
     settings.depthBits = 24;
     settings.stencilBits = 8;
     settings.antialiasingLevel = 0;
     settings.majorVersion = 2;
     settings.minorVersion = 1;
-    sf::Clock clock;
-    sf::RenderWindow window;
+
+    windowMode videoMode = windowMode::Windowed;
     auto desktop = sf::VideoMode::getDesktopMode();
     width = desktop.width;
     height = desktop.height;
@@ -373,8 +562,9 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(a, b, c, d, e, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
                                     height, tileDim);
+
     bool found = false;
     bool clicked = true;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
@@ -389,17 +579,7 @@ int main() {
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
 
-    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) {
-        iteratorPositions itPos;
-        itPos.it = itAllied;
-        fullNavyCollision.push_back(itPos);
-    }
-    for (itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
-        iteratorPositions itPos;
-        itPos.it = itEnemy;
-        fullNavyCollision.push_back(itPos);
-    }
-
+    prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
 
 
     std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
@@ -409,6 +589,33 @@ int main() {
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
+
+    gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
+             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision);
+    return 0;
+}
+
+void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
+                         std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
+                         std::list<iteratorPositions> &fullNavyCollision) {
+    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
+        iteratorPositions itPos;
+        itPos.it = itAllied;
+        fullNavyCollision.push_back(itPos);
+    }
+    for (itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
+        iteratorPositions itPos;
+        itPos.it = itEnemy;
+        fullNavyCollision.push_back(itPos);
+    }
+}
+
+void
+gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
+         sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
+         sf::RenderWindow &window, GameWorld &gameWorld, bool found, bool clicked,
+         std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
+         std::list<iteratorPositions> &fullNavyCollision) {
     while (window.isOpen()) {
         sf::Event event;
 
@@ -426,50 +633,7 @@ int main() {
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                switch (event.key.code) {
-                    case sf::Mouse::Left: {
-
-                        //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
-
-                        sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
-                        auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));
-
-                        found = false;
-                        for (auto it = gameWorld.getAlliedFleet().begin();
-                             it != gameWorld.getAlliedFleet().end() && !found; ++it) {
-
-                            if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
-                                !it->get()->isDeath()) {
-                                itSecondClick->get()->setSelected(false);
-                                it->get()->setSelected(true);
-                                found = true;
-                                clicked = false;
-                                itSecondClick = it;
-                            }
-                        }
-                        if (!found && !clicked) {
-                            bool foundIter = false;
-                            for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
-                                if (iter->it == itSecondClick) {
-                                    foundIter = true;
-                                    lst.erase(iter);
-                                }
-                            }
-
-                            iteratorPositions itPos;
-                            itPos.it = itSecondClick;
-                            itPos.pos = coords;
-                            lst.push_back(itPos);
-                            itPos.it->get()->setSelected(false);
-                            clicked = true;
-                        }
-                    }
-                        break;
-
-                    case sf::Mouse::Right:
-
-                        break;
-                }
+                manageSelection(window,event,gameWorld,found,clicked,lst,itSecondClick);
             } else if (event.type == sf::Event::MouseWheelMoved) {
 
             } else if (event.type == sf::Event::MouseMoved) {
@@ -480,144 +644,17 @@ int main() {
 
         window.clear();
 
-        for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) {
-            for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
-                window.draw(gameWorld.getTiles()[i][j]->getSprite());
-            }
-        }
+        drawMap(window,gameWorld);
 
-        for (auto &it: gameWorld.getEnemyFleet()) {
-            if (it.get()->isDeath()) {
-                it.get()->getSprite().setColor(deathColor);
-            } else if (it.get()->isSelected()) {
-                it.get()->getSprite().setColor(selectedColor);
-            } else if (it->isConcealed()) {
-                it.get()->getSprite().setColor(concealedColor);
-            } else {
-                it.get()->getSprite().setColor(removeColor);
-            }
-            window.draw(it->getSprite());
+        drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
-
-            for (auto const &itArsenal: it->getArsenalList())
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
-                    if (it.get()->isDeath()) {
-                        itArsenal.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itArsenal.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itArsenal.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itArsenal->getSprite());
-                    if (!itArsenal->getAmmoType()->isArrived()) {
-                        window.draw(itArsenal->getAmmoType()->getSprite());
-                    }
-                }
-
-            for (auto const &itBars: it->getBars()) {
-                if (it.get()->isDeath()) {
-                    itBars->getSprite().setColor(sf::Color(255, 0, 0));
-                }
-                window.draw(itBars->getSprite());
-            }
-
-            if (it->getShipType() == ShipType::AircraftCarrier) {
-                for (auto const &itPlanes: it->getVehicleList()) {
-                    if (it.get()->isDeath()) {
-                        itPlanes.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itPlanes.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itPlanes.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itPlanes->getSprite());
-                }
-            }
-
-
-
-
-
-        }
-
-        for (auto &it: gameWorld.getAlliedFleet()) {
-            if (it.get()->isDeath()) {
-                it.get()->getSprite().setColor(deathColor);
-            } else if (it.get()->isSelected()) {
-                it.get()->getSprite().setColor(selectedColor);
-            } else if (it->isConcealed()) {
-                it.get()->getSprite().setColor(concealedColor);
-            } else {
-                it.get()->getSprite().setColor(removeColor);
-            }
-            window.draw(it->getSprite());
-
-            for (auto const &itArsenal: it->getArsenalList())
-                if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
-                    if (it.get()->isDeath()) {
-                        itArsenal.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itArsenal.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itArsenal.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itArsenal->getSprite());
-                    if (!itArsenal->getAmmoType()->isArrived()) {
-                        window.draw(itArsenal->getAmmoType()->getSprite());
-                    }
-                }
-
-
-            for (auto const &itBars: it->getBars()) {
-                if (it.get()->isDeath()) {
-                    itBars->getSprite().setColor(sf::Color(255, 0, 0));
-                }
-                window.draw(itBars->getSprite());
-            }
-
-            if (it->getShipType() == ShipType::AircraftCarrier) {
-                for (auto const &itPlanes: it->getVehicleList()) {
-                    if (it.get()->isDeath()) {
-                        itPlanes.get()->getSprite().setColor(deathColor);
-                    } else if (it.get()->isSelected()) {
-                        itPlanes.get()->getSprite().setColor(selectedColor);
-                    } else {
-                        itPlanes.get()->getSprite().setColor(removeColor);
-                    }
-                    window.draw(itPlanes->getSprite());
-                }
-            }
-        }
+        drawAndManageAlliedShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
 
-        //calcola e mostra fps
-        sf::Time time = clock.getElapsedTime();
-        int fps = 1.0f / time.asSeconds();
-        std::string currentDir = CurrentDir::GetCurrentWorkingDir();
-        sf::Text fpsCount;
-        sf::Text fpsText;
-        sf::Font arialFont;
-        if (!arialFont.loadFromFile(currentDir + "/../Res/Font/arial.ttf")) {
-            std::cerr << "Impossibile caricare il font" << std::endl;
-        }
-        fpsText.setFont(arialFont);
-        fpsText.setString("FPS:");
-        fpsText.setCharacterSize(20);
-        fpsText.setFillColor(sf::Color::Yellow);
-        fpsText.setPosition(0, 0);
 
-        fpsCount.setFont(arialFont);
-        fpsCount.setString(std::to_string(fps));
-        fpsCount.setCharacterSize(20);
-        fpsCount.setFillColor(sf::Color::Yellow);
-        fpsCount.setPosition(50, 0);
-
-        window.draw(fpsText);
-        window.draw(fpsCount);
-        window.display();
+        fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
 
     }
-    return 0;
 }
