@@ -7,7 +7,9 @@
 
 
 class MvcObserver {
-
+public:
+    virtual ~MvcObserver()=default;
+    virtual	void updateMvcObserver() = 0;
 };
 
 
