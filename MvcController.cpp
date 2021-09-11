@@ -3,3 +3,9 @@
 //
 
 #include "MvcController.h"
+
+void MvcController::startUpEngine() {
+
+    model.searchAndHuntDownTargets();
+
+}
