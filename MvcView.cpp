@@ -20,3 +20,9 @@ void MvcView::updateMvcObserver() {
     button.getSprite().setColor(sf::Color(30, 30, 30));
     button.setClickable(false);
 }
+
+MvcView::~MvcView() {
+
+    aircraftCarrier.removeMvcObserver(std::shared_ptr<MvcView> (this));
+
+}

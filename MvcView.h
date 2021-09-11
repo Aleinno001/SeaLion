@@ -24,6 +24,8 @@ public:
     void airplaneClick();
 
     void updateMvcObserver() override;
+
+    virtual ~MvcView();
 };
 
 
