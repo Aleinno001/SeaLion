@@ -46,9 +46,9 @@ public:
 
     void notifyMvcObserver() override;
 
-    void addObserver(std::shared_ptr<MvcObserver> o) override;
+    void addMvcObserver(std::shared_ptr<MvcObserver> o) override;
 
-    void removeObserver(std::shared_ptr<MvcObserver> o) override;
+    void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
 
     int HowManyGuns() {
         return arsenalList.size();
