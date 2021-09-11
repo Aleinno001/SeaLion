@@ -6,6 +6,6 @@
 
 void MvcController::startUpEngine() {
 
-    model.searchAndHuntDownTargets();
+    model.searchAndHuntDownEnemyTargets();
 
 }
