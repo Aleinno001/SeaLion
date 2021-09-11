@@ -132,6 +132,7 @@ void AircraftCarrier::notifyBarsDamage() {
 }
 
 void AircraftCarrier::notifyMvcObserver() {
+
     for(auto &it:listMvcObservers)
         it->updateMvcObserver();
 }
