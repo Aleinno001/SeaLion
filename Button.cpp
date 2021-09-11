@@ -5,9 +5,9 @@
 #include "Button.h"
 #include "CurrentDir.h"
 
-Button::Button(const sf::Vector2f &pos, const std::string& name, const int &width, const int &length) : pos(pos), name(name), width(width), length(length) {
+Button::Button(const std::string &name, const int &width, const int &length) : name(name), width(width), length(length) {
     setUpSprite(name);
-    sprite.setPosition(pos);
+    clickable = true;
 }
 
 bool Button::setUpSprite(std::string textureName) {
@@ -37,3 +37,38 @@ bool Button::checkClick(sf::Vector2f clickPos) {
     return result;
 }
 
+void Button::setPos(const sf::Vector2f &pos) {
+    Button::pos = pos;
+}
+
+const sf::Vector2f &Button::getPos() const {
+    return pos;
+}
+
+int Button::getWidth() const {
+    return width;
+}
+
+int Button::getLength() const {
+    return length;
+}
+
+void Button::setWidth(int width) {
+    Button::width = width;
+}
+
+void Button::setLength(int length) {
+    Button::length = length;
+}
+
+sf::Sprite &Button::getSprite()  {
+    return sprite;
+}
+
+void Button::setClickable(bool clickable) {
+    Button::clickable = clickable;
+}
+
+bool Button::isClickable() const {
+    return clickable;
+}

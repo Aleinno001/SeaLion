@@ -6,8 +6,24 @@
 #define SEALION_MVCVIEW_H
 
 
-class MvcView {
+#include "MvcObserver.h"
+#include "AircraftCarrier.h"
+#include "MvcController.h"
+#include "Button.h"
 
+class MvcView: public MvcObserver{
+private:
+    AircraftCarrier &aircraftCarrier;
+    MvcController &controller;
+    Button &button;
+    sf::Window &window;
+
+public:
+    MvcView(AircraftCarrier &aircraftCarrier, MvcController &controller, Button &button, sf::Window &window);
+
+    void airplaneClick();
+
+    void updateMvcObserver() override;
 };
 
 

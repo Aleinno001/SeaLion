@@ -15,12 +15,31 @@ private:
     std::string name;
     int width;
     int length;
+    bool clickable;
 public:
-    Button(const sf::Vector2f &pos, const std::string& name, const int &width, const int &length);
+    Button(const std::string& name, const int &width, const int &length);
 
     bool setUpSprite(std::string textureName);
 
     bool checkClick (sf::Vector2f clickPos);
+
+    void setPos(const sf::Vector2f &pos);
+
+    const sf::Vector2f &getPos() const;
+
+    int getWidth() const;
+
+    int getLength() const;
+
+    void setWidth(int width);
+
+    void setLength(int length);
+
+    sf::Sprite &getSprite();
+
+    void setClickable(bool clickable);
+
+    bool isClickable() const;
 };
 
 
