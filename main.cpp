@@ -573,6 +573,7 @@ int main() {
 
     bool found = false;
     bool clicked = true;
+
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     auto itAllied = gameWorld.getAlliedFleet().begin();
     auto itEnemy = gameWorld.getEnemyFleet().begin();
