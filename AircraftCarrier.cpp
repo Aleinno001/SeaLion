@@ -145,7 +145,7 @@ void AircraftCarrier::addMvcObserver(std::shared_ptr<MvcObserver> o) {
 
 void AircraftCarrier::removeMvcObserver(std::shared_ptr<MvcObserver> o) {
 
-
+    listMvcObservers.remove(o);
 
 }
 
