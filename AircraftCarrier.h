@@ -50,6 +50,7 @@ public:
 
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
 
+    void searchAndHuntDownEnemyTargets();
     int HowManyGuns() {
         return arsenalList.size();
     }
