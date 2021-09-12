@@ -5,6 +5,8 @@
 #include <thread>
 #include "Collision.h"
 #include "Explosion.h"
+#include "MvcController.h"
+#include "MvcView.h"
 
 enum class windowMode {
     Windowed,
@@ -585,8 +587,18 @@ int main() {
     //Explosion explosion(pos);
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
+    std::list<std::unique_ptr<MvcController>> controllers;
+    std::list<std::unique_ptr<MvcView>> views;
 
     prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
+
+    for(auto &iterMvc:gameWorld.getAlliedFleet()){
+        if(iterMvc->getShipType()==ShipType::AircraftCarrier) {
+           // controllers.push_back(new MvcController(std::static_cast<std::ref(AircraftCarrier)>(iterMvc->getInstance());
+        }
+
+    }
+
 
 
     std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));

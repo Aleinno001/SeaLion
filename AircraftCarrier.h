@@ -44,6 +44,8 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
+
+
     void notifyMvcObserver() override;
 
     void addMvcObserver(std::shared_ptr<MvcObserver> o) override;
