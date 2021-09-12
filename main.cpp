@@ -205,7 +205,7 @@ auto checkHit = [](std::list<iteratorPositions> &fullNavy, sf::Window &window) {
 void
 gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
-         sf::RenderWindow &window, GameWorld &gameWorld, bool found, bool clicked,
+         sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
          std::list<iteratorPositions> &fullNavyCollision);
 
@@ -302,7 +302,7 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 }
 
 
-void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool found,bool clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick){
+void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool &found,bool &clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick){
     switch (event.key.code) {
         case sf::Mouse::Left: {
 
@@ -620,7 +620,7 @@ void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip
 void
 gameLoop(int width, int height, int tileDim, windowMode &videoMode, sf::Color &deathColor, sf::Color &selectedColor,
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
-         sf::RenderWindow &window, GameWorld &gameWorld, bool found, bool clicked,
+         sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
          std::list<iteratorPositions> &fullNavyCollision) {
     while (window.isOpen()) {
