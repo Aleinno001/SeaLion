@@ -13,19 +13,23 @@
 
 class MvcView: public MvcObserver{
 private:
-    AircraftCarrier &aircraftCarrier;
+    WarShip &model;
     MvcController &controller;
     Button &button;
     sf::Window &window;
 
 public:
-    MvcView(AircraftCarrier &aircraftCarrier, MvcController &controller, Button &button, sf::Window &window);
+    MvcView(WarShip &aircraftCarrier, MvcController &controller, Button &button, sf::Window &window);
 
     void airplaneClick();
 
     void updateMvcObserver() override;
 
     virtual ~MvcView();
+
+    WarShip &getAircraftCarrier() const;
+
+    Button &getButton() const;
 };
 
 

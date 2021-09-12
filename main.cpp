@@ -209,7 +209,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision);
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views);
 
 void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
@@ -409,7 +409,9 @@ void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::C
 
 }
 
-void drawAndManageAlliedShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor){
+void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
+                              sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor,
+                              std::list<MvcView> views) {
     for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
         if (it.get()->isDeath()) {
             it.get()->getSprite().setColor(deathColor);
@@ -421,7 +423,14 @@ void drawAndManageAlliedShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::
             it.get()->getSprite().setColor(removeColor);
         }
         window.draw(it->getSprite());
-
+        if (it->getShipType() == ShipType::AircraftCarrier && it->isSelected()) {
+            for (auto &viewIt: views) {
+                if (viewIt.getAircraftCarrier().getSprite().getPosition() ==
+                    it.get()->getSprite().getPosition()) {   //FIXME sovraccarica l'operatore di uguaglianza
+                    window.draw(viewIt.getButton().getSprite());
+                }
+            }
+        }
         for (auto const &itArsenal: it->getArsenalList())
             if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                 if (it.get()->isDeath()) {
@@ -587,19 +596,19 @@ int main() {
     //Explosion explosion(pos);
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
-    std::list<std::unique_ptr<MvcController>> controllers;
-    std::list<std::unique_ptr<MvcView>> views;
+    std::list<MvcController> controllers;
+    std::list<MvcView> views;
 
     prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
 
-    for(auto &iterMvc:gameWorld.getAlliedFleet()){
-        if(iterMvc->getShipType()==ShipType::AircraftCarrier) {
-           // controllers.push_back(new MvcController(std::static_cast<std::ref(AircraftCarrier)>(iterMvc->getInstance());
+    for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
+        if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
+            Button b("airplaneButton", 30, 30);
+            MvcController controller(iter->get()->getInstance());
+            controllers.push_back(controller);
+            MvcView view(iter->get()->getInstance(), controller, b, window);
         }
-
     }
-
-
 
     std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
     std::thread thread_tiles_effect(tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),
@@ -610,7 +619,7 @@ int main() {
     thread_checkHit.detach();
 
     gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision);
+             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views);
     return 0;
 }
 
@@ -634,7 +643,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision) {
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views) {
     while (window.isOpen()) {
         sf::Event event;
 
@@ -667,7 +676,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
 
         drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
-        drawAndManageAlliedShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
+        drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views);
 
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);

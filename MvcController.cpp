@@ -6,6 +6,8 @@
 
 void MvcController::startUpEngine() {
 
-    model.searchAndHuntDownEnemyTargets();
+    if (AircraftCarrier *model = dynamic_cast<AircraftCarrier *>(model)) {
+        model->searchAndHuntDownEnemyTargets();
+    }
 
 }
