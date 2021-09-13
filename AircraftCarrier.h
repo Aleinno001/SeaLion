@@ -52,7 +52,8 @@ public:
 
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
 
-    void searchAndHuntDownEnemyTargets();
+    void searchAndHuntDownEnemyTargets(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
+                                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,double dt);
     int HowManyGuns() {
         return arsenalList.size();
     }

@@ -4,8 +4,9 @@
 
 #include "MvcController.h"
 
-void MvcController::startUpEngine() {
+void MvcController::startUpEngine(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
+                                  std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,double dt) {
 
-    model.searchAndHuntDownEnemyTargets();
+    model.searchAndHuntDownEnemyTargets(enemyListStart,enemyListEnd,dt);
 
 }

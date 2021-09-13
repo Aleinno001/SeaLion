@@ -11,7 +11,8 @@
 class MvcController {
 public:
     explicit MvcController(AircraftCarrier &mod): model(mod){}
-    void startUpEngine();
+    void startUpEngine(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
+                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,double dt);
 private:
     AircraftCarrier &model;
 };

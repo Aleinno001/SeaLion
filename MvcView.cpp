@@ -12,8 +12,9 @@ MvcView::MvcView(AircraftCarrier &aircraftCarrier, MvcController &controller, Bu
     button.setPos(pos);
 }
 
-void MvcView::airplaneClick() {
-    controller.startUpEngine();
+void MvcView::airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
+                            std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,double dt) {
+    controller.startUpEngine(enemyListStart,enemyListEnd,dt);
 }
 
 void MvcView::updateMvcObserver() {
