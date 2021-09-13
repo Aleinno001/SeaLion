@@ -58,6 +58,7 @@ public:
         return arsenalList.size();
     }
 
+    std::list<std::shared_ptr<MvcObserver>> &getListMvcObservers();
 
     ~AircraftCarrier() override;
 

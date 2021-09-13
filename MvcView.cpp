@@ -4,12 +4,12 @@
 
 #include "MvcView.h"
 
-MvcView::MvcView(AircraftCarrier &aircraftCarrier, MvcController &controller, Button &button, sf::Window &window) : aircraftCarrier(
-        aircraftCarrier), controller(controller), button(button), window(window) {
-    sf::Vector2f pos;
-    pos.x = window.getSize().x/2;
-    pos.y = window.getSize().y - button.getLength()/2;
-    button.setPos(pos);
+MvcView::MvcView(WarShip &aircraftCarrier, MvcController &controller, sf::Window &window) : model(
+        aircraftCarrier), controller(controller), window(window) {
+    airplaneButtonClickable = false;
+    if (AircraftCarrier *pAircraftCarrier = dynamic_cast<AircraftCarrier *>(&model)) {
+        pAircraftCarrier->addMvcObserver(std::shared_ptr<MvcObserver>(this));
+    }
 }
 
 void MvcView::airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
@@ -18,12 +18,35 @@ void MvcView::airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> enemyL
 }
 
 void MvcView::updateMvcObserver() {
-    button.getSprite().setColor(sf::Color(30, 30, 30));
-    button.setClickable(false);
+    airplaneButtonClickable = false;
 }
 
+/*
 MvcView::~MvcView() {
 
-    aircraftCarrier.removeMvcObserver(std::shared_ptr<MvcView> (this));
+    if (AircraftCarrier *pAircraftCarrier = dynamic_cast<AircraftCarrier *>(&model)) {
+        pAircraftCarrier->removeMvcObserver(std::shared_ptr<MvcView>(this));
+    }
 
+}
+*/
+WarShip &MvcView::getAircraftCarrier() const {
+    return model;
+}
+
+
+bool MvcView::isAirplaneButtonClickable() const {
+    return airplaneButtonClickable;
+}
+
+MvcView *MvcView::getInstance() {
+    return this;
+}
+
+bool MvcView::checkAirplaneButtonClick(sf::Vector2f clickPos, Button &b) {
+    bool result = false;
+    if (b.getSprite().getGlobalBounds().contains(clickPos)) {
+        result = true;
+    }
+    return result;
 }

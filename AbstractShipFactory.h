@@ -9,6 +9,7 @@
 #include "WarShip.h"
 #include "SFML/Graphics.hpp"
 #include "Dice.h"
+#include "MvcController.h"
 
 
 class GameWorld;

@@ -156,6 +156,10 @@ void AircraftCarrier::searchAndHuntDownEnemyTargets(std::_List_iterator<std::uni
 
 }
 
+std::list<std::shared_ptr<MvcObserver>> &AircraftCarrier::getListMvcObservers() {
+    return listMvcObservers;
+}
+
 
 
 
