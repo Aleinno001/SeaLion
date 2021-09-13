@@ -153,6 +153,10 @@ void AircraftCarrier::searchAndHuntDownEnemyTargets() {
 //TODO code for searching and attacking enemy targets
 }
 
+std::list<std::shared_ptr<MvcObserver>> &AircraftCarrier::getListMvcObservers() {
+    return listMvcObservers;
+}
+
 
 
 

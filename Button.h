@@ -11,21 +11,18 @@ class Button {
 private:
     sf::Sprite sprite;
     sf::Texture texture;
-    sf::Vector2f pos;
     std::string name;
     int width;
     int length;
-    bool clickable;
+    bool clicked;
 public:
-    Button(const std::string& name, const int &width, const int &length);
+    Button(const std::string &name, const int &width, const int &length, sf::Vector2f pos);
 
     bool setUpSprite(std::string textureName);
 
     bool checkClick (sf::Vector2f clickPos);
 
     void setPos(const sf::Vector2f &pos);
-
-    const sf::Vector2f &getPos() const;
 
     int getWidth() const;
 
@@ -37,9 +34,9 @@ public:
 
     sf::Sprite &getSprite();
 
-    void setClickable(bool clickable);
+    void setClicked(bool clickable);
 
-    bool isClickable() const;
+    bool isClicked() const;
 };
 
 

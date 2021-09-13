@@ -209,7 +209,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views);
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton);
 
 void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
@@ -304,44 +304,58 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 }
 
 
-void manageSelection(sf::RenderWindow &window,sf::Event &event,GameWorld &gameWorld, bool &found,bool &clicked,std::list<iteratorPositions> &lst,std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick){
+void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
+                     std::list<iteratorPositions> &lst, std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
+                     Button &airplaneButton) {
     switch (event.key.code) {
         case sf::Mouse::Left: {
 
             //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
 
             sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
-            auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
+            auto translated_pos = window.mapPixelToCoords(
+                    static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
+            if (airplaneButton.getSprite().getGlobalBounds().contains(translated_pos) &&
+                itSecondClick->get()->getShipType() == ShipType::AircraftCarrier &&
+                itSecondClick->get()->isSelected()) {
+                airplaneButton.getSprite().setColor(sf::Color(0, 180, 0));
+                airplaneButton.setClicked(true);
+            } else {
+                airplaneButton.getSprite().setColor(sf::Color(255, 255, 255));
+                if (!airplaneButton.isClicked()) {
+                    found = false;
+                    for (auto it = gameWorld.getAlliedFleet().begin();
+                         it != gameWorld.getAlliedFleet().end() && !found; ++it) {
 
-            found = false;
-            for (auto it = gameWorld.getAlliedFleet().begin();
-                 it != gameWorld.getAlliedFleet().end() && !found; ++it) {
+                        if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
+                            !it->get()->isDeath()) {
+                            itSecondClick->get()->setSelected(false);
+                            it->get()->setSelected(true);
+                            found = true;
+                            clicked = false;
+                            itSecondClick = it;
+                        }
+                    }
+                    if (!found && !clicked && !airplaneButton.getSprite().getGlobalBounds().contains(translated_pos)) {
+                        bool foundIter = false;
+                        for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
+                            if (iter->it == itSecondClick) {
+                                foundIter = true;
+                                lst.erase(iter);
+                            }
+                        }
 
-                if (it->get()->getSprite().getGlobalBounds().contains(translated_pos) &&
-                    !it->get()->isDeath()) {
-                    itSecondClick->get()->setSelected(false);
-                    it->get()->setSelected(true);
-                    found = true;
-                    clicked = false;
-                    itSecondClick = it;
-                }
-            }
-            if (!found && !clicked) {
-                bool foundIter = false;
-                for (auto iter = lst.begin(); iter != lst.end() && !foundIter; ++iter) {
-                    if (iter->it == itSecondClick) {
-                        foundIter = true;
-                        lst.erase(iter);
+                        iteratorPositions itPos;
+                        itPos.it = itSecondClick;
+                        itPos.pos = coords;
+                        lst.push_back(itPos);
+                        itPos.it->get()->setSelected(false);
+                        clicked = true;
                     }
                 }
-
-                iteratorPositions itPos;
-                itPos.it = itSecondClick;
-                itPos.pos = coords;
-                lst.push_back(itPos);
-                itPos.it->get()->setSelected(false);
-                clicked = true;
+                airplaneButton.setClicked(false);
             }
+
         }
             break;
 
@@ -411,7 +425,7 @@ void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::C
 
 void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                               sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor,
-                              std::list<MvcView> views) {
+                              std::list<MvcView> &views, Button &airplaneButton) {
     for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
         if (it.get()->isDeath()) {
             it.get()->getSprite().setColor(deathColor);
@@ -423,13 +437,11 @@ void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf
             it.get()->getSprite().setColor(removeColor);
         }
         window.draw(it->getSprite());
+
         if (it->getShipType() == ShipType::AircraftCarrier && it->isSelected()) {
-            for (auto &viewIt: views) {
-                if (viewIt.getAircraftCarrier().getSprite().getPosition() ==
-                    it.get()->getSprite().getPosition()) {   //FIXME sovraccarica l'operatore di uguaglianza
-                    window.draw(viewIt.getButton().getSprite());
-                }
-            }
+            airplaneButton.getSprite().setPosition(window.getSize().x - airplaneButton.getWidth() / 2,
+                                                   window.getSize().y - airplaneButton.getLength() / 2);
+            window.draw(airplaneButton.getSprite());
         }
         for (auto const &itArsenal: it->getArsenalList())
             if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
@@ -601,12 +613,17 @@ int main() {
 
     prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
 
+    sf::Vector2f buttonPos;
+    pos.x = window.getSize().x - 15;
+    pos.y = window.getSize().y - 15;
+    Button airplaneButton("airplaneButton", 30, 30, buttonPos);
+
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
-            Button b("airplaneButton", 30, 30);
             MvcController controller(iter->get()->getInstance());
             controllers.push_back(controller);
-            MvcView view(iter->get()->getInstance(), controller, b, window);
+            MvcView view(iter->get()->getInstance(), controller, window);
+            views.push_back(view);
         }
     }
 
@@ -619,7 +636,7 @@ int main() {
     thread_checkHit.detach();
 
     gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views);
+             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton);
     return 0;
 }
 
@@ -643,7 +660,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views) {
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton) {
     while (window.isOpen()) {
         sf::Event event;
 
@@ -661,7 +678,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                manageSelection(window,event,gameWorld,found,clicked,lst,itSecondClick);
+                manageSelection(window, event, gameWorld, found, clicked, lst, itSecondClick, airplaneButton);
             } else if (event.type == sf::Event::MouseWheelMoved) {
 
             } else if (event.type == sf::Event::MouseMoved) {
@@ -676,7 +693,8 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
 
         drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
 
-        drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views);
+        drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views,
+                                 airplaneButton);
 
 
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);

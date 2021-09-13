@@ -4,10 +4,15 @@
 
 #include "Button.h"
 #include "CurrentDir.h"
+#include "Collision.h"
 
-Button::Button(const std::string &name, const int &width, const int &length) : name(name), width(width), length(length) {
+Button::Button(const std::string &name, const int &width, const int &length, sf::Vector2f pos) : name(name),
+                                                                                                 width(width),
+                                                                                                 length(length) {
     setUpSprite(name);
-    clickable = true;
+    sprite.setOrigin(width / 2, length / 2);
+    sprite.setPosition(pos);
+    clicked = false;
 }
 
 bool Button::setUpSprite(std::string textureName) {
@@ -20,7 +25,7 @@ bool Button::setUpSprite(std::string textureName) {
     }
     std::string textPath;
     textPath = currentDir + "/../Res/Buttons/" + textureName + ".png";
-    if (!texture.loadFromFile(textPath)) {
+    if (!Collision::CreateTextureAndBitmask(texture, textPath)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
     texture.setSmooth(true);
@@ -38,11 +43,7 @@ bool Button::checkClick(sf::Vector2f clickPos) {
 }
 
 void Button::setPos(const sf::Vector2f &pos) {
-    Button::pos = pos;
-}
-
-const sf::Vector2f &Button::getPos() const {
-    return pos;
+    sprite.setPosition(pos);
 }
 
 int Button::getWidth() const {
@@ -65,10 +66,10 @@ sf::Sprite &Button::getSprite()  {
     return sprite;
 }
 
-void Button::setClickable(bool clickable) {
-    Button::clickable = clickable;
+void Button::setClicked(bool clickable) {
+    Button::clicked = clickable;
 }
 
-bool Button::isClickable() const {
-    return clickable;
+bool Button::isClicked() const {
+    return clicked;
 }

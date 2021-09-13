@@ -11,25 +11,32 @@
 #include "MvcController.h"
 #include "Button.h"
 
-class MvcView: public MvcObserver{
+class MvcView : public MvcObserver {
 private:
     WarShip &model;
     MvcController &controller;
-    Button &button;
     sf::Window &window;
+    sf::Texture tx;
+    bool airplaneButtonClickable;
 
 public:
-    MvcView(WarShip &aircraftCarrier, MvcController &controller, Button &button, sf::Window &window);
+    MvcView(WarShip &aircraftCarrier, MvcController &controller, sf::Window &window);
 
     void airplaneClick();
 
     void updateMvcObserver() override;
 
-    virtual ~MvcView();
+    //virtual ~MvcView();
+
+    virtual ~MvcView() = default;
 
     WarShip &getAircraftCarrier() const;
 
-    Button &getButton() const;
+    bool isAirplaneButtonClickable() const;
+
+    MvcView *getInstance();
+
+    bool checkAirplaneButtonClick(sf::Vector2f clickPos, Button &b);
 };
 
 
