@@ -13,6 +13,13 @@ enum class windowMode {
     Fullscreen
 };
 
+typedef struct navyPositionsForAirAttack{
+
+    std::_List_iterator<std::unique_ptr<WarShip>> itAllied;
+    std::_List_iterator<std::unique_ptr<WarShip>> itEnemy;
+
+}navyPositionsForAirAttack;
+
 typedef struct iteratorPositions {
     std::_List_iterator<std::unique_ptr<WarShip>> it;
     sf::Vector2<double> pos;
@@ -306,7 +313,7 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 
 void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
                      std::list<iteratorPositions> &lst, std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
-                     Button &airplaneButton) {
+                     Button &airplaneButton,std::list<navyPositionsForAirAttack> &airAttackList) {
     switch (event.key.code) {
         case sf::Mouse::Left: {
 
@@ -320,6 +327,7 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
                 itSecondClick->get()->isSelected()) {
                 airplaneButton.getSprite().setColor(sf::Color(0, 180, 0));
                 airplaneButton.setClicked(true);
+
             } else {
                 airplaneButton.getSprite().setColor(sf::Color(255, 255, 255));
                 if (!airplaneButton.isClicked()) {
@@ -352,6 +360,17 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
                         itPos.it->get()->setSelected(false);
                         clicked = true;
                     }
+                }else{
+                    for(auto itSearchClickIsValid =gameWorld.getEnemyFleet().begin(); itSearchClickIsValid!= gameWorld.getEnemyFleet().end();++itSearchClickIsValid)
+                        if(itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(translated_pos))
+                        {
+                            navyPositionsForAirAttack element;
+
+                            element.itAllied=itSecondClick;//Portaerei alleata
+                            element.itEnemy=itSearchClickIsValid;//Qualsiasi nave nemica
+
+
+                        }
                 }
                 airplaneButton.setClicked(false);
             }

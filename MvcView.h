@@ -22,8 +22,7 @@ private:
 public:
     MvcView(WarShip &aircraftCarrier, MvcController &controller, sf::Window &window);
 
-    void airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
-                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,double dt);
+    void airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> target,double dt);
 
     void updateMvcObserver() override;
 
