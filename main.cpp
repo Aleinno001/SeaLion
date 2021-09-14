@@ -364,10 +364,12 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
                     for(auto itSearchClickIsValid =gameWorld.getEnemyFleet().begin(); itSearchClickIsValid!= gameWorld.getEnemyFleet().end();++itSearchClickIsValid)
                         if(itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(translated_pos))
                         {
+
                             navyPositionsForAirAttack element;
 
                             element.itAllied=itSecondClick;//Portaerei alleata
                             element.itEnemy=itSearchClickIsValid;//Qualsiasi nave nemica
+                            element.itAllied->get()->setAir(true);
                             airAttackList.push_back(element);
 
                         }
@@ -556,8 +558,15 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
     }
 
     if(!airTargets.empty()){
-        for(auto iter = airTargets.begin();iter!=airTargets.end();++iter){
+        for(auto &iter:airTargets ){
 
+            if(AircraftCarrier * bend = dynamic_cast<AircraftCarrier *> (iter.itAllied->get())) {
+                //TODO cambiare il .front per l'agfgiunta di piu' viste
+               // MvcView * view = dynamic_cast<MvcView *>(bend->getListMvcObservers().front().get());
+               // view->airplaneClick(iter.itEnemy,dt);
+                bend->searchAndHuntDownEnemyTargets(airTargets.front().itEnemy,dt);
+
+            }
         }
     }
 

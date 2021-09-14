@@ -70,8 +70,12 @@ void WarShip::move(sf::Vector2<double> coordinates,
         notifyArsenals(vel, deltaMx);
         notifyBars(vel,deltaMx);
 
-        if (shipType == ShipType::AircraftCarrier)
+        if (shipType == ShipType::AircraftCarrier && !air)
             notifyPlanes(vel, deltaMx);
+        else
+        {
+            //TODO Detach Airplanes Observers
+        }
     }
 }
 
@@ -259,5 +263,13 @@ const int WarShip::getNumHCannons() const {
 
 WarShip& WarShip::getInstance() {
     return std::ref(*this);
+}
+
+bool WarShip::isAir() const {
+    return air;
+}
+
+void WarShip::setAir(bool air) {
+    WarShip::air = air;
 }
 

@@ -96,6 +96,7 @@ protected:
     const int numAntiAircraft;
     bool concealed;
     bool selected {false};
+    bool air{false};
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::shared_ptr<Vehicle>> vehicleList;
     std::list<std::shared_ptr<BarInterface>> bars;
@@ -140,6 +141,10 @@ public:
     virtual void detachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
 
     //Getter
+
+    bool isAir() const;
+
+    void setAir(bool air);
 
     const int getNumAntiAircraft() const;
 
