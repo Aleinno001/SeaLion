@@ -543,7 +543,7 @@ void drawMap(sf::RenderWindow &window,GameWorld &gameWorld){
 }
 
 void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
-            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,std::list<navyPositionsForAirAttack> &airTargets) {
+            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,std::list<navyPositionsForAirAttack> &airTargets,std::list<MvcView>&views) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -560,11 +560,14 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
     if(!airTargets.empty()){
         for(auto &iter:airTargets ){
 
-            if(AircraftCarrier * bend = dynamic_cast<AircraftCarrier *> (iter.itAllied->get())) {
+            if(auto * bend = dynamic_cast<AircraftCarrier *> (iter.itAllied->get())) {
                 //TODO cambiare il .front per l'agfgiunta di piu' viste
-               // MvcView * view = dynamic_cast<MvcView *>(bend->getListMvcObservers().front().get());
-               // view->airplaneClick(iter.itEnemy,dt);
-                bend->searchAndHuntDownEnemyTargets(airTargets.front().itEnemy,dt);
+                for(auto &itViews:views) {
+                    if (bend->getSprite().getPosition() == itViews.getAircraftCarrier().getSprite().getPosition()){
+                        itViews.airplaneClick(iter.itEnemy,dt);
+                    }
+                }
+                //bend->searchAndHuntDownEnemyTargets(airTargets.front().itEnemy,dt);
 
             }
         }
@@ -655,9 +658,10 @@ int main() {
 
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
-            MvcController controller(iter->get()->getInstance());
+            AircraftCarrier * dinamicAir = dynamic_cast<AircraftCarrier *>(iter->get());
+            MvcController controller(dinamicAir->getInstance());
             controllers.push_back(controller);
-            MvcView view(iter->get()->getInstance(), controller, window);
+            MvcView view(dinamicAir->getInstance(), controller, window);
             views.push_back(view);
         }
     }
@@ -732,7 +736,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
                                  airplaneButton);
 
 
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window,airTargets);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window,airTargets,views);
 
 
         fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font

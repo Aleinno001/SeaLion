@@ -187,7 +187,7 @@ public:
     void setConcealed(bool isConcealed);
 
 
-    WarShip& getInstance();
+
 
     void setSelected(bool selected);
 

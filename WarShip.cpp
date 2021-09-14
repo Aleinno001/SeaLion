@@ -261,9 +261,7 @@ const int WarShip::getNumHCannons() const {
     return numHCannons;
 }
 
-WarShip& WarShip::getInstance() {
-    return std::ref(*this);
-}
+
 
 bool WarShip::isAir() const {
     return air;

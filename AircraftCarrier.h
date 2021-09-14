@@ -44,7 +44,7 @@ public:
 
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
 
-
+    AircraftCarrier& getInstance();
 
     void notifyMvcObserver() override;
 
@@ -52,12 +52,12 @@ public:
 
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
 
-    void searchAndHuntDownEnemyTargets(std::_List_iterator<std::unique_ptr<WarShip>> target,double dt);
+    void searchAndHuntDownEnemyTargets(std::_List_iterator<std::unique_ptr<WarShip>> &target,double dt);
     int HowManyGuns() {
         return arsenalList.size();
     }
 
-    std::list<std::shared_ptr<MvcObserver>> &getListMvcObservers();
+    std::list<std::shared_ptr<MvcObserver>> getListMvcObservers();
 
     ~AircraftCarrier() override;
 

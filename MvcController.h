@@ -12,12 +12,12 @@
 
 class MvcController {
 public:
-    explicit MvcController(WarShip &mod) : model(mod) {}
+    explicit MvcController(AircraftCarrier &mod) : model(mod) {}
 
-    void startUpEngine(std::_List_iterator<std::unique_ptr<WarShip>> target,double dt);
+    void startUpEngine(std::_List_iterator<std::unique_ptr<WarShip>> &target,double dt);
 
 private:
-    WarShip &model;
+    AircraftCarrier &model;
 };
 
 

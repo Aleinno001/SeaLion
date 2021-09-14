@@ -12,7 +12,7 @@ MvcView::MvcView(WarShip &aircraftCarrier, MvcController &controller, sf::Window
     }
 }
 
-void MvcView::airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> target,double dt) {
+void MvcView::airplaneClick(std::_List_iterator<std::unique_ptr<WarShip>> &target,double dt) {
     controller.startUpEngine(target,dt);
 }
 
