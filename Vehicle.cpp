@@ -136,3 +136,41 @@ float Vehicle::calculateMx(float dx,
     return mx;
 }
 
+void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
+    if (!death) {   //verifica morte
+        double mx;
+        double dy = coordinates.y - sprite.getPosition().y;
+        double dx = coordinates.x - sprite.getPosition().x;
+        float rotatingInPlaceMult = 1;
+        double deltaMx = 0;
+
+        mx = calculateMx(dx, dy);
+        //FIXME togli il *10
+        if (currentSpeed <= maxSpeed * 10) {
+            currentSpeed = currentSpeed + acceleration / 100 * 10;
+        }
+        sf::Vector2f vel;
+       //controlla se l'aereo ha raggiunto la destinazine
+            if (abs(sprite.getRotation() - mx) >=
+                25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
+                rotatingInPlaceMult = 3;
+                if (currentSpeed > maxSpeed / 4)
+                    currentSpeed = currentSpeed - acceleration / 100;
+            }
+            if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
+                 abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height /
+                                                               2)) {   //Se il punto da raggiungere è vicino l'aereo avanza lentamente
+                if (currentSpeed > acceleration / 100) {
+                    currentSpeed = currentSpeed - acceleration / 100;
+                }
+            }
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            sprite.setPosition(sprite.getPosition() + vel);
+            deltaMx = rotate(mx, rotatingInPlaceMult);
+
+
+    }
+
+}
+

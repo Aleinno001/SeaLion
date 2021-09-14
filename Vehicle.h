@@ -56,7 +56,7 @@ public:
 
     void setCollision(bool collision);
 
-    virtual void move(sf::Vector2 <double> coordinates,double dt){};//FIXME DA METTERE COME INTERFACCIA
+    virtual void move(sf::Vector2 <double> coordinates,double dt);//FIXME DA METTERE COME INTERFACCIA
 
     const double getMaxHp() const;
 
