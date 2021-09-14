@@ -142,7 +142,7 @@ void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
         double dy = coordinates.y - sprite.getPosition().y;
         double dx = coordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
-        double deltaMx = 0;
+        
 
         mx = calculateMx(dx, dy);
         //FIXME togli il *10
@@ -167,7 +167,7 @@ void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
             vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
-            deltaMx = rotate(mx, rotatingInPlaceMult);
+            rotate(mx, rotatingInPlaceMult);
 
 
     }

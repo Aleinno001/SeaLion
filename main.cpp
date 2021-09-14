@@ -216,7 +216,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton);
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton,std::list<navyPositionsForAirAttack> &airTargets);
 
 void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
@@ -368,7 +368,7 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
 
                             element.itAllied=itSecondClick;//Portaerei alleata
                             element.itEnemy=itSearchClickIsValid;//Qualsiasi nave nemica
-
+                            airAttackList.push_back(element);
 
                         }
                 }
@@ -541,7 +541,7 @@ void drawMap(sf::RenderWindow &window,GameWorld &gameWorld){
 }
 
 void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
-            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window) {
+            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,std::list<navyPositionsForAirAttack> &airTargets) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -553,6 +553,12 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
             }
         }
 
+    }
+
+    if(!airTargets.empty()){
+        for(auto iter = airTargets.begin();iter!=airTargets.end();++iter){
+
+        }
     }
 
 
@@ -627,6 +633,7 @@ int main() {
     //Explosion explosion(pos);
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
+    std::list<navyPositionsForAirAttack> airTargets;
     std::list<MvcController> controllers;
     std::list<MvcView> views;
 
@@ -655,7 +662,7 @@ int main() {
     thread_checkHit.detach();
 
     gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton);
+             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,airTargets);
     return 0;
 }
 
@@ -679,7 +686,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton) {
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton,std::list<navyPositionsForAirAttack> &airTargets) {
     while (window.isOpen()) {
         sf::Event event;
 
@@ -697,7 +704,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                manageSelection(window, event, gameWorld, found, clicked, lst, itSecondClick, airplaneButton);
+                manageSelection(window, event, gameWorld, found, clicked, lst, itSecondClick, airplaneButton,airTargets);
             } else if (event.type == sf::Event::MouseWheelMoved) {
 
             } else if (event.type == sf::Event::MouseMoved) {
@@ -716,7 +723,7 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
                                  airplaneButton);
 
 
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window,airTargets);
 
 
         fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
