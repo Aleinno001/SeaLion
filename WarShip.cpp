@@ -40,9 +40,9 @@ void WarShip::move(sf::Vector2f coordinates,
         double deltaMx = 0;
 
         mx = calculateMx(dx, dy);
-        //FIXME togli il *10
-        if (currentSpeed <= maxSpeed * 10) {
-            currentSpeed = currentSpeed + acceleration / 100 * 10;
+
+        if (currentSpeed <= maxSpeed) {
+            currentSpeed = currentSpeed + acceleration / 100;
         }
         sf::Vector2f vel;
         if (!(abs(coordinates.x - sprite.getPosition().x) < 2 &&
