@@ -43,10 +43,12 @@ protected:
 
     virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>> target);
 
-    virtual float calculateDistance(sf::Vector2f &first, sf::Vector2f &second);  //calcola la distanza tra due punti
+    virtual float calculateDistance(sf::Vector2f &first,
+                                    sf::Vector2f &second);  //calcola la distanza tra due punti    //FIXME Da rendere funzione (es in un eventuale namespace Utility)
 
     virtual float
-    calculateMx(float dx, float dy);  //Calcola l'angolo da raggiungere (già tradotto secondo la logica della SFML)
+    calculateMx(float dx,
+                float dy);  //Calcola l'angolo da raggiungere (già tradotto secondo la logica della SFML)     //FIXME Da rendere funzione (es in un eventuale namespace Utility)
 
 public:
 
