@@ -6,7 +6,7 @@
 #include "../MvcController.h"
 #include "../ShipFactory.h"
 
-TEST(MediumCannon, Constructor) {
+TEST(MvcController, Constructor) {
     /*int x, int y, float ac, const float maxVel, int hp, int arm,
                     std::string nat, int numL, int numH, int numM, int numAA,
                      int le, int wi,
@@ -20,7 +20,25 @@ TEST(MediumCannon, Constructor) {
             ASSERT_EQ(itController.get(),it.get());
 
     ASSERT_EQ(controller.getModel().getSprite().getPosition(),giuseppeGaribaldi.getSprite().getPosition());
-    controller.getModel().getArmour(),giuseppeGaribaldi.getArmour();
-    controller.getModel().getModelType(),giuseppeGaribaldi.getModelType();
+    ASSERT_EQ(controller.getModel().getArmour(),giuseppeGaribaldi.getArmour());
+    ASSERT_EQ(controller.getModel().getModelType(),giuseppeGaribaldi.getModelType());
+    ASSERT_EQ(controller.getModel().getNationality(),giuseppeGaribaldi.getNationality());
+    ASSERT_EQ(controller.getModel().getWidth(),giuseppeGaribaldi.getWidth());
+    ASSERT_EQ(controller.getModel().getLength(),giuseppeGaribaldi.getLength());
+    ASSERT_EQ(controller.getModel().getMaxHp(),giuseppeGaribaldi.getMaxHp());
+    ASSERT_EQ(controller.getModel().getHp(),giuseppeGaribaldi.getHp());
+    ASSERT_EQ(controller.getModel().getCol(),giuseppeGaribaldi.getCol());
+    ASSERT_EQ(controller.getModel().getMaxSpeed(),giuseppeGaribaldi.getMaxSpeed());
+    ASSERT_EQ(controller.getModel().getAcceleration(),giuseppeGaribaldi.getAcceleration());
+    ASSERT_EQ(controller.getModel().getPos(),giuseppeGaribaldi.getPos());
+    ASSERT_EQ(controller.getModel().getShipType(),giuseppeGaribaldi.getShipType());
+    ASSERT_EQ(controller.getModel().getNumAntiAircraft(),giuseppeGaribaldi.getNumAntiAircraft());
+    ASSERT_EQ(controller.getModel().getNumHCannons(),giuseppeGaribaldi.getNumHCannons());
+    ASSERT_EQ(controller.getModel().getNumLCannons(),giuseppeGaribaldi.getNumLCannons());
+    ASSERT_EQ(controller.getModel().getNumMCannons(),giuseppeGaribaldi.getNumMCannons());
+    ASSERT_EQ(controller.getModel().getSprite().getColor(),giuseppeGaribaldi.getSprite().getColor());
+    ASSERT_EQ(controller.getModel().getSprite().getOrigin(),giuseppeGaribaldi.getSprite().getOrigin());
+    ASSERT_EQ(controller.getModel().getSprite().getTexture(),giuseppeGaribaldi.getSprite().getTexture());
+
 
 }
