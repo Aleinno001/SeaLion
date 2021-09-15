@@ -55,3 +55,17 @@ int Bomber::getNumBombs() const {
 int Bomber::getBombDamage() const {
     return bombDamage;
 }
+
+void Bomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+    if(actualCooldown <= 0){
+        if (WarShip *pTarget = dynamic_cast<WarShip *> (target->get())) {
+            pTarget->setDamage(bombDamage);
+            pTarget->notifyBarsDamage();                                //notify per Observer Bars
+        }
+        actualCooldown = cooldown;
+    } else {
+        actualCooldown -= dt;
+    }
+
+
+}

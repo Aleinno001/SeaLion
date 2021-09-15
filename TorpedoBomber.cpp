@@ -57,3 +57,15 @@ int TorpedoBomber::getNumTorpedos() const {
 int TorpedoBomber::getTorpedoDamage() const {
     return torpedoDamage;
 }
+
+void TorpedoBomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+    if (actualCooldown <= 0) {
+        if (WarShip *pTarget = dynamic_cast<WarShip *> (target->get())) {
+            pTarget->setDamage(torpedoDamage);
+            pTarget->notifyBarsDamage();                                //notify per Observer Bars
+        }
+        actualCooldown = cooldown;
+    } else {
+        actualCooldown -= dt;
+    }
+}
