@@ -49,3 +49,7 @@ bool MvcView::checkAirplaneButtonClick(sf::Vector2f clickPos, Button &b) {
     }
     return result;
 }
+
+WarShip &MvcView::getModel() const {
+    return model;
+}
