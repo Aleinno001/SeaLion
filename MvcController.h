@@ -16,6 +16,8 @@ public:
 
     void startUpEngine(std::_List_iterator<std::unique_ptr<WarShip>> &target,double dt);
 
+    AircraftCarrier &getModel() const;
+
 private:
     AircraftCarrier &model;
 };
