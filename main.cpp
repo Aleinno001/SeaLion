@@ -92,14 +92,14 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
 
                     for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
 
-                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&        //Applica i relativi effetti se la tile è di mare mosso
+                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&        //applica i relativi effetti se la tile è di mare mosso
                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                         gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
                             itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed() * 0.80);
 
 
-                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&  //Apllica i seguenti effetti se la tile è di tipo muninello
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&  //applica i seguenti effetti se la tile è di tipo muninello
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                                gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
@@ -116,7 +116,7 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
 
                         }
                     }
-            } else { //controla se la nave è distrutta e applioca i relativi effetti
+            } else {                                                //controlla se la nave è distrutta e applica i relativi effetti
                 itNaval.it->get()->setCollision(true);
                 itNaval.it->get()->setDeath(true);
                 for (auto &itCannons: itNaval.it->get()->getArsenalList()) {
@@ -314,6 +314,7 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
                      std::list<iteratorPositions> &lst, std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
                      Button &airplaneButton,std::list<navyPositionsForAirAttack> &airAttackList) {
+    bool alreadyMove = false;
     switch (event.key.code) {
         case sf::Mouse::Left: {
 
@@ -365,12 +366,22 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
                         if(itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(translated_pos))//click su nave nemica dopo pulsante mvc premuto
                         {
 
-                            navyPositionsForAirAttack element;
+                            for(auto &itList : airAttackList) {
+                                if(itList.itAllied == itSecondClick){
+                                    itList.itEnemy = itSearchClickIsValid;
+                                    alreadyMove = true;
+                                }
+                            }
 
-                            element.itAllied=itSecondClick;//Portaerei alleata
-                            element.itEnemy=itSearchClickIsValid;//Qualsiasi nave nemica
-                            element.itAllied->get()->setAir(true);//Comunica alla move di warship(cioè la move alla propria istanza ) che gli aerei sono partiti e non c'è più bisogno di chiamre la notify nella move per ristracciarli sulla portaerei
-                            airAttackList.push_back(element);
+                            if(!alreadyMove) {
+                                navyPositionsForAirAttack element;
+
+                                element.itAllied = itSecondClick;//Portaerei alleata
+                                element.itEnemy = itSearchClickIsValid;//Qualsiasi nave nemica
+                                element.itAllied->get()->setAir(
+                                        true);//Comunica alla move di warship(cioè la move alla propria istanza ) che gli aerei sono partiti e non c'è più bisogno di chiamre la notify nella move per ristracciarli sulla portaerei
+                                airAttackList.push_back(element);
+                            }
 
                         }
                 }

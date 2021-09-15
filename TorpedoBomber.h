@@ -12,7 +12,8 @@
 class TorpedoBomber : public Vehicle{
 private:
 
-
+    float actualCooldown{0};
+    float cooldown{8};
     int numTorpedos;
     int torpedoDamage;
     WarShip &subject_;
@@ -44,6 +45,8 @@ private:
     void removeMeFromTheList() {
         subject_.detachPlanes(std::shared_ptr<Vehicle>(this));
     }
+
+    void planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
 public:
     ~TorpedoBomber() override;
 

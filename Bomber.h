@@ -13,7 +13,8 @@
 class Bomber : public Vehicle{
 private:
 
-
+    float actualCooldown{0};
+    float cooldown{6};
     int numBombs;
     int bombDamage;
     WarShip &subject_;
@@ -45,6 +46,8 @@ public:
     ~Bomber() override;
 
     void resetOrigin();
+
+    void planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
 };
 
 

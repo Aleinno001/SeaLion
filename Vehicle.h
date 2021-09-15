@@ -12,6 +12,7 @@
 #include "Collision.h"
 #include <math.h>
 
+
 class Vehicle {
 protected:
 
@@ -58,7 +59,7 @@ public:
 
     virtual void move(sf::Vector2f coordinates,double dt);//FIXME DA METTERE COME INTERFACCIA
 
-    virtual void planeAttack();
+    virtual void planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
 
     const double getMaxHp() const;
 
@@ -95,6 +96,8 @@ public:
     sf::Sprite &getSprite();
 
     const sf::Vector2f &getPos() const;
+
+    void moveAndAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
 };
 
 #endif //SEALION_VEHICLE_H

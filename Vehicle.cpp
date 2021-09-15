@@ -3,6 +3,8 @@
 //
 
 #include "Vehicle.h"
+
+
 Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
                  bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
                                               length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
@@ -44,7 +46,6 @@ bool Vehicle::setUpSprite(std::string textureName) {  //Carica la sprite
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
 }
-
 
 
 float Vehicle::getAcceleration() const {
@@ -151,31 +152,39 @@ void Vehicle::move(sf::Vector2f coordinates, double dt) {
         }
         sf::Vector2f vel;
 
-            if (abs(sprite.getRotation() - mx) >=
-                25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
-                rotatingInPlaceMult = 3;
-                if (currentSpeed > maxSpeed / 4)
-                    currentSpeed = currentSpeed - acceleration / 100;
+        if (abs(sprite.getRotation() - mx) >=
+            25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
+            rotatingInPlaceMult = 3;
+            if (currentSpeed > maxSpeed / 4)
+                currentSpeed = currentSpeed - acceleration / 100;
+        }
+        if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
+             abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height /
+                                                           2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
+            if (currentSpeed > acceleration / 100) {
+                currentSpeed = currentSpeed - acceleration / 100;
             }
-            if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
-                 abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height /
-                                                               2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
-                if (currentSpeed > acceleration / 100) {
-                    currentSpeed = currentSpeed - acceleration / 100;
-                }
-            }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
-            sprite.setPosition(sprite.getPosition() + vel);
-            deltaMx = rotate(mx, rotatingInPlaceMult);
-
+        }
+        vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+        vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+        sprite.setPosition(sprite.getPosition() + vel);
+        deltaMx = rotate(mx, rotatingInPlaceMult);
 
     }
 
 }
 
-void Vehicle::planeAttack() {
+void Vehicle::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
 
 
 }
+
+void Vehicle::moveAndAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+    move(target->get()->getSprite().getPosition(), dt);
+    if (abs(target->get()->getSprite().getPosition().x - sprite.getPosition().x) < 90 &&
+        abs(target->get()->getSprite().getPosition().y - sprite.getPosition().y) < 90) {
+        planeAttack(target, dt);
+    }
+}
+
 

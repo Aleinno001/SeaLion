@@ -4,8 +4,9 @@
 
 #include "Fighter.h"
 
-Fighter::Fighter(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject) {
-    std::string textureName="Fighter";
+Fighter::Fighter(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,
+                 WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat), subject_(subject) {
+    std::string textureName = "Fighter";
 
     try {
         setUpSprite("WarPlanes/" + textureName);
@@ -33,7 +34,7 @@ Fighter::~Fighter() {
 
 }
 
-void Fighter::updatePlanes(sf::Vector2f &vel,double mx) {
+void Fighter::updatePlanes(sf::Vector2f &vel, double mx) {
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
     sf::Transform rotation;
@@ -41,6 +42,14 @@ void Fighter::updatePlanes(sf::Vector2f &vel,double mx) {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
+
 void Fighter::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (length - 1) / 2);
+}
+
+void Fighter::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+    if (WarShip *pTarget = dynamic_cast<WarShip *> (target->get())) {
+        pTarget->setDamage(damage);
+        pTarget->notifyBarsDamage();                                //notify per Observer Bars
+    }
 }
