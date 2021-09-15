@@ -17,6 +17,7 @@
 #include <math.h>
 #include <memory>
 
+
 enum class ShipType {
     Battleship,
     Cruiser,
@@ -178,7 +179,9 @@ public:
 
     std::list<std::shared_ptr<Arsenal>> &getArsenalList();
 
-    const std::list<std::shared_ptr<Vehicle>> &getVehicleList() const;
+    std::list<std::shared_ptr<Vehicle>> &getVehicleList();
+
+    void antiAirAttack (std::shared_ptr<Vehicle> &target, std::shared_ptr<Arsenal> &iter);
 
     const std::string getNationality() {
         return nationality;
