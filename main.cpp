@@ -661,7 +661,7 @@ int main() {
             AircraftCarrier * dinamicAir = dynamic_cast<AircraftCarrier *>(iter->get());
             MvcController controller(dinamicAir->getInstance());
             controllers.push_back(controller);
-            MvcView view(dinamicAir->getInstance(), controller, window);
+            MvcView view(dinamicAir->getInstance(), controllers.back(), window);
             views.push_back(view);
         }
     }
