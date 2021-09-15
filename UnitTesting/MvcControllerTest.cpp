@@ -13,6 +13,14 @@ TEST(MediumCannon, Constructor) {
                     bool col, ShipType sh, ModelType mo, int planes*/
     AircraftCarrier giuseppeGaribaldi(100,100,30,30,30,300,"Italy",2,3,5,16,100,20,false,ShipType::AircraftCarrier,ModelType::GiuseppeGaribaldi,10);
     MvcController controller(giuseppeGaribaldi.getInstance());
-    controller.getModel().getInstance().HowManyGuns(),giuseppeGaribaldi.getInstance().HowManyGuns()
-    controller.getModel().getInstance().getNumPlanes(),giuseppeGaribaldi.getInstance().getNumPlanes()
+    ASSERT_EQ(controller.getModel().getInstance().HowManyGuns(),giuseppeGaribaldi.getInstance().HowManyGuns());
+    ASSERT_EQ(controller.getModel().getInstance().getNumPlanes(),giuseppeGaribaldi.getInstance().getNumPlanes());
+    for(auto &it:giuseppeGaribaldi.getListMvcObservers())
+        for(auto &itController:controller.getModel().getListMvcObservers())
+            ASSERT_EQ(itController.get(),it.get());
+
+    ASSERT_EQ(controller.getModel().getSprite().getPosition(),giuseppeGaribaldi.getSprite().getPosition());
+    controller.getModel().getArmour(),giuseppeGaribaldi.getArmour();
+    controller.getModel().getModelType(),giuseppeGaribaldi.getModelType();
+
 }
