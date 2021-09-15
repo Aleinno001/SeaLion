@@ -28,12 +28,9 @@ auto searchAirplane = [](sf::RenderWindow &window, GameWorld &gameWorld) {
     while (window.isOpen()) {
         float distance;
         for (auto &iter: gameWorld.getAlliedFleet()) {
-            std::cerr << "Sono entrato nel for delle navi alleate" <<std::endl;
             for (auto &iterEnemy: gameWorld.getEnemyFleet()) {
-                std::cerr << "Sono entrato nel for delle navi nemiche" <<std::endl;
                 if (iter->getShipType() == ShipType::AircraftCarrier) {
                     for (auto &iterPlane: iterEnemy->getVehicleList()) {
-                        std::cerr << "Sono entrato nel for degli aerei" <<std::endl;
                         distance = sqrt(
                                 pow(iterPlane->getSprite().getPosition().x - iter->getSprite().getPosition().x, 2) +
                                 pow(iterPlane->getSprite().getPosition().y - iter->getSprite().getPosition().y, 2));
@@ -41,7 +38,6 @@ auto searchAirplane = [](sf::RenderWindow &window, GameWorld &gameWorld) {
 
                             if (iterAntiAir->getTextureName() == "AntiAircraft" &&
                                 distance <= iterAntiAir->getRangeOfFire()) {
-                                std::cerr << "Sono entrato nel for delle antiAir" <<std::endl;
                                 iter.get()->antiAirAttack(iterPlane, iterAntiAir);
                             }
                         }
