@@ -22,7 +22,7 @@ typedef struct navyPositionsForAirAttack{
 
 typedef struct iteratorPositions {
     std::_List_iterator<std::unique_ptr<WarShip>> it;
-    sf::Vector2<double> pos;
+    sf::Vector2f pos;
 };
 //FIXME da sistemare il sistema di incaglio delle navi e il danno da speronamento + se una barca muore l'altra non si può muovere
 auto f = [](std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim,
@@ -319,7 +319,7 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
 
             //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
 
-            sf::Vector2<double> coords(event.mouseButton.x, event.mouseButton.y);
+            sf::Vector2f coords(event.mouseButton.x, event.mouseButton.y);
             auto translated_pos = window.mapPixelToCoords(
                     static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
             if (airplaneButton.getSprite().getGlobalBounds().contains(translated_pos) &&
@@ -362,14 +362,14 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
                     }
                 }else{
                     for(auto itSearchClickIsValid =gameWorld.getEnemyFleet().begin(); itSearchClickIsValid!= gameWorld.getEnemyFleet().end();++itSearchClickIsValid)
-                        if(itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(translated_pos))
+                        if(itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(translated_pos))//click su nave nemica dopo pulsante mvc premuto
                         {
 
                             navyPositionsForAirAttack element;
 
                             element.itAllied=itSecondClick;//Portaerei alleata
                             element.itEnemy=itSearchClickIsValid;//Qualsiasi nave nemica
-                            element.itAllied->get()->setAir(true);
+                            element.itAllied->get()->setAir(true);//Comunica alla move di warship(cioè la move alla propria istanza ) che gli aerei sono partiti e non c'è più bisogno di chiamre la notify nella move per ristracciarli sulla portaerei
                             airAttackList.push_back(element);
 
                         }
@@ -567,7 +567,7 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
                         itViews.airplaneClick(iter.itEnemy,dt);
                     }
                 }
-                //bend->searchAndHuntDownEnemyTargets(airTargets.front().itEnemy,dt);
+
 
             }
         }

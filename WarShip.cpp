@@ -29,7 +29,7 @@ std::list<std::shared_ptr<Arsenal>> &WarShip::getArsenalList() {
 }
 
 //FIXME da rivedere il comportamento post impatto
-void WarShip::move(sf::Vector2<double> coordinates,
+void WarShip::move(sf::Vector2f coordinates,
                    double dt) {    //Raggiunge il punto desiderato tramite rotazioni e spostamenti
     if (collision && !death) {   //verifica morte e incagliamento
         double mx;

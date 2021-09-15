@@ -111,7 +111,7 @@ public:
     virtual ~WarShip() = default;
 
     virtual void
-    move(sf::Vector2<double> coordinates, double dt);  //Raggiunge il punto desiderato tramite rotazioni e spostamenti
+    move(sf::Vector2f coordinates, double dt) override;  //Raggiunge il punto desiderato tramite rotazioni e spostamenti
 
     bool searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                       std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,

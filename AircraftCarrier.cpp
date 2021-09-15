@@ -152,7 +152,7 @@ void AircraftCarrier::removeMvcObserver(std::shared_ptr<MvcObserver> o) {
 void AircraftCarrier::searchAndHuntDownEnemyTargets(std::_List_iterator<std::unique_ptr<WarShip>> &target,double dt) {
 //TODO code for searching and attacking enemy targets
 for(auto iter=vehicleList.begin();iter!=vehicleList.end();++iter){
-    iter->get()->move((const sf::Vector2<double> &) target->get()->getSprite().getPosition(), dt);
+    iter->get()->move(target->get()->getSprite().getPosition(), dt);
 }
 }
 

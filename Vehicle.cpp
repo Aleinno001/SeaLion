@@ -136,13 +136,13 @@ float Vehicle::calculateMx(float dx,
     return mx;
 }
 
-void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
-    if (!death) {   //verifica morte
+void Vehicle::move(sf::Vector2f coordinates, double dt) {
+    if (!death) {   //verifica morte e incagliamento
         double mx;
         double dy = coordinates.y - sprite.getPosition().y;
         double dx = coordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
-        
+        double deltaMx = 0;
 
         mx = calculateMx(dx, dy);
         //FIXME togli il *10
@@ -150,7 +150,8 @@ void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
             currentSpeed = currentSpeed + acceleration / 100 * 10;
         }
         sf::Vector2f vel;
-       //controlla se l'aereo ha raggiunto la destinazine
+        if (!(abs(coordinates.x - sprite.getPosition().x) < 2 &&
+              abs(coordinates.y - sprite.getPosition().y) < 2)) {  //controlla se la nave ha raggiunto la destinazine
             if (abs(sprite.getRotation() - mx) >=
                 25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
                 rotatingInPlaceMult = 3;
@@ -159,7 +160,7 @@ void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
             }
             if ((abs(coordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
                  abs(coordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height /
-                                                               2)) {   //Se il punto da raggiungere è vicino l'aereo avanza lentamente
+                                                               2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
                 if (currentSpeed > acceleration / 100) {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
@@ -167,8 +168,10 @@ void Vehicle::move(sf::Vector2<double> coordinates, double dt) {
             vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
-            rotate(mx, rotatingInPlaceMult);
-
+            deltaMx = rotate(mx, rotatingInPlaceMult);
+        } else {
+            currentSpeed = 0;
+        }
 
     }
 
