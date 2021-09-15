@@ -12,3 +12,7 @@ void MvcController::startUpEngine(std::_List_iterator<std::unique_ptr<WarShip>> 
 
 
 }
+
+AircraftCarrier &MvcController::getModel() const {
+    return model;
+}
