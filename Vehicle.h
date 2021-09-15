@@ -58,6 +58,8 @@ public:
 
     virtual void move(sf::Vector2f coordinates,double dt);//FIXME DA METTERE COME INTERFACCIA
 
+    virtual void planeAttack();
+
     const double getMaxHp() const;
 
     virtual void update(bool isDead);

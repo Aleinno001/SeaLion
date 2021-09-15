@@ -271,3 +271,22 @@ void WarShip::setAir(bool air) {
     WarShip::air = air;
 }
 
+float WarShip::rotate(float mx, float rotatingInPlaceMult) {
+    float deltaMx = 0;
+    if (abs(sprite.getRotation() - mx) >=
+        1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
+                                                    0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            sprite.rotate(deltaMx);
+        } else if (sprite.getRotation() > 180 && mx < 180) {
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            sprite.rotate(deltaMx);
+        } else {
+            deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            sprite.rotate(deltaMx);
+        }
+    }
+    return deltaMx;
+}
+

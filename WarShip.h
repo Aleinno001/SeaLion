@@ -136,6 +136,12 @@ public:
 
     virtual void notifyBarsDamage()=0;
 
+
+protected:
+    float rotate(float mx, float rotatingInPlaceMult) override;
+
+public:
+
     virtual void attachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship
 
     virtual void detachBar(const std::shared_ptr<BarInterface> &bar)=0; //Metodo design pattern observer tra BarInterface e Warship

@@ -112,13 +112,13 @@ float Vehicle::rotate(float mx, float rotatingInPlaceMult) {  //rutoa la sprite 
         1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
         if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
                                                     0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
-            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 1000;
             sprite.rotate(deltaMx);
         } else if (sprite.getRotation() > 180 && mx < 180) {
-            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 1000;
             sprite.rotate(deltaMx);
         } else {
-            deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 4000;
+            deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 1000;
             sprite.rotate(deltaMx);
         }
     }
@@ -150,8 +150,7 @@ void Vehicle::move(sf::Vector2f coordinates, double dt) {
             currentSpeed = currentSpeed + acceleration / 100 * 10;
         }
         sf::Vector2f vel;
-        if (!(abs(coordinates.x - sprite.getPosition().x) < 2 &&
-              abs(coordinates.y - sprite.getPosition().y) < 2)) {  //controlla se la nave ha raggiunto la destinazine
+
             if (abs(sprite.getRotation() - mx) >=
                 25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
                 rotatingInPlaceMult = 3;
@@ -169,11 +168,14 @@ void Vehicle::move(sf::Vector2f coordinates, double dt) {
             vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
             deltaMx = rotate(mx, rotatingInPlaceMult);
-        } else {
-            currentSpeed = 0;
-        }
+
 
     }
+
+}
+
+void Vehicle::planeAttack() {
+
 
 }
 
