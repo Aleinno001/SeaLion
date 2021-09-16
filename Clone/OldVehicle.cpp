@@ -2,10 +2,10 @@
 // Created by davide on 02/07/21.
 //
 
-#include "Vehicle.h"
+#include "OldVehicle.h"
 
 
-Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
+OldVehicle::OldVehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
                  bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
                                               length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
                                               currentSpeed(0) {
@@ -15,20 +15,20 @@ Vehicle::Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
 
 }
 
-void Vehicle::attack(std::_List_iterator<std::unique_ptr<Vehicle>> target) {
+void OldVehicle::attack(std::_List_iterator<std::unique_ptr<Vehicle>> target) {
 
 }
 
-float Vehicle::calculateDistance(sf::Vector2f &first, sf::Vector2f &second) {    //calcola la distanza tra due punti
+float OldVehicle::calculateDistance(sf::Vector2f &first, sf::Vector2f &second) {    //calcola la distanza tra due punti
     return sqrt(pow(first.y - second.y, 2) + pow(first.x - second.x, 2));
 }
 
-void Vehicle::update(bool isDead) {
+void OldVehicle::update(bool isDead) {
 
 }
 
 
-bool Vehicle::setUpSprite(std::string textureName) {  //Carica la sprite
+bool OldVehicle::setUpSprite(std::string textureName) {  //Carica la sprite
 
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
@@ -48,66 +48,66 @@ bool Vehicle::setUpSprite(std::string textureName) {  //Carica la sprite
 }
 
 
-float Vehicle::getAcceleration() const {
+float OldVehicle::getAcceleration() const {
     return acceleration;
 }
 
-const float Vehicle::getMaxSpeed() const {
+const float OldVehicle::getMaxSpeed() const {
     return maxSpeed;
 }
 
-double Vehicle::getHp() const {
+double OldVehicle::getHp() const {
     return hp;
 }
 
-int Vehicle::getLength() const {
+int OldVehicle::getLength() const {
     return length;
 }
 
-int Vehicle::getWidth() const {
+int OldVehicle::getWidth() const {
     return width;
 }
 
-bool Vehicle::isCollision() const {
+bool OldVehicle::isCollision() const {
     return collision;
 }
 
-sf::Sprite &Vehicle::getSprite() {
+sf::Sprite &OldVehicle::getSprite() {
     return sprite;
 }
 
-const sf::Vector2f &Vehicle::getPos() const {
+const sf::Vector2f &OldVehicle::getPos() const {
     return pos;
 }
 
-const std::string &Vehicle::getNationality() const {
+const std::string &OldVehicle::getNationality() const {
     return nationality;
 }
 
-void Vehicle::setCollision(bool collision) {
-    Vehicle::collision = collision;
+void OldVehicle::setCollision(bool collision) {
+    OldVehicle::collision = collision;
 }
 
-void Vehicle::updatePlanes(sf::Vector2f &vel, double mx) {
+void OldVehicle::updatePlanes(sf::Vector2f &vel, double mx) {
 }
 
-void Vehicle::setCurrentSpeed(float currentSpeed) {
+void OldVehicle::setCurrentSpeed(float currentSpeed) {
     Vehicle::currentSpeed = currentSpeed;
 }
 
-void Vehicle::setDeath(bool death) {
+void OldVehicle::setDeath(bool death) {
     Vehicle::death = death;
 }
 
-const double Vehicle::getMaxHp() const {
+const double OldVehicle::getMaxHp() const {
     return maxHP;
 }
 
-bool Vehicle::isDeath() const {
+bool OldVehicle::isDeath() const {
     return death;
 }
 
-float Vehicle::rotate(float mx, float rotatingInPlaceMult) {  //rutoa la sprite della nave soltanto
+float OldVehicle::rotate(float mx, float rotatingInPlaceMult) {  //rutoa la sprite della nave soltanto
     float deltaMx = 0;
     if (abs(sprite.getRotation() - mx) >=
         1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
@@ -126,7 +126,7 @@ float Vehicle::rotate(float mx, float rotatingInPlaceMult) {  //rutoa la sprite 
     return deltaMx;
 }
 
-float Vehicle::calculateMx(float dx,
+float OldVehicle::calculateMx(float dx,
                            float dy) {  //Calcola l'angolo da raggiungere (già tradotto secondo la logica della SFML)
     float mx = 0;
     mx = 90 + atan2(dy, dx) * 180 / M_PI;
@@ -137,7 +137,7 @@ float Vehicle::calculateMx(float dx,
     return mx;
 }
 
-void Vehicle::move(sf::Vector2f coordinates, double dt) {
+void OldVehicle::move(sf::Vector2f coordinates, double dt) {
     if (!death) {   //verifica morte e incagliamento
         double mx;
         double dy = coordinates.y - sprite.getPosition().y;
@@ -174,17 +174,18 @@ void Vehicle::move(sf::Vector2f coordinates, double dt) {
 
 }
 
-void Vehicle::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+void OldVehicle::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
 
 
 }
 
-void Vehicle::moveAndAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+void OldVehicle::moveAndAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
     move(target->get()->getSprite().getPosition(), dt);
     if (abs(target->get()->getSprite().getPosition().x - sprite.getPosition().x) < 90 &&
         abs(target->get()->getSprite().getPosition().y - sprite.getPosition().y) < 90) {
         planeAttack(target, dt);
     }
 }
+
 
 

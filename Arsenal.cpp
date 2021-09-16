@@ -5,12 +5,12 @@
 
 #include "Arsenal.h"
 
-//getter
-const float Arsenal::getRangeOfFire() const {
+
+float Arsenal::getRangeOfFire() const {
     return rangeOfFire;
 }
 
-const int Arsenal::getReloadTime() const {
+int Arsenal::getReloadTime() const {
     return reloadTime;
 }
 
@@ -18,8 +18,6 @@ const int Arsenal::getReloadTime() const {
 int Arsenal::getMaximumDispersion() const {
     return maximumDispersion;
 }
-
-
 int Arsenal::getFirepower() const {
     return firepower;
 }
@@ -35,7 +33,6 @@ Arsenal::Arsenal(const float range, const float reload, int dispersion, std::sha
 
 
 }
-
 bool Arsenal::setUpSprite(std::string textureName) {
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
@@ -55,9 +52,7 @@ bool Arsenal::setUpSprite(std::string textureName) {
     return true;
 }
 
-void Arsenal::openFire(Vehicle enemy) {
 
-}
 
 std::shared_ptr<Bullet> Arsenal::getAmmoType() const {
     return ammoType;
@@ -72,38 +67,28 @@ bool Arsenal::engage(Vehicle enemy) {
     return false;
 }
 
-void Arsenal::rotate() {
-
-}
 
 sf::Sprite &Arsenal::getSprite() {
     return sprite;
 }
-
 const std::string &Arsenal::getTextureName() const {
     return textureName;
 }
-
 int Arsenal::getLength() const {
     return length;
 }
-
 int Arsenal::getWidth() const {
     return width;
 }
-
 const sf::Vector2f &Arsenal::getPos() const {
     return pos;
 }
-
 float Arsenal::getCountdown() const {
     return countdown;
 }
-
 void Arsenal::setCountdown(float countdown) {
     Arsenal::countdown = countdown;
 }
-
 std::shared_ptr<Bullet> Arsenal::getAmmoType() {
     return ammoType;
 }
