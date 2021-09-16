@@ -13,16 +13,43 @@ enum class windowMode {
     Fullscreen
 };
 
-typedef struct navyPositionsForAirAttack{
+typedef struct navyPositionsForAirAttack {
 
     std::_List_iterator<std::unique_ptr<WarShip>> itAllied;
     std::_List_iterator<std::unique_ptr<WarShip>> itEnemy;
 
-}navyPositionsForAirAttack;
+} navyPositionsForAirAttack;
 
 typedef struct iteratorPositions {
     std::_List_iterator<std::unique_ptr<WarShip>> it;
     sf::Vector2f pos;
+};
+auto searchAirplane = [](sf::RenderWindow &window, GameWorld &gameWorld) {
+    while (window.isOpen()) {
+        float distance;
+        for (auto &iter: gameWorld.getAlliedFleet()) {
+            for (auto &iterEnemy: gameWorld.getEnemyFleet()) {
+                if (iter->getShipType() == ShipType::AircraftCarrier) {
+                    for (auto &iterPlane: iterEnemy->getVehicleList()) {
+                        distance = sqrt(
+                                pow(iterPlane->getSprite().getPosition().x - iter->getSprite().getPosition().x, 2) +
+                                pow(iterPlane->getSprite().getPosition().y - iter->getSprite().getPosition().y, 2));
+                        for (auto &iterAntiAir: iter.get()->getArsenalList()) {
+
+                            if (iterAntiAir->getTextureName() == "AntiAircraft" &&
+                                distance <= iterAntiAir->getRangeOfFire()) {
+                                iter.get()->antiAirAttack(iterPlane, iterAntiAir);
+                            }
+                        }
+                        if (iterPlane.get()->getHp() <= 0) {
+                            iterPlane.get()->setDeath(true);
+                            iter.get()->detachPlanes(iterPlane);
+                        }
+                    }
+                }
+            }
+        }
+    }
 };
 //FIXME da sistemare il sistema di incaglio delle navi e il danno da speronamento + se una barca muore l'altra non si può muovere
 auto f = [](std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim,
@@ -80,7 +107,8 @@ auto f = [](std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld
 };
 
 auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
-                             std::list<iteratorPositions> &fullNavyCollision, int tileDim) { //thread per il controllo e l'applicazione degli effetti tiles
+                             std::list<iteratorPositions> &fullNavyCollision,
+                             int tileDim) { //thread per il controllo e l'applicazione degli effetti tiles
     bool enteredFog = false;
     while (window.isOpen()) {
 
@@ -92,14 +120,16 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
 
                     for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
 
-                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&        //applica i relativi effetti se la tile è di mare mosso
+                        if (gameWorld.tiles[row][column]->getTileType() == TileType::Wave &&
+                            //applica i relativi effetti se la tile è di mare mosso
                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                         gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
                             itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed() * 0.80);
 
 
-                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&  //applica i seguenti effetti se la tile è di tipo muninello
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Whirlpool &&
+                                   //applica i seguenti effetti se la tile è di tipo muninello
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                                gameWorld.tiles[row][column]->getSprite())) {
                             itNaval.it->get()->setConcealed(false);
@@ -107,7 +137,8 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
                             itNaval.it->get()->notifyBarsDamage();
 
 
-                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&  //applica i seguenti effetti se la tile è di nebbia
+                        } else if (gameWorld.tiles[row][column]->getTileType() == TileType::Fog &&
+                                   //applica i seguenti effetti se la tile è di nebbia
                                    Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
                                                                gameWorld.tiles[row][column]->getSprite())) {
 
@@ -125,7 +156,8 @@ auto tilesCheckAndDeath = [](sf::RenderWindow &window, GameWorld &gameWorld,
                 }
             }
             if (!enteredFog) {
-                itNaval.it->get()->setConcealed(false); //effetti contrari alla nebbia applicati se la nave non si trova sulla nebbia
+                itNaval.it->get()->setConcealed(
+                        false); //effetti contrari alla nebbia applicati se la nave non si trova sulla nebbia
             }
         }
 
@@ -216,7 +248,8 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton,std::list<navyPositionsForAirAttack> &airTargets);
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton,
+         std::list<navyPositionsForAirAttack> &airTargets);
 
 void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
@@ -313,7 +346,7 @@ std::vector<Fleet> alliedDummyFleet() { //nave alleata di testing
 
 void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
                      std::list<iteratorPositions> &lst, std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
-                     Button &airplaneButton,std::list<navyPositionsForAirAttack> &airAttackList) {
+                     Button &airplaneButton, std::list<navyPositionsForAirAttack> &airAttackList) {
     bool alreadyMove = false;
     switch (event.key.code) {
         case sf::Mouse::Left: {
@@ -361,19 +394,21 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
                         itPos.it->get()->setSelected(false);
                         clicked = true;
                     }
-                }else{
-                    for(auto itSearchClickIsValid =gameWorld.getEnemyFleet().begin(); itSearchClickIsValid!= gameWorld.getEnemyFleet().end();++itSearchClickIsValid)
-                        if(itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(translated_pos))//click su nave nemica dopo pulsante mvc premuto
+                } else {
+                    for (auto itSearchClickIsValid = gameWorld.getEnemyFleet().begin();
+                         itSearchClickIsValid != gameWorld.getEnemyFleet().end(); ++itSearchClickIsValid)
+                        if (itSearchClickIsValid->get()->getSprite().getGlobalBounds().contains(
+                                translated_pos))//click su nave nemica dopo pulsante mvc premuto
                         {
 
-                            for(auto &itList : airAttackList) {
-                                if(itList.itAllied == itSecondClick){
+                            for (auto &itList: airAttackList) {
+                                if (itList.itAllied == itSecondClick) {
                                     itList.itEnemy = itSearchClickIsValid;
                                     alreadyMove = true;
                                 }
                             }
 
-                            if(!alreadyMove) {
+                            if (!alreadyMove) {
                                 navyPositionsForAirAttack element;
 
                                 element.itAllied = itSecondClick;//Portaerei alleata
@@ -398,7 +433,9 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
 
 }
 
-void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor){
+void
+drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor, sf::Color &selectedColor,
+                        sf::Color &concealedColor, sf::Color &removeColor) {
     for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
         if (it.get()->isDeath()) {
             it.get()->getSprite().setColor(deathColor);
@@ -446,9 +483,6 @@ void drawAndManageEnemyShips(sf::RenderWindow &window,GameWorld &gameWorld,sf::C
                 window.draw(itPlanes->getSprite());
             }
         }
-
-
-
 
 
     }
@@ -515,7 +549,7 @@ void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf
 
 }
 
-void fpsManagment(sf::RenderWindow &window,sf::Clock &clock){
+void fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     sf::Time time = clock.getElapsedTime();
     int fps = 1.0f / time.asSeconds();
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
@@ -543,7 +577,7 @@ void fpsManagment(sf::RenderWindow &window,sf::Clock &clock){
 
 }
 
-void drawMap(sf::RenderWindow &window,GameWorld &gameWorld){
+void drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
         for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
             window.draw(gameWorld.getTiles()[i][j]->getSprite());
@@ -553,8 +587,10 @@ void drawMap(sf::RenderWindow &window,GameWorld &gameWorld){
     }
 }
 
-void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
-            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,std::list<navyPositionsForAirAttack> &airTargets,std::list<MvcView>&views) {
+void update(std::list<iteratorPositions> &lst, double dt,
+            std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
+            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,
+            std::list<navyPositionsForAirAttack> &airTargets, std::list<MvcView> &views) {
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -568,14 +604,14 @@ void update(std::list<iteratorPositions> &lst, double dt, std::list<iteratorPosi
 
     }
 
-    if(!airTargets.empty()){
-        for(auto &iter:airTargets ){
+    if (!airTargets.empty()) {
+        for (auto &iter: airTargets) {
 
-            if(auto * bend = dynamic_cast<AircraftCarrier *> (iter.itAllied->get())) {
+            if (auto *bend = dynamic_cast<AircraftCarrier *> (iter.itAllied->get())) {
                 //TODO cambiare il .front per l'agfgiunta di piu' viste
-                for(auto &itViews:views) {
-                    if (bend->getSprite().getPosition() == itViews.getAircraftCarrier().getSprite().getPosition()){
-                        itViews.airplaneClick(iter.itEnemy,dt);
+                for (auto &itViews: views) {
+                    if (bend->getSprite().getPosition() == itViews.getAircraftCarrier().getSprite().getPosition()) {
+                        itViews.airplaneClick(iter.itEnemy, dt);
                     }
                 }
 
@@ -639,7 +675,8 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet, FactionType::Uk, FactionType::Japan, 8, boundaries, width,
+    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet,
+                                    FactionType::Uk, FactionType::Japan, 8, boundaries, width,
                                     height, tileDim);
 
     bool found = false;
@@ -669,14 +706,14 @@ int main() {
 
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
-            AircraftCarrier * dinamicAir = dynamic_cast<AircraftCarrier *>(iter->get());
+            AircraftCarrier *dinamicAir = dynamic_cast<AircraftCarrier *>(iter->get());
             MvcController controller(dinamicAir->getInstance());
             controllers.push_back(controller);
             MvcView view(dinamicAir->getInstance(), controllers.back(), window);
             views.push_back(view);
         }
     }
-
+    std::thread thread_antiair (searchAirplane, std::ref(window), std::ref(gameWorld));
     std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
     std::thread thread_tiles_effect(tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),
                                     std::ref(fullNavyCollision), tileDim);
@@ -684,16 +721,20 @@ int main() {
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
+    thread_antiair.detach();
+
 
     gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,airTargets);
+             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,
+             airTargets);
     return 0;
 }
 
 void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
                          std::list<iteratorPositions> &fullNavyCollision) {
-    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied != gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
+    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=
+                                                        gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
         iteratorPositions itPos;
         itPos.it = itAllied;
         fullNavyCollision.push_back(itPos);
@@ -710,7 +751,8 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
          sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings, sf::Clock &clock,
          sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
          std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton,std::list<navyPositionsForAirAttack> &airTargets) {
+         std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView> &views, Button &airplaneButton,
+         std::list<navyPositionsForAirAttack> &airTargets) {
     while (window.isOpen()) {
         sf::Event event;
 
@@ -728,7 +770,8 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                manageSelection(window, event, gameWorld, found, clicked, lst, itSecondClick, airplaneButton,airTargets);
+                manageSelection(window, event, gameWorld, found, clicked, lst, itSecondClick, airplaneButton,
+                                airTargets);
             } else if (event.type == sf::Event::MouseWheelMoved) {
 
             } else if (event.type == sf::Event::MouseMoved) {
@@ -739,18 +782,18 @@ gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color
 
         window.clear();
 
-        drawMap(window,gameWorld);
+        drawMap(window, gameWorld);
 
-        drawAndManageEnemyShips(window,gameWorld,deathColor,selectedColor,concealedColor,removeColor);
+        drawAndManageEnemyShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor);
 
         drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views,
                                  airplaneButton);
 
 
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window,airTargets,views);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window, airTargets, views);
 
 
-        fpsManagment(window,clock);//calcola e mostra fps con l'aggiunta dei font
+        fpsManagment(window, clock);//calcola e mostra fps con l'aggiunta dei font
 
     }
 }

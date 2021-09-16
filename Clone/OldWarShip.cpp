@@ -5,6 +5,7 @@
 #include "OldWarShip.h"
 
 
+
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
                  int le, int wi,
@@ -39,9 +40,9 @@ void WarShip::move(sf::Vector2f coordinates,
         double deltaMx = 0;
 
         mx = calculateMx(dx, dy);
-        //FIXME togli il *10
-        if (currentSpeed <= maxSpeed * 10) {
-            currentSpeed = currentSpeed + acceleration / 100 * 10;
+
+        if (currentSpeed <= maxSpeed) {
+            currentSpeed = currentSpeed + acceleration / 100;
         }
         sf::Vector2f vel;
         if (!(abs(coordinates.x - sprite.getPosition().x) < 2 &&
@@ -221,7 +222,7 @@ void WarShip::setConcealed(bool isConcealed) {
     WarShip::concealed = isConcealed;
 }
 
-const std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList() const {
+std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList()  {
     return vehicleList;
 }
 
@@ -274,7 +275,7 @@ void WarShip::setAir(bool air) {
 float WarShip::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
     if (abs(sprite.getRotation() - mx) >=
-        1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+        1.5) {  // Verifica che la rotazione da effettuare sia sufficientemente grande (risolve un glitch grafico)
         if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
                                                     0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
             deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
@@ -288,5 +289,9 @@ float WarShip::rotate(float mx, float rotatingInPlaceMult) {
         }
     }
     return deltaMx;
+}
+
+void WarShip::antiAirAttack(std::shared_ptr<Vehicle> &target, std::shared_ptr<Arsenal> &iter) {
+    target.get()->setDamage(iter.get()->getFirepower());
 }
 

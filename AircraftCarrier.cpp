@@ -8,7 +8,7 @@
 
 AircraftCarrier::AircraftCarrier(int x, int y, float ac, const float maxVel, int hp, int arm, std::string nat, int numL,
                                  int numH, int numM, int numAA,
-                                  int le, int wi, bool col,
+                                 int le, int wi, bool col,
                                  ShipType sh, ModelType mo, int planes) : WarShip(x, y, ac,
                                                                                   maxVel, hp, arm,
                                                                                   nat, numL, numH,
@@ -60,11 +60,11 @@ float AircraftCarrier::calcSpeed(Map battleSea) {
 
 
 
-void AircraftCarrier::notifyArsenals(sf::Vector2f &vel,double mx) {
+void AircraftCarrier::notifyArsenals(sf::Vector2f &vel, double mx) {
 
     auto it = arsenalList.begin();
     while (it != arsenalList.end()) {
-        (*it)->update(vel,mx);
+        (*it)->update(vel, mx);
         ++it;
     }
 
@@ -79,7 +79,7 @@ int AircraftCarrier::getNumPlanes() const {
 void AircraftCarrier::notifyPlanes(sf::Vector2f &vel, double mx) {
     auto it = vehicleList.begin();
     while (it != vehicleList.end()) {
-        (*it)->updatePlanes(vel,mx);
+        (*it)->updatePlanes(vel, mx);
         ++it;
     }
 }
@@ -104,8 +104,8 @@ void AircraftCarrier::attach(const std::shared_ptr<Arsenal> &gun) {
 
 void AircraftCarrier::notifyBars(sf::Vector2f &vel, double mx) {
     auto it = bars.begin();
-    while(it != bars.end()){
-        (*it)->updateBars(vel,mx);
+    while (it != bars.end()) {
+        (*it)->updateBars(vel, mx);
         ++it;
     }
 }
@@ -122,7 +122,7 @@ void AircraftCarrier::detachBar(const std::shared_ptr<BarInterface> &bar) {
 void AircraftCarrier::notifyBarsDamage() {
 
     auto it = bars.begin();
-    while(it != bars.end()){
+    while (it != bars.end()) {
         (*it)->updateBarsDamage();
         ++it;
     }
@@ -131,7 +131,7 @@ void AircraftCarrier::notifyBarsDamage() {
 
 void AircraftCarrier::notifyMvcObserver() {
 
-    for(auto &it:listMvcObservers)
+    for (auto &it: listMvcObservers)
         it->updateMvcObserver();
 }
 
@@ -147,11 +147,11 @@ void AircraftCarrier::removeMvcObserver(std::shared_ptr<MvcObserver> o) {
 
 }
 
-void AircraftCarrier::searchAndHuntDownEnemyTargets(std::_List_iterator<std::unique_ptr<WarShip>> &target,double dt) {
+void AircraftCarrier::searchAndHuntDownEnemyTargets(std::_List_iterator<std::unique_ptr<WarShip>> &target, double dt) {
 //TODO code for searching and attacking enemy targets
-for(auto iter=vehicleList.begin();iter!=vehicleList.end();++iter){
-    iter->get()->moveAndAttack(reinterpret_cast<const std::_List_iterator<std::unique_ptr<Vehicle>> &>(target), dt);
-}
+    for (auto iter = vehicleList.begin(); iter != vehicleList.end(); ++iter) {
+        iter->get()->moveAndAttack(reinterpret_cast<const std::_List_iterator<std::unique_ptr<Vehicle>> &>(target), dt);
+    }
 }
 
 std::list<std::shared_ptr<MvcObserver>> AircraftCarrier::getListMvcObservers() {

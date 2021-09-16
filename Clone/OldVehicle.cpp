@@ -146,9 +146,8 @@ void OldVehicle::move(sf::Vector2f coordinates, double dt) {
         double deltaMx = 0;
 
         mx = calculateMx(dx, dy);
-        //FIXME togli il *10
-        if (currentSpeed <= maxSpeed * 10) {
-            currentSpeed = currentSpeed + acceleration / 100 * 10;
+        if (currentSpeed <= maxSpeed * 2) {
+            currentSpeed = currentSpeed + acceleration / 100 * 2;
         }
         sf::Vector2f vel;
 
