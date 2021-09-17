@@ -4,7 +4,6 @@
 #include "GameWorld.h"
 #include <thread>
 #include "Collision.h"
-#include "Explosion.h"
 #include "MvcController.h"
 #include "MvcView.h"
 

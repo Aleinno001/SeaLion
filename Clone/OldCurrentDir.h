@@ -1,9 +1,9 @@
 //
-// Created by alessandro on 20/07/21.
+// Created by alessandro on 17/09/21.
 //
 
-#ifndef SEALION_CURRENTDIR_H
-#define SEALION_CURRENTDIR_H
+#ifndef SEALION_OLDCURRENTDIR_H
+#define SEALION_OLDCURRENTDIR_H
 
 #include <stdio.h>
 #include <unistd.h>
@@ -15,6 +15,4 @@ class CurrentDir {
 public:
     static std::string GetCurrentWorkingDir();  //Speciale metodo per ottenere la working directory attuale
 };
-
-
-#endif //SEALION_CURRENTDIR_H
+#endif //SEALION_OLDCURRENTDIR_H

@@ -8,8 +8,8 @@
 #include <string>
 #include <stdexcept>
 #include "SFML/Graphics.hpp"
-#include "CurrentDir.h"
 #include "math.h"
+#include "ToolBox.h"
 
 
 class Bullet {

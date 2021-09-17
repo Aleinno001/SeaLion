@@ -3,8 +3,6 @@
 //
 
 #include "Button.h"
-#include "CurrentDir.h"
-#include "Collision.h"
 
 Button::Button(const std::string &name, const int &width, const int &length, sf::Vector2f pos) : name(name),
                                                                                                  width(width),
@@ -16,7 +14,7 @@ Button::Button(const std::string &name, const int &width, const int &length, sf:
 }
 
 bool Button::setUpSprite(std::string textureName) {
-    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    std::string currentDir = ToolBox::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
     std::size_t found = currentDir.find(unitTestingPath);
     if (found != std::string::npos) {
