@@ -14,7 +14,7 @@ class AntiAircraft : public Arsenal {
 public:
     //TODO implementare
 
-    AntiAircraft(const float range, const int reload, int dispersion, std::shared_ptr<Bullet> type,
+    AntiAircraft(float range, int reload, int dispersion, std::shared_ptr<Bullet> type,
                  int power, int le, int wi, std::string texName, WarShip &sub);
 
     ~AntiAircraft() override;

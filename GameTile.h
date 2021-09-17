@@ -10,12 +10,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GameTile.h"
-#include "CurrentDir.h"
 #include <string>
 #include <memory>
 #include <list>
 #include "Dice.h"
 #include <iostream>
+#include "ToolBox.h"
 
 enum class TileType {
     Sea,

@@ -7,6 +7,8 @@
 
 
 #include <SFML/Graphics.hpp>
+#include "Collision.h"
+#include "ToolBox.h"
 
 class BarInterface {
 private:

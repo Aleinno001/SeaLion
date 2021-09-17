@@ -6,6 +6,8 @@
 #define SEALION_BUTTON_H
 
 #include <SFML/Graphics.hpp>
+#include "Collision.h"
+#include "ToolBox.h"
 
 class Button {
 private:
