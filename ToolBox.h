@@ -7,13 +7,16 @@
 #include <string>
 #include <stdio.h>
 #include <unistd.h>
+#include <SFML/System/Clock.hpp>
 
 #define GetCurrentDir getcwd
 
 namespace ToolBox {
-   float calculateDistance(sf::Vector2f &first, sf::Vector2f &second);
-   float calculateMx(float dx, float dy);
-   std::string GetCurrentWorkingDir();  //Speciale metodo per ottenere la working directory attuale
+    sf::Clock dt;
+    float restart = dt.restart().asSeconds();
+    float calculateDistance(sf::Vector2f &first, sf::Vector2f &second);
+    float calculateMx(float dx, float dy);
+    std::string GetCurrentWorkingDir();  //Speciale metodo per ottenere la working directory attuale
 };
 
 

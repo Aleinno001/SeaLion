@@ -31,7 +31,7 @@ protected:
     sf::Vector2f movement;
 protected:
     virtual bool searchTarget()=0;
-    virtual float rotate()=0;
+    virtual float rotate(float mx, float rotatingInPlaceMult)=0;
     virtual bool canEngage() const =0;
     virtual void move()=0;
     bool setUpSprite(const std::string &textureName){
@@ -53,10 +53,7 @@ protected:
         return true;
     }
 public:
-    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,
-            bool col, std::string &nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
-                                         length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
-                                         currentSpeed(0),movement(0,0){}
+    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string &nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0){}
     virtual const std::string &getNationality(){return nationality;}
     virtual void attack()=0;
     double getAcceleration() const {return acceleration;}

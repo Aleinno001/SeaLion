@@ -17,16 +17,61 @@ void ConcreteWarPlane::update() {
 bool ConcreteWarPlane::searchTarget() {
     return 0;//FIXME Implementa
 }
-float ConcreteWarPlane::rotate() {
-    return 0;//FIXME Implementa
+float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
+    float deltaMx = 0;
+    if (abs(sprite.getRotation() - mx) >=
+        1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
+                                                    0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 1000;
+            sprite.rotate(deltaMx);
+        } else if (sprite.getRotation() > 180 && mx < 180) {
+            deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 1000;
+            sprite.rotate(deltaMx);
+        } else {
+            deltaMx = -currentSpeed * acceleration * rotatingInPlaceMult / 1000;
+            sprite.rotate(deltaMx);
+        }
+    }
+    return deltaMx;
 }
-bool ConcreteWarPlane::canEngage() const {
-    return 0;//FIXME Implementa
+bool ConcreteWarPlane::canEngage() {
+    if(currentCoolDown <= 0){
+        target->setDamage(ammoDamage);
+        target->notifyBarsDamage();//notify per Observer Bars
+        currentCoolDown = coolDown;
+    } else {
+        currentCoolDown -= ToolBox::restart;
+    }
 }
 void ConcreteWarPlane::move() {
-    return;//FIXME Implementa
+    if (!death) {   //verifica morte e incagliamento
+        double mx;
+        double dy = target.getSprite().getPosition().y - sprite.getPosition().y;
+        double dx = target.getSprite().getPosition().x - sprite.getPosition().x;
+        float rotatingInPlaceMult = 1;
+        mx = ToolBox::calculateMx(dx, dy);
+        if (currentSpeed <= maxSpeed * 2) {
+            currentSpeed = currentSpeed + acceleration / 100 * 2;
+        }
+        if (abs(sprite.getRotation() - mx) >=
+            25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
+            rotatingInPlaceMult = 3;
+            if (currentSpeed > maxSpeed / 4)
+                currentSpeed = currentSpeed - acceleration / 100;
+        }
+        if ((abs(target.getSprite().getPosition().y - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
+             abs(target.getSprite().getPosition().x - sprite.getPosition().y) < sprite.getTextureRect().height /
+                                                           2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
+            if (currentSpeed > acceleration / 100) {
+                currentSpeed = currentSpeed - acceleration / 100;
+            }
+        }
+        movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *ToolBox::dt.getElapsedTime().asSeconds()* acceleration / 10;
+        movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *ToolBox::dt.getElapsedTime().asSeconds()* acceleration / 10;
+        sprite.setPosition(sprite.getPosition() + movement);
+        rotate(mx, rotatingInPlaceMult);
+    }
 }
-void ConcreteWarPlane::removeMeFromTheList() {
-    subject_.detachPlanes(std::shared_ptr<WarPlane>(this));
-}
+
 

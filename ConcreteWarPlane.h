@@ -12,11 +12,10 @@ public:
     void attack() override;
     ~ConcreteWarPlane() override = default;
     void update() override;
-    void removeMeFromTheList();
 protected:
     bool searchTarget() override;
-   float rotate() override;
-    bool canEngage() const override;
+    float rotate(float mx, float rotatingInPlaceMult) override;
+    bool canEngage() override;
     void move() override;
 private:
     WarShip &subject_;
