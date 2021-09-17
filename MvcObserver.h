@@ -9,7 +9,7 @@
 class MvcObserver {
 public:
     virtual ~MvcObserver()=default;
-    virtual	void updateMvcObserver() = 0;
+    virtual void updateMvcObserver() = 0;
 };
 
 

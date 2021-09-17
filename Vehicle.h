@@ -4,22 +4,18 @@
 
 #ifndef SEALION_VEHICLE_H
 #define SEALION_VEHICLE_H
-
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include <list>
 #include "CurrentDir.h"
 #include "Collision.h"
 #include <math.h>
-
-
 class Vehicle {
 protected:
-
     double acceleration;
     bool death{false};
     const double maxSpeed;
-    float currentSpeed;//FIXME valore di default di velocità
+    float currentSpeed;
     double hp;
     const double maxHP;
     unsigned int length;
@@ -31,75 +27,30 @@ protected:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Vector2f pos;
-
-public:
-    const std::string &getNationality() const;
-
 protected:
-
-    virtual float rotate(float mx, float rotatingInPlaceMult);  //Ruota la sprite della nave soltanto
-
-    virtual bool setUpSprite(std::string textureName);
-
-    virtual void attack(std::_List_iterator<std::unique_ptr<Vehicle>> target);
-
-    virtual float calculateDistance(sf::Vector2f &first,
-                                    sf::Vector2f &second);  //calcola la distanza tra due punti    //FIXME Da rendere funzione (es in un eventuale namespace Utility)
-
-    virtual float
-    calculateMx(float dx,
-                float dy);  //Calcola l'angolo da raggiungere (già tradotto secondo la logica della SFML)     //FIXME Da rendere funzione (es in un eventuale namespace Utility)
-
+    virtual const bool setUpSprite(std::string textureName)=0;
+    virtual const bool searchTarget()=0;
+    virtual const float rotate()=0;
+    virtual const bool canEngage() const=0;
 public:
-
-    Vehicle(int X, int Y, float ac, float maxVel, int HP, int le, int wi,
-            bool col, std::string nat);
-
-    void setDeath(bool death);
-
-    void setCollision(bool collision);
-
-    virtual void move(sf::Vector2f coordinates,double dt);//FIXME DA METTERE COME INTERFACCIA
-
-    virtual void planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
-
-    const double getMaxHp() const;
-
-    virtual void update(bool isDead);
-
-    virtual void updatePlanes(sf::Vector2f &vel,double mx); //metodo per design pattern observer tra Planes e Warship
-
-    void setCurrentSpeed(float currentSpeed);
-
-    virtual ~Vehicle() = default;
-
-    bool isDeath() const;
-
-    bool getCol() {
-        return collision;
-    }
-
-    void setDamage(double damage) {
-        hp = hp - damage;
-    }
-
-    float getAcceleration() const;
-
-    const float getMaxSpeed() const;
-
-    double getHp() const;
-
-    int getLength() const;
-
-    int getWidth() const;
-
-    bool isCollision() const;
-
-    sf::Sprite &getSprite();
-
-    const sf::Vector2f &getPos() const;
-
-    void moveAndAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
+    virtual const std::string &getNationality() const=0;
+    virtual const void attack()=0;
+    virtual const void setDeath(bool death)=0;
+    virtual const void setCollision(bool collision)=0;
+    virtual const void move()=0;
+    virtual const double getMaxHp() const=0;
+    virtual const void setCurrentSpeed(float currentSpeed)=0;
+    virtual const bool isDeath() const=0;
+    virtual const bool getCol() const=0;
+    virtual const void setDamage(double damage)=0;
+    virtual const float getAcceleration() const=0; //Unit Testing
+    virtual const float getMaxSpeed() const=0;
+    virtual const double getHp() const=0;
+    virtual const int getLength() const=0;//Unit Testing
+    virtual const int getWidth() const=0;//Unit Testing
+    virtual const bool isCollision() const=0;
+    virtual sf::Sprite &getSprite() const=0;
+    virtual const sf::Vector2f &getPos() const=0; //Unit Testing
+    virtual ~Vehicle() = 0;
 };
-
 #endif //SEALION_VEHICLE_H

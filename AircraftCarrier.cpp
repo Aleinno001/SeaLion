@@ -58,9 +58,7 @@ float AircraftCarrier::calcSpeed(Map battleSea) {
 }
 */
 
-void AircraftCarrier::update(bool isDead) {
-    Vehicle::update(isDead);
-}
+
 
 void AircraftCarrier::notifyArsenals(sf::Vector2f &vel, double mx) {
 
