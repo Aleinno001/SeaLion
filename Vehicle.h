@@ -29,11 +29,11 @@ protected:
     sf::Sprite sprite;
     sf::Vector2f pos;
 protected:
-    virtual bool searchTarget()=0;
-    virtual float rotate()=0;
-    virtual bool canEngage() const =0;
-    virtual void move()=0;
-    virtual const bool setUpSprite(std::string textureName){
+    virtual const bool searchTarget()=0;
+    virtual const float rotate()=0;
+    virtual const bool canEngage() const=0;
+    virtual const void move()=0;
+    bool setUpSprite(const std::string &textureName){
         std::string currentDir = ToolBox::GetCurrentWorkingDir();
         std::string unitTestingPath = "UnitTesting";
         std::size_t found = currentDir.find(unitTestingPath);
@@ -52,8 +52,13 @@ protected:
         return true;
     }
 public:
-    virtual const std::string &getNationality() const=0;
-    virtual void attack()=0;
+    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,
+            bool col, std::string &nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),
+                                         length(le), collision(col), width(wi), nationality(nat), maxHP(HP),
+                                         currentSpeed(0){}
+
+    virtual const std::string &getNationality(){return nationality;}
+    virtual const void attack()=0;
     double getAcceleration() const {return acceleration;}
     void setAcceleration(double accel) {Vehicle::acceleration = accel;}
     bool isDeath() const {return death;}
