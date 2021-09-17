@@ -7,7 +7,7 @@
 
 #include "WarShip.h"
 
-class OldBomber : public Vehicle{
+class OldBomber : public OldVehicle{
 private:
 
     float actualCooldown{0};

@@ -29,10 +29,10 @@ protected:
     sf::Sprite sprite;
     sf::Vector2f pos;
 protected:
-    virtual const bool searchTarget()=0;
-    virtual const float rotate()=0;
-    virtual const bool canEngage() const=0;
-    virtual const void move()=0;
+    virtual bool searchTarget()=0;
+    virtual float rotate()=0;
+    virtual bool canEngage() const =0;
+    virtual void move()=0;
     virtual const bool setUpSprite(std::string textureName){
         std::string currentDir = ToolBox::GetCurrentWorkingDir();
         std::string unitTestingPath = "UnitTesting";
@@ -53,7 +53,7 @@ protected:
     }
 public:
     virtual const std::string &getNationality() const=0;
-    virtual const void attack()=0;
+    virtual void attack()=0;
     double getAcceleration() const {return acceleration;}
     void setAcceleration(double accel) {Vehicle::acceleration = accel;}
     bool isDeath() const {return death;}
