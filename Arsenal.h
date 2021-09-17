@@ -25,30 +25,28 @@ protected:
     sf::Texture texture;
     sf::Sprite sprite;
 public:
-    Arsenal(float range, float reload, int dispersion, std::shared_ptr<Bullet> type, int power, int posX,int posY, int le, int wi, std::string texName);
-    std::shared_ptr<Bullet> getAmmoType();
-    virtual ~Arsenal() = default;
-    virtual void update(sf::Vector2f &vel,double mx) = 0; //Metodo per design pattern observer
-    const sf::Vector2f &getPos() const;
-    virtual bool engage(Vehicle enemy);
-    virtual void rotate()=0;
-    virtual bool setUpSprite(std::string textureName);
-    virtual void removeMeFromTheList()=0;//metodo per detach observer cannoni
-    float getRangeOfFire() const;
-    int getReloadTime() const;
-    const int getRateOfFire() const=0;
-    int getAmmoSpeed() const=0;
-    int getMaximumDispersion() const;
-    std::shared_ptr<Bullet> getAmmoType() const;
-    int getFirepower() const;
-    void setAmmoType(const std::shared_ptr<Bullet> ammoType);
-    sf::Sprite &getSprite();
-    const std::string &getTextureName() const;
+    virtual const std::shared_ptr<Bullet> getAmmoType()=0;
+    virtual ~Arsenal() = 0;
+    virtual void update() = 0; //Metodo per design pattern observer
+    virtual const sf::Vector2f &getPos() const = 0;
+    virtual const bool engage() = 0;
+    virtual void rotate() = 0;
+    virtual const bool setUpSprite(std::string textureName)=0;
+    virtual void removeMeFromTheList() = 0;//metodo per detach observer cannoni
+    virtual const float getRangeOfFire() const = 0;
+    virtual int getReloadTime() const = 0;
+    virtual const int getRateOfFire() const = 0;
+    virtual const int getAmmoSpeed() const = 0;
+    virtual const int getMaximumDispersion() const = 0;
+    virtual const std::shared_ptr<Bullet> getAmmoType() const =0;
+    virtual int getFirepower() const = 0;
+    virtual void setAmmoType(std::shared_ptr<Bullet> ammoType)=0;
+    virtual sf::Sprite &getSprite() const = 0;
+    virtual const std::string &getTextureName() const = 0;
     virtual void resetOrigin() = 0;
-    int getLength() const;
-    int getWidth() const;
-    float getCountdown() const;
-    void setCountdown(float countdown);
+    virtual const int getLength() const=0;
+    virtual const int getWidth() const=0;
+    virtual const float getCountdown() const=0;
+    virtual void setCountdown(float countdown)=0;
 };
-
 #endif //SEALION_ARSENAL_H

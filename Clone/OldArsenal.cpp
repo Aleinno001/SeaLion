@@ -1,28 +1,25 @@
-//
-// Created by gabriele on 7/2/21.
-//
+#include "OldArsenal.h"
 
-
-#include "Arsenal.h"
-
-
-float Arsenal::getRangeOfFire() const {
+//getter
+const float OldArsenal::getRangeOfFire() const {
     return rangeOfFire;
 }
 
-int Arsenal::getReloadTime() const {
+const int OldArsenal::getReloadTime() const {
     return reloadTime;
 }
 
 
-int Arsenal::getMaximumDispersion() const {
+int OldArsenal::getMaximumDispersion() const {
     return maximumDispersion;
 }
-int Arsenal::getFirepower() const {
+
+
+int OldArsenal::getFirepower() const {
     return firepower;
 }
 
-Arsenal::Arsenal(const float range, const float reload, int dispersion, std::shared_ptr<Bullet> type,
+OldArsenal::OldArsenal(const float range, const float reload, int dispersion, std::shared_ptr<Bullet> type,
                  int power, int posX, int posY, int le, int wi,
                  std::string texName) : rangeOfFire(range), reloadTime(reload),
                                         maximumDispersion(dispersion),
@@ -33,7 +30,8 @@ Arsenal::Arsenal(const float range, const float reload, int dispersion, std::sha
 
 
 }
-bool Arsenal::setUpSprite(std::string textureName) {
+
+bool OldArsenal::setUpSprite(std::string textureName) {
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
     std::size_t found = currentDir.find(unitTestingPath);
@@ -52,49 +50,55 @@ bool Arsenal::setUpSprite(std::string textureName) {
     return true;
 }
 
+void OldArsenal::openFire(Vehicle enemy) {
 
+}
 
-std::shared_ptr<Bullet> Arsenal::getAmmoType() const {
+std::shared_ptr<Bullet> OldArsenal::getAmmoType() const {
     return ammoType;
 }
 
-void Arsenal::setAmmoType(const std::shared_ptr<Bullet> ammoType) {
-    Arsenal::ammoType = ammoType;
+void OldArsenal::setAmmoType(const std::shared_ptr<Bullet> ammoType) {
+    OldArsenal::ammoType = ammoType;
 }
 
 
-bool Arsenal::engage(Vehicle enemy) {
+bool OldArsenal::engage(Vehicle enemy) {
     return false;
 }
 
+void OldArsenal::rotate() {
 
-sf::Sprite &Arsenal::getSprite() {
+}
+
+sf::Sprite &OldArsenal::getSprite() {
     return sprite;
 }
-const std::string &Arsenal::getTextureName() const {
+
+const std::string &OldArsenal::getTextureName() const {
     return textureName;
 }
-int Arsenal::getLength() const {
+
+int OldArsenal::getLength() const {
     return length;
 }
-int Arsenal::getWidth() const {
+
+int OldArsenal::getWidth() const {
     return width;
 }
-const sf::Vector2f &Arsenal::getPos() const {
+
+const sf::Vector2f &OldArsenal::getPos() const {
     return pos;
 }
-float Arsenal::getCountdown() const {
+
+float OldArsenal::getCountdown() const {
     return countdown;
 }
-void Arsenal::setCountdown(float countdown) {
-    Arsenal::countdown = countdown;
+
+void OldArsenal::setCountdown(float countdown) {
+    OldArsenal::countdown = countdown;
 }
-std::shared_ptr<Bullet> Arsenal::getAmmoType() {
+
+std::shared_ptr<Bullet> OldArsenal::getAmmoType() {
     return ammoType;
 }
-
-
-
-
-
-
