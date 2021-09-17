@@ -53,19 +53,13 @@ Submarine::Submarine(int x, int y, float ac, const float maxVel, int hp, int arm
         std::cerr << "Wrong texture name" << std::endl;
     }
 }
-
 void Submarine::update(bool isDead) {
     Vehicle::update(isDead);
 }
-
 //void Submarine::registerArsenals(std::unique_ptr<Arsenal> observer) {
-
 //}
-
 //void Submarine::removeArsenals(std::unique_ptr<Arsenal> observer) {
-
 //}
-
 void Submarine::notifyArsenals(sf::Vector2f &vel,double mx) {
     auto it = arsenalList.begin();
     while (it != arsenalList.end()) {
@@ -85,7 +79,6 @@ void Submarine::notifyPlanes(sf::Vector2f &vel, double mx) {
         ++it;
     }
 }
-
 void Submarine::notifyBars(sf::Vector2f &vel, double mx) {
     auto it = bars.begin();
     while (it != bars.end()) {
@@ -93,40 +86,26 @@ void Submarine::notifyBars(sf::Vector2f &vel, double mx) {
         ++it;
     }
 }
-
 void Submarine::attachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.push_back(bar);
 }
-
 void Submarine::detachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.push_back(bar);
 }
-
 void Submarine::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
-
     vehicleList.push_back(warPlanes);
-
 }
-
 void Submarine::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
-
     vehicleList.remove(warPlanes);
-
 }
 
 void Submarine::detach(const std::shared_ptr<Arsenal> &gun) {
-
     arsenalList.remove(gun);
 
 }
-
 void Submarine::attach(const std::shared_ptr<Arsenal> &gun) {
-
-
     arsenalList.push_back(gun);
-
 }
-
 void Submarine::notifyBarsDamage() {
     auto it = bars.begin();
     while (it != bars.end()) {

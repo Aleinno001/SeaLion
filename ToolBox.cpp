@@ -14,7 +14,6 @@ float ToolBox::calculateMx(float dx,float dy) {  //Calcola l'angolo da raggiunge
     }
     return mx;
 }
-
 std::string ToolBox::GetCurrentWorkingDir() {
     char buff[FILENAME_MAX];
     GetCurrentDir(buff, FILENAME_MAX);

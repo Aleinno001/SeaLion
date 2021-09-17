@@ -16,19 +16,14 @@ MediumCannnon::MediumCannnon(const float range, const int reload, int dispersion
     sprite.setPosition(pos);
     resetOrigin();
 }
-
 MediumCannnon::~MediumCannnon() {
-
 }
-
 bool MediumCannnon::rapidFire() {
     return false;
 }
-
 void MediumCannnon::openFire(Vehicle enemy) {
     Arsenal::openFire(enemy);
 }
-
 void MediumCannnon::update(sf::Vector2f &vel, double mx) {
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
@@ -37,16 +32,12 @@ void MediumCannnon::update(sf::Vector2f &vel, double mx) {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
-
-
 bool MediumCannnon::engage(Vehicle enemy) {
     return Arsenal::engage(enemy);
 }
-
 void MediumCannnon::rotate() {
     Arsenal::rotate();
 }
-
 void MediumCannnon::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (width - 1) / 2);
 }
