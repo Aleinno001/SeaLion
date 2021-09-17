@@ -1,28 +1,29 @@
 //
-// Created by davide on 04/07/21.
+// Created by pala on 9/17/21.
 //
 
-#include "Bomber.h"
+#include "OldBomber.h"
+//
 
-void Bomber::bombard(Vehicle &enemy) {
+void OldBomber::bombard(Vehicle &enemy) {
 
 }
 
-void Bomber::attack(Vehicle target) {
+void OldBomber::attack(Vehicle target) {
 }
 
-void Bomber::update(bool isDead) {
+void OldBomber::update(bool isDead) {
     Vehicle::update(isDead);
 }
 
 
 
-Bomber::~Bomber() {
+OldBomber::~OldBomber() {
 
 }
 
 
-void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
+void OldBomber::updatePlanes(sf::Vector2f &vel,double mx) {
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
     sf::Transform rotation;
@@ -31,8 +32,8 @@ void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
     sprite.setPosition(newPosition);
 }
 
-Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),bombDamage(damage),numBombs(numBombs) {
-    std::string textureName="Bomber";
+OldBomber::OldBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),bombDamage(damage),numBombs(numBombs) {
+    std::string textureName="OldBomber";
 
     try {
         setUpSprite("WarPlanes/" + textureName);
@@ -44,19 +45,19 @@ Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, boo
     }
 }
 
-void Bomber::resetOrigin() {
+void OldBomber::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (length) / 2);
 }
 
-int Bomber::getNumBombs() const {
+int OldBomber::getNumBombs() const {
     return numBombs;
 }
 
-int Bomber::getBombDamage() const {
+int OldBomber::getBombDamage() const {
     return bombDamage;
 }
 
-void Bomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+void OldBomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
     if(actualCooldown <= 0){
         if (WarShip *pTarget = dynamic_cast<WarShip *> (target->get())) {
             pTarget->setDamage(bombDamage);

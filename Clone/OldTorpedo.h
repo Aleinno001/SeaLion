@@ -2,14 +2,14 @@
 // Created by davide on 04/07/21.
 //
 
-#ifndef SEALION_TORPEDOBOMBER_H
-#define SEALION_TORPEDOBOMBER_H
+#ifndef SEALION_OldFTorpedoBomber_H
+#define SEALION_OldFTorpedoBomber_H
 
 #include "Vehicle.h"
 #include "WarShip.h"
 
 
-class TorpedoBomber : public Vehicle{
+class OldFTorpedoBomber : public Vehicle{
 private:
 
     float actualCooldown{0};
@@ -20,7 +20,7 @@ private:
 
 
 public:
-    TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numTorpedos, int damage,
+    OldFTorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numTorpedos, int damage,
                   std::string nat, WarShip &subject);
 
     void launchTorpedo(Vehicle &enemy);
@@ -48,10 +48,11 @@ private:
 
     void planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt);
 public:
-    ~TorpedoBomber() override;
+    ~OldFTorpedoBomber() override;
 
     void resetOrigin();
 };
 
 
-#endif //SEALION_TORPEDOBOMBER_H
+#endif //SEALION_OldFTorpedoBomber_H
+

@@ -1,16 +1,13 @@
-//
-// Created by davide on 04/07/21.
-//
 
-#ifndef SEALION_BOMBER_H
-#define SEALION_BOMBER_H
+#ifndef SEALION_OldOldBomber_H
+#define SEALION_OldBomber_H
 
 
 #include "Vehicle.h"
 
 #include "WarShip.h"
 
-class Bomber : public Vehicle{
+class OldBomber : public Vehicle{
 private:
 
     float actualCooldown{0};
@@ -20,7 +17,7 @@ private:
     WarShip &subject_;
 public:
     //TODO Implementare i metodi
-    Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,
+    OldBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,
            std::string nat, WarShip &subject);
 
     void bombard(Vehicle &enemy);
@@ -43,7 +40,7 @@ public:
     void updatePlanes(sf::Vector2f &vel,double mx) override;
 
 
-    ~Bomber() override;
+    ~OldBomber() override;
 
     void resetOrigin();
 
@@ -51,4 +48,5 @@ public:
 };
 
 
-#endif //SEALION_BOMBER_H
+#endif //SEALION_OldBomber_H
+
