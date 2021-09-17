@@ -8,7 +8,6 @@
 #include "WarShip.h"
 
 class ConcreteWarShip : public WarShip {
-
 };
 
 

@@ -7,21 +7,14 @@
 void Bomber::bombard(Vehicle &enemy) {
 
 }
-
 void Bomber::attack(Vehicle target) {
 }
-
 void Bomber::update(bool isDead) {
     Vehicle::update(isDead);
 }
-
-
-
 Bomber::~Bomber() {
 
 }
-
-
 void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
@@ -30,10 +23,8 @@ void Bomber::updatePlanes(sf::Vector2f &vel,double mx) {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
-
 Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col, int numBombs, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),bombDamage(damage),numBombs(numBombs) {
     std::string textureName="Bomber";
-
     try {
         setUpSprite("WarPlanes/" + textureName);
         sprite.setPosition(pos);
@@ -43,19 +34,15 @@ Bomber::Bomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, boo
         std::cerr << "Wrong texture name" << std::endl;
     }
 }
-
 void Bomber::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (length) / 2);
 }
-
 int Bomber::getNumBombs() const {
     return numBombs;
 }
-
 int Bomber::getBombDamage() const {
     return bombDamage;
 }
-
 void Bomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
     if(actualCooldown <= 0){
         if (WarShip *pTarget = dynamic_cast<WarShip *> (target->get())) {
@@ -66,6 +53,4 @@ void Bomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, f
     } else {
         actualCooldown -= dt;
     }
-
-
 }

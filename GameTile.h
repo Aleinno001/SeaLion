@@ -24,7 +24,6 @@ enum class TileType {
     Dirt,
     Whirlpool
 };
-
 class GameTile {
 public:
     bool isPassable;
@@ -33,29 +32,17 @@ public:
     sf::Texture texture;
     sf::Sprite sprite;
     TileType tileType;
-
 public:
-
     GameTile() = default;
-
     GameTile(std::string textureName, int x, int y, bool collision, bool exit, TileType tp);
-
     bool setUpSprite(std::string textureName);
-
     void setIsPassable(bool isPassable);
-
     bool getIsPassable() const;
-
     void setPos(const sf::Vector2f &pos);
-
     void setTexture(const sf::Texture &texture);
-
     void setTileType(TileType tileType);
-
     const sf::Vector2f &getPos() const;
-
     const sf::Sprite &getSprite() const;
-
     TileType getTileType() const;
 };
 

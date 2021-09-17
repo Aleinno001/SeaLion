@@ -14,9 +14,7 @@ private:
     int numFaces;
 public:
     Dice(int num, int seedMult);
-
     ~Dice() = default;
-
     int roll(int rolls) const;
 };
 

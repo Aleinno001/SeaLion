@@ -19,25 +19,15 @@ private:
     bool clicked;
 public:
     Button(const std::string &name, const int &width, const int &length, sf::Vector2f pos);
-
     bool setUpSprite(std::string textureName);
-
     bool checkClick (sf::Vector2f clickPos);
-
     void setPos(const sf::Vector2f &pos);
-
     int getWidth() const;
-
     int getLength() const;
-
     void setWidth(int width);
-
     void setLength(int length);
-
     sf::Sprite &getSprite();
-
     void setClicked(bool clickable);
-
     bool isClicked() const;
 };
 

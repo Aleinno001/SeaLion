@@ -73,47 +73,30 @@ Battleship::Battleship(int x, int y, float ac, const float maxVel, int hp, int a
         std::cerr << e.what() << std::endl;
         std::cerr << "Wrong texture name" << std::endl;
     }
-
 }
-
 //void Battleship::registerArsenals(std::unique_ptr<Arsenal> observer) {
-
 //}
-
 //void Battleship::removeArsenals(std::unique_ptr<Arsenal> observer) {
-
 //}
-
 void Battleship::notifyArsenals(sf::Vector2f &vel,double mx) {
-
-
     auto it = arsenalList.begin();
     while (it != arsenalList.end()) {
         (*it)->update(vel,mx);
         ++it;
     }
-
-
 }
-
 Battleship::~Battleship() {
-
 }
-
 int Battleship::getNumInterceptors() const {
     return numInterceptors;
 }
-
 void Battleship::notifyPlanes(sf::Vector2f &vel, double mx) {
     auto it = vehicleList.begin();
     while (it != vehicleList.end()) {
         (*it)->updatePlanes(vel,mx);
         ++it;
     }
-
-
 }
-
 void Battleship::notifyBars(sf::Vector2f &vel, double mx) {
     auto it = bars.begin();
     while(it != bars.end()){
@@ -121,40 +104,30 @@ void Battleship::notifyBars(sf::Vector2f &vel, double mx) {
         ++it;
     }
 }
-
 void Battleship::attachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.push_back(bar);
 }
-
 void Battleship::detachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.remove(bar);
 }
-
 void Battleship::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
     vehicleList.remove(warPlanes);
 }
-
 void Battleship::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
     vehicleList.push_back(warPlanes);
 }
-
 void Battleship::detach(const std::shared_ptr<Arsenal> &gun) {
     arsenalList.remove(gun);
 }
-
 void Battleship::attach(const std::shared_ptr<Arsenal> &gun) {
     arsenalList.push_back(gun);
 }
-
 void Battleship::notifyBarsDamage() {
-
     auto it = bars.begin();
     while (it != bars.end()) {
         (*it)->updateBarsDamage();
         ++it;
     }
-
-
 }
 
 

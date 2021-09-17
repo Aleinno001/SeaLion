@@ -583,7 +583,6 @@ void GameWorld::italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<S
         std::cerr << e.what() << std::endl;
     }
 }
-
 void GameWorld::usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numAir; i++) {

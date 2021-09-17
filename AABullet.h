@@ -9,8 +9,5 @@
 #include "Bullet.h"
 
 class AABullet: public Bullet {
-
 };
-
-
 #endif //SEALION_AABULLET_H

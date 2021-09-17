@@ -12,11 +12,8 @@
 class ArsenalFactory {
 public:
     virtual std::unique_ptr<Arsenal> createLight(int posX, int posY,WarShip &subject) const = 0;
-
     virtual std::unique_ptr<Arsenal> createMedium(int posX, int posY,WarShip &subject) const = 0;
-
     virtual std::unique_ptr<Arsenal> createHeavly(int posX, int posY,WarShip &subject) const = 0;
 };
-
 
 #endif //SEALION_ARSENALFACTORY_H

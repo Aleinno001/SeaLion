@@ -9,7 +9,6 @@ BarInterface::BarInterface(){
     setUpSprite("lifeBar");
     resetOrigin();
 }
-
 bool BarInterface::setUpSprite(std::string textureName) {
     std::string currentDir = ToolBox::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
@@ -28,11 +27,9 @@ bool BarInterface::setUpSprite(std::string textureName) {
     life.setScale(2, 2);
     return true;
 }
-
 sf::Sprite BarInterface::getSprite() const {
     return life;
 }
-
 void BarInterface::resetOrigin() {
     life.setOrigin(0, life.getTextureRect().height / 2);
 }
