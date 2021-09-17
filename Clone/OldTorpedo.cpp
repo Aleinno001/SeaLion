@@ -2,11 +2,13 @@
 // Created by davide on 04/07/21.
 //
 
-#include "TorpedoBomber.h"
+#include "OldFTorpedoBomber.h"
 
-TorpedoBomber::TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col,
+OldFTorpedoBomber::OldFTorpedoBomber(int x, int y, float ac, float maxVel, int hp, int le, int wi, bool col,
                              int numTorpedos, int damage,std::string nat,WarShip &subject) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),subject_(subject),numTorpedos(numTorpedos),torpedoDamage(damage)  {
-    std::string textureName="TorpedoBomber";
+
+    std::string textureName="OldFTorpedoBomber";
+
     try {
         setUpSprite("WarPlanes/" + textureName);
         sprite.setPosition(pos);
@@ -16,16 +18,26 @@ TorpedoBomber::TorpedoBomber(int x, int y, float ac, float maxVel, int hp, int l
         std::cerr << "Wrong texture name" << std::endl;
     }
 }
-void TorpedoBomber::launchTorpedo(Vehicle &enemy) {
+
+void OldFTorpedoBomber::launchTorpedo(Vehicle &enemy) {
+
 }
-void TorpedoBomber::attack(Vehicle target) {
+
+void OldFTorpedoBomber::attack(Vehicle target) {
+
 }
-void TorpedoBomber::update(bool isDead) {
+
+void OldFTorpedoBomber::update(bool isDead) {
     Vehicle::update(isDead);
 }
-TorpedoBomber::~TorpedoBomber() {
+
+
+
+OldFTorpedoBomber::~OldFTorpedoBomber() {
+
 }
-void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
+
+void OldFTorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
     sprite.setPosition(sprite.getPosition() + vel);
     sprite.setRotation(sprite.getRotation() + mx);
     sf::Transform rotation;
@@ -33,16 +45,20 @@ void TorpedoBomber::updatePlanes(sf::Vector2f &vel,double mx) {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
-void TorpedoBomber::resetOrigin() {
+
+void OldFTorpedoBomber::resetOrigin() {
     sprite.setOrigin((width - 1) / 2, (length - 1) / 2);
 }
-int TorpedoBomber::getNumTorpedos() const {
+
+int OldFTorpedoBomber::getNumTorpedos() const {
     return numTorpedos;
 }
-int TorpedoBomber::getTorpedoDamage() const {
+
+int OldFTorpedoBomber::getTorpedoDamage() const {
     return torpedoDamage;
 }
-void TorpedoBomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
+
+void OldFTorpedoBomber::planeAttack(std::_List_iterator<std::unique_ptr<Vehicle>> target, float dt) {
     if (actualCooldown <= 0) {
         if (WarShip *pTarget = dynamic_cast<WarShip *> (target->get())) {
             pTarget->setDamage(torpedoDamage);
