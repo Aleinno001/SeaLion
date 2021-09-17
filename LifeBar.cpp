@@ -24,13 +24,9 @@ void LifeBar::updateBars(sf::Vector2f &vel, double mx) {
     rotation.rotate(mx, subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(life.getPosition());
     life.setPosition(newPosition);
-
 }
-
 void LifeBar::updateBarsDamage() {
-
     double percentageLife = (subject_.getHp() * 100) / subject_.getMaxHp();
-
     if (percentageLife >= 50) {
         r = 255 - percentageLife * 255 * 2 / 100;
     } else {

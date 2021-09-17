@@ -32,6 +32,7 @@ protected:
     virtual const bool searchTarget()=0;
     virtual const float rotate()=0;
     virtual const bool canEngage() const=0;
+    virtual const void move()=0;
     virtual const bool setUpSprite(std::string textureName){
         std::string currentDir = ToolBox::GetCurrentWorkingDir();
         std::string unitTestingPath = "UnitTesting";
@@ -53,33 +54,32 @@ protected:
 public:
     virtual const std::string &getNationality() const=0;
     virtual const void attack()=0;
-    virtual const void move()=0;
     double getAcceleration() const {return acceleration;}
-    void setAcceleration(double acceleration) {Vehicle::acceleration = acceleration;}
+    void setAcceleration(double accel) {Vehicle::acceleration = accel;}
     bool isDeath() const {return death;}
-    void setDeath(bool death) {Vehicle::death = death;}
-    const double getMaxSpeed() const {return maxSpeed;}
+    void setDeath(bool d) {Vehicle::death = d;}
+    double getMaxSpeed() const {return maxSpeed;}
     float getCurrentSpeed() const {return currentSpeed;}
-    void setCurrentSpeed(float currentSpeed) {Vehicle::currentSpeed = currentSpeed;}
+    void setCurrentSpeed(float currSpe) {Vehicle::currentSpeed = currSpe;}
     double getHp() const {return hp;}
-    void setHp(double hp) {Vehicle::hp = hp;}
-    const double getMaxHp() const {return maxHP;}
+    void setHp(double HP) {Vehicle::hp = HP;}
+    double getMaxHp() const {return maxHP;}
     unsigned int getLength() const {return length;}
-    void setLength(unsigned int length) {Vehicle::length = length;}
+    void setLength(unsigned int le) {Vehicle::length = le;}
     unsigned int getWidth() const {return width;}
-    void setWidth(unsigned int width) {Vehicle::width = width;}
+    void setWidth(unsigned int wi) {Vehicle::width = wi;}
     bool isCollision() const {return collision;}
-    void setCollision(bool collision) {Vehicle::collision = collision;}
+    void setCollision(bool col) {Vehicle::collision = col;}
     float getPosX() const {return posX;}
-    void setPosX(float posX) {Vehicle::posX = posX;}
+    void setPosX(float x) {Vehicle::posX = x;}
     float getPosY() const {return posY;}
-    void setPosY(float posY) {Vehicle::posY = posY;}
+    void setPosY(float y) {Vehicle::posY = y;}
     const sf::Texture &getTexture() const {return texture;}
-    void setTexture(const sf::Texture &texture) {Vehicle::texture = texture;}
+    void setTexture(const sf::Texture &tex) {Vehicle::texture = tex;}
     const sf::Sprite &getSprite() const {return sprite;}
-    void setSprite(const sf::Sprite &sprite) {Vehicle::sprite = sprite;}
+    void setSprite(const sf::Sprite &sp) {Vehicle::sprite = sp;}
     const sf::Vector2f &getPos() const {return pos;}
-    void setPos(const sf::Vector2f &pos) {Vehicle::pos = pos;}
+    void setPos(const sf::Vector2f &p) {Vehicle::pos = p;}
     virtual ~Vehicle() = 0;
 };
 #endif //SEALION_VEHICLE_H
