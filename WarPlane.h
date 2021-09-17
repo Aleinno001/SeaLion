@@ -11,7 +11,7 @@ protected:
     int numAmmo;
     int ammoDamage;
 public:
-    WarPlane(float currCoolDown,float coolDown,int numAmmo,int ammoDamage):currentCoolDown(currCoolDown),coolDown(coolDown),numAmmo(numAmmo),ammoDamage(ammoDamage){};
+    WarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,float currCoolDown, float coolDown, int numAmmo, int ammoDamage) : Vehicle(x, y, ac, maxVel, hp, le, wi,col, nat),currentCoolDown(currCoolDown),coolDown(coolDown), numAmmo(numAmmo),ammoDamage(ammoDamage) {};
     virtual void update()=0; //Metodo per design pattern observer tra planes and Warship
     ~WarPlane() override=0;
 };
