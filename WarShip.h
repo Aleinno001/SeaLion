@@ -45,9 +45,9 @@ public:
     virtual const void detach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
     virtual const void notifyPlanes() const = 0;//Metodi per design pattern observer
     virtual const void attachPlanes(const std::shared_ptr<WarPlane> &warPlanes) = 0;//Metodi per design pattern observer
-    virtual const void detachPlanes(const std::shared_ptr<WarPlane> &warPlanes)=0;//Metodi per design pattern observer
-    virtual const void notifyBars() const =0; //Metodo design pattern observer tra BarInterface e Warship
-    virtual const void notifyBarsDamage() const =0;
+    virtual const void detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) =0;//Metodi per design pattern observer
+    virtual const void notifyBars() const=0; //Metodo design pattern observer tra BarInterface e Warship
+    virtual const void notifyBarsDamage() const=0;
     virtual const void attachBar(const std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
     virtual const void detachBar(const std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
     virtual const bool isAir() const = 0;

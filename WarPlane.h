@@ -6,7 +6,7 @@
 #include "Vehicle.h"
 class WarPlane : public Vehicle {
 public:
-    virtual const void updatePlanes()=0; //Metodo per design pattern observer tra planes and Warship
+    virtual const void update()=0; //Metodo per design pattern observer tra planes and Warship
     ~WarPlane() override =0;
 };
 #endif //SEALION_WARPLANE_H
