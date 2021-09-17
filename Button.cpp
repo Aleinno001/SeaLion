@@ -12,7 +12,6 @@ Button::Button(const std::string &name, const int &width, const int &length, sf:
     sprite.setPosition(pos);
     clicked = false;
 }
-
 bool Button::setUpSprite(std::string textureName) {
     std::string currentDir = ToolBox::GetCurrentWorkingDir();
     std::string unitTestingPath = "UnitTesting";
@@ -31,7 +30,6 @@ bool Button::setUpSprite(std::string textureName) {
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
 }
-
 bool Button::checkClick(sf::Vector2f clickPos) {
     bool result = false;
     if(sprite.getGlobalBounds().contains(clickPos)){
@@ -39,35 +37,27 @@ bool Button::checkClick(sf::Vector2f clickPos) {
     }
     return result;
 }
-
 void Button::setPos(const sf::Vector2f &pos) {
     sprite.setPosition(pos);
 }
-
 int Button::getWidth() const {
     return width;
 }
-
 int Button::getLength() const {
     return length;
 }
-
 void Button::setWidth(int width) {
     Button::width = width;
 }
-
 void Button::setLength(int length) {
     Button::length = length;
 }
-
 sf::Sprite &Button::getSprite()  {
     return sprite;
 }
-
 void Button::setClicked(bool clickable) {
     Button::clicked = clickable;
 }
-
 bool Button::isClicked() const {
     return clicked;
 }

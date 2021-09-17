@@ -14,7 +14,7 @@ Cruiser::Cruiser(int x, int y, float ac, const float maxVel, int hp, int arm,
                  bool col, ShipType sh, ModelType mo, int planes) : WarShip(x, y, ac, maxVel, hp, arm, nat,
                                                                             numL, numH, numM, numAA,
                                                                             le, wi, col, sh, mo),
-                                                                    numPlanes(planes) {
+                                                                            numPlanes(planes) {
     std::string textureName;
     switch (mo) {
         case ModelType::AlbertoDiGiussano:
@@ -61,42 +61,28 @@ Cruiser::Cruiser(int x, int y, float ac, const float maxVel, int hp, int arm,
         std::cerr << "Wrong texture name" << std::endl;
     }
 }
-
 void Cruiser::update(bool isDead) {
     Vehicle::update(isDead);
 }
-
 //void Cruiser::registerArsenals(std::unique_ptr<Arsenal> observer) {
-
 //}
-
 //void Cruiser::removeArsenals(std::unique_ptr<Arsenal> observer) {
-
 //}
-
 void Cruiser::notifyArsenals(sf::Vector2f &vel,double mx) {
-
     auto it = arsenalList.begin();
     while (it != arsenalList.end()) {
         (*it)->update(vel,mx);
         ++it;
     }
 }
-
 Cruiser::~Cruiser() {
-
 }
-
 int Cruiser::getNumPlanes() const {
     return numPlanes;
 }
-
 void Cruiser::attach(const std::shared_ptr<Arsenal> &gun) {
-
     arsenalList.push_back(gun);
-
 }
-
 void Cruiser::notifyPlanes(sf::Vector2f &vel, double mx) {
     auto it = vehicleList.begin();
     while (it != vehicleList.end()) {
@@ -104,47 +90,33 @@ void Cruiser::notifyPlanes(sf::Vector2f &vel, double mx) {
         ++it;
     }
 }
-
 void Cruiser::detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
     vehicleList.remove(warPlanes);
 }
-
 void Cruiser::attachPlanes(const std::shared_ptr<Vehicle> &warPlanes) {
     vehicleList.push_back(warPlanes);
 }
-
 void Cruiser::detach(const std::shared_ptr<Arsenal> &gun) {
-
     arsenalList.remove(gun);
-
 }
-
 void Cruiser::notifyBars(sf::Vector2f &vel, double mx) {
     auto it = bars.begin();
     while(it != bars.end()){
         (*it)->updateBars(vel,mx);
         ++it;
     }
-
 }
-
 void Cruiser::attachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.push_back(bar);
-
 }
-
 void Cruiser::detachBar(const std::shared_ptr<BarInterface> &bar) {
-
     bars.remove(bar);
-
 }
-
 void Cruiser::notifyBarsDamage() {
     auto it = bars.begin();
     while (it != bars.end()) {
         (*it)->updateBarsDamage();
         ++it;
     }
-
 }
 

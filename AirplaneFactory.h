@@ -13,9 +13,7 @@
 class AirplaneFactory : public AbstractAirplaneFactory {
 public:
     std::unique_ptr<Vehicle> createFighter(int posX, int posY,std::string nat,WarShip &subject) override;
-
     std::unique_ptr<Vehicle> createBomber(int posX, int posY,std::string nat,WarShip &subject) override;
-
     std::unique_ptr<Vehicle> createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) override;
 };
 

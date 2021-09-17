@@ -7,16 +7,11 @@
 int Dice::roll(int rolls) const {
     int roll;
     int min = 1;
-
     roll = 0;
-
     for (int i = 0; i < rolls; i++)
         roll = roll + rand() % (numFaces - min + 1) + min;
-
-
     return roll;
 }
-
 Dice::Dice(int num, int seedMult) {
     unsigned seed;
     numFaces = num;

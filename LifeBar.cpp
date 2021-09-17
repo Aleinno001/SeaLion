@@ -7,14 +7,10 @@
 
 
 LifeBar::LifeBar(WarShip &subject) : BarInterface(), subject_(subject), r(0), g(255), b(0) {
-
     life.setPosition(subject_.getSprite().getPosition().x + 0.50 * subject_.getWidth(),
                      subject_.getSprite().getPosition().y + 0.50 * subject_.getLength());
     life.setColor(sf::Color(r, g, b));
-
 }
-
-
 void LifeBar::updateBars(sf::Vector2f &vel, double mx) {
     life.setPosition(subject_.getSprite().getPosition());
     life.move(0.50 * subject_.getWidth(), 0);
@@ -36,7 +32,6 @@ void LifeBar::updateBarsDamage() {
             g = 0;
         }
     }
-
     life.setColor(sf::Color(r, g, b));
 }
 

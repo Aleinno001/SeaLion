@@ -8,7 +8,6 @@
 enum class WeaponType {
     torpedo, antiAir
 };
-
 class SpecialWeaponFactory {
 public:
     virtual std::unique_ptr<Arsenal> createSpecialWeapon(WeaponType type,WarShip &subject) const = 0;
