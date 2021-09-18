@@ -1,24 +1,21 @@
 //
-// Created by alessandro on 7/2/21.
+// Created by davide on 18/09/21.
 //
 
-#ifndef SEALION_AIRCRAFTCARRIER_H
-#define SEALION_AIRCRAFTCARRIER_H
+#ifndef SEALION_OLDAIRCRAFTCARRIER_H
+#define SEALION_OLDAIRCRAFTCARRIER_H
 
 
-#include "WarShip.h"
-#include "MvcSubject.h"
-
-class AircraftCarrier : public WarShip, public MvcSubject {
+class OldAircraftCarrier {
 private:
     int numPlanes;
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers; //Lista di Viste per design pattern MVC
 public:
     int getNumPlanes() const;
 public:
-    AircraftCarrier(int x, int y, float ac, const float maxVel, int hp, int arm,
+    OldAircraftCarrier(int x, int y, float ac, const float maxVel, int hp, int arm,
                     std::string nat, int numL, int numH, int numM, int numAA,
-                     int le, int wi,
+                    int le, int wi,
                     bool col, ShipType sh, ModelType mo, int planes);
     void update(bool isDead) override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;
@@ -31,7 +28,7 @@ public:
     void notifyBarsDamage() override;
     void attachBar(const std::shared_ptr<BarInterface> &bar) override;
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
-    AircraftCarrier& getInstance();
+    OldAircraftCarrier& getInstance();
     void notifyMvcObserver() override;
     void addMvcObserver(std::shared_ptr<MvcObserver> o) override;
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
@@ -40,8 +37,8 @@ public:
         return arsenalList.size();
     }
     std::list<std::shared_ptr<MvcObserver>> getListMvcObservers();
-    ~AircraftCarrier() override;
+    ~OldAircraftCarrier() override;
 };
 
 
-#endif //SEALION_AIRCRAFTCARRIER_H
+#endif //SEALION_OLDAIRCRAFTCARRIER_H

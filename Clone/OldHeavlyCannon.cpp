@@ -1,9 +1,8 @@
 //
-// Created by davide on 02/07/21.
+// Created by pala on 9/18/21.
 //
 
-#include "HeavlyCannon.h"
-
+#include "OldHeavlyCannon.h"
 HeavlyCannon::HeavlyCannon(const float range, const int reload, int dispersion,
                            std::shared_ptr<Bullet> type, int power, int posX, int posY, int le,
                            int wi, std::string texName, WarShip &sub) : subject_(sub),

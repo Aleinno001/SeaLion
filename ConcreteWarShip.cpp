@@ -76,7 +76,7 @@ void ConcreteWarShip::notifyPlanes() const {
         iterPlanes->update();
     }
 }
-void ConcreteWarShip::attachPlanes(const std::shared_ptr<WarPlane> &warPlanes) {
+void ConcreteWarShip::attachPlanes(std::shared_ptr<WarPlane> &warPlanes) {
     planeList.push_back(warPlanes);
 }
 void ConcreteWarShip::detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) {

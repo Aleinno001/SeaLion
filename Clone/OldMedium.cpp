@@ -1,8 +1,10 @@
 //
-// Created by davide on 02/07/21.
+// Created by pala on 9/18/21.
 //
 
-#include "MediumCannon.h"
+#include "OldMedium.h"
+
+
 
 MediumCannnon::MediumCannnon(const float range, const int reload, int dispersion,
                              std::shared_ptr<Bullet> type, int power, int posX, int posY, int le,

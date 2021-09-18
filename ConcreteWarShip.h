@@ -12,7 +12,7 @@ public:
     void attach(const std::shared_ptr<Arsenal> &gun) override;
     void detach(const std::shared_ptr<Arsenal> &gun) override;
     void notifyPlanes() const override;
-    void attachPlanes(const std::shared_ptr<WarPlane> &warPlanes) override;
+    void attachPlanes(std::shared_ptr<WarPlane> &warPlanes) override;
     void detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) override;
     void notifyBars() const override;
     void notifyBarsDamage() const override;
