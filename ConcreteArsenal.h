@@ -28,9 +28,9 @@ public:
     float getCountdown() const override;
     void setCountdown(float countdown) override;
 protected:
-    void rotate() override;
-    void attack() override;
-    bool engage() override;
+    void rotate(sf::Vector2f &coord) override;
+    float attack(sf::Vector2f &coord) override;
+    bool engage(sf::Vector2f &coord,bool concealed) override;
 private:
     WarShip &subject_;
 };

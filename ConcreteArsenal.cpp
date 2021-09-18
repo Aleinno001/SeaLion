@@ -15,7 +15,29 @@ void ConcreteArsenal::update() {
     sprite.setPosition(newPosition);
 }
 void ConcreteArsenal::searchTarget() {
- //FIXME SearchTarget
+    std::shared_ptr<WarShip> target;
+    float distance;
+    float targetDistance = 999999;
+    for (auto &enemyIter:subject_.getEnemyList()) {
+        if (!enemyIter->isDeath() ||!ammoType->isArrived()) {  //Permette al proiettile di raggiungere il bersaglio anche se la nave bersaglio muore
+            distance = ToolBox::calculateDistance(const_cast<sf::Vector2f &>(enemyIter->getSprite().getPosition()),const_cast<sf::Vector2f &>(sprite.getPosition()));
+            if ((distance <= rangeOfFire && distance <= targetDistance)) {  //Salva il bersaglio più vicino che è possibile attaccare
+                if (engage(const_cast<sf::Vector2f &>(enemyIter->getSprite().getPosition()),enemyIter->isConcealed())) {
+                    target = enemyIter;
+                    targetDistance = distance;
+                }
+            }
+        }
+    }
+    if (targetDistance != 999999) {
+        if (!target->isDeath()) {
+            attack(const_cast<sf::Vector2f &>(target->getSprite().getPosition()));
+        } else {  //Il proiettile può raggiungere il bersaglio anche se chi lo spara muore
+            ammoType->reachTarget();
+        }
+    } else if (!ammoType->isArrived()) {  //Se il proiettile non ha raggiunto il bersaglio continua a viaggiare
+        ammoType->reachTarget();
+    }
 }
 bool ConcreteArsenal::setUpSprite(std::string textureName) {
     std::string currentDir = ToolBox::GetCurrentWorkingDir();
@@ -77,12 +99,40 @@ float ConcreteArsenal::getCountdown() const {
 void ConcreteArsenal::setCountdown(float countdown) {
     this->countdown=countdown;
 }
-void ConcreteArsenal::rotate() {
-    //FIXME IMPLEMENTA
+void ConcreteArsenal::rotate(sf::Vector2f &coord) {
+    double mx;
+    double dy;
+    double dx;
+    dy = coord.y - sprite.getPosition().y;
+    dx = coord.x - sprite.getPosition().x;
+    mx = -180 + ToolBox::calculateMx(dx, dy);
+    sprite.setRotation(mx);
 }
-void ConcreteArsenal::attack() {
-    //FIXME ATTACK
+float ConcreteArsenal::attack(sf::Vector2f &coord) {
+    rotate(coord);
+    if (abs(countdown - ToolBox::dt.getElapsedTime().asSeconds()) <= ToolBox::dt.getElapsedTime().asSeconds()) {  //Verifica che il cannone abbia ricaricato e quindi imposta lo stato di sparo
+        sf::Vector2f targetPosition;
+        targetPosition = coord;
+        Dice dice(11, targetPosition.x);
+        float dx = targetPosition.x - sprite.getPosition().x;
+        float dy = targetPosition.y - sprite.getPosition().y;
+        float distance = sqrt(pow(dx, 2) + pow(dy, 2));
+        targetPosition.x +=(pow(-1, dice.roll(1))) * (maximumDispersion * (dice.roll(1) - 1) / 10) *distance /rangeOfFire;
+        targetPosition.y +=(pow(-1, dice.roll(1))) * (maximumDispersion * (dice.roll(1) - 1) / 10) *distance /rangeOfFire;
+        countdown=reloadTime;
+        ammoType->initializeBullet(sprite.getPosition(),targetPosition);
+    } else {
+        countdown=countdown - ToolBox::dt.getElapsedTime().asSeconds();
+    }
+    if ((abs(ammoType->getSprite().getPosition().x -ammoType->getTargetPoint().x) >1 ||abs(ammoType->getSprite().getPosition().y -ammoType->getTargetPoint().y) >1)) { //Controlla se il proiettile ha raggiunto le coordinate prefissatammoType->reachTarget();
+    } else {
+        ammoType->hit();
+    }
 }
-bool ConcreteArsenal::engage() {
-    return 0;//FIXME ENGAGE
+bool ConcreteArsenal::engage(sf::Vector2f &coord,bool concealed) {
+    bool result = false;
+    if (!concealed || subject_.isConcealed()) {  //Non può sparare se il nemico è nascosto, almeno che non lo siano entrambi
+        result = true;
+    }
+    return result;
 }

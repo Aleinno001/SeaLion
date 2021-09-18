@@ -8,7 +8,6 @@
 #include "Bullet.h"
 #include "SFML/Graphics.hpp"
 #include <memory>
-
 class Arsenal {
 protected:
     float rangeOfFire;
@@ -22,9 +21,9 @@ protected:
     std::string textureName;
     sf::Texture texture;
     sf::Sprite sprite;
-    virtual void rotate() = 0;
-    virtual void attack() = 0;
-    virtual bool engage() = 0;
+    virtual void rotate(sf::Vector2f &coord) = 0;
+    virtual float attack(sf::Vector2f &coord) = 0;
+    virtual bool engage(sf::Vector2f &coord,bool concealed) = 0;
 public:
     Arsenal(float range,float reload,float countdown,int maxDispersion,std::shared_ptr<Bullet> ammo,int firepower,int le,int wi,std::string texName,sf::Sprite spr):rangeOfFire(range),reloadTime(reload),countdown(countdown),maximumDispersion(maxDispersion),ammoType(ammo),firepower(firepower),length(le),width(wi),sprite(spr),textureName(texName){}
     virtual std::shared_ptr<Bullet> getAmmoType()=0;

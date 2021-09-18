@@ -5,7 +5,6 @@
 #include "OldWarShip.h"
 
 
-
 WarShip::WarShip(int x, int y, float ac, const float maxVel, int hp, int arm,
                  std::string nat, int numL, int numH, int numM, int numAA,
                  int le, int wi,
@@ -69,12 +68,11 @@ void WarShip::move(sf::Vector2f coordinates,
         }
 
         notifyArsenals(vel, deltaMx);
-        notifyBars(vel,deltaMx);
+        notifyBars(vel, deltaMx);
 
         if (shipType == ShipType::AircraftCarrier && !air)
             notifyPlanes(vel, deltaMx);
-        else
-        {
+        else {
             //TODO Detach Airplanes Observers
         }
     }
@@ -87,38 +85,38 @@ const int WarShip::getNumAntiAircraft() const {
 bool WarShip::canEngage(std::_List_iterator<std::shared_ptr<Arsenal>> iter,
                         std::_List_iterator<std::unique_ptr<WarShip>> target,
                         const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector) {  //Verifica la possibilità di sparare alle navi nemiche
-bool result = false;
-float y, x;
-if (!target->get()->isConcealed() ||
-concealed) {  //Non può sparare se il nemico è nascosto, almeno che non lo siano entrambi
-result = true;
-int i, j;
-float mx;
-x = iter->get()->getSprite().getPosition().x;
-y = iter->get()->getSprite().getPosition().y;
-double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
-double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-mx = calculateMx(dx, dy);
-while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
-abs(target->get()->getSprite().getPosition().y - y) >= 1) {
-x = x + sinf((M_PI / 180.f) * mx) * 2;
-y = y - cosf((M_PI / 180.f) * mx) * 2;
-i = y / 30;
-j = x / 30;
-if ((tileVector[i][j]->getSprite().getPosition().x < x &&
-                                                     (tileVector[i][j]->getSprite().getPosition().x +
-                                                      tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
-(tileVector[i][j]->getSprite().getPosition().y < y &&
-                                                 (tileVector[i][j]->getSprite().getPosition().y +
-                                                  tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
-if (!tileVector[i][j]->isPassable) {    //Controlla se nella linea di tiro è presente una casella di terra
-result = false;
-return result;
-}
-}
-}
-}
-return result;
+    bool result = false;
+    float y, x;
+    if (!target->get()->isConcealed() ||
+        concealed) {  //Non può sparare se il nemico è nascosto, almeno che non lo siano entrambi
+        result = true;
+        int i, j;
+        float mx;
+        x = iter->get()->getSprite().getPosition().x;
+        y = iter->get()->getSprite().getPosition().y;
+        double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
+        double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
+        mx = calculateMx(dx, dy);
+        while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||
+               abs(target->get()->getSprite().getPosition().y - y) >= 1) {
+            x = x + sinf((M_PI / 180.f) * mx) * 2;
+            y = y - cosf((M_PI / 180.f) * mx) * 2;
+            i = y / 30;
+            j = x / 30;
+            if ((tileVector[i][j]->getSprite().getPosition().x < x &&
+                 (tileVector[i][j]->getSprite().getPosition().x +
+                  tileVector[i][j]->getSprite().getTextureRect().width) > x) &&
+                (tileVector[i][j]->getSprite().getPosition().y < y &&
+                 (tileVector[i][j]->getSprite().getPosition().y +
+                  tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
+                if (!tileVector[i][j]->isPassable) {    //Controlla se nella linea di tiro è presente una casella di terra
+                    result = false;
+                    return result;
+                }
+            }
+        }
+    }
+    return result;
 }
 
 void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
@@ -170,48 +168,48 @@ void WarShip::attack(std::_List_iterator<std::unique_ptr<WarShip>> target,
 bool WarShip::searchTarget(std::_List_iterator<std::unique_ptr<WarShip>> enemyListStart,
                            std::_List_iterator<std::unique_ptr<WarShip>> enemyListEnd,
                            const std::vector<std::vector<std::unique_ptr<GameTile>>> &tileVector,
-float dt) {   //Cerca un bersaglio nel raggio d'azione se possibile
-bool result = false;
-if (!death) {
-float distance = 0;
-result = false;
-auto iter = arsenalList.begin();
-int numIter = numLCannons + numMCannons + numHCannons;
+                           float dt) {   //Cerca un bersaglio nel raggio d'azione se possibile
+    bool result = false;
+    if (!death) {
+        float distance = 0;
+        result = false;
+        auto iter = arsenalList.begin();
+        int numIter = numLCannons + numMCannons + numHCannons;
 
-std::_List_iterator<std::unique_ptr<WarShip>> target;
-float targetDistance = 999999;
-for (int i = 0; i < numIter; i++, ++iter) {  //per tutti i cannoni
-for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
-if (!enemyIter->get()->death ||
-!iter->get()->getAmmoType()->isArrived()) {  //Permette al proiettile di raggiungere il bersaglio anche se la nave bersaglio muore
-distance = calculateDistance(
-        const_cast<sf::Vector2f &>(enemyIter->get()->getSprite().getPosition()),
-        const_cast<sf::Vector2f &>(iter->get()->getSprite().getPosition()));
-if ((distance <= iter->get()->getRangeOfFire() &&
-distance <= targetDistance)) {  //Salva il bersaglio più vicino che è possibile attaccare
-if (canEngage(iter, enemyIter, tileVector)) {
-target = enemyIter;
-targetDistance = distance;
-}
-}
-}
-}
-if (targetDistance != 999999) {
-if (!target->get()->death) {
-attack(target, iter, dt);
-result = true;
-} else {  //Il proiettile può raggiungere il bersaglio anche se chi lo spara muore
-iter->get()->getAmmoType()->reachTarget();
-}
-} else if (!iter->get()->getAmmoType()->isArrived()) {  //Se il proiettile non ha raggiunto il bersaglio continua a viaggiare
-iter->get()->getAmmoType()->reachTarget();
-}
-targetDistance = 999999;
-}
-}
+        std::_List_iterator<std::unique_ptr<WarShip>> target;
+        float targetDistance = 999999;
+        for (int i = 0; i < numIter; i++, ++iter) {  //per tutti i cannoni
+            for (auto enemyIter = enemyListStart; enemyIter != enemyListEnd; ++enemyIter) {
+                if (!enemyIter->get()->death ||
+                    !iter->get()->getAmmoType()->isArrived()) {  //Permette al proiettile di raggiungere il bersaglio anche se la nave bersaglio muore
+                    distance = calculateDistance(
+                            const_cast<sf::Vector2f &>(enemyIter->get()->getSprite().getPosition()),
+                            const_cast<sf::Vector2f &>(iter->get()->getSprite().getPosition()));
+                    if ((distance <= iter->get()->getRangeOfFire() &&
+                         distance <= targetDistance)) {  //Salva il bersaglio più vicino che è possibile attaccare
+                        if (canEngage(iter, enemyIter, tileVector)) {
+                            target = enemyIter;
+                            targetDistance = distance;
+                        }
+                    }
+                }
+            }
+            if (targetDistance != 999999) {
+                if (!target->get()->death) {
+                    attack(target, iter, dt);
+                    result = true;
+                } else {  //Il proiettile può raggiungere il bersaglio anche se chi lo spara muore
+                    iter->get()->getAmmoType()->reachTarget();
+                }
+            } else if (!iter->get()->getAmmoType()->isArrived()) {  //Se il proiettile non ha raggiunto il bersaglio continua a viaggiare
+                iter->get()->getAmmoType()->reachTarget();
+            }
+            targetDistance = 999999;
+        }
+    }
 
 
-return result;
+    return result;
 }
 
 bool WarShip::isConcealed() const {
@@ -222,11 +220,11 @@ void WarShip::setConcealed(bool isConcealed) {
     WarShip::concealed = isConcealed;
 }
 
-std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList()  {
+std::list<std::shared_ptr<Vehicle>> &WarShip::getVehicleList() {
     return vehicleList;
 }
 
-std::list<std::shared_ptr<BarInterface>> &WarShip::getBars(){
+std::list<std::shared_ptr<BarInterface>> &WarShip::getBars() {
     return bars;
 }
 
@@ -261,7 +259,6 @@ const int WarShip::getNumMCannons() const {
 const int WarShip::getNumHCannons() const {
     return numHCannons;
 }
-
 
 
 bool WarShip::isAir() const {
