@@ -29,7 +29,6 @@ protected:
     sf::Sprite sprite;
     sf::Vector2f pos;
     sf::Vector2f movement;
-    sf::Vector2f targetCoordinates;
 protected:
     virtual float rotate(float mx, float rotatingInPlaceMult)=0;
     virtual bool canEngage()=0;
@@ -84,8 +83,6 @@ public:
     void setSprite(const sf::Sprite &sp) {Vehicle::sprite = sp;}
     const sf::Vector2f &getPos() const {return pos;}
     void setPos(const sf::Vector2f &p) {Vehicle::pos = p;}
-    const sf::Vector2f &getTargetCoordinates() const {return targetCoordinates;}
-    void setTargetCoordinates(const sf::Vector2f &targetCoordinates) {Vehicle::targetCoordinates = targetCoordinates;}
     virtual ~Vehicle() = 0;
 };
 #endif //SEALION_VEHICLE_H

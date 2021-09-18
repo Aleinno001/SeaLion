@@ -40,16 +40,16 @@ void ConcreteWarShip::move() {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
             }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * ToolBox::dt.getElapsedTime().asSeconds() * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * ToolBox::dt.getElapsedTime().asSeconds() * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
             deltaMx = rotate(mx, rotatingInPlaceMult);
         } else {
             currentSpeed = 0;
         }
 
-        notifyArsenals(vel, deltaMx);
-        notifyBars(vel,deltaMx);
+        notifyArsenals();
+        notifyBars();
 
         if (shipType == ShipType::AircraftCarrier && !air)
             notifyPlanes(vel, deltaMx);
