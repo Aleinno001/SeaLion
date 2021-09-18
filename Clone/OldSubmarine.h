@@ -1,26 +1,19 @@
 //
-// Created by alessandro on 7/2/21.
+// Created by davide on 18/09/21.
 //
 
-#ifndef SEALION_SUBMARINE_H
-#define SEALION_SUBMARINE_H
+#ifndef SEALION_OLDSUBMARINE_H
+#define SEALION_OLDSUBMARINE_H
 
 
-#include <string>
-#include <memory>
-#include <list>
-#include "Arsenal.h"
-#include "Vehicle.h"
-#include "WarShip.h"
-
-class Submarine : public WarShip {
+class OldSubmarine {
 private:
     bool isSubmerged{false};
     int numTorpedoTubes;
 public:
-    Submarine(int x, int y, float ac, const float maxVel, int hp, int arm,
+    OldSubmarine(int x, int y, float ac, const float maxVel, int hp, int arm,
               std::string nat, int numL, int numH, int numM, int numAA,
-               int le, int wi,
+              int le, int wi,
               bool col, ShipType sh, ModelType mo, int numTor, bool isSub);
     void submerge();
     bool isSubmerged1() const {
@@ -39,7 +32,7 @@ public:
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
     void detachPlanes(const std::shared_ptr<Vehicle> &warPlanes) override;
     void notifyBarsDamage() override;
-    ~Submarine() override{
+    ~OldSubmarine() override{
     };
     // void registerArsenals(std::unique_ptr<Arsenal> observer) override;
     //void removeArsenals(std::unique_ptr<Arsenal> observer) override;
@@ -48,4 +41,4 @@ public:
 };
 
 
-#endif //SEALION_SUBMARINE_H
+#endif //SEALION_OLDSUBMARINE_H
