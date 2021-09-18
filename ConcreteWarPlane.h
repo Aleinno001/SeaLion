@@ -9,11 +9,11 @@
 class ConcreteWarPlane : public WarPlane{
 public:
     ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,float currCoolDown, float coolDown, int numAmmo, int ammoDamage,WarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, currCoolDown, coolDown, numAmmo, ammoDamage),subject_(sub){}
-    void attack() override;
     ~ConcreteWarPlane() override = default;
     void update() override;
-protected:
     bool searchTarget() override;
+protected:
+    void attack() override;
     float rotate(float mx, float rotatingInPlaceMult) override;
     bool canEngage() override;
     void move() override;

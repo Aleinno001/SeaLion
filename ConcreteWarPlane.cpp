@@ -4,7 +4,13 @@
 #include "ConcreteWarPlane.h"
 #include "ToolBox.h"
 void ConcreteWarPlane::attack() {
-    return;//FIXME Implementa
+    if(currentCoolDown <= 0){
+        target->setDamage(ammoDamage);
+        target->notifyBarsDamage();//notify per Observer Bars
+        currentCoolDown = coolDown;
+    } else {
+        currentCoolDown -= ToolBox::restart;
+    }
 }
 void ConcreteWarPlane::update() {
     sprite.setPosition(sprite.getPosition() + subject_.getMovement());
@@ -15,7 +21,9 @@ void ConcreteWarPlane::update() {
     sprite.setPosition(newPosition);
 }
 bool ConcreteWarPlane::searchTarget() {
-    return 0;//FIXME Implementa
+    move(target->get()->getSprite().getPosition(), ToolBox::dt.getElapsedTime().asSeconds());
+    if(canEngage())
+        attack();
 }
 float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
@@ -36,13 +44,10 @@ float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
     return deltaMx;
 }
 bool ConcreteWarPlane::canEngage() {
-    if(currentCoolDown <= 0){
-        target->setDamage(ammoDamage);
-        target->notifyBarsDamage();//notify per Observer Bars
-        currentCoolDown = coolDown;
-    } else {
-        currentCoolDown -= ToolBox::restart;
-    }
+    if(abs(target->get()->getSprite().getPosition().x - sprite.getPosition().x) < 90 && abs(target->get()->getSprite().getPosition().y - sprite.getPosition().y) < 90)
+        return true;
+    else
+        return false;
 }
 void ConcreteWarPlane::move() {
     if (!death) {   //verifica morte e incagliamento

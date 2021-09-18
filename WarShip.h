@@ -4,6 +4,7 @@
 #ifndef SEALION_WARSHIP_H
 #define SEALION_WARSHIP_H
 #include <string>
+#include <utility>
 #include <vector>
 #include <list>
 #include "Vehicle.h"
@@ -35,12 +36,11 @@ protected:
     const int numAntiAircraft;
     bool concealed;
     bool selected {false};
-    bool air{false};
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::shared_ptr<WarPlane>> planeList;
     std::list<std::shared_ptr<BarInterface>> bars;
 public:
-    WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, const int armour, const std::string &name, const int numLCannons,const int numMCannons, const int numHCannons, const int numAntiAircraft, bool concealed, bool selected,bool air, std::list<std::shared_ptr<Arsenal>> &arsenalList,std::list<std::shared_ptr<WarPlane>> &plaList,std::list<std::shared_ptr<BarInterface>> &bars) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),shipType(shipType), modelType(modelType),armour(armour), name(name),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft),concealed(concealed), selected(selected), air(air),arsenalList(arsenalList),planeList(plaList),bars(bars) {}
+    WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, const int armour, std::string name, const int numLCannons,const int numMCannons, const int numHCannons, const int numAntiAircraft, bool concealed, bool selected,bool air, std::list<std::shared_ptr<Arsenal>> &arsenalList,std::list<std::shared_ptr<WarPlane>> &plaList,std::list<std::shared_ptr<BarInterface>> &bars) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),shipType(shipType), modelType(modelType),armour(armour), name(std::move(name)),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft),concealed(concealed), selected(selected),arsenalList(arsenalList),planeList(plaList),bars(bars) {}
     virtual void notifyArsenals() const = 0;//Metodi per design pattern observer
     virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
     virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
@@ -65,8 +65,6 @@ public:
     void setConcealed(bool concealed) {WarShip::concealed = concealed;}
     bool isSelected() const {return selected;}
     void setSelected(bool selected) {WarShip::selected = selected;}
-    bool isAir() const {return air;}
-    void setAir(bool air) {WarShip::air = air;}
     const std::list<std::shared_ptr<Arsenal>> &getArsenalList() const {return arsenalList;}
     void setArsenalList(const std::list<std::shared_ptr<Arsenal>> &arsenalList) {WarShip::arsenalList = arsenalList;}
     const std::list<std::shared_ptr<WarPlane>> &getPlaneList() const {return planeList;}
