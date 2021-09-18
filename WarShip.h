@@ -39,6 +39,7 @@ protected:
     std::list<std::shared_ptr<Arsenal>> arsenalList;
     std::list<std::shared_ptr<WarPlane>> planeList;
     std::list<std::shared_ptr<BarInterface>> bars;
+    std::list<std::shared_ptr<WarShip>> enemyList;
 public:
     WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, const int armour, std::string name, const int numLCannons,const int numMCannons, const int numHCannons, const int numAntiAircraft, bool concealed, bool selected,bool air, std::list<std::shared_ptr<Arsenal>> &arsenalList,std::list<std::shared_ptr<WarPlane>> &plaList,std::list<std::shared_ptr<BarInterface>> &bars) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat),shipType(shipType), modelType(modelType),armour(armour), name(std::move(name)),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft),concealed(concealed), selected(selected),arsenalList(arsenalList),planeList(plaList),bars(bars) {}
     virtual void notifyArsenals() const = 0;//Metodi per design pattern observer

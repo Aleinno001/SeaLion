@@ -12,7 +12,52 @@ void ConcreteWarShip::attack() {
     return;
 }
 void ConcreteWarShip::move() {
-    return;
+    if (collision && !death) {   //verifica morte e incagliamento
+        double mx;
+        double dy = targetCoordinates.y - sprite.getPosition().y;
+        double dx = targetCoordinates.x - sprite.getPosition().x;
+        float rotatingInPlaceMult = 1;
+        double deltaMx = 0;
+
+        mx = ToolBox::calculateMx(dx, dy);
+
+        if (currentSpeed <= maxSpeed) {
+            currentSpeed = currentSpeed + acceleration / 100;
+        }
+        sf::Vector2f vel;
+        if (!(abs(targetCoordinates.x - sprite.getPosition().x) < 2 &&
+              abs(targetCoordinates.y - sprite.getPosition().y) < 2)) {  //controlla se la nave ha raggiunto la destinazine
+            if (abs(sprite.getRotation() - mx) >=
+                25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
+                rotatingInPlaceMult = 3;
+                if (currentSpeed > maxSpeed / 4)
+                    currentSpeed = currentSpeed - acceleration / 100;
+            }
+            if ((abs(targetCoordinates.x - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
+                 abs(targetCoordinates.y - sprite.getPosition().y) < sprite.getTextureRect().height /
+                                                               2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
+                if (currentSpeed > acceleration / 100) {
+                    currentSpeed = currentSpeed - acceleration / 100;
+                }
+            }
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * dt * acceleration / 10;
+            sprite.setPosition(sprite.getPosition() + vel);
+            deltaMx = rotate(mx, rotatingInPlaceMult);
+        } else {
+            currentSpeed = 0;
+        }
+
+        notifyArsenals(vel, deltaMx);
+        notifyBars(vel,deltaMx);
+
+        if (shipType == ShipType::AircraftCarrier && !air)
+            notifyPlanes(vel, deltaMx);
+        else
+        {
+            //TODO Detach Airplanes Observers
+        }
+    }
 }
 void ConcreteWarShip::notifyArsenals() const {
     return;
@@ -49,10 +94,8 @@ bool ConcreteWarShip::searchTarget() {
 }
 float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
-    if (abs(sprite.getRotation() - mx) >=
-        1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
-        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
-                                                    0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
+    if (abs(sprite.getRotation() - mx) >=1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+        if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
             deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
             sprite.rotate(deltaMx);
         } else if (sprite.getRotation() > 180 && mx < 180) {
@@ -66,5 +109,27 @@ float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
     return deltaMx;
 }
 bool ConcreteWarShip::canEngage() const {
-    return 0;
+    bool result = false;
+    float y, x;
+    if (!target->get()->isConcealed() ||concealed) {  //Non può sparare se il nemico è nascosto, almeno che non lo siano entrambi
+        result = true;
+        int i, j;
+        float mx;
+        x = iter->get()->getSprite().getPosition().x;
+        y = iter->get()->getSprite().getPosition().y;
+        double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
+        double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
+        mx = calculateMx(dx, dy);
+        while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||abs(target->get()->getSprite().getPosition().y - y) >= 1) {x = x + sinf((M_PI / 180.f) * mx) * 2;y = y - cosf((M_PI / 180.f) * mx) * 2;
+            i = y / 30;
+            j = x / 30;
+            if ((tileVector[i][j]->getSprite().getPosition().x < x &&(tileVector[i][j]->getSprite().getPosition().x +tileVector[i][j]->getSprite().getTextureRect().width) > x) &&(tileVector[i][j]->getSprite().getPosition().y < y &&(tileVector[i][j]->getSprite().getPosition().y +tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
+                if (!tileVector[i][j]->isPassable) {    //Controlla se nella linea di tiro è presente una casella di terra
+                    result = false;
+                    return result;
+                }
+            }
+        }
+    }
+    return result;
 }
