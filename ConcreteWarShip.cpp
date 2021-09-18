@@ -9,7 +9,9 @@ ConcreteWarShip::ConcreteWarShip(float x, float y, float ac, float maxVel, int h
     sprite.setPosition(posX,posY);
 }
 void ConcreteWarShip::attack() {
-    return;
+    for(auto &iterArsenal : arsenalList){
+        iterArsenal->searchTarget;
+    }
 }
 void ConcreteWarShip::move() {
     if (collision && !death) {   //verifica morte e incagliamento
@@ -17,7 +19,6 @@ void ConcreteWarShip::move() {
         double dy = targetCoordinates.y - sprite.getPosition().y;
         double dx = targetCoordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
-        double deltaMx = 0;
 
         mx = ToolBox::calculateMx(dx, dy);
 
@@ -43,7 +44,7 @@ void ConcreteWarShip::move() {
             vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * ToolBox::dt.getElapsedTime().asSeconds() * acceleration / 10;
             vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * ToolBox::dt.getElapsedTime().asSeconds() * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
-            deltaMx = rotate(mx, rotatingInPlaceMult);
+            rotate(mx, rotatingInPlaceMult);
         } else {
             currentSpeed = 0;
         }
@@ -51,8 +52,8 @@ void ConcreteWarShip::move() {
         notifyArsenals();
         notifyBars();
 
-        if (shipType == ShipType::AircraftCarrier && !air)
-            notifyPlanes(vel, deltaMx);
+        if (shipType == ShipType::AircraftCarrier)   //FIXME controllare che gli aerei non stiano volando
+            notifyPlanes();
         else
         {
             //TODO Detach Airplanes Observers
@@ -60,16 +61,20 @@ void ConcreteWarShip::move() {
     }
 }
 void ConcreteWarShip::notifyArsenals() const {
-    return;
+    for(auto &iterArsenal : arsenalList){
+        iterArsenal->update();
+    }
 }
 void ConcreteWarShip::attach(const std::shared_ptr<Arsenal> &gun) {
-    return;
+    arsenalList.push_back(gun);
 }
 void ConcreteWarShip::detach(const std::shared_ptr<Arsenal> &gun) {
-    return;
+    arsenalList.remove(gun);
 }
 void ConcreteWarShip::notifyPlanes() const {
-    return;
+    for(auto &iterPlanes : planeList){
+        iterPlanes->update();
+    }
 }
 void ConcreteWarShip::attachPlanes(const std::shared_ptr<WarPlane> &warPlanes) {
     planeList.push_back(warPlanes);
@@ -78,19 +83,25 @@ void ConcreteWarShip::detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) {
     planeList.remove(warPlanes);
 }
 void ConcreteWarShip::notifyBars() const {
-    return;
+    for(auto &iterBars : bars){
+        iterBars->updateBars();
+    }
 }
 void ConcreteWarShip::notifyBarsDamage() const {
-    return;
+    for(auto &iterBars : bars){
+        iterBars->updateBarsDamage();
+    }
 }
 void ConcreteWarShip::attachBar(const std::shared_ptr<BarInterface> &bar) {
-    return;
+    bars.push_back(bar);
 }
 void ConcreteWarShip::detachBar(const std::shared_ptr<BarInterface> &bar) {
-    return;
+    bars.remove(bar);
 }
 bool ConcreteWarShip::searchTarget() {
-    return 0;
+    move();
+    if(canEngage())
+        attack();
 }
 float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
@@ -108,28 +119,10 @@ float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
     }
     return deltaMx;
 }
-bool ConcreteWarShip::canEngage() const {
-    bool result = false;
-    float y, x;
-    if (!target->get()->isConcealed() ||concealed) {  //Non può sparare se il nemico è nascosto, almeno che non lo siano entrambi
-        result = true;
-        int i, j;
-        float mx;
-        x = iter->get()->getSprite().getPosition().x;
-        y = iter->get()->getSprite().getPosition().y;
-        double dy = target->get()->getSprite().getPosition().y - iter->get()->getSprite().getPosition().y;
-        double dx = target->get()->getSprite().getPosition().x - iter->get()->getSprite().getPosition().x;
-        mx = calculateMx(dx, dy);
-        while (abs(target->get()->getSprite().getPosition().x - x) >= 1 ||abs(target->get()->getSprite().getPosition().y - y) >= 1) {x = x + sinf((M_PI / 180.f) * mx) * 2;y = y - cosf((M_PI / 180.f) * mx) * 2;
-            i = y / 30;
-            j = x / 30;
-            if ((tileVector[i][j]->getSprite().getPosition().x < x &&(tileVector[i][j]->getSprite().getPosition().x +tileVector[i][j]->getSprite().getTextureRect().width) > x) &&(tileVector[i][j]->getSprite().getPosition().y < y &&(tileVector[i][j]->getSprite().getPosition().y +tileVector[i][j]->getSprite().getTextureRect().width) > y)) {
-                if (!tileVector[i][j]->isPassable) {    //Controlla se nella linea di tiro è presente una casella di terra
-                    result = false;
-                    return result;
-                }
-            }
-        }
+bool ConcreteWarShip::canEngage() const {    //Controlla se nessun cannone può ingaggiare
+    bool result = true;
+    if(death || concealed){
+        result= false;
     }
     return result;
 }
