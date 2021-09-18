@@ -1,10 +1,8 @@
 //
 // Created by davide on 02/07/21.
 //
-
 #ifndef SEALION_MEDIUMCANNON_H
 #define SEALION_MEDIUMCANNON_H
-
 #include "Arsenal.h"
 #include "Bullet.h"
 #include "WarShip.h"

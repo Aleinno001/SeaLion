@@ -1,8 +1,10 @@
 //
-// Created by davide on 02/07/21.
+// Created by pala on 9/18/21.
 //
 
-#include "LightCannon.h"
+#include "OldLightCannon.h"
+
+
 
 LightCannon::LightCannon(float range, const int reload, int dispersion, std::shared_ptr<Bullet> type,
                          int power, int posX, int posY, int le, int wi,
@@ -28,6 +30,7 @@ void LightCannon::update(sf::Vector2f &vel,double mx) {
     rotation.rotate(mx, subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
+
 }
 bool LightCannon::engage(Vehicle enemy) {
     return Arsenal::engage(enemy);
@@ -38,6 +41,5 @@ void LightCannon::rotate() {
 void LightCannon::resetOrigin() {
     sprite.setOrigin(width / 2, width / 2);
 }
-
 
 

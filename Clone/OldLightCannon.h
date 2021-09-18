@@ -1,7 +1,6 @@
 //
-// Created by davide on 02/07/21.
+// Created by pala on 9/18/21.
 //
-
 #ifndef SEALION_LIGHTCANNON_H
 #define SEALION_LIGHTCANNON_H
 

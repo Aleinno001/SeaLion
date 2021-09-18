@@ -1,8 +1,9 @@
 //
-// Created by davide on 02/07/21.
+// Created by pala on 9/18/21.
 //
 
-#include "AntiAircraft.h"
+#include "OldAntiAircraft.h"
+
 
 AntiAircraft::AntiAircraft(const float range, const int reload, int dispersion,
                            std::shared_ptr<Bullet> type, int power, int le,
@@ -30,5 +31,4 @@ void AntiAircraft::resetOrigin() {
 }
 void AntiAircraft::update(sf::Vector2f &vel, double mx) {
 }
-
 

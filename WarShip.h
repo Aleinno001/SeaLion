@@ -47,7 +47,7 @@ public:
     virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
     virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
     virtual void notifyPlanes() const = 0;//Metodi per design pattern observer
-    virtual void attachPlanes(const std::shared_ptr<WarPlane> &warPlanes) = 0;//Metodi per design pattern observer
+    virtual void attachPlanes(std::shared_ptr<WarPlane> &warPlanes) = 0;//Metodi per design pattern observer
     virtual void detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) = 0;//Metodi per design pattern observer
     virtual void notifyBars() const =0; //Metodo design pattern observer tra BarInterface e Warship
     virtual void notifyBarsDamage() const =0;

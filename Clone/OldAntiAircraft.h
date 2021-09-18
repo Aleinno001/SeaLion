@@ -1,13 +1,11 @@
 //
-// Created by davide on 02/07/21.
+// Created by pala on 9/18/21.
 //
 
 #ifndef SEALION_ANTIAIRCRAFT_H
 #define SEALION_ANTIAIRCRAFT_H
 
-#include "Arsenal.h"
-#include <iostream>
-#include "WarShip.h"
+
 
 
 class AntiAircraft : public Arsenal {
