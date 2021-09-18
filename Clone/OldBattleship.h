@@ -1,22 +1,22 @@
 //
-// Created by alessandro on 7/2/21.
+// Created by davide on 18/09/21.
 //
 
-#ifndef SEALION_BATTLESHIP_H
-#define SEALION_BATTLESHIP_H
+#ifndef SEALION_OLDBATTLESHIP_H
+#define SEALION_OLDBATTLESHIP_H
 
 
 #include "WarShip.h"
 
-class Battleship : public WarShip {
+class OldBattleship : public WarShip {
 private:
     int numInterceptors;
 public:
     int getNumInterceptors() const;
 public:
-    Battleship(int x, int y, float ac, const float maxVel, int hp, int arm,
+    OldBattleship(int x, int y, float ac, const float maxVel, int hp, int arm,
                std::string nat, int numL, int numH, int numM, int numAA,
-                int le, int wi,
+               int le, int wi,
                bool col, ShipType sh, ModelType mo, int numInterceptors);
     void attach(const std::shared_ptr<Arsenal> &gun) override;
     void detach(const std::shared_ptr<Arsenal> &gun) override;
@@ -29,10 +29,10 @@ public:
     void notifyBarsDamage() override;
     // void registerPlanes(std::unique_ptr<Vehicle> observer) override;
     // void removePlanes(std::unique_ptr<Vehicle> observer) override;
-    ~Battleship() override;
+    ~OldBattleship() override;
 public:
     void notifyArsenals(sf::Vector2f &vel, double mx);
 };
 
 
-#endif //SEALION_BATTLESHIP_H
+#endif //SEALION_OLDBATTLESHIP_H

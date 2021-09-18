@@ -8,11 +8,7 @@
 
 #include "AbstractShipFactory.h"
 #include "Dice.h"
-#include "Submarine.h"
-#include "Destroyer.h"
 #include "AircraftCarrier.h"
-#include "Battleship.h"
-#include "Cruiser.h"
 #include "WeaponFactory.h"
 #include "CannonFactory.h"
 

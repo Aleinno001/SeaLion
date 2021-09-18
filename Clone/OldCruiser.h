@@ -1,22 +1,20 @@
 //
-// Created by alessandro on 7/2/21.
+// Created by davide on 18/09/21.
 //
 
-#ifndef SEALION_CRUISER_H
-#define SEALION_CRUISER_H
+#ifndef SEALION_OLDCRUISER_H
+#define SEALION_OLDCRUISER_H
 
 
-#include "WarShip.h"
-
-class Cruiser : public WarShip {
+class OldCruiser {
 private:
     int numPlanes;
 public:
     int getNumPlanes() const;
 public:
-    Cruiser(int x, int y, float ac, const float maxVel, int hp, int arm,
+    OldCruiser(int x, int y, float ac, const float maxVel, int hp, int arm,
             std::string nat, int numL, int numH, int numM, int numAA,
-             int le, int wi,
+            int le, int wi,
             bool col, ShipType sh, ModelType mo, int planes);
     void update(bool isDead) override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;
@@ -31,8 +29,8 @@ public:
     //  void removeArsenals(std::unique_ptr<Arsenal> observer) override;
     void notifyArsenals(sf::Vector2f &vel,double mx) override;
     void notifyBarsDamage() override;
-    ~Cruiser() override;
+    ~OldCruiser() override;
 };
 
 
-#endif //SEALION_CRUISER_H
+#endif //SEALION_OLDCRUISER_H
