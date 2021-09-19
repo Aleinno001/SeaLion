@@ -3,7 +3,9 @@
 //
 #ifndef SEALION_WARPLANE_H
 #define SEALION_WARPLANE_H
-#include "Vehicle.h"
+
+#include "WarShip.h"
+
 class WarPlane : public Vehicle {
 protected:
     float currentCoolDown{0};

@@ -4,7 +4,6 @@
 #ifndef SEALION_MVCVIEW_H
 #define SEALION_MVCVIEW_H
 #include "MvcObserver.h"
-#include "AircraftCarrier.h"
 #include "MvcController.h"
 #include "Button.h"
 template <typename T>

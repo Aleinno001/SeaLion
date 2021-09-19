@@ -3,7 +3,7 @@
 //
 
 #include "ConcreteWarShip.h"
-ConcreteWarShip::ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string &nat, ShipType shipType, ModelType modelType, const int armour,const std::string &name, const int numLCannons, const int numMCannons,const int numHCannons, const int numAntiAircraft, bool concealed, bool selected,bool air, std::list<std::shared_ptr<Arsenal>> &arsenalList,std::list<std::shared_ptr<WarPlane>> &plaList,std::list<std::shared_ptr<BarInterface>> &bars) : WarShip(x, y, ac, maxVel, hp, le, wi,col, nat, shipType,modelType, armour, name,numLCannons, numMCannons,numHCannons, numAntiAircraft,concealed, selected, air,arsenalList, plaList,bars) {
+ConcreteWarShip::ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string &nat, ShipType shipType, ModelType modelType, const int armour,const std::string &name, const int numLCannons, const int numMCannons,const int numHCannons, const int numAntiAircraft, bool concealed, bool selected,bool air) : WarShip(x, y, ac, maxVel, hp, le, wi,col, nat, shipType,modelType, armour, name,numLCannons, numMCannons,numHCannons, numAntiAircraft,concealed, selected, air) {
     setUpSprite(name);
     sprite.setOrigin(width/2,length/2);
     sprite.setPosition(posX,posY);
@@ -119,7 +119,7 @@ float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
     }
     return deltaMx;
 }
-bool ConcreteWarShip::canEngage() const {    //Controlla se nessun cannone può ingaggiare
+bool ConcreteWarShip::canEngage() {    //Controlla se nessun cannone può ingaggiare
     bool result = true;
     if(death || concealed){
         result= false;
