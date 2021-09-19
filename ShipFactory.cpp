@@ -6,49 +6,50 @@
 #include "GameWorld.h"
 #include "AirplaneFactory.h"
 #include "LifeBar.h"
+#include "AircraftCarrier.h"
 
 
-std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::I400: {
-            std::shared_ptr<WarShip> i400 = i400Builder(coordinates);
+            std::shared_ptr<ConcreteWarShip> i400 = i400Builder(coordinates);
             repositionEnemyShip(i400);
             return std::move(i400);
         }
         case ModelType::typeb1: {
-            std::shared_ptr<WarShip> typeb1 = typeb1Builder(coordinates);
+            std::shared_ptr<ConcreteWarShip> typeb1 = typeb1Builder(coordinates);
             repositionEnemyShip(typeb1);
             return std::move(typeb1);
         }
         case ModelType::DaVinci: {
-            std::shared_ptr<WarShip> daVinci = DaVinciBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> daVinci = DaVinciBuilder(coordinates);
             repositionEnemyShip(daVinci);
             return std::move(daVinci);
         }
         case ModelType::Papa: {
-            std::shared_ptr<WarShip> papa = papaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> papa = papaBuilder(coordinates);
             repositionEnemyShip(papa);
             return std::move(papa);
         }
         case ModelType::Triton: {
-            std::shared_ptr<WarShip> triton = tritonBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> triton = tritonBuilder(coordinates);
             repositionEnemyShip(triton);
             return std::move(triton);
         }
         case ModelType::Trenchant: {
-            std::shared_ptr<WarShip> trenchant = trenchantBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> trenchant = trenchantBuilder(coordinates);
             repositionEnemyShip(trenchant);
             return std::move(trenchant);
         }
         case ModelType::Gato: {
-            std::shared_ptr<WarShip> gato = gatoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> gato = gatoBuilder(coordinates);
             repositionEnemyShip(gato);
             return std::move(gato);
         }
         case ModelType::Narwhal: {
-            std::shared_ptr<WarShip> narwhal = narwhalBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> narwhal = narwhalBuilder(coordinates);
             repositionEnemyShip(narwhal);
             return std::move(narwhal);
         }
@@ -1283,8 +1284,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     Cavour->attachBar(life);
     return Cavour;
 }
-std::shared_ptr<ConcreteWarShip>
-ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<ConcreteWarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 39;
@@ -1293,20 +1293,17 @@ ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 2;
-    std::shared_ptr<ConcreteWarShip> Hiryu(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir,
-                                shipHeight,
-                                shipWidth,
-                                true,
-                                ShipType::AircraftCarrier, ModelType::Hiryu, 6));
+    //std::shared_ptr<ConcreteWarShip> Hiryu(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Hiryu, 6));
+    std::shared_ptr<ConcreteWarShip> Hiryu(new AircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::AircraftCarrier,ModelType::Hiryu,70,"Hiryu",2,0,0,numAntiAir,6));
     Hiryu->attach(std::move(factory.createLight(cannonPosX + 18, cannonPosY + 3, *Hiryu)));
     Hiryu->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 61, *Hiryu)));
-    Hiryu->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+32,"Japan",*Hiryu)));
-    Hiryu->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+58,"Japan",*Hiryu)));
-    Hiryu->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+86,"Japan",*Hiryu)));
-    Hiryu->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+114,"Japan",*Hiryu)));
-    Hiryu->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+145,"Japan",*Hiryu)));
-    Hiryu->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+176,"Japan",*Hiryu)));
+    AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(Hiryu.get());
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+32,"Japan",*Hiryu)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+58,"Japan",*Hiryu)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+86,"Japan",*Hiryu)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+114,"Japan",*Hiryu)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+145,"Japan",*Hiryu)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+176,"Japan",*Hiryu)));
     for (int i = 0; i < numAntiAir; i++)
         Hiryu->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Hiryu)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Hiryu));
@@ -2112,7 +2109,7 @@ sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
     }
     return offsetAllied;
 }
-std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarShip> &ship) {
+std::shared_ptr<ConcreteWarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<ConcreteWarShip> &ship) {
     ship->getSprite().setOrigin(ship->getWidth() / 2, ship->getLength() / 2);
     ship->getSprite().rotate(180);
     ship->getSprite().move(0, ship->getLength() / 2);
@@ -2129,7 +2126,7 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
     }
     return ship;
 }
-std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarShip> &ship) {
+std::shared_ptr<ConcreteWarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<ConcreteWarShip> &ship) {
     ship->getSprite().setOrigin(ship->getWidth() / 2, ship->getLength() / 2);
     ship->getSprite().move(0, -ship->getLength() / 2);
     for (auto &it: ship->getArsenalList()) {

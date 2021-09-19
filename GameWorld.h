@@ -12,9 +12,7 @@
 #include <memory>
 #include <list>
 #include "Dice.h"
-
 #include <stdio.h>
-
 #include <unistd.h>
 #define GetCurrentDir getcwd
 #include<iostream>
@@ -32,8 +30,8 @@ private:
     FactionType enemyFaction;
     FactionType alliedFaction;
     sf::Vector2i exitPos;
-    std::list<std::shared_ptr<WarShip>> alliedFleet;
-    std::list<std::shared_ptr<WarShip>> enemyFleet;
+    std::list<std::shared_ptr<ConcreteWarShip>> alliedFleet;
+    std::list<std::shared_ptr<ConcreteWarShip>> enemyFleet;
     int gridLength;
     int mapWidth{1920};
     int mapHeight{1080};
@@ -84,10 +82,10 @@ public:
     void setGridLength(int gridLength);
     void setMapWidth(int mapWidth);
     void setMapHeight(int mapHeight);
-    std::list<std::shared_ptr<WarShip>> &getAlliedFleet() {
+    std::list<std::shared_ptr<ConcreteWarShip>> &getAlliedFleet() {
         return alliedFleet;
     }
-    std::list<std::shared_ptr<WarShip>> &getEnemyFleet() {
+    std::list<std::shared_ptr<ConcreteWarShip>> &getEnemyFleet() {
         return enemyFleet;
     }
 };

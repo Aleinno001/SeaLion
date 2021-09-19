@@ -11,8 +11,8 @@
 
 class AbstractAirplaneFactory {
 public:
-    virtual std::unique_ptr<Vehicle> createFighter(int posX, int posY,std::string nat,WarShip &subject) = 0;
-    virtual std::unique_ptr<Vehicle> createBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
-    virtual std::unique_ptr<Vehicle> createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
+    virtual std::shared_ptr<Vehicle> createFighter(int posX, int posY,std::string nat,WarShip &subject) = 0;
+    virtual std::shared_ptr<Vehicle> createBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
+    virtual std::shared_ptr<Vehicle> createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
 };
 #endif //SEALION_ABSTRACTAIRPLANEFACTORY_H
