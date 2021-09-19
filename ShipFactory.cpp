@@ -120,7 +120,7 @@ ShipFactory::i400Builder(
     i400->attachBar(life);
     return i400;
 }
-std::shared_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
