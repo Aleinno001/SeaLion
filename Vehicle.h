@@ -81,6 +81,9 @@ public:
     void setSprite(const sf::Sprite &sp) {Vehicle::sprite = sp;}
     const sf::Vector2f &getPos() const {return pos;}
     void setPos(const sf::Vector2f &p) {Vehicle::pos = p;}
+    void setDamage(double damage) {
+        hp = hp - damage;
+    }
     virtual ~Vehicle() = 0;
 };
 #endif //SEALION_VEHICLE_H
