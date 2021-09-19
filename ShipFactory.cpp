@@ -60,9 +60,7 @@ ShipFactory::gatoBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory factory;
     int shipWidth = 9;
     int shipHeight = 95;
-    std::shared_ptr<ConcreteWarShip> Gato(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, shipHeight, shipWidth, true,
-                          ShipType::Submarine, ModelType::Gato, 6, false));
+    std::shared_ptr<ConcreteWarShip> Gato(new Submarine(coordinates.x, coordinates.y, 2, 37, 2460,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Submarine,ModelType::Gato,0,(std::string &)"gato",0,0,0,0));
     for (int i = 0; i < 6; i++)
         Gato->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Gato)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Gato));
@@ -1074,9 +1072,7 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates) const {
     int shipHeight = 91;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> Narwhal(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, shipHeight, shipWidth, true,
-                          ShipType::Submarine, ModelType::Narwhal, 4, false));
+    std::shared_ptr<ConcreteWarShip> Narwhal(new Submarine(coordinates.x, coordinates.y, 2, 48, 4600,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Submarine,ModelType::Narwhal,0,(std::string &)"narwhal",0,0,0,0));
     for (int i = 0; i < 4; i++)
         Narwhal->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Narwhal)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Narwhal));
