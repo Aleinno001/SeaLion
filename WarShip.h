@@ -11,7 +11,6 @@
 #include "Arsenal.h"
 #include "GameTile.h"
 #include "BarInterface.h"
-#include "WarPlane.h"
 #include <math.h>
 #include <memory>
 enum class ShipType {
@@ -37,7 +36,6 @@ protected:
     bool concealed;
     bool selected {false};
     std::list<std::shared_ptr<Arsenal>> arsenalList;
-    std::list<std::shared_ptr<WarPlane>> planeList;
     std::list<std::shared_ptr<BarInterface>> bars;
     std::list<std::shared_ptr<WarShip>> enemyList;
     sf::Vector2f targetCoordinates;
@@ -46,9 +44,6 @@ public:
     virtual void notifyArsenals() const = 0;//Metodi per design pattern observer
     virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
     virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
-    virtual void notifyPlanes() const = 0;//Metodi per design pattern observer
-    virtual void attachPlanes(std::shared_ptr<WarPlane> &warPlanes) = 0;//Metodi per design pattern observer
-    virtual void detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) = 0;//Metodi per design pattern observer
     virtual void notifyBars() const =0; //Metodo design pattern observer tra BarInterface e Warship
     virtual void notifyBarsDamage() const =0;
     virtual void attachBar(const std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
@@ -69,8 +64,6 @@ public:
     void setSelected(bool selected) {WarShip::selected = selected;}
     const std::list<std::shared_ptr<Arsenal>> &getArsenalList() const {return arsenalList;}
     void setArsenalList(const std::list<std::shared_ptr<Arsenal>> &arsenalList) {WarShip::arsenalList = arsenalList;}
-    const std::list<std::shared_ptr<WarPlane>> &getPlaneList() const {return planeList;}
-    void setVehicleList(const std::list<std::shared_ptr<WarPlane>> &plaList) {WarShip::planeList = plaList;}
     const std::list<std::shared_ptr<BarInterface>> &getBars() const {return bars;}
     void setBars(const std::list<std::shared_ptr<BarInterface>> &bars) {WarShip::bars = bars;}
     const sf::Vector2f &getTargetCoordinates() const {return targetCoordinates;}

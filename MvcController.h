@@ -8,8 +8,8 @@ template <typename T>
 class MvcController {
 public:
     explicit MvcController(T &mod) : model(mod) {};
-    void startUpEngine(std::shared_ptr<T> &target,double dt){
-        model.searchAndHuntDownEnemyTargets(target,dt);
+    void startUpEngine(std::shared_ptr<T> &target){
+        model.searchAndHuntDownEnemyTargets(target);
     };
     T &getModel() const{
         return model;

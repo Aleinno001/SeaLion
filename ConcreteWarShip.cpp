@@ -10,7 +10,7 @@ ConcreteWarShip::ConcreteWarShip(float x, float y, float ac, float maxVel, int h
 }
 void ConcreteWarShip::attack() {
     for(auto &iterArsenal : arsenalList){
-        iterArsenal->searchTarget;
+        iterArsenal->searchTarget();
     }
 }
 void ConcreteWarShip::move() {
@@ -70,17 +70,6 @@ void ConcreteWarShip::attach(const std::shared_ptr<Arsenal> &gun) {
 }
 void ConcreteWarShip::detach(const std::shared_ptr<Arsenal> &gun) {
     arsenalList.remove(gun);
-}
-void ConcreteWarShip::notifyPlanes() const {
-    for(auto &iterPlanes : planeList){
-        iterPlanes->update();
-    }
-}
-void ConcreteWarShip::attachPlanes(std::shared_ptr<WarPlane> &warPlanes) {
-    planeList.push_back(warPlanes);
-}
-void ConcreteWarShip::detachPlanes(const std::shared_ptr<WarPlane> &warPlanes) {
-    planeList.remove(warPlanes);
 }
 void ConcreteWarShip::notifyBars() const {
     for(auto &iterBars : bars){
