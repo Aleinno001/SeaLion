@@ -30,7 +30,7 @@ std::shared_ptr<ConcreteWarShip> ShipFactory::createSubmarine(ModelType type, Ga
             return std::move(daVinci);
         }
         case ModelType::Papa: {
-            std::shared_ptr<WarShip> papa = papaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> papa = papaBuilder(coordinates);
             repositionEnemyShip(papa);
             return std::move(papa);
         }
@@ -121,48 +121,47 @@ ShipFactory::i400Builder(
     return i400;
 }
 std::shared_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
-    std::list<std::shared_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Tahio: {
-            std::shared_ptr<WarShip> tahio = tahioBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> tahio = tahioBuilder(coordinates);
             repositionEnemyShip(tahio);
             return std::move(tahio);
         }
         case ModelType::Hiryu: {
-            std::shared_ptr<WarShip> hiryu = hiryuBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> hiryu = hiryuBuilder(coordinates);
             repositionEnemyShip(hiryu);
             return std::move(hiryu);
         }
         case ModelType::GiuseppeGaribaldi: {
-            std::shared_ptr<WarShip> giuseppeGaribaldi = giuseppeGaribaldiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> giuseppeGaribaldi = giuseppeGaribaldiBuilder(coordinates);
             repositionEnemyShip(giuseppeGaribaldi);
             return std::move(giuseppeGaribaldi);
         }
         case ModelType::Cavour: {
-            std::shared_ptr<WarShip> cavour = cavourBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> cavour = cavourBuilder(coordinates);
             repositionEnemyShip(cavour);
             return std::move(cavour);
         }
         case ModelType::ArkRoyal: {
-            std::shared_ptr<WarShip> arkRoyal = arkRoyalBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> arkRoyal = arkRoyalBuilder(coordinates);
             repositionEnemyShip(arkRoyal);
             return std::move(arkRoyal);
         }
         case ModelType::Indomitable: {
 
-            std::shared_ptr<WarShip> indomitable = indomitableBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> indomitable = indomitableBuilder(coordinates);
             repositionEnemyShip(indomitable);
             return std::move(indomitable);
         }
         case ModelType::Midway: {
-            std::shared_ptr<WarShip> midway = midwayBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> midway = midwayBuilder(coordinates);
             repositionEnemyShip(midway);
             return std::move(midway);
         }
         case ModelType::FranklinDRoosevelt: {
-            std::shared_ptr<WarShip> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates);
             repositionEnemyShip(franklinDRoosevelt);
             return std::move(franklinDRoosevelt);
         }
@@ -300,62 +299,62 @@ std::shared_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &m
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Takao: {
-            std::shared_ptr<WarShip> takao = takaoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> takao = takaoBuilder(coordinates);
             repositionEnemyShip(takao);
             return std::move(takao);
         }
         case ModelType::IsuzuNagara: {
-            std::shared_ptr<WarShip> isuzuNagara = isuzuNagaraBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> isuzuNagara = isuzuNagaraBuilder(coordinates);
             repositionEnemyShip(isuzuNagara);
             return std::move(isuzuNagara);
         }
         case ModelType::Ijn: {
-            std::shared_ptr<WarShip> ijn = ijnBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> ijn = ijnBuilder(coordinates);
             repositionEnemyShip(ijn);
             return std::move(ijn);
         }
         case ModelType::AlbertoDiGiussano: {
-            std::shared_ptr<WarShip> albertoDiGiussano = albertoDiGiussanoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> albertoDiGiussano = albertoDiGiussanoBuilder(coordinates);
             repositionEnemyShip(albertoDiGiussano);
             return std::move(albertoDiGiussano);
         }
         case ModelType::Gorizia: {
-            std::shared_ptr<WarShip> gorizia = goriziaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> gorizia = goriziaBuilder(coordinates);
             repositionEnemyShip(gorizia);
             return std::move(gorizia);
         }
         case ModelType::Trento: {
-            std::shared_ptr<WarShip> trento = trentoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> trento = trentoBuilder(coordinates);
             repositionEnemyShip(trento);
             return std::move(trento);
         }
         case ModelType::Belfast: {
-            std::shared_ptr<WarShip> belfast = belfastBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> belfast = belfastBuilder(coordinates);
             repositionEnemyShip(belfast);
             return std::move(belfast);
         }
         case ModelType::Danae: {
-            std::shared_ptr<WarShip> danae = danaeBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> danae = danaeBuilder(coordinates);
             repositionEnemyShip(danae);
             return std::move(danae);
         }
         case ModelType::Tiger59: {
-            std::shared_ptr<WarShip> tiger59 = tiger59Builder(coordinates);
+            std::shared_ptr<ConcreteWarShip> tiger59 = tiger59Builder(coordinates);
             repositionEnemyShip(tiger59);
             return std::move(tiger59);
         }
         case ModelType::Alaska: {
-            std::shared_ptr<WarShip> alaska = alaskaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> alaska = alaskaBuilder(coordinates);
             repositionEnemyShip(alaska);
             return std::move(alaska);
         }
         case ModelType::NewOrleans: {
-            std::shared_ptr<WarShip> newOrleans = newOrleansBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> newOrleans = newOrleansBuilder(coordinates);
             repositionEnemyShip(newOrleans);
             return std::move(newOrleans);
         }
         case ModelType::StLouis: {
-            std::shared_ptr<WarShip> saintLouis = stLouisBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> saintLouis = stLouisBuilder(coordinates);
             repositionEnemyShip(saintLouis);
             return std::move(saintLouis);
         }
@@ -517,82 +516,82 @@ std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Yamato: {
-            std::shared_ptr<WarShip> yamato = yamatoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> yamato = yamatoBuilder(coordinates);
             repositionEnemyShip(yamato);
             return std::move(yamato);
         }
         case ModelType::Kongo: {
-            std::shared_ptr<WarShip> kongo = kongoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> kongo = kongoBuilder(coordinates);
             repositionEnemyShip(kongo);
             return std::move(kongo);
         }
         case ModelType::ISE: {
-            std::shared_ptr<WarShip> ise = iseBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> ise = iseBuilder(coordinates);
             repositionEnemyShip(ise);
             return std::move(ise);
         }
         case ModelType::Musashi: {
-            std::shared_ptr<WarShip> musashi = musashiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> musashi = musashiBuilder(coordinates);
             repositionEnemyShip(musashi);
             return std::move(musashi);
         }
         case ModelType::AndreaDoria: {
-            std::shared_ptr<WarShip> andreaDoria = andreaDoriaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> andreaDoria = andreaDoriaBuilder(coordinates);
             repositionEnemyShip(andreaDoria);
             return std::move(andreaDoria);
         }
         case ModelType::ImperatoreAugusto: {
-            std::shared_ptr<WarShip> imperatoreAugusto = imperatoreAugustoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> imperatoreAugusto = imperatoreAugustoBuilder(coordinates);
             repositionEnemyShip(imperatoreAugusto);
             return std::move(imperatoreAugusto);
         }
         case ModelType::VittorioVeneto: {
-            std::shared_ptr<WarShip> vittorioVeneto = vittorioVenetoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> vittorioVeneto = vittorioVenetoBuilder(coordinates);
             repositionEnemyShip(vittorioVeneto);
             return std::move(vittorioVeneto);
         }
         case ModelType::MichelangeloBuonarroti: {
-            std::shared_ptr<WarShip> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates);
             repositionEnemyShip(michelangeloBuonarroti);
             return std::move(michelangeloBuonarroti);
         }
         case ModelType::Dreadnought: {
-            std::shared_ptr<WarShip> dreadNought = dreadNoughtBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> dreadNought = dreadNoughtBuilder(coordinates);
             repositionEnemyShip(dreadNought);
             return std::move(dreadNought);
         }
         case ModelType::IronDuke: {
-            std::shared_ptr<WarShip> ironDuke = ironDukeBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> ironDuke = ironDukeBuilder(coordinates);
             repositionEnemyShip(ironDuke);
             return std::move(ironDuke);
         }
         case ModelType::Lion: {
-            std::shared_ptr<WarShip> lion = lionBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> lion = lionBuilder(coordinates);
             repositionEnemyShip(lion);
             return std::move(lion);
         }
         case ModelType::Hood: {
-            std::shared_ptr<WarShip> hood = hoodBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> hood = hoodBuilder(coordinates);
             repositionEnemyShip(hood);
             return std::move(hood);
         }
         case ModelType::Arizona: {
-            std::shared_ptr<WarShip> arizona = arizonaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> arizona = arizonaBuilder(coordinates);
             repositionEnemyShip(arizona);
             return std::move(arizona);
         }
         case ModelType::Montana: {
-            std::shared_ptr<WarShip> montana = montanaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> montana = montanaBuilder(coordinates);
             repositionEnemyShip(montana);
             return std::move(montana);
         }
         case ModelType::NewYork: {
-            std::shared_ptr<WarShip> newYork = newYorkBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> newYork = newYorkBuilder(coordinates);
             repositionEnemyShip(newYork);
             return std::move(newYork);
         }
         case ModelType::NorthCarolina: {
-            std::shared_ptr<WarShip> northCarolina = northCarolinaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> northCarolina = northCarolinaBuilder(coordinates);
             repositionEnemyShip(northCarolina);
             return std::move(northCarolina);
         }
@@ -824,68 +823,68 @@ ShipFactory::musashiBuilder(
     musashi->attachBar(life);
     return musashi;
 }
-std::shared_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
     std::list<std::shared_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Akizuki: {
-            std::shared_ptr<WarShip> akizuki = akizukiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> akizuki = akizukiBuilder(coordinates);
             repositionEnemyShip(akizuki);
             return std::move(akizuki);
         }
         case ModelType::Yukikaze: {
-            std::shared_ptr<WarShip> yukikaze = yukikazeBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> yukikaze = yukikazeBuilder(coordinates);
             repositionEnemyShip(yukikaze);
             return std::move(yukikaze);
         }
         case ModelType::Fubuki: {
-            std::shared_ptr<WarShip> fubuki = fubukiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> fubuki = fubukiBuilder(coordinates);
             repositionEnemyShip(fubuki);
             return std::move(fubuki);
         }
         case ModelType::Impavido: {
-            std::shared_ptr<WarShip> impavido = impavidoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> impavido = impavidoBuilder(coordinates);
             repositionEnemyShip(impavido);
             return std::move(impavido);
         }
         case ModelType::Leone: {
-            std::shared_ptr<WarShip> leone = leoneBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> leone = leoneBuilder(coordinates);
             repositionEnemyShip(leone);
             return std::move(leone);
         }
         case ModelType::PaoloEmilio: {
-            std::shared_ptr<WarShip> paoloEmilio = paoloEmilioBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> paoloEmilio = paoloEmilioBuilder(coordinates);
             repositionEnemyShip(paoloEmilio);
             return std::move(paoloEmilio);
         }
         case ModelType::Campbelltown: {
-            std::shared_ptr<WarShip> campbelltown = campbeltownBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> campbelltown = campbeltownBuilder(coordinates);
             repositionEnemyShip(campbelltown);
             return std::move(campbelltown);
         }
         case ModelType::Jutland: {
-            std::shared_ptr<WarShip> jutLand = jutlandBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> jutLand = jutlandBuilder(coordinates);
             repositionEnemyShip(jutLand);
             return std::move(jutLand);
         }
         case ModelType::Gallant: {
-            std::shared_ptr<WarShip> gallant = gallandBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> gallant = gallandBuilder(coordinates);
             repositionEnemyShip(gallant);
             return std::move(gallant);
         }
         case ModelType::Fletcher: {
-            std::shared_ptr<WarShip> fletcher = fletcherBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> fletcher = fletcherBuilder(coordinates);
             repositionEnemyShip(fletcher);
             return std::move(fletcher);
         }
         case ModelType::Mahan: {
-            std::shared_ptr<WarShip> mahan = mahanBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> mahan = mahanBuilder(coordinates);
             repositionEnemyShip(mahan);
             return std::move(mahan);
         }
         case ModelType::Sims: {
-            std::shared_ptr<WarShip> sims = simsBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> sims = simsBuilder(coordinates);
             repositionEnemyShip(sims);
             return std::move(sims);
         }
@@ -1018,49 +1017,49 @@ std::shared_ptr<ConcreteWarShip>ShipFactory::yukikazeBuilder(sf::Vector2i &coord
     yukikaze->attachBar(life);
     return yukikaze;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
     coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::I400: {
-            std::shared_ptr<WarShip> i400 = i400Builder(coordinates);
+            std::shared_ptr<ConcreteWarShip> i400 = i400Builder(coordinates);
             repositionAlliedShip(i400);
             return std::move(i400);
         }
         case ModelType::typeb1: {
-            std::shared_ptr<WarShip> typeb1 = typeb1Builder(coordinates);
+            std::shared_ptr<ConcreteWarShip> typeb1 = typeb1Builder(coordinates);
             repositionAlliedShip(typeb1);
             return std::move(typeb1);
         }
         case ModelType::DaVinci: {
-            std::shared_ptr<WarShip> DaVinci = DaVinciBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> DaVinci = DaVinciBuilder(coordinates);
             repositionAlliedShip(DaVinci);
             return std::move(DaVinci);
         }
         case ModelType::Papa: {
-            std::shared_ptr<WarShip> papa = papaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> papa = papaBuilder(coordinates);
             repositionAlliedShip(papa);
             return std::move(papa);
         }
         case ModelType::Triton: {
-            std::shared_ptr<WarShip> triton = tritonBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> triton = tritonBuilder(coordinates);
             repositionAlliedShip(triton);
             return std::move(triton);
         }
         case ModelType::Trenchant: {
-            std::shared_ptr<WarShip> trenchant = trenchantBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> trenchant = trenchantBuilder(coordinates);
             repositionAlliedShip(trenchant);
             return std::move(trenchant);
         }
         case ModelType::Gato: {
-            std::shared_ptr<WarShip> gato = gatoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> gato = gatoBuilder(coordinates);
             repositionAlliedShip(gato);
             return std::move(gato);
         }
         case ModelType::Narwhal: {
-            std::shared_ptr<WarShip> narwhal = narwhalBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> narwhal = narwhalBuilder(coordinates);
             repositionAlliedShip(narwhal);
             return std::move(narwhal);
         }
@@ -1104,49 +1103,49 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates) const {
     Papa->attachBar(life);
     return Papa;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
     coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Tahio: {
-            std::shared_ptr<WarShip> tahio = tahioBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> tahio = tahioBuilder(coordinates);
             repositionAlliedShip(tahio);
             return std::move(tahio);
         }
         case ModelType::Hiryu: {
-            std::shared_ptr<WarShip> hiryu = hiryuBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> hiryu = hiryuBuilder(coordinates);
             repositionAlliedShip(hiryu);
             return std::move(hiryu);
         }
         case ModelType::GiuseppeGaribaldi: {
-            std::shared_ptr<WarShip> giuseppeGaribaldi = giuseppeGaribaldiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> giuseppeGaribaldi = giuseppeGaribaldiBuilder(coordinates);
             repositionAlliedShip(giuseppeGaribaldi);
             return std::move(giuseppeGaribaldi);
         }
         case ModelType::Cavour: {
-            std::shared_ptr<WarShip> cavour = cavourBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> cavour = cavourBuilder(coordinates);
             repositionAlliedShip(cavour);
             return std::move(cavour);
         }
         case ModelType::ArkRoyal: {
-            std::shared_ptr<WarShip> arkRoyal = arkRoyalBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> arkRoyal = arkRoyalBuilder(coordinates);
             repositionAlliedShip(arkRoyal);
             return std::move(arkRoyal);
         }
         case ModelType::Indomitable: {
-            std::shared_ptr<WarShip> indomitable = indomitableBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> indomitable = indomitableBuilder(coordinates);
             repositionAlliedShip(indomitable);
             return std::move(indomitable);
         }
         case ModelType::Midway: {
-            std::shared_ptr<WarShip> midway = midwayBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> midway = midwayBuilder(coordinates);
             repositionAlliedShip(midway);
             return std::move(midway);
         }
         case ModelType::FranklinDRoosevelt: {
-            std::shared_ptr<WarShip> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> franklinDRoosevelt = franklinDelanoRoosveltBuilder(coordinates);
             repositionAlliedShip(franklinDRoosevelt);
             return std::move(franklinDRoosevelt);
         }
@@ -1278,69 +1277,69 @@ std::shared_ptr<ConcreteWarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordina
     Hiryu->attachBar(life);
     return Hiryu;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
     coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Ijn: {
-            std::shared_ptr<WarShip> ijn = ijnBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> ijn = ijnBuilder(coordinates);
             repositionAlliedShip(ijn);
             return std::move(ijn);
         }
         case ModelType::IsuzuNagara: {
-            std::shared_ptr<WarShip> isuzuNagara = isuzuNagaraBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> isuzuNagara = isuzuNagaraBuilder(coordinates);
             repositionAlliedShip(isuzuNagara);
             return std::move(isuzuNagara);
         }
         case ModelType::Takao: {
-            std::shared_ptr<WarShip> takao = takaoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> takao = takaoBuilder(coordinates);
             repositionAlliedShip(takao);
             return std::move(takao);
         }
         case ModelType::AlbertoDiGiussano: {
-            std::shared_ptr<WarShip> albertoDiGiussano = albertoDiGiussanoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> albertoDiGiussano = albertoDiGiussanoBuilder(coordinates);
             repositionAlliedShip(albertoDiGiussano);
             return std::move(albertoDiGiussano);
         }
         case ModelType::Gorizia: {
-            std::shared_ptr<WarShip> gorizia = goriziaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> gorizia = goriziaBuilder(coordinates);
             repositionAlliedShip(gorizia);
             return std::move(gorizia);
         }
         case ModelType::Trento: {
-            std::shared_ptr<WarShip> trento = trentoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> trento = trentoBuilder(coordinates);
             repositionAlliedShip(trento);
             return std::move(trento);
         }
         case ModelType::Belfast: {
-            std::shared_ptr<WarShip> belfast = belfastBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> belfast = belfastBuilder(coordinates);
             repositionAlliedShip(belfast);
             return std::move(belfast);
         }
         case ModelType::Danae: {
-            std::shared_ptr<WarShip> danae = danaeBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> danae = danaeBuilder(coordinates);
             repositionAlliedShip(danae);
             return std::move(danae);
         }
         case ModelType::Tiger59: {
-            std::shared_ptr<WarShip> tiger59 = tiger59Builder(coordinates);
+            std::shared_ptr<ConcreteWarShip> tiger59 = tiger59Builder(coordinates);
             repositionAlliedShip(tiger59);
             return std::move(tiger59);
         }
         case ModelType::Alaska: {
-            std::shared_ptr<WarShip> alaska = alaskaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> alaska = alaskaBuilder(coordinates);
             repositionAlliedShip(alaska);
             return std::move(alaska);
         }
         case ModelType::NewOrleans: {
-            std::shared_ptr<WarShip> newOrleans = newOrleansBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> newOrleans = newOrleansBuilder(coordinates);
             repositionAlliedShip(newOrleans);
             return std::move(newOrleans);
         }
         case ModelType::StLouis: {
-            std::shared_ptr<WarShip> saintLouis = stLouisBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> saintLouis = stLouisBuilder(coordinates);
             repositionAlliedShip(saintLouis);
             return std::move(saintLouis);
         }
@@ -1500,89 +1499,89 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates) const {
     Ijn->attachBar(life);
     return Ijn;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createAlliedBattleship(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
     coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::ISE: {
-            std::shared_ptr<WarShip> ise = iseBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> ise = iseBuilder(coordinates);
             repositionAlliedShip(ise);
             return std::move(ise);
         }
         case ModelType::Kongo: {
-            std::shared_ptr<WarShip> kongo = kongoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> kongo = kongoBuilder(coordinates);
             repositionAlliedShip(kongo);
             return std::move(kongo);
         }
         case ModelType::Musashi: {
-            std::shared_ptr<WarShip> musashi = musashiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> musashi = musashiBuilder(coordinates);
             repositionAlliedShip(musashi);
             return std::move(musashi);
         }
         case ModelType::Yamato: {
-            std::shared_ptr<WarShip> yamato = yamatoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> yamato = yamatoBuilder(coordinates);
             repositionAlliedShip(yamato);
             return std::move(yamato);
         }
         case ModelType::AndreaDoria: {
-            std::shared_ptr<WarShip> andreaDoria = andreaDoriaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> andreaDoria = andreaDoriaBuilder(coordinates);
             repositionAlliedShip(andreaDoria);
             return std::move(andreaDoria);
         }
         case ModelType::ImperatoreAugusto: {
-            std::shared_ptr<WarShip> imperatoreAugusto = imperatoreAugustoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> imperatoreAugusto = imperatoreAugustoBuilder(coordinates);
             repositionAlliedShip(imperatoreAugusto);
             return std::move(imperatoreAugusto);
         }
         case ModelType::MichelangeloBuonarroti: {
-            std::shared_ptr<WarShip> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> michelangeloBuonarroti = michelangeloBuonarrotiBuilder(coordinates);
             repositionAlliedShip(michelangeloBuonarroti);
             return std::move(michelangeloBuonarroti);
         }
         case ModelType::VittorioVeneto: {
-            std::shared_ptr<WarShip> vittorioVeneto = vittorioVenetoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> vittorioVeneto = vittorioVenetoBuilder(coordinates);
             repositionAlliedShip(vittorioVeneto);
             return std::move(vittorioVeneto);
         }
         case ModelType::Dreadnought: {
-            std::shared_ptr<WarShip> dreadNought = dreadNoughtBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> dreadNought = dreadNoughtBuilder(coordinates);
             repositionAlliedShip(dreadNought);
             return std::move(dreadNought);
         }
         case ModelType::Hood: {
-            std::shared_ptr<WarShip> hood = hoodBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> hood = hoodBuilder(coordinates);
             repositionAlliedShip(hood);
             return std::move(hood);
         }
         case ModelType::IronDuke: {
-            std::shared_ptr<WarShip> ironDuke = ironDukeBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> ironDuke = ironDukeBuilder(coordinates);
             repositionAlliedShip(ironDuke);
             return std::move(ironDuke);
         }
         case ModelType::Lion: {
-            std::shared_ptr<WarShip> lion = lionBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> lion = lionBuilder(coordinates);
             repositionAlliedShip(lion);
             return std::move(lion);
         }
         case ModelType::Arizona: {
-            std::shared_ptr<WarShip> arizona = arizonaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> arizona = arizonaBuilder(coordinates);
             repositionAlliedShip(arizona);
             return std::move(arizona);
         }
         case ModelType::Montana: {
-            std::shared_ptr<WarShip> montana = montanaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> montana = montanaBuilder(coordinates);
             repositionAlliedShip(montana);
             return std::move(montana);
         }
         case ModelType::NewYork: {
-            std::shared_ptr<WarShip> newYork = newYorkBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> newYork = newYorkBuilder(coordinates);
             repositionAlliedShip(newYork);
             return std::move(newYork);
         }
         case ModelType::NorthCarolina: {
-            std::shared_ptr<WarShip> northCarolina = northCarolinaBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> northCarolina = northCarolinaBuilder(coordinates);
             repositionAlliedShip(northCarolina);
             return std::move(northCarolina);
         }
@@ -1851,67 +1850,67 @@ std::shared_ptr<ConcreteWarShip>ShipFactory::iseBuilder(sf::Vector2i &coordinate
     Ise->attachBar(life);
     return Ise;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createAlliedDestroyer(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeAlliedPositions(map);
     coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
     switch (type) {
         case ModelType::Akizuki: {
-            std::shared_ptr<WarShip> akizuki = akizukiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> akizuki = akizukiBuilder(coordinates);
             repositionAlliedShip(akizuki);
             return std::move(akizuki);
         }
         case ModelType::Fubuki: {
-            std::shared_ptr<WarShip> fubuki = fubukiBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> fubuki = fubukiBuilder(coordinates);
             repositionAlliedShip(fubuki);
             return std::move(fubuki);
         }
         case ModelType::Yukikaze: {
-            std::shared_ptr<WarShip> yukikaze = yukikazeBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> yukikaze = yukikazeBuilder(coordinates);
             repositionAlliedShip(yukikaze);
             return std::move(yukikaze);
         }
         case ModelType::Impavido: {
-            std::shared_ptr<WarShip> impavido = impavidoBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> impavido = impavidoBuilder(coordinates);
             repositionAlliedShip(impavido);
             return std::move(impavido);
         }
         case ModelType::Leone: {
-            std::shared_ptr<WarShip> leone = leoneBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> leone = leoneBuilder(coordinates);
             repositionAlliedShip(leone);
             return std::move(leone);
         }
         case ModelType::PaoloEmilio: {
-            std::shared_ptr<WarShip> paoloEmilio = paoloEmilioBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> paoloEmilio = paoloEmilioBuilder(coordinates);
             repositionAlliedShip(paoloEmilio);
             return std::move(paoloEmilio);
         }
         case ModelType::Campbelltown: {
-            std::shared_ptr<WarShip> campbelltown = campbeltownBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> campbelltown = campbeltownBuilder(coordinates);
             repositionAlliedShip(campbelltown);
             return std::move(campbelltown);
         }
         case ModelType::Gallant: {
-            std::shared_ptr<WarShip> gallant = gallandBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> gallant = gallandBuilder(coordinates);
             repositionAlliedShip(gallant);
             return std::move(gallant);
         }
         case ModelType::Jutland: {
-            std::shared_ptr<WarShip> jutLand = jutlandBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> jutLand = jutlandBuilder(coordinates);
             repositionAlliedShip(jutLand);
             return std::move(jutLand);
         }
         case ModelType::Fletcher: {
-            std::shared_ptr<WarShip> fletcher = fletcherBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> fletcher = fletcherBuilder(coordinates);
             repositionAlliedShip(fletcher);
             return std::move(fletcher);
         }
         case ModelType::Mahan: {
-            std::shared_ptr<WarShip> mahan = mahanBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> mahan = mahanBuilder(coordinates);
             repositionAlliedShip(mahan);
             return std::move(mahan);
         }
         case ModelType::Sims: {
-            std::shared_ptr<WarShip> sims = simsBuilder(coordinates);
+            std::shared_ptr<ConcreteWarShip> sims = simsBuilder(coordinates);
             repositionAlliedShip(sims);
             return std::move(sims);
         }
