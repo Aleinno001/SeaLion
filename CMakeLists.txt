@@ -20,7 +20,7 @@ if (SFML_FOUND)
 endif ()
 
 add_subdirectory(UnitTesting)
-set(SOURCE_FILES  WarShip.h Arsenal.h Vehicle.h ShipFactory.cpp ShipFactory.h AbstractShipFactory.h  ArsenalFactory.h CannonFactory.cpp CannonFactory.h SpecialWeaponFactory.h WeaponFactory.cpp WeaponFactory.h Observer.h Dice.cpp Dice.h AbstractAirplaneFactory.h AirplaneFactory.cpp AirplaneFactory.h GameTile.cpp GameTile.h GameWorld.cpp GameWorld.h Bullet.cpp Bullet.h Collision.cpp Collision.h AABullet.cpp AABullet.h Torpedo.cpp Torpedo.h BarInterface.cpp BarInterface.h LifeBar.cpp LifeBar.h MvcSubject.h MvcObserver.h MvcController.h MvcView.h Button.cpp Button.h ToolBox.cpp ToolBox.h WarPlane.h Clone/OldCurrentDir.cpp Clone/OldCurrentDir.h ConcreteWarShip.cpp ConcreteWarShip.h ConcreteWarPlane.cpp ConcreteWarPlane.h ConcreteArsenal.cpp ConcreteArsenal.h)
+set(SOURCE_FILES  WarShip.h Arsenal.h Vehicle.h ShipFactory.cpp ShipFactory.h AbstractShipFactory.h  ArsenalFactory.h CannonFactory.cpp CannonFactory.h SpecialWeaponFactory.h WeaponFactory.cpp WeaponFactory.h Observer.h Dice.cpp Dice.h AbstractAirplaneFactory.h AirplaneFactory.cpp AirplaneFactory.h GameTile.cpp GameTile.h GameWorld.cpp GameWorld.h Bullet.cpp Bullet.h Collision.cpp Collision.h AABullet.cpp AABullet.h Torpedo.cpp Torpedo.h BarInterface.cpp BarInterface.h LifeBar.cpp LifeBar.h MvcSubject.h MvcObserver.h MvcController.h MvcView.h Button.cpp Button.h ToolBox.cpp ToolBox.h WarPlane.h Clone/OldCurrentDir.cpp Clone/OldCurrentDir.h ConcreteWarShip.cpp ConcreteWarShip.h ConcreteWarPlane.cpp ConcreteWarPlane.h ConcreteArsenal.cpp ConcreteArsenal.h LambdaFunction.cpp LambdaFunction.h)
 add_executable(SeaLion main.cpp)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(SeaLion core sfml-graphics sfml-window sfml-system)
