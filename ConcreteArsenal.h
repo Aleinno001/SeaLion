@@ -7,7 +7,7 @@
 #include "WarShip.h"
 class ConcreteArsenal: public Arsenal {
 public:
-    ConcreteArsenal(float range, float reload, float countdown, int maxDispersion, std::shared_ptr<Bullet> ammo,int firepower, int le, int wi, std::string texName, sf::Sprite spr, WarShip &sub): Arsenal(range, reload, countdown, maxDispersion, ammo, firepower, le, wi, texName, spr),subject_(sub) { setUpSprite(texName);}
+    ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo, int firepower, int le,int wi, std::string &texName, WarShip &subject, float posX, float posY);
     std::shared_ptr<Bullet> getAmmoType() override;
     ~ConcreteArsenal() override;
     void update() override;

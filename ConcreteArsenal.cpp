@@ -136,3 +136,8 @@ bool ConcreteArsenal::engage(sf::Vector2f &coord,bool concealed) {
     }
     return result;
 }
+ConcreteArsenal::ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo,int firepower, int le, int wi, std::string &texName, WarShip &subject, float posX, float posY): Arsenal(range, reload, maxDispersion, ammo, firepower, le, wi, texName), subject_(subject) {
+    setUpSprite(texName);
+    sprite.setOrigin(width/2,length/2);
+    sprite.setPosition(posX,posY);
+}
