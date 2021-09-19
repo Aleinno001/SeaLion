@@ -2227,7 +2227,7 @@ ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) const {
 
 
 
-    std::shared_ptr<ConcreteWarShip> Akizuki(new ConcreteWarShip(coordinates.x,coordinates.y,));
+    std::shared_ptr<ConcreteWarShip> Akizuki(new ConcreteWarShip(coordinates.x,coordinates.y,3,61,3759,shipHeight,shipWidth,true,"Japan",ShipType::Destroyer,ModelType::Akizuki,33,"TheStriker",5,0,0,numAntiAir,));
     Akizuki->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 22, *Akizuki)));
     Akizuki->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 29, *Akizuki)));
     Akizuki->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 95, *Akizuki)));
