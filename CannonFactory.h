@@ -5,19 +5,14 @@
 #ifndef SEALION_CANNONFACTORY_H
 #define SEALION_CANNONFACTORY_H
 
-
 #include "ArsenalFactory.h"
-#include "LightCannon.h"
-#include "MediumCannon.h"
-#include "HeavlyCannon.h"
-
 
 class CannonFactory : public ArsenalFactory {
 public:
     //TODO implementare i metodi
-    std::unique_ptr<Arsenal> createLight(int posX, int posY,WarShip &subject) const override;
-    std::unique_ptr<Arsenal> createMedium(int posX, int posY,WarShip &subject) const override;
-    std::unique_ptr<Arsenal> createHeavly(int posX, int posY,WarShip &subject) const override;
+    std::unique_ptr<ConcreteArsenal> createLight(int posX, int posY,ConcreteWarShip &subject) const override;
+    std::unique_ptr<ConcreteArsenal> createMedium(int posX, int posY,ConcreteWarShip &subject) const override;
+    std::unique_ptr<ConcreteArsenal> createHeavly(int posX, int posY,ConcreteWarShip &subject) const override;
 };
 
 

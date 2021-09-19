@@ -6,13 +6,13 @@
 #define SEALION_ABSTRACTAIRPLANEFACTORY_H
 
 #include "ConcreteWarPlane.h"
-#include "WarShip.h"
+#include "ConcreteWarShip.h"
 
 
 class AbstractAirplaneFactory {
 public:
-    virtual std::unique_ptr<ConcreteWarPlane> createFighter(int posX, int posY,std::string nat,WarShip &subject) = 0;
-    virtual std::unique_ptr<ConcreteWarPlane> createBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
-    virtual std::unique_ptr<ConcreteWarPlane> createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
+    virtual std::unique_ptr<ConcreteWarPlane> createFighter(int posX, int posY,std::string nat,ConcreteWarShip &subject) = 0;
+    virtual std::unique_ptr<ConcreteWarPlane> createBomber(int posX, int posY,std::string nat,ConcreteWarShip &subject) = 0;
+    virtual std::unique_ptr<ConcreteWarPlane> createTorpedoBomber(int posX, int posY,std::string nat,ConcreteWarShip &subject) = 0;
 };
 #endif //SEALION_ABSTRACTAIRPLANEFACTORY_H

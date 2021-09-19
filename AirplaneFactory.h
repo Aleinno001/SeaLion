@@ -8,13 +8,12 @@
 
 #include <memory>
 #include "AbstractAirplaneFactory.h"
-#include "Vehicle.h"
 
 class AirplaneFactory : public AbstractAirplaneFactory {
 public:
-    std::unique_ptr<ConcreteWarPlane> createFighter(int posX, int posY,std::string nat,WarShip &subject) override;
-    std::unique_ptr<ConcreteWarPlane> createBomber(int posX, int posY,std::string nat,WarShip &subject) override;
-    std::unique_ptr<ConcreteWarPlane> createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) override;
+    std::unique_ptr<ConcreteWarPlane> createFighter(int posX, int posY,std::string nat,ConcreteWarShip &subject) override;
+    std::unique_ptr<ConcreteWarPlane> createBomber(int posX, int posY,std::string nat,ConcreteWarShip &subject) override;
+    std::unique_ptr<ConcreteWarPlane> createTorpedoBomber(int posX, int posY,std::string nat,ConcreteWarShip &subject) override;
 };
 
 
