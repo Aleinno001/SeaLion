@@ -2,7 +2,7 @@
 // Created by pala on 9/17/21.
 //
 #include "ConcreteWarPlane.h"
-#include "ToolBox.h"
+
 void ConcreteWarPlane::attack() {
     if(currentCoolDown <= 0){
         target->setDamage(ammoDamage);
@@ -21,7 +21,7 @@ void ConcreteWarPlane::update() {
     sprite.setPosition(newPosition);
 }
 bool ConcreteWarPlane::searchTarget() {
-    move(target->get()->getSprite().getPosition(), ToolBox::dt.getElapsedTime().asSeconds());
+    move();
     if(canEngage())
         attack();
 }
@@ -44,7 +44,7 @@ float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
     return deltaMx;
 }
 bool ConcreteWarPlane::canEngage() {
-    if(abs(target->get()->getSprite().getPosition().x - sprite.getPosition().x) < 90 && abs(target->get()->getSprite().getPosition().y - sprite.getPosition().y) < 90)
+    if(abs(target->getSprite().getPosition().x - sprite.getPosition().x) < 90 && abs(target->getSprite().getPosition().y - sprite.getPosition().y) < 90)
         return true;
     else
         return false;
@@ -52,8 +52,8 @@ bool ConcreteWarPlane::canEngage() {
 void ConcreteWarPlane::move() {
     if (!death) {   //verifica morte e incagliamento
         double mx;
-        double dy = target.getSprite().getPosition().y - sprite.getPosition().y;
-        double dx = target.getSprite().getPosition().x - sprite.getPosition().x;
+        double dy = target->getSprite().getPosition().y - sprite.getPosition().y;
+        double dx = target->getSprite().getPosition().x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
         mx = ToolBox::calculateMx(dx, dy);
         if (currentSpeed <= maxSpeed * 2) {
@@ -65,8 +65,8 @@ void ConcreteWarPlane::move() {
             if (currentSpeed > maxSpeed / 4)
                 currentSpeed = currentSpeed - acceleration / 100;
         }
-        if ((abs(target.getSprite().getPosition().y - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
-             abs(target.getSprite().getPosition().x - sprite.getPosition().y) < sprite.getTextureRect().height /
+        if ((abs(target->getSprite().getPosition().y - sprite.getPosition().x) < sprite.getTextureRect().height / 2 &&
+             abs(target->getSprite().getPosition().x - sprite.getPosition().y) < sprite.getTextureRect().height /
                                                            2)) {   //Se il punto da raggiungere è vicino la nave avanza lentamente
             if (currentSpeed > acceleration / 100) {
                 currentSpeed = currentSpeed - acceleration / 100;
