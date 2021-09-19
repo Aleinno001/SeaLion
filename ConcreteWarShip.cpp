@@ -52,8 +52,8 @@ void ConcreteWarShip::move() {
         notifyArsenals();
         notifyBars();
 
-        if (shipType == ShipType::AircraftCarrier)   //FIXME controllare che gli aerei non stiano volando
-            notifyPlanes();
+        if (auto* pAircraftCarrier = dynamic_cast<AircraftCarrier*>(this))   //FIXME controllare che gli aerei non stiano volando
+            pAircraftCarrier->notifyPlanes();
         else
         {
             //TODO Detach Airplanes Observers

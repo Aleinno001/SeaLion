@@ -6,6 +6,7 @@
 #include "GameWorld.h"
 #include "AirplaneFactory.h"
 #include "LifeBar.h"
+#include "Submarine.h"
 
 
 std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -130,10 +131,7 @@ ShipFactory::i400Builder(
     int shipHeight = 122;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> i400(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, shipHeight, shipWidth,
-                          true,
-                          ShipType::Submarine, ModelType::I400, 8, false));
+    std::shared_ptr<ConcreteWarShip> i400(new Submarine(coordinates.x, coordinates.y, 2, 35, 6670,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Submarine,ModelType::I400,0,(std::string &)"i400",0,0,0,0));
     for (int i = 0; i < 8; i++)
         i400->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *i400)));
     std::shared_ptr<LifeBar> life(new LifeBar(*i400));
