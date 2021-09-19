@@ -510,7 +510,7 @@ ShipFactory::takaoBuilder(
     takao->attachBar(life);
     return takao;
 }
-std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
+std::shared_ptr<ConcreteWarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
     std::list<std::shared_ptr<Vehicle>> v;
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
@@ -596,7 +596,7 @@ std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld
             return std::move(northCarolina);
         }
     }
-    return std::shared_ptr<WarShip>(); //TODO implementare tutti i costruttori
+    return std::shared_ptr<ConcreteWarShip>(); //TODO implementare tutti i costruttori
 }
 std::shared_ptr<ConcreteWarShip>
 ShipFactory::ironDukeBuilder(
