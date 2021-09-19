@@ -9,6 +9,7 @@
 #include "MvcSubject.h"
 
 class Submarine : public  ConcreteWarShip,MvcSubject{
+private:
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
 public:
     Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, int armour, const std::string &name, int numLCannons,int numMCannons, int numHCannons, int numAntiAircraft);
