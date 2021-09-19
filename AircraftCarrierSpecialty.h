@@ -9,20 +9,20 @@
 #include "MvcSubject.h"
 
 class AircraftCarrierSpecialty : public MvcSubject{
+protected:
     int numPlanes;
     std::list<std::shared_ptr<WarPlane>> planes;
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
 public:
+    explicit AircraftCarrierSpecialty(int numPlanes) : numPlanes(numPlanes) {}
+    ~AircraftCarrierSpecialty() override =0;
     virtual int getNumPlanes() const {return numPlanes;}
     virtual const std::list<std::shared_ptr<WarPlane>> &getPlanes() const {return planes;}
     virtual const std::list<std::shared_ptr<MvcObserver>> &getListMvcObservers() const {return listMvcObservers;}
-protected:
+    virtual void planesAttack()=0;
     virtual void notifyPlanes(sf::Vector2f &vel, double mx) =0;
     virtual void attachPlanes(const std::shared_ptr<WarPlane> &warPlane) =0;
     virtual void detachPlanes(const std::shared_ptr<WarPlane> &warPlane) =0;
-    void notifyMvcObserver() override=0;
-    void addMvcObserver(std::shared_ptr<MvcObserver> o) override=0;
-    void removeMvcObserver(std::shared_ptr<MvcObserver> o) override=0;
 };
 
 #endif //SEALION_AIRCRAFTCARRIERSPECIALTY_H
