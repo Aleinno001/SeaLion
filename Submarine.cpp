@@ -19,3 +19,6 @@ void Submarine::removeMvcObserver(std::shared_ptr<MvcObserver> o) {
 void Submarine::torpedoAttack() {
     //TODO implementare
 }
+const std::list<std::shared_ptr<MvcObserver>> &Submarine::getListMvcObservers() const {
+    return listMvcObservers;
+}

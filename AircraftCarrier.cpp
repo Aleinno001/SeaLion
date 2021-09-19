@@ -14,7 +14,7 @@ void AircraftCarrier::addMvcObserver(std::shared_ptr<MvcObserver> o) {
 void AircraftCarrier::removeMvcObserver(std::shared_ptr<MvcObserver> o) {
     listMvcObservers.remove(o);
 }
-void AircraftCarrier::notifyPlanes(sf::Vector2f &vel, double mx) {
+void AircraftCarrier::notifyPlanes() {
     for(auto &itPlanes : planes){
         itPlanes->update();
     }
@@ -29,5 +29,8 @@ void AircraftCarrier::planesAttack() {
     for(auto &itPlanes : planes){
         itPlanes->searchTarget();
     }
+}
+float AircraftCarrier::getNumPlanes() const {
+    return numPlanes;
 }
 AircraftCarrier::~AircraftCarrier() = default;

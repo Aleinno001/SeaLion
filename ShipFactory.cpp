@@ -7,6 +7,7 @@
 #include "AirplaneFactory.h"
 #include "LifeBar.h"
 #include "AircraftCarrier.h"
+#include "Submarine.h"
 
 
 std::shared_ptr<ConcreteWarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
@@ -29,7 +30,7 @@ std::shared_ptr<ConcreteWarShip> ShipFactory::createSubmarine(ModelType type, Ga
             return std::move(daVinci);
         }
         case ModelType::Papa: {
-            std::shared_ptr<ConcreteWarShip> papa = papaBuilder(coordinates);
+            std::shared_ptr<WarShip> papa = papaBuilder(coordinates);
             repositionEnemyShip(papa);
             return std::move(papa);
         }
@@ -60,9 +61,7 @@ ShipFactory::gatoBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory factory;
     int shipWidth = 9;
     int shipHeight = 95;
-    std::shared_ptr<ConcreteWarShip> Gato(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 37, 2460, 0, "Usa", 0, 0, 0, 0, shipHeight, shipWidth, true,
-                          ShipType::Submarine, ModelType::Gato, 6, false));
+    std::shared_ptr<ConcreteWarShip> Gato(new Submarine(coordinates.x, coordinates.y, 2, 37, 2460,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Submarine,ModelType::Gato,0,(std::string &)"gato",0,0,0,0));
     for (int i = 0; i < 6; i++)
         Gato->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Gato)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Gato));
@@ -75,11 +74,7 @@ ShipFactory::tritonBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory factory;
     int shipWidth = 8;
     int shipHeight = 84;
-    int cannonPosX = coordinates.x - (shipWidth) / 2;
-    int cannonPosY = coordinates.y - (shipHeight) / 2;
-    std::shared_ptr<ConcreteWarShip> Triton(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 28, 1576, 0, "Uk", 0, 0, 0, 0, shipHeight, shipWidth, true,
-                          ShipType::Submarine, ModelType::Triton, 6, false));
+    std::shared_ptr<ConcreteWarShip> Triton(new Submarine(coordinates.x, coordinates.y, 2, 28, 1576,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Submarine,ModelType::Triton,0,(std::string &)"triton",0,0,0,0));
     for (int i = 0; i < 6; i++)
         Triton->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Triton)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Triton));
@@ -92,12 +87,7 @@ ShipFactory::DaVinciBuilder(
     WeaponFactory factory;
     int shipWidth = 9;
     int shipHeight = 77;
-    int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
-    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> DaVinci(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 15, 1489, 0, "Italy", 0, 0, 0, 0, shipHeight, shipWidth,
-                          true,
-                          ShipType::Submarine, ModelType::DaVinci, 8, false));
+    std::shared_ptr<ConcreteWarShip> DaVinci(new Submarine(coordinates.x, coordinates.y, 2, 15, 1489,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Submarine,ModelType::DaVinci,0,(std::string &)"daVinci",0,0,0,0));
     for (int i = 0; i < 8; i++)
         DaVinci->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *DaVinci)));
     std::shared_ptr<LifeBar> life(new LifeBar(*DaVinci));
@@ -110,13 +100,7 @@ ShipFactory::typeb1Builder(
     WeaponFactory factory;
     int shipWidth = 10;
     int shipHeight = 111;
-    int cannonPosX = coordinates.x - (shipWidth) / 2;
-    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> typeb1(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 44, 3713, 0, "Japan", 0, 0, 0, 0, shipHeight, shipWidth,
-                          true,
-                          ShipType::Submarine, ModelType::typeb1, 6,
-                          false));
+    std::shared_ptr<ConcreteWarShip> typeb1(new Submarine(coordinates.x, coordinates.y, 2, 44, 3713,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Submarine,ModelType::typeb1,0,(std::string &)"typeb1",0,0,0,0));
     for (int i = 0; i < 6; i++)
         typeb1->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *typeb1)));
     std::shared_ptr<LifeBar> life(new LifeBar(*typeb1));
@@ -129,12 +113,7 @@ ShipFactory::i400Builder(
     WeaponFactory factory;
     int shipWidth = 13;
     int shipHeight = 122;
-    int cannonPosX = coordinates.x - (shipWidth) / 2;
-    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> i400(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 35, 6670, 0, "Japan", 0, 0, 0, 0, shipHeight, shipWidth,
-                          true,
-                          ShipType::Submarine, ModelType::I400, 8, false));
+    std::shared_ptr<ConcreteWarShip> i400(new Submarine(coordinates.x, coordinates.y, 2, 35, 6670,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Submarine,ModelType::I400,0,(std::string &)"i400",0,0,0,0));
     for (int i = 0; i < 8; i++)
         i400->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *i400)));
     std::shared_ptr<LifeBar> life(new LifeBar(*i400));
@@ -1094,9 +1073,7 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates) const {
     int shipHeight = 91;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> Narwhal(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 48, 4600, 0, "Usa", 0, 0, 0, 0, shipHeight, shipWidth, true,
-                          ShipType::Submarine, ModelType::Narwhal, 4, false));
+    std::shared_ptr<ConcreteWarShip> Narwhal(new Submarine(coordinates.x, coordinates.y, 2, 48, 4600,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Submarine,ModelType::Narwhal,0,(std::string &)"narwhal",0,0,0,0));
     for (int i = 0; i < 4; i++)
         Narwhal->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Narwhal)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Narwhal));
@@ -1108,11 +1085,7 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory factory;
     int shipWidth = 14;
     int shipHeight = 85;
-    int cannonPosX = coordinates.x - (shipWidth) / 2;
-    int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    std::shared_ptr<ConcreteWarShip> Trenchant(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 56, 5800, 0, "Uk", 0, 0, 0, 0, shipHeight, shipWidth, true,
-                          ShipType::Submarine, ModelType::Trenchant, 5, false));
+    std::shared_ptr<ConcreteWarShip> Trenchant(new Submarine(coordinates.x, coordinates.y, 2, 56, 5800,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Submarine,ModelType::Trenchant,0,(std::string &)"triton",0,0,0,0));
     for (int i = 0; i < 5; i++)
         Trenchant->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Trenchant)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Trenchant));
@@ -1124,12 +1097,7 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory factory;
     int shipWidth = 19;
     int shipHeight = 106;
-    int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
-    int cannonPosY = coordinates.y - (shipHeight) / 2;
-    std::shared_ptr<ConcreteWarShip> Papa(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 2, 82, 7100, 0, "Italy", 0, 0, 0, 0, shipHeight, shipWidth,
-                          true,
-                          ShipType::Submarine, ModelType::Papa, 10, false));
+    std::shared_ptr<ConcreteWarShip> Papa(new Submarine(coordinates.x, coordinates.y, 2, 82, 7100,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Submarine,ModelType::Papa,0,(std::string &)"papa",0,0,0,0));
     for (int i = 0; i < 10; i++)
         Papa->attach(std::move(factory.createSpecialWeapon(WeaponType::torpedo, *Papa)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Papa));

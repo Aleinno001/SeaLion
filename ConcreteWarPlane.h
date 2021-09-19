@@ -5,7 +5,6 @@
 #define SEALION_CONCRETEWARPLANE_H
 #include "WarPlane.h"
 
-
 class ConcreteWarPlane : public WarPlane{
 public:
     ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,float currCoolDown, float coolDown, int numAmmo, int ammoDamage,WarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, currCoolDown, coolDown, numAmmo, ammoDamage),subject_(sub){}
