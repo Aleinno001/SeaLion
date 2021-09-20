@@ -29,7 +29,6 @@ void Functions::searchAirplane(sf::RenderWindow &window, GameWorld &gameWorld){
         }
     }
 }
-
 void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim, sf::RenderWindow &window){
     while (window.isOpen()) {
         for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
@@ -207,7 +206,6 @@ void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
         }
     }
 }
-
 void Functions::update(std::list<iteratorPositions> &lst, double dt,
             std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
             GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,
@@ -247,7 +245,6 @@ void Functions::update(std::list<iteratorPositions> &lst, double dt,
         iter->get()->searchTarget(alliedIterStart, alliedIterEnd, gameWorld.getTiles(), dt);
     }
 }
-
 void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                         sf::Color &selectedColor,
                         sf::Color &concealedColor, sf::Color &removeColor) {
@@ -374,16 +371,13 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             break;
     }
 }
-void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
-                         std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
-                         std::list<iteratorPositions> &fullNavyCollision) {
-    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=
-                                                        gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
+void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,std::list<iteratorPositions> &fullNavyCollision) {
+    for (auto itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
         iteratorPositions itPos;
         itPos.it = itAllied;
         fullNavyCollision.push_back(itPos);
     }
-    for (itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
+    for (auto itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
         iteratorPositions itPos;
         itPos.it = itEnemy;
         fullNavyCollision.push_back(itPos);
