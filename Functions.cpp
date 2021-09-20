@@ -2,6 +2,73 @@
 // Created by alessandro on 20/09/21.
 //
 #include "Functions.h"
+void Functions::searchAirplane(sf::RenderWindow &window, GameWorld &gameWorld){
+    while (window.isOpen()) {
+        float distance;
+        for (auto &iter: gameWorld.getAlliedFleet()) {
+            for (auto &iterEnemy: gameWorld.getEnemyFleet()) {
+                if (iter->getShipType() == ShipType::AircraftCarrier) {
+                    for (auto &iterPlane: iterEnemy->getVehicleList()) {
+                        distance = sqrt(
+                                pow(iterPlane->getSprite().getPosition().x - iter->getSprite().getPosition().x, 2) +
+                                pow(iterPlane->getSprite().getPosition().y - iter->getSprite().getPosition().y, 2));
+                        for (auto &iterAntiAir: iter.get()->getArsenalList()) {
+                            std::cerr << distance << std::endl;
+                            if (iterAntiAir->getTextureName() == "AntiAircraft" &&
+                                distance <= iterAntiAir->getRangeOfFire()) {
+                                iter.get()->antiAirAttack(iterPlane, iterAntiAir);
+                            }
+                        }
+                        if (iterPlane.get()->getHp() <= 0) {
+                            iterPlane.get()->setDeath(true);
+                            iter.get()->detachPlanes(iterPlane);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim, sf::RenderWindow &window){
+    while (window.isOpen()) {
+        for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
+            for (auto &iterSecond: fullNavyCollision) {
+                if (iter->it->get() != iterSecond.it->get()) {
+                    if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite()) &&
+                        !(iter->it->get()->isDeath() || iterSecond.it->get()->isDeath())) {
+                        iter->it->get()->setCollision(false);
+                        iterSecond.it->get()->setCollision(false);
+                    }
+                }
+            }
+            //controlla le eventuali collisioni ai bordi della finestra di gioco
+            if (((iter->it->get()->getSprite().getPosition().x -
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) < 0) ||
+                ((iter->it->get()->getSprite().getPosition().y -
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) < 0) ||
+                ((iter->it->get()->getSprite().getPosition().x +
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
+                ((iter->it->get()->getSprite().getPosition().y +
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
+                iter->it->get()->setCollision(false);
+            }
+        }
+        //controllo cllisioni con blocchi di terra
+        for (auto &iterNavy: fullNavyCollision) {
+            for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++) {
+                for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+                    if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Dirt &&
+                        Collision::PixelPerfectTest(iterNavy.it->get()->getSprite(),
+                                                    gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
+                        iterNavy.it->get()->setCollision(false);
+                        gameWorld.getTiles()[row][column]->setIsPassable(false);
+                    }
+                }
+            }
+        }
+    }
+}
 std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
     std::vector <Fleet> fleet;
     Fleet alliedFleet;
@@ -54,7 +121,7 @@ std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
     fleet.emplace_back(alliedFleet);
     return fleet;
 }
-void Functions::drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
+void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                               sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor,
                               std::list<MvcView<WarShip>> &views, Button &airplaneButton) {
     for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
@@ -108,7 +175,7 @@ void Functions::drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &ga
     }
 }
 
-void Functions::fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
+void fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     sf::Time time = clock.getElapsedTime();
     int fps = 1.0f / time.asSeconds();
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
@@ -133,7 +200,7 @@ void Functions::fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     window.display();
 }
 
-void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
+void drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
         for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
             window.draw(gameWorld.getTiles()[i][j]->getSprite());
@@ -141,7 +208,7 @@ void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     }
 }
 
-void Functions::update(std::list<iteratorPositions> &lst, double dt,
+void update(std::list<iteratorPositions> &lst, double dt,
             std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
             GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,
             std::list<navyPositionsForAirAttack> &airTargets, std::list<MvcView<WarShip>> &views) {
@@ -181,7 +248,8 @@ void Functions::update(std::list<iteratorPositions> &lst, double dt,
     }
 }
 
-void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
+void
+drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                         sf::Color &selectedColor,
                         sf::Color &concealedColor, sf::Color &removeColor) {
     for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
@@ -231,7 +299,7 @@ void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gam
     }
 }
 
-void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
+void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
                      std::list<iteratorPositions> &lst,
                      std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
                      Button &airplaneButton, std::list<navyPositionsForAirAttack> &airAttackList) {
@@ -308,8 +376,7 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             break;
     }
 }
-
-void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
+void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
                          std::list<iteratorPositions> &fullNavyCollision) {
     for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=
@@ -324,7 +391,7 @@ void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_
         fullNavyCollision.push_back(itPos);
     }
 }
-void Functions::gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,
+void gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,
               sf::Color &selectedColor,
               sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,
               sf::Clock &clock,

@@ -19,6 +19,8 @@ typedef struct iteratorPositions {
     sf::Vector2f pos;
 };
 namespace Functions {
+    void searchAirplane(sf::RenderWindow &window, GameWorld &gameWorld);
+    void f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim, sf::RenderWindow &window);
     std::vector<Fleet> alliedDummyFleet();
     void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor,std::list<MvcView<WarShip>> &views, Button &airplaneButton);
     void fpsManagment(sf::RenderWindow &window, sf::Clock &clock);
