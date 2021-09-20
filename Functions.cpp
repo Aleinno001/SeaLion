@@ -178,7 +178,7 @@ void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf
 void fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     sf::Time time = clock.getElapsedTime();
     int fps = 1.0f / time.asSeconds();
-    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    std::string currentDir = ToolBox::GetCurrentWorkingDir();
     sf::Text fpsCount;
     sf::Text fpsText;
     sf::Font arialFont;
@@ -248,8 +248,7 @@ void update(std::list<iteratorPositions> &lst, double dt,
     }
 }
 
-void
-drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
+void drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                         sf::Color &selectedColor,
                         sf::Color &concealedColor, sf::Color &removeColor) {
     for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
