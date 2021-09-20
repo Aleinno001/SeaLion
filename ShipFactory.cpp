@@ -178,27 +178,25 @@ ShipFactory::midwayBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 15;
-    std::shared_ptr<ConcreteWarShip> mid(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 61, 640000, 520,
-                                                             "Usa", 2, 0, 0, numAntiAir, shipHeight, shipWidth,
-                                                             true,
-                                                             ShipType::AircraftCarrier, ModelType::Midway, 13));
+    std::shared_ptr<ConcreteWarShip> mid (new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 64000, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::AircraftCarrier, ModelType::Midway, 520, "midway", 2, 0, 0, numAntiAir, 13));
     mid->attach(std::move(factory.createMedium(cannonPosX + 72, cannonPosY + 187, *mid)));
     mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230, *mid)));
     mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100, *mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+10, "Usa", *mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+30,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+50,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+70,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+90,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+117,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+137,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+157,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+177,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+197,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+217,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+237,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+257,"Usa",*mid)));
-    mid->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+278,"Usa",*mid)));
+    AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(mid.get());
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+10, "Usa", *mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+30,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+50,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+70,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+44,cannonPosY+90,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+117,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+137,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+157,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+177,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+44,cannonPosY+197,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+217,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+237,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+257,"Usa",*mid)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+278,"Usa",*mid)));
     for (int i = 0; i < numAntiAir; i++)
         mid->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid)));
     std::shared_ptr<LifeBar> life(new LifeBar(*mid));
@@ -216,19 +214,17 @@ ShipFactory::arkRoyalBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 4;
-    std::shared_ptr<ConcreteWarShip> arkRoyal(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 28160, 20,
-                                "Uk", 2, 0, 0, numAntiAir, shipHeight, shipWidth, true, ShipType::AircraftCarrier,
-                                ModelType::ArkRoyal, 7));
+    std::shared_ptr<ConcreteWarShip> arkRoyal (new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::AircraftCarrier, ModelType::ArkRoyal, 20, "arkRoyal", 2, 0, 0, numAntiAir, 7));
     arkRoyal->attach(std::move(factory.createLight(cannonPosX + 7, cannonPosY + 85, *arkRoyal)));
     arkRoyal->attach(std::move(factory.createLight(cannonPosX + 28, cannonPosY + 85, *arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+15,"Uk",*arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+40,"Uk",*arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+65,"Uk",*arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+94,"Uk",*arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+130,"Uk",*arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+166,"Uk",*arkRoyal)));
-    arkRoyal->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+206,"Uk",*arkRoyal)));
+    AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(arkRoyal.get());
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+15,"Uk",*arkRoyal)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+40,"Uk",*arkRoyal)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+19,cannonPosY+65,"Uk",*arkRoyal)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+94,"Uk",*arkRoyal)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+130,"Uk",*arkRoyal)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+166,"Uk",*arkRoyal)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+206,"Uk",*arkRoyal)));
     for (int i = 0; i < numAntiAir; i++)
         arkRoyal->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *arkRoyal)));
     std::shared_ptr<LifeBar> life(new LifeBar(*arkRoyal));
@@ -243,20 +239,17 @@ std::shared_ptr<ConcreteWarShip> ShipFactory::giuseppeGaribaldiBuilder(
     int shipHeight = 180;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    std::shared_ptr<ConcreteWarShip> GiuseppeGaribaldi(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 14150, 114, "Italy", 3, 0, 0, 0, shipHeight,
-                                shipWidth,
-                                true,
-                                ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 6));
+    std::shared_ptr<ConcreteWarShip> GiuseppeGaribaldi (new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 114, "giuseppeGaribaldi", 3, 0, 0, 0, 6));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 41, *GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 69, *GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 98, *GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+15,cannonPosY+14,"Italy",*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+15,cannonPosY+40,"Italy",*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+15,cannonPosY+65,"Italy",*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+15,cannonPosY+94,"Italy",*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+130,"Italy",*GiuseppeGaribaldi)));
-    GiuseppeGaribaldi->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+166,"Italy",*GiuseppeGaribaldi)));
+    AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(GiuseppeGaribaldi.get());
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+15,cannonPosY+14,"Italy",*GiuseppeGaribaldi)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+15,cannonPosY+40,"Italy",*GiuseppeGaribaldi)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+15,cannonPosY+65,"Italy",*GiuseppeGaribaldi)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+15,cannonPosY+94,"Italy",*GiuseppeGaribaldi)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+130,"Italy",*GiuseppeGaribaldi)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+15,cannonPosY+166,"Italy",*GiuseppeGaribaldi)));
     std::shared_ptr<LifeBar> life(new LifeBar(*GiuseppeGaribaldi));
     GiuseppeGaribaldi->attachBar(life);
     return GiuseppeGaribaldi;
@@ -272,21 +265,17 @@ ShipFactory::tahioBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 20;
-    std::shared_ptr<ConcreteWarShip> Tahio(
-            new ConcreteWarShip(coordinates.x, coordinates.y, 1, 61, 37866, 304, "Japan", 2, 0, 0, numAntiAir,
-                                shipHeight,
-                                shipWidth,
-                                true,
-                                ShipType::AircraftCarrier, ModelType::Tahio, 7));
+    std::shared_ptr<ConcreteWarShip> Tahio (new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::AircraftCarrier, ModelType::Tahio, 304, "tahio", 2, 0, 0, numAntiAir, 7));
     Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 55, *Tahio)));
     Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 218, *Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+22,cannonPosY+14,"Japan",*Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+22,cannonPosY+40,"Japan",*Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+22,cannonPosY+65,"Japan",*Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+22,cannonPosY+94,"Japan",*Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+130,"Japan",*Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+166,"Japan",*Tahio)));
-    Tahio->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+206,"Japan",*Tahio)));
+    AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(Tahio.get());
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+22,cannonPosY+14,"Japan",*Tahio)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+22,cannonPosY+40,"Japan",*Tahio)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+22,cannonPosY+65,"Japan",*Tahio)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+22,cannonPosY+94,"Japan",*Tahio)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+130,"Japan",*Tahio)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+166,"Japan",*Tahio)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+206,"Japan",*Tahio)));
     for (int i = 0; i < numAntiAir; i++)
         Tahio->attach(std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Tahio)));
     std::shared_ptr<LifeBar> life(new LifeBar(*Tahio));
@@ -1160,27 +1149,24 @@ std::shared_ptr<ConcreteWarShip>ShipFactory::franklinDelanoRoosveltBuilder(sf::V
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 8;
-    //std::shared_ptr<ConcreteWarShip> FranklinDRoosevelt(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 61, 45000, 363, "Usa", 0, 0, 2, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 14));
-
-
-
-    std::shared_ptr<ConcreteWarShip> FranklinDRoosevelt(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 61, 45000,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::AircraftCarrier,ModelType::));
+    std::shared_ptr<ConcreteWarShip> FranklinDRoosevelt (new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 363, "franklinDRoosevelt", 0, 2, 0, numAntiAir, 14));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 55, cannonPosY + 92, *FranklinDRoosevelt)));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 56, cannonPosY + 179, *FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+12,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+32,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+52,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+72,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+92,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+112,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+132,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+152,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+172,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+192,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+212,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+232,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+252,"Usa",*FranklinDRoosevelt)));
-    FranklinDRoosevelt->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+272,"Usa",*FranklinDRoosevelt)));
+    AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(FranklinDRoosevelt.get());
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+12,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+32,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+52,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+72,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createFighter(cannonPosX+35,cannonPosY+92,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+112,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+132,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+152,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+172,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createBomber(cannonPosX+35,cannonPosY+192,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+212,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+232,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+252,"Usa",*FranklinDRoosevelt)));
+    dynamic->attachPlanes(std::move(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+272,"Usa",*FranklinDRoosevelt)));
     for (int i = 0; i < numAntiAir; i++)
         FranklinDRoosevelt->attach(
                 std::move(specialFactory.createSpecialWeapon(WeaponType::antiAir, *FranklinDRoosevelt)));

@@ -13,7 +13,7 @@
 
 class AircraftCarrier : public ConcreteWarShip, MvcSubject{
 private:
-    float numPlanes;
+    int numPlanes;
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
     std::list<std::shared_ptr<WarPlane>> planes;
 public:
