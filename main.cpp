@@ -6,6 +6,7 @@
 #include "Collision.h"
 #include "MvcController.h"
 #include "MvcView.h"
+#include "LambdaFunction.h"
 
 enum class windowMode {
     Windowed,
@@ -391,11 +392,10 @@ int main() {
             views.push_back(view);
         }
     }
-    std::thread thread_antiair (searchAirplane, std::ref(window), std::ref(gameWorld));
-    std::thread thread_collision(f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
-    std::thread thread_tiles_effect(tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),
-                                    std::ref(fullNavyCollision), tileDim);
-    std::thread thread_checkHit(checkHit, std::ref(fullNavyCollision), std::ref(window));
+    std::thread thread_antiair (LambdaFunction::searchAirplane, std::ref(window), std::ref(gameWorld));
+    std::thread thread_collision(LambdaFunction::f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
+    std::thread thread_tiles_effect(LambdaFunction::tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),std::ref(fullNavyCollision), tileDim);
+    std::thread thread_checkHit(LambdaFunction::checkHit, std::ref(fullNavyCollision), std::ref(window));
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
