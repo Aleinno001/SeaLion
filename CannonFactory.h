@@ -10,9 +10,9 @@
 class CannonFactory : public ArsenalFactory {
 public:
     //TODO implementare i metodi
-    std::unique_ptr<ConcreteArsenal> createLight(int posX, int posY,ConcreteWarShip &subject) const override;
-    std::unique_ptr<ConcreteArsenal> createMedium(int posX, int posY,ConcreteWarShip &subject) const override;
-    std::unique_ptr<ConcreteArsenal> createHeavly(int posX, int posY,ConcreteWarShip &subject) const override;
+    std::unique_ptr<ConcreteArsenal> createLight(int posX, int posY,WarShip &subject) const override;
+    std::unique_ptr<ConcreteArsenal> createMedium(int posX, int posY,WarShip &subject) const override;
+    std::unique_ptr<ConcreteArsenal> createHeavly(int posX, int posY,WarShip &subject) const override;
 };
 
 

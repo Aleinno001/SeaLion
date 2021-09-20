@@ -4,6 +4,7 @@
 #ifndef SEALION_CONCRETEWARSHIP_H
 #define SEALION_CONCRETEWARSHIP_H
 #include "WarShip.h"
+#include "ConcreteAircraftCarrier.h"
 
 class ConcreteWarShip : public WarShip {
 public:

@@ -9,7 +9,7 @@
 
 class ConcreteWarPlane : public WarPlane{
 public:
-    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat, int numAmmo, int ammoDamage,ConcreteWarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage),subject_(sub){}
+    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat, int numAmmo, int ammoDamage,WarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage),subject_(sub){}
     ~ConcreteWarPlane() override = default;
     void update() override;
     bool searchTarget() override;
@@ -19,6 +19,6 @@ protected:
     bool canEngage() override;
     void move() override;
 private:
-    ConcreteWarShip &subject_;
+    WarShip &subject_;
 };
 #endif //SEALION_CONCRETEWARPLANE_H
