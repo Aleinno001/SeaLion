@@ -177,7 +177,7 @@ void Functions::drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &ga
 void Functions::fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     sf::Time time = clock.getElapsedTime();
     int fps = 1.0f / time.asSeconds();
-    std::string currentDir = CurrentDir::GetCurrentWorkingDir();
+    std::string currentDir = ToolBox::GetCurrentWorkingDir();
     sf::Text fpsCount;
     sf::Text fpsText;
     sf::Font arialFont;
