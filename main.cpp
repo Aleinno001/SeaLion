@@ -6,13 +6,11 @@
 #include "Collision.h"
 #include "MvcController.h"
 #include "MvcView.h"
-#include "LambdaFunction.h"
 #include "Functions.h"
 enum class windowMode {
     Windowed,
     Fullscreen
 };
-
 int main() {
     std::vector<Fleet> fleet = Functions::alliedDummyFleet();
     sf::Vector2i boundaries(1920, 1080);
@@ -43,9 +41,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet,
-                                    FactionType::Uk, FactionType::Japan, 8, boundaries, width,
-                                    height, tileDim);
+    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet,FactionType::Uk, FactionType::Japan, 8, boundaries, width,height, tileDim);
     bool found = false;
     bool clicked = true;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
@@ -76,17 +72,15 @@ int main() {
             views.push_back(view);
         }
     }
-    std::thread thread_antiair (LambdaFunction::searchAirplane, std::ref(window), std::ref(gameWorld));
-    std::thread thread_collision(LambdaFunction::f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
-    std::thread thread_tiles_effect(LambdaFunction::tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),std::ref(fullNavyCollision), tileDim);
-    std::thread thread_checkHit(LambdaFunction::checkHit, std::ref(fullNavyCollision), std::ref(window));
+    std::thread thread_antiair (Functions::searchAirplane, std::ref(window), std::ref(gameWorld));
+    std::thread thread_collision(Functions::f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
+    std::thread thread_tiles_effect(Functions::tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),std::ref(fullNavyCollision), tileDim);
+    std::thread thread_checkHit(Functions::checkHit, std::ref(fullNavyCollision), std::ref(window));
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
     thread_antiair.detach();
-    Functions::gameWord(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
-             window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,
-             airTargets);
+    Functions::gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,airTargets);
     return 0;
 }
 
