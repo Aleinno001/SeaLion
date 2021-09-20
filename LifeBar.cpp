@@ -1,11 +1,8 @@
 //
 // Created by pala on 9/4/21.
 //
-
 #include "LifeBar.h"
 #include "Collision.h"
-
-
 LifeBar::LifeBar(WarShip &subject) : BarInterface(), subject_(subject), r(0), g(255), b(0) {
     life.setPosition(subject_.getSprite().getPosition().x + 0.50 * subject_.getWidth(),
                      subject_.getSprite().getPosition().y + 0.50 * subject_.getLength());
@@ -20,7 +17,6 @@ void LifeBar::updateBars() {
     rotation.rotate(subject_.getSprite().getRotation(), subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(life.getPosition());
     life.setPosition(newPosition);
-
 }
 void LifeBar::updateBarsDamage() {
     double percentageLife = (subject_.getHp() * 100) / subject_.getMaxHp();
