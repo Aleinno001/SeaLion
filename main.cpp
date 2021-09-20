@@ -84,7 +84,7 @@ int main() {
     thread_tiles_effect.detach();
     thread_checkHit.detach();
     thread_antiair.detach();
-    Functions::gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
+    Functions::gameWord(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,
              window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,
              airTargets);
     return 0;
