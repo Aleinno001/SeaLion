@@ -324,7 +324,6 @@ void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_
         fullNavyCollision.push_back(itPos);
     }
 }
-
 void Functions::gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,
               sf::Color &selectedColor,
               sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,
@@ -363,5 +362,110 @@ void Functions::gameLoop(int &width, int &height, int &tileDim, windowMode &vide
                                  airplaneButton);
         update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window, airTargets, views);
         fpsManagment(window, clock);//calcola e mostra fps con l'aggiunta dei font
+    }
+}
+void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &window) {
+    while (window.isOpen()) {
+        for (auto &iteratorNavy: fullNavy) {
+            for (auto &iteratorTarget: fullNavy) {
+                if (iteratorNavy.it != iteratorTarget.it) {
+                    for (auto &iteratorCannons: iteratorNavy.it->get()->getArsenalList()) { // controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
+                        if (iteratorCannons->getTextureName() != "AntiAircraft" &&
+                            iteratorCannons->getTextureName() != "TorpedoTube" &&
+                            !iteratorCannons->getAmmoType()->isArrived()) {
+                            if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),
+                                                            iteratorTarget.it->get()->getSprite()) &&
+                                !iteratorTarget.it->get()->isDeath()) {
+                                double directDamage = 0;
+                                Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
+                                if (iteratorCannons->getTextureName() ==
+                                    "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
+                                    if (((critical.roll(1) - 1) *
+                                         ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                          ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
+                                           (iteratorCannons->getAmmoType()->getSpeed() *
+                                            iteratorCannons->getAmmoType()->getSpeedMult())))) >
+                                        iteratorTarget.it->get()->getArmour()) {
+                                        directDamage =
+                                                (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
+                                                iteratorCannons->getFirepower();
+                                    }
+                                } else if (iteratorCannons->getTextureName() ==
+                                           "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
+                                    if (((critical.roll(1) - 1) *
+                                         ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                          ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
+                                           (iteratorCannons->getAmmoType()->getSpeed() *
+                                            iteratorCannons->getAmmoType()->getSpeedMult())))) >
+                                        iteratorTarget.it->get()->getArmour()) {
+                                        directDamage =
+                                                (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
+                                                iteratorCannons->getFirepower();
+                                    }
+                                } else {  //Applica gli effetti del cannone pesante se la nave spara col cannone leggero
+                                    if (((critical.roll(1) - 1) *
+                                         ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                          ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
+                                           (iteratorCannons->getAmmoType()->getSpeed() *
+                                            iteratorCannons->getAmmoType()->getSpeedMult())))) >
+                                        iteratorTarget.it->get()->getArmour()) {
+                                        directDamage =
+                                                (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
+                                                iteratorCannons->getFirepower();
+                                    }
+                                }
+                                iteratorCannons->getAmmoType()->hit();
+                                iteratorTarget.it->get()->setDamage(directDamage);
+                                iteratorTarget.it->get()->notifyBarsDamage();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision, int tileDim) {
+    bool enteredFog = false;
+    while (window.isOpen()) {
+        for (auto &itNaval: fullNavyCollision) {
+            enteredFog = false;
+            if (itNaval.it->get()->getHp() > 0) {
+                for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++)
+                    for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+                        if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Wave &&
+                            //applica i relativi effetti se la tile è di mare mosso
+                            Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),
+                                                        gameWorld.getTiles()[row][column]->getSprite())) {
+                            itNaval.it->get()->setConcealed(false);
+                            itNaval.it->get()->setCurrentSpeed(itNaval.it->get()->getMaxSpeed() * 0.80);
+                        } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Whirlpool &&
+                                   //applica i seguenti effetti se la tile è di tipo muninello
+                                   Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
+                            itNaval.it->get()->setConcealed(false);
+                            itNaval.it->get()->setDamage(itNaval.it->get()->getHp() * 0.00003);
+                            itNaval.it->get()->notifyBarsDamage();
+                        } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Fog &&
+                                   //applica i seguenti effetti se la tile è di nebbia
+                                   Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
+                            itNaval.it->get()->setConcealed(true);
+                            enteredFog = true;
+                        }
+                    }
+            } else {                                                //controlla se la nave è distrutta e applica i relativi effetti
+                itNaval.it->get()->setCollision(true);
+                itNaval.it->get()->setDeath(true);
+                for (auto &itCannons: itNaval.it->get()->getArsenalList()) {
+                    itCannons->getAmmoType()->setArrived(true);
+                    //FIXME itCannons->removeMeFromTheList();
+                }
+            }
+            if (!enteredFog) {
+                itNaval.it->get()->setConcealed(false); //effetti contrari alla nebbia applicati se la nave non si trova sulla nebbia
+            }
+        }
     }
 }

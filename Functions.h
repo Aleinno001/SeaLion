@@ -28,6 +28,9 @@ namespace Functions {
     void drawMap(sf::RenderWindow &window, GameWorld &gameWorld);
     void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,std::list<iteratorPositions> &fullNavyCollision);
     void gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,sf::Color &selectedColor,sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,sf::Clock &clock,sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView<WarShip>> &views, Button &airplaneButton,std::list<navyPositionsForAirAttack> &airTargets);
+    void checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &window);
+    void tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision,int tileDim);
+
 }
 
 #endif //SEALION_FUNCTIONS_H
