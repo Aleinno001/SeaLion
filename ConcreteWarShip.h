@@ -4,7 +4,7 @@
 #ifndef SEALION_CONCRETEWARSHIP_H
 #define SEALION_CONCRETEWARSHIP_H
 #include "WarShip.h"
-#include "AircraftCarrier.h"
+
 class ConcreteWarShip : public WarShip {
 public:
     ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, int armour, const std::string &name,int numLCannons, int numMCannons, int numHCannons, int numAntiAircraft);
