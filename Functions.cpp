@@ -2,7 +2,7 @@
 // Created by alessandro on 20/09/21.
 //
 #include "Functions.h"
-std::vector <Fleet> alliedDummyFleet() { //nave alleata di testing
+std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
     std::vector <Fleet> fleet;
     Fleet alliedFleet;
     alliedFleet.name = ModelType::DaVinci;
@@ -54,7 +54,7 @@ std::vector <Fleet> alliedDummyFleet() { //nave alleata di testing
     fleet.emplace_back(alliedFleet);
     return fleet;
 }
-void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
+void Functions::drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                               sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor,
                               std::list<MvcView<WarShip>> &views, Button &airplaneButton) {
     for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
@@ -108,7 +108,7 @@ void drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf
     }
 }
 
-void fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
+void Functions::fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     sf::Time time = clock.getElapsedTime();
     int fps = 1.0f / time.asSeconds();
     std::string currentDir = CurrentDir::GetCurrentWorkingDir();
@@ -133,7 +133,7 @@ void fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
     window.display();
 }
 
-void drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
+void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
         for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
             window.draw(gameWorld.getTiles()[i][j]->getSprite());
@@ -141,7 +141,7 @@ void drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     }
 }
 
-void update(std::list<iteratorPositions> &lst, double dt,
+void Functions::update(std::list<iteratorPositions> &lst, double dt,
             std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
             GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,
             std::list<navyPositionsForAirAttack> &airTargets, std::list<MvcView<WarShip>> &views) {
@@ -181,8 +181,7 @@ void update(std::list<iteratorPositions> &lst, double dt,
     }
 }
 
-void
-drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
+void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                         sf::Color &selectedColor,
                         sf::Color &concealedColor, sf::Color &removeColor) {
     for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
@@ -232,7 +231,7 @@ drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Colo
     }
 }
 
-void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
+void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
                      std::list<iteratorPositions> &lst,
                      std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
                      Button &airplaneButton, std::list<navyPositionsForAirAttack> &airAttackList) {
@@ -310,7 +309,7 @@ void manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &game
     }
 }
 
-void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
+void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
                          std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
                          std::list<iteratorPositions> &fullNavyCollision) {
     for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=
@@ -326,7 +325,7 @@ void prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip
     }
 }
 
-void gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,
+void Functions::gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,
               sf::Color &selectedColor,
               sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,
               sf::Clock &clock,
