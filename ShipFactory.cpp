@@ -178,7 +178,7 @@ ShipFactory::midwayBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 15;
-    std::shared_ptr<WarShip> mid (new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 64000, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::AircraftCarrier, ModelType::Midway, 520, "midway", 2, 0, 0, numAntiAir, 13));
+    std::shared_ptr<WarShip> mid (new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 61, 64000, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::AircraftCarrier, ModelType::Midway, 520, "midway", 2, 0, 0, numAntiAir, 13));
     mid->attach(std::move(factory.createMedium(cannonPosX + 72, cannonPosY + 187, *mid)));
     mid->attach(std::move(factory.createMedium(cannonPosX + 14, cannonPosY + 230, *mid)));
     mid->attach(std::move(factory.createMedium(cannonPosX + 69, cannonPosY + 100, *mid)));
@@ -214,7 +214,7 @@ ShipFactory::arkRoyalBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 4;
-    std::shared_ptr<WarShip> arkRoyal (new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::AircraftCarrier, ModelType::ArkRoyal, 20, "arkRoyal", 2, 0, 0, numAntiAir, 7));
+    std::shared_ptr<WarShip> arkRoyal (new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 56, 28160, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::AircraftCarrier, ModelType::ArkRoyal, 20, "arkRoyal", 2, 0, 0, numAntiAir, 7));
     arkRoyal->attach(std::move(factory.createLight(cannonPosX + 7, cannonPosY + 85, *arkRoyal)));
     arkRoyal->attach(std::move(factory.createLight(cannonPosX + 28, cannonPosY + 85, *arkRoyal)));
     AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(arkRoyal.get());
@@ -239,7 +239,7 @@ std::shared_ptr<WarShip> ShipFactory::giuseppeGaribaldiBuilder(
     int shipHeight = 180;
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    std::shared_ptr<WarShip> GiuseppeGaribaldi (new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 114, "giuseppeGaribaldi", 3, 0, 0, 0, 6));
+    std::shared_ptr<WarShip> GiuseppeGaribaldi (new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 56, 14150, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::AircraftCarrier, ModelType::GiuseppeGaribaldi, 114, "giuseppeGaribaldi", 3, 0, 0, 0, 6));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 41, *GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 69, *GiuseppeGaribaldi)));
     GiuseppeGaribaldi->attach(std::move(factory.createLight(cannonPosX + 4, cannonPosY + 98, *GiuseppeGaribaldi)));
@@ -265,7 +265,7 @@ ShipFactory::tahioBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 20;
-    std::shared_ptr<WarShip> Tahio (new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::AircraftCarrier, ModelType::Tahio, 304, "tahio", 2, 0, 0, numAntiAir, 7));
+    std::shared_ptr<WarShip> Tahio (new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 61, 37866, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::AircraftCarrier, ModelType::Tahio, 304, "tahio", 2, 0, 0, numAntiAir, 7));
     Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 55, *Tahio)));
     Tahio->attach(std::move(factory.createLight(cannonPosX + 20, cannonPosY + 218, *Tahio)));
     AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(Tahio.get());
@@ -1149,7 +1149,7 @@ std::shared_ptr<WarShip>ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i 
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 8;
-    std::shared_ptr<WarShip> FranklinDRoosevelt (new AircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 363, "franklinDRoosevelt", 0, 2, 0, numAntiAir, 14));
+    std::shared_ptr<WarShip> FranklinDRoosevelt (new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 61, 45000, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::AircraftCarrier, ModelType::FranklinDRoosevelt, 363, "franklinDRoosevelt", 0, 2, 0, numAntiAir, 14));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 55, cannonPosY + 92, *FranklinDRoosevelt)));
     FranklinDRoosevelt->attach(std::move(factory.createMedium(cannonPosX + 56, cannonPosY + 179, *FranklinDRoosevelt)));
     AircraftCarrier * dynamic = dynamic_cast<AircraftCarrier *>(FranklinDRoosevelt.get());
@@ -1185,7 +1185,7 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory specialFactory;
     int numAntiAir = 6;
     //std::shared_ptr<WarShip> Indomitable(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Indomitable, 5));
-    std::shared_ptr<WarShip> Indomitable(new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::AircraftCarrier,ModelType::Indomitable,240,"Indomitable",2,0,0,numAntiAir,5));
+    std::shared_ptr<WarShip> Indomitable(new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::AircraftCarrier,ModelType::Indomitable,240,"Indomitable",2,0,0,numAntiAir,5));
     Indomitable->attach(std::move(factory.createLight(cannonPosX + 6, cannonPosY + 38, *Indomitable)));
     Indomitable->attach(std::move(factory.createLight(cannonPosX + 31, cannonPosY + 38, *Indomitable)));
     AircraftCarrier * dy = dynamic_cast<AircraftCarrier *>(Indomitable.get());
@@ -1211,7 +1211,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     WeaponFactory specialFactory;
     int numAntiAir = 3;
     //std::shared_ptr<WarShip> Cavour(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Cavour, 6));
-    std::shared_ptr<WarShip> Cavour(new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::AircraftCarrier,ModelType::Cavour,241,"Cavour",4,0,0,numAntiAir,6));
+    std::shared_ptr<WarShip> Cavour(new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::AircraftCarrier,ModelType::Cavour,241,"Cavour",4,0,0,numAntiAir,6));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 16, cannonPosY + 4,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 31, cannonPosY + 23,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 29, cannonPosY + 78,*Cavour)));
