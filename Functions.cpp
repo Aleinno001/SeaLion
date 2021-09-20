@@ -2,6 +2,73 @@
 // Created by alessandro on 20/09/21.
 //
 #include "Functions.h"
+void Functions::searchAirplane(sf::RenderWindow &window, GameWorld &gameWorld){
+    while (window.isOpen()) {
+        float distance;
+        for (auto &iter: gameWorld.getAlliedFleet()) {
+            for (auto &iterEnemy: gameWorld.getEnemyFleet()) {
+                if (iter->getShipType() == ShipType::AircraftCarrier) {
+                    for (auto &iterPlane: iterEnemy->getVehicleList()) {
+                        distance = sqrt(
+                                pow(iterPlane->getSprite().getPosition().x - iter->getSprite().getPosition().x, 2) +
+                                pow(iterPlane->getSprite().getPosition().y - iter->getSprite().getPosition().y, 2));
+                        for (auto &iterAntiAir: iter.get()->getArsenalList()) {
+                            std::cerr << distance << std::endl;
+                            if (iterAntiAir->getTextureName() == "AntiAircraft" &&
+                                distance <= iterAntiAir->getRangeOfFire()) {
+                                iter.get()->antiAirAttack(iterPlane, iterAntiAir);
+                            }
+                        }
+                        if (iterPlane.get()->getHp() <= 0) {
+                            iterPlane.get()->setDeath(true);
+                            iter.get()->detachPlanes(iterPlane);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim, sf::RenderWindow &window){
+    while (window.isOpen()) {
+        for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
+            for (auto &iterSecond: fullNavyCollision) {
+                if (iter->it->get() != iterSecond.it->get()) {
+                    if (Collision::PixelPerfectTest(iter->it->get()->getSprite(), iterSecond.it->get()->getSprite()) &&
+                        !(iter->it->get()->isDeath() || iterSecond.it->get()->isDeath())) {
+                        iter->it->get()->setCollision(false);
+                        iterSecond.it->get()->setCollision(false);
+                    }
+                }
+            }
+            //controlla le eventuali collisioni ai bordi della finestra di gioco
+            if (((iter->it->get()->getSprite().getPosition().x -
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) < 0) ||
+                ((iter->it->get()->getSprite().getPosition().y -
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) < 0) ||
+                ((iter->it->get()->getSprite().getPosition().x +
+                  iter->it->get()->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
+                ((iter->it->get()->getSprite().getPosition().y +
+                  iter->it->get()->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
+                iter->it->get()->setCollision(false);
+            }
+        }
+        //controllo cllisioni con blocchi di terra
+        for (auto &iterNavy: fullNavyCollision) {
+            for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++) {
+                for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+                    if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Dirt &&
+                        Collision::PixelPerfectTest(iterNavy.it->get()->getSprite(),
+                                                    gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
+                        iterNavy.it->get()->setCollision(false);
+                        gameWorld.getTiles()[row][column]->setIsPassable(false);
+                    }
+                }
+            }
+        }
+    }
+}
 std::vector <Fleet> alliedDummyFleet() { //nave alleata di testing
     std::vector <Fleet> fleet;
     Fleet alliedFleet;
