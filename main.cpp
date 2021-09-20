@@ -306,7 +306,7 @@ void update(std::list<iteratorPositions> &lst, double dt,
     }
     if (!airTargets.empty()) {
         for (auto &iter: airTargets) {
-            if (auto *bend = dynamic_cast<AircraftCarrier *> (iter.itAllied->get())) {
+            if (auto *bend = dynamic_cast<ConcreteAircraftCarrier *> (iter.itAllied->get())) {
                 //TODO cambiare il .front per l'agfgiunta di piu' viste
                 for (auto &itViews: views) {
                     if (bend->getSprite().getPosition() == itViews.getAircraftCarrier().getSprite().getPosition()) {
@@ -384,7 +384,7 @@ int main() {
     Button airplaneButton("airplaneButton", 30, 30, buttonPos);
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
-            AircraftCarrier *dinamicAir = dynamic_cast<AircraftCarrier *>(iter->get());
+            ConcreteAircraftCarrier *dinamicAir = dynamic_cast<ConcreteAircraftCarrier *>(iter->get());
             MvcController controller(dinamicAir->getInstance());
             controllers.push_back(controller);
             MvcView view(dinamicAir->getInstance(), controllers.back(), window);
