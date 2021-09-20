@@ -12,15 +12,7 @@ enum class windowMode {
     Windowed,
     Fullscreen
 };
-typedef struct navyPositionsForAirAttack {
-    std::_List_iterator<std::unique_ptr<WarShip>> itAllied;
-    std::_List_iterator<std::unique_ptr<WarShip>> itEnemy;
 
-} navyPositionsForAirAttack;
-typedef struct iteratorPositions {
-    std::_List_iterator<std::unique_ptr<WarShip>> it;
-    sf::Vector2f pos;
-};
 int main() {
     std::vector<Fleet> fleet = Functions::alliedDummyFleet();
     sf::Vector2i boundaries(1920, 1080);
@@ -68,8 +60,8 @@ int main() {
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyCollision;
     std::list<navyPositionsForAirAttack> airTargets;
-    std::list<MvcController> controllers;
-    std::list<MvcView> views;
+    std::list<MvcController<WarShip>> controllers;
+    std::list<MvcView<WarShip>> views;
     prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
     sf::Vector2f buttonPos;
     pos.x = window.getSize().x - 15;
@@ -78,9 +70,9 @@ int main() {
     for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
         if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
             ConcreteAircraftCarrier *dinamicAir = dynamic_cast<ConcreteAircraftCarrier *>(iter->get());
-            MvcController controller(dinamicAir->getInstance());
+            MvcController<WarShip> controller(dinamicAir->getInstance());
             controllers.push_back(controller);
-            MvcView view(dinamicAir->getInstance(), controllers.back(), window);
+            MvcView<WarShip> view(dinamicAir->getInstance(), controllers.back(), window);
             views.push_back(view);
         }
     }

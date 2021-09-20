@@ -8,6 +8,11 @@
 #include "WeaponFactory.h"
 #include "CannonFactory.h"
 #include "ConcreteWarShip.h"
+#include "GameWorld.h"
+#include "AirplaneFactory.h"
+#include "LifeBar.h"
+#include "ConcreteAircraftCarrier.h"
+#include "Submarine.h"
 
 class ShipFactory : public AbstractShipFactory {
 public:

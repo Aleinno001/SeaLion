@@ -3,11 +3,6 @@
 //
 
 #include "ShipFactory.h"
-#include "GameWorld.h"
-#include "AirplaneFactory.h"
-#include "LifeBar.h"
-#include "ConcreteAircraftCarrier.h"
-#include "Submarine.h"
 
 
 std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
