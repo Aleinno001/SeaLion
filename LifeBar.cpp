@@ -11,15 +11,16 @@ LifeBar::LifeBar(WarShip &subject) : BarInterface(), subject_(subject), r(0), g(
                      subject_.getSprite().getPosition().y + 0.50 * subject_.getLength());
     life.setColor(sf::Color(r, g, b));
 }
-void LifeBar::updateBars(sf::Vector2f &vel, double mx) {
+void LifeBar::updateBars() {
     life.setPosition(subject_.getSprite().getPosition());
     life.move(0.50 * subject_.getWidth(), 0);
-    life.setPosition(life.getPosition() + vel);
-    life.setRotation(life.getRotation() + mx);
+    life.setPosition(life.getPosition() + subject_.getMovement());
+    life.setRotation(life.getRotation() + subject_.getSprite().getRotation());
     sf::Transform rotation;
-    rotation.rotate(mx, subject_.getSprite().getPosition());
+    rotation.rotate(subject_.getSprite().getRotation(), subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(life.getPosition());
     life.setPosition(newPosition);
+
 }
 void LifeBar::updateBarsDamage() {
     double percentageLife = (subject_.getHp() * 100) / subject_.getMaxHp();
