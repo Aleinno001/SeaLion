@@ -21,6 +21,19 @@ public:
     void addMvcObserver(std::shared_ptr<MvcObserver> o) override;
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
     float getNumPlanes() const;
+    bool searchTarget() override;
+    void notifyArsenals() const override;
+    void attach(const std::shared_ptr<Arsenal> &gun) override;
+    void detach(const std::shared_ptr<Arsenal> &gun) override;
+    void notifyBars() const override;
+    void notifyBarsDamage() const override;
+    void attachBar(const std::shared_ptr<BarInterface> &bar) override;
+    void detachBar(const std::shared_ptr<BarInterface> &bar) override;
+protected:
+    void move() override;
+    void attack() override;
+    float rotate(float mx, float rotatingInPlaceMult) override;
+    bool canEngage() override;
 };
 
 
