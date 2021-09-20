@@ -19,7 +19,7 @@ protected:
 public:
     BarInterface();
     virtual ~BarInterface()= default;
-    virtual void updateBars(sf::Vector2f &vel, double mx)=0;
+    virtual void updateBars()=0;
     virtual void updateBarsDamage() = 0;
     void resetOrigin();
     sf::Sprite getSprite() const;

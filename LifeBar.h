@@ -17,7 +17,7 @@ private:
     int r,g,b;
 public:
     explicit LifeBar(WarShip &subject);
-    void updateBars(sf::Vector2f &vel, double mx) override;
+    void updateBars() override;
     void updateBarsDamage() override;
     void removeMe(){
         subject_.detachBar(std::shared_ptr<BarInterface>(this));
