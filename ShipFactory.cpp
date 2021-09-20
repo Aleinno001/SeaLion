@@ -357,7 +357,7 @@ std::shared_ptr<WarShip>ShipFactory::stLouisBuilder(sf::Vector2i &coordinates) c
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 8;
-    std::shared_ptr<WarShip> saintLouis (ConcreteWarShip(coordinates.x, coordinates.y, 3, 41, 11013, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Cruiser, ModelType::StLouis, 280, "stLouis", 5, 3, 0, antiAir));
+    std::shared_ptr<WarShip> saintLouis (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 41, 11013, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Cruiser, ModelType::StLouis, 280, "stLouis", 5, 3, 0, antiAir));
     saintLouis->attach(std::move(cf.createMedium(cannonPosX +7,cannonPosY +21, *saintLouis)));
     saintLouis->attach(std::move(cf.createMedium(cannonPosX +7,cannonPosY +34, *saintLouis)));
     saintLouis->attach(std::move(cf.createMedium(cannonPosX +7,cannonPosY +111, *saintLouis)));
@@ -382,7 +382,7 @@ ShipFactory::alaskaBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     CannonFactory cf;
     int antiAir = 9;
-    std::shared_ptr<WarShip> alaska (ConcreteWarShip(coordinates.x, coordinates.y, 3, 61, 34803, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Cruiser, ModelType::Alaska, 918, "alaska", 6, 2, 1, antiAir));
+    std::shared_ptr<WarShip> alaska (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 61, 34803, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Cruiser, ModelType::Alaska, 918, "alaska", 6, 2, 1, antiAir));
     alaska->attach(std::move(cf.createHeavly(cannonPosX + 6, cannonPosY + 179, *alaska)));
     alaska->attach(std::move(cf.createMedium(cannonPosX + 11, cannonPosY + 60, *alaska)));
     alaska->attach(std::move(cf.createMedium(cannonPosX + 11, cannonPosY + 77, *alaska)));
@@ -408,7 +408,7 @@ ShipFactory::danaeBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     CannonFactory cf;
     int antiAir = 7;
-    std::shared_ptr<WarShip> danae (ConcreteWarShip(coordinates.x, coordinates.y, 3, 54, 5925, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Cruiser, ModelType::Danae, 190, "danae", 6, 1, 0, antiAir));
+    std::shared_ptr<WarShip> danae (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 54, 5925, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Cruiser, ModelType::Danae, 190, "danae", 6, 1, 0, antiAir));
     danae->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 111, *danae)));
     danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 102, *danae)));
     danae->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 120, *danae)));
@@ -432,7 +432,7 @@ ShipFactory::trentoBuilder(
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     CannonFactory cf;
     int antiAir = 12;
-    std::shared_ptr<WarShip> trento (ConcreteWarShip(coordinates.x, coordinates.y, 3, 66, 13548, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Cruiser, ModelType::Trento, 120, "trento", 6, 4, 0, antiAir));
+    std::shared_ptr<WarShip> trento (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 66, 13548, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Cruiser, ModelType::Trento, 120, "trento", 6, 4, 0, antiAir));
     trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 44, *trento)));
     trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 52, *trento)));
     trento->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 143, *trento)));
@@ -459,7 +459,7 @@ std::shared_ptr<WarShip> ShipFactory::albertoDiGiussanoBuilder(
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     CannonFactory cf;
     int antiAir = 12;
-    std::shared_ptr<WarShip> albertoDiGiussano (ConcreteWarShip(coordinates.x, coordinates.y, 3, 69, 6950, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Cruiser, ModelType::AlbertoDiGiussano, 84, "albertoDiGiussano", 3, 4, 0, antiAir));
+    std::shared_ptr<WarShip> albertoDiGiussano (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 69, 6950, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Cruiser, ModelType::AlbertoDiGiussano, 84, "albertoDiGiussano", 3, 4, 0, antiAir));
     albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 18, *albertoDiGiussano)));
     albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 28, *albertoDiGiussano)));
     albertoDiGiussano->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 121, *albertoDiGiussano)));
@@ -483,7 +483,7 @@ ShipFactory::takaoBuilder(
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     CannonFactory cf;
     int antiAir = 16;
-    std::shared_ptr<WarShip> takao (ConcreteWarShip(coordinates.x, coordinates.y, 3, 66, 15500, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Cruiser, ModelType::Takao, 237, "takao", 4, 5, 0, antiAir));
+    std::shared_ptr<WarShip> takao (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 66, 15500, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Cruiser, ModelType::Takao, 237, "takao", 4, 5, 0, antiAir));
     takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 36, *takao)));
     takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 44, *takao)));
     takao->attach(std::move(cf.createMedium(cannonPosX + 9, cannonPosY + 53, *takao)));
@@ -596,7 +596,7 @@ ShipFactory::ironDukeBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 15;
-    std::shared_ptr<WarShip> ironDuke (ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 29500, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::IronDuke, 826, "ironDuke", 0, 0, 5, numAntiAir));
+    std::shared_ptr<WarShip> ironDuke (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 29500, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::IronDuke, 826, "ironDuke", 0, 0, 5, numAntiAir));
     ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 35, *ironDuke)));
     ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 49, *ironDuke)));
     ironDuke->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 101, *ironDuke)));
@@ -618,7 +618,7 @@ ShipFactory::northCarolinaBuilder(
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 34;
-    std::shared_ptr<WarShip> northCarolina (ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 45500, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::NorthCarolina, 1224, "northCarolina", 6, 0, 2, numAntiAir));
+    std::shared_ptr<WarShip> northCarolina (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 45500, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::NorthCarolina, 1224, "northCarolina", 6, 0, 2, numAntiAir));
     northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 50, *northCarolina)));
     northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 139, *northCarolina)));
     northCarolina->attach(std::move(factory.createHeavly(cannonPosX + 8, cannonPosY + 165, *northCarolina)));
@@ -645,7 +645,7 @@ ShipFactory::montanaBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int numAntiAir = 80;
-    std::shared_ptr<WarShip> montana (ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 72104, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::Montana, 1810, "montana", 0, 10, 4, numAntiAir));
+    std::shared_ptr<WarShip> montana (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 72104, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::Montana, 1810, "montana", 0, 10, 4, numAntiAir));
     montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 54, *montana)));
     montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 82, *montana)));
     montana->attach(std::move(factory.createHeavly(cannonPosX + 11, cannonPosY + 177, *montana)));
@@ -676,7 +676,7 @@ ShipFactory::lionBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 10;
-    std::shared_ptr<WarShip> lion (ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 49670, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::Lion, 944, "lion", 0, 0, 4, numAntiAir));
+    std::shared_ptr<WarShip> lion (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 49670, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::Lion, 944, "lion", 0, 0, 4, numAntiAir));
     lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 43, *lion)));
     lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 58, *lion)));
     lion->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 120, *lion)));
@@ -697,7 +697,7 @@ ShipFactory::dreadNoughtBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 20;
-    std::shared_ptr<WarShip> dreadNought (ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 21060, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::Dreadnought, 837, "dreadNought", 0, 0, 5, numAntiAir));
+    std::shared_ptr<WarShip> dreadNought (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 21060, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::Dreadnought, 837, "dreadNought", 0, 0, 5, numAntiAir));
     dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 32, *dreadNought)));
     dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 87, *dreadNought)));
     dreadNought->attach(std::move(factory.createHeavly(cannonPosX + 5, cannonPosY + 112, *dreadNought)));
@@ -718,7 +718,7 @@ std::shared_ptr<WarShip> ShipFactory::imperatoreAugustoBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 12;
-    std::shared_ptr<WarShip> imperatoreAugusto (ConcreteWarShip(coordinates.x, coordinates.y, 1, 57, 65232, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Battleship, ModelType::ImperatoreAugusto, 1126, "imperatoreAugusto", 16, 10, 4, numAntiAir));
+    std::shared_ptr<WarShip> imperatoreAugusto (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 57, 65232, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Battleship, ModelType::ImperatoreAugusto, 1126, "imperatoreAugusto", 16, 10, 4, numAntiAir));
     imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 61, *imperatoreAugusto)));
     imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 80, *imperatoreAugusto)));
     imperatoreAugusto->attach(std::move(factory.createHeavly(cannonPosX + 13, cannonPosY + 179, *imperatoreAugusto)));
@@ -766,7 +766,7 @@ ShipFactory::kongoBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 18;
-    std::shared_ptr<WarShip> kongo(ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 37187, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Battleship, ModelType::Kongo, 592, "kongo", 6, 0, 4, numAntiAir));
+    std::shared_ptr<WarShip> kongo(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 37187, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Battleship, ModelType::Kongo, 592, "kongo", 6, 0, 4, numAntiAir));
     kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 37, *kongo)));
     kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 50, *kongo)));
     kongo->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 125, *kongo)));
@@ -793,7 +793,7 @@ ShipFactory::musashiBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 30;
-    std::shared_ptr<WarShip> musashi (ConcreteWarShip(coordinates.x, coordinates.y, 1, 51, 72809, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Battleship, ModelType::Musashi, 1540, "musashi", 6, 2, 3, numAntiAir));
+    std::shared_ptr<WarShip> musashi (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 51, 72809, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Battleship, ModelType::Musashi, 1540, "musashi", 6, 2, 3, numAntiAir));
     musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 61, *musashi)));
     musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 82, *musashi)));
     musashi->attach(std::move(factory.createHeavly(cannonPosX + 12, cannonPosY + 167, *musashi)));
@@ -887,8 +887,8 @@ std::shared_ptr<WarShip>ShipFactory::simsBuilder(sf::Vector2i &coordinates) cons
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 16;
     WeaponFactory wf;
-    //std::shared_ptr<WarShip> sims(ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2293, 30,"Usa", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Sims, 8));
-    std::shared_ptr<WarShip> sims(ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2293,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Destroyer,ModelType::Sims,30,"Titan",0,4,0,numAntiAir));
+    //std::shared_ptr<WarShip> sims(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2293, 30,"Usa", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Sims, 8));
+    std::shared_ptr<WarShip> sims(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2293,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Destroyer,ModelType::Sims,30,"Titan",0,4,0,numAntiAir));
     sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 12, *sims)));
     sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 23, *sims)));
     sims->attach(std::move(cf.createMedium(cannonPosX + 5, cannonPosY + 78, *sims)));
@@ -908,8 +908,8 @@ std::shared_ptr<WarShip>ShipFactory::fletcherBuilder(sf::Vector2i &coordinates) 
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 14;
     WeaponFactory wf;
-    //std::shared_ptr<WarShip> fletcher(ConcreteWarShip(coordinates.x, coordinates.y, 4, 68, 2500, 33,"Usa", 0, 0, 5, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Fletcher, 10));
-    std::shared_ptr<WarShip> fletcher(ConcreteWarShip(coordinates.x, coordinates.y, 4, 68, 2500,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Destroyer,ModelType::Fletcher,33,"Ambusher",0,5,0,numAntiAir));
+    //std::shared_ptr<WarShip> fletcher(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 68, 2500, 33,"Usa", 0, 0, 5, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Fletcher, 10));
+    std::shared_ptr<WarShip> fletcher(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 68, 2500,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Destroyer,ModelType::Fletcher,33,"Ambusher",0,5,0,numAntiAir));
     fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 97, *fletcher)));
     fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 85, *fletcher)));
     fletcher->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 73, *fletcher)));
@@ -930,8 +930,8 @@ std::shared_ptr<WarShip>ShipFactory::jutlandBuilder(sf::Vector2i &coordinates) c
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 16;
-    //std::shared_ptr<WarShip> jutLand(ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 2480, 26,"Uk", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Jutland, 10));
-    std::shared_ptr<WarShip>jutLand(ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 2480,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Destroyer,ModelType::Jutland,26,"Antioka",0,3,0,numAntiAir));
+    //std::shared_ptr<WarShip> jutLand(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 2480, 26,"Uk", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Jutland, 10));
+    std::shared_ptr<WarShip>jutLand(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 2480,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Destroyer,ModelType::Jutland,26,"Antioka",0,3,0,numAntiAir));
     jutLand->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 18, *jutLand)));
     jutLand->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 28, *jutLand)));
     jutLand->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 95, *jutLand)));
@@ -950,8 +950,8 @@ std::shared_ptr<WarShip>ShipFactory::paoloEmilioBuilder(sf::Vector2i &coordinate
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 12;
     WeaponFactory wf;
-    //std::shared_ptr<WarShip> paoloEmilio(ConcreteWarShip(coordinates.x, coordinates.y, 4, 76, 5420, 66,"Italy", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::PaoloEmilio, 8));
-    std::shared_ptr<WarShip> paoloEmilio(ConcreteWarShip(coordinates.x, coordinates.y, 4, 76, 5420,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Destroyer,ModelType::PaoloEmilio,66,"LoSvevo",0,4,0,numAntiAir));
+    //std::shared_ptr<WarShip> paoloEmilio(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 76, 5420, 66,"Italy", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::PaoloEmilio, 8));
+    std::shared_ptr<WarShip> paoloEmilio(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 76, 5420,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Destroyer,ModelType::PaoloEmilio,66,"LoSvevo",0,4,0,numAntiAir));
     paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 30, *paoloEmilio)));
     paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 38, *paoloEmilio)));
     paoloEmilio->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 134, *paoloEmilio)));
@@ -971,8 +971,8 @@ std::shared_ptr<WarShip>ShipFactory::impavidoBuilder(sf::Vector2i &coordinates) 
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int numAntiAir = 40;
     WeaponFactory wf;
-    //std::shared_ptr<WarShip> impavido(ConcreteWarShip(coordinates.x, coordinates.y, 4, 63, 3941, 36,"Italy", 4, 0, 1, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Impavido, 6));
-    std::shared_ptr<WarShip> impavido(ConcreteWarShip(coordinates.x, coordinates.y, 4, 63, 3941,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Destroyer,ModelType::Impavido,36,"Avanti",4,1,0,numAntiAir));
+    //std::shared_ptr<WarShip> impavido(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 63, 3941, 36,"Italy", 4, 0, 1, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Impavido, 6));
+    std::shared_ptr<WarShip> impavido(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 63, 3941,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Destroyer,ModelType::Impavido,36,"Avanti",4,1,0,numAntiAir));
     impavido->attach(std::move(cf.createMedium(cannonPosX + 4, cannonPosY + 13, *impavido)));
     impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 67, *impavido)));
     impavido->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 79, *impavido)));
@@ -993,8 +993,8 @@ std::shared_ptr<WarShip>ShipFactory::yukikazeBuilder(sf::Vector2i &coordinates) 
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int numAntiAir = 32;
     WeaponFactory wf;
-    //std::shared_ptr<WarShip> yukikaze(ConcreteWarShip(coordinates.x, coordinates.y, 4, 65, 2530, 26,"Japan", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Yukikaze, 8));
-    std::shared_ptr<WarShip> yukikaze(ConcreteWarShip(coordinates.x, coordinates.y, 4, 65, 2530,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Destroyer,ModelType::Yukikaze,26,"Taokau",0,4,0,numAntiAir));
+    //std::shared_ptr<WarShip> yukikaze(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 65, 2530, 26,"Japan", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Yukikaze, 8));
+    std::shared_ptr<WarShip> yukikaze(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 65, 2530,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Destroyer,ModelType::Yukikaze,26,"Taokau",0,4,0,numAntiAir));
     yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 16, *yukikaze)));
     yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 51, *yukikaze)));
     yukikaze->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 70, *yukikaze)));
@@ -1184,7 +1184,7 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 6;
-    //std::shared_ptr<WarShip> Indomitable(ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Indomitable, 5));
+    //std::shared_ptr<WarShip> Indomitable(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 29730, 240, "Uk", 2, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Indomitable, 5));
     std::shared_ptr<WarShip> Indomitable(new AircraftCarrier(coordinates.x, coordinates.y, 1, 56, 29730,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::AircraftCarrier,ModelType::Indomitable,240,"Indomitable",2,0,0,numAntiAir,5));
     Indomitable->attach(std::move(factory.createLight(cannonPosX + 6, cannonPosY + 38, *Indomitable)));
     Indomitable->attach(std::move(factory.createLight(cannonPosX + 31, cannonPosY + 38, *Indomitable)));
@@ -1210,7 +1210,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 3;
-    //std::shared_ptr<WarShip> Cavour(ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Cavour, 6));
+    //std::shared_ptr<WarShip> Cavour(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 52, 29900, 241, "Italy", 4, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::AircraftCarrier, ModelType::Cavour, 6));
     std::shared_ptr<WarShip> Cavour(new AircraftCarrier(coordinates.x, coordinates.y, 1, 52, 29900,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::AircraftCarrier,ModelType::Cavour,241,"Cavour",4,0,0,numAntiAir,6));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 16, cannonPosY + 4,*Cavour)));
     Cavour->attach(std::move(factory.createLight(cannonPosX + 31, cannonPosY + 23,*Cavour)));
@@ -1238,7 +1238,7 @@ std::shared_ptr<WarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) con
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     WeaponFactory specialFactory;
     int numAntiAir = 2;
-    //std::shared_ptr<WarShip> Hiryu(ConcreteWarShip(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::ConcreteAircraftCarrier, ModelType::Hiryu, 6));
+    //std::shared_ptr<WarShip> Hiryu(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 63, 20570, 70, "Japan", 2, 0, 0, numAntiAir,shipHeight,shipWidth,true,ShipType::ConcreteAircraftCarrier, ModelType::Hiryu, 6));
     std::shared_ptr<WarShip> Hiryu(new ConcreteAircraftCarrier(coordinates.x, coordinates.y, 1, 63, 20570,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::AircraftCarrier,ModelType::Hiryu,70,"Hiryu",2,0,0,numAntiAir,6));
     Hiryu->attach(std::move(factory.createLight(cannonPosX + 18, cannonPosY + 3, *Hiryu)));
     Hiryu->attach(std::move(factory.createLight(cannonPosX + 5, cannonPosY + 61, *Hiryu)));
@@ -1332,7 +1332,7 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     CannonFactory cf;
     int antiAir = 12;
-    std::shared_ptr<WarShip> NewOrleans (ConcreteWarShip(coordinates.x, coordinates.y, 3, 61, 12663, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Cruiser, ModelType::NewOrleans, 476, "newOrleans", 6, 3, 0, antiAir));
+    std::shared_ptr<WarShip> NewOrleans (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 61, 12663, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Cruiser, ModelType::NewOrleans, 476, "newOrleans", 6, 3, 0, antiAir));
     NewOrleans->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 121, *NewOrleans)));
     NewOrleans->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 50, *NewOrleans)));
     NewOrleans->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 38, *NewOrleans)));
@@ -1357,7 +1357,7 @@ ShipFactory::tiger59Builder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     CannonFactory cf;
     int antiAir = 7;
-    std::shared_ptr<WarShip> Tiger59 (ConcreteWarShip(coordinates.x, coordinates.y, 3, 58, 12080, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Cruiser, ModelType::Tiger59, 191, "tiger59", 6, 4, 0, antiAir));
+    std::shared_ptr<WarShip> Tiger59 (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 58, 12080, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Cruiser, ModelType::Tiger59, 191, "tiger59", 6, 4, 0, antiAir));
     Tiger59->attach(std::move(cf.createMedium(cannonPosX + 6, cannonPosY + 137, *Tiger59)));
     Tiger59->attach(std::move(cf.createMedium(cannonPosX + 6, cannonPosY + 128, *Tiger59)));
     Tiger59->attach(std::move(cf.createMedium(cannonPosX + 6, cannonPosY + 32, *Tiger59)));
@@ -1384,7 +1384,7 @@ ShipFactory::belfastBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     CannonFactory cf;
     int antiAir = 12;
-    std::shared_ptr<WarShip> Belfast (ConcreteWarShip(coordinates.x, coordinates.y, 3, 59, 11550, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Cruiser, ModelType::Belfast, 228, "belfast", 6, 4, 0, antiAir));
+    std::shared_ptr<WarShip> Belfast (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 59, 11550, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Cruiser, ModelType::Belfast, 228, "belfast", 6, 4, 0, antiAir));
     Belfast->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 151, *Belfast)));
     Belfast->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 141, *Belfast)));
     Belfast->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 34, *Belfast)));
@@ -1410,7 +1410,7 @@ ShipFactory::goriziaBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     CannonFactory cf;
     int antiAir = 12;
-    std::shared_ptr<WarShip> Gorizia (ConcreteWarShip(coordinates.x, coordinates.y, 3, 59, 14330, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Cruiser, ModelType::Gorizia, 370, "gorizia", 6, 4, 0, antiAir));
+    std::shared_ptr<WarShip> Gorizia (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 59, 14330, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Cruiser, ModelType::Gorizia, 370, "gorizia", 6, 4, 0, antiAir));
     Gorizia->attach(std::move(cf.createMedium(cannonPosX + 7, cannonPosY + 151, *Gorizia)));
     Gorizia->attach(std::move(cf.createMedium(cannonPosX + 7, cannonPosY + 141, *Gorizia)));
     Gorizia->attach(std::move(cf.createMedium(cannonPosX + 7, cannonPosY + 57, *Gorizia)));
@@ -1437,7 +1437,7 @@ ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     CannonFactory cf;
     int antiAir = 6;
-    std::shared_ptr<WarShip> IsuzuNagara (ConcreteWarShip(coordinates.x, coordinates.y, 3, 67, 5700, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Cruiser, ModelType::IsuzuNagara, 90, "isuzuNagara", 5, 3, 0, antiAir));
+    std::shared_ptr<WarShip> IsuzuNagara (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 67, 5700, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Cruiser, ModelType::IsuzuNagara, 90, "isuzuNagara", 5, 3, 0, antiAir));
     IsuzuNagara->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 132, *IsuzuNagara)));
     IsuzuNagara->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 94, *IsuzuNagara)));
     IsuzuNagara->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 18, *IsuzuNagara)));
@@ -1462,7 +1462,7 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates) const {
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     CannonFactory cf;
     int antiAir = 10;
-    std::shared_ptr<WarShip> Ijn (ConcreteWarShip(coordinates.x, coordinates.y, 3, 66, 15500, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Cruiser, ModelType::Ijn, 230, "ijn", 4, 4, 0, antiAir));
+    std::shared_ptr<WarShip> Ijn (new ConcreteWarShip(coordinates.x, coordinates.y, 3, 66, 15500, shipHeight, shipWidth, true, (std::string&) "Japan", ShipType::Cruiser, ModelType::Ijn, 230, "ijn", 4, 4, 0, antiAir));
     Ijn->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 31, *Ijn)));
     Ijn->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 41, *Ijn)));
     Ijn->attach(std::move(cf.createMedium(cannonPosX + 10, cannonPosY + 50, *Ijn)));
@@ -1573,7 +1573,7 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates) const {
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 32;
-    std::shared_ptr<WarShip> VittorioVeneto (ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 45963, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Battleship, ModelType::VittorioVeneto, 862, "vittorioVeneto", 12, 4, 4, numAntiAir));
+    std::shared_ptr<WarShip> VittorioVeneto (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 56, 45963, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Battleship, ModelType::VittorioVeneto, 862, "vittorioVeneto", 12, 4, 4, numAntiAir));
     VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 55, *VittorioVeneto)));
     VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 78, *VittorioVeneto)));
     VittorioVeneto->attach(std::move(factory.createHeavly(cannonPosX + 9, cannonPosY + 78, *VittorioVeneto)));
@@ -1610,7 +1610,7 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates) const {
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int antiAir = 6;
-    std::shared_ptr<WarShip> NewYork (ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 28822, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::NewYork, 939, "newYork", 0, 0, 5, antiAir));
+    std::shared_ptr<WarShip> NewYork (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 28822, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::NewYork, 939, "newYork", 0, 0, 5, antiAir));
     NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 19, *NewYork)));
     NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 39, *NewYork)));
     NewYork->attach(std::move(cf.createHeavly(cannonPosX + 10, cannonPosY + 84, *NewYork)));
@@ -1631,7 +1631,7 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates) const {
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int antiAir = 4;
-    std::shared_ptr<WarShip> Arizona (ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 32429, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::Arizona, 1536, "arizona", 8, 0, 4, antiAir));
+    std::shared_ptr<WarShip> Arizona (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 32429, shipHeight, shipWidth, true, (std::string&) "Usa", ShipType::Battleship, ModelType::Arizona, 1536, "arizona", 8, 0, 4, antiAir));
     Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 29, *Arizona)));
     Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 58, *Arizona)));
     Arizona->attach(std::move(cf.createHeavly(cannonPosX + 8, cannonPosY + 120, *Arizona)));
@@ -1659,7 +1659,7 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates) const {
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int antiAir = 20;
-    std::shared_ptr<WarShip> Hood (ConcreteWarShip(coordinates.x, coordinates.y, 1, 54, 49136, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::Hood, 800, "hood", 0, 2, 2, antiAir));
+    std::shared_ptr<WarShip> Hood (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 54, 49136, shipHeight, shipWidth, true, (std::string&) "Uk", ShipType::Battleship, ModelType::Hood, 800, "hood", 0, 2, 2, antiAir));
     Hood->attach(std::move(cf.createHeavly(cannonPosX + 9, cannonPosY + 207, *Hood)));
     Hood->attach(std::move(cf.createHeavly(cannonPosX + 9, cannonPosY + 44, *Hood)));
     Hood->attach(std::move(cf.createMedium(cannonPosX + 12, cannonPosY + 190, *Hood)));
@@ -1678,7 +1678,7 @@ ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates) const {
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 14;
-    std::shared_ptr<WarShip> MichelangeloBuonarroti (ConcreteWarShip(coordinates.x, coordinates.y, 1, 61, 42533, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Battleship, ModelType::MichelangeloBuonarroti, 837, "michelangeloBuonarroti", 12, 6, 3, numAntiAir));
+    std::shared_ptr<WarShip> MichelangeloBuonarroti (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 61, 42533, shipHeight, shipWidth, true, (std::string&) "Italy", ShipType::Battleship, ModelType::MichelangeloBuonarroti, 837, "michelangeloBuonarroti", 12, 6, 3, numAntiAir));
     MichelangeloBuonarroti->attach(
             std::move(factory.createHeavly(cannonPosX + 10, cannonPosY + 56, *MichelangeloBuonarroti)));
     MichelangeloBuonarroti->attach(
@@ -1737,8 +1737,8 @@ std::shared_ptr<WarShip>ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinate
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 13;
-    //std::shared_ptr<WarShip> AndreaDoria(ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir,shipHeight,shipWidth,true,ShipType::Battleship, ModelType::AndreaDoria, 0));
-    std::shared_ptr<WarShip> AndreaDoria(ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 24729,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Battleship,ModelType::AndreaDoria,622,"Dartagnan",10,4,4,numAntiAir));
+    //std::shared_ptr<WarShip> AndreaDoria(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 24729, 622, "Italy", 10, 4, 4, numAntiAir,shipHeight,shipWidth,true,ShipType::Battleship, ModelType::AndreaDoria, 0));
+    std::shared_ptr<WarShip> AndreaDoria(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 24729,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Battleship,ModelType::AndreaDoria,622,"Dartagnan",10,4,4,numAntiAir));
     AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 39, *AndreaDoria)));
     AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 53, *AndreaDoria)));
     AndreaDoria->attach(std::move(factory.createHeavly(cannonPosX + 7, cannonPosY + 117, *AndreaDoria)));
@@ -1773,8 +1773,8 @@ std::shared_ptr<WarShip>ShipFactory::yamatoBuilder(sf::Vector2i &coordinates) co
     int shipHeight = 263;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
-    //std::shared_ptr<WarShip> Yamato(ConcreteWarShip(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir,shipHeight,shipWidth,true,ShipType::Battleship, ModelType::Yamato, 3));
-    std::shared_ptr<WarShip> Yamato(ConcreteWarShip(coordinates.x, coordinates.y, 1, 50, 71659,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Battleship,ModelType::Yamato,1286,"DahYo",12,2,3,antiAir));
+    //std::shared_ptr<WarShip> Yamato(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 50, 71659, 1286, "Japan", 12, 3, 2, antiAir,shipHeight,shipWidth,true,ShipType::Battleship, ModelType::Yamato, 3));
+    std::shared_ptr<WarShip> Yamato(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 50, 71659,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Battleship,ModelType::Yamato,1286,"DahYo",12,2,3,antiAir));
     Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 65, *Yamato)));
     Yamato->attach(std::move(cf.createHeavly(cannonPosX + 13, cannonPosY + 87, *Yamato)));
     Yamato->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 178, *Yamato)));
@@ -1807,8 +1807,8 @@ std::shared_ptr<WarShip>ShipFactory::iseBuilder(sf::Vector2i &coordinates) const
     int shipHeight = 220;
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
-    //std::shared_ptr<WarShip> Ise(ConcreteWarShip(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, antiAir, shipHeight,shipWidth,true,ShipType::Battleship, ModelType::ISE, 2));
-    std::shared_ptr<WarShip> Ise(ConcreteWarShip(coordinates.x, coordinates.y, 1, 45, 40444,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Battleship,ModelType::ISE,705,"Fuhituke",8,0,4,antiAir));
+    //std::shared_ptr<WarShip> Ise(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 45, 40444, 705, "Japan", 8, 4, 0, antiAir, shipHeight,shipWidth,true,ShipType::Battleship, ModelType::ISE, 2));
+    std::shared_ptr<WarShip> Ise(new ConcreteWarShip(coordinates.x, coordinates.y, 1, 45, 40444,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Battleship,ModelType::ISE,705,"Fuhituke",8,0,4,antiAir));
     Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 31, *Ise)));
     Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 45, *Ise)));
     Ise->attach(std::move(cf.createHeavly(cannonPosX + 14, cannonPosY + 107, *Ise)));
@@ -1901,8 +1901,8 @@ std::shared_ptr<WarShip>ShipFactory::mahanBuilder(sf::Vector2i &coordinates) con
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 8;
-    //std::shared_ptr<WarShip> Mahan(ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2137, 27,"Usa", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Mahan, 12));
-    std::shared_ptr<WarShip> Mahan(ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2137,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Destroyer,ModelType::Mahan,27,"Patton",0,4,0,numAntiAir));
+    //std::shared_ptr<WarShip> Mahan(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2137, 27,"Usa", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Mahan, 12));
+    std::shared_ptr<WarShip> Mahan(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 69, 2137,shipHeight,shipWidth,true,(std::string &)"Usa",ShipType::Destroyer,ModelType::Mahan,27,"Patton",0,4,0,numAntiAir));
     Mahan->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 11, *Mahan)));
     Mahan->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 37, *Mahan)));
     Mahan->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 90, *Mahan)));
@@ -1922,8 +1922,8 @@ std::shared_ptr<WarShip>ShipFactory::gallandBuilder(sf::Vector2i &coordinates) c
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int numAntiAir = 8;
-    //std::shared_ptr<WarShip> Gallant(ConcreteWarShip(coordinates.x, coordinates.y, 4, 67, 1913, 22,"Uk", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Gallant, 8));
-    std::shared_ptr<WarShip> Gallant(ConcreteWarShip(coordinates.x, coordinates.y, 4, 67, 1913,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Destroyer,ModelType::Gallant,22,"Viking",0,4,0,numAntiAir));
+    //std::shared_ptr<WarShip> Gallant(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 67, 1913, 22,"Uk", 0, 0, 4, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Gallant, 8));
+    std::shared_ptr<WarShip> Gallant(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 67, 1913,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Destroyer,ModelType::Gallant,22,"Viking",0,4,0,numAntiAir));
     Gallant->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 14, *Gallant)));
     Gallant->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 21, *Gallant)));
     Gallant->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 75, *Gallant)));
@@ -1943,8 +1943,8 @@ std::shared_ptr<WarShip> ShipFactory::campbeltownBuilder(sf::Vector2i &coordinat
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 10;
-    //std::shared_ptr<WarShip> Campbelltown(ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 1280, 19,"Uk", 4, 0, 0, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Campbelltown, 6));
-    std::shared_ptr<WarShip> Campbelltown(ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 1280,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Destroyer,ModelType::Campbelltown,19,"Demolisher",4,0,0,numAntiAir));
+    //std::shared_ptr<WarShip> Campbelltown(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 1280, 19,"Uk", 4, 0, 0, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Campbelltown, 6));
+    std::shared_ptr<WarShip> Campbelltown(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 66, 1280,shipHeight,shipWidth,true,(std::string &)"Uk",ShipType::Destroyer,ModelType::Campbelltown,19,"Demolisher",4,0,0,numAntiAir));
     Campbelltown->attach(std::move(cf.createLight(cannonPosX + 3, cannonPosY + 14, *Campbelltown)));
     Campbelltown->attach(std::move(cf.createLight(cannonPosX + 1, cannonPosY + 40, *Campbelltown)));
     Campbelltown->attach(std::move(cf.createLight(cannonPosX + 5, cannonPosY + 40, *Campbelltown)));
@@ -1964,8 +1964,8 @@ std::shared_ptr<WarShip>ShipFactory::leoneBuilder(sf::Vector2i &coordinates) con
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int numAntiAir = 20;
-    //std::shared_ptr<WarShip> Leone(ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 2326, 22,"Italy", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Leone, 6));
-    std::shared_ptr<WarShip> Leone(ConcreteWarShip(coordinates.x, coordinates.y,4,61,2326,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Destroyer,ModelType::Leone,22,"Tokimune",0,3,0,numAntiAir));
+    //std::shared_ptr<WarShip> Leone(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 2326, 22,"Italy", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Leone, 6));
+    std::shared_ptr<WarShip> Leone(new ConcreteWarShip(coordinates.x, coordinates.y,4,61,2326,shipHeight,shipWidth,true,(std::string &)"Italy",ShipType::Destroyer,ModelType::Leone,22,"Tokimune",0,3,0,numAntiAir));
     Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 33, *Leone)));
     Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 74, *Leone)));
     Leone->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 100, *Leone)));
@@ -1984,8 +1984,8 @@ std::shared_ptr<WarShip>ShipFactory::fubukiBuilder(sf::Vector2i &coordinates) co
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 20;
-    //std::shared_ptr<WarShip> Fubuki(ConcreteWarShip(coordinates.x, coordinates.y, 4, 70, 2080, 26,"Japan", 0, 0, 6, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Fubuki, 9));
-    std::shared_ptr<WarShip> Fubuki(ConcreteWarShip(coordinates.x,coordinates.y,4,70,2080,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Destroyer,ModelType::Fubuki,26,"Hoimoto",0,6,0,numAntiAir));
+    //std::shared_ptr<WarShip> Fubuki(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 70, 2080, 26,"Japan", 0, 0, 6, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Fubuki, 9));
+    std::shared_ptr<WarShip> Fubuki(new ConcreteWarShip(coordinates.x,coordinates.y,4,70,2080,shipHeight,shipWidth,true,(std::string &)"Japan",ShipType::Destroyer,ModelType::Fubuki,26,"Hoimoto",0,6,0,numAntiAir));
     Fubuki->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 15, *Fubuki)));
     Fubuki->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 47, *Fubuki)));
     Fubuki->attach(std::move(cf.createMedium(cannonPosX + 3, cannonPosY + 67, *Fubuki)));
@@ -2007,8 +2007,8 @@ std::shared_ptr<WarShip>ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) c
     int cannonPosX = coordinates.x - (shipWidth) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 50;
-    //std::shared_ptr<WarShip> Akizuki(ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 3759, 33,"Japan", 0, 0, 5, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Akizuki, 4));
-    std::shared_ptr<WarShip> Akizuki(ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 3759, shipHeight, shipWidth, true,(std::string &) "Japan", ShipType::Destroyer, ModelType::Akizuki, 33, "TheStriker", 0, 4, 0, numAntiAir));
+    //std::shared_ptr<WarShip> Akizuki(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 3759, 33,"Japan", 0, 0, 5, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Akizuki, 4));
+    std::shared_ptr<WarShip> Akizuki(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 3759, shipHeight, shipWidth, true,(std::string &) "Japan", ShipType::Destroyer, ModelType::Akizuki, 33, "TheStriker", 0, 4, 0, numAntiAir));
     Akizuki->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 22, *Akizuki)));
     Akizuki->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 29, *Akizuki)));
     Akizuki->attach(std::move(cf.createMedium(cannonPosX + 2, cannonPosY + 95, *Akizuki)));
