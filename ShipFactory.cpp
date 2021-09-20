@@ -2063,11 +2063,13 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
         it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
                              (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
     }
-    for (auto &it: ship->getVehicleList()) {
-        it->getSprite().move(0, ship->getLength() / 2);
-        it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
-                             (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
-        it->getSprite().rotate(180);
+    if(ConcreteAircraftCarrier * pShip = dynamic_cast<ConcreteAircraftCarrier*> (ship.get())) {
+        for (auto &it: pShip->getPlanes()) {
+            it->getSprite().move(0, ship->getLength() / 2);
+            it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
+                                 (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
+            it->getSprite().rotate(180);
+        }
     }
     return ship;
 }
@@ -2078,12 +2080,14 @@ std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarS
         it->getSprite().move(0, -ship->getLength() / 2);
         it->getSprite().rotate(180);
     }
-    for (auto &it: ship->getVehicleList()) {
-        it->getSprite().move(0, -ship->getLength() / 2);
+    if(ConcreteAircraftCarrier * pShip = dynamic_cast<ConcreteAircraftCarrier*> (ship.get())) {
+        for (auto &it: pShip->getPlanes()) {
+            it->getSprite().move(0, -ship->getLength() / 2);
+        }
     }
     sf::Vector2f f;
     f.x=0;
     f.y=0;
-    ship->notifyBars(f,0);
+    ship->notifyBars();
     return ship;
 }

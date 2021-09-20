@@ -77,7 +77,7 @@ public:
     void setPosY(float y) {Vehicle::posY = y;}
     const sf::Texture &getTexture() const {return texture;}
     void setTexture(const sf::Texture &tex) {Vehicle::texture = tex;}
-    const sf::Sprite &getSprite() const {return sprite;}
+    sf::Sprite &getSprite() {return sprite;}
     void setSprite(const sf::Sprite &sp) {Vehicle::sprite = sp;}
     const sf::Vector2f &getPos() const {return pos;}
     void setPos(const sf::Vector2f &p) {Vehicle::pos = p;}

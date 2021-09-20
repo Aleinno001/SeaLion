@@ -20,7 +20,6 @@ public:
     void notifyMvcObserver() override;
     void addMvcObserver(std::shared_ptr<MvcObserver> o) override;
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
-    float getNumPlanes() const;
     bool searchTarget() override;
     void notifyArsenals() const override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;

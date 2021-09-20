@@ -30,9 +30,6 @@ void ConcreteAircraftCarrier::planesAttack() {
         itPlanes->searchTarget();
     }
 }
-float ConcreteAircraftCarrier::getNumPlanes() const {
-    return numPlanes;
-}
 ConcreteAircraftCarrier::~ConcreteAircraftCarrier() = default;
 void ConcreteAircraftCarrier::attack() {
     for(auto &iterArsenal : arsenalList){

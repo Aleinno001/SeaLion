@@ -18,6 +18,8 @@ public:
     virtual void notifyPlanes()=0;
     virtual void attachPlanes(const std::shared_ptr<WarPlane> &warPlane)=0;
     virtual void detachPlanes(const std::shared_ptr<WarPlane> &warPlane)=0;
+    int getNumPlanes() const {return numPlanes;}
+    const std::list<std::shared_ptr<WarPlane>> &getPlanes() const {return planes;}
 };
 
 #endif //SEALION_AIRCRAFTCARRIER_H
