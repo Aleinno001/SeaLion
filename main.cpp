@@ -7,16 +7,9 @@
 #include "MvcController.h"
 #include "MvcView.h"
 #include "Functions.h"
-enum class windowMode {
-    Windowed,
-    Fullscreen
-};
+
 int main() {
     std::vector<Fleet> fleet = Functions::alliedDummyFleet();
-    sf::Color deathColor(100, 100, 100, 120);
-    sf::Color selectedColor(196, 255, 168, 255);
-    sf::Color concealedColor(250, 250, 250, 180);
-    sf::Color removeColor(255, 255, 255, 255);
     sf::RenderWindow window;
     sf::ContextSettings settings;
     sf::Vector2f buttonPos;
@@ -38,33 +31,34 @@ int main() {
     auto desktop = sf::VideoMode::getDesktopMode();
     width = desktop.width;
     height = desktop.height;
-    tileDim = 30;
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld = GameWorld(numEnemySub,numEnemyBat,numEnemyCru,numEnemyDes,numEnemyAir,fleet,FactionType::Italy,FactionType::Italy,8,exit,width,height,tileDim);
     bool found = false;
     bool clicked = true;
+    /*
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
     auto itAllied = gameWorld.getAlliedFleet().begin();
     auto itEnemy = gameWorld.getEnemyFleet().begin();
     auto itTiles = gameWorld.getTiles().begin();
+     */
     sf::Vector2f pos;
     pos.x = 1;
     pos.y = 1;
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyList;
-    std::list<MvcController<ConcreteAircraftCarrier>> controllers;
-    std::list<MvcView<ConcreteAircraftCarrier>> views;
+    std::list<MvcController<Specialty>> controllers;
+    std::list<MvcView<Specialty>> views;
     Functions::prepareFullNavyList(gameWorld,fullNavyList);
     pos.x = window.getSize().x - 15;
     pos.y = window.getSize().y - 15;
-    Button airplaneButton("airplaneButton", 30, 30, buttonPos);
+    Button button("airplaneButton", 30, 30, buttonPos);
     for (auto & iter : gameWorld.getAlliedFleet()) {
-        if (ConcreteAircraftCarrier *dynamic= dynamic_cast<ConcreteAircraftCarrier *>(iter.get())) {
-            MvcController<ConcreteAircraftCarrier> controller(*dynamic);
+        if (auto *dynamic= dynamic_cast<ConcreteAircraftCarrier *>(iter.get())) {
+            MvcController<Specialty> controller(*dynamic);
             controllers.push_back(controller);
-            MvcView<ConcreteAircraftCarrier> view(*dynamic, controllers.back(), window);
+            MvcView<Specialty> view(*dynamic, controllers.back(), window,button);
             views.push_back(view);
         }
     }
@@ -74,7 +68,7 @@ int main() {
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
-    Functions::gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,window, gameWorld, found, clicked, itSecondClick, lst, fullNavyList, views, airplaneButton);
+    Functions::gameLoop(width, height, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings,window, gameWorld, found, clicked, lst, fullNavyList, views, button);
     return 0;
 }
 

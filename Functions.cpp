@@ -2,6 +2,7 @@
 // Created by alessandro on 20/09/21.
 //
 #include "Functions.h"
+
 void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
     while (window.isOpen()) {
         for (auto &iter:fullNavyCollision) {
@@ -94,7 +95,7 @@ std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
 }
 void Functions::drawAndManageAlliedShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                               sf::Color &selectedColor, sf::Color &concealedColor, sf::Color &removeColor,
-                              std::list<MvcView<WarShip>> &views, Button &airplaneButton) {
+                              std::list<MvcView<Specialty>> &views) {
     for (auto &it: gameWorld.getAlliedFleet()) { //disegna le navi alleate e gestisci il colore per la selezione
         if (it.get()->isDeath()) {
             it.get()->getSprite().setColor(deathColor);
@@ -172,16 +173,13 @@ void Functions::fpsManagment(sf::RenderWindow &window, sf::Clock &clock) {
 }
 
 void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
-    for (int i = 0; i < (gameWorld.getMapHeight() / 30); i++) { //disegna la  mappa
-        for (int j = 0; j < (gameWorld.getMapWidth() / 30); j++) {
+    for (int i = 0; i < (gameWorld.getMapHeight() / gameWorld.getTileDim()); i++) { //disegna la  mappa
+        for (int j = 0; j < (gameWorld.getMapWidth() / gameWorld.getTileDim()); j++) {
             window.draw(gameWorld.getTiles()[i][j]->getSprite());
         }
     }
 }
-void Functions::update(std::list<iteratorPositions> &lst, double dt,
-            std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
-            GameWorld &gameWorld,  sf::RenderWindow &window,
-            std::list<navyPositionsForAirAttack> &airTargets, std::list<MvcView<WarShip>> &views) {
+void Functions::update(std::list<iteratorPositions> &lst, double dt,std::list<iteratorPositions> &fullNavyCollision,  sf::RenderWindow &window, std::list<MvcView<Specialty>> &views) { //funzione di base per gestir el'aggiornamento del gioco durante il game loopGameWorld &gameWorld
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -217,28 +215,27 @@ void Functions::update(std::list<iteratorPositions> &lst, double dt,
         iter->get()->searchTarget(alliedIterStart, alliedIterEnd, gameWorld.getTiles(), dt);
     }
 }
-void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
-                        sf::Color &selectedColor,
-                        sf::Color &concealedColor, sf::Color &removeColor) {
+void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld) {
+    //FIXME aggiungere un metodo in WarShip per disegnare l'equipaggiamento della nave stessa (anche per gli alleati poi)
     for (auto &it: gameWorld.getEnemyFleet()) { //imposta il colore alle navinemiche per lo spostamento e per gli effetti delle tiles
         if (it.get()->isDeath()) {
-            it.get()->getSprite().setColor(deathColor);
+            it.get()->getSprite().setColor(CustomColors::deathColor);
         } else if (it.get()->isSelected()) {
-            it.get()->getSprite().setColor(selectedColor);
+            it.get()->getSprite().setColor(CustomColors::selectedColor);
         } else if (it->isConcealed()) {
-            it.get()->getSprite().setColor(concealedColor);
+            it.get()->getSprite().setColor(CustomColors::concealedColor);
         } else {
-            it.get()->getSprite().setColor(removeColor);
+            it.get()->getSprite().setColor(CustomColors::removeColor);
         }
         window.draw(it->getSprite());
         for (auto const &itArsenal: it->getArsenalList()) // disegna i cannoni e gestisci il colore per la selezione
             if (itArsenal->getTextureName() != "AntiAircraft" && itArsenal->getTextureName() != "TorpedoTube") {
                 if (it.get()->isDeath()) {
-                    itArsenal.get()->getSprite().setColor(deathColor);
+                    itArsenal.get()->getSprite().setColor(CustomColors::deathColor);
                 } else if (it.get()->isSelected()) {
-                    itArsenal.get()->getSprite().setColor(selectedColor);
+                    itArsenal.get()->getSprite().setColor(CustomColors::selectedColor);
                 } else {
-                    itArsenal.get()->getSprite().setColor(removeColor);
+                    itArsenal.get()->getSprite().setColor(CustomColors::removeColor);
                 }
                 window.draw(itArsenal->getSprite());
                 if (!itArsenal->getAmmoType()->isArrived()) {
@@ -251,32 +248,56 @@ void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gam
             }
             window.draw(itBars->getSprite());
         }
-        if (it->getShipType() ==
-            ShipType::AircraftCarrier) { //disegna gli aerei e gestisci il colore per la selezione
-            for (auto const &itPlanes: it->getVehicleList()) {
+        if (ConcreteAircraftCarrier *pIt = dynamic_cast<ConcreteAircraftCarrier*>(it.get())) { //disegna gli aerei e gestisci il colore per la selezione
+            for (auto const &itPlanes: pIt->getPlanes()) {
                 if (it.get()->isDeath()) {
-                    itPlanes.get()->getSprite().setColor(deathColor);
+                    itPlanes.get()->getSprite().setColor(CustomColors::deathColor);
                 } else if (it.get()->isSelected()) {
-                    itPlanes.get()->getSprite().setColor(selectedColor);
+                    itPlanes.get()->getSprite().setColor(CustomColors::selectedColor);
                 } else {
-                    itPlanes.get()->getSprite().setColor(removeColor);
+                    itPlanes.get()->getSprite().setColor(CustomColors::removeColor);
                 }
                 window.draw(itPlanes->getSprite());
             }
         }
     }
 }
-void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, bool &found, bool &clicked,
-                     std::list<iteratorPositions> &lst,
-                     std::_List_iterator<std::unique_ptr<WarShip>> &itSecondClick,
-                     Button &airplaneButton, std::list<navyPositionsForAirAttack> &airAttackList) {
+void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld,std::list<iteratorPositions> &lst, std::shared_ptr<WarShip> selectedShip,const std::list<MvcView<Specialty>>& views) {
     bool alreadyMove = false;
     switch (event.key.code) {
         case sf::Mouse::Left: {
             //FIXME le hitbox della selezione sono calcolate in base ai vertici della sprite e non ruota
             sf::Vector2f coords(event.mouseButton.x, event.mouseButton.y);
-            auto translated_pos = window.mapPixelToCoords(
-                    static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
+            auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
+            for (auto &it : gameWorld.getAlliedFleet()) {                                               //
+                if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {     //
+                    selectedShip=it;                                                                    //  Fase di selezionamento della nave da parte dell'utente
+                    it->setSelected(true);                                                      //
+                    return;                                                                             //
+                }                                                                                       //
+            }                                                                                           //
+            for (auto &itView: views) {
+                if(!itView.getButton().isClicked()) {                                                               //
+                    itView.getButton().getSprite().setColor(sf::Color(255,255,255));         //
+                    if (itView.getButton().getSprite().getGlobalBounds().contains(translated_pos)) {                //  Caso bottone del Mvc non è stato ancora cliccato
+                        itView.getButton().getSprite().setColor(sf::Color(0, 180,0));         //
+                        itView.getButton().setClicked(true);                                               //   Individua il click e imposta lo stato di cliccato
+                        return;                                                                                     //
+                    }                                                                                               //
+                }else{
+                    for (auto &it : gameWorld.getEnemyFleet()) {                                                    //
+                        if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {         // Caso bottone del Mvc cliccato
+                            itView.getModel().setMvcTarget(it);                                              //
+                            return;                                                                                 //  Imposta i bersagli delle classi che implementano Mvc
+                        }                                                                                           //
+                    }
+                }
+            }
+            /*
+            if(selectedShip)
+                selectedShip->setTargetCoordinates(coords);
+
+
             if (airplaneButton.getSprite().getGlobalBounds().contains(translated_pos) &&
                 itSecondClick->get()->getShipType() == ShipType::AircraftCarrier &&
                 itSecondClick->get()->isSelected()) {
@@ -337,6 +358,7 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
                 }
                 airplaneButton.setClicked(false);
             }
+             */
         }
             break;
         case sf::Mouse::Right:
@@ -355,14 +377,7 @@ void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<iteratorPosit
         fullNavyCollision.push_back(itPos);
     }
 }
-void Functions::gameLoop(int &width, int &height,  windowMode &videoMode, sf::Color &deathColor,
-              sf::Color &selectedColor,
-              sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,
-              sf::Clock &clock,
-              sf::RenderWindow &window, GameWorld &gameWorld, bool &found, bool &clicked,
-              std::list<std::unique_ptr<WarShip>>::iterator &itSecondClick, std::list<iteratorPositions> &lst,
-              std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView<WarShip>> &views, Button &airplaneButton,
-              std::list<navyPositionsForAirAttack> &airTargets) {
+void Functions::gameLoop(int &width, int &height,  windowMode &videoMode, sf::Color &deathColor,sf::Color &selectedColor,sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,sf::Clock &clock,sf::RenderWindow &window, GameWorld &gameWorld,std::list<iteratorPositions> &lst,std::list<iteratorPositions> &fullNavyCollision, std::list<MvcView<Specialty>> &views,std::shared_ptr<WarShip> selectedShip) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -378,20 +393,14 @@ void Functions::gameLoop(int &width, int &height,  windowMode &videoMode, sf::Co
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Fullscreen, settings);
                 videoMode = windowMode::Fullscreen;
             } else if (event.type == sf::Event::MouseButtonPressed) {
-                manageSelection(window, event, gameWorld, found, clicked, lst, itSecondClick, airplaneButton,
-                                airTargets);
-            } else if (event.type == sf::Event::MouseWheelMoved) {
-
-            } else if (event.type == sf::Event::MouseMoved) {
-
+                manageSelection(window, event, gameWorld,lst,selectedShip,views);
             }
         }
         window.clear();
         drawMap(window, gameWorld);
         drawAndManageEnemyShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor);
-        drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views,
-                                 airplaneButton);
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, window, airTargets, views);
+        drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, window, views);
         fpsManagment(window, clock);//calcola e mostra fps con l'aggiunta dei font
     }
 }
