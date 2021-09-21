@@ -244,7 +244,6 @@ void Functions::update(std::list<iteratorPositions> &lst, double dt,std::list<it
         iter->get()->searchTarget(alliedIterStart, alliedIterEnd, gameWorld.getTiles(), dt);
     }
 }
-
 void Functions::drawAndManageEnemyShips(sf::RenderWindow &window, GameWorld &gameWorld, sf::Color &deathColor,
                         sf::Color &selectedColor,
                         sf::Color &concealedColor, sf::Color &removeColor) {
@@ -371,16 +370,13 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             break;
     }
 }
-void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,
-                         std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,
-                         std::list<iteratorPositions> &fullNavyCollision) {
-    for (itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=
-                                                        gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
+void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_ptr<WarShip>>::iterator &itAllied,std::list<std::unique_ptr<WarShip>>::iterator &itEnemy,std::list<iteratorPositions> &fullNavyCollision) {
+    for (auto itAllied = gameWorld.getAlliedFleet().begin(); itAllied !=gameWorld.getAlliedFleet().end(); ++itAllied) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
         iteratorPositions itPos;
         itPos.it = itAllied;
         fullNavyCollision.push_back(itPos);
     }
-    for (itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
+    for (auto itEnemy = gameWorld.getEnemyFleet().begin(); itEnemy != gameWorld.getEnemyFleet().end(); ++itEnemy) {
         iteratorPositions itPos;
         itPos.it = itEnemy;
         fullNavyCollision.push_back(itPos);
