@@ -4,9 +4,9 @@
 
 #include "ShipFactory.h"
 
-std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeEnemyPositions(map);
-    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
+std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type,int height, int width) {
+    sf::Vector2i coordinates = randomizeEnemyPositions(height,width);
+    coordinates.y = coordinates.y - (0.14 * height);
     switch (type) {
         case ModelType::I400: {
             std::shared_ptr<WarShip> i400 = i400Builder(coordinates);
@@ -114,9 +114,9 @@ ShipFactory::i400Builder(
     i400->attachBar(life);
     return i400;
 }
-std::shared_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeEnemyPositions(map);
-    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
+std::shared_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type,int height, int width) {
+    sf::Vector2i coordinates = randomizeEnemyPositions(height,width);
+    coordinates.y = coordinates.y - (0.14 * height);
     switch (type) {
         case ModelType::Tahio: {
             std::shared_ptr<WarShip> tahio = tahioBuilder(coordinates);
@@ -276,10 +276,10 @@ ShipFactory::tahioBuilder(
     Tahio->attachBar(life);
     return Tahio;
 }
-std::shared_ptr<WarShip> ShipFactory::createCruiser(ModelType type, GameWorld &map) {
+std::shared_ptr<WarShip> ShipFactory::createCruiser(ModelType type,int height, int width) {
     std::list<std::shared_ptr<Vehicle>> v;
-    sf::Vector2i coordinates = randomizeEnemyPositions(map);
-    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
+    sf::Vector2i coordinates = randomizeEnemyPositions(height,width);
+    coordinates.y = coordinates.y - (0.14 * height);
     switch (type) {
         case ModelType::Takao: {
             std::shared_ptr<WarShip> takao = takaoBuilder(coordinates);
@@ -493,10 +493,10 @@ ShipFactory::takaoBuilder(
     takao->attachBar(life);
     return takao;
 }
-std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type, GameWorld &map) {
+std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type,int height, int width) {
     std::list<std::shared_ptr<Vehicle>> v;
-    sf::Vector2i coordinates = randomizeEnemyPositions(map);
-    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
+    sf::Vector2i coordinates = randomizeEnemyPositions(height,width);
+    coordinates.y = coordinates.y - (0.14 * height);
     switch (type) {
         case ModelType::Yamato: {
             std::shared_ptr<WarShip> yamato = yamatoBuilder(coordinates);
@@ -806,10 +806,10 @@ ShipFactory::musashiBuilder(
     musashi->attachBar(life);
     return musashi;
 }
-std::shared_ptr<WarShip> ShipFactory::createDestroyer(ModelType type, GameWorld &map) {
+std::shared_ptr<WarShip> ShipFactory::createDestroyer(ModelType type,int height, int width) {
     std::list<std::shared_ptr<Vehicle>> v;
-    sf::Vector2i coordinates = randomizeEnemyPositions(map);
-    coordinates.y = coordinates.y - (0.14 * map.getMapHeight());
+    sf::Vector2i coordinates = randomizeEnemyPositions(height,width);
+    coordinates.y = coordinates.y - (0.14 * height);
     switch (type) {
         case ModelType::Akizuki: {
             std::shared_ptr<WarShip> akizuki = akizukiBuilder(coordinates);
@@ -1000,11 +1000,11 @@ std::shared_ptr<WarShip>ShipFactory::yukikazeBuilder(sf::Vector2i &coordinates) 
     yukikaze->attachBar(life);
     return yukikaze;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeAlliedPositions(map);
+std::shared_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type,int height, int width) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(height,width);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
-    coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
+    coordinates.y = coordinates.y + (0.14 * height);
     switch (type) {
         case ModelType::I400: {
             std::shared_ptr<WarShip> i400 = i400Builder(coordinates);
@@ -1086,11 +1086,11 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates) const {
     Papa->attachBar(life);
     return Papa;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeAlliedPositions(map);
+std::shared_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type,int height, int width) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(height,width);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
-    coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
+    coordinates.y = coordinates.y + (0.14 * height);
     switch (type) {
         case ModelType::Tahio: {
             std::shared_ptr<WarShip> tahio = tahioBuilder(coordinates);
@@ -1249,11 +1249,11 @@ std::shared_ptr<WarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) con
     Hiryu->attachBar(life);
     return Hiryu;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeAlliedPositions(map);
+std::shared_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type,int height, int width) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(height,width);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
-    coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
+    coordinates.y = coordinates.y + (0.14 * height);
     switch (type) {
         case ModelType::Ijn: {
             std::shared_ptr<WarShip> ijn = ijnBuilder(coordinates);
@@ -1471,11 +1471,11 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates) const {
     Ijn->attachBar(life);
     return Ijn;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeAlliedPositions(map);
+std::shared_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type,int height, int width) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(height,width);
     //TODO da sistemare con factory
     std::list<std::shared_ptr<Vehicle>> v;
-    coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
+    coordinates.y = coordinates.y + (0.14 * height);
     switch (type) {
         case ModelType::ISE: {
             std::shared_ptr<WarShip> ise = iseBuilder(coordinates);
@@ -1822,9 +1822,9 @@ std::shared_ptr<WarShip>ShipFactory::iseBuilder(sf::Vector2i &coordinates) const
     Ise->attachBar(life);
     return Ise;
 }
-std::shared_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, GameWorld &map) {
-    sf::Vector2i coordinates = randomizeAlliedPositions(map);
-    coordinates.y = coordinates.y + (0.14 * map.getMapHeight());
+std::shared_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, int height, int width) {
+    sf::Vector2i coordinates = randomizeAlliedPositions(height,width);
+    coordinates.y = coordinates.y + (0.14 * height);
     switch (type) {
         case ModelType::Akizuki: {
             std::shared_ptr<WarShip> akizuki = akizukiBuilder(coordinates);
@@ -2015,10 +2015,10 @@ std::shared_ptr<WarShip>ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) c
     Akizuki->attachBar(life);
     return Akizuki;
 }
-sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
+sf::Vector2i ShipFactory::randomizeEnemyPositions(int height, int width) {
     Dice percentage(2, offset.x + 1);
-    int xMap = map.getMapWidth();
-    int yMap = map.getMapHeight();
+    int xMap = width;
+    int yMap = height;
     if (offset.y == 0) {
         offset.y = (yMap * 0.28) / 2;
     }
@@ -2031,10 +2031,10 @@ sf::Vector2i ShipFactory::randomizeEnemyPositions(GameWorld &map) {
     }
     return offset;
 }
-sf::Vector2i ShipFactory::randomizeAlliedPositions(GameWorld &map) {
+sf::Vector2i ShipFactory::randomizeAlliedPositions(int height, int width) {
     Dice percentage(2, offsetAllied.x + 1);
-    int xMap = map.getMapWidth();
-    int yMap = map.getMapHeight();
+    int xMap = width;
+    int yMap = height;
     if (offsetAllied.y == 0) {
         offsetAllied.y = yMap - (yMap * 0.28) / 2;
     }

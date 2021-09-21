@@ -15,7 +15,6 @@
 #include <unistd.h>
 #include<iostream>
 #include "ShipFactory.h"
-
 enum class FactionType {
     Uk,Usa,Italy,Japan
 };

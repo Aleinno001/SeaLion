@@ -16,21 +16,21 @@
 
 class ShipFactory : public AbstractShipFactory {
 public:
-    std::shared_ptr<WarShip> createSubmarine(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createAircraftCarrier(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createCruiser(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createBattleship(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createDestroyer(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createAlliedSubmarine(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createAlliedAircraftCarrier(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createAlliedCruiser(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createAlliedBattleship(ModelType type, GameWorld &map) override;
-    std::shared_ptr<WarShip> createAlliedDestroyer(ModelType type, GameWorld &map) override;
+    std::shared_ptr<WarShip> createSubmarine(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createAircraftCarrier(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createCruiser(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createBattleship(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createDestroyer(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createAlliedSubmarine(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createAlliedAircraftCarrier(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createAlliedCruiser(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createAlliedBattleship(ModelType type, int height, int width) override;
+    std::shared_ptr<WarShip> createAlliedDestroyer(ModelType type, int height, int width) override;
     ShipFactory(int x, int y) : offset(x, y), offsetAllied(x, y) {};
 private:
     sf::Vector2i offset;
     sf::Vector2i offsetAllied;
-    sf::Vector2i randomizeEnemyPositions(GameWorld &map);
+    sf::Vector2i randomizeEnemyPositions(int  height, int width);
     std::shared_ptr<WarShip>i400Builder(sf::Vector2i &coordinates) const;
     std::shared_ptr<WarShip>typeb1Builder(sf::Vector2i &coordinates) const;
     std::shared_ptr<WarShip>DaVinciBuilder(sf::Vector2i &coordinates) const;
@@ -87,7 +87,7 @@ private:
     std::shared_ptr<WarShip>simsBuilder(sf::Vector2i &coordinates) const;
     std::shared_ptr<WarShip>vittorioVenetoBuilder(sf::Vector2i &coordinates) const;
     std::shared_ptr<WarShip>ironDukeBuilder(sf::Vector2i &coordinates) const;
-    sf::Vector2i randomizeAlliedPositions(GameWorld &map);
+    sf::Vector2i randomizeAlliedPositions(int  height, int width);
     std::shared_ptr<WarShip> &repositionEnemyShip(std::shared_ptr<WarShip> &ship);
     std::shared_ptr<WarShip> &repositionAlliedShip(std::shared_ptr<WarShip> &ship);
 };

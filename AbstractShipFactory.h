@@ -15,16 +15,16 @@
 class GameWorld;
 class AbstractShipFactory {
 public:
-    virtual std::shared_ptr<WarShip> createSubmarine(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createAircraftCarrier(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createCruiser(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createBattleship(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createDestroyer(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createAlliedSubmarine(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createAlliedAircraftCarrier(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createAlliedCruiser(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createAlliedBattleship(ModelType type, GameWorld &map) = 0;
-    virtual std::shared_ptr<WarShip> createAlliedDestroyer(ModelType type, GameWorld &map) = 0;
+    virtual std::shared_ptr<WarShip> createSubmarine(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createAircraftCarrier(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createCruiser(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createBattleship(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createDestroyer(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createAlliedSubmarine(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createAlliedAircraftCarrier(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createAlliedCruiser(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createAlliedBattleship(ModelType type, int height, int  width) = 0;
+    virtual std::shared_ptr<WarShip> createAlliedDestroyer(ModelType type, int height, int  width) = 0;
 };
 
 
