@@ -11,15 +11,11 @@ class ConcreteAircraftCarrier : public AircraftCarrier{
 private:
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
 public:
-    ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string &nat, ShipType shipType, ModelType modelType, int armour,const std::string &name, int numLCannons, int numMCannons, int numHCannons,int numAntiAircraft, int numPlanes);
+    ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string &nat, ShipType shipType, ModelType modelType, const int armour,const std::string &name, const int numLCannons, const int numMCannons,const int numHCannons, const int numAntiAircraft, int numPlanes);
     ~ConcreteAircraftCarrier() override;
-    void planesAttack();
     void notifyPlanes() override;
     void attachPlanes(const std::shared_ptr<WarPlane> &warPlane) override;
     void detachPlanes(const std::shared_ptr<WarPlane> &warPlane) override;
-    void notifyMvcObserver() override;
-    void addMvcObserver(std::shared_ptr<MvcObserver> o) override;
-    void removeMvcObserver(std::shared_ptr<MvcObserver> o) override;
     bool searchTarget() override;
     void notifyArsenals() const override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;
@@ -28,6 +24,8 @@ public:
     void notifyBarsDamage() const override;
     void attachBar(const std::shared_ptr<BarInterface> &bar) override;
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
+    void setMvcTarget(std::shared_ptr<WarShip> target) override;
+    void drawEquipment(sf::RenderWindow &window) override;
 protected:
     void move() override;
     void attack() override;

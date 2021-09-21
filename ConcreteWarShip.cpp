@@ -3,10 +3,12 @@
 //
 
 #include "ConcreteWarShip.h"
+
 ConcreteWarShip::ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string &nat, ShipType shipType, ModelType modelType, const int armour,const std::string &name, const int numLCannons, const int numMCannons,const int numHCannons, const int numAntiAircraft) : WarShip(x, y, ac, maxVel, hp, le, wi,col, nat, shipType,modelType, armour, name,numLCannons, numMCannons,numHCannons, numAntiAircraft) {
     setUpSprite(name);
     sprite.setOrigin(width/2,length/2);
     sprite.setPosition(posX,posY);
+    targetCoordinates= sprite.getPosition();
 }
 void ConcreteWarShip::attack() {
     for(auto &iterArsenal : arsenalList){
@@ -82,12 +84,12 @@ void ConcreteWarShip::detachBar(const std::shared_ptr<BarInterface> &bar) {
 }
 bool ConcreteWarShip::searchTarget() {
     move();
-    if(canEngage())
+    if (canEngage())
         attack();
 }
 float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
-    if (abs(sprite.getRotation() - mx) >=1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+    if (abs(sprite.getRotation() - mx) >=1.5) {  // Verifica che la rotazione da effettuare sia sufficientemente grande (risolve un glitch grafico)
         if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
             deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 4000;
             sprite.rotate(deltaMx);
@@ -107,4 +109,22 @@ bool ConcreteWarShip::canEngage() {    //Controlla se nessun cannone può ingagg
         result= false;
     }
     return result;
+}
+void ConcreteWarShip::drawEquipment(sf::RenderWindow &window) {
+    if (death) {
+        sprite.setColor(CustomColors::deathColor);
+    } else if (selected) {
+        sprite.setColor(CustomColors::selectedColor);
+    } else if (concealed) {
+        sprite.setColor(CustomColors::concealedColor);
+    } else {
+        sprite.setColor(CustomColors::removeColor);
+    }
+    window.draw(sprite);
+    for(auto &it : arsenalList){
+        it->drawEquipment(window);
+    }
+    for(auto &it : bars){
+        it.drawEquipment(window);
+    }
 }

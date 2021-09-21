@@ -13,6 +13,7 @@
 #include "BarInterface.h"
 #include <math.h>
 #include <memory>
+#include "CustomColors.h"
 
 enum class ShipType {
     Battleship,Cruiser,AircraftCarrier,Destroyer,Submarine

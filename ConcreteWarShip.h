@@ -17,6 +17,7 @@ public:
     void notifyBarsDamage() const override;
     void attachBar(const std::shared_ptr<BarInterface> &bar) override;
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
+    void drawEquipment(sf::RenderWindow &window) override;
 protected:
     void move() override;
     void attack() override;

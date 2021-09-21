@@ -4,12 +4,12 @@
 #ifndef SEALION_MVCCONTROLLER_H
 #define SEALION_MVCCONTROLLER_H
 #include <utility>
-template <typename T>
+template <typename T,typename D>
 class MvcController {
 public:
     explicit MvcController(T &mod) : model(mod) {};
-    void startUpEngine(std::shared_ptr<T> &target){
-        model.searchAndHuntDownEnemyTargets(target);
+    void startUpEngine(std::shared_ptr<D> &target){
+        dusgisdgnsi
     };
     T &getModel() const{
         return model;

@@ -141,3 +141,15 @@ ConcreteArsenal::ConcreteArsenal(float range, float reload, int maxDispersion, s
     sprite.setOrigin(width/2,length/2);
     sprite.setPosition(posX,posY);
 }
+
+void ConcreteArsenal::drawEquipment(sf::RenderWindow &window) {
+    if (subject_.isDeath()) {
+        sprite.setColor(CustomColors::deathColor);
+    } else if (subject_.isSelected()) {
+        sprite.setColor(CustomColors::selectedColor);
+    } else {
+        sprite.setColor(CustomColors::removeColor);
+    }
+    window.draw(sprite);
+    ammoType->drawEquipment(window);
+}

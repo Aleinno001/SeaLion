@@ -3,17 +3,7 @@
 //
 
 #include "ConcreteAircraftCarrier.h"
-ConcreteAircraftCarrier::ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi,bool col, std::string &nat, ShipType shipType, ModelType modelType,int armour, const std::string &name, int numLCannons, int numMCannons,int numHCannons, int numAntiAircraft, int numPlanes) : AircraftCarrier(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft, numPlanes) {}
-void ConcreteAircraftCarrier::notifyMvcObserver() {
-    for (auto &it: listMvcObservers)
-        it->updateMvcObserver();
-}
-void ConcreteAircraftCarrier::addMvcObserver(std::shared_ptr<MvcObserver> o) {
-    listMvcObservers.push_back(o);
-}
-void ConcreteAircraftCarrier::removeMvcObserver(std::shared_ptr<MvcObserver> o) {
-    listMvcObservers.remove(o);
-}
+ConcreteAircraftCarrier::ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi,bool col, std::string &nat, ShipType shipType, ModelType modelType,const int armour, const std::string &name, const int numLCannons,const int numMCannons, const int numHCannons,const int numAntiAircraft, int numPlanes) : AircraftCarrier(x, y, ac,maxVel, hp,le, wi,col, nat,shipType,modelType,armour,name,numLCannons,numMCannons,numHCannons,numAntiAircraft,numPlanes) {}
 void ConcreteAircraftCarrier::notifyPlanes() {
     for(auto &itPlanes : planes){
         itPlanes->update();
@@ -25,15 +15,13 @@ void ConcreteAircraftCarrier::attachPlanes(const std::shared_ptr<WarPlane> &warP
 void ConcreteAircraftCarrier::detachPlanes(const std::shared_ptr<WarPlane> &warPlane) {
     planes.remove(warPlane);
 }
-void ConcreteAircraftCarrier::planesAttack() {
-    for(auto &itPlanes : planes){
-        itPlanes->searchTarget();
-    }
-}
 ConcreteAircraftCarrier::~ConcreteAircraftCarrier() = default;
 void ConcreteAircraftCarrier::attack() {
     for(auto &iterArsenal : arsenalList){
         iterArsenal->searchTarget();
+    }
+    for(auto &itPlanes : planes){
+        itPlanes->searchTarget();
     }
 }
 void ConcreteAircraftCarrier::move() {
@@ -137,4 +125,27 @@ bool ConcreteAircraftCarrier::canEngage() {    //Controlla se nessun cannone pu√
         result= false;
     }
     return result;
+}
+void ConcreteAircraftCarrier::setMvcTarget(std::shared_ptr<WarShip> target) {
+    for(auto &itPlanes : planes){
+        itPlanes->setTarget(target);
+    }
+}
+void ConcreteAircraftCarrier::drawEquipment(sf::RenderWindow &window) {
+    if (death) {
+        sprite.setColor(CustomColors::deathColor);
+    } else if (selected) {
+        sprite.setColor(CustomColors::selectedColor);
+    } else if (concealed) {
+        sprite.setColor(CustomColors::concealedColor);
+    } else {
+        sprite.setColor(CustomColors::removeColor);
+    }
+    window.draw(sprite);
+    for (auto &it: arsenalList) {
+        it->drawEquipment(window);
+    }
+    for (auto &it: planes) {
+        it->drawEquipment(window);
+    }
 }

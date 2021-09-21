@@ -126,6 +126,11 @@ float Bullet::getPenetrationMult() const {
     return penetrationMult;
 }
 
+void Bullet::drawEquipment(sf::RenderWindow &window) {
+    if(!arrived)
+        window.draw(sprite);
+}
+
 
 
 

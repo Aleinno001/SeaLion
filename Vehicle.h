@@ -84,6 +84,7 @@ public:
     void setDamage(double damage) {
         hp = hp - damage;
     }
+    virtual void drawEquipment(sf::RenderWindow &window)=0;
     virtual ~Vehicle() = 0;
 };
 #endif //SEALION_VEHICLE_H

@@ -23,6 +23,7 @@ public:
     virtual void updateBarsDamage() = 0;
     void resetOrigin();
     sf::Sprite getSprite() const;
+    virtual void drawEquipment(sf::RenderWindow &window)=0;
 };
 
 

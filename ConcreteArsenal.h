@@ -27,6 +27,7 @@ public:
     int getWidth() const override;
     float getCountdown() const override;
     void setCountdown(float countdown) override;
+    virtual void drawEquipment(sf::RenderWindow &window) override;
 protected:
     void rotate(sf::Vector2f &coord) override;
     float attack(sf::Vector2f &coord) override;
