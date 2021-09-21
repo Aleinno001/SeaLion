@@ -2,28 +2,28 @@
 // Created by alessandro on 20/09/21.
 //
 #include "Functions.h"
-void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
+void Functions::f (std::list<std::shared_ptr<WarShip>> &fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
     while (window.isOpen()) {
         for (auto &iter:fullNavyCollision) {
-            for (auto &iterSecond: fullNavyCollision) {
-                if (iter.it != iterSecond.it) {
-                    if (Collision::PixelPerfectTest(iter.it->getSprite(), iterSecond.it->getSprite()) &&
-                        !(iter.it->isDeath() || iterSecond.it->isDeath())) {
-                        iter.it->setCollision(false);
-                        iterSecond.it->setCollision(false);
+            for (auto &iterSecond:fullNavyCollision) {
+                if (iter != iterSecond) {
+                    if (Collision::PixelPerfectTest(iter->getSprite(), iterSecond->getSprite()) &&
+                        !(iter->isDeath() || iterSecond->isDeath())) {
+                        iter->setCollision(false);
+                        iterSecond->setCollision(false);
                     }
                 }
             }
             //controlla le eventuali collisioni ai bordi della finestra di gioco
-            if (((iter.it->getSprite().getPosition().x -
-                  iter.it->getSprite().getLocalBounds().width / 2) < 0) ||
-                ((iter.it->getSprite().getPosition().y -
-                  iter.it->getSprite().getLocalBounds().height / 2) < 0) ||
-                ((iter.it->getSprite().getPosition().x +
-                  iter.it->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
-                ((iter.it->getSprite().getPosition().y +
-                  iter.it->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
-                iter.it->setCollision(false);
+            if (((iter->getSprite().getPosition().x -
+                  iter->getSprite().getLocalBounds().width / 2) < 0) ||
+                ((iter->getSprite().getPosition().y -
+                  iter->getSprite().getLocalBounds().height / 2) < 0) ||
+                ((iter->getSprite().getPosition().x +
+                  iter->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
+                ((iter->getSprite().getPosition().y +
+                  iter->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
+                iter->setCollision(false);
             }
         }
         //controllo cllisioni con blocchi di terra
@@ -31,8 +31,8 @@ void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &ga
             for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++) {
                 for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
                     if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Dirt &&
-                        Collision::PixelPerfectTest(iterNavy.it->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
-                        iterNavy.it->setCollision(false);
+                        Collision::PixelPerfectTest(iterNavy->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
+                        iterNavy->setCollision(false);
                         gameWorld.getTiles()[row][column]->setIsPassable(false);
                     }
                 }
@@ -395,17 +395,17 @@ void Functions::gameLoop(int &width, int &height,  windowMode &videoMode, sf::Co
         fpsManagment(window, clock);//calcola e mostra fps con l'aggiunta dei font
     }
 }
-void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &window) {
+void Functions::checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Window &window) {
     while (window.isOpen()) {
         for (auto &iteratorNavy: fullNavy) {
             for (auto &iteratorTarget: fullNavy) {
-                if (iteratorNavy.it != iteratorTarget.it) {
-                    for (auto &iteratorCannons: iteratorNavy.it->getArsenalList()) { // controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
+                if (iteratorNavy != iteratorTarget) {
+                    for (auto &iteratorCannons: iteratorNavy->getArsenalList()) { // controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
                         if (iteratorCannons->getTextureName() != "AntiAircraft" &&
                             iteratorCannons->getTextureName() != "TorpedoTube" &&
                             !iteratorCannons->getAmmoType()->isArrived()) {
-                            if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),iteratorTarget.it->getSprite()) &&
-                                !iteratorTarget.it->isDeath()) {
+                            if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),iteratorTarget->getSprite()) &&
+                                !iteratorTarget->isDeath()) {
                                 double directDamage = 0;
                                 Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
                                 if (iteratorCannons->getTextureName() ==
@@ -415,7 +415,7 @@ void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &win
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                            iteratorTarget.it->getArmour()) {
+                                            iteratorTarget->getArmour()) {
                                         
                                         directDamage =(critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *iteratorCannons->getFirepower();
                                     }
@@ -427,7 +427,7 @@ void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &win
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                        iteratorTarget.it->get()->getArmour()) {
+                                        iteratorTarget->getArmour()) {
                                         directDamage =
                                                 (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
                                                 iteratorCannons->getFirepower();
@@ -439,15 +439,15 @@ void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &win
                                           ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
                                            (iteratorCannons->getAmmoType()->getSpeed() *
                                             iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                        iteratorTarget.it->get()->getArmour()) {
+                                        iteratorTarget->getArmour()) {
                                         directDamage =
                                                 (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
                                                 iteratorCannons->getFirepower();
                                     }
                                 }
                                 iteratorCannons->getAmmoType()->hit();
-                                iteratorTarget.it->get()->setDamage(directDamage);
-                                iteratorTarget.it->get()->notifyBarsDamage();
+                                iteratorTarget->setDamage(directDamage);
+                                iteratorTarget->notifyBarsDamage();
                             }
                         }
                     }
@@ -456,42 +456,42 @@ void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &win
         }
     }
 }
-void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision) {
+void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision) {
     bool enteredFog = false;
     while (window.isOpen()) {
         for (auto &itNaval: fullNavyCollision) {
             enteredFog = false;
-            if (itNaval.it->getHp() > 0) {
+            if (itNaval->getHp() > 0) {
                 for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++)
                     for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
                         if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Wave &&
                             //applica i relativi effetti se la tile è di mare mosso
-                            Collision::PixelPerfectTest(itNaval.it->getSprite(),
+                            Collision::PixelPerfectTest(itNaval->getSprite(),
                                                         gameWorld.getTiles()[row][column]->getSprite())) {
-                            itNaval.it->setConcealed(false);
-                            itNaval.it->setCurrentSpeed(itNaval.it->getMaxSpeed() * 0.80);
+                            itNaval->setConcealed(false);
+                            itNaval->setCurrentSpeed(itNaval->getMaxSpeed() * 0.80);
                         } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Whirlpool &&
                                    //applica i seguenti effetti se la tile è di tipo muninello
-                                   Collision::PixelPerfectTest(itNaval.it->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
-                            itNaval.it->setConcealed(false);
-                            itNaval.it->setDamage(itNaval.it->getHp() * 0.00003);
-                            itNaval.it->notifyBarsDamage();
+                                   Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
+                            itNaval->setConcealed(false);
+                            itNaval->setDamage(itNaval->getHp() * 0.00003);
+                            itNaval->notifyBarsDamage();
                         } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Fog &&
                                    //applica i seguenti effetti se la tile è di nebbia
-                                   Collision::PixelPerfectTest(itNaval.it->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
-                            itNaval.it->setConcealed(true);
+                                   Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
+                            itNaval->setConcealed(true);
                             enteredFog = true;
                         }
                     }
             } else {//controlla se la nave è distrutta e applica i relativi effetti
-                itNaval.it->setCollision(true);
-                itNaval.it->setDeath(true);
-                for (auto &itCannons: itNaval.it->getArsenalList()) {
+                itNaval->setCollision(true);
+                itNaval->setDeath(true);
+                for (auto &itCannons: itNaval->getArsenalList()) {
                     itCannons->getAmmoType()->setArrived(true);
                 }
             }
             if (!enteredFog) {
-                itNaval.it->setConcealed(false); //effetti contrari alla nebbia applicati se la nave non si trova sulla nebbia
+                itNaval->setConcealed(false); //effetti contrari alla nebbia applicati se la nave non si trova sulla nebbia
             }
         }
     }
