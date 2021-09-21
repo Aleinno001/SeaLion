@@ -30,7 +30,7 @@ void Functions::searchAirplane(sf::RenderWindow &window, GameWorld &gameWorld){
     }
 }
 
-void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, int tileDim, sf::RenderWindow &window){
+void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
     while (window.isOpen()) {
         for (auto iter = fullNavyCollision.begin(); iter != fullNavyCollision.end(); ++iter) {
             for (auto &iterSecond: fullNavyCollision) {
@@ -56,8 +56,8 @@ void Functions::f (std::list<iteratorPositions> fullNavyCollision, GameWorld &ga
         }
         //controllo cllisioni con blocchi di terra
         for (auto &iterNavy: fullNavyCollision) {
-            for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++) {
-                for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+            for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++) {
+                for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
                     if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Dirt &&
                         Collision::PixelPerfectTest(iterNavy.it->get()->getSprite(),
                                                     gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
@@ -208,10 +208,7 @@ void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     }
 }
 
-void Functions::update(std::list<iteratorPositions> &lst, double dt,
-            std::list<iteratorPositions> &fullNavyCollision, //funzione di base per gestir el'aggiornamento del gioco durante il game loop
-            GameWorld &gameWorld, int tileDim, sf::RenderWindow &window,
-            std::list<navyPositionsForAirAttack> &airTargets, std::list<MvcView<WarShip>> &views) {
+void Functions::update(std::list<iteratorPositions> &lst, double dt,std::list<iteratorPositions> &fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window,std::list<navyPositionsForAirAttack> &airTargets, std::list<MvcView<WarShip>> &views) { //funzione di base per gestir el'aggiornamento del gioco durante il game loopGameWorld &gameWorld, sf::RenderWindow &window,
     if (!lst.empty()) {
         for (auto iter = lst.begin(); iter != lst.end();) {
             if ((iter->it->get()->getSprite().getPosition().x) == iter->pos.x &&
@@ -389,7 +386,7 @@ void Functions::prepareFullNavyList(GameWorld &gameWorld, std::list<std::unique_
         fullNavyCollision.push_back(itPos);
     }
 }
-void Functions::gameLoop(int &width, int &height, int &tileDim, windowMode &videoMode, sf::Color &deathColor,
+void Functions::gameLoop(int &width, int &height, windowMode &videoMode, sf::Color &deathColor,
               sf::Color &selectedColor,
               sf::Color &concealedColor, sf::Color &removeColor, const sf::ContextSettings &settings,
               sf::Clock &clock,
@@ -425,7 +422,7 @@ void Functions::gameLoop(int &width, int &height, int &tileDim, windowMode &vide
         drawAndManageEnemyShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor);
         drawAndManageAlliedShips(window, gameWorld, deathColor, selectedColor, concealedColor, removeColor, views,
                                  airplaneButton);
-        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, tileDim, window, airTargets, views);
+        update(lst, clock.restart().asSeconds(), fullNavyCollision, gameWorld, window, airTargets, views);
         fpsManagment(window, clock);//calcola e mostra fps con l'aggiunta dei font
     }
 }
@@ -493,14 +490,14 @@ void Functions::checkHit(std::list<iteratorPositions> &fullNavy, sf::Window &win
         }
     }
 }
-void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision, int tileDim) {
+void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<iteratorPositions> &fullNavyCollision) {
     bool enteredFog = false;
     while (window.isOpen()) {
         for (auto &itNaval: fullNavyCollision) {
             enteredFog = false;
             if (itNaval.it->get()->getHp() > 0) {
-                for (int row = 0; row < (gameWorld.getMapHeight() / tileDim); row++)
-                    for (int column = 0; column < (gameWorld.getMapWidth() / tileDim); column++) {
+                for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++)
+                    for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
                         if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Wave &&
                             //applica i relativi effetti se la tile è di mare mosso
                             Collision::PixelPerfectTest(itNaval.it->get()->getSprite(),

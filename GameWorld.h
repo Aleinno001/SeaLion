@@ -26,6 +26,7 @@ struct Fleet {
 };
 class GameWorld {
 private:
+    int tileDim{30};
     std::vector<std::vector<std::shared_ptr<GameTile>>> tiles;
     FactionType enemyFaction;
     FactionType alliedFaction;
@@ -82,11 +83,8 @@ public:
     void setGridLength(int gridLength);
     void setMapWidth(int mapWidth);
     void setMapHeight(int mapHeight);
-    std::list<std::shared_ptr<WarShip>> &getAlliedFleet() {
-        return alliedFleet;
-    }
-    std::list<std::shared_ptr<WarShip>> &getEnemyFleet() {
-        return enemyFleet;
-    }
+    std::list<std::shared_ptr<WarShip>> &getAlliedFleet() {return alliedFleet;}
+    std::list<std::shared_ptr<WarShip>> &getEnemyFleet() {return enemyFleet;}
+    int getTileDim() const;
 };
 #endif //SEALION_GAMEWORLD_H

@@ -2,7 +2,7 @@
 // Created by alessandro on 04/07/21.
 //
 #include "GameWorld.h"
-GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,sf::Vector2i exit, int &width, int &height, int &tileDim) {
+GameWorld::GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid,sf::Vector2i exit, int &width, int &height, int &tileDim) : tileDim(tileDim) {
     try {
         gridLength = grid;
         enemyFaction = enemyFact;
@@ -655,8 +655,6 @@ void GameWorld::setMapHeight(int mapHeight) {
 bool GameWorld::isInStrip(int i, int tileDim) {
     return i > 0.28 * (mapHeight / tileDim) && i < mapHeight / tileDim - 0.28 * (mapHeight / tileDim);
 }
-
-
-
-
-
+int GameWorld::getTileDim() const {
+    return tileDim;
+}
