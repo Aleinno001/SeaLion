@@ -6,13 +6,13 @@
 #define SEALION_SUBMARINE_H
 
 #include "Specialty.h"
+#include "Tools.h"
 
 class Submarine : public  Specialty{
 private:
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
 public:
     Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, const int armour, const std::string &name, const int numLCannons,const int numMCannons, const int numHCannons, const int numAntiAircraft);
-    ~Submarine() override;
     bool searchTarget() override;
     void notifyArsenals() const override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;

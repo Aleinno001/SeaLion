@@ -13,8 +13,6 @@
 #include "BarInterface.h"
 #include <math.h>
 #include <memory>
-#include "CustomColors.h"
-
 enum class ShipType {
     Battleship,Cruiser,AircraftCarrier,Destroyer,Submarine
 };
@@ -72,6 +70,5 @@ public:
     void setTargetCoordinates(const sf::Vector2f &targetCoordinates) {WarShip::targetCoordinates = targetCoordinates;}
     const std::list<std::shared_ptr<WarShip>> &getEnemyList() const {return enemyList;}
     void setEnemyList(const std::list<std::shared_ptr<WarShip>> &enemyList) {WarShip::enemyList = enemyList;}
-    virtual ~WarShip() = 0;
 };
 #endif //SEALION_WARSHIP_H

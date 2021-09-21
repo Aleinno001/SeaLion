@@ -43,8 +43,8 @@ void ConcreteWarShip::move() {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
             }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * ToolBox::dt.getElapsedTime().asSeconds() * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * ToolBox::dt.getElapsedTime().asSeconds() * acceleration / 10;
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * Tools::getElapsedTime() * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * Tools::getElapsedTime() * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
             rotate(mx, rotatingInPlaceMult);
         } else {
@@ -112,13 +112,11 @@ bool ConcreteWarShip::canEngage() {    //Controlla se nessun cannone può ingagg
 }
 void ConcreteWarShip::drawEquipment(sf::RenderWindow &window) {
     if (death) {
-        sprite.setColor(CustomColors::deathColor);
+        sprite.setColor(sf::Color::Transparent);
     } else if (selected) {
-        sprite.setColor(CustomColors::selectedColor);
-    } else if (concealed) {
-        sprite.setColor(CustomColors::concealedColor);
+        sprite.setColor(sf::Color::Green);
     } else {
-        sprite.setColor(CustomColors::removeColor);
+        sprite.setColor(sf::Color::White);
     }
     window.draw(sprite);
     for(auto &it : arsenalList){

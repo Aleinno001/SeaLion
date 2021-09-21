@@ -5,7 +5,6 @@
 std::shared_ptr<Bullet> ConcreteArsenal::getAmmoType() {
     return ammoType;
 }
-ConcreteArsenal::~ConcreteArsenal()=default;
 void ConcreteArsenal::update() {
     sprite.setPosition(sprite.getPosition() + subject_.getMovement());
     sprite.setRotation(subject_.getSprite().getRotation());
@@ -110,7 +109,7 @@ void ConcreteArsenal::rotate(sf::Vector2f &coord) {
 }
 float ConcreteArsenal::attack(sf::Vector2f &coord) {
     rotate(coord);
-    if (abs(countdown - ToolBox::dt.getElapsedTime().asSeconds()) <= ToolBox::dt.getElapsedTime().asSeconds()) {  //Verifica che il cannone abbia ricaricato e quindi imposta lo stato di sparo
+    if (abs(countdown - Tools::getElapsedTime()) <= Tools::getElapsedTime()) {  //Verifica che il cannone abbia ricaricato e quindi imposta lo stato di sparo
         sf::Vector2f targetPosition;
         targetPosition = coord;
         Dice dice(11, targetPosition.x);
@@ -122,7 +121,7 @@ float ConcreteArsenal::attack(sf::Vector2f &coord) {
         countdown=reloadTime;
         ammoType->initializeBullet(sprite.getPosition(),targetPosition);
     } else {
-        countdown=countdown - ToolBox::dt.getElapsedTime().asSeconds();
+        countdown=countdown - Tools::getElapsedTime();
     }
     if ((abs(ammoType->getSprite().getPosition().x -ammoType->getTargetPoint().x) >1 ||abs(ammoType->getSprite().getPosition().y -ammoType->getTargetPoint().y) >1)) { //Controlla se il proiettile ha raggiunto le coordinate prefissatammoType->reachTarget();
     } else {
@@ -144,11 +143,11 @@ ConcreteArsenal::ConcreteArsenal(float range, float reload, int maxDispersion, s
 
 void ConcreteArsenal::drawEquipment(sf::RenderWindow &window) {
     if (subject_.isDeath()) {
-        sprite.setColor(CustomColors::deathColor);
+        sprite.setColor(sf::Color::Black);
     } else if (subject_.isSelected()) {
-        sprite.setColor(CustomColors::selectedColor);
+        sprite.setColor(sf::Color::Green);
     } else {
-        sprite.setColor(CustomColors::removeColor);
+        sprite.setColor(sf::Color::White);
     }
     window.draw(sprite);
     ammoType->drawEquipment(window);

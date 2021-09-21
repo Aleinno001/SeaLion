@@ -8,7 +8,6 @@
 #include "WeaponFactory.h"
 #include "CannonFactory.h"
 #include "ConcreteWarShip.h"
-#include "GameWorld.h"
 #include "AirplaneFactory.h"
 #include "LifeBar.h"
 #include "ConcreteAircraftCarrier.h"

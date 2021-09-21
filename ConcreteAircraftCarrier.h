@@ -6,13 +6,13 @@
 #define SEALION_CONCRETEAIRCRAFTCARRIER_H
 
 #include "AircraftCarrier.h"
+#include "Tools.h"
 
 class ConcreteAircraftCarrier : public AircraftCarrier{
 private:
     std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
 public:
     ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string &nat, ShipType shipType, ModelType modelType, const int armour,const std::string &name, const int numLCannons, const int numMCannons,const int numHCannons, const int numAntiAircraft, int numPlanes);
-    ~ConcreteAircraftCarrier() override;
     void notifyPlanes() override;
     void attachPlanes(const std::shared_ptr<WarPlane> &warPlane) override;
     void detachPlanes(const std::shared_ptr<WarPlane> &warPlane) override;

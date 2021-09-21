@@ -94,8 +94,7 @@ std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
 }
 
 void Functions::fpsManagment(sf::RenderWindow &window) {
-    sf::Time time = ToolBox::dt.getElapsedTime();
-    int fps = 1.0f / time.asSeconds();
+    int fps = 1.0f / Tools::getElapsedTime();
     std::string currentDir = ToolBox::GetCurrentWorkingDir();
     sf::Text fpsCount;
     sf::Text fpsText;
@@ -167,14 +166,14 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             break;
     }
 }
-void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision) {
+void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList) {
     for (auto & itAllied : gameWorld.getAlliedFleet()) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
         std::shared_ptr<WarShip>ele(itAllied.get());
-        fullNavyCollision.push_back(ele);
+        fullNavyList.push_back(ele);
     }
     for (auto & itEnemy : gameWorld.getEnemyFleet()) {
         std::shared_ptr<WarShip> ele (itEnemy.get());
-        fullNavyCollision.push_back(ele);
+        fullNavyList.push_back(ele);
     }
 }
 void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings, windowMode &videoMode,sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList, std::list<MvcView<Specialty,WarShip>> &views,std::shared_ptr<WarShip> selectedShip) {

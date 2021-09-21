@@ -5,11 +5,11 @@
 #define SEALION_CONCRETEARSENAL_H
 #include "Arsenal.h"
 #include "WarShip.h"
+#include "Tools.h"
 class ConcreteArsenal: public Arsenal {
 public:
     ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo, int firepower, int le,int wi, std::string &texName, WarShip &subject, float posX, float posY);
     std::shared_ptr<Bullet> getAmmoType() override;
-    ~ConcreteArsenal() override;
     void update() override;
     void searchTarget() override;
     bool setUpSprite(std::string textureName) override;

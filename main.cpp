@@ -1,12 +1,12 @@
-#include <iostream>
 #include "SFML/Graphics.hpp"
 #include <SFML/Window.hpp>
 #include "GameWorld.h"
 #include <thread>
-#include "Collision.h"
 #include "MvcController.h"
 #include "MvcView.h"
 #include "Functions.h"
+#include "ToolBox.h"
+#include "Tools.h"
 
 int main() {
     std::vector<Fleet> fleet = Functions::alliedDummyFleet();
@@ -14,7 +14,6 @@ int main() {
     sf::ContextSettings settings;
     sf::Vector2f buttonPos;
     sf::Vector2i exit{0,0};
-    ToolBox::dt.restart().asSeconds();
     int numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir;
     int width, height, tileDim;
     numEnemySub = 3;
@@ -35,19 +34,13 @@ int main() {
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld = GameWorld(numEnemySub,numEnemyBat,numEnemyCru,numEnemyDes,numEnemyAir,fleet,FactionType::Italy,FactionType::Italy,8,exit,width,height,tileDim);
-    bool found = false;
-    bool clicked = true;
-    /*
-    auto itSecondClick = gameWorld.getAlliedFleet().begin();
-    auto itAllied = gameWorld.getAlliedFleet().begin();
-    auto itEnemy = gameWorld.getEnemyFleet().begin();
-    auto itTiles = gameWorld.getTiles().begin();
-     */
     sf::Vector2f pos;
     pos.x = 1;
     pos.y = 1;
-    std::list<iteratorPositions> lst;
-    std::list<iteratorPositions> fullNavyList;
+    sf::Clock c;
+    Tools::dt = c.restart().asSeconds();
+    std::shared_ptr<WarShip> selectedShip;
+    std::list<std::shared_ptr<WarShip>> fullNavyList;
     std::list<MvcController<Specialty,WarShip>> controllers;
     std::list<MvcView<Specialty,WarShip>> views;
     Functions::prepareFullNavyList(gameWorld,fullNavyList);
@@ -68,7 +61,7 @@ int main() {
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
-    Functions::gameLoop(width, height, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings,window, gameWorld, found, clicked, lst, fullNavyList, views, button);
+    Functions::gameLoop(width, height, settings, videoMode,window, gameWorld, fullNavyList, views,selectedShip);
     return 0;
 }
 

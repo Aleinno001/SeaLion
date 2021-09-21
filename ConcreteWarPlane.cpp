@@ -9,7 +9,7 @@ void ConcreteWarPlane::attack() {
         target->notifyBarsDamage();//notify per Observer Bars
         currentCoolDown = coolDown;
     } else {
-        currentCoolDown -= ToolBox::restart;
+        currentCoolDown -= Tools::getElapsedTime();
     }
 }
 void ConcreteWarPlane::update() {
@@ -74,19 +74,19 @@ void ConcreteWarPlane::move() {
                 currentSpeed = currentSpeed - acceleration / 100;
             }
         }
-        movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *ToolBox::dt.getElapsedTime().asSeconds()* acceleration / 10;
-        movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *ToolBox::dt.getElapsedTime().asSeconds()* acceleration / 10;
+        movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *Tools::getElapsedTime()* acceleration / 10;
+        movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *Tools::getElapsedTime()* acceleration / 10;
         sprite.setPosition(sprite.getPosition() + movement);
         rotate(mx, rotatingInPlaceMult);
     }
 }
 void ConcreteWarPlane::drawEquipment(sf::RenderWindow &window) {
     if (subject_.isDeath()) {
-        sprite.setColor(CustomColors::deathColor);
+        sprite.setColor(sf::Color::Black);
     } else if (subject_.isSelected()) {
-        sprite.setColor(CustomColors::selectedColor);
+        sprite.setColor(sf::Color::Green);
     } else {
-        sprite.setColor(CustomColors::removeColor);
+        sprite.setColor(sf::Color::White);
     }
     window.draw(sprite);
 }

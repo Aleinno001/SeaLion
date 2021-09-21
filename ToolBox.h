@@ -12,8 +12,6 @@
 #define GetCurrentDir getcwd
 
 namespace ToolBox {
-    sf::Clock dt;
-    float restart = dt.restart().asSeconds();
     float calculateDistance(sf::Vector2f &first, sf::Vector2f &second);
     float calculateMx(float dx, float dy);
     std::string GetCurrentWorkingDir();  //Speciale metodo per ottenere la working directory attuale
