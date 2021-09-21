@@ -183,17 +183,17 @@ void GameWorld::italianBattleshipInizializer(int &numBat, std::shared_ptr<ShipFa
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::AndreaDoria, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::AndreaDoria, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::ImperatoreAugusto, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::ImperatoreAugusto, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
         } else if (dice.roll(1) == 3) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::VittorioVeneto, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::VittorioVeneto, mapHeight, mapWidth));
             enemyFleet.push_back(std::move(enemy));
         } else {
                 std::shared_ptr<WarShip> enemy(
-                        enemyFactory->createBattleship(ModelType::MichelangeloBuonarroti, *this));
+                        enemyFactory->createBattleship(ModelType::MichelangeloBuonarroti, mapHeight, mapWidth));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -207,23 +207,23 @@ void GameWorld::setUpAlliedFleet(std::vector<Fleet> &fleet) {
         switch (iterator.type) {
             case ShipType::Battleship:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedBattleship(iterator.name, *this));
+                    alliedFleet.push_back(alliedFactory.createAlliedBattleship(iterator.name, mapHeight, mapWidth));
                 break;
             case ShipType::Cruiser:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedCruiser(iterator.name, *this));
+                    alliedFleet.push_back(alliedFactory.createAlliedCruiser(iterator.name, mapHeight, mapWidth));
                 break;
             case ShipType::AircraftCarrier:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedAircraftCarrier(iterator.name, *this));
+                    alliedFleet.push_back(alliedFactory.createAlliedAircraftCarrier(iterator.name, mapHeight, mapWidth));
                 break;
             case ShipType::Destroyer:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedDestroyer(iterator.name, *this));
+                    alliedFleet.push_back(alliedFactory.createAlliedDestroyer(iterator.name, mapHeight, mapWidth));
                 break;
             case ShipType::Submarine:
                 for (int i = 0; i < iterator.num; i++)
-                    alliedFleet.push_back(alliedFactory.createAlliedSubmarine(iterator.name, *this));
+                    alliedFleet.push_back(alliedFactory.createAlliedSubmarine(iterator.name, mapHeight, mapWidth));
                 break;
             default:
                 throw std::runtime_error("Invalid Warship type!");
@@ -289,16 +289,16 @@ void GameWorld::japanBattleshipInizializer(int &numBat, std::shared_ptr<ShipFact
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Kongo, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Kongo, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Musashi, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Musashi, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 3) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Yamato, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Yamato, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::ISE, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::ISE, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -310,10 +310,10 @@ void GameWorld::japanSubmarineInizializer(int &numSub, std::shared_ptr<ShipFacto
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::I400, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::I400, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::typeb1, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::typeb1, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -325,13 +325,13 @@ void GameWorld::japanDestroyerInizializer(int &numDes, std::shared_ptr<ShipFacto
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Akizuki, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Akizuki, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Fubuki, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Fubuki, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Yukikaze, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Yukikaze, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -343,10 +343,10 @@ void GameWorld::japanAircraftCarrierInizializer(int &numAir, std::shared_ptr<Shi
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Hiryu, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Hiryu, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Tahio, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Tahio, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -358,13 +358,13 @@ void GameWorld::japanCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Takao, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Takao, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::IsuzuNagara, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::IsuzuNagara, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
         } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Ijn, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Ijn, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -377,16 +377,16 @@ void GameWorld::usaBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactor
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::NewYork, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::NewYork, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Arizona, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Arizona, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 3) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::NorthCarolina, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::NorthCarolina, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Montana, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Montana, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -398,16 +398,16 @@ void GameWorld::ukBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Dreadnought, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Dreadnought, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::IronDuke, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::IronDuke, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 3) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Hood, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Hood, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Lion, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createBattleship(ModelType::Lion, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -419,13 +419,13 @@ void GameWorld::italianCruiserInizializer(int &numCru, std::shared_ptr<ShipFacto
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::AlbertoDiGiussano, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::AlbertoDiGiussano, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Trento, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Trento, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
         } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Gorizia, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Gorizia, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -437,13 +437,13 @@ void GameWorld::usaCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> 
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::StLouis, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::StLouis, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::NewOrleans, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::NewOrleans, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Alaska, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Alaska, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -455,13 +455,13 @@ void GameWorld::ukCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> e
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Danae, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Danae, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Belfast, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Belfast, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Tiger59, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createCruiser(ModelType::Tiger59, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -473,13 +473,13 @@ void GameWorld::italianDestroyerInizializer(int &numDes, std::shared_ptr<ShipFac
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Impavido, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Impavido, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Leone, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Leone, mapHeight, mapWidth));
             enemyFleet.push_back(std::move(enemy));
         } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::PaoloEmilio, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::PaoloEmilio, mapHeight, mapWidth));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -491,13 +491,13 @@ void GameWorld::usaDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Mahan, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Mahan, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Fletcher, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Fletcher, mapHeight, mapWidth));
             enemyFleet.push_back(std::move(enemy));
         } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Sims, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Sims, mapHeight, mapWidth));
             enemyFleet.push_back(std::move(enemy));
         }
     }
@@ -509,13 +509,13 @@ void GameWorld::ukDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory>
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Campbelltown, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Campbelltown, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else if (dice.roll(1) == 2) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Gallant, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Gallant, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Jutland, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createDestroyer(ModelType::Jutland, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -527,10 +527,10 @@ void GameWorld::italianSubmarineInizializer(int &numSub, std::shared_ptr<ShipFac
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::DaVinci, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::DaVinci, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Papa, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Papa, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
     }
@@ -542,10 +542,10 @@ void GameWorld::usaSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Gato, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Gato, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Narwhal, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Narwhal, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -557,10 +557,10 @@ void GameWorld::ukSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory>
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Triton, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Triton, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Trenchant, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createSubmarine(ModelType::Trenchant, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -572,10 +572,10 @@ void GameWorld::italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<S
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::GiuseppeGaribaldi, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::GiuseppeGaribaldi, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Cavour, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Cavour, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -587,10 +587,10 @@ void GameWorld::usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipF
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Midway, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Midway, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::FranklinDRoosevelt, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::FranklinDRoosevelt, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
@@ -602,10 +602,10 @@ void GameWorld::ukAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFa
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::ArkRoyal, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::ArkRoyal, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             } else {
-                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Indomitable, *this));
+                std::shared_ptr<WarShip> enemy(enemyFactory->createAircraftCarrier(ModelType::Indomitable, mapHeight, mapWidth));
                 enemyFleet.push_back(std::move(enemy));
             }
         }
