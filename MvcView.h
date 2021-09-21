@@ -16,8 +16,8 @@ private:
     sf::Texture tx;
     bool buttonClickAbility;
 public:
-    MvcView(T &model, MvcController<T> &controller, sf::Window &window): model(model), controller(controller), window(window),buttonClickAbility(false) {
-        model->addMvcObserver(std::shared_ptr<MvcObserver>(this));
+    MvcView(T& model, MvcController<T> &controller, sf::Window &window): model(model), controller(controller), window(window),buttonClickAbility(false) {
+        model.addMvcObserver(std::shared_ptr<MvcObserver>(this));
     };
     T &getModel() const{
         return model;

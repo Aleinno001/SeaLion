@@ -13,14 +13,15 @@ enum class windowMode {
 };
 int main() {
     std::vector<Fleet> fleet = Functions::alliedDummyFleet();
-    sf::Vector2i boundaries(1920, 1080);
     sf::Color deathColor(100, 100, 100, 120);
     sf::Color selectedColor(196, 255, 168, 255);
     sf::Color concealedColor(250, 250, 250, 180);
     sf::Color removeColor(255, 255, 255, 255);
-    sf::Clock clock;
     sf::RenderWindow window;
     sf::ContextSettings settings;
+    sf::Vector2f buttonPos;
+    sf::Vector2i exit{0,0};
+    ToolBox::dt.restart().asSeconds();
     int numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir;
     int width, height, tileDim;
     numEnemySub = 3;
@@ -37,11 +38,11 @@ int main() {
     auto desktop = sf::VideoMode::getDesktopMode();
     width = desktop.width;
     height = desktop.height;
-    tileDim = 30;  //FIXME adattabile a tutte le risoluzioni
+    tileDim = 30;
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir, fleet,FactionType::Uk, FactionType::Japan, 8, boundaries, width,height, tileDim);
+    GameWorld gameWorld = GameWorld(numEnemySub,numEnemyBat,numEnemyCru,numEnemyDes,numEnemyAir,fleet,FactionType::Italy,FactionType::Italy,8,exit,width,height,tileDim);
     bool found = false;
     bool clicked = true;
     auto itSecondClick = gameWorld.getAlliedFleet().begin();
@@ -51,36 +52,29 @@ int main() {
     sf::Vector2f pos;
     pos.x = 1;
     pos.y = 1;
-    //FIXME da rifare le esplosioni
-    //Explosion explosion(pos);
     std::list<iteratorPositions> lst;
-    std::list<iteratorPositions> fullNavyCollision;
-    std::list<navyPositionsForAirAttack> airTargets;
-    std::list<MvcController<WarShip>> controllers;
-    std::list<MvcView<WarShip>> views;
-    prepareFullNavyList(gameWorld, itAllied, itEnemy, fullNavyCollision);
-    sf::Vector2f buttonPos;
+    std::list<iteratorPositions> fullNavyList;
+    std::list<MvcController<ConcreteAircraftCarrier>> controllers;
+    std::list<MvcView<ConcreteAircraftCarrier>> views;
+    Functions::prepareFullNavyList(gameWorld,fullNavyList);
     pos.x = window.getSize().x - 15;
     pos.y = window.getSize().y - 15;
     Button airplaneButton("airplaneButton", 30, 30, buttonPos);
-    for (auto iter = gameWorld.getAlliedFleet().begin(); iter != gameWorld.getAlliedFleet().end(); ++iter) {
-        if (iter->get()->getShipType() == ShipType::AircraftCarrier) {
-            ConcreteAircraftCarrier *dinamicAir = dynamic_cast<ConcreteAircraftCarrier *>(iter->get());
-            MvcController<WarShip> controller(dinamicAir->getInstance());
+    for (auto & iter : gameWorld.getAlliedFleet()) {
+        if (ConcreteAircraftCarrier *dynamic= dynamic_cast<ConcreteAircraftCarrier *>(iter.get())) {
+            MvcController<ConcreteAircraftCarrier> controller(*dynamic);
             controllers.push_back(controller);
-            MvcView<WarShip> view(dinamicAir->getInstance(), controllers.back(), window);
+            MvcView<ConcreteAircraftCarrier> view(*dynamic, controllers.back(), window);
             views.push_back(view);
         }
     }
-    std::thread thread_antiair (Functions::searchAirplane, std::ref(window), std::ref(gameWorld));
-    std::thread thread_collision(Functions::f, std::ref(fullNavyCollision), std::ref(gameWorld), tileDim, std::ref(window));
-    std::thread thread_tiles_effect(Functions::tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),std::ref(fullNavyCollision), tileDim);
-    std::thread thread_checkHit(Functions::checkHit, std::ref(fullNavyCollision), std::ref(window));
+    std::thread thread_collision(Functions::f, std::ref(fullNavyList), std::ref(gameWorld),std::ref(window));
+    std::thread thread_tiles_effect(Functions::tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),std::ref(fullNavyList));
+    std::thread thread_checkHit(Functions::checkHit, std::ref(fullNavyList), std::ref(window));
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
-    thread_antiair.detach();
-    Functions::gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,window, gameWorld, found, clicked, itSecondClick, lst, fullNavyCollision, views, airplaneButton,airTargets);
+    Functions::gameLoop(width, height, tileDim, videoMode, deathColor, selectedColor, concealedColor, removeColor, settings, clock,window, gameWorld, found, clicked, itSecondClick, lst, fullNavyList, views, airplaneButton);
     return 0;
 }
 
