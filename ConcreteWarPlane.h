@@ -9,10 +9,13 @@
 
 class ConcreteWarPlane : public WarPlane{
 public:
-    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat, int numAmmo, int ammoDamage,WarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage),subject_(sub){}
+    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat, int numAmmo, int ammoDamage,WarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage), subject_(sub){
+        target=std::shared_ptr<WarShip>(&subject_);
+    }
     ~ConcreteWarPlane() override = default;
     void update() override;
     bool searchTarget() override;
+    void drawEquipment(sf::RenderWindow &window) override;
 protected:
     void attack() override;
     float rotate(float mx, float rotatingInPlaceMult) override;

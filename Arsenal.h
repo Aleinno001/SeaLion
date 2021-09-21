@@ -45,5 +45,6 @@ public:
     virtual int getWidth() const =0;
     virtual float getCountdown() const =0;
     virtual void setCountdown(float countdown)=0;
+    virtual void drawEquipment(sf::RenderWindow &window)=0;
 };
 #endif //SEALION_ARSENAL_H

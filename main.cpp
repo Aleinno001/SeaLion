@@ -48,17 +48,17 @@ int main() {
     pos.y = 1;
     std::list<iteratorPositions> lst;
     std::list<iteratorPositions> fullNavyList;
-    std::list<MvcController<Specialty>> controllers;
-    std::list<MvcView<Specialty>> views;
+    std::list<MvcController<Specialty,WarShip>> controllers;
+    std::list<MvcView<Specialty,WarShip>> views;
     Functions::prepareFullNavyList(gameWorld,fullNavyList);
     pos.x = window.getSize().x - 15;
     pos.y = window.getSize().y - 15;
     Button button("airplaneButton", 30, 30, buttonPos);
     for (auto & iter : gameWorld.getAlliedFleet()) {
         if (auto *dynamic= dynamic_cast<ConcreteAircraftCarrier *>(iter.get())) {
-            MvcController<Specialty> controller(*dynamic);
+            MvcController<Specialty,WarShip> controller(*dynamic);
             controllers.push_back(controller);
-            MvcView<Specialty> view(*dynamic, controllers.back(), window,button);
+            MvcView<Specialty,WarShip> view(*dynamic, controllers.back(), window,button);
             views.push_back(view);
         }
     }

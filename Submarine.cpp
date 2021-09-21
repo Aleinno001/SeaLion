@@ -5,9 +5,6 @@
 #include "Submarine.h"
 Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, const int armour, const std::string &name,const int numLCannons, const int numMCannons, const int numHCannons, const int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {}
 Submarine::~Submarine() = default;
-void Submarine::specialAttack() {
-    //TODO implementare
-}
 void Submarine::attack() {
     for(auto &iterArsenal : arsenalList){
         iterArsenal->searchTarget();
@@ -110,4 +107,17 @@ bool Submarine::canEngage() {    //Controlla se nessun cannone può ingaggiare
 }
 void Submarine::setMvcTarget(std::shared_ptr<WarShip> target) {
     //TODO implementare
+}
+
+void Submarine::drawEquipment(sf::RenderWindow &window) {
+    if (death) {
+        sprite.setColor(CustomColors::deathColor);
+    } else if (selected) {
+        sprite.setColor(CustomColors::selectedColor);
+    } else if (concealed) {
+        sprite.setColor(CustomColors::concealedColor);
+    } else {
+        sprite.setColor(CustomColors::removeColor);
+    }
+    window.draw(sprite);
 }

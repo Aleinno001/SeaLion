@@ -31,5 +31,6 @@ void LifeBar::updateBarsDamage() {
     }
     life.setColor(sf::Color(r, g, b));
 }
-
-
+void LifeBar::drawEquipment(sf::RenderWindow &window) {
+    window.draw(life);
+}

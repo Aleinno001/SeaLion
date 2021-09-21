@@ -21,9 +21,11 @@ void ConcreteWarPlane::update() {
     sprite.setPosition(newPosition);
 }
 bool ConcreteWarPlane::searchTarget() {
-    move();
-    if(canEngage())
-        attack();
+    if(target.get()==&subject_) {
+        move();
+        if (canEngage())
+            attack();
+    }
 }
 float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
@@ -50,7 +52,7 @@ bool ConcreteWarPlane::canEngage() {
         return false;
 }
 void ConcreteWarPlane::move() {
-    if (!death) {   //verifica morte e incagliamento
+    if (!death && target) {   //verifica morte e se il targe non è ancora stato assegnato
         double mx;
         double dy = target->getSprite().getPosition().y - sprite.getPosition().y;
         double dx = target->getSprite().getPosition().x - sprite.getPosition().x;
@@ -78,5 +80,13 @@ void ConcreteWarPlane::move() {
         rotate(mx, rotatingInPlaceMult);
     }
 }
-
-
+void ConcreteWarPlane::drawEquipment(sf::RenderWindow &window) {
+    if (subject_.isDeath()) {
+        sprite.setColor(CustomColors::deathColor);
+    } else if (subject_.isSelected()) {
+        sprite.setColor(CustomColors::selectedColor);
+    } else {
+        sprite.setColor(CustomColors::removeColor);
+    }
+    window.draw(sprite);
+}

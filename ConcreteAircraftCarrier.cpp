@@ -20,6 +20,9 @@ void ConcreteAircraftCarrier::attack() {
     for(auto &iterArsenal : arsenalList){
         iterArsenal->searchTarget();
     }
+    for(auto &itPlanes : planes){
+        itPlanes->searchTarget();
+    }
 }
 void ConcreteAircraftCarrier::move() {
     if (collision && !death) {   //verifica morte e incagliamento
@@ -128,8 +131,21 @@ void ConcreteAircraftCarrier::setMvcTarget(std::shared_ptr<WarShip> target) {
         itPlanes->setTarget(target);
     }
 }
-void ConcreteAircraftCarrier::specialAttack() {
-    for(auto &itPlanes : planes){
-        itPlanes->searchTarget();
+void ConcreteAircraftCarrier::drawEquipment(sf::RenderWindow &window) {
+    if (death) {
+        sprite.setColor(CustomColors::deathColor);
+    } else if (selected) {
+        sprite.setColor(CustomColors::selectedColor);
+    } else if (concealed) {
+        sprite.setColor(CustomColors::concealedColor);
+    } else {
+        sprite.setColor(CustomColors::removeColor);
+    }
+    window.draw(sprite);
+    for (auto &it: arsenalList) {
+        it->drawEquipment(window);
+    }
+    for (auto &it: planes) {
+        it->drawEquipment(window);
     }
 }
