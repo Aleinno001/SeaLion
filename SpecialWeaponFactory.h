@@ -5,6 +5,8 @@
 #ifndef SEALION_SPECIALWEAPONFACTORY_H
 #define SEALION_SPECIALWEAPONFACTORY_H
 
+#include "WarShip.h"
+
 enum class WeaponType {
     torpedo, antiAir
 };

@@ -7,15 +7,15 @@
 #include <vector>
 #include "GameTile.h"
 #include "WarShip.h"
-#include "ShipFactory.h"
 #include <string>
 #include <memory>
 #include <list>
 #include "Dice.h"
 #include <stdio.h>
 #include <unistd.h>
-#define GetCurrentDir getcwd
 #include<iostream>
+#include "ShipFactory.h"
+
 enum class FactionType {
     Uk,Usa,Italy,Japan
 };

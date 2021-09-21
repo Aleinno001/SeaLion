@@ -125,7 +125,7 @@ void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
         }
     }
 }
-void Functions::update(std::list<std::shared_ptr<WarShip>> &fullNavyList,  sf::RenderWindow &window, std::list<MvcView<Specialty>> &views) { //funzione di base per gestire l'aggiornamento del gioco durante il game loopGameWorld &gameWorld
+void Functions::update(std::list<std::shared_ptr<WarShip>> &fullNavyList) { //funzione di base per gestire l'aggiornamento del gioco durante il game loopGameWorld &gameWorld
     for(auto &itShips : fullNavyList){
         itShips->searchTarget();
     }
@@ -177,7 +177,7 @@ void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<std::shared_p
         fullNavyCollision.push_back(ele);
     }
 }
-void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings, windowMode &videoMode,sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList, std::list<MvcView<Specialty>> &views,std::shared_ptr<WarShip> selectedShip) {
+void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings, windowMode &videoMode,sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList, std::list<MvcView<Specialty,WarShip>> &views,std::shared_ptr<WarShip> selectedShip) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -185,7 +185,7 @@ void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings,
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F11 &&
-                       videoMode == vindowMode::Fullscreen) {
+                       videoMode == windowMode::Fullscreen) {
                 window.create(sf::VideoMode(width, height), "OpenGL", sf::Style::Default, settings);
                 videoMode = windowMode::Windowed;
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F11 &&
@@ -198,7 +198,7 @@ void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings,
         }
         window.clear();
         drawAll(gameWorld,fullNavyList,window);
-        update(fullNavyList, gameWorld, window, views);
+        update(fullNavyList);
         fpsManagment(window);//calcola e mostra fps con l'aggiunta dei font
     }
 }

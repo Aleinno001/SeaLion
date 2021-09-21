@@ -9,7 +9,7 @@ class MvcController {
 public:
     explicit MvcController(T &mod) : model(mod) {};
     void startUpEngine(std::shared_ptr<D> &target){
-        dusgisdgnsi
+        model.setMvcTarget(target);
     };
     T &getModel() const{
         return model;

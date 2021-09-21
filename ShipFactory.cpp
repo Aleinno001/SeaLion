@@ -4,7 +4,6 @@
 
 #include "ShipFactory.h"
 
-
 std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type, GameWorld &map) {
     sf::Vector2i coordinates = randomizeEnemyPositions(map);
     coordinates.y = coordinates.y - (0.14 * map.getMapHeight());

@@ -8,9 +8,8 @@
 #include <memory>
 #include "Arsenal.h"
 #include "SpecialWeaponFactory.h"
+#include "ConcreteArsenal.h"
 
-#include "AntiAircraft.h"
-#include "TorpedoTube.h"
 
 class WeaponFactory : public SpecialWeaponFactory {
 public:

@@ -125,6 +125,6 @@ void ConcreteWarShip::drawEquipment(sf::RenderWindow &window) {
         it->drawEquipment(window);
     }
     for(auto &it : bars){
-        it.drawEquipment(window);
+        it->drawEquipment(window);
     }
 }
