@@ -7,7 +7,7 @@
 ConcreteWarShip::ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string nat, ShipType shipType, ModelType modelType, int armour,std::string name, const int numLCannons, int numMCannons,int numHCannons,int numAntiAircraft) : WarShip(x, y, ac, maxVel, hp, le, wi,col, nat, shipType,modelType, armour, name,numLCannons, numMCannons,numHCannons, numAntiAircraft) {
     setUpSprite(name);
     sprite.setOrigin(width/2,length/2);
-    sprite.setPosition(posX,posY);
+    sprite.setPosition(x,y);
     targetCoordinates= sprite.getPosition();
 }
 void ConcreteWarShip::attack(float elapsedTime) {
@@ -17,7 +17,9 @@ void ConcreteWarShip::attack(float elapsedTime) {
 }
 void ConcreteWarShip::move(float elapsedTime) {
     if (collision && !death) {   //verifica morte e incagliamento
-        double mx;
+        if (!(abs(targetCoordinates.x - sprite.getPosition().x) < 2 &&
+              abs(targetCoordinates.y - sprite.getPosition().y) < 2)) {
+            double mx;
         double dy = targetCoordinates.y - sprite.getPosition().y;
         double dx = targetCoordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
@@ -28,8 +30,7 @@ void ConcreteWarShip::move(float elapsedTime) {
             currentSpeed = currentSpeed + acceleration / 100;
         }
         sf::Vector2f vel;
-        if (!(abs(targetCoordinates.x - sprite.getPosition().x) < 2 &&
-              abs(targetCoordinates.y - sprite.getPosition().y) < 2)) {  //controlla se la nave ha raggiunto la destinazine
+         //controlla se la nave ha raggiunto la destinazine
             if (abs(sprite.getRotation() - mx) >=
                 25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
                 rotatingInPlaceMult = 3;
@@ -50,7 +51,6 @@ void ConcreteWarShip::move(float elapsedTime) {
         } else {
             currentSpeed = 0;
         }
-
         notifyArsenals();
         notifyBars();
     }

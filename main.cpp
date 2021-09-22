@@ -13,7 +13,7 @@ int main() {
     sf::Vector2f buttonPos;
     sf::Vector2i exit{0,0};
     int numEnemySub, numEnemyBat, numEnemyCru, numEnemyDes, numEnemyAir;
-    int width, height, tileDim;
+    int width, height, tileDim=30;
     numEnemySub = 3;
     numEnemyBat = 3;
     numEnemyCru = 3;
@@ -31,7 +31,7 @@ int main() {
     window.create(sf::VideoMode(width, height), "SeaLion", sf::Style::Fullscreen, settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld = GameWorld(numEnemySub,numEnemyBat,numEnemyCru,numEnemyDes,numEnemyAir,fleet,FactionType::Italy,FactionType::Italy,8,exit,width,height,tileDim);
+    GameWorld gameWorld = GameWorld(numEnemySub,numEnemyBat,numEnemyCru,numEnemyDes,numEnemyAir,fleet,FactionType::Uk,FactionType::Italy,8,exit,width,height,tileDim);
     sf::Vector2f pos;
     pos.x = 1;
     pos.y = 1;

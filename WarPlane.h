@@ -22,7 +22,7 @@ protected:
             currentDir.pop_back();
         }
         std::string textPath;
-        textPath = currentDir + "/../Res/"+nationality+"/WarPlane/" + textureName + ".png";
+        textPath = currentDir + "/../Res/"+nationality+"/WarPlanes/" + textureName + ".png";
         if (!Collision::CreateTextureAndBitmask(texture, textPath)) {
             throw std::runtime_error("Path to tile filename invalid!!");
         }

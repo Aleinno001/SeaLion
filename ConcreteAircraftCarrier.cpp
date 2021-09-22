@@ -137,7 +137,7 @@ void ConcreteAircraftCarrier::setMvcTarget(std::shared_ptr<WarShip> target) {
 }
 void ConcreteAircraftCarrier::drawEquipment(sf::RenderWindow &window) {
     if (death) {
-        sprite.setColor(sf::Color::Transparent);
+        sprite.setColor(sf::Color::Black);
     } else if (selected) {
         sprite.setColor(sf::Color::Green);
     } else {

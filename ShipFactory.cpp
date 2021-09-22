@@ -230,8 +230,7 @@ ShipFactory::arkRoyalBuilder(
     arkRoyal->attachBar(life);
     return arkRoyal;
 }
-std::shared_ptr<WarShip> ShipFactory::giuseppeGaribaldiBuilder(
-        sf::Vector2i &coordinates){
+std::shared_ptr<WarShip> ShipFactory::giuseppeGaribaldiBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 44;
@@ -696,7 +695,7 @@ ShipFactory::dreadNoughtBuilder(
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight) / 2;
     int numAntiAir = 20;
-    std::shared_ptr<WarShip> dreadNought (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 21060, shipHeight, shipWidth, true,  "Uk", ShipType::Battleship, ModelType::Dreadnought, 837, "DreadNought", 0, 0, 5, numAntiAir));
+    std::shared_ptr<WarShip> dreadNought (new ConcreteWarShip(coordinates.x, coordinates.y, 1, 39, 21060, shipHeight, shipWidth, true,  "Uk", ShipType::Battleship, ModelType::Dreadnought, 837, "Dreadnought", 0, 0, 5, numAntiAir));
     dreadNought->attach(factory.createHeavly(cannonPosX + 5, cannonPosY + 32, *dreadNought));
     dreadNought->attach(factory.createHeavly(cannonPosX + 5, cannonPosY + 87, *dreadNought));
     dreadNought->attach(factory.createHeavly(cannonPosX + 5, cannonPosY + 112, *dreadNought));
@@ -2059,7 +2058,6 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
     ship->getSprite().rotate(180);
     ship->getSprite().move(0, ship->getLength() / 2);
     if(ship->getShipType()!=ShipType::Submarine) {
-        std::cerr<<ship->getArsenalList().size()<<std::endl;
         for (auto &it: ship->getArsenalList()) {
             it->getSprite().move(0, ship->getLength() / 2);
             it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
@@ -2074,25 +2072,23 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
             it->getSprite().rotate(180);
         }
     }
+    ship->setTargetCoordinates(ship->getSprite().getPosition());
     return ship;
 }
 std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarShip> &ship) {
     ship->getSprite().setOrigin(ship->getWidth() / 2, ship->getLength() / 2);
-    ship->getSprite().move(0, -ship->getLength() / 2);
+    ship->getSprite().setPosition(ship->getSprite().getPosition().x,ship->getSprite().getPosition().y-(ship->getLength()/2));
     if(ship->getShipType()!=ShipType::Submarine) {
         for (auto &it: ship->getArsenalList()) {
-            it->getSprite().move(0, -ship->getLength() / 2);
+            it->getSprite().setPosition(it->getSprite().getPosition().x,it->getSprite().getPosition().y-(ship->getLength()/2));
             it->getSprite().rotate(180);
         }
     }
     if(ConcreteAircraftCarrier * pShip = dynamic_cast<ConcreteAircraftCarrier*> (ship.get())) {
         for (auto &it: pShip->getPlanes()) {
-            it->getSprite().move(0, -ship->getLength() / 2);
+            it->getSprite().setPosition(it->getSprite().getPosition().x,it->getSprite().getPosition().y-(ship->getLength()/2));
         }
     }
-    sf::Vector2f f;
-    f.x=0;
-    f.y=0;
-    ship->notifyBars();
+    ship->setTargetCoordinates(ship->getSprite().getPosition());
     return ship;
 }
