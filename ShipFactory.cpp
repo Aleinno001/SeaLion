@@ -195,9 +195,10 @@ ShipFactory::midwayBuilder(
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+237,"Usa",*mid));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+257,"Usa",*mid));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+44,cannonPosY+278,"Usa",*mid));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         mid->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir,*mid));
-    std::shared_ptr<LifeBar> life(new LifeBar(*mid));
+    */
+     std::shared_ptr<LifeBar> life(new LifeBar(*mid));
     mid->attachBar(life);
     return mid;
 }
@@ -223,9 +224,9 @@ ShipFactory::arkRoyalBuilder(
     dynamic->attachPlanes(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+130,"Uk",*arkRoyal));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+166,"Uk",*arkRoyal));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+206,"Uk",*arkRoyal));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         arkRoyal->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *arkRoyal));
-    std::shared_ptr<LifeBar> life(new LifeBar(*arkRoyal));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*arkRoyal));
     arkRoyal->attachBar(life);
     return arkRoyal;
 }
@@ -274,9 +275,9 @@ ShipFactory::tahioBuilder(
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+130,"Japan",*Tahio));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+166,"Japan",*Tahio));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+22,cannonPosY+206,"Japan",*Tahio));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         Tahio->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Tahio));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Tahio));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Tahio));
     Tahio->attachBar(life);
     return Tahio;
 }
@@ -364,9 +365,9 @@ std::shared_ptr<WarShip>ShipFactory::stLouisBuilder(sf::Vector2i &coordinates){
     saintLouis->attach(cf.createLight(cannonPosX +8,cannonPosY +80, *saintLouis));
     saintLouis->attach(cf.createLight(cannonPosX +2,cannonPosY +41, *saintLouis));
     saintLouis->attach(cf.createLight(cannonPosX +16,cannonPosY +41, *saintLouis));
-    for (int i = 0;i < antiAir; i++)
+    /*for (int i = 0;i < antiAir; i++)
         saintLouis->attach(factory.createSpecialWeapon(WeaponType::antiAir, *saintLouis));
-    std::shared_ptr<LifeBar> life(new LifeBar(*saintLouis));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*saintLouis));
     saintLouis->attachBar(life);
     return saintLouis;
 }
@@ -390,9 +391,9 @@ ShipFactory::alaskaBuilder(
     alaska->attach(cf.createLight(cannonPosX + 1, cannonPosY + 149, *alaska));
     alaska->attach(cf.createLight(cannonPosX + 23, cannonPosY + 150, *alaska));
     alaska->attach(cf.createLight(cannonPosX + 11, cannonPosY + 172, *alaska));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         alaska->attach(factory.createSpecialWeapon(WeaponType::antiAir, *alaska));
-    std::shared_ptr<LifeBar> life(new LifeBar(*alaska));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*alaska));
     alaska->attachBar(life);
     return alaska;
 }
@@ -414,9 +415,9 @@ ShipFactory::danaeBuilder(
     danae->attach(cf.createLight(cannonPosX + 5, cannonPosY + 45, *danae));
     danae->attach(cf.createLight(cannonPosX + 5, cannonPosY + 33, *danae));
     danae->attach(cf.createLight(cannonPosX + 5, cannonPosY + 19, *danae));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         danae->attach(factory.createSpecialWeapon(WeaponType::antiAir, *danae));
-    std::shared_ptr<LifeBar> life(new LifeBar(*danae));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*danae));
     danae->attachBar(life);
     return danae;
 }
@@ -441,9 +442,9 @@ ShipFactory::trentoBuilder(
     trento->attach(cf.createLight(cannonPosX + 18, cannonPosY + 84, *trento));
     trento->attach(cf.createLight(cannonPosX + 3, cannonPosY + 111, *trento));
     trento->attach(cf.createLight(cannonPosX + 18, cannonPosY + 111, *trento));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         trento->attach(factory.createSpecialWeapon(WeaponType::antiAir, *trento));
-
+*/
     std::shared_ptr<LifeBar> life(new LifeBar(*trento));
     trento->attachBar(life);
     return trento;
@@ -465,9 +466,9 @@ std::shared_ptr<WarShip> ShipFactory::albertoDiGiussanoBuilder(
     albertoDiGiussano->attach(cf.createLight(cannonPosX, cannonPosY + 93, *albertoDiGiussano));
     albertoDiGiussano->attach(cf.createLight(cannonPosX + 10, cannonPosY + 93, *albertoDiGiussano));
     albertoDiGiussano->attach(cf.createLight(cannonPosX + 6, cannonPosY + 112, *albertoDiGiussano));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         albertoDiGiussano->attach(factory.createSpecialWeapon(WeaponType::antiAir, *albertoDiGiussano));
-    std::shared_ptr<LifeBar> life(new LifeBar(*albertoDiGiussano));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*albertoDiGiussano));
     albertoDiGiussano->attachBar(life);
     return albertoDiGiussano;
 }
@@ -491,9 +492,9 @@ ShipFactory::takaoBuilder(
     takao->attach(cf.createLight(cannonPosX + 18, cannonPosY + 82, *takao));
     takao->attach(cf.createLight(cannonPosX + 3, cannonPosY + 96, *takao));
     takao->attach(cf.createLight(cannonPosX + 18, cannonPosY + 96, *takao));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         takao->attach(factory.createSpecialWeapon(WeaponType::antiAir, *takao));
-    std::shared_ptr<LifeBar> life(new LifeBar(*takao));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*takao));
     takao->attachBar(life);
     return takao;
 }
@@ -601,9 +602,9 @@ ShipFactory::ironDukeBuilder(
     ironDuke->attach(factory.createHeavly(cannonPosX + 12, cannonPosY + 127, *ironDuke));
     ironDuke->attach(factory.createHeavly(cannonPosX + 12, cannonPosY + 135, *ironDuke));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         ironDuke->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *ironDuke));
-    std::shared_ptr<LifeBar> life(new LifeBar(*ironDuke));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*ironDuke));
     ironDuke->attachBar(life);
     return ironDuke;
 }
@@ -627,9 +628,9 @@ ShipFactory::northCarolinaBuilder(
     northCarolina->attach(factory.createLight(cannonPosX + 1, cannonPosY + 111, *northCarolina));
     northCarolina->attach(factory.createLight(cannonPosX + 26, cannonPosY + 111, *northCarolina));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         northCarolina->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *northCarolina));
-    std::shared_ptr<LifeBar> life(new LifeBar(*northCarolina));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*northCarolina));
     northCarolina->attachBar(life);
     return northCarolina;
 }
@@ -659,9 +660,9 @@ ShipFactory::montanaBuilder(
     montana->attach(factory.createMedium(cannonPosX + 2, cannonPosY + 165, *montana));
     montana->attach(factory.createMedium(cannonPosX + 30, cannonPosY + 165, *montana));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         montana->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *montana));
-    std::shared_ptr<LifeBar> life(new LifeBar(*montana));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*montana));
     montana->attachBar(life);
     return montana;
 }
@@ -680,9 +681,9 @@ ShipFactory::lionBuilder(
     lion->attach(factory.createHeavly(cannonPosX + 13, cannonPosY + 120, *lion));
     lion->attach(factory.createHeavly(cannonPosX + 13, cannonPosY + 191, *lion));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         lion->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *lion));
-    std::shared_ptr<LifeBar> life(new LifeBar(*lion));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*lion));
     lion->attachBar(life);
     return lion;
 }
@@ -702,9 +703,9 @@ ShipFactory::dreadNoughtBuilder(
     dreadNought->attach(factory.createHeavly(cannonPosX - 1, cannonPosY + 58, *dreadNought));
     dreadNought->attach(factory.createHeavly(cannonPosX + 13, cannonPosY + 58, *dreadNought));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         dreadNought->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *dreadNought));
-    std::shared_ptr<LifeBar> life(new LifeBar(*dreadNought));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*dreadNought));
     dreadNought->attachBar(life);
     return dreadNought;
 }
@@ -748,10 +749,10 @@ std::shared_ptr<WarShip> ShipFactory::imperatoreAugustoBuilder(
     imperatoreAugusto->attach(factory.createLight(cannonPosX + 33, cannonPosY + 146, *imperatoreAugusto));
     imperatoreAugusto->attach(factory.createLight(cannonPosX + 33, cannonPosY + 153, *imperatoreAugusto));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         imperatoreAugusto->attach(
                 specialFactory.createSpecialWeapon(WeaponType::antiAir, *imperatoreAugusto));
-    std::shared_ptr<LifeBar> life(new LifeBar(*imperatoreAugusto));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*imperatoreAugusto));
     imperatoreAugusto->attachBar(life);
     return imperatoreAugusto;
 }
@@ -776,9 +777,9 @@ ShipFactory::kongoBuilder(
     kongo->attach(factory.createLight(cannonPosX + 24, cannonPosY + 95, *kongo));
     kongo->attach(factory.createLight(cannonPosX + 24, cannonPosY + 129, *kongo));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         kongo->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *kongo));
-    std::shared_ptr<LifeBar> life(new LifeBar(*kongo));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*kongo));
     kongo->attachBar(life);
     return kongo;
 }
@@ -804,9 +805,9 @@ ShipFactory::musashiBuilder(
     musashi->attach(factory.createLight(cannonPosX + 24, cannonPosY + 95, *musashi));
     musashi->attach(factory.createLight(cannonPosX + 24, cannonPosY + 129, *musashi));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         musashi->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *musashi));
-    std::shared_ptr<LifeBar> life(new LifeBar(*musashi));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*musashi));
     musashi->attachBar(life);
     return musashi;
 }
@@ -1060,9 +1061,9 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates){
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     std::shared_ptr<WarShip> Narwhal(new Submarine(coordinates.x, coordinates.y, 2, 48, 4600,shipHeight,shipWidth,true,"Usa",ShipType::Submarine,ModelType::Narwhal,0,"Narwhal",0,0,0,0));
-    for (int i = 0; i < 4; i++)
+    /*for (int i = 0; i < 4; i++)
         Narwhal->attach(factory.createSpecialWeapon(WeaponType::torpedo, *Narwhal));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Narwhal));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Narwhal));
     Narwhal->attachBar(life);
     return Narwhal;
 }
@@ -1072,9 +1073,9 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates){
     int shipWidth = 14;
     int shipHeight = 85;
     std::shared_ptr<WarShip> Trenchant(new Submarine(coordinates.x, coordinates.y, 2, 56, 5800,shipHeight,shipWidth,true,"Uk",ShipType::Submarine,ModelType::Trenchant,0,"Triton",0,0,0,0));
-    for (int i = 0; i < 5; i++)
+    /*for (int i = 0; i < 5; i++)
         Trenchant->attach(factory.createSpecialWeapon(WeaponType::torpedo, *Trenchant));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Trenchant));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Trenchant));
     Trenchant->attachBar(life);
     return Trenchant;
 }
@@ -1084,9 +1085,9 @@ ShipFactory::papaBuilder(sf::Vector2i &coordinates){
     int shipWidth = 19;
     int shipHeight = 106;
     std::shared_ptr<WarShip> Papa(new Submarine(coordinates.x, coordinates.y, 2, 82, 7100,shipHeight,shipWidth,true,"Italy",ShipType::Submarine,ModelType::Papa,0,"Papa",0,0,0,0));
-    for (int i = 0; i < 10; i++)
+    /*for (int i = 0; i < 10; i++)
         Papa->attach(factory.createSpecialWeapon(WeaponType::torpedo, *Papa));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Papa));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Papa));
     Papa->attachBar(life);
     return Papa;
 }
@@ -1165,10 +1166,10 @@ std::shared_ptr<WarShip>ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i 
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+232,"Usa",*FranklinDRoosevelt));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+252,"Usa",*FranklinDRoosevelt));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+35,cannonPosY+272,"Usa",*FranklinDRoosevelt));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         FranklinDRoosevelt->attach(
                 specialFactory.createSpecialWeapon(WeaponType::antiAir, *FranklinDRoosevelt));
-    std::shared_ptr<LifeBar> life(new LifeBar(*FranklinDRoosevelt));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*FranklinDRoosevelt));
     FranklinDRoosevelt->attachBar(life);
     return FranklinDRoosevelt;
 }
@@ -1192,9 +1193,9 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates){
     dy->attachPlanes(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+62,"Uk",*Indomitable));
     dy->attachPlanes(airPlanesFactory.createBomber(cannonPosX+20,cannonPosY+82,"Uk",*Indomitable));
     dy->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+20,cannonPosY+112,"Uk",*Indomitable));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         Indomitable->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Indomitable));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Indomitable));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Indomitable));
     Indomitable->attachBar(life);
     return Indomitable;
 }
@@ -1221,9 +1222,9 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates){
     dy->attachPlanes(airPlanesFactory.createBomber(cannonPosX+17,cannonPosY+94,"Italy",*Cavour));
     dy->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+17,cannonPosY+125,"Italy",*Cavour));
     dy->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+17,cannonPosY+156,"Italy",*Cavour));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         Cavour->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir,*Cavour));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Cavour));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Cavour));
     Cavour->attachBar(life);
     return Cavour;
 }
@@ -1247,9 +1248,9 @@ std::shared_ptr<WarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordinates){
     dynamic->attachPlanes(airPlanesFactory.createBomber(cannonPosX+19,cannonPosY+114,"Japan",*Hiryu));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+145,"Japan",*Hiryu));
     dynamic->attachPlanes(airPlanesFactory.createTorpedoBomber(cannonPosX+19,cannonPosY+176,"Japan",*Hiryu));
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         Hiryu->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *Hiryu));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Hiryu));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Hiryu));
     Hiryu->attachBar(life);
     return Hiryu;
 }
@@ -1340,9 +1341,9 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates){
     NewOrleans->attach(cf.createLight(cannonPosX + 17, cannonPosY + 73, *NewOrleans));
     NewOrleans->attach(cf.createLight(cannonPosX + 17, cannonPosY + 82, *NewOrleans));
     NewOrleans->attach(cf.createLight(cannonPosX + 17, cannonPosY + 90, *NewOrleans));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         NewOrleans->attach(factory.createSpecialWeapon(WeaponType::antiAir, *NewOrleans));
-    std::shared_ptr<LifeBar> life(new LifeBar(*NewOrleans));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*NewOrleans));
     NewOrleans->attachBar(life);
     return NewOrleans;
 }
@@ -1366,9 +1367,9 @@ ShipFactory::tiger59Builder(sf::Vector2i &coordinates){
     Tiger59->attach(cf.createLight(cannonPosX + 13, cannonPosY + 117, *Tiger59));
     Tiger59->attach(cf.createLight(cannonPosX + 13, cannonPosY + 92, *Tiger59));
     Tiger59->attach(cf.createLight(cannonPosX + 13, cannonPosY + 75, *Tiger59));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Tiger59->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Tiger59));
-
+*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Tiger59));
     Tiger59->attachBar(life);
     return Tiger59;
@@ -1393,9 +1394,9 @@ ShipFactory::belfastBuilder(sf::Vector2i &coordinates){
     Belfast->attach(cf.createLight(cannonPosX + 18, cannonPosY + 121, *Belfast));
     Belfast->attach(cf.createLight(cannonPosX + 18, cannonPosY + 107, *Belfast));
     Belfast->attach(cf.createLight(cannonPosX + 18, cannonPosY + 95, *Belfast));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Belfast->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Belfast));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Belfast));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Belfast));
     Belfast->attachBar(life);
     return Belfast;
 }
@@ -1444,9 +1445,9 @@ ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates){
     IsuzuNagara->attach(cf.createLight(cannonPosX + 6, cannonPosY + 77, *IsuzuNagara));
     IsuzuNagara->attach(cf.createLight(cannonPosX + 3, cannonPosY + 30, *IsuzuNagara));
     IsuzuNagara->attach(cf.createLight(cannonPosX + 6, cannonPosY + 30, *IsuzuNagara));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         IsuzuNagara->attach(factory.createSpecialWeapon(WeaponType::antiAir, *IsuzuNagara));
-
+*/
     std::shared_ptr<LifeBar> life(new LifeBar(*IsuzuNagara));
     IsuzuNagara->attachBar(life);
     return IsuzuNagara;
@@ -1469,9 +1470,9 @@ ShipFactory::ijnBuilder(sf::Vector2i &coordinates){
     Ijn->attach(cf.createLight(cannonPosX + 1, cannonPosY + 115, *Ijn));
     Ijn->attach(cf.createLight(cannonPosX + 20, cannonPosY + 102, *Ijn));
     Ijn->attach(cf.createLight(cannonPosX + 20, cannonPosY + 115, *Ijn));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Ijn->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Ijn));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Ijn));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Ijn));
     Ijn->attachBar(life);
     return Ijn;
 }
@@ -1593,9 +1594,9 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates){
     VittorioVeneto->attach(factory.createLight(cannonPosX + 26, cannonPosY + 130, *VittorioVeneto));
     VittorioVeneto->attach(factory.createLight(cannonPosX + 26, cannonPosY + 136, *VittorioVeneto));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         VittorioVeneto->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *VittorioVeneto));
-    std::shared_ptr<LifeBar> life(new LifeBar(*VittorioVeneto));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*VittorioVeneto));
     VittorioVeneto->attachBar(life);
     return VittorioVeneto;
 }
@@ -1614,9 +1615,9 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates){
     NewYork->attach(cf.createHeavly(cannonPosX + 10, cannonPosY + 84, *NewYork));
     NewYork->attach(cf.createHeavly(cannonPosX + 10, cannonPosY + 109, *NewYork));
     NewYork->attach(cf.createHeavly(cannonPosX + 10, cannonPosY + 134, *NewYork));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         NewYork->attach(factory.createSpecialWeapon(WeaponType::antiAir, *NewYork));
-    std::shared_ptr<LifeBar> life(new LifeBar(*NewYork));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*NewYork));
     NewYork->attachBar(life);
     return NewYork;
 }
@@ -1642,9 +1643,9 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates){
     Arizona->attach(cf.createLight(cannonPosX + 26, cannonPosY + 87, *Arizona));
     Arizona->attach(cf.createLight(cannonPosX + 23, cannonPosY + 78, *Arizona));
     Arizona->attach(cf.createLight(cannonPosX + 21, cannonPosY + 69, *Arizona));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Arizona->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Arizona));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Arizona));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Arizona));
     Arizona->attachBar(life);
     return Arizona;
 }
@@ -1662,9 +1663,9 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates){
     Hood->attach(cf.createHeavly(cannonPosX + 9, cannonPosY + 44, *Hood));
     Hood->attach(cf.createMedium(cannonPosX + 12, cannonPosY + 190, *Hood));
     Hood->attach(cf.createMedium(cannonPosX + 13, cannonPosY + 59, *Hood));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Hood->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Hood));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Hood));
+    */std::shared_ptr<LifeBar> life(new LifeBar(*Hood));
     Hood->attachBar(life);
     return Hood;
 }
@@ -1720,10 +1721,11 @@ ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates){
     MichelangeloBuonarroti->attach(
             factory.createLight(cannonPosX + 25, cannonPosY + 172, *MichelangeloBuonarroti));
     WeaponFactory specialFactory;
+    /*
     for (int i = 0; i < numAntiAir; i++)
         MichelangeloBuonarroti->attach(
                 specialFactory.createSpecialWeapon(WeaponType::antiAir, *MichelangeloBuonarroti));
-
+    */
     std::shared_ptr<LifeBar> life(new LifeBar(*MichelangeloBuonarroti));
     MichelangeloBuonarroti->attachBar(life);
     return MichelangeloBuonarroti;
@@ -1756,9 +1758,9 @@ std::shared_ptr<WarShip>ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinate
     AndreaDoria->attach(factory.createLight(cannonPosX + 22, cannonPosY + 103, *AndreaDoria));
     AndreaDoria->attach(factory.createLight(cannonPosX + 22, cannonPosY + 109, *AndreaDoria));
     WeaponFactory specialFactory;
-    for (int i = 0; i < numAntiAir; i++)
+    /*for (int i = 0; i < numAntiAir; i++)
         AndreaDoria->attach(specialFactory.createSpecialWeapon(WeaponType::antiAir, *AndreaDoria));
-
+*/
     std::shared_ptr<LifeBar> life(new LifeBar(*AndreaDoria));
     AndreaDoria->attachBar(life);
     return AndreaDoria;
@@ -1790,9 +1792,9 @@ std::shared_ptr<WarShip>ShipFactory::yamatoBuilder(sf::Vector2i &coordinates){
     Yamato->attach(cf.createLight(cannonPosX + 29, cannonPosY + 157, *Yamato));
     Yamato->attach(cf.createLight(cannonPosX + 29, cannonPosY + 146, *Yamato));
     Yamato->attach(cf.createLight(cannonPosX + 32, cannonPosY + 130, *Yamato));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Yamato->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Yamato));
-
+*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Yamato));
     Yamato->attachBar(life);
     return Yamato;
@@ -1819,9 +1821,9 @@ std::shared_ptr<WarShip>ShipFactory::iseBuilder(sf::Vector2i &coordinates){
     Ise->attach(cf.createLight(cannonPosX + 32, cannonPosY + 80, *Ise));
     Ise->attach(cf.createLight(cannonPosX + 28, cannonPosY + 71, *Ise));
     Ise->attach(cf.createLight(cannonPosX + 27, cannonPosY + 62, *Ise));
-    for (int i = 0; i < antiAir; i++)
+    /*for (int i = 0; i < antiAir; i++)
         Ise->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Ise));
-
+*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Ise));
     Ise->attachBar(life);
     return Ise;
@@ -2057,6 +2059,7 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
     ship->getSprite().rotate(180);
     ship->getSprite().move(0, ship->getLength() / 2);
     if(ship->getShipType()!=ShipType::Submarine) {
+        std::cerr<<ship->getArsenalList().size()<<std::endl;
         for (auto &it: ship->getArsenalList()) {
             it->getSprite().move(0, ship->getLength() / 2);
             it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
