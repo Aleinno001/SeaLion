@@ -60,10 +60,10 @@ void ConcreteWarShip::notifyArsenals() const {
         iterArsenal->update();
     }
 }
-void ConcreteWarShip::attach(const std::shared_ptr<Arsenal> &gun) {
+void ConcreteWarShip::attach(std::shared_ptr<Arsenal> &gun) {
     arsenalList.push_back(gun);
 }
-void ConcreteWarShip::detach(const std::shared_ptr<Arsenal> &gun) {
+void ConcreteWarShip::detach(std::shared_ptr<Arsenal> &gun) {
     arsenalList.remove(gun);
 }
 void ConcreteWarShip::notifyBars() const {
@@ -76,10 +76,10 @@ void ConcreteWarShip::notifyBarsDamage() const {
         iterBars->updateBarsDamage();
     }
 }
-void ConcreteWarShip::attachBar(const std::shared_ptr<BarInterface> &bar) {
+void ConcreteWarShip::attachBar(std::shared_ptr<BarInterface> &bar) {
     bars.push_back(bar);
 }
-void ConcreteWarShip::detachBar(const std::shared_ptr<BarInterface> &bar) {
+void ConcreteWarShip::detachBar(std::shared_ptr<BarInterface> &bar) {
     bars.remove(bar);
 }
 bool ConcreteWarShip::searchTarget(float elapsedTime) {

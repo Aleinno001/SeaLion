@@ -19,7 +19,6 @@ public:
     explicit LifeBar(WarShip &subject);
     void updateBars() override;
     void updateBarsDamage() override;
-    void removeMe(){subject_.detachBar(std::shared_ptr<BarInterface>(this));}
     void drawEquipment(sf::RenderWindow &window) override;
      ~LifeBar()=default;
 };

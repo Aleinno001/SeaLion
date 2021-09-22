@@ -14,10 +14,10 @@ void ConcreteAircraftCarrier::notifyPlanes() {
         itPlanes->update();
     }
 }
-void ConcreteAircraftCarrier::attachPlanes(const std::shared_ptr<WarPlane> &warPlane) {
+void ConcreteAircraftCarrier::attachPlanes(std::shared_ptr<WarPlane> &warPlane) {
     planes.push_back(warPlane);
 }
-void ConcreteAircraftCarrier::detachPlanes(const std::shared_ptr<WarPlane> &warPlane) {
+void ConcreteAircraftCarrier::detachPlanes(std::shared_ptr<WarPlane> &warPlane) {
     planes.remove(warPlane);
 }
 void ConcreteAircraftCarrier::attack(float elapsedTime) {
@@ -80,10 +80,10 @@ void ConcreteAircraftCarrier::notifyArsenals() const {
         iterArsenal->update();
     }
 }
-void ConcreteAircraftCarrier::attach(const std::shared_ptr<Arsenal> &gun) {
+void ConcreteAircraftCarrier::attach(std::shared_ptr<Arsenal> &gun) {
     arsenalList.push_back(gun);
 }
-void ConcreteAircraftCarrier::detach(const std::shared_ptr<Arsenal> &gun) {
+void ConcreteAircraftCarrier::detach(std::shared_ptr<Arsenal> &gun) {
     arsenalList.remove(gun);
 }
 void ConcreteAircraftCarrier::notifyBars() const {
@@ -96,10 +96,10 @@ void ConcreteAircraftCarrier::notifyBarsDamage() const {
         iterBars->updateBarsDamage();
     }
 }
-void ConcreteAircraftCarrier::attachBar(const std::shared_ptr<BarInterface> &bar) {
+void ConcreteAircraftCarrier::attachBar(std::shared_ptr<BarInterface> &bar) {
     bars.push_back(bar);
 }
-void ConcreteAircraftCarrier::detachBar(const std::shared_ptr<BarInterface> &bar) {
+void ConcreteAircraftCarrier::detachBar(std::shared_ptr<BarInterface> &bar) {
     bars.remove(bar);
 }
 bool ConcreteAircraftCarrier::searchTarget(float elapsedTime) {

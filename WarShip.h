@@ -79,12 +79,12 @@ protected:
     }
 public:
     virtual void notifyArsenals() const = 0;//Metodi per design pattern observer
-    virtual void attach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
-    virtual void detach(const std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
+    virtual void attach(std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
+    virtual void detach(std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
     virtual void notifyBars() const =0; //Metodo design pattern observer tra BarInterface e Warship
     virtual void notifyBarsDamage() const =0;
-    virtual void attachBar(const std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
-    virtual void detachBar(const std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
+    virtual void attachBar(std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
+    virtual void detachBar(std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
     ShipType getShipType() const {return shipType;}
     void setShipType(ShipType type) { WarShip::shipType = type;}
     ModelType getModelType() const {return modelType;}
@@ -99,7 +99,7 @@ public:
     void setConcealed(bool concealed) {WarShip::concealed = concealed;}
     bool isSelected() const {return selected;}
     void setSelected(bool selected) {WarShip::selected = selected;}
-    const std::list<std::shared_ptr<Arsenal>> &getArsenalList() const {return arsenalList;}
+    std::list<std::shared_ptr<Arsenal>> &getArsenalList(){return arsenalList;}
     void setArsenalList(const std::list<std::shared_ptr<Arsenal>> &arsenalList) {WarShip::arsenalList = arsenalList;}
     const std::list<std::shared_ptr<BarInterface>> &getBars() const {return bars;}
     void setBars(const std::list<std::shared_ptr<BarInterface>> &bars) {WarShip::bars = bars;}

@@ -887,9 +887,9 @@ std::shared_ptr<WarShip>ShipFactory::simsBuilder(sf::Vector2i &coordinates) cons
     sims->attach(cf.createMedium(cannonPosX + 5, cannonPosY + 23, *sims));
     sims->attach(cf.createMedium(cannonPosX + 5, cannonPosY + 78, *sims));
     sims->attach(cf.createMedium(cannonPosX + 5, cannonPosY + 90, *sims));
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         sims->attach(wf.createSpecialWeapon(WeaponType::antiAir, *sims));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*sims));
     sims->attachBar(life);
     return sims;
@@ -909,9 +909,9 @@ std::shared_ptr<WarShip>ShipFactory::fletcherBuilder(sf::Vector2i &coordinates) 
     fletcher->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 73, *fletcher));
     fletcher->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 15, *fletcher));
     fletcher->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 27, *fletcher));
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         fletcher->attach(wf.createSpecialWeapon(WeaponType::antiAir, *fletcher));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*fletcher));
     fletcher->attachBar(life);
     return fletcher;
@@ -929,9 +929,9 @@ std::shared_ptr<WarShip>ShipFactory::jutlandBuilder(sf::Vector2i &coordinates) c
     jutLand->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 18, *jutLand));
     jutLand->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 28, *jutLand));
     jutLand->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 95, *jutLand));
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         jutLand->attach(wf.createSpecialWeapon(WeaponType::antiAir, *jutLand));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*jutLand));
     jutLand->attachBar(life);
     return jutLand;
@@ -950,9 +950,9 @@ std::shared_ptr<WarShip>ShipFactory::paoloEmilioBuilder(sf::Vector2i &coordinate
     paoloEmilio->attach(cf.createMedium(cannonPosX + 4, cannonPosY + 38, *paoloEmilio));
     paoloEmilio->attach(cf.createMedium(cannonPosX + 4, cannonPosY + 134, *paoloEmilio));
     paoloEmilio->attach(cf.createMedium(cannonPosX + 4, cannonPosY + 142, *paoloEmilio));
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         paoloEmilio->attach(wf.createSpecialWeapon(WeaponType::antiAir, *paoloEmilio));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*paoloEmilio));
     paoloEmilio->attachBar(life);
     return paoloEmilio;
@@ -972,9 +972,9 @@ std::shared_ptr<WarShip>ShipFactory::impavidoBuilder(sf::Vector2i &coordinates) 
     impavido->attach(cf.createLight(cannonPosX + 1, cannonPosY + 79, *impavido));
     impavido->attach(cf.createLight(cannonPosX + 10, cannonPosY + 67, *impavido));
     impavido->attach(cf.createLight(cannonPosX + 10, cannonPosY + 79, *impavido));
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         impavido->attach(wf.createSpecialWeapon(WeaponType::antiAir, *impavido));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*impavido));
     impavido->attachBar(life);
     return impavido;
@@ -993,9 +993,9 @@ std::shared_ptr<WarShip>ShipFactory::yukikazeBuilder(sf::Vector2i &coordinates) 
     yukikaze->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 51, *yukikaze));
     yukikaze->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 70, *yukikaze));
     yukikaze->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 93, *yukikaze));
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         yukikaze->attach(wf.createSpecialWeapon(WeaponType::antiAir, *yukikaze));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*yukikaze));
     yukikaze->attachBar(life);
     return yukikaze;
@@ -1415,9 +1415,9 @@ ShipFactory::goriziaBuilder(sf::Vector2i &coordinates) const {
     Gorizia->attach(cf.createLight(cannonPosX, cannonPosY + 98, *Gorizia));
     Gorizia->attach(cf.createLight(cannonPosX + 15, cannonPosY + 107, *Gorizia));
     Gorizia->attach(cf.createLight(cannonPosX + 15, cannonPosY + 98, *Gorizia));
-    for (int i = 0; i < antiAir; i++) {
+   /* for (int i = 0; i < antiAir; i++) {
         Gorizia->attach(factory.createSpecialWeapon(WeaponType::antiAir, *Gorizia));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Gorizia));
     Gorizia->attachBar(life);
     return Gorizia;
@@ -1902,9 +1902,9 @@ std::shared_ptr<WarShip>ShipFactory::mahanBuilder(sf::Vector2i &coordinates) con
     Mahan->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 90, *Mahan));
     Mahan->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 72, *Mahan));
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         Mahan->attach(wf.createSpecialWeapon(WeaponType::antiAir, *Mahan));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Mahan));
     Mahan->attachBar(life);
     return Mahan;
@@ -1923,9 +1923,9 @@ std::shared_ptr<WarShip>ShipFactory::gallandBuilder(sf::Vector2i &coordinates) c
     Gallant->attach(cf.createMedium(cannonPosX + 2, cannonPosY + 75, *Gallant));
     Gallant->attach(cf.createMedium(cannonPosX + 2, cannonPosY + 81, *Gallant));
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         Gallant->attach(wf.createSpecialWeapon(WeaponType::antiAir, *Gallant));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Gallant));
     Gallant->attachBar(life);
     return Gallant;
@@ -1944,9 +1944,9 @@ std::shared_ptr<WarShip> ShipFactory::campbeltownBuilder(sf::Vector2i &coordinat
     Campbelltown->attach(cf.createLight(cannonPosX + 5, cannonPosY + 40, *Campbelltown));
     Campbelltown->attach(cf.createLight(cannonPosX + 3, cannonPosY + 81, *Campbelltown));
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         Campbelltown->attach(wf.createSpecialWeapon(WeaponType::antiAir, *Campbelltown));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Campbelltown));
     Campbelltown->attachBar(life);
     return Campbelltown;
@@ -1964,9 +1964,9 @@ std::shared_ptr<WarShip>ShipFactory::leoneBuilder(sf::Vector2i &coordinates) con
     Leone->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 74, *Leone));
     Leone->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 100, *Leone));
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         Leone->attach(wf.createSpecialWeapon(WeaponType::antiAir, *Leone));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Leone));
     Leone->attachBar(life);
     return Leone;
@@ -1987,9 +1987,9 @@ std::shared_ptr<WarShip>ShipFactory::fubukiBuilder(sf::Vector2i &coordinates) co
     Fubuki->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 90, *Fubuki));
     Fubuki->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 98, *Fubuki));
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         Fubuki->attach(wf.createSpecialWeapon(WeaponType::antiAir, *Fubuki));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Fubuki));
     Fubuki->attachBar(life);
     return Fubuki;
@@ -2008,9 +2008,9 @@ std::shared_ptr<WarShip>ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) c
     Akizuki->attach(cf.createMedium(cannonPosX + 2, cannonPosY + 95, *Akizuki));
     Akizuki->attach(cf.createMedium(cannonPosX + 2, cannonPosY + 104, *Akizuki));
     WeaponFactory wf;
-    for (int i = 0; i < numAntiAir; i++) {
+    /*for (int i = 0; i < numAntiAir; i++) {
         Akizuki->attach(wf.createSpecialWeapon(WeaponType::antiAir, *Akizuki));
-    }
+    }*/
     std::shared_ptr<LifeBar> life(new LifeBar(*Akizuki));
     Akizuki->attachBar(life);
     return Akizuki;
