@@ -56,10 +56,10 @@ void Submarine::move(float elapsedTime) {
 void Submarine::notifyArsenals() const {
 
 }
-void Submarine::attach(const std::shared_ptr<Arsenal> &gun) {
+void Submarine::attach(std::shared_ptr<Arsenal> gun) {
     arsenalList.push_back(gun);
 }
-void Submarine::detach(const std::shared_ptr<Arsenal> &gun) {
+void Submarine::detach(std::shared_ptr<Arsenal> gun) {
     arsenalList.remove(gun);
 }
 void Submarine::notifyBars() const {
@@ -72,10 +72,10 @@ void Submarine::notifyBarsDamage() const {
         iterBars->updateBarsDamage();
     }
 }
-void Submarine::attachBar(const std::shared_ptr<BarInterface> &bar) {
+void Submarine::attachBar(std::shared_ptr<BarInterface> bar) {
     bars.push_back(bar);
 }
-void Submarine::detachBar(const std::shared_ptr<BarInterface> &bar) {
+void Submarine::detachBar(std::shared_ptr<BarInterface> bar) {
     bars.remove(bar);
 }
 bool Submarine::searchTarget(float elapsedTime) {

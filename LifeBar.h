@@ -20,7 +20,7 @@ public:
     void updateBars() override;
     void updateBarsDamage() override;
     void drawEquipment(sf::RenderWindow &window) override;
-     ~LifeBar()=default;
+    ~LifeBar()=default;
 };
 
 

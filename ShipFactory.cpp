@@ -51,65 +51,69 @@ std::shared_ptr<WarShip> ShipFactory::createSubmarine(ModelType type,int height,
     }
 }
 std::shared_ptr<WarShip>
-ShipFactory::gatoBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::gatoBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 9;
     int shipHeight = 95;
     std::shared_ptr<WarShip> Gato(new Submarine(coordinates.x, coordinates.y, 2, 37, 2460,shipHeight,shipWidth,true,"Usa",ShipType::Submarine,ModelType::Gato,0,"Gato",0,0,0,0));
-    for (int i = 0; i < 6; i++)
+    /*for (int i = 0; i < 6; i++)
         Gato->attach(factory.createSpecialWeapon(WeaponType::torpedo, *Gato));
+    */
     std::shared_ptr<LifeBar> life(new LifeBar(*Gato));
     Gato->attachBar(life);
     return Gato;
 }
 
 std::shared_ptr<WarShip>
-ShipFactory::tritonBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::tritonBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 8;
     int shipHeight = 84;
     std::shared_ptr<WarShip> Triton(new Submarine(coordinates.x, coordinates.y, 2, 28, 1576,shipHeight,shipWidth,true,"Uk",ShipType::Submarine,ModelType::Triton,0,"Triton",0,0,0,0));
-    for (int i = 0; i < 6; i++)
+    /*for (int i = 0; i < 6; i++)
         Triton->attach(factory.createSpecialWeapon(WeaponType::torpedo, *Triton));
-    std::shared_ptr<LifeBar> life(new LifeBar(*Triton));
+    */
+     std::shared_ptr<LifeBar> life(new LifeBar(*Triton));
     Triton->attachBar(life);
     return Triton;
 }
 std::shared_ptr<WarShip>
 ShipFactory::DaVinciBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 9;
     int shipHeight = 77;
     std::shared_ptr<WarShip> DaVinci(new Submarine(coordinates.x, coordinates.y, 2, 15, 1489,shipHeight,shipWidth,true,"Italy",ShipType::Submarine,ModelType::DaVinci,0,"DaVinci",0,0,0,0));
-    for (int i = 0; i < 8; i++)
+    /*for (int i = 0; i < 8; i++)
         DaVinci->attach(factory.createSpecialWeapon(WeaponType::torpedo, *DaVinci));
+    */
     std::shared_ptr<LifeBar> life(new LifeBar(*DaVinci));
     DaVinci->attachBar(life);
     return DaVinci;
 }
 std::shared_ptr<WarShip>
 ShipFactory::typeb1Builder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 10;
     int shipHeight = 111;
     std::shared_ptr<WarShip> typeb1(new Submarine(coordinates.x, coordinates.y, 2, 44, 3713,shipHeight,shipWidth,true,"Japan",ShipType::Submarine,ModelType::typeb1,0,"Type-B-1",0,0,0,0));
-    for (int i = 0; i < 6; i++)
+    /*for (int i = 0; i < 6; i++)
         typeb1->attach(factory.createSpecialWeapon(WeaponType::torpedo, *typeb1));
-    std::shared_ptr<LifeBar> life(new LifeBar(*typeb1));
+    */
+     std::shared_ptr<LifeBar> life(new LifeBar(*typeb1));
     typeb1->attachBar(life);
     return typeb1;
 }
 std::shared_ptr<WarShip>
 ShipFactory::i400Builder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 13;
     int shipHeight = 122;
     std::shared_ptr<WarShip> i400(new Submarine(coordinates.x, coordinates.y, 2, 35, 6670,shipHeight,shipWidth,true,"Japan",ShipType::Submarine,ModelType::I400,0,"I400",0,0,0,0));
-    for (int i = 0; i < 8; i++)
-        i400->attach(factory.createSpecialWeapon(WeaponType::torpedo, *i400));
+    //for (int i = 0; i < 8; i++)
+      //  i400->attach(factory.createSpecialWeapon(WeaponType::torpedo, *i400));
     std::shared_ptr<LifeBar> life(new LifeBar(*i400));
     i400->attachBar(life);
     return i400;
@@ -163,7 +167,7 @@ std::shared_ptr<WarShip> ShipFactory::createAircraftCarrier(ModelType type,int h
 }
 std::shared_ptr<WarShip>
 ShipFactory::midwayBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 84;
@@ -199,7 +203,7 @@ ShipFactory::midwayBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::arkRoyalBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 38;
@@ -226,7 +230,7 @@ ShipFactory::arkRoyalBuilder(
     return arkRoyal;
 }
 std::shared_ptr<WarShip> ShipFactory::giuseppeGaribaldiBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 44;
@@ -250,7 +254,7 @@ std::shared_ptr<WarShip> ShipFactory::giuseppeGaribaldiBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::tahioBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 46;
@@ -343,7 +347,7 @@ std::shared_ptr<WarShip> ShipFactory::createCruiser(ModelType type,int height, i
         }
     }
 }
-std::shared_ptr<WarShip>ShipFactory::stLouisBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::stLouisBuilder(sf::Vector2i &coordinates){
     int shipWidth = 20;
     int shipHeight = 130;
     int cannonPosX =coordinates.x -(shipWidth) /2;
@@ -368,7 +372,7 @@ std::shared_ptr<WarShip>ShipFactory::stLouisBuilder(sf::Vector2i &coordinates) c
 }
 std::shared_ptr<WarShip>
 ShipFactory::alaskaBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 28;
     int shipHeight = 246;
@@ -394,7 +398,7 @@ ShipFactory::alaskaBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::danaeBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 14;
     int shipHeight = 136;
@@ -418,7 +422,7 @@ ShipFactory::danaeBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::trentoBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 25;
     int shipHeight = 197;
@@ -445,7 +449,7 @@ ShipFactory::trentoBuilder(
     return trento;
 }
 std::shared_ptr<WarShip> ShipFactory::albertoDiGiussanoBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 15;
     int shipHeight = 169;
@@ -469,7 +473,7 @@ std::shared_ptr<WarShip> ShipFactory::albertoDiGiussanoBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::takaoBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 25;
     int shipHeight = 193;
@@ -583,7 +587,7 @@ std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type,int height
 }
 std::shared_ptr<WarShip>
 ShipFactory::ironDukeBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 190;
@@ -605,7 +609,7 @@ ShipFactory::ironDukeBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::northCarolinaBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 32;
     int shipHeight = 222;
@@ -631,7 +635,7 @@ ShipFactory::northCarolinaBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::montanaBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     //TODO concludere tutte le aggiunte necessarie
     CannonFactory factory;
     int shipWidth = 37;
@@ -663,7 +667,7 @@ ShipFactory::montanaBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::lionBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 242;
@@ -684,7 +688,7 @@ ShipFactory::lionBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::dreadNoughtBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 25;
     int shipHeight = 158;
@@ -705,7 +709,7 @@ ShipFactory::dreadNoughtBuilder(
     return dreadNought;
 }
 std::shared_ptr<WarShip> ShipFactory::imperatoreAugustoBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 274;
@@ -753,7 +757,7 @@ std::shared_ptr<WarShip> ShipFactory::imperatoreAugustoBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::kongoBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 31;
     int shipHeight = 222;
@@ -780,7 +784,7 @@ ShipFactory::kongoBuilder(
 }
 std::shared_ptr<WarShip>
 ShipFactory::musashiBuilder(
-        sf::Vector2i &coordinates) const {
+        sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 39;
     int shipHeight = 244;
@@ -873,7 +877,7 @@ std::shared_ptr<WarShip> ShipFactory::createDestroyer(ModelType type,int height,
         }
     }
 }
-std::shared_ptr<WarShip>ShipFactory::simsBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::simsBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 16;
     int shipHeight = 106;
@@ -894,7 +898,7 @@ std::shared_ptr<WarShip>ShipFactory::simsBuilder(sf::Vector2i &coordinates) cons
     sims->attachBar(life);
     return sims;
 }
-std::shared_ptr<WarShip>ShipFactory::fletcherBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::fletcherBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 12;
     int shipHeight = 114;
@@ -916,7 +920,7 @@ std::shared_ptr<WarShip>ShipFactory::fletcherBuilder(sf::Vector2i &coordinates) 
     fletcher->attachBar(life);
     return fletcher;
 }
-std::shared_ptr<WarShip>ShipFactory::jutlandBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::jutlandBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 13;
     int shipHeight = 116;
@@ -936,7 +940,7 @@ std::shared_ptr<WarShip>ShipFactory::jutlandBuilder(sf::Vector2i &coordinates) c
     jutLand->attachBar(life);
     return jutLand;
 }
-std::shared_ptr<WarShip>ShipFactory::paoloEmilioBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::paoloEmilioBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 15;
     int shipHeight = 172;
@@ -957,7 +961,7 @@ std::shared_ptr<WarShip>ShipFactory::paoloEmilioBuilder(sf::Vector2i &coordinate
     paoloEmilio->attachBar(life);
     return paoloEmilio;
 }
-std::shared_ptr<WarShip>ShipFactory::impavidoBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::impavidoBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 15;
     int shipHeight = 131;
@@ -979,7 +983,7 @@ std::shared_ptr<WarShip>ShipFactory::impavidoBuilder(sf::Vector2i &coordinates) 
     impavido->attachBar(life);
     return impavido;
 }
-std::shared_ptr<WarShip>ShipFactory::yukikazeBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::yukikazeBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 12;
     int shipHeight = 119;
@@ -1049,7 +1053,7 @@ std::shared_ptr<WarShip> ShipFactory::createAlliedSubmarine(ModelType type,int h
     }
 }
 std::shared_ptr<WarShip>
-ShipFactory::narwhalBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::narwhalBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 13;
     int shipHeight = 91;
@@ -1063,7 +1067,7 @@ ShipFactory::narwhalBuilder(sf::Vector2i &coordinates) const {
     return Narwhal;
 }
 std::shared_ptr<WarShip>
-ShipFactory::trenchantBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::trenchantBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 14;
     int shipHeight = 85;
@@ -1075,7 +1079,7 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates) const {
     return Trenchant;
 }
 std::shared_ptr<WarShip>
-ShipFactory::papaBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::papaBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 19;
     int shipHeight = 106;
@@ -1134,7 +1138,7 @@ std::shared_ptr<WarShip> ShipFactory::createAlliedAircraftCarrier(ModelType type
         }
     }
 }
-std::shared_ptr<WarShip>ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 70;
@@ -1169,7 +1173,7 @@ std::shared_ptr<WarShip>ShipFactory::franklinDelanoRoosveltBuilder(sf::Vector2i 
     return FranklinDRoosevelt;
 }
 std::shared_ptr<WarShip>
-ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::indomitableBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 41;
@@ -1195,7 +1199,7 @@ ShipFactory::indomitableBuilder(sf::Vector2i &coordinates) const {
     return Indomitable;
 }
 std::shared_ptr<WarShip>
-ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::cavourBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 50;
@@ -1223,7 +1227,7 @@ ShipFactory::cavourBuilder(sf::Vector2i &coordinates) const {
     Cavour->attachBar(life);
     return Cavour;
 }
-std::shared_ptr<WarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::hiryuBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     AirplaneFactory airPlanesFactory;
     int shipWidth = 39;
@@ -1318,7 +1322,7 @@ std::shared_ptr<WarShip> ShipFactory::createAlliedCruiser(ModelType type,int hei
     }
 }
 std::shared_ptr<WarShip>
-ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 25;
     int shipHeight = 178;
@@ -1343,7 +1347,7 @@ ShipFactory::newOrleansBuilder(sf::Vector2i &coordinates) const {
     return NewOrleans;
 }
 std::shared_ptr<WarShip>
-ShipFactory::tiger59Builder(sf::Vector2i &coordinates) const {
+ShipFactory::tiger59Builder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 19;
     int shipHeight = 169;
@@ -1370,7 +1374,7 @@ ShipFactory::tiger59Builder(sf::Vector2i &coordinates) const {
     return Tiger59;
 }
 std::shared_ptr<WarShip>
-ShipFactory::belfastBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::belfastBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 27;
     int shipHeight = 187;
@@ -1396,7 +1400,7 @@ ShipFactory::belfastBuilder(sf::Vector2i &coordinates) const {
     return Belfast;
 }
 std::shared_ptr<WarShip>
-ShipFactory::goriziaBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::goriziaBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 22;
     int shipHeight = 183;
@@ -1423,7 +1427,7 @@ ShipFactory::goriziaBuilder(sf::Vector2i &coordinates) const {
     return Gorizia;
 }
 std::shared_ptr<WarShip>
-ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 14;
     int shipHeight = 159;
@@ -1448,7 +1452,7 @@ ShipFactory::isuzuNagaraBuilder(sf::Vector2i &coordinates) const {
     return IsuzuNagara;
 }
 std::shared_ptr<WarShip>
-ShipFactory::ijnBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::ijnBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 26;
     int shipHeight = 204;
@@ -1560,7 +1564,7 @@ std::shared_ptr<WarShip> ShipFactory::createAlliedBattleship(ModelType type,int 
     }
 }
 std::shared_ptr<WarShip>
-ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 33;
     int shipHeight = 238;
@@ -1596,7 +1600,7 @@ ShipFactory::vittorioVenetoBuilder(sf::Vector2i &coordinates) const {
     return VittorioVeneto;
 }
 std::shared_ptr<WarShip>
-ShipFactory::newYorkBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::newYorkBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     CannonFactory cf;
     int shipWidth = 35;
@@ -1617,7 +1621,7 @@ ShipFactory::newYorkBuilder(sf::Vector2i &coordinates) const {
     return NewYork;
 }
 std::shared_ptr<WarShip>
-ShipFactory::arizonaBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::arizonaBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     CannonFactory cf;
     int shipWidth = 32;
@@ -1645,7 +1649,7 @@ ShipFactory::arizonaBuilder(sf::Vector2i &coordinates) const {
     return Arizona;
 }
 std::shared_ptr<WarShip>
-ShipFactory::hoodBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::hoodBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     CannonFactory cf;
     int shipWidth = 34;
@@ -1665,7 +1669,7 @@ ShipFactory::hoodBuilder(sf::Vector2i &coordinates) const {
     return Hood;
 }
 std::shared_ptr<WarShip>
-ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates) const {
+ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 35;
     int shipHeight = 246;
@@ -1724,7 +1728,7 @@ ShipFactory::michelangeloBuonarrotiBuilder(sf::Vector2i &coordinates) const {
     MichelangeloBuonarroti->attachBar(life);
     return MichelangeloBuonarroti;
 }
-std::shared_ptr<WarShip>ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinates){
     CannonFactory factory;
     int shipWidth = 29;
     int shipHeight = 176;
@@ -1759,7 +1763,7 @@ std::shared_ptr<WarShip>ShipFactory::andreaDoriaBuilder(sf::Vector2i &coordinate
     AndreaDoria->attachBar(life);
     return AndreaDoria;
 }
-std::shared_ptr<WarShip>ShipFactory::yamatoBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::yamatoBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 40;
@@ -1793,7 +1797,7 @@ std::shared_ptr<WarShip>ShipFactory::yamatoBuilder(sf::Vector2i &coordinates) co
     Yamato->attachBar(life);
     return Yamato;
 }
-std::shared_ptr<WarShip>ShipFactory::iseBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::iseBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     CannonFactory cf;
     int antiAir = 19;
@@ -1888,7 +1892,7 @@ std::shared_ptr<WarShip> ShipFactory::createAlliedDestroyer(ModelType type, int 
         }
     }
 }
-std::shared_ptr<WarShip>ShipFactory::mahanBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::mahanBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 13;
     int shipHeight = 104;
@@ -1909,7 +1913,7 @@ std::shared_ptr<WarShip>ShipFactory::mahanBuilder(sf::Vector2i &coordinates) con
     Mahan->attachBar(life);
     return Mahan;
 }
-std::shared_ptr<WarShip>ShipFactory::gallandBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::gallandBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 10;
     int shipHeight = 99;
@@ -1930,7 +1934,7 @@ std::shared_ptr<WarShip>ShipFactory::gallandBuilder(sf::Vector2i &coordinates) c
     Gallant->attachBar(life);
     return Gallant;
 }
-std::shared_ptr<WarShip> ShipFactory::campbeltownBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip> ShipFactory::campbeltownBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 10;
     int shipHeight = 96;
@@ -1951,7 +1955,7 @@ std::shared_ptr<WarShip> ShipFactory::campbeltownBuilder(sf::Vector2i &coordinat
     Campbelltown->attachBar(life);
     return Campbelltown;
 }
-std::shared_ptr<WarShip>ShipFactory::leoneBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::leoneBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 13;
     int shipHeight = 113;
@@ -1971,7 +1975,7 @@ std::shared_ptr<WarShip>ShipFactory::leoneBuilder(sf::Vector2i &coordinates) con
     Leone->attachBar(life);
     return Leone;
 }
-std::shared_ptr<WarShip>ShipFactory::fubukiBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::fubukiBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 14;
     int shipHeight = 118;
@@ -1994,7 +1998,7 @@ std::shared_ptr<WarShip>ShipFactory::fubukiBuilder(sf::Vector2i &coordinates) co
     Fubuki->attachBar(life);
     return Fubuki;
 }
-std::shared_ptr<WarShip>ShipFactory::akizukiBuilder(sf::Vector2i &coordinates) const {
+std::shared_ptr<WarShip>ShipFactory::akizukiBuilder(sf::Vector2i &coordinates){
     CannonFactory cf;
     int shipWidth = 12;
     int shipHeight = 134;

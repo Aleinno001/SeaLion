@@ -79,12 +79,12 @@ protected:
     }
 public:
     virtual void notifyArsenals() const = 0;//Metodi per design pattern observer
-    virtual void attach(std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
-    virtual void detach(std::shared_ptr<Arsenal> &gun) = 0;//Metodi per design pattern observer
+    virtual void attach(std::shared_ptr<Arsenal> gun) = 0;//Metodi per design pattern observer
+    virtual void detach(std::shared_ptr<Arsenal> gun) = 0;//Metodi per design pattern observer
     virtual void notifyBars() const =0; //Metodo design pattern observer tra BarInterface e Warship
     virtual void notifyBarsDamage() const =0;
-    virtual void attachBar(std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
-    virtual void detachBar(std::shared_ptr<BarInterface> &bar)=0;//Metodo design pattern observer tra BarInterface e Warship
+    virtual void attachBar(std::shared_ptr<BarInterface> bar)=0;//Metodo design pattern observer tra BarInterface e Warship
+    virtual void detachBar(std::shared_ptr<BarInterface> bar)=0;//Metodo design pattern observer tra BarInterface e Warship
     ShipType getShipType() const {return shipType;}
     void setShipType(ShipType type) { WarShip::shipType = type;}
     ModelType getModelType() const {return modelType;}

@@ -56,9 +56,6 @@ bool ConcreteArsenal::setUpSprite(std::string textureName) {
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
 }
-void ConcreteArsenal::removeMeFromTheList() {
-    subject_.detach(std::shared_ptr<Arsenal>(this));
-}
 float ConcreteArsenal::getRangeOfFire() const {
     return rangeOfFire;
 }

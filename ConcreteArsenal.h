@@ -13,7 +13,6 @@ public:
     void update() override;
     void searchTarget(float elapsedTime) override;
     bool setUpSprite(std::string textureName) override;
-    void removeMeFromTheList() override;
     float getRangeOfFire() const override;
     int getReloadTime() const override;
     int getAmmoSpeed() const override;

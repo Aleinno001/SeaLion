@@ -30,7 +30,7 @@ public:
     virtual void update() = 0; //Metodo per design pattern observer
     virtual void searchTarget(float elapsedTime) = 0;
     virtual bool setUpSprite(std::string textureName)=0;
-    virtual void removeMeFromTheList() = 0;//metodo per detach observer cannoni
+   // virtual void removeMeFromTheList() = 0;//metodo per detach observer cannoni
     virtual float getRangeOfFire() const = 0;
     virtual int getReloadTime() const = 0;
     virtual int getAmmoSpeed() const = 0;

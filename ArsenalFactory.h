@@ -12,9 +12,9 @@
 
 class ArsenalFactory {
 public:
-    virtual std::unique_ptr<ConcreteArsenal> createLight(int posX, int posY,WarShip &subject) const = 0;
-    virtual std::unique_ptr<ConcreteArsenal> createMedium(int posX, int posY,WarShip &subject) const = 0;
-    virtual std::unique_ptr<ConcreteArsenal> createHeavly(int posX, int posY,WarShip &subject) const = 0;
+    virtual std::unique_ptr<ConcreteArsenal> createLight(int posX, int posY,WarShip &subject)= 0;
+    virtual std::unique_ptr<ConcreteArsenal> createMedium(int posX, int posY,WarShip &subject)= 0;
+    virtual std::unique_ptr<ConcreteArsenal> createHeavly(int posX, int posY,WarShip &subject)= 0;
 };
 
 #endif //SEALION_ARSENALFACTORY_H
