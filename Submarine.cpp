@@ -4,7 +4,7 @@
 
 #include "Submarine.h"
 
-Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType,int armour, std::string &name,int numLCannons,int numMCannons, int numHCannons, int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {}
+Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons, int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {}
 void Submarine::attack(float elapsedTime) {
     for(auto &iterArsenal : arsenalList){
         iterArsenal->searchTarget(elapsedTime);
