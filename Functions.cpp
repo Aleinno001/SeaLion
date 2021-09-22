@@ -93,8 +93,8 @@ std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
     return fleet;
 }
 
-void Functions::fpsManagment(sf::RenderWindow &window) {
-    int fps = 1.0f / Tools::getElapsedTime();
+void Functions::fpsManagment(sf::RenderWindow &window,float elapsedTime) {
+    int fps = 1.0f / elapsedTime;
     std::string currentDir = ToolBox::GetCurrentWorkingDir();
     sf::Text fpsCount;
     sf::Text fpsText;
@@ -124,9 +124,9 @@ void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
         }
     }
 }
-void Functions::update(std::list<std::shared_ptr<WarShip>> &fullNavyList) { //funzione di base per gestire l'aggiornamento del gioco durante il game loopGameWorld &gameWorld
+void Functions::update(std::list<std::shared_ptr<WarShip>> &fullNavyList,float elapsedTime) { //funzione di base per gestire l'aggiornamento del gioco durante il game loopGameWorld &gameWorld
     for(auto &itShips : fullNavyList){
-        itShips->searchTarget();
+        itShips->searchTarget(elapsedTime);
     }
 }
 void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, GameWorld &gameWorld, std::shared_ptr<WarShip> &selectedShip,std::list<MvcView<Specialty,WarShip>>& views) {
@@ -176,7 +176,7 @@ void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<std::shared_p
         fullNavyList.push_back(ele);
     }
 }
-void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings, windowMode &videoMode,sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList, std::list<MvcView<Specialty,WarShip>> &views,std::shared_ptr<WarShip> selectedShip) {
+void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings, windowMode &videoMode,sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList, std::list<MvcView<Specialty,WarShip>> &views,std::shared_ptr<WarShip> selectedShip,sf::Clock &clock) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -197,8 +197,8 @@ void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings,
         }
         window.clear();
         drawAll(gameWorld,fullNavyList,window);
-        update(fullNavyList);
-        fpsManagment(window);//calcola e mostra fps con l'aggiunta dei font
+        update(fullNavyList,clock.restart().asSeconds());
+        fpsManagment(window,clock.restart().asSeconds());//calcola e mostra fps con l'aggiunta dei font
     }
 }
 void Functions::drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList,sf::RenderWindow &window){

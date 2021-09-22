@@ -15,15 +15,15 @@ void ConcreteAircraftCarrier::attachPlanes(const std::shared_ptr<WarPlane> &warP
 void ConcreteAircraftCarrier::detachPlanes(const std::shared_ptr<WarPlane> &warPlane) {
     planes.remove(warPlane);
 }
-void ConcreteAircraftCarrier::attack() {
+void ConcreteAircraftCarrier::attack(float elapsedTime) {
     for(auto &iterArsenal : arsenalList){
-        iterArsenal->searchTarget();
+        iterArsenal->searchTarget(elapsedTime);
     }
     for(auto &itPlanes : planes){
-        itPlanes->searchTarget();
+        itPlanes->searchTarget(elapsedTime);
     }
 }
-void ConcreteAircraftCarrier::move() {
+void ConcreteAircraftCarrier::move(float elapsedTime) {
     if (collision && !death) {   //verifica morte e incagliamento
         double mx;
         double dy = targetCoordinates.y - sprite.getPosition().y;
@@ -51,8 +51,8 @@ void ConcreteAircraftCarrier::move() {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
             }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * Tools::getElapsedTime() * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * Tools::getElapsedTime() * acceleration / 10;
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
             rotate(mx, rotatingInPlaceMult);
         } else {
@@ -97,10 +97,10 @@ void ConcreteAircraftCarrier::attachBar(const std::shared_ptr<BarInterface> &bar
 void ConcreteAircraftCarrier::detachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.remove(bar);
 }
-bool ConcreteAircraftCarrier::searchTarget() {
-    move();
+bool ConcreteAircraftCarrier::searchTarget(float elapsedTime) {
+    move(elapsedTime);
     if(canEngage())
-        attack();
+        attack(elapsedTime);
 }
 float ConcreteAircraftCarrier::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;

@@ -13,7 +13,7 @@ void ConcreteArsenal::update() {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
-void ConcreteArsenal::searchTarget() {
+void ConcreteArsenal::searchTarget(float elapsedTime) {
     std::shared_ptr<WarShip> target;
     float distance;
     float targetDistance = 999999;
@@ -30,7 +30,7 @@ void ConcreteArsenal::searchTarget() {
     }
     if (targetDistance != 999999) {
         if (!target->isDeath()) {
-            attack(const_cast<sf::Vector2f &>(target->getSprite().getPosition()));
+            attack(const_cast<sf::Vector2f &>(target->getSprite().getPosition()),elapsedTime);
         } else {  //Il proiettile può raggiungere il bersaglio anche se chi lo spara muore
             ammoType->reachTarget();
         }
@@ -107,9 +107,9 @@ void ConcreteArsenal::rotate(sf::Vector2f &coord) {
     mx = -180 + ToolBox::calculateMx(dx, dy);
     sprite.setRotation(mx);
 }
-float ConcreteArsenal::attack(sf::Vector2f &coord) {
+float ConcreteArsenal::attack(sf::Vector2f &coord,float elapsedTime) {
     rotate(coord);
-    if (abs(countdown - Tools::getElapsedTime()) <= Tools::getElapsedTime()) {  //Verifica che il cannone abbia ricaricato e quindi imposta lo stato di sparo
+    if (abs(countdown - elapsedTime) <= elapsedTime) {  //Verifica che il cannone abbia ricaricato e quindi imposta lo stato di sparo
         sf::Vector2f targetPosition;
         targetPosition = coord;
         Dice dice(11, targetPosition.x);
@@ -121,7 +121,7 @@ float ConcreteArsenal::attack(sf::Vector2f &coord) {
         countdown=reloadTime;
         ammoType->initializeBullet(sprite.getPosition(),targetPosition);
     } else {
-        countdown=countdown - Tools::getElapsedTime();
+        countdown=countdown - elapsedTime;
     }
     if ((abs(ammoType->getSprite().getPosition().x -ammoType->getTargetPoint().x) >1 ||abs(ammoType->getSprite().getPosition().y -ammoType->getTargetPoint().y) >1)) { //Controlla se il proiettile ha raggiunto le coordinate prefissatammoType->reachTarget();
     } else {

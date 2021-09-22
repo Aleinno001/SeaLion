@@ -11,7 +11,7 @@ public:
     ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo, int firepower, int le,int wi, std::string &texName, WarShip &subject, float posX, float posY);
     std::shared_ptr<Bullet> getAmmoType() override;
     void update() override;
-    void searchTarget() override;
+    void searchTarget(float elapsedTime) override;
     bool setUpSprite(std::string textureName) override;
     void removeMeFromTheList() override;
     float getRangeOfFire() const override;
@@ -30,7 +30,7 @@ public:
     virtual void drawEquipment(sf::RenderWindow &window) override;
 protected:
     void rotate(sf::Vector2f &coord) override;
-    float attack(sf::Vector2f &coord) override;
+    float attack(sf::Vector2f &coord,float elapsedTime) override;
     bool engage(sf::Vector2f &coord,bool concealed) override;
 private:
     WarShip &subject_;

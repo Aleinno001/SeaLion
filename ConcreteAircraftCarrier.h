@@ -16,7 +16,7 @@ public:
     void notifyPlanes() override;
     void attachPlanes(const std::shared_ptr<WarPlane> &warPlane) override;
     void detachPlanes(const std::shared_ptr<WarPlane> &warPlane) override;
-    bool searchTarget() override;
+    bool searchTarget(float elapsedTime) override;
     void notifyArsenals() const override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;
     void detach(const std::shared_ptr<Arsenal> &gun) override;
@@ -27,8 +27,8 @@ public:
     void setMvcTarget(std::shared_ptr<WarShip> target) override;
     void drawEquipment(sf::RenderWindow &window) override;
 protected:
-    void move() override;
-    void attack() override;
+    void move(float elapsedTime) override;
+    void attack(float elapsedTime) override;
     float rotate(float mx, float rotatingInPlaceMult) override;
     bool canEngage() override;
 };

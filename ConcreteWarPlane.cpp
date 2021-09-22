@@ -3,13 +3,13 @@
 //
 #include "ConcreteWarPlane.h"
 
-void ConcreteWarPlane::attack() {
+void ConcreteWarPlane::attack(float elapsedTime) {
     if(currentCoolDown <= 0){
         target->setDamage(ammoDamage);
         target->notifyBarsDamage();//notify per Observer Bars
         currentCoolDown = coolDown;
     } else {
-        currentCoolDown -= Tools::getElapsedTime();
+        currentCoolDown -= elapsedTime;
     }
 }
 void ConcreteWarPlane::update() {
@@ -20,11 +20,11 @@ void ConcreteWarPlane::update() {
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
 }
-bool ConcreteWarPlane::searchTarget() {
+bool ConcreteWarPlane::searchTarget(float elapsedTime) {
     if(target.get()==&subject_) {
-        move();
+        move(elapsedTime);
         if (canEngage())
-            attack();
+            attack(elapsedTime);
     }
 }
 float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
@@ -51,7 +51,7 @@ bool ConcreteWarPlane::canEngage() {
     else
         return false;
 }
-void ConcreteWarPlane::move() {
+void ConcreteWarPlane::move(float elapsedTime) {
     if (!death && target) {   //verifica morte e se il targe non è ancora stato assegnato
         double mx;
         double dy = target->getSprite().getPosition().y - sprite.getPosition().y;
@@ -74,8 +74,8 @@ void ConcreteWarPlane::move() {
                 currentSpeed = currentSpeed - acceleration / 100;
             }
         }
-        movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *Tools::getElapsedTime()* acceleration / 10;
-        movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *Tools::getElapsedTime()* acceleration / 10;
+        movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *elapsedTime* acceleration / 10;
+        movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed *elapsedTime* acceleration / 10;
         sprite.setPosition(sprite.getPosition() + movement);
         rotate(mx, rotatingInPlaceMult);
     }

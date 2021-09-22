@@ -14,13 +14,13 @@ public:
         target=std::shared_ptr<WarShip>(&subject_);
     }
     void update() override;
-    bool searchTarget() override;
+    bool searchTarget(float elapsedTime) override;
     void drawEquipment(sf::RenderWindow &window) override;
 protected:
-    void attack() override;
+    void attack(float elapsedTime) override;
     float rotate(float mx, float rotatingInPlaceMult) override;
     bool canEngage() override;
-    void move() override;
+    void move(float elapsedTime) override;
 private:
     WarShip &subject_;
 };

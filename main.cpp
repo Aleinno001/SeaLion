@@ -6,8 +6,6 @@
 #include "MvcView.h"
 #include "Functions.h"
 #include "ToolBox.h"
-#include "Tools.h"
-
 int main() {
     std::vector<Fleet> fleet = Functions::alliedDummyFleet();
     sf::RenderWindow window;
@@ -37,7 +35,7 @@ int main() {
     sf::Vector2f pos;
     pos.x = 1;
     pos.y = 1;
-    Tools::reset();
+    sf::Clock clock;
     std::shared_ptr<WarShip> selectedShip;
     std::list<std::shared_ptr<WarShip>> fullNavyList;
     std::list<MvcController<Specialty,WarShip>> controllers;
@@ -60,7 +58,7 @@ int main() {
     thread_collision.detach();
     thread_tiles_effect.detach();
     thread_checkHit.detach();
-    Functions::gameLoop(width, height, settings, videoMode,window, gameWorld, fullNavyList, views,selectedShip);
+    Functions::gameLoop(width, height, settings, videoMode,window, gameWorld, fullNavyList, views,selectedShip,clock);
     return 0;
 }
 

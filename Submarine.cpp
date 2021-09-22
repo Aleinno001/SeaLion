@@ -5,12 +5,12 @@
 #include "Submarine.h"
 
 Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, const int armour, const std::string &name,const int numLCannons, const int numMCannons, const int numHCannons, const int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {}
-void Submarine::attack() {
+void Submarine::attack(float elapsedTime) {
     for(auto &iterArsenal : arsenalList){
-        iterArsenal->searchTarget();
+        iterArsenal->searchTarget(elapsedTime);
     }
 }
-void Submarine::move() {
+void Submarine::move(float elapsedTime) {
     if (collision && !death) {   //verifica morte e incagliamento
         double mx;
         double dy = targetCoordinates.y - sprite.getPosition().y;
@@ -38,8 +38,8 @@ void Submarine::move() {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
             }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * Tools::getElapsedTime() * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * Tools::getElapsedTime() * acceleration / 10;
+            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
+            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
             sprite.setPosition(sprite.getPosition() + vel);
             rotate(mx, rotatingInPlaceMult);
         } else {
@@ -77,10 +77,10 @@ void Submarine::attachBar(const std::shared_ptr<BarInterface> &bar) {
 void Submarine::detachBar(const std::shared_ptr<BarInterface> &bar) {
     bars.remove(bar);
 }
-bool Submarine::searchTarget() {
-    move();
+bool Submarine::searchTarget(float elapsedTime) {
+    move(elapsedTime);
     if(canEngage())
-        attack();
+        attack(elapsedTime);
 }
 float Submarine::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;

@@ -22,13 +22,13 @@ protected:
     sf::Texture texture;
     sf::Sprite sprite;
     virtual void rotate(sf::Vector2f &coord) = 0;
-    virtual float attack(sf::Vector2f &coord) = 0;
+    virtual float attack(sf::Vector2f &coord,float elapsedTime) = 0;
     virtual bool engage(sf::Vector2f &coord,bool concealed) = 0;
 public:
     Arsenal(float range,float reload,int maxDispersion,std::shared_ptr<Bullet> &ammo,int firepower,int le,int wi,std::string &texName):rangeOfFire(range),reloadTime(reload),maximumDispersion(maxDispersion),ammoType(ammo),firepower(firepower),length(le),width(wi),textureName(texName){}
     virtual std::shared_ptr<Bullet> getAmmoType()=0;
     virtual void update() = 0; //Metodo per design pattern observer
-    virtual void searchTarget() = 0;
+    virtual void searchTarget(float elapsedTime) = 0;
     virtual bool setUpSprite(std::string textureName)=0;
     virtual void removeMeFromTheList() = 0;//metodo per detach observer cannoni
     virtual float getRangeOfFire() const = 0;

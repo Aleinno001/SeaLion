@@ -9,7 +9,7 @@
 class ConcreteWarShip : public WarShip {
 public:
     ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, int armour, const std::string &name,int numLCannons, int numMCannons, int numHCannons, int numAntiAircraft);
-    bool searchTarget() override;
+    bool searchTarget(float elapsedTime) override;
     void notifyArsenals() const override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;
     void detach(const std::shared_ptr<Arsenal> &gun) override;
@@ -19,8 +19,8 @@ public:
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
     void drawEquipment(sf::RenderWindow &window) override;
 protected:
-    void move() override;
-    void attack() override;
+    void move(float elapsedTime) override;
+    void attack(float elapsedTime) override;
     float rotate(float mx, float rotatingInPlaceMult) override;
     bool canEngage() override;
 };

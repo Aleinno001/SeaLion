@@ -6,9 +6,6 @@
 float Tools::getElapsedTime() {
     return dt.getElapsedTime().asSeconds();
 }
-
 void Tools::reset() {
-
     dt.restart();
-
 }

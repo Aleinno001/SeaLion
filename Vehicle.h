@@ -30,8 +30,8 @@ protected:
 protected:
     virtual float rotate(float mx, float rotatingInPlaceMult)=0;
     virtual bool canEngage()=0;
-    virtual void move()=0;
-    virtual void attack()=0;
+    virtual void move(float elapsedTime)=0;
+    virtual void attack(float elapsedTime)=0;
     bool setUpSprite(const std::string &textureName){
         std::string currentDir = ToolBox::GetCurrentWorkingDir();
         std::string unitTestingPath = "UnitTesting";
@@ -53,7 +53,7 @@ protected:
 public:
     Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string &nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0){}
     virtual const std::string &getNationality(){return nationality;}
-    virtual bool searchTarget()=0;
+    virtual bool searchTarget(float elapsedTime)=0;
     double getAcceleration() const {return acceleration;}
     void setAcceleration(double accel) {Vehicle::acceleration = accel;}
     bool isDeath() const {return death;}
