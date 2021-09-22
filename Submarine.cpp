@@ -4,11 +4,14 @@
 
 #include "Submarine.h"
 
-Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons, int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {}
+Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons, int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {
+    setUpSprite(name);
+    sprite.setOrigin(width/2,length/2);
+    sprite.setPosition(posX,posY);
+    targetCoordinates= sprite.getPosition();
+}
 void Submarine::attack(float elapsedTime) {
-    for(auto &iterArsenal : arsenalList){
-        iterArsenal->searchTarget(elapsedTime);
-    }
+
 }
 void Submarine::move(float elapsedTime) {
     if (collision && !death) {   //verifica morte e incagliamento
@@ -51,9 +54,7 @@ void Submarine::move(float elapsedTime) {
     }
 }
 void Submarine::notifyArsenals() const {
-    for(auto &iterArsenal : arsenalList){
-        iterArsenal->update();
-    }
+
 }
 void Submarine::attach(const std::shared_ptr<Arsenal> &gun) {
     arsenalList.push_back(gun);

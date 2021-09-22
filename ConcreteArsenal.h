@@ -8,7 +8,7 @@
 
 class ConcreteArsenal: public Arsenal {
 public:
-    ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo, int firepower, int le,int wi, std::string &texName, WarShip &subject, float posX, float posY);
+    ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo, int firepower, int le,int wi, std::string texName, WarShip &subject, float posX, float posY);
     std::shared_ptr<Bullet> getAmmoType() override;
     void update() override;
     void searchTarget(float elapsedTime) override;

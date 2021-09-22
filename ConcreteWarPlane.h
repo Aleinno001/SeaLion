@@ -10,8 +10,11 @@
 
 class ConcreteWarPlane : public WarPlane{
 public:
-    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat, int numAmmo, int ammoDamage,WarShip &sub) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage), subject_(sub){
+    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat, int numAmmo, int ammoDamage,WarShip &sub,std::string n) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage,n), subject_(sub){
         target=std::shared_ptr<WarShip>(&subject_);
+        WarPlane::setUpSprite(name);
+        sprite.setOrigin(width/2,length/2);
+        sprite.setPosition(x,y);
     }
     void update() override;
     bool searchTarget(float elapsedTime) override;

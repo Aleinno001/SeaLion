@@ -8,7 +8,15 @@
 #include <list>
 #include "ToolBox.h"
 #include "Collision.h"
+#include "Arsenal.h"
+#include "GameTile.h"
+#include "BarInterface.h"
 #include <math.h>
+#include <string>
+#include <utility>
+#include <vector>
+#include <memory>
+
 class Vehicle {
 protected:
     double acceleration;
@@ -27,31 +35,15 @@ protected:
     sf::Sprite sprite;
     sf::Vector2f pos;
     sf::Vector2f movement;
+    const std::string name;
 protected:
     virtual float rotate(float mx, float rotatingInPlaceMult)=0;
     virtual bool canEngage()=0;
     virtual void move(float elapsedTime)=0;
     virtual void attack(float elapsedTime)=0;
-    bool setUpSprite(const std::string &textureName){
-        std::string currentDir = ToolBox::GetCurrentWorkingDir();
-        std::string unitTestingPath = "UnitTesting";
-        std::size_t found = currentDir.find(unitTestingPath);
-        if (found != std::string::npos) {
-            currentDir.erase(found);
-            currentDir.pop_back();
-        }
-        std::string textPath;
-        textPath = currentDir + "/../Res/Buttons/" + textureName + ".png";
-        if (!Collision::CreateTextureAndBitmask(texture, textPath)) {
-            throw std::runtime_error("Path to tile filename invalid!!");
-        }
-        texture.setSmooth(true);
-        sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect(0, 0, width, length));
-        return true;
-    }
+    virtual bool setUpSprite(const std::string &textureName)=0;
 public:
-    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0){}
+    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string nat,std::string n) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0),name(n){}
     virtual const std::string &getNationality(){return nationality;}
     virtual bool searchTarget(float elapsedTime)=0;
     double getAcceleration() const {return acceleration;}

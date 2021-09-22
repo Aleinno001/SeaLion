@@ -213,54 +213,62 @@ void Functions::checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Wind
         for (auto &iteratorNavy: fullNavy) {
             for (auto &iteratorTarget: fullNavy) {
                 if (iteratorNavy != iteratorTarget) {
-                    for (auto &iteratorCannons: iteratorNavy->getArsenalList()) { // controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
-                        if (iteratorCannons->getTextureName() != "AntiAircraft" &&
-                            iteratorCannons->getTextureName() != "TorpedoTube" &&
-                            !iteratorCannons->getAmmoType()->isArrived()) {
-                            if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),iteratorTarget->getSprite()) &&
-                                !iteratorTarget->isDeath()) {
-                                double directDamage = 0;
-                                Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
-                                if (iteratorCannons->getTextureName() ==
-                                    "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
-                                    if (((critical.roll(1) - 1) * //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
-                                         ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
-                                          ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
-                                           (iteratorCannons->getAmmoType()->getSpeed() *
-                                            iteratorCannons->getAmmoType()->getSpeedMult())))) >
+                    if(iteratorNavy->getShipType()!=ShipType::Submarine) {
+                        for (auto &iteratorCannons: iteratorNavy->getArsenalList()) {// controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
+                            if (iteratorCannons->getTextureName() != "AntiAircraft" &&
+                                iteratorCannons->getTextureName() != "TorpedoTube" &&
+                                !iteratorCannons->getAmmoType()->isArrived()) {
+                                if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),
+                                                                iteratorTarget->getSprite()) &&
+                                    !iteratorTarget->isDeath()) {
+                                    double directDamage = 0;
+                                    Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
+                                    if (iteratorCannons->getTextureName() ==
+                                        "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
+                                        if (((critical.roll(1) - 1) *
+                                             //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                             ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                              ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
+                                               (iteratorCannons->getAmmoType()->getSpeed() *
+                                                iteratorCannons->getAmmoType()->getSpeedMult())))) >
                                             iteratorTarget->getArmour()) {
-                                        
-                                        directDamage =(critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *iteratorCannons->getFirepower();
+
+                                            directDamage = (critical.roll(1) - 1) *
+                                                           iteratorCannons->getAmmoType()->getDmgMult() *
+                                                           iteratorCannons->getFirepower();
+                                        }
+                                    } else if (iteratorCannons->getTextureName() ==
+                                               "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
+                                        if (((critical.roll(1) - 1) *
+                                             ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                              //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                              ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
+                                               (iteratorCannons->getAmmoType()->getSpeed() *
+                                                iteratorCannons->getAmmoType()->getSpeedMult())))) >
+                                            iteratorTarget->getArmour()) {
+                                            directDamage =
+                                                    (critical.roll(1) - 1) *
+                                                    iteratorCannons->getAmmoType()->getDmgMult() *
+                                                    iteratorCannons->getFirepower();
+                                        }
+                                    } else {  //Applica gli effetti del cannone pesante se la nave spara col cannone leggero
+                                        if (((critical.roll(1) - 1) *
+                                             ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
+                                              //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                              ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
+                                               (iteratorCannons->getAmmoType()->getSpeed() *
+                                                iteratorCannons->getAmmoType()->getSpeedMult())))) >
+                                            iteratorTarget->getArmour()) {
+                                            directDamage =
+                                                    (critical.roll(1) - 1) *
+                                                    iteratorCannons->getAmmoType()->getDmgMult() *
+                                                    iteratorCannons->getFirepower();
+                                        }
                                     }
-                                } else if (iteratorCannons->getTextureName() ==
-                                           "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
-                                    if (((critical.roll(1) - 1) *
-                                         ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
-                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
-                                          ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
-                                           (iteratorCannons->getAmmoType()->getSpeed() *
-                                            iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                        iteratorTarget->getArmour()) {
-                                        directDamage =
-                                                (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
-                                                iteratorCannons->getFirepower();
-                                    }
-                                } else {  //Applica gli effetti del cannone pesante se la nave spara col cannone leggero
-                                    if (((critical.roll(1) - 1) *
-                                         ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
-                                          //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
-                                          ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
-                                           (iteratorCannons->getAmmoType()->getSpeed() *
-                                            iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                        iteratorTarget->getArmour()) {
-                                        directDamage =
-                                                (critical.roll(1) - 1) * iteratorCannons->getAmmoType()->getDmgMult() *
-                                                iteratorCannons->getFirepower();
-                                    }
+                                    iteratorCannons->getAmmoType()->hit();
+                                    iteratorTarget->setDamage(directDamage);
+                                    iteratorTarget->notifyBarsDamage();
                                 }
-                                iteratorCannons->getAmmoType()->hit();
-                                iteratorTarget->setDamage(directDamage);
-                                iteratorTarget->notifyBarsDamage();
                             }
                         }
                     }
