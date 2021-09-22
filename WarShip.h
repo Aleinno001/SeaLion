@@ -70,5 +70,6 @@ public:
     void setTargetCoordinates(const sf::Vector2f &targetCoordinates) {WarShip::targetCoordinates = targetCoordinates;}
     const std::list<std::shared_ptr<WarShip>> &getEnemyList() const {return enemyList;}
     void setEnemyList(const std::list<std::shared_ptr<WarShip>> &enemyList) {WarShip::enemyList = enemyList;}
+    ~WarShip()=default;
 };
 #endif //SEALION_WARSHIP_H

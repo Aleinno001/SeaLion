@@ -6,7 +6,7 @@
 #define SEALION_CONCRETEAIRCRAFTCARRIER_H
 
 #include "AircraftCarrier.h"
-#include "Tools.h"
+
 
 class ConcreteAircraftCarrier : public AircraftCarrier{
 private:
@@ -26,6 +26,7 @@ public:
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
     void setMvcTarget(std::shared_ptr<WarShip> target) override;
     void drawEquipment(sf::RenderWindow &window) override;
+    ~ConcreteAircraftCarrier()=default;
 protected:
     void move(float elapsedTime) override;
     void attack(float elapsedTime) override;

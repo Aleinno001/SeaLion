@@ -9,7 +9,6 @@
 #include "GameWorld.h"
 #include "Button.h"
 #include "MvcView.h"
-#include "Tools.h"
 #include "Specialty.h"
 
 enum class windowMode {

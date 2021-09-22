@@ -45,5 +45,6 @@ public:
     virtual float getCountdown() const =0;
     virtual void setCountdown(float countdown)=0;
     virtual void drawEquipment(sf::RenderWindow &window)=0;
+    ~Arsenal()=default;
 };
 #endif //SEALION_ARSENAL_H

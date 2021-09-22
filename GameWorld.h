@@ -86,5 +86,6 @@ public:
     std::list<std::shared_ptr<WarShip>> &getAlliedFleet() {return alliedFleet;}
     std::list<std::shared_ptr<WarShip>> &getEnemyFleet() {return enemyFleet;}
     int getTileDim() const;
+    ~GameWorld()=default;
 };
 #endif //SEALION_GAMEWORLD_H

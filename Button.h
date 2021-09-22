@@ -29,6 +29,7 @@ public:
     sf::Sprite &getSprite();
     void setClicked(bool clickable);
     bool isClicked() const;
+    ~Button()=default;
 };
 
 

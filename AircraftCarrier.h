@@ -19,6 +19,7 @@ public:
     virtual void detachPlanes(const std::shared_ptr<WarPlane> &warPlane)=0;
     int getNumPlanes() const {return numPlanes;}
     std::list<std::shared_ptr<WarPlane>> &getPlanes() {return planes;}
+    ~AircraftCarrier()=default;
 };
 
 #endif //SEALION_AIRCRAFTCARRIER_H

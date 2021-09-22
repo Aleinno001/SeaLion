@@ -6,7 +6,7 @@
 #include "WarPlane.h"
 #include "ConcreteWarShip.h"
 #include "ToolBox.h"
-#include "Tools.h"
+
 
 class ConcreteWarPlane : public WarPlane{
 public:
@@ -16,6 +16,7 @@ public:
     void update() override;
     bool searchTarget(float elapsedTime) override;
     void drawEquipment(sf::RenderWindow &window) override;
+    ~ConcreteWarPlane()=default;
 protected:
     void attack(float elapsedTime) override;
     float rotate(float mx, float rotatingInPlaceMult) override;

@@ -56,6 +56,7 @@ public:
     int getLength() const;
     void initializeBullet(sf::Vector2f startPoint, sf::Vector2f target);
     void drawEquipment(sf::RenderWindow &window);
+    ~Bullet()=default;
 };
 
 

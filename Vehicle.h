@@ -85,6 +85,7 @@ public:
         hp = hp - damage;
     }
     virtual void drawEquipment(sf::RenderWindow &window)=0;
+    ~Vehicle()=default;
 };
 
 #endif //SEALION_VEHICLE_H

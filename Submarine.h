@@ -6,7 +6,6 @@
 #define SEALION_SUBMARINE_H
 
 #include "Specialty.h"
-#include "Tools.h"
 
 class Submarine : public  Specialty{
 private:
@@ -23,6 +22,7 @@ public:
     void detachBar(const std::shared_ptr<BarInterface> &bar) override;
     void setMvcTarget(std::shared_ptr<WarShip> target) override;
     void drawEquipment(sf::RenderWindow &window) override;
+    ~Submarine()=default;
 protected:
     void move(float elapsedTime) override;
     void attack(float elapsedTime) override;

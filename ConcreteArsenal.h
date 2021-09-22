@@ -5,7 +5,7 @@
 #define SEALION_CONCRETEARSENAL_H
 #include "Arsenal.h"
 #include "WarShip.h"
-#include "Tools.h"
+
 class ConcreteArsenal: public Arsenal {
 public:
     ConcreteArsenal(float range, float reload, int maxDispersion, std::shared_ptr<Bullet> &ammo, int firepower, int le,int wi, std::string &texName, WarShip &subject, float posX, float posY);
@@ -28,6 +28,7 @@ public:
     float getCountdown() const override;
     void setCountdown(float countdown) override;
     virtual void drawEquipment(sf::RenderWindow &window) override;
+    ~ConcreteArsenal()=default;
 protected:
     void rotate(sf::Vector2f &coord) override;
     float attack(sf::Vector2f &coord,float elapsedTime) override;

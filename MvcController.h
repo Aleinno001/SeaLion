@@ -14,6 +14,7 @@ public:
     T &getModel() const{
         return model;
     };
+    ~MvcController()=default;
 private:
     T &model;
 };
