@@ -37,8 +37,7 @@ int main() {
     sf::Vector2f pos;
     pos.x = 1;
     pos.y = 1;
-    sf::Clock c;
-    Tools::dt = c.restart().asSeconds();
+    Tools::reset();
     std::shared_ptr<WarShip> selectedShip;
     std::list<std::shared_ptr<WarShip>> fullNavyList;
     std::list<MvcController<Specialty,WarShip>> controllers;

@@ -9,9 +9,10 @@
 
 class Tools {
 public:
-    static float dt;
+    static sf::Clock dt;
 public:
     static float getElapsedTime();
+    static void reset();
 };
 
 #endif //SEALION_TOOLS_H

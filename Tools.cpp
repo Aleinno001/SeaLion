@@ -4,5 +4,11 @@
 
 #include "Tools.h"
 float Tools::getElapsedTime() {
-    return dt;
+    return dt.getElapsedTime().asSeconds();
+}
+
+void Tools::reset() {
+
+    dt.restart();
+
 }
