@@ -8,7 +8,7 @@
 
 class ConcreteWarShip : public WarShip {
 public:
-    ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, int armour, const std::string &name,int numLCannons, int numMCannons, int numHCannons, int numAntiAircraft);
+    ConcreteWarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string &nat,ShipType shipType, ModelType modelType, int armour, std::string &name,int numLCannons, int numMCannons, int numHCannons, int numAntiAircraft);
     bool searchTarget(float elapsedTime) override;
     void notifyArsenals() const override;
     void attach(const std::shared_ptr<Arsenal> &gun) override;

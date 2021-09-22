@@ -51,7 +51,7 @@ protected:
         return true;
     }
 public:
-    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string &nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0){}
+    Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string& nat) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0){}
     virtual const std::string &getNationality(){return nationality;}
     virtual bool searchTarget(float elapsedTime)=0;
     double getAcceleration() const {return acceleration;}
