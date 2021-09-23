@@ -2073,6 +2073,7 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
         }
     }
     ship->setTargetCoordinates(ship->getSprite().getPosition());
+    ship->notifyBars();
     return ship;
 }
 std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarShip> &ship) {
@@ -2090,5 +2091,6 @@ std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarS
         }
     }
     ship->setTargetCoordinates(ship->getSprite().getPosition());
+    ship->notifyBars();
     return ship;
 }

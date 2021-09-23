@@ -135,7 +135,9 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             sf::Vector2f coords(event.mouseButton.x, event.mouseButton.y);
             auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
             for (auto &it : gameWorld.getAlliedFleet()) {                                               //
-                if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {     //
+                if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {
+                    if(selectedShip)
+                        selectedShip->setSelected(false);                                                                                    //
                     selectedShip=it;                                                                    //  Fase di selezionamento della nave da parte dell'utente
                     it->setSelected(true);                                                      //
                     return;                                                                             //
@@ -152,14 +154,17 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
                 }else{
                     for (auto &it : gameWorld.getEnemyFleet()) {                                                    //
                         if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {         // Caso bottone del Mvc cliccato
-                            itView.click(it);                                                                    //
+                            itView.click(it);
+                            selectedShip->setSelected(false);                                               //
                             return;                                                                                 //  Imposta i bersagli delle classi che implementano Mvc
                         }                                                                                           //
                     }
                 }
             }
-            if(selectedShip)
+            if(selectedShip) {
                 selectedShip->setTargetCoordinates(coords);
+                selectedShip->setSelected(false);
+            }
         }
             break;
         case sf::Mouse::Right:
