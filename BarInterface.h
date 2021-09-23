@@ -23,7 +23,7 @@ public:
     virtual void updateBarsDamage() = 0;
     void resetOrigin();
     sf::Sprite getSprite() const;
-    virtual void repositionBar (sf::Vector2f v) = 0;
+    virtual void repositionBar (sf::Vector2f v, bool enemy = false) = 0;
     virtual void drawEquipment(sf::RenderWindow &window)=0;
 };
 

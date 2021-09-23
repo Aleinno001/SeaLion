@@ -31,7 +31,12 @@ void LifeBar::drawEquipment(sf::RenderWindow &window) {
     window.draw(life);
 }
 
-void LifeBar::repositionBar(sf::Vector2f v) {
+void LifeBar::repositionBar(sf::Vector2f v, bool enemy) {
     life.setPosition(subject_.getSprite().getPosition());
-    life.move(0.50 * subject_.getWidth(), 0);
+    if(enemy){
+        life.move(- 0.50 * subject_.getWidth(), 0);
+    } else {
+        life.move(0.50 * subject_.getWidth(), 0);
+    }
+
 }

@@ -21,8 +21,7 @@ public:
     void updateBarsDamage() override;
     void drawEquipment(sf::RenderWindow &window) override;
     ~LifeBar()=default;
-
-    void repositionBar(sf::Vector2f v) override;
+    void repositionBar(sf::Vector2f v, bool enemy) override;
 };
 
 
