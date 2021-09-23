@@ -103,7 +103,7 @@ public:
     void setSelected(bool selected) {WarShip::selected = selected;}
     std::list<std::shared_ptr<Arsenal>> &getArsenalList(){return arsenalList;}
     void setArsenalList(const std::list<std::shared_ptr<Arsenal>> &arsenalList) {WarShip::arsenalList = arsenalList;}
-    const std::list<std::shared_ptr<BarInterface>> &getBars() const {return bars;}
+    std::list<std::shared_ptr<BarInterface>> &getBars() {return bars;}
     void setBars(const std::list<std::shared_ptr<BarInterface>> &bars) {WarShip::bars = bars;}
     const sf::Vector2f &getTargetCoordinates() const {return targetCoordinates;}
     void setTargetCoordinates(const sf::Vector2f &targetCoordinates) {WarShip::targetCoordinates = targetCoordinates;}
