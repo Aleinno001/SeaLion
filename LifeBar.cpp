@@ -30,3 +30,8 @@ void LifeBar::updateBarsDamage() {
 void LifeBar::drawEquipment(sf::RenderWindow &window) {
     window.draw(life);
 }
+
+void LifeBar::repositionBar(sf::Vector2f v) {
+    life.setPosition(subject_.getSprite().getPosition());
+    life.move(0.50 * subject_.getWidth(), 0);
+}
