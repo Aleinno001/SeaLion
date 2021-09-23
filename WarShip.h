@@ -25,6 +25,7 @@ enum class ModelType {
 };
 class WarShip : public Vehicle {
 protected:
+    float dmX;
     ShipType shipType;
     ModelType modelType;
     const int armour;
@@ -39,7 +40,7 @@ protected:
     std::list<std::shared_ptr<WarShip>> enemyList;
     sf::Vector2f targetCoordinates;
 public:
-    WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons,int numAntiAircraft) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat,name),shipType(shipType), modelType(modelType),armour(armour),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft) {}
+    WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons,int numAntiAircraft) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat,name),shipType(shipType), modelType(modelType),armour(armour),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft), dmX(0) {}
 protected:
     bool setUpSprite(const std::string &textureName) override {
         std::string currentDir = ToolBox::GetCurrentWorkingDir();
@@ -97,6 +98,7 @@ public:
     int getNumAntiAircraft() const {return numAntiAircraft;}
     bool isConcealed() const {return concealed;}
     void setConcealed(bool concealed) {WarShip::concealed = concealed;}
+    float getDmX() const {return dmX;}
     bool isSelected() const {return selected;}
     void setSelected(bool selected) {WarShip::selected = selected;}
     std::list<std::shared_ptr<Arsenal>> &getArsenalList(){return arsenalList;}

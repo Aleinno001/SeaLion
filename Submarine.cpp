@@ -14,20 +14,17 @@ void Submarine::attack(float elapsedTime) {
 
 }
 void Submarine::move(float elapsedTime) {
-    if (collision && !death) {   //verifica morte e incagliamento
+    if (collision && !death) {
+        if (!(abs(targetCoordinates.x - sprite.getPosition().x) < 2 &&
+              abs(targetCoordinates.y - sprite.getPosition().y) < 2)) {//verifica morte e incagliamento
         double mx;
         double dy = targetCoordinates.y - sprite.getPosition().y;
         double dx = targetCoordinates.x - sprite.getPosition().x;
         float rotatingInPlaceMult = 1;
-
         mx = ToolBox::calculateMx(dx, dy);
-
         if (currentSpeed <= maxSpeed) {
             currentSpeed = currentSpeed + acceleration / 100;
         }
-        sf::Vector2f vel;
-        if (!(abs(targetCoordinates.x - sprite.getPosition().x) < 2 &&
-              abs(targetCoordinates.y - sprite.getPosition().y) < 2)) {  //controlla se la nave ha raggiunto la destinazine
             if (abs(sprite.getRotation() - mx) >=
                 25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
                 rotatingInPlaceMult = 3;
@@ -41,16 +38,15 @@ void Submarine::move(float elapsedTime) {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
             }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
-            sprite.setPosition(sprite.getPosition() + vel);
+            movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
+            movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
+            sprite.setPosition(sprite.getPosition() + movement);
             rotate(mx, rotatingInPlaceMult);
+            notifyArsenals();
+            notifyBars();
         } else {
             currentSpeed = 0;
         }
-
-        notifyArsenals();
-        notifyBars();
     }
 }
 void Submarine::notifyArsenals() const {
@@ -97,6 +93,7 @@ float Submarine::rotate(float mx, float rotatingInPlaceMult) {
             sprite.rotate(deltaMx);
         }
     }
+    dmX = deltaMx;
     return deltaMx;
 }
 bool Submarine::canEngage() {    //Controlla se nessun cannone può ingaggiare

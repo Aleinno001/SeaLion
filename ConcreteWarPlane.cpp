@@ -15,12 +15,10 @@ void ConcreteWarPlane::attack(float elapsedTime) {
 void ConcreteWarPlane::update() {
     sprite.setPosition(sprite.getPosition() + subject_.getMovement());
     sprite.setRotation(subject_.getSprite().getRotation());
-    /*
     sf::Transform rotation;
-    rotation.rotate(sprite.getRotation(), subject_.getSprite().getPosition());   //FIXME da ritracciare gli aerei
+    rotation.rotate(subject_.getDmX(), subject_.getSprite().getPosition());
     sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
     sprite.setPosition(newPosition);
-     */
 }
 bool ConcreteWarPlane::searchTarget(float elapsedTime) {
     if(target.get()!=&subject_) {

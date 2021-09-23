@@ -29,7 +29,6 @@ void ConcreteWarShip::move(float elapsedTime) {
         if (currentSpeed <= maxSpeed) {
             currentSpeed = currentSpeed + acceleration / 100;
         }
-        sf::Vector2f vel;
          //controlla se la nave ha raggiunto la destinazine
             if (abs(sprite.getRotation() - mx) >=
                 25) {  //Se la rotazione da effettuare è elevata allora ruota più velocemente
@@ -44,15 +43,15 @@ void ConcreteWarShip::move(float elapsedTime) {
                     currentSpeed = currentSpeed - acceleration / 100;
                 }
             }
-            vel.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
-            vel.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
-            sprite.setPosition(sprite.getPosition() + vel);
+            movement.x = sinf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
+            movement.y = -cosf((M_PI / 180.f) * sprite.getRotation()) * currentSpeed * elapsedTime * acceleration / 10;
+            sprite.setPosition(sprite.getPosition() + movement);
             rotate(mx, rotatingInPlaceMult);
+            notifyArsenals();
+            notifyBars();
         } else {
             currentSpeed = 0;
         }
-        notifyArsenals();
-        notifyBars();
     }
 }
 void ConcreteWarShip::notifyArsenals() const {
@@ -101,6 +100,7 @@ float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
             sprite.rotate(deltaMx);
         }
     }
+    dmX = deltaMx;
     return deltaMx;
 }
 bool ConcreteWarShip::canEngage() {    //Controlla se nessun cannone può ingaggiare
