@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "Collision.h"
 #include "ToolBox.h"
-
+#include <iostream>
 class Button {
 private:
     sf::Sprite sprite;
@@ -17,8 +17,9 @@ private:
     int width;
     int length;
     bool clicked;
+    sf::Vector2f position;
 public:
-    Button(const std::string &name, const int &width, const int &length, sf::Vector2f pos);
+    Button(std::string n, const int &w, const int &l, sf::Vector2f pos);
     bool setUpSprite(std::string textureName);
     bool checkClick (sf::Vector2f clickPos);
     void setPos(const sf::Vector2f &pos);
@@ -29,6 +30,7 @@ public:
     sf::Sprite &getSprite();
     void setClicked(bool clickable);
     bool isClicked() const;
+    void drawEquipment(sf::RenderWindow &w);
     ~Button()=default;
 };
 

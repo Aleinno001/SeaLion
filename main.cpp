@@ -44,6 +44,8 @@ int main() {
     Functions::prepareFullNavyList(gameWorld,fullNavyList);
     pos.x = window.getSize().x - 15;
     pos.y = window.getSize().y - 15;
+    buttonPos.x=width;
+    buttonPos.y=height;
     Button button("airplaneButton", 30, 30, buttonPos);
     for (auto & iter : gameWorld.getAlliedFleet()) {
         if (auto *dynamic= dynamic_cast<ConcreteAircraftCarrier *>(iter.get())) {

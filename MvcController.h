@@ -8,7 +8,7 @@ template <typename T,typename D>
 class MvcController {
 public:
     explicit MvcController(T &mod) : model(mod) {};
-    void startUpEngine(std::shared_ptr<D> &target){
+    void startUpEngine(std::shared_ptr<D> target){
         model.setMvcTarget(target);
     };
     T &getModel() const{

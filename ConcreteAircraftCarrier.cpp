@@ -3,6 +3,8 @@
 //
 
 #include "ConcreteAircraftCarrier.h"
+#include "MvcObserver.h"
+
 ConcreteAircraftCarrier::ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi,bool col, std::string nat, ShipType shipType, ModelType modelType, int armour,  std::string name, int numLCannons,int numMCannons,int numHCannons,int numAntiAircraft, int numPlanes) : AircraftCarrier(x, y, ac,maxVel, hp,le, wi,col, nat,shipType,modelType,armour,name,numLCannons,numMCannons,numHCannons,numAntiAircraft,numPlanes) {
     setUpSprite(name);
     sprite.setOrigin(width/2,length/2);

@@ -6,11 +6,9 @@
 #define SEALION_CONCRETEAIRCRAFTCARRIER_H
 
 #include "AircraftCarrier.h"
-
+#include "MvcView.h"
 
 class ConcreteAircraftCarrier : public AircraftCarrier{
-private:
-    std::list<std::shared_ptr<MvcObserver>> listMvcObservers;
 public:
     ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string nat, ShipType shipType, ModelType modelType,int armour, std::string name,  int numLCannons, int numMCannons, int numHCannons, int numAntiAircraft, int numPlanes);
     void notifyPlanes() override;
@@ -26,6 +24,7 @@ public:
     void detachBar(std::shared_ptr<BarInterface> bar) override;
     void setMvcTarget(std::shared_ptr<WarShip> target) override;
     void drawEquipment(sf::RenderWindow &window) override;
+public:
     ~ConcreteAircraftCarrier()=default;
 protected:
     void move(float elapsedTime) override;
