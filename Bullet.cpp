@@ -32,7 +32,6 @@ bool Bullet::setUpSprite(const std::string& textureName) {
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
-    sprite.setScale(1.5, 1.5);
     return true;
 }
 void Bullet::resetOrigin() {
@@ -43,10 +42,7 @@ void Bullet::reachTarget() {
     sf::Vector2f vel;
     double dy = targetPoint.y - startPoint.y;
     double dx = targetPoint.x - startPoint.x;
-    mx = 90 + atan2(dy, dx) * 180 / M_PI;
-    if (mx < 0) {
-        mx = 360 + mx;
-    }
+    mx = ToolBox::calculateMx(dx,dy);
     if (currentSpeed == 0) {
         currentSpeed = speed;
     } else if (currentSpeed < 0) {

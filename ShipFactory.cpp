@@ -1071,7 +1071,7 @@ ShipFactory::trenchantBuilder(sf::Vector2i &coordinates){
     WeaponFactory factory;
     int shipWidth = 14;
     int shipHeight = 85;
-    std::shared_ptr<WarShip> Trenchant(new Submarine(coordinates.x, coordinates.y, 2, 56, 5800,shipHeight,shipWidth,true,"Uk",ShipType::Submarine,ModelType::Trenchant,0,"Triton",0,0,0,0));
+    std::shared_ptr<WarShip> Trenchant(new Submarine(coordinates.x, coordinates.y, 2, 56, 5800,shipHeight,shipWidth,true,"Uk",ShipType::Submarine,ModelType::Trenchant,0,"Trenchant",0,0,0,0));
     /*for (int i = 0; i < 5; i++)
         Trenchant->attach(factory.createSpecialWeapon(WeaponType::torpedo, *Trenchant));
     */std::shared_ptr<LifeBar> life(new LifeBar(*Trenchant));
@@ -2060,8 +2060,9 @@ std::shared_ptr<WarShip> &ShipFactory::repositionEnemyShip(std::shared_ptr<WarSh
     if(ship->getShipType()!=ShipType::Submarine) {
         for (auto &it: ship->getArsenalList()) {
             it->getSprite().move(0, ship->getLength() / 2);
-            it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,
-                                 (ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
+            it->getSprite().move((ship->getSprite().getPosition().x - it->getSprite().getPosition().x) * 2,(ship->getSprite().getPosition().y - it->getSprite().getPosition().y) * 2);
+            it->getSprite().move(-(it->getWidth()/2),-(it->getLength()/2));
+            it->getSprite().rotate(180);
         }
     }
     if(ConcreteAircraftCarrier * pShip = dynamic_cast<ConcreteAircraftCarrier*> (ship.get())) {
@@ -2085,7 +2086,7 @@ std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarS
     if(ship->getShipType()!=ShipType::Submarine) {
         for (auto &it: ship->getArsenalList()) {
             it->getSprite().setPosition(it->getSprite().getPosition().x,it->getSprite().getPosition().y-(ship->getLength()/2));
-            it->getSprite().rotate(180);
+            it->getSprite().move((it->getWidth()/2),(it->getLength()/2));
         }
     }
     if(ConcreteAircraftCarrier * pShip = dynamic_cast<ConcreteAircraftCarrier*> (ship.get())) {
@@ -2097,7 +2098,6 @@ std::shared_ptr<WarShip> &ShipFactory::repositionAlliedShip(std::shared_ptr<WarS
     ship->notifyBars();
     for(auto &it: ship->getBars()){
         it->repositionBar(ship->getSprite().getPosition());
-        std::cerr << it->getSprite().getPosition().x << std::endl;
     }
     return ship;
 }

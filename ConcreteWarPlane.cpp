@@ -82,10 +82,12 @@ void ConcreteWarPlane::move(float elapsedTime) {
 }
 void ConcreteWarPlane::drawEquipment(sf::RenderWindow &window) {
     if (subject_.isDeath()) {
-        sprite.setColor(sf::Color::Black);
+        sprite.setColor(sf::Color(0,0,0,160));
     } else if (subject_.isSelected()) {
         sprite.setColor(sf::Color::Green);
-    } else {
+    } else if(subject_.isConcealed()){
+        sprite.setColor(sf::Color(255,255,255,130));
+    }else{
         sprite.setColor(sf::Color::White);
     }
     window.draw(sprite);
