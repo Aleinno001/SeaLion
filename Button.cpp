@@ -4,12 +4,16 @@
 
 #include "Button.h"
 
-Button::Button(const std::string &name, const int &width, const int &length, sf::Vector2f pos) : name(name),
-                                                                                                 width(width),
-                                                                                                 length(length) {
+#include <utility>
+
+Button::Button(std::string n, const int &w, const int &l, sf::Vector2f pos) {
+    name = std::move(n);
+    width=w;
+    length=l;
+    position=pos;
     setUpSprite(name);
     sprite.setOrigin(width / 2, length / 2);
-    sprite.setPosition(pos);
+    sprite.setPosition(pos.x-width,pos.y-length);
     clicked = false;
 }
 bool Button::setUpSprite(std::string textureName) {
@@ -60,4 +64,7 @@ void Button::setClicked(bool clickable) {
 }
 bool Button::isClicked() const {
     return clicked;
+}
+void Button::drawEquipment(sf::RenderWindow &w) {
+    w.draw(sprite);
 }

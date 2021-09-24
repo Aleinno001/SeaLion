@@ -2,6 +2,8 @@
 // Created by alessandro on 20/09/21.
 //
 #include "Functions.h"
+#include "MvcObserver.h"
+
 void Functions::f (std::list<std::shared_ptr<WarShip>> &fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
     while (window.isOpen()) {
         for (auto &iter:fullNavyCollision) {
@@ -201,14 +203,18 @@ void Functions::gameLoop(int &width, int &height,  sf::ContextSettings settings,
             }
         }
         window.clear();
-        drawAll(gameWorld,fullNavyList,window);
+        drawAll(gameWorld,fullNavyList,window,views);
         update(fullNavyList,clock.restart().asSeconds());
         fpsManagment(window,clock.restart().asSeconds());//calcola e mostra fps con l'aggiunta dei font
     }
 }
-void Functions::drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList,sf::RenderWindow &window){
+void Functions::drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList,sf::RenderWindow &window,std::list<MvcView<Specialty,WarShip>> &views){
     drawMap(window, gameWorld);
-
+    for(auto &it : views){
+        if(it.getModel().isSelected()){
+            window.draw(it.getButton().getSprite());
+        }
+    }
     for(auto &itShips : fullNavyList){
         itShips->drawEquipment(window);
     }
@@ -220,8 +226,8 @@ void Functions::checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Wind
                 if (iteratorNavy != iteratorTarget) {
                     if(iteratorNavy->getShipType()!=ShipType::Submarine) {
                         for (auto &iteratorCannons: iteratorNavy->getArsenalList()) {// controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
-                            if (iteratorCannons->getTextureName() != "AntiAircraft" &&
-                                iteratorCannons->getTextureName() != "TorpedoTube" &&
+                            if (/*iteratorCannons->getTextureName() != "AntiAircraft" &&
+                                iteratorCannons->getTextureName() != "TorpedoTube" &&*/
                                 !iteratorCannons->getAmmoType()->isArrived()) {
                                 if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),
                                                                 iteratorTarget->getSprite()) &&

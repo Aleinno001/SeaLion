@@ -27,7 +27,7 @@ namespace Functions {
     void gameLoop(int &width, int &height, sf::ContextSettings settings, windowMode &videoMode,sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList, std::list<MvcView<Specialty,WarShip>> &views,std::shared_ptr<WarShip> selectedShip,sf::Clock &clock);
     void checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Window &window);
     void tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision);
-    void drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision,sf::RenderWindow &window);
+    void drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision,sf::RenderWindow &window,std::list<MvcView<Specialty,WarShip>> &views);
     void settingTargets(GameWorld &gameWorld);
 }
 

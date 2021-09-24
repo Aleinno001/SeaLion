@@ -4,7 +4,8 @@
 
 #ifndef SEALION_MVCOBSERVER_H
 #define SEALION_MVCOBSERVER_H
-
+#include "Button.h"
+#include "MvcController.h"
 
 class MvcObserver {
 public:
