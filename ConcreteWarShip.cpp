@@ -112,9 +112,11 @@ bool ConcreteWarShip::canEngage() {    //Controlla se nessun cannone può ingagg
 }
 void ConcreteWarShip::drawEquipment(sf::RenderWindow &window) {
     if (death) {
-        sprite.setColor(sf::Color::Transparent);
+        sprite.setColor(sf::Color(0,0,0,160));
     } else if (selected) {
         sprite.setColor(sf::Color::Green);
+    } else if(concealed) {
+        sprite.setColor(sf::Color(255,255,255,130));
     } else {
         sprite.setColor(sf::Color::White);
     }

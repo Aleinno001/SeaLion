@@ -322,3 +322,11 @@ void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorl
         }
     }
 }
+void Functions::settingTargets(GameWorld &gameWorld){
+    for(auto &itAllied : gameWorld.getAlliedFleet()){
+        itAllied->setEnemyList(gameWorld.getEnemyFleet());
+    }
+    for(auto &itEnemy : gameWorld.getEnemyFleet()){
+        itEnemy->setEnemyList(gameWorld.getAlliedFleet());
+    }
+}

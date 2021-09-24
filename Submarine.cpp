@@ -109,10 +109,12 @@ void Submarine::setMvcTarget(std::shared_ptr<WarShip> target) {
 
 void Submarine::drawEquipment(sf::RenderWindow &window) {
     if (death) {
-        sprite.setColor(sf::Color::Transparent);
+        sprite.setColor(sf::Color(0,0,0,160));
     } else if (selected) {
         sprite.setColor(sf::Color::Green);
-    } else {
+    } else if(concealed){
+        sprite.setColor(sf::Color(255,255,255,130));
+    }else{
         sprite.setColor(sf::Color::White);
     }
     window.draw(sprite);

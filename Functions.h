@@ -17,7 +17,6 @@ enum class windowMode {
 };
 
 namespace Functions {
-    void searchAirplane(sf::RenderWindow &window, GameWorld &gameWorld);
     void f (std::list<std::shared_ptr<WarShip>> &fullNavy, GameWorld &gameWorld,  sf::RenderWindow &window);
     std::vector<Fleet> alliedDummyFleet();
     void fpsManagment(sf::RenderWindow &window,float elapsedTime);
@@ -29,6 +28,7 @@ namespace Functions {
     void checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Window &window);
     void tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision);
     void drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyCollision,sf::RenderWindow &window);
+    void settingTargets(GameWorld &gameWorld);
 }
 
 #endif //SEALION_FUNCTIONS_H

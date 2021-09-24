@@ -101,7 +101,7 @@ void ConcreteArsenal::rotate(sf::Vector2f &coord) {
     double dx;
     dy = coord.y - sprite.getPosition().y;
     dx = coord.x - sprite.getPosition().x;
-    mx = -180 + ToolBox::calculateMx(dx, dy);
+    mx =  ToolBox::calculateMx(dx, dy);
     sprite.setRotation(mx);
 }
 float ConcreteArsenal::attack(sf::Vector2f &coord,float elapsedTime) {
@@ -120,7 +120,8 @@ float ConcreteArsenal::attack(sf::Vector2f &coord,float elapsedTime) {
     } else {
         countdown=countdown - elapsedTime;
     }
-    if ((abs(ammoType->getSprite().getPosition().x -ammoType->getTargetPoint().x) >1 ||abs(ammoType->getSprite().getPosition().y -ammoType->getTargetPoint().y) >1)) { //Controlla se il proiettile ha raggiunto le coordinate prefissatammoType->reachTarget();
+    if ((abs(ammoType->getSprite().getPosition().x -ammoType->getTargetPoint().x) >1 ||abs(ammoType->getSprite().getPosition().y -ammoType->getTargetPoint().y) >1)) { //Controlla se il proiettile ha raggiunto le coordinate prefissat
+        ammoType->reachTarget();
     } else {
         ammoType->hit();
     }
@@ -140,9 +141,11 @@ ConcreteArsenal::ConcreteArsenal(float range, float reload, int maxDispersion, s
 
 void ConcreteArsenal::drawEquipment(sf::RenderWindow &window) {
     if (subject_.isDeath()) {
-        sprite.setColor(sf::Color::Black);
+        sprite.setColor(sf::Color(0,0,0,160));
     } else if (subject_.isSelected()) {
         sprite.setColor(sf::Color::Green);
+    } else if(subject_.isConcealed()){
+        sprite.setColor(sf::Color(255,255,255,130));
     } else {
         sprite.setColor(sf::Color::White);
     }
