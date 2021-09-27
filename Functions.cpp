@@ -139,7 +139,7 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             for (auto &it : gameWorld.getAlliedFleet()) {                                               //
                 if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {
                     if(selectedShip)
-                        selectedShip->setSelected(false);                                                                                    //
+                        selectedShip->setSelected(false);                                        //
                     selectedShip=it;                                                                    //  Fase di selezionamento della nave da parte dell'utente
                     it->setSelected(true);                                                      //
                     return;                                                                             //
@@ -147,17 +147,19 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
             }                                                                                           //
             for (auto &itView: views) {
                 if(!itView.getButton().isClicked()) {                                                               //
-                    itView.getButton().getSprite().setColor(sf::Color(255,255,255));         //
+                    itView.getButton().getSprite().setColor(sf::Color(255,255,255));          //
                     if (itView.getButton().getSprite().getGlobalBounds().contains(translated_pos)) {                //  Caso bottone del Mvc non è stato ancora cliccato
                         itView.getButton().getSprite().setColor(sf::Color(0, 180,0));         //
-                        itView.getButton().setClicked(true);                                               //   Individua il click e imposta lo stato di cliccato
+                        itView.getButton().setClicked(true);                         //   Individua il click e imposta lo stato di cliccato
                         return;                                                                                     //
                     }                                                                                               //
-                }else{
+                }else if(&itView.getModel() == selectedShip.get()){
                     for (auto &it : gameWorld.getEnemyFleet()) {                                                    //
                         if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {         // Caso bottone del Mvc cliccato
                             itView.click(it);
-                            selectedShip->setSelected(false);                                               //
+                            selectedShip->setSelected(false);
+                            itView.getButton().setClicked(false);
+                            itView.getButton().getSprite().setColor(sf::Color(255,255,255));   //
                             return;                                                                                 //  Imposta i bersagli delle classi che implementano Mvc
                         }                                                                                           //
                     }
