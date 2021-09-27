@@ -13,15 +13,17 @@ void ConcreteWarPlane::attack(float elapsedTime) {
     }
 }
 void ConcreteWarPlane::update() {
-    sprite.setPosition(sprite.getPosition() + subject_.getMovement());
-    sprite.setRotation(subject_.getSprite().getRotation());
-    sf::Transform rotation;
-    rotation.rotate(subject_.getDmX(), subject_.getSprite().getPosition());
-    sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
-    sprite.setPosition(newPosition);
+    if(target.get() == nullptr) {
+        sprite.setPosition(sprite.getPosition() + subject_.getMovement());
+        sprite.setRotation(subject_.getSprite().getRotation());
+        sf::Transform rotation;
+        rotation.rotate(subject_.getDmX(), subject_.getSprite().getPosition());
+        sf::Vector2f newPosition = rotation.transformPoint(sprite.getPosition());
+        sprite.setPosition(newPosition);
+    }
 }
 bool ConcreteWarPlane::searchTarget(float elapsedTime) {
-    if(target.get()!=&subject_) {
+    if(target.get() != nullptr) {
         move(elapsedTime);
         if (canEngage())
             attack(elapsedTime);
@@ -30,7 +32,7 @@ bool ConcreteWarPlane::searchTarget(float elapsedTime) {
 float ConcreteWarPlane::rotate(float mx, float rotatingInPlaceMult) {
     float deltaMx = 0;
     if (abs(sprite.getRotation() - mx) >=
-        1.5) {  // Verifica che la rotazione da effettuare sia sufficiebntemente grande (risolve un glitch grafico)
+        1.5) {  // Verifica che la rotazione da effettuare sia sufficientemente grande (risolve un glitch grafico)
         if (((mx - sprite.getRotation()) <= 180) && (mx - sprite.getRotation()) >
                                                     0) {  //Analizza le casistiche e di conseguenza ruota incrementando/decrementando l'angolo
             deltaMx = currentSpeed * acceleration * rotatingInPlaceMult / 1000;
