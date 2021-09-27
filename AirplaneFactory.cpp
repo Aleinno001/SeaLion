@@ -5,11 +5,11 @@
 #include "AirplaneFactory.h"
 
 std::unique_ptr<ConcreteWarPlane> AirplaneFactory::createBomber(int posX, int posY,std::string nat,WarShip &subject) {
-    std::unique_ptr<ConcreteWarPlane> bomber(new ConcreteWarPlane(posX,posY,3,60,500,26,35,true,nat,150,900,subject,"Bomber"));
+    std::unique_ptr<ConcreteWarPlane> bomber(new ConcreteWarPlane(posX,posY,3,60,500,26,35,true,nat,150,3,subject,"Bomber"));
     return std::move(bomber);
 }
 std::unique_ptr<ConcreteWarPlane> AirplaneFactory::createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) {
-    std::unique_ptr<ConcreteWarPlane> torpedoBomber(new ConcreteWarPlane(posX,posY,4,70,400,35,35,true,nat,20,1500,subject,"TorpedoBomber"));
+    std::unique_ptr<ConcreteWarPlane> torpedoBomber(new ConcreteWarPlane(posX,posY,4,70,400,35,35,true,nat,20,2,subject,"TorpedoBomber"));
     return std::move(torpedoBomber);
 }
 std::unique_ptr<ConcreteWarPlane> AirplaneFactory::createFighter(int posX, int posY,std::string nat,WarShip &subject) {

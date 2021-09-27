@@ -10,7 +10,7 @@
 
 class ConcreteWarPlane : public WarPlane{
 public:
-    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat, int numAmmo, int ammoDamage,WarShip &sub,std::string n) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage,n), subject_(sub){
+    ConcreteWarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat, int numAmmo, float ammoDamage,WarShip &sub,std::string n) : WarPlane(x, y, ac, maxVel, hp, le, wi, col, nat, numAmmo, ammoDamage,n), subject_(sub){
         WarPlane::setUpSprite(name);
         sprite.setOrigin(width/2,length/2);
         sprite.setPosition(x,y);

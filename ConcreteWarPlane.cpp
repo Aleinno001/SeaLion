@@ -23,7 +23,7 @@ void ConcreteWarPlane::update() {
     }
 }
 bool ConcreteWarPlane::searchTarget(float elapsedTime) {
-    if(target.get() != nullptr) {
+    if(target.get() != nullptr && !target->isConcealed()) {
         move(elapsedTime);
         if (canEngage())
             attack(elapsedTime);
@@ -54,7 +54,7 @@ bool ConcreteWarPlane::canEngage() {
         return false;
 }
 void ConcreteWarPlane::move(float elapsedTime) {
-    if (!death && target) {   //verifica morte e se il targe non è ancora stato assegnato
+    if (!death && target) {   //verifica morte e se il target non è ancora stato assegnato
         double mx;
         double dy = target->getSprite().getPosition().y - sprite.getPosition().y;
         double dx = target->getSprite().getPosition().x - sprite.getPosition().x;

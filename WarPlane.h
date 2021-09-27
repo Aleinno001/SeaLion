@@ -11,7 +11,7 @@ protected:
     float currentCoolDown{0};
     const float coolDown{6};
     int numAmmo;
-    int ammoDamage;
+    float ammoDamage;
     std::shared_ptr<WarShip> target;
     bool setUpSprite(const std::string &textureName) override {
         std::string currentDir = ToolBox::GetCurrentWorkingDir();

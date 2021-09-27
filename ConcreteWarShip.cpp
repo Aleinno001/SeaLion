@@ -105,7 +105,7 @@ float ConcreteWarShip::rotate(float mx, float rotatingInPlaceMult) {
 }
 bool ConcreteWarShip::canEngage() {    //Controlla se nessun cannone può ingaggiare
     bool result = true;
-    if(death || concealed){
+    if(death){
         result= false;
     }
     return result;

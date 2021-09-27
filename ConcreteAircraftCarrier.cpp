@@ -123,7 +123,7 @@ float ConcreteAircraftCarrier::rotate(float mx, float rotatingInPlaceMult) {
 }
 bool ConcreteAircraftCarrier::canEngage() {    //Controlla se nessun cannone può ingaggiare
     bool result = true;
-    if(death || concealed){
+    if(death){
         result= false;
     }
     return result;

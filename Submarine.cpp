@@ -98,7 +98,7 @@ float Submarine::rotate(float mx, float rotatingInPlaceMult) {
 }
 bool Submarine::canEngage() {    //Controlla se nessun cannone può ingaggiare
     bool result = true;
-    if(death || concealed){
+    if(death){
         result= false;
     }
     return result;
