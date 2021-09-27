@@ -176,12 +176,13 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
     }
 }
 void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList) {
-    for (auto & itAllied : gameWorld.getAlliedFleet()) { //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisoni
-        std::shared_ptr<WarShip>ele(itAllied.get());
-        fullNavyList.push_back(ele);
-    }
     for (auto & itEnemy : gameWorld.getEnemyFleet()) {
         std::shared_ptr<WarShip> ele (itEnemy.get());
+        fullNavyList.push_back(ele);
+    }
+    for (auto & itAllied : gameWorld.getAlliedFleet()) {
+        //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisioni
+        std::shared_ptr<WarShip>ele(itAllied.get());
         fullNavyList.push_back(ele);
     }
 }
@@ -218,7 +219,12 @@ void Functions::drawAll(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>>
         }
     }
     for(auto &itShips : fullNavyList){
-        itShips->drawEquipment(window);
+        if(itShips->getShipType() != ShipType::AircraftCarrier)
+            itShips->drawEquipment(window);
+    }
+    for(auto &itShips : fullNavyList){
+        if(itShips->getShipType() == ShipType::AircraftCarrier)
+            itShips->drawEquipment(window);
     }
 }
 void Functions::checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Window &window) {

@@ -1963,7 +1963,6 @@ std::shared_ptr<WarShip>ShipFactory::leoneBuilder(sf::Vector2i &coordinates){
     int cannonPosX = coordinates.x - (shipWidth - 1) / 2;
     int cannonPosY = coordinates.y - (shipHeight - 1) / 2;
     int numAntiAir = 20;
-    //std::shared_ptr<WarShip> Leone(new ConcreteWarShip(coordinates.x, coordinates.y, 4, 61, 2326, 22,"Italy", 0, 0, 3, numAntiAir, shipHeight, shipWidth, true,ShipType::Destroyer,ModelType::Leone, 6));
     std::shared_ptr<WarShip> Leone(new ConcreteWarShip(coordinates.x, coordinates.y,4,61,2326,shipHeight,shipWidth,true,"Italy",ShipType::Destroyer,ModelType::Leone,22,"Leone",0,3,0,numAntiAir));
     Leone->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 33, *Leone));
     Leone->attach(cf.createMedium(cannonPosX + 3, cannonPosY + 74, *Leone));
