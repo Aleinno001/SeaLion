@@ -658,3 +658,36 @@ bool GameWorld::isInStrip(int i, int tileDim) {
 int GameWorld::getTileDim() const {
     return tileDim;
 }
+
+GameWorld::GameWorld(int height,int width,int tileDim):mapHeight(height),mapWidth(width) {
+    try{
+        enemyFaction=FactionType::Italy;
+        setUpUnitTestingTiles(tileDim);
+    } catch (std::runtime_error &e) {
+    std::cerr << e.what() << std::endl;
+    std::cerr << "Please change Warship type" << std::endl;
+    }
+
+}
+
+void GameWorld::setUpUnitTestingTiles(int tileDim) {
+    tiles.clear();
+    std::string seaBlockPath = "seaBlock.png";
+    std::string dirtBlockPath = "dirtBlock.png";
+    bool collision = false;
+    TileType tileType=TileType::Sea;
+    try {
+            for(int i = 0; i < mapWidth/tileDim; i++) {
+                std::vector<std::shared_ptr<GameTile>> row;
+                for (int j = 0; j < mapHeight / tileDim; j++) {
+                    std::unique_ptr<GameTile> tile(new GameTile(seaBlockPath, tileDim * j, tileDim * i, collision, false, tileType));
+                    row.push_back(std::move(tile));
+                }
+                tiles.push_back(row);
+            }
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        std::cerr << "Please change the directory" << std::endl;
+    }
+}
+

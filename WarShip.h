@@ -21,7 +21,7 @@ enum class ModelType {
     AndreaDoria,ImperatoreAugusto,MichelangeloBuonarroti,AlbertoDiGiussano,Trento,Gorizia,Impavido,Leone,PaoloEmilio,
     GiuseppeGaribaldi,Cavour,DaVinci,Papa,Dreadnought,IronDuke,Hood,Lion,Danae,Belfast,Tiger59,Campbelltown,Gallant,
     Jutland,ArkRoyal,Indomitable,Triton,Trenchant,NewYork,Arizona,NorthCarolina,Montana,StLouis,NewOrleans,Alaska,Mahan,
-    Sims,Fletcher,Ranger,Midway,Gato,Narwhal,FranklinDRoosevelt
+    Sims,Fletcher,Midway,Gato,Narwhal,FranklinDRoosevelt
 };
 class WarShip : public Vehicle {
 protected:

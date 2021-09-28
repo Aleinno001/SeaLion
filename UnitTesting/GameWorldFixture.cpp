@@ -166,16 +166,16 @@ TEST_F(GameWorldSuite, MapGenerationTest) {
     int height = c.getMapHeight();
     int width = c.getMapWidth();
     int tileDim = 30;
-    ASSERT_EQ(c.tiles[0][0]->getSprite().getTextureRect().height, c.tiles[0][0]->getSprite().getTextureRect().width);
-    ASSERT_EQ(c.tiles[0][0]->getSprite().getTextureRect().height, tileDim);
-    ASSERT_EQ(c.tiles[0][0]->getSprite().getTextureRect().width, tileDim);
+    ASSERT_EQ(c.getTiles()[0][0]->getSprite().getTextureRect().height, c.getTiles()[0][0]->getSprite().getTextureRect().width);
+    ASSERT_EQ(c.getTiles()[0][0]->getSprite().getTextureRect().height, tileDim);
+    ASSERT_EQ(c.getTiles()[0][0]->getSprite().getTextureRect().width, tileDim);
     bool isFull = true;
     int numtilesX = width / tileDim;
     int numtilesY = height / tileDim;
     int i, j;
-    for (i = 0; i < c.tiles.size(); i++) {
-        for (j = 0; j < c.tiles[i].size(); j++) {
-            if (!c.tiles[i][j]) {
+    for (i = 0; i < c.getTiles().size(); i++) {
+        for (j = 0; j < c.getTiles()[i].size(); j++) {
+            if (!c.getTiles()[i][j]) {
                 isFull = false;
             }
         }

@@ -14,7 +14,7 @@
 
 class Bullet {
 public:
-    Bullet(const std::string bulletName, int width, int length, float dmgMult,float penetrationMult,float speedStart);
+    Bullet(std::string bulletName, int width, int length, float dmgMult,float penetrationMult,float speedStart);
     void reachTarget ();
 private:
     bool arrived {true};

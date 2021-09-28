@@ -8,8 +8,7 @@
 #include "Collision.h"
 
 
-Bullet::Bullet(
-        const std::string bulletName, int width, int length,float dmgMult,float penetrationMult,float speedStart) :
+Bullet::Bullet(std::string bulletName, int width, int length,float dmgMult,float penetrationMult,float speedStart) :
         bulletName(bulletName), width(width), length(length),dmgMult(dmgMult),penetrationMult(penetrationMult),speedMult(speedStart) {
     currentSpeed = 0;
     arrived=true;

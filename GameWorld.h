@@ -63,17 +63,19 @@ private:
     void italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
     void usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
     void ukAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-public:
-    GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,int &width, int &height, int &tileDim);
-    GameWorld() = default;
-    void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet);   //Imposta lo stato delle navi ad inizio partita
     void setUpAlliedFleet(std::vector<Fleet> &fleet);  //Crea la flotta alleata   //FIXME da rendere generalizzata
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes,int &numEnemyAir);  //Crea la flotta nemica
-    void setUpTiles(int &tileDim);  //Genera la mappa
+    void setUpUnitTestingTiles(int tileDim); //Genera la mappa per Unit Testing
+public:
+    GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,int &width, int &height, int &tileDim);
+    GameWorld(int height,int width,int tileDim);
+    GameWorld() = default;
     FactionType getEnemyFaction() const;
     FactionType getAlliedFaction() const;
     const sf::Vector2i &getExitPos() const;
     const std::vector<std::vector<std::shared_ptr<GameTile>>> &getTiles() const;
+    void setUpInitialState(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet);   //Imposta lo stato delle navi ad inizio partita
+    void setUpTiles(int &tileDim);  //Genera la mappa
     int getGridLength() const;
     int getMapWidth() const;
     int getMapHeight() const;
