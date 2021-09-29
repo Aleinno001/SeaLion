@@ -33,6 +33,9 @@ private:
     sf::Vector2i exitPos;
     std::list<std::shared_ptr<WarShip>> alliedFleet;
     std::list<std::shared_ptr<WarShip>> enemyFleet;
+    std::vector<GameTile> tempTile;
+    std::vector<GameTile> tempRow;
+    std::vector<std::vector<GameTile>> tempTiles;
     int gridLength;
     int mapWidth{1920};
     int mapHeight{1080};
@@ -70,6 +73,7 @@ public:
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,int &width, int &height, int &tileDim);
     GameWorld(int height,int width,int tileDim);
     GameWorld() = default;
+    std::vector<GameTile> &getTempTile();
     FactionType getEnemyFaction() const;
     FactionType getAlliedFaction() const;
     const sf::Vector2i &getExitPos() const;

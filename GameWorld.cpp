@@ -659,17 +659,17 @@ int GameWorld::getTileDim() const {
     return tileDim;
 }
 
-GameWorld::GameWorld(int height,int width,int tileDim):mapHeight(height),mapWidth(width) {
+GameWorld::GameWorld(int height,int width,int tileDim) :mapHeight(height),mapWidth(width){
     try{
         enemyFaction=FactionType::Italy;
         setUpUnitTestingTiles(tileDim);
+       // setUpTiles(tileDim);
     } catch (std::runtime_error &e) {
     std::cerr << e.what() << std::endl;
     std::cerr << "Please change Warship type" << std::endl;
     }
 
 }
-
 void GameWorld::setUpUnitTestingTiles(int tileDim) {
     tiles.clear();
     std::string seaBlockPath = "seaBlock.png";
@@ -678,16 +678,20 @@ void GameWorld::setUpUnitTestingTiles(int tileDim) {
     TileType tileType=TileType::Sea;
     try {
             for(int i = 0; i < mapWidth/tileDim; i++) {
-                std::vector<std::shared_ptr<GameTile>> row;
+                tempRow.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
-                    std::unique_ptr<GameTile> tile(new GameTile(seaBlockPath, tileDim * j, tileDim * i, collision, false, tileType));
-                    row.push_back(std::move(tile));
+                    tempTile.emplace_back(seaBlockPath, tileDim * j, tileDim * i, collision, false, tileType);
+                    tempRow.push_back(tempTile[j]);
                 }
-                tiles.push_back(row);
+                tempTiles.push_back(tempRow);
             }
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Please change the directory" << std::endl;
     }
+}
+
+std::vector<GameTile> &GameWorld::getTempTile(){
+    return tempTile;
 }
 

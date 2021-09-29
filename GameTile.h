@@ -44,6 +44,7 @@ public:
     const sf::Vector2f &getPos() const;
     const sf::Sprite &getSprite() const;
     TileType getTileType() const;
+    GameTile * getInstance();
     ~GameTile() = default;
 };
 

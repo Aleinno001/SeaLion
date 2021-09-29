@@ -15,18 +15,24 @@ protected:
 };
 TEST_F(CollisionSuite,Collisions){
     sf::ContextSettings settings;
+    int height = 60;
+    int width = 60;
     settings.depthBits = 24;
     settings.stencilBits = 8;
     settings.antialiasingLevel = 0;
     settings.majorVersion = 2;
     settings.minorVersion = 1;
     sf::RenderWindow window;
-    window.create(sf::VideoMode(1200,1200),"CollisionTest",sf::Style::Default,settings);
+    window.create(sf::VideoMode(height,width),"CollisionTest",sf::Style::Default,settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld(1200,1200,30);
+    GameWorld gameWorld(height,width,30);
     while(window.isOpen() /*|| nave.getCol == true*/){
-        Functions::drawMap(window,gameWorld);
+        for (int i = 0; i < (gameWorld.getMapHeight() / gameWorld.getTileDim()); i++) { //disegna la  mappa
+            for (int j = 0; j < (gameWorld.getMapWidth() / gameWorld.getTileDim()); j++) {
+                window.draw(gameWorld.getTempTile()[i][j]);
+            }
+        }
     }
 }
 

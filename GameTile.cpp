@@ -57,3 +57,7 @@ bool GameTile::getIsPassable() const {
     return isPassable;
 }
 
+GameTile *GameTile::getInstance() {
+    return this;
+}
+
