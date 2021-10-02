@@ -15,8 +15,8 @@ protected:
 };
 TEST_F(CollisionSuite,Collisions){
     sf::ContextSettings settings;
-    int height = 60;
-    int width = 60;
+    int height = 1200;
+    int width = 1200;
     settings.depthBits = 24;
     settings.stencilBits = 8;
     settings.antialiasingLevel = 0;
@@ -27,13 +27,19 @@ TEST_F(CollisionSuite,Collisions){
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld(height,width,30);
-    while(window.isOpen() /*|| nave.getCol == true*/){
-        for (int i = 0; i < (gameWorld.getMapHeight() / gameWorld.getTileDim()); i++) { //disegna la  mappa
-            for (int j = 0; j < (gameWorld.getMapWidth() / gameWorld.getTileDim()); j++) {
-                window.draw(gameWorld.getTempTile()[i][j]);
+
+   while(window.isOpen() /*|| nave.getCol == true*/){
+       int tot=0;
+        for (int i = 0; i < (gameWorld.getMapWidth() / gameWorld.getTileDim()); i++) { //disegna la  mappa
+            for (int j = 0; j < (gameWorld.getMapHeight() / gameWorld.getTileDim()); j++) {
+                window.draw(gameWorld.getUTiles()[i][j].getSprite());
+                std::cerr<<gameWorld.getUTiles()[i][j].getIsPassable()<<std::endl;
+                tot++;
             }
         }
-    }
+       std::cerr<<tot<<std::endl;
+   }
+
 }
 
 #endif //SEALION_COLLISIONFIXTURE_H

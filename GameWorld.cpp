@@ -680,18 +680,16 @@ void GameWorld::setUpUnitTestingTiles(int tileDim) {
             for(int i = 0; i < mapWidth/tileDim; i++) {
                 tempRow.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
-                    tempTile.emplace_back(seaBlockPath, tileDim * j, tileDim * i, collision, false, tileType);
-                    tempRow.push_back(tempTile[j]);
+                    tempRow.emplace_back("seaBlock.png", tileDim * j, tileDim * i, false, false, TileType::Sea);
                 }
-                tempTiles.push_back(tempRow);
+                uTiles.push_back(tempRow);
             }
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Please change the directory" << std::endl;
     }
 }
-
-std::vector<GameTile> &GameWorld::getTempTile(){
-    return tempTile;
+std::vector<std::vector<GameTile>> &GameWorld::getUTiles(){
+    return uTiles;
 }
 
