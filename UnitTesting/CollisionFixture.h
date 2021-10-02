@@ -33,7 +33,6 @@ TEST_F(CollisionSuite,Collisions){
         for (int i = 0; i < (gameWorld.getMapWidth() / gameWorld.getTileDim()); i++) { //disegna la  mappa
             for (int j = 0; j < (gameWorld.getMapHeight() / gameWorld.getTileDim()); j++) {
                 window.draw(gameWorld.getUTiles()[i][j].getSprite());
-                std::cerr<<gameWorld.getUTiles()[i][j].getIsPassable()<<std::endl;
                 tot++;
             }
         }

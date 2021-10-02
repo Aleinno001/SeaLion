@@ -18,6 +18,7 @@ bool GameTile::setUpSprite(std::string textureName) {
     if (!Collision::CreateTextureAndBitmask(texture,textureName)) {
         throw std::runtime_error("Path to tile filename invalid!!");
     }
+    std::cerr<<textureName<<std::endl;
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, 30, 30));
