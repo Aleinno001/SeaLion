@@ -5,10 +5,11 @@
 #ifndef SEALION_COLLISIONFIXTURE_H
 #define SEALION_COLLISIONFIXTURE_H
 
-
 #include <gtest/gtest.h>
 #include "../GameWorld.h"
 #include "../Functions.h"
+#include <SFML/Graphics.hpp>
+
 class CollisionSuite : public ::testing::Test {
 protected:
     virtual void SetUp(){}
@@ -23,22 +24,30 @@ TEST_F(CollisionSuite,Collisions){
     settings.majorVersion = 2;
     settings.minorVersion = 1;
     sf::RenderWindow window;
+    windowMode videoMode = windowMode::Windowed;
     window.create(sf::VideoMode(height,width),"CollisionTest",sf::Style::Default,settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     GameWorld gameWorld(height,width,30);
+    window.setPosition(sf::Vector2i(0, 0));
+    window.setVerticalSyncEnabled(true);
 
-   while(window.isOpen() /*|| nave.getCol == true*/){
-       int tot=0;
+    while(window.isOpen() /*|| nave.getCol == true*/){
+       sf::Event event;
+       while (window.pollEvent(event)) {
+           if (event.type == sf::Event::Closed ||
+               (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+               window.close();
+           }
+       }
+       window.clear();
         for (int i = 0; i < (gameWorld.getMapWidth() / gameWorld.getTileDim()); i++) { //disegna la  mappa
             for (int j = 0; j < (gameWorld.getMapHeight() / gameWorld.getTileDim()); j++) {
                 window.draw(gameWorld.getUTiles()[i][j].getSprite());
-                tot++;
             }
         }
-       std::cerr<<tot<<std::endl;
-   }
-
+        window.display();
+    }
 }
 
 #endif //SEALION_COLLISIONFIXTURE_H

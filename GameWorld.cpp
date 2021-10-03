@@ -672,6 +672,14 @@ GameWorld::GameWorld(int height,int width,int tileDim) :mapHeight(height),mapWid
 }
 void GameWorld::setUpUnitTestingTiles(int tileDim) {
     tiles.clear();
+
+    gridLength = 8;
+    enemyFaction = FactionType::Italy;
+
+    mapHeight = 1200;
+    mapWidth = 1200;
+    alliedFaction = FactionType::Italy;
+
     std::string seaBlockPath = "seaBlock.png";
     std::string dirtBlockPath = "dirtBlock.png";
     bool collision = false;
@@ -681,6 +689,8 @@ void GameWorld::setUpUnitTestingTiles(int tileDim) {
                 tempRow.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
                     tempRow.emplace_back("seaBlock.png", tileDim * j, tileDim * i, false, false, TileType::Sea);
+
+
                 }
                 uTiles.push_back(tempRow);
             }
