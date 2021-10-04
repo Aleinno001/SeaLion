@@ -45,7 +45,7 @@ TEST_F(CollisionSuite,Collisions){
                 window.draw(gameWorld.getUTiles()[i][j].getSprite());
             }
         }
-
+        gameWorld.getAlliedFleet().front()->drawEquipment(window);
         window.display();
     }
 }

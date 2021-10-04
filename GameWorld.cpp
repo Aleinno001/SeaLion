@@ -671,10 +671,9 @@ GameWorld::GameWorld(int height,int width,int tileDim) :mapHeight(height),mapWid
 }
 void GameWorld::setUpUnitTestingTiles(int tileDim) {
     tiles.clear();
+    ShipFactory factory(mapWidth/2,mapHeight-mapHeight/6);
     gridLength = 8;
     enemyFaction = FactionType::Italy;
-    mapHeight = 1200;
-    mapWidth = 1200;
     alliedFaction = FactionType::Italy;
     std::string seaBlockPath = "seaBlock.png";
     std::string dirtBlockPath = "dirtBlock.png";
@@ -684,10 +683,16 @@ void GameWorld::setUpUnitTestingTiles(int tileDim) {
             for(int i = 0; i < mapWidth/tileDim; i++) {
                 tempRow.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
-                    tempRow.emplace_back("seaBlock.png", tileDim * j, tileDim * i, false, false, TileType::Sea);
+                    if((j< mapWidth/tileDim/2 - 1 || j>mapWidth/tileDim/2 +1) && (i < mapHeight/tileDim/2 - 1 || i > mapHeight/tileDim/2 + 1))
+                        tempRow.emplace_back("seaBlock.png", tileDim * j, tileDim * i, true, false, TileType::Sea);
+                    else
+                        tempRow.emplace_back("dirtBlock.png",tileDim * j,tileDim * i,false,false,TileType::Dirt);
                 }
                 uTiles.push_back(tempRow);
             }
+            std::shared_ptr<WarShip> ship(factory.createAlliedAircraftCarrier(ModelType::Midway, mapHeight, mapWidth));
+            alliedFleet.push_back(ship);
+
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Please change the directory" << std::endl;
