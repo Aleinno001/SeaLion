@@ -35,17 +35,17 @@ TEST_F(CollisionSuite,Collisions){
     while(window.isOpen() /*|| nave.getCol == true*/){
        sf::Event event;
        while (window.pollEvent(event)) {
-           if (event.type == sf::Event::Closed ||
-               (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+           if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
                window.close();
            }
        }
        window.clear();
-        for (int i = 0; i < (gameWorld.getMapWidth() / gameWorld.getTileDim()); i++) { //disegna la  mappa
-            for (int j = 0; j < (gameWorld.getMapHeight() / gameWorld.getTileDim()); j++) {
+        for (int i = 1; i < (gameWorld.getMapWidth() / gameWorld.getTileDim())-1; i++) { //disegna la  mappa
+            for (int j = 1; j < (gameWorld.getMapHeight() / gameWorld.getTileDim())-1; j++) {
                 window.draw(gameWorld.getUTiles()[i][j].getSprite());
             }
         }
+
         window.display();
     }
 }
