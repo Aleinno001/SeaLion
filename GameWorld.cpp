@@ -683,10 +683,11 @@ void GameWorld::setUpUnitTestingTiles(int tileDim) {
             for(int i = 0; i < mapWidth/tileDim; i++) {
                 tempRow.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
-                    if((j< mapWidth/tileDim/2 - 1 || j>mapWidth/tileDim/2 +1) && (i < mapHeight/tileDim/2 - 1 || i > mapHeight/tileDim/2 + 1))
-                        tempRow.emplace_back("seaBlock.png", tileDim * j, tileDim * i, true, false, TileType::Sea);
-                    else
-                        tempRow.emplace_back("dirtBlock.png",tileDim * j,tileDim * i,false,false,TileType::Dirt);
+                    if((i< mapWidth/tileDim/2 - 1 || i>mapWidth/tileDim/2 +1) && (j < mapHeight/tileDim/2 - 1 || j > mapHeight/tileDim/2 + 1)){
+                        tempRow.emplace_back("seaBlock.png", tileDim * i, tileDim * j, true, false, TileType::Sea);
+                    }else {
+                        tempRow.emplace_back("dirtBlock.png", tileDim * i, tileDim * j, false, false, TileType::Dirt);
+                    }
                 }
                 uTiles.push_back(tempRow);
             }
