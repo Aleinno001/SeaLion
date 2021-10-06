@@ -659,7 +659,7 @@ int GameWorld::getTileDim() const {
     return tileDim;
 }
 
-GameWorld::GameWorld(int height,int width,int tileDim,int numShips,std::string specialTile) :mapHeight(height),mapWidth(width){
+GameWorld::GameWorld(int height,int width,int tileDim,int numAlliedShips,std::string specialTile, int numEnemyShips) :mapHeight(height),mapWidth(width){
     try{
         enemyFaction=FactionType::Italy;
         setUpUnitTestingTiles(tileDim,specialTile);
@@ -667,11 +667,17 @@ GameWorld::GameWorld(int height,int width,int tileDim,int numShips,std::string s
     std::cerr << e.what() << std::endl;
     std::cerr << "Please change Warship type" << std::endl;
     }
-    ShipFactory factory(mapWidth/2-mapWidth/16,mapHeight-mapHeight/5);
-    for(int i=0; i< numShips; i++) {
-        std::shared_ptr<WarShip> ship(factory.createAlliedCruiser(ModelType::Trento, mapHeight, mapWidth));
+    ShipFactory factory(mapWidth/2-mapWidth/16,0);
+    for(int i=0; i< numAlliedShips; i++) {
+        std::shared_ptr<WarShip> ship(factory.createAlliedDestroyer(ModelType::Impavido, mapHeight, mapWidth));
         alliedFleet.push_back(ship);
     }
+    for(int i=0; i< numEnemyShips; i++) {
+        std::shared_ptr<WarShip> ship(factory.createDestroyer(ModelType::Impavido, mapHeight, mapWidth));
+        enemyFleet.push_back(ship);
+    }
+    alliedFleet.front()->getSprite().move(0, -1);
+    enemyFleet.front()->getSprite().move(0, 1);
 }
 void GameWorld::setUpUnitTestingTiles(int tileDim,std::string specialTile) {
     tiles.clear();

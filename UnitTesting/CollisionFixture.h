@@ -29,7 +29,7 @@ TEST_F(CollisionSuite,IslandCollisions){
     window.create(sf::VideoMode(height,width),"CollisionTest",sf::Style::Default,settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld(height,width,30,1,"dirt");
+    GameWorld gameWorld(height,width,30,1,"dirt", 0);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     std::thread thread_collision(Functions::f, std::ref(gameWorld.getAlliedFleet()), std::ref(gameWorld),std::ref(window));
@@ -78,7 +78,7 @@ TEST_F(CollisionSuite,shipCollisions){
     window.create(sf::VideoMode(height,width),"CollisionTest",sf::Style::Default,settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld(height,width,30,2,"sea");
+    GameWorld gameWorld(height,width,30,2,"sea", 0);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     std::thread thread_collision(Functions::f, std::ref(gameWorld.getAlliedFleet()), std::ref(gameWorld),std::ref(window));
@@ -135,7 +135,7 @@ TEST_F(CollisionSuite,FogCollisions){
     window.create(sf::VideoMode(height,width),"CollisionTest",sf::Style::Default,settings);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
-    GameWorld gameWorld(height,width,30,1,"seaFoggy");
+    GameWorld gameWorld(height,width,30,1,"seaFoggy", 0);
     window.setPosition(sf::Vector2i(0, 0));
     window.setVerticalSyncEnabled(true);
     std::thread thread_collision(Functions::f, std::ref(gameWorld.getAlliedFleet()), std::ref(gameWorld),std::ref(window));
@@ -169,5 +169,69 @@ TEST_F(CollisionSuite,FogCollisions){
         }
     }
     EXPECT_TRUE(gameWorld.getAlliedFleet().front()->isConcealed() == true);
+}
+TEST_F(CollisionSuite,BulletCollision){
+    sf::ContextSettings settings;
+    sf::Clock c;
+    int height = 900;
+    int width = 900;
+    settings.depthBits = 24;
+    settings.stencilBits = 8;
+    settings.antialiasingLevel = 0;
+    settings.majorVersion = 2;
+    settings.minorVersion = 1;
+    sf::RenderWindow window;
+    window.create(sf::VideoMode(height,width),"CollisionTest",sf::Style::Default,settings);
+    window.setPosition(sf::Vector2i(0, 0));
+    window.setVerticalSyncEnabled(true);
+    GameWorld gameWorld(height,width,30,1,"sea", 1);
+    window.setPosition(sf::Vector2i(0, 0));
+    window.setVerticalSyncEnabled(true);
+    std::list<std::shared_ptr<WarShip>> fullNavyList;
+    fullNavyList.push_back(gameWorld.getAlliedFleet().front());
+    fullNavyList.push_back(gameWorld.getEnemyFleet().front());
+    std::thread thread_collision(Functions::f, std::ref(fullNavyList), std::ref(gameWorld),std::ref(window));
+    std::thread thread_tiles_effect(Functions::tilesCheckAndDeath, std::ref(window), std::ref(gameWorld),std::ref(fullNavyList));
+    std::thread thread_checkHit(Functions::checkHit, std::ref(fullNavyList), std::ref(window));
+    thread_collision.detach();
+    thread_tiles_effect.detach();
+    thread_checkHit.detach();
+    sf::Vector2f targetCoords;
+    targetCoords.x=gameWorld.getAlliedFleet().front()->getSprite().getPosition().x;
+    targetCoords.y=gameWorld.getMapHeight() - gameWorld.getMapHeight()/3 - 50;
+    gameWorld.getAlliedFleet().front()->setTargetCoordinates(targetCoords);
+    targetCoords.x=gameWorld.getEnemyFleet().front()->getSprite().getPosition().x;
+    targetCoords.y=gameWorld.getMapHeight()/3 + 50;
+    gameWorld.getEnemyFleet().front()->setTargetCoordinates(targetCoords);
+    gameWorld.getAlliedFleet().front()->setEnemyList(gameWorld.getEnemyFleet());
+    gameWorld.getEnemyFleet().front()->setEnemyList(gameWorld.getAlliedFleet());
+    float  alliedMaxHp = gameWorld.getAlliedFleet().front()->getHp();
+    float enemyMaxHp = gameWorld.getEnemyFleet().front()->getHp();
+    float dt = 0;
+    while(window.isOpen()){
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+                window.close();
+            }
+        }
+        window.clear();
+        for (int i = 0; i < (gameWorld.getMapWidth() / gameWorld.getTileDim()); i++) { //disegna la mappa
+            for (int j = 0; j < (gameWorld.getMapHeight() / gameWorld.getTileDim()); j++) {
+                window.draw(gameWorld.getTiles()[i][j]->getSprite());
+            }
+        }
+        dt = c.restart().asSeconds();
+        gameWorld.getAlliedFleet().front()->drawEquipment(window);
+        gameWorld.getAlliedFleet().front()->searchTarget(dt);
+        gameWorld.getEnemyFleet().front()->drawEquipment(window);
+        gameWorld.getEnemyFleet().front()->searchTarget(dt);
+        window.display();
+        if(gameWorld.getAlliedFleet().front()->getHp() != alliedMaxHp && gameWorld.getEnemyFleet().front()->getHp() != enemyMaxHp){
+            window.close();
+        }
+    }
+    EXPECT_TRUE(gameWorld.getAlliedFleet().front()->getHp() != alliedMaxHp);
+    EXPECT_TRUE(gameWorld.getEnemyFleet().front()->getHp() != enemyMaxHp);
 }
 #endif //SEALION_COLLISIONFIXTURE_H

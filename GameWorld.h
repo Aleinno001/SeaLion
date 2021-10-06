@@ -68,7 +68,7 @@ private:
     void setUpUnitTestingTiles(int tileDim,std::string specialTile); //Genera la mappa per Unit Testing
 public:
     GameWorld(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes, int &numEnemyAir,std::vector<Fleet> &fleet, FactionType enemyFact, FactionType alliedFact, int grid, sf::Vector2i exit,int &width, int &height, int &tileDim);
-    GameWorld(int height,int width,int tileDim,int numShips,std::string specialTile);
+    GameWorld(int height,int width,int tileDim,int numAlliedShips,std::string specialTile, int numEnemyShips);
     GameWorld() = default;
     FactionType getEnemyFaction() const;
     FactionType getAlliedFaction() const;
