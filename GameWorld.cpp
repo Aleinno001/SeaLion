@@ -659,47 +659,55 @@ int GameWorld::getTileDim() const {
     return tileDim;
 }
 
-GameWorld::GameWorld(int height,int width,int tileDim) :mapHeight(height),mapWidth(width){
+GameWorld::GameWorld(int height,int width,int tileDim,int numShips,std::string specialTile) :mapHeight(height),mapWidth(width){
     try{
         enemyFaction=FactionType::Italy;
-        setUpUnitTestingTiles(tileDim);
+        setUpUnitTestingTiles(tileDim,specialTile);
     } catch (std::runtime_error &e) {
     std::cerr << e.what() << std::endl;
     std::cerr << "Please change Warship type" << std::endl;
     }
-
+    ShipFactory factory(mapWidth/2-mapWidth/16,mapHeight-mapHeight/5);
+    for(int i=0; i< numShips; i++) {
+        std::shared_ptr<WarShip> ship(factory.createAlliedCruiser(ModelType::Trento, mapHeight, mapWidth));
+        alliedFleet.push_back(ship);
+    }
 }
-void GameWorld::setUpUnitTestingTiles(int tileDim) {
+void GameWorld::setUpUnitTestingTiles(int tileDim,std::string specialTile) {
     tiles.clear();
-    ShipFactory factory(mapWidth/2,mapHeight-mapHeight/6);
     gridLength = 8;
     enemyFaction = FactionType::Italy;
     alliedFaction = FactionType::Italy;
     std::string seaBlockPath = "seaBlock.png";
     std::string dirtBlockPath = "dirtBlock.png";
-    bool collision = false;
-    TileType tileType=TileType::Sea;
+    std::vector<std::shared_ptr<GameTile>> row;
     try {
             for(int i = 0; i < mapWidth/tileDim; i++) {
-                tempRow.clear();
+                row.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
-                    if((i< mapWidth/tileDim/2 - 1 || i>mapWidth/tileDim/2 +1) && (j < mapHeight/tileDim/2 - 1 || j > mapHeight/tileDim/2 + 1)){
-                        tempRow.emplace_back("seaBlock.png", tileDim * i, tileDim * j, true, false, TileType::Sea);
+                    if(!((i >= mapWidth/tileDim/3 - 2 && i <= mapWidth/tileDim/3 + 2)&&(j >= mapHeight/tileDim/2 - 2 && j <= mapHeight/tileDim/2 + 2))){
+                        TileType tileType=TileType::Sea;
+                        std::unique_ptr<GameTile> tile(new GameTile("seaBlock.png", tileDim * j, tileDim * i, false, false, tileType));
+                        row.push_back(std::move(tile));
                     }else {
-                        tempRow.emplace_back("dirtBlock.png", tileDim * i, tileDim * j, false, false, TileType::Dirt);
+                        TileType tileType=TileType::Sea;
+                        bool collision=false;
+                        if(specialTile=="sea"){
+                            tileType=TileType::Sea;
+                        }else if(specialTile=="dirt"){
+                            tileType=TileType::Dirt;
+                            collision=true;
+                        } else if(specialTile=="seaFoggy"){
+                            tileType=TileType::Fog;
+                        }
+                        std::unique_ptr<GameTile> tile(new GameTile(specialTile+"Block.png", tileDim * j, tileDim * i, collision, false, tileType));
+                        row.push_back(std::move(tile));
                     }
                 }
-                uTiles.push_back(tempRow);
+                tiles.push_back(row);
             }
-            std::shared_ptr<WarShip> ship(factory.createAlliedAircraftCarrier(ModelType::Midway, mapHeight, mapWidth));
-            alliedFleet.push_back(ship);
-
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         std::cerr << "Please change the directory" << std::endl;
     }
 }
-std::vector<std::vector<GameTile>> &GameWorld::getUTiles(){
-    return uTiles;
-}
-
