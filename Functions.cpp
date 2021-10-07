@@ -3,45 +3,6 @@
 //
 #include "Functions.h"
 #include "MvcObserver.h"
-
-void Functions::f (std::list<std::shared_ptr<WarShip>> &fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
-    while (window.isOpen()) {
-        for (auto &iter:fullNavyCollision) {
-            for (auto &iterSecond:fullNavyCollision) {
-                if (iter != iterSecond) {
-                    if (Collision::PixelPerfectTest(iter->getSprite(), iterSecond->getSprite()) &&
-                        !(iter->isDeath() || iterSecond->isDeath())) {
-                        iter->setCollision(false);
-                        iterSecond->setCollision(false);
-                    }
-                }
-            }
-            //controlla le eventuali collisioni ai bordi della finestra di gioco
-            if (((iter->getSprite().getPosition().x -
-                  iter->getSprite().getLocalBounds().width / 2) < 0) ||
-                ((iter->getSprite().getPosition().y -
-                  iter->getSprite().getLocalBounds().height / 2) < 0) ||
-                ((iter->getSprite().getPosition().x +
-                  iter->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
-                ((iter->getSprite().getPosition().y +
-                  iter->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
-                iter->setCollision(false);
-            }
-        }
-        //controllo cllisioni con blocchi di terra
-        for (auto &iterNavy: fullNavyCollision) {
-            for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++) {
-                for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
-                    if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Dirt &&
-                        Collision::PixelPerfectTest(iterNavy->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
-                        iterNavy->setCollision(false);
-                        gameWorld.getTiles()[row][column]->setIsPassable(false);
-                    }
-                }
-            }
-        }
-    }
-}
 std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
     std::vector <Fleet> fleet;
     Fleet alliedFleet;
@@ -94,7 +55,44 @@ std::vector <Fleet> Functions::alliedDummyFleet() { //nave alleata di testing
     fleet.emplace_back(alliedFleet);
     return fleet;
 }
-
+void Functions::f (std::list<std::shared_ptr<WarShip>> &fullNavyCollision, GameWorld &gameWorld, sf::RenderWindow &window){
+    while (window.isOpen()) {
+        for (auto &iter:fullNavyCollision) {
+            for (auto &iterSecond:fullNavyCollision) {
+                if (iter != iterSecond) {
+                    if (Collision::PixelPerfectTest(iter->getSprite(), iterSecond->getSprite()) &&
+                        !(iter->isDeath() || iterSecond->isDeath())) {
+                        iter->setCollision(false);
+                        iterSecond->setCollision(false);
+                    }
+                }
+            }
+            //controlla le eventuali collisioni ai bordi della finestra di gioco
+            if (((iter->getSprite().getPosition().x -
+                  iter->getSprite().getLocalBounds().width / 2) < 0) ||
+                ((iter->getSprite().getPosition().y -
+                  iter->getSprite().getLocalBounds().height / 2) < 0) ||
+                ((iter->getSprite().getPosition().x +
+                  iter->getSprite().getLocalBounds().width / 2) > window.getSize().x) ||
+                ((iter->getSprite().getPosition().y +
+                  iter->getSprite().getLocalBounds().height / 2) > window.getSize().y)) {
+                iter->setCollision(false);
+            }
+        }
+        //controllo cllisioni con blocchi di terra
+        for (auto &iterNavy: fullNavyCollision) {
+            for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++) {
+                for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
+                    if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Dirt &&
+                        Collision::PixelPerfectTest(iterNavy->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {//Se il blocco è di terra e se avviene la collisione
+                        iterNavy->setCollision(false);
+                        gameWorld.getTiles()[row][column]->setIsPassable(false);
+                    }
+                }
+            }
+        }
+    }
+}
 void Functions::fpsManagment(sf::RenderWindow &window,float elapsedTime) {
     int fps = 1.0f / elapsedTime;
     std::string currentDir = ToolBox::GetCurrentWorkingDir();
@@ -118,7 +116,6 @@ void Functions::fpsManagment(sf::RenderWindow &window,float elapsedTime) {
     window.draw(fpsCount);
     window.display();
 }
-
 void Functions::drawMap(sf::RenderWindow &window, GameWorld &gameWorld) {
     for (int i = 0; i < (gameWorld.getMapHeight() / gameWorld.getTileDim()); i++) { //disegna la  mappa
         for (int j = 0; j < (gameWorld.getMapWidth() / gameWorld.getTileDim()); j++) {
@@ -135,22 +132,22 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
     switch (event.key.code) {
         case sf::Mouse::Left: {
             sf::Vector2f coords(event.mouseButton.x, event.mouseButton.y);
-            auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));     /*Gestione della selezione navale e comando di spostamento*/
-            for (auto &it : gameWorld.getAlliedFleet()) {                                               //
+            auto translated_pos = window.mapPixelToCoords(static_cast <sf::Vector2i> (coords));                     /*Gestione della selezione navale e comando di spostamento*/
+            for (auto &it : gameWorld.getAlliedFleet()) {                                                           //
                 if (it->getSprite().getGlobalBounds().contains(translated_pos) && !it->isDeath()) {
                     if(selectedShip)
-                        selectedShip->setSelected(false);                                        //
-                    selectedShip=it;                                                                    //  Fase di selezionamento della nave da parte dell'utente
-                    it->setSelected(true);                                                      //
-                    return;                                                                             //
-                }                                                                                       //
-            }                                                                                           //
+                        selectedShip->setSelected(false);                                                   //
+                    selectedShip=it;                                                                                //  Fase di selezionamento della nave da parte dell'utente
+                    it->setSelected(true);                                                                  //
+                    return;                                                                                          //
+                }                                                                                                   //
+            }                                                                                                       //
             for (auto &itView: views) {
                 if(!itView.getButton().isClicked()) {                                                               //
-                    itView.getButton().getSprite().setColor(sf::Color(255,255,255));          //
-                    if (itView.getButton().getSprite().getGlobalBounds().contains(translated_pos)) {                //  Caso bottone del Mvc non è stato ancora cliccato
+                    itView.getButton().getSprite().setColor(sf::Color(255,255,255));          //  Caso bottone del Mvc non è stato ancora cliccato
+                    if (itView.getButton().getSprite().getGlobalBounds().contains(translated_pos)) {                //
                         itView.getButton().getSprite().setColor(sf::Color(0, 180,0));         //
-                        itView.getButton().setClicked(true);                         //   Individua il click e imposta lo stato di cliccato
+                        itView.getButton().setClicked(true);                                                //   Individua il click e imposta lo stato di cliccato
                         return;                                                                                     //
                     }                                                                                               //
                 }else if(&itView.getModel() == selectedShip.get()){
@@ -159,14 +156,14 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
                             itView.click(it);
                             selectedShip->setSelected(false);
                             itView.getButton().setClicked(false);
-                            itView.getButton().getSprite().setColor(sf::Color(255,255,255));   //
+                            itView.getButton().getSprite().setColor(sf::Color(255,255,255));  //
                             return;                                                                                 //  Imposta i bersagli delle classi che implementano Mvc
                         }                                                                                           //
                     }
                 }
             }
             if(selectedShip) {
-                selectedShip->setTargetCoordinates(coords);
+                selectedShip->setTargetCoordinates(coords);                                                         //Se la nave selezionata ha già un target allora lo si cambia
                 selectedShip->setSelected(false);
             }
         }
@@ -234,54 +231,21 @@ void Functions::checkHit(std::list<std::shared_ptr<WarShip>> &fullNavy, sf::Wind
                 if (iteratorNavy != iteratorTarget) {
                     if(iteratorNavy->getShipType()!=ShipType::Submarine) {
                         for (auto &iteratorCannons: iteratorNavy->getArsenalList()) {// controlla le collisoni tra i proiettili e tutte le navi permettendo il fuoco amico
-                            if (/*iteratorCannons->getTextureName() != "AntiAircraft" &&
-                                iteratorCannons->getTextureName() != "TorpedoTube" &&*/
-                                !iteratorCannons->getAmmoType()->isArrived()) {
-                                if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),
-                                                                iteratorTarget->getSprite()) &&
-                                    !iteratorTarget->isDeath()) {
+                            if (/*iteratorCannons->getTextureName() != "AntiAircraft" &&iteratorCannons->getTextureName() != "TorpedoTube" &&*/!iteratorCannons->getAmmoType()->isArrived()) {
+                                if (Collision::PixelPerfectTest(iteratorCannons->getAmmoType()->getSprite(),iteratorTarget->getSprite()) &&!iteratorTarget->isDeath()) {
                                     double directDamage = 0;
                                     Dice critical(3, iteratorCannons->getAmmoType()->getSprite().getPosition().y);
-                                    if (iteratorCannons->getTextureName() ==
-                                        "HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
-                                        if (((critical.roll(1) - 1) *
-                                             //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
-                                             ((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
-                                              ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
-                                               (iteratorCannons->getAmmoType()->getSpeed() *
-                                                iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                            iteratorTarget->getArmour()) {
-
-                                            directDamage = (critical.roll(1) - 1) *
-                                                           iteratorCannons->getAmmoType()->getDmgMult() *
-                                                           iteratorCannons->getFirepower();
+                                    if (iteratorCannons->getTextureName() =="HeavlyCannon") {        //Applica gli effetti del cannone pesante se la nave spara col cannone pesante
+                                        if (((critical.roll(1) - 1) *((800 * iteratorCannons->getAmmoType()->getPenetrationMult()) *((iteratorCannons->getAmmoType()->getCurrentSpeed()) /(iteratorCannons->getAmmoType()->getSpeed() *iteratorCannons->getAmmoType()->getSpeedMult())))) >iteratorTarget->getArmour()) { /*calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado*/
+                                            directDamage = (critical.roll(1) - 1) *iteratorCannons->getAmmoType()->getDmgMult() *iteratorCannons->getFirepower();
                                         }
-                                    } else if (iteratorCannons->getTextureName() ==
-                                               "MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
-                                        if (((critical.roll(1) - 1) *
-                                             ((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
-                                              //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
-                                              ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
-                                               (iteratorCannons->getAmmoType()->getSpeed() *
-                                                iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                            iteratorTarget->getArmour()) {
-                                            directDamage =
-                                                    (critical.roll(1) - 1) *
-                                                    iteratorCannons->getAmmoType()->getDmgMult() *
-                                                    iteratorCannons->getFirepower();
+                                    } else if (iteratorCannons->getTextureName() =="MediumCannon") { //Applica gli effetti del cannone pesante se la nave spara col cannone medio
+                                        if (((critical.roll(1) - 1) *((400 * iteratorCannons->getAmmoType()->getPenetrationMult()) *((iteratorCannons->getAmmoType()->getCurrentSpeed()) /(iteratorCannons->getAmmoType()->getSpeed() *iteratorCannons->getAmmoType()->getSpeedMult())))) >iteratorTarget->getArmour()) { //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                            directDamage =(critical.roll(1) - 1) *iteratorCannons->getAmmoType()->getDmgMult() *iteratorCannons->getFirepower();
                                         }
                                     } else {  //Applica gli effetti del cannone pesante se la nave spara col cannone leggero
-                                        if (((critical.roll(1) - 1) *
-                                             ((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *
-                                              //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
-                                              ((iteratorCannons->getAmmoType()->getCurrentSpeed()) /
-                                               (iteratorCannons->getAmmoType()->getSpeed() *
-                                                iteratorCannons->getAmmoType()->getSpeedMult())))) >
-                                            iteratorTarget->getArmour()) {
-                                            directDamage =
-                                                    (critical.roll(1) - 1) *
-                                                    iteratorCannons->getAmmoType()->getDmgMult() *
-                                                    iteratorCannons->getFirepower();
+                                        if (((critical.roll(1) - 1) *((200 * iteratorCannons->getAmmoType()->getPenetrationMult()) *((iteratorCannons->getAmmoType()->getCurrentSpeed()) /(iteratorCannons->getAmmoType()->getSpeed() *iteratorCannons->getAmmoType()->getSpeedMult())))) >iteratorTarget->getArmour()) { //calcolo del livello di prenetrazione armatura e dinamica casualità con tiro di dado
+                                            directDamage =(critical.roll(1) - 1) *iteratorCannons->getAmmoType()->getDmgMult() *iteratorCannons->getFirepower();
                                         }
                                     }
                                     iteratorCannons->getAmmoType()->hit();
@@ -304,21 +268,14 @@ void Functions::tilesCheckAndDeath(sf::RenderWindow &window, GameWorld &gameWorl
             if (itNaval->getHp() > 0) {
                 for (int row = 0; row < (gameWorld.getMapHeight() / gameWorld.getTileDim()); row++)
                     for (int column = 0; column < (gameWorld.getMapWidth() / gameWorld.getTileDim()); column++) {
-                        if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Wave &&
-                            //applica i relativi effetti se la tile è di mare mosso
-                            Collision::PixelPerfectTest(itNaval->getSprite(),
-                                                        gameWorld.getTiles()[row][column]->getSprite())) {
+                        if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Wave &&Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {//applica i relativi effetti se la tile è di mare mosso
                             itNaval->setConcealed(false);
                             itNaval->setCurrentSpeed(itNaval->getMaxSpeed() * 0.80);
-                        } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Whirlpool &&
-                                   //applica i seguenti effetti se la tile è di tipo muninello
-                                   Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
+                        } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Whirlpool &&Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) { //applica i seguenti effetti se la tile è di tipo muninello
                             itNaval->setConcealed(false);
                             itNaval->setDamage(itNaval->getHp() * 0.00003);
                             itNaval->notifyBarsDamage();
-                        } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Fog &&
-                                   //applica i seguenti effetti se la tile è di nebbia
-                                   Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {
+                        } else if (gameWorld.getTiles()[row][column]->getTileType() == TileType::Fog &&Collision::PixelPerfectTest(itNaval->getSprite(),gameWorld.getTiles()[row][column]->getSprite())) {//applica i seguenti effetti se la tile è di nebbia
                             itNaval->setConcealed(true);
                             enteredFog = true;
                         }

@@ -32,7 +32,6 @@ protected:
     const std::string nationality;
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::Vector2f pos;
     sf::Vector2f movement;
     const std::string name;
 protected:
