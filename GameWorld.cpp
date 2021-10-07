@@ -673,11 +673,14 @@ GameWorld::GameWorld(int height,int width,int tileDim,int numAlliedShips,std::st
         alliedFleet.push_back(ship);
     }
     for(int i=0; i< numEnemyShips; i++) {
-        std::shared_ptr<WarShip> ship(factory.createDestroyer(ModelType::Impavido, mapHeight, mapWidth));
+        std::shared_ptr<WarShip> ship(factory.createBattleship(ModelType::MichelangeloBuonarroti, mapHeight, mapWidth));
         enemyFleet.push_back(ship);
     }
-    alliedFleet.front()->getSprite().move(0, -1);
-    enemyFleet.front()->getSprite().move(0, 1);
+    for(auto &it : alliedFleet){
+        it->getSprite().move(0, -1);
+    }
+    if(!enemyFleet.empty())
+        enemyFleet.front()->getSprite().move(0, 1);
 }
 void GameWorld::setUpUnitTestingTiles(int tileDim,std::string specialTile) {
     tiles.clear();
@@ -691,7 +694,7 @@ void GameWorld::setUpUnitTestingTiles(int tileDim,std::string specialTile) {
             for(int i = 0; i < mapWidth/tileDim; i++) {
                 row.clear();
                 for (int j = 0; j < mapHeight / tileDim; j++) {
-                    if(!((i >= mapWidth/tileDim/3 - 2 && i <= mapWidth/tileDim/3 + 2)&&(j >= mapHeight/tileDim/2 - 2 && j <= mapHeight/tileDim/2 + 2))){
+                    if(!((i >= mapWidth/tileDim/2 - 2 && i <= mapWidth/tileDim/2 + 2)&&(j >= mapHeight/tileDim/2 - 2 && j <= mapHeight/tileDim/2 + 2))){
                         TileType tileType=TileType::Sea;
                         std::unique_ptr<GameTile> tile(new GameTile("seaBlock.png", tileDim * j, tileDim * i, false, false, tileType));
                         row.push_back(std::move(tile));
