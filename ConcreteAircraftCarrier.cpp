@@ -19,9 +19,6 @@ void ConcreteAircraftCarrier::notifyPlanes() {
 void ConcreteAircraftCarrier::attachPlanes(std::shared_ptr<WarPlane> warPlane) {
     planes.push_back(warPlane);
 }
-void ConcreteAircraftCarrier::detachPlanes(std::shared_ptr<WarPlane> warPlane) {
-    planes.remove(warPlane);
-}
 void ConcreteAircraftCarrier::attack(float elapsedTime) {
     for(auto &iterArsenal : arsenalList){
         iterArsenal->searchTarget(elapsedTime);
@@ -95,9 +92,6 @@ void ConcreteAircraftCarrier::notifyBarsDamage() const {
 }
 void ConcreteAircraftCarrier::attachBar(std::shared_ptr<BarInterface> bar) {
     bars.push_back(bar);
-}
-void ConcreteAircraftCarrier::detachBar(std::shared_ptr<BarInterface> bar) {
-    bars.remove(bar);
 }
 bool ConcreteAircraftCarrier::searchTarget(float elapsedTime) {
     move(elapsedTime);

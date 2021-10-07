@@ -85,27 +85,15 @@ public:
     virtual void notifyBars() const =0; //Metodo design pattern observer tra BarInterface e Warship
     virtual void notifyBarsDamage() const =0;
     virtual void attachBar(std::shared_ptr<BarInterface> bar)=0;//Metodo design pattern observer tra BarInterface e Warship
-    virtual void detachBar(std::shared_ptr<BarInterface> bar)=0;//Metodo design pattern observer tra BarInterface e Warship
     ShipType getShipType() const {return shipType;}
-    void setShipType(ShipType type) { WarShip::shipType = type;}
-    ModelType getModelType() const {return modelType;}
-    void setModelType(ModelType modelType) {WarShip::modelType = modelType;}
     int getArmour() const {return armour;}
-    const std::string &getName() const {return name;}
-    int getNumLCannons() const {return numLCannons;}
-    int getNumMCannons() const {return numMCannons;}
-    int getNumHCannons() const {return numHCannons;}
-    int getNumAntiAircraft() const {return numAntiAircraft;}
     bool isConcealed() const {return concealed;}
     void setConcealed(bool concealed) {WarShip::concealed = concealed;}
     float getDmX() const {return dmX;}
     bool isSelected() const {return selected;}
     void setSelected(bool selected) {WarShip::selected = selected;}
     std::list<std::shared_ptr<Arsenal>> &getArsenalList(){return arsenalList;}
-    void setArsenalList(const std::list<std::shared_ptr<Arsenal>> &arsenalList) {WarShip::arsenalList = arsenalList;}
     std::list<std::shared_ptr<BarInterface>> &getBars() {return bars;}
-    void setBars(const std::list<std::shared_ptr<BarInterface>> &bars) {WarShip::bars = bars;}
-    const sf::Vector2f &getTargetCoordinates() const {return targetCoordinates;}
     void setTargetCoordinates(const sf::Vector2f &targetCoordinates) {WarShip::targetCoordinates = targetCoordinates;}
     const std::list<std::shared_ptr<WarShip>> &getEnemyList() const {return enemyList;}
     void setEnemyList(const std::list<std::shared_ptr<WarShip>> &enemyList) {WarShip::enemyList = enemyList;}

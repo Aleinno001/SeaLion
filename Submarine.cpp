@@ -1,9 +1,7 @@
 //
 // Created by alessandro on 19/09/21.
 //
-
 #include "Submarine.h"
-
 Submarine::Submarine(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons, int numAntiAircraft): Specialty(x, y, ac, maxVel, hp, le, wi, col, nat, shipType, modelType, armour, name, numLCannons, numMCannons,numHCannons, numAntiAircraft) {
     setUpSprite(name);
     sprite.setOrigin(width/2,length/2);
@@ -71,9 +69,6 @@ void Submarine::notifyBarsDamage() const {
 void Submarine::attachBar(std::shared_ptr<BarInterface> bar) {
     bars.push_back(bar);
 }
-void Submarine::detachBar(std::shared_ptr<BarInterface> bar) {
-    bars.remove(bar);
-}
 bool Submarine::searchTarget(float elapsedTime) {
     move(elapsedTime);
     if(canEngage())
@@ -106,7 +101,6 @@ bool Submarine::canEngage() {    //Controlla se nessun cannone può ingaggiare
 void Submarine::setMvcTarget(std::shared_ptr<WarShip> target) {
     //TODO implementare
 }
-
 void Submarine::drawEquipment(sf::RenderWindow &window) {
     if (death) {
         sprite.setColor(sf::Color(0,0,0,160));

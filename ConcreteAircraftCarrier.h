@@ -13,7 +13,6 @@ public:
     ConcreteAircraftCarrier(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col,std::string nat, ShipType shipType, ModelType modelType,int armour, std::string name,  int numLCannons, int numMCannons, int numHCannons, int numAntiAircraft, int numPlanes);
     void notifyPlanes() override;
     void attachPlanes(std::shared_ptr<WarPlane> warPlane) override;
-    void detachPlanes(std::shared_ptr<WarPlane> warPlane) override;
     bool searchTarget(float elapsedTime) override;
     void notifyArsenals() const override;
     void attach(std::shared_ptr<Arsenal> gun) override;
@@ -21,7 +20,6 @@ public:
     void notifyBars() const override;
     void notifyBarsDamage() const override;
     void attachBar(std::shared_ptr<BarInterface> bar) override;
-    void detachBar(std::shared_ptr<BarInterface> bar) override;
     void setMvcTarget(std::shared_ptr<WarShip> target) override;
     void drawEquipment(sf::RenderWindow &window) override;
 public:

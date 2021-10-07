@@ -52,10 +52,6 @@ const sf::Sprite &GameTile::getSprite() const {
 TileType GameTile::getTileType() const {
     return tileType;
 }
-bool GameTile::getIsPassable() const {
-    return isPassable;
-}
-
 GameTile *GameTile::getInstance() {
     return this;
 }

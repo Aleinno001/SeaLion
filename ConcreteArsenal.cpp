@@ -56,26 +56,8 @@ bool ConcreteArsenal::setUpSprite(std::string textureName) {
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
 }
-float ConcreteArsenal::getRangeOfFire() const {
-    return rangeOfFire;
-}
-int ConcreteArsenal::getReloadTime() const {
-    return reloadTime;
-}
-int ConcreteArsenal::getAmmoSpeed() const {
-    return ammoType->getSpeed();
-}
-int ConcreteArsenal::getMaximumDispersion() const {
-    return maximumDispersion;
-}
-std::shared_ptr<Bullet> ConcreteArsenal::getAmmoType() const {
-    return ammoType;
-}
 int ConcreteArsenal::getFirepower() const {
     return firepower;
-}
-void ConcreteArsenal::setAmmoType(std::shared_ptr<Bullet> ammoType) {
-    this->ammoType=ammoType;
 }
 sf::Sprite &ConcreteArsenal::getSprite(){
     return sprite;
@@ -88,12 +70,6 @@ int ConcreteArsenal::getLength() const {
 }
 int ConcreteArsenal::getWidth() const {
     return width;
-}
-float ConcreteArsenal::getCountdown() const {
-    return countdown;
-}
-void ConcreteArsenal::setCountdown(float countdown) {
-    this->countdown=countdown;
 }
 void ConcreteArsenal::rotate(sf::Vector2f &coord) {
     double mx;

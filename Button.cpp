@@ -34,28 +34,6 @@ bool Button::setUpSprite(std::string textureName) {
     sprite.setTextureRect(sf::IntRect(0, 0, width, length));
     return true;
 }
-bool Button::checkClick(sf::Vector2f clickPos) {
-    bool result = false;
-    if(sprite.getGlobalBounds().contains(clickPos)){
-        result = true;
-    }
-    return result;
-}
-void Button::setPos(const sf::Vector2f &pos) {
-    sprite.setPosition(pos);
-}
-int Button::getWidth() const {
-    return width;
-}
-int Button::getLength() const {
-    return length;
-}
-void Button::setWidth(int width) {
-    Button::width = width;
-}
-void Button::setLength(int length) {
-    Button::length = length;
-}
 sf::Sprite &Button::getSprite()  {
     return sprite;
 }

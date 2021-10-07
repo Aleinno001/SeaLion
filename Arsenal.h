@@ -30,20 +30,11 @@ public:
     virtual void update() = 0; //Metodo per design pattern observer
     virtual void searchTarget(float elapsedTime) = 0;
     virtual bool setUpSprite(std::string textureName)=0;
-   // virtual void removeMeFromTheList() = 0;//metodo per detach observer cannoni
-    virtual float getRangeOfFire() const = 0;
-    virtual int getReloadTime() const = 0;
-    virtual int getAmmoSpeed() const = 0;
-    virtual int getMaximumDispersion() const = 0;
-    virtual std::shared_ptr<Bullet> getAmmoType() const =0;
     virtual int getFirepower() const = 0;
-    virtual void setAmmoType(std::shared_ptr<Bullet> ammoType)=0;
     virtual sf::Sprite &getSprite() = 0;
     virtual const std::string &getTextureName() = 0;
     virtual int getLength() const =0;
     virtual int getWidth() const =0;
-    virtual float getCountdown() const =0;
-    virtual void setCountdown(float countdown)=0;
     virtual void drawEquipment(sf::RenderWindow &window)=0;
     ~Arsenal()=default;
 };

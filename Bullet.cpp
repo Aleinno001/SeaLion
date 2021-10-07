@@ -55,13 +55,6 @@ void Bullet::reachTarget() {
     currentSpeed = currentSpeed - deceleration;
     sprite.setPosition(sprite.getPosition() + vel);
 }
-void Bullet::setTargetPoint(const sf::Vector2f &targetPoint) {
-    Bullet::targetPoint = targetPoint;
-}
-void Bullet::setStartPoint(const sf::Vector2f &startPoint) {
-    Bullet::startPoint = startPoint;
-    sprite.setPosition(startPoint);
-}
 const sf::Sprite &Bullet::getSprite() const {
     return sprite;
 }
@@ -85,32 +78,11 @@ void Bullet::initializeBullet(sf::Vector2f start, sf::Vector2f target) {
     arrived = false;
     sprite.setPosition(startPoint);
 }
-const sf::Vector2f &Bullet::getStartPoint() const {
-    return startPoint;
-}
 float Bullet::getCurrentSpeed() const {
     return currentSpeed;
 }
 float Bullet::getSpeed() const {
     return speed;
-}
-float Bullet::getDamage() const {
-    return damage;
-}
-float Bullet::getDeceleration() const {
-    return deceleration;
-}
-const sf::Texture &Bullet::getTexture() const {
-    return texture;
-}
-const std::string &Bullet::getBulletName() const {
-    return bulletName;
-}
-int Bullet::getWidth() const {
-    return width;
-}
-int Bullet::getLength() const {
-    return length;
 }
 float Bullet::getDmgMult() const {
     return dmgMult;

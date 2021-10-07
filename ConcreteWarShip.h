@@ -16,7 +16,6 @@ public:
     void notifyBars() const override;
     void notifyBarsDamage() const override;
     void attachBar(std::shared_ptr<BarInterface> bar) override;
-    void detachBar(std::shared_ptr<BarInterface> bar) override;
     void drawEquipment(sf::RenderWindow &window) override;
     ~ConcreteWarShip()=default;
 protected:

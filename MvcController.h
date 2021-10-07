@@ -11,9 +11,6 @@ public:
     void startUpEngine(std::shared_ptr<D> target){
         model.setMvcTarget(target);
     };
-    T &getModel() const{
-        return model;
-    };
     ~MvcController()=default;
 private:
     T &model;

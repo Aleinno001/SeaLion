@@ -13,19 +13,11 @@ public:
     void update() override;
     void searchTarget(float elapsedTime) override;
     bool setUpSprite(std::string textureName) override;
-    float getRangeOfFire() const override;
-    int getReloadTime() const override;
-    int getAmmoSpeed() const override;
-    int getMaximumDispersion() const override;
-    std::shared_ptr<Bullet> getAmmoType() const override;
     int getFirepower() const override;
-    void setAmmoType(std::shared_ptr<Bullet> ammoType) override;
     sf::Sprite &getSprite() override;
     const std::string &getTextureName() override;
     int getLength() const override;
     int getWidth() const override;
-    float getCountdown() const override;
-    void setCountdown(float countdown) override;
     virtual void drawEquipment(sf::RenderWindow &window) override;
     ~ConcreteArsenal()=default;
 protected:

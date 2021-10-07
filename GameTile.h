@@ -37,7 +37,6 @@ public:
     GameTile(std::string textureName, int x, int y, bool collision, bool exit, TileType tp);
     bool setUpSprite(std::string textureName);
     void setIsPassable(bool isPassable);
-    bool getIsPassable() const;
     void setPos(const sf::Vector2f &pos);
     void setTexture(const sf::Texture &texture);
     void setTileType(TileType tileType);
