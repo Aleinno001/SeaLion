@@ -170,7 +170,7 @@ TEST_F(CollisionSuite,FogCollisions){
     EXPECT_TRUE(gameWorld.getAlliedFleet().front()->isConcealed() == true);
 }
 //FIXME completare il test
-/*
+
 TEST_F(CollisionSuite,BulletCollision){
     sf::ContextSettings settings;
     sf::Clock c;
@@ -209,6 +209,9 @@ TEST_F(CollisionSuite,BulletCollision){
     float  alliedMaxHp = gameWorld.getAlliedFleet().front()->getHp();
     float dt = 0;
     while(window.isOpen()){
+        if(gameWorld.getAlliedFleet().front()->getHp() != alliedMaxHp){
+            window.close();
+        }
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
@@ -227,11 +230,8 @@ TEST_F(CollisionSuite,BulletCollision){
         gameWorld.getEnemyFleet().front()->drawEquipment(window);
         gameWorld.getEnemyFleet().front()->searchTarget(dt);
         window.display();
-        if(gameWorld.getAlliedFleet().front()->getHp() != alliedMaxHp){
-            window.close();
-        }
     }
     EXPECT_TRUE(gameWorld.getAlliedFleet().front()->getHp() != alliedMaxHp);
 }
- */
+
 #endif //SEALION_COLLISIONFIXTURE_H
