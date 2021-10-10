@@ -42,6 +42,7 @@ protected:
 public:
     WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons,int numAntiAircraft) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat,name),shipType(shipType), modelType(modelType),armour(armour),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft), dmX(0) {}
 protected:
+    //FIXME aggiungere .cpp
     bool setUpSprite(const std::string &textureName) override {
         std::string currentDir = ToolBox::GetCurrentWorkingDir();
         std::string unitTestingPath = "UnitTesting";

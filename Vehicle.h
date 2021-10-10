@@ -34,7 +34,6 @@ protected:
     sf::Sprite sprite;
     sf::Vector2f movement;
     const std::string name;
-protected:
     virtual float rotate(float mx, float rotatingInPlaceMult)=0;
     virtual bool canEngage()=0;
     virtual void move(float elapsedTime)=0;

@@ -13,6 +13,7 @@ enum class WeaponType {
 class SpecialWeaponFactory {
 public:
     virtual std::unique_ptr<Arsenal> createSpecialWeapon(WeaponType type,WarShip &subject) const = 0;
+    virtual ~SpecialWeaponFactory() = default;
 };
 
 #endif //SEALION_SPECIALWEAPONFACTORY_H

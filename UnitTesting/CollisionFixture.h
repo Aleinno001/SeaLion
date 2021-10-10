@@ -1,16 +1,13 @@
 //
 // Created by pala on 9/28/21.
 //
-
 #ifndef SEALION_COLLISIONFIXTURE_H
 #define SEALION_COLLISIONFIXTURE_H
-
 #include <gtest/gtest.h>
 #include "../GameWorld.h"
 #include "../Functions.h"
 #include <SFML/Graphics.hpp>
 #include <thread>
-
 class CollisionSuite : public ::testing::Test {
 protected:
     virtual void SetUp(){}

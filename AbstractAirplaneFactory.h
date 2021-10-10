@@ -14,5 +14,6 @@ public:
     virtual std::unique_ptr<ConcreteWarPlane> createFighter(int posX, int posY,std::string nat,WarShip &subject) = 0;
     virtual std::unique_ptr<ConcreteWarPlane> createBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
     virtual std::unique_ptr<ConcreteWarPlane> createTorpedoBomber(int posX, int posY,std::string nat,WarShip &subject) = 0;
+    virtual ~AbstractAirplaneFactory() = default;
 };
 #endif //SEALION_ABSTRACTAIRPLANEFACTORY_H

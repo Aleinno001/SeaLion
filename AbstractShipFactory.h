@@ -25,6 +25,7 @@ public:
     virtual std::shared_ptr<WarShip> createAlliedCruiser(ModelType type, int height, int  width) = 0;
     virtual std::shared_ptr<WarShip> createAlliedBattleship(ModelType type, int height, int  width) = 0;
     virtual std::shared_ptr<WarShip> createAlliedDestroyer(ModelType type, int height, int  width) = 0;
+    virtual ~AbstractShipFactory() = default;
 };
 
 

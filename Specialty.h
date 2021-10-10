@@ -20,7 +20,7 @@ public:
     }
     void addMvcObserver(std::shared_ptr<MvcObserver> o) override{listMvcObservers.push_back(o);}
     void removeMvcObserver(std::shared_ptr<MvcObserver> o) override{listMvcObservers.remove(o);}
-    ~Specialty() = default;
+    virtual ~Specialty() = default;
 };
 
 #endif //SEALION_SPECIALTY_H
