@@ -13,9 +13,6 @@
 
 
 class Bullet {
-public:
-    Bullet(std::string bulletName, int width, int length, float dmgMult,float penetrationMult,float speedStart);
-    void reachTarget ();
 private:
     bool arrived {true};
     sf::Vector2f targetPoint;
@@ -35,6 +32,8 @@ private:
     bool setUpSprite(const std::string& textureName);
     void resetOrigin();
 public:
+    Bullet(std::string bulletName, int width, int length, float dmgMult,float penetrationMult,float speedStart);
+    void reachTarget ();
     const sf::Sprite &getSprite() const;
     const sf::Vector2f &getTargetPoint() const;
     bool isArrived() const;

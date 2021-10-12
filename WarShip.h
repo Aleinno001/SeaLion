@@ -39,47 +39,9 @@ protected:
     std::list<std::shared_ptr<BarInterface>> bars;
     std::list<std::shared_ptr<WarShip>> enemyList;
     sf::Vector2f targetCoordinates;
+    bool setUpSprite(const std::string &textureName) override;
 public:
     WarShip(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat,ShipType shipType, ModelType modelType,int armour, std::string name,int numLCannons,int numMCannons, int numHCannons,int numAntiAircraft) : Vehicle(x, y, ac, maxVel, hp, le, wi, col, nat,name),shipType(shipType), modelType(modelType),armour(armour),numLCannons(numLCannons), numMCannons(numMCannons),numHCannons(numHCannons),numAntiAircraft(numAntiAircraft), dmX(0) {}
-protected:
-    //FIXME aggiungere .cpp
-    bool setUpSprite(const std::string &textureName) override {
-        std::string currentDir = ToolBox::GetCurrentWorkingDir();
-        std::string unitTestingPath = "UnitTesting";
-        std::size_t found = currentDir.find(unitTestingPath);
-        if (found != std::string::npos) {
-            currentDir.erase(found);
-            currentDir.pop_back();
-        }
-        std::string textPath;
-        std::string model;
-        switch (shipType) {
-            case ShipType::AircraftCarrier:
-            {model="AircraftCarrier";}
-                break;
-            case ShipType::Destroyer:
-            {model="Destroyer";}
-                break;
-            case ShipType::Battleship:
-            {model="Battleship";}
-                break;
-            case ShipType::Submarine:
-            {model="Submarines";}
-                break;
-            case ShipType::Cruiser:
-            {model="Cruiser";}
-                break;
-        }
-        textPath = currentDir + "/../Res/"+nationality+"/"+model+"/" + textureName + ".png";
-        if (!Collision::CreateTextureAndBitmask(texture, textPath)) {
-            throw std::runtime_error("Path to tile filename invalid!!");
-        }
-        texture.setSmooth(true);
-        sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect(0, 0, width, length));
-        return true;
-    }
-public:
     virtual void notifyArsenals() const = 0;//Metodi per design pattern observer
     virtual void attach(std::shared_ptr<Arsenal> gun) = 0;//Metodi per design pattern observer
     virtual void detach(std::shared_ptr<Arsenal> gun) = 0;//Metodi per design pattern observer

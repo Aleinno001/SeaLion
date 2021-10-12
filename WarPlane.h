@@ -12,24 +12,7 @@ protected:
     const float coolDown{6};
     float ammoDamage;
     std::shared_ptr<WarShip> target;
-    bool setUpSprite(const std::string &textureName) override {
-        std::string currentDir = ToolBox::GetCurrentWorkingDir();
-        std::string unitTestingPath = "UnitTesting";
-        std::size_t found = currentDir.find(unitTestingPath);
-        if (found != std::string::npos) {
-            currentDir.erase(found);
-            currentDir.pop_back();
-        }
-        std::string textPath;
-        textPath = currentDir + "/../Res/"+nationality+"/WarPlanes/" + textureName + ".png";
-        if (!Collision::CreateTextureAndBitmask(texture, textPath)) {
-            throw std::runtime_error("Path to tile filename invalid!!");
-        }
-        texture.setSmooth(true);
-        sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect(0, 0, width, length));
-        return true;
-    }
+    bool setUpSprite(const std::string &textureName) override;
 public:
     WarPlane(float x, float y, float ac, float maxVel, int hp, int le, int wi, bool col, std::string nat, int numAmmo, int ammoDamage,std::string name) : Vehicle(x, y, ac, maxVel, hp, le, wi,col, nat,name),currentCoolDown(currentCoolDown),coolDown(coolDown), ammoDamage(ammoDamage){};
     void setTarget(std::shared_ptr<WarShip> tar) {target = tar;}
