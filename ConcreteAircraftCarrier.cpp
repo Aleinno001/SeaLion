@@ -61,7 +61,7 @@ void ConcreteAircraftCarrier::move(float elapsedTime) {
         } else {
             currentSpeed = 0;
         }
-        if (auto* pAircraftCarrier = dynamic_cast<ConcreteAircraftCarrier*>(this))   //FIXME controllare che gli aerei non stiano volando
+        if (auto* pAircraftCarrier = dynamic_cast<ConcreteAircraftCarrier*>(this))
             pAircraftCarrier->notifyPlanes();
         else
         {

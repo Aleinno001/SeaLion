@@ -583,7 +583,7 @@ std::shared_ptr<WarShip> ShipFactory::createBattleship(ModelType type,int height
             return northCarolina;
         }
     }
-    return std::shared_ptr<WarShip>(); //TODO implementare tutti i costruttori
+    return std::shared_ptr<WarShip>();
 }
 std::shared_ptr<WarShip>
 ShipFactory::ironDukeBuilder(
@@ -636,7 +636,6 @@ ShipFactory::northCarolinaBuilder(
 std::shared_ptr<WarShip>
 ShipFactory::montanaBuilder(
         sf::Vector2i &coordinates){
-    //TODO concludere tutte le aggiunte necessarie
     CannonFactory factory;
     int shipWidth = 37;
     int shipHeight = 281;

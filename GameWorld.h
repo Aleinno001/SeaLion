@@ -63,7 +63,7 @@ private:
     void italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
     void usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
     void ukAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void setUpAlliedFleet(std::vector<Fleet> &fleet);  //Crea la flotta alleata   //FIXME da rendere generalizzata
+    void setUpAlliedFleet(std::vector<Fleet> &fleet);  //Crea la flotta alleata
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes,int &numEnemyAir);  //Crea la flotta nemica
     void setUpUnitTestingTiles(int tileDim,std::string specialTile); //Genera la mappa per Unit Testing
 public:
