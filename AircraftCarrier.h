@@ -17,7 +17,7 @@ public:
     virtual void notifyPlanes()=0;
     virtual void attachPlanes(std::shared_ptr<WarPlane> warPlane)=0;
     std::list<std::shared_ptr<WarPlane>> &getPlanes() {return planes;}
-    ~AircraftCarrier()=default;
+    virtual ~AircraftCarrier()=default;
 };
 
 #endif //SEALION_AIRCRAFTCARRIER_H

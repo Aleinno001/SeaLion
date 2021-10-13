@@ -174,12 +174,12 @@ void Functions::manageSelection(sf::RenderWindow &window, sf::Event &event, Game
 }
 void Functions::prepareFullNavyList(GameWorld &gameWorld,std::list<std::shared_ptr<WarShip>> &fullNavyList) {
     for (auto & itEnemy : gameWorld.getEnemyFleet()) {
-        std::shared_ptr<WarShip> ele (itEnemy.get());
+        const std::shared_ptr<WarShip>& ele (itEnemy);
         fullNavyList.push_back(ele);
     }
     for (auto & itAllied : gameWorld.getAlliedFleet()) {
         //creazione lista contenete tutte le navi di gioco, propedeutica al controllo delle collisioni
-        std::shared_ptr<WarShip>ele(itAllied.get());
+        std::shared_ptr<WarShip>& ele(itAllied);
         fullNavyList.push_back(ele);
     }
 }
