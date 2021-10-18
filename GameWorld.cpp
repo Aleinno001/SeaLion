@@ -179,7 +179,7 @@ void GameWorld::setUpTiles(int &tileDim) {
         std::cerr << "Please change the directory" << std::endl;
     }
 }
-void GameWorld::italianBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
+void GameWorld::italianBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //impartisce l'ordine di inizializzare un certo numero di navi a seconda della fazione
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
@@ -285,7 +285,7 @@ void GameWorld::aircraftCarrierRandomizer(int &enemyAir, Dice &airDice,const std
         ukAircraftCarrierInizializer(enemyAir, enemyFactory, airDice);
     }
 }
-void GameWorld::japanBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::japanBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
@@ -306,7 +306,7 @@ void GameWorld::japanBattleshipInizializer(int &numBat, std::shared_ptr<ShipFact
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::japanSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::japanSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
@@ -321,7 +321,7 @@ void GameWorld::japanSubmarineInizializer(int &numSub, std::shared_ptr<ShipFacto
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::japanDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::japanDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
@@ -339,7 +339,7 @@ void GameWorld::japanDestroyerInizializer(int &numDes, std::shared_ptr<ShipFacto
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::japanAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::japanAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
@@ -354,7 +354,7 @@ void GameWorld::japanAircraftCarrierInizializer(int &numAir, std::shared_ptr<Shi
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::japanCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::japanCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
@@ -373,7 +373,7 @@ void GameWorld::japanCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory
 
 }
 }
-void GameWorld::usaBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {   //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::usaBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {   //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
@@ -394,7 +394,7 @@ void GameWorld::usaBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactor
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::ukBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::ukBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numBat; i++) {
             if (dice.roll(1) == 1) {
@@ -415,7 +415,7 @@ void GameWorld::ukBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::italianCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::italianCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
@@ -433,7 +433,7 @@ void GameWorld::italianCruiserInizializer(int &numCru, std::shared_ptr<ShipFacto
     std::cerr << e.what() << std::endl;
 }
 }
-void GameWorld::usaCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::usaCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
@@ -451,7 +451,7 @@ void GameWorld::usaCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> 
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::ukCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::ukCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numCru; i++) {
             if (dice.roll(1) == 1) {
@@ -469,7 +469,7 @@ void GameWorld::ukCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> e
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::italianDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::italianDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
@@ -487,7 +487,7 @@ void GameWorld::italianDestroyerInizializer(int &numDes, std::shared_ptr<ShipFac
     std::cerr << e.what() << std::endl;
 }
 }
-void GameWorld::usaDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::usaDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
@@ -505,7 +505,7 @@ void GameWorld::usaDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory
     std::cerr << e.what() << std::endl;
 }
 }
-void GameWorld::ukDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::ukDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numDes; i++) {
             if (dice.roll(1) == 1) {
@@ -523,7 +523,7 @@ void GameWorld::ukDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory>
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::italianSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::italianSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
@@ -538,7 +538,7 @@ void GameWorld::italianSubmarineInizializer(int &numSub, std::shared_ptr<ShipFac
     std::cerr << e.what() << std::endl;
 }
 }
-void GameWorld::usaSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::usaSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
@@ -553,7 +553,7 @@ void GameWorld::usaSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::ukSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::ukSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) {  //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numSub; i++) {
             if (dice.roll(1) > 1) {
@@ -568,7 +568,7 @@ void GameWorld::ukSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory>
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::italianAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
@@ -583,7 +583,7 @@ void GameWorld::italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<S
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::usaAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {
@@ -598,7 +598,7 @@ void GameWorld::usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipF
         std::cerr << e.what() << std::endl;
     }
 }
-void GameWorld::ukAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
+void GameWorld::ukAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory,Dice &dice) { //estrae in maniera casuale un modello navale con ugual probabilità
     try {
         for (int i = 0; i < numAir; i++) {
             if (dice.roll(1) > 1) {

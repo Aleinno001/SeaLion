@@ -43,26 +43,26 @@ private:
     void cruiserRandomizer(int &enemyCru, Dice &cruDice, const std::shared_ptr<ShipFactory>& enemyFactory);
     void destroyerRandomizer(int &enemyDes, Dice &desDice, const std::shared_ptr<ShipFactory>& enemyFactory);
     void aircraftCarrierRandomizer(int &enemyAir, Dice &airDice, const std::shared_ptr<ShipFactory>& enemyFactory);
-    void japanBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void japanCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void japanSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void japanDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void japanAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void italianBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void usaBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void ukBattleshipInizializer(int &numBat, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void italianCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void usaCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void ukCruiserInizializer(int &numCru, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void italianDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void usaDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void ukDestroyerInizializer(int &numDes, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void italianSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void usaSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void ukSubmarineInizializer(int &numSub, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void italianAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void usaAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
-    void ukAircraftCarrierInizializer(int &numAir, std::shared_ptr<ShipFactory> enemyFactory, Dice &dice);
+    void japanBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void japanCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void japanSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void japanDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void japanAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void italianBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void usaBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void ukBattleshipInizializer(int &numBat, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void italianCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void usaCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void ukCruiserInizializer(int &numCru, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void italianDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void usaDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void ukDestroyerInizializer(int &numDes, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void italianSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void usaSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void ukSubmarineInizializer(int &numSub, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void italianAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void usaAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
+    void ukAircraftCarrierInizializer(int &numAir, const std::shared_ptr<ShipFactory>& enemyFactory, Dice &dice);
     void setUpAlliedFleet(std::vector<Fleet> &fleet);  //Crea la flotta alleata
     void setUpEnemyFleet(int &numEnemySub, int &numEnemyBat, int &numEnemyCru, int &numEnemyDes,int &numEnemyAir);  //Crea la flotta nemica
     void setUpUnitTestingTiles(int tileDim,std::string specialTile); //Genera la mappa per Unit Testing
