@@ -16,7 +16,7 @@ public:
         sprite.setPosition(x,y);
     }
     void update() override;
-    bool searchTarget(float elapsedTime) override;
+    void searchTarget(float elapsedTime) override;
     void drawEquipment(sf::RenderWindow &window) override;
     ~ConcreteWarPlane()=default;
 protected:

@@ -59,7 +59,7 @@ public:
     std::list<std::shared_ptr<BarInterface>> &getBars() {return bars;}
     void setTargetCoordinates(const sf::Vector2f &targetCoordinates) {WarShip::targetCoordinates = targetCoordinates;}
     const std::list<std::shared_ptr<WarShip>> &getEnemyList() const {return enemyList;}
-    void setEnemyList(const std::list<std::shared_ptr<WarShip>> &enemyList) {WarShip::enemyList = enemyList;}
+    void setEnemyList(std::list<std::shared_ptr<WarShip>> &enemyList) {WarShip::enemyList = enemyList;}
     virtual ~WarShip()=default;
 };
 #endif //SEALION_WARSHIP_H

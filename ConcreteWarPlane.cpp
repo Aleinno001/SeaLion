@@ -22,7 +22,7 @@ void ConcreteWarPlane::update() {
         sprite.setPosition(newPosition);
     }
 }
-bool ConcreteWarPlane::searchTarget(float elapsedTime) {
+void ConcreteWarPlane::searchTarget(float elapsedTime) {
     if(target.get() != nullptr && !target->isConcealed()) {
         move(elapsedTime);
         if (canEngage())

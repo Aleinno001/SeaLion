@@ -93,7 +93,7 @@ void ConcreteAircraftCarrier::notifyBarsDamage() const {
 void ConcreteAircraftCarrier::attachBar(std::shared_ptr<BarInterface> bar) {
     bars.push_back(bar);
 }
-bool ConcreteAircraftCarrier::searchTarget(float elapsedTime) {
+void ConcreteAircraftCarrier::searchTarget(float elapsedTime) {
     move(elapsedTime);
     if(canEngage())
         attack(elapsedTime);

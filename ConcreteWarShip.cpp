@@ -78,7 +78,7 @@ void ConcreteWarShip::notifyBarsDamage() const {
 void ConcreteWarShip::attachBar(std::shared_ptr<BarInterface> bar) {
     bars.push_back(bar);
 }
-bool ConcreteWarShip::searchTarget(float elapsedTime) {
+void ConcreteWarShip::searchTarget(float elapsedTime) {
     move(elapsedTime);
     if (canEngage())
         attack(elapsedTime);

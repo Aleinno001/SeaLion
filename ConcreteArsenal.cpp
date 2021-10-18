@@ -101,6 +101,7 @@ float ConcreteArsenal::attack(sf::Vector2f &coord,float elapsedTime) {
     } else {
         ammoType->hit();
     }
+    return 0;
 }
 bool ConcreteArsenal::engage(sf::Vector2f &coord,bool concealed) {
     bool result = false;

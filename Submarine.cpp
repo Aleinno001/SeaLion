@@ -69,7 +69,7 @@ void Submarine::notifyBarsDamage() const {
 void Submarine::attachBar(std::shared_ptr<BarInterface> bar) {
     bars.push_back(bar);
 }
-bool Submarine::searchTarget(float elapsedTime) {
+void Submarine::searchTarget(float elapsedTime) {
     move(elapsedTime);
     if(canEngage())
         attack(elapsedTime);

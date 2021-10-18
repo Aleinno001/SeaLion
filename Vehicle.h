@@ -42,7 +42,7 @@ protected:
 public:
     Vehicle(float X, float Y, float ac, float maxVel, int HP, int le, int wi,bool col, std::string nat,std::string n) : posX(X), posY(Y), acceleration(ac), maxSpeed(maxVel), hp(HP),length(le), collision(col), width(wi), nationality(nat), maxHP(HP),currentSpeed(0),movement(0,0),name(n){}
     virtual const std::string &getNationality(){return nationality;}
-    virtual bool searchTarget(float elapsedTime)=0;
+    virtual void searchTarget(float elapsedTime)=0;
     bool isDeath() const {return death;}
     void setDeath(bool d) {Vehicle::death = d;}
     double getMaxSpeed() const {return maxSpeed;}
