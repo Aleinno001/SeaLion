@@ -12,29 +12,32 @@ Some ships have special weapons, just click the button and select the enemy ship
 As for combat, ships have cannons capable of hitting the nearest ship automatically, but only if the target is within range.
 ### Movement Mechanics and Obstacles
 Firstly click on one of your ships and then click on the destination point and it can happen that:
+<br>
+<br>
+<b> • </b> Two of your ships collide
+<p>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200" > </img> 
+</p>
 
-<table style="border: 0px solid transparent;">
-  <tr>
-    <td>
-      - Two of your ships collide
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200" align = "left"> </img> 
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Alfreds Futterkiste
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200" align = "left"> </img> 
-    </td>
-  </tr>
-</table>
+<b> • </b> Your ship collides an island
+<p>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200"> </img> 
+</p>
+
+<b> • </b> Your ship runs into a whirlpool 
+<p>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200"> </img> 
+</p>
+
+<b> • </b> Your ship runs into rough sea
+<p>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200"> </img> 
+</p>
+
+<b> • </b> Your ship hides into fog bank
+<p>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200"> </img> 
+</p>
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
