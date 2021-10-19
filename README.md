@@ -5,11 +5,36 @@ The project SeaLion is a C++ implementation of a RTSG (<i>Real Time Strategy Gam
 ## Gameplay and Functionalities
 
 ### Basics
-<P ALIGN="JUSTIFY">
 SeaLion starts with a random generated map and two fleets, each of wich can be Italian, American, English or Japanese. The objective is to destroy all the enemy 
 ships using the weaponry at your dose, in particular: battleships, crusaders, destroyers, aircraft carriers and submarines. You can select a ship just clicking on it, and then move it selecting the destination point, 
-but be aware of the obstacles spread on the map.
-</P>
-## Contributing
+but be aware of the obstacles spread on the map!
+Some ships have special weapons, just click the button and select the enemy ship to attack it. 
+As for combat, ships have cannons capable of hitting the nearest ship automatically, but only if the target is within range.
+### Movement Mechanics and Obstacles
+Firstly click on one of your ships and then click on the destination point and it can happen that:
 
+<table style="border: 0px solid transparent;">
+  <tr>
+    <td>
+      - Two of your ships collide
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200" align = "left"> </img> 
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Alfreds Futterkiste
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="200" height="200" align = "left"> </img> 
+    </td>
+  </tr>
+</table>
+
+## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
