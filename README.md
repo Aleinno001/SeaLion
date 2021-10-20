@@ -7,12 +7,12 @@ Sealion is a video game project created to learn modern C ++ 11 characterized by
 ## Gameplay and Functionalities
 
 ### Basics
-SeaLion starts with a random generated map and two fleets, each of wich can be Italian, American, English or Japanese. The objective is to destroy all the enemy 
-ships using the weaponry at your dose, in particular: battleships, crusaders, destroyers, aircraft carriers and submarines. You can select a ship just clicking on it, and then move it selecting the destination point, 
-but be aware of the obstacles spread on the map!
-Some ships have special weapons, just click the button and select the enemy ship to attack it. 
-As for combat, ships have cannons capable of hitting the nearest ship automatically, but only if the target is within range.
-As regards the menu and the selection of your and enemy fleet will be added as soon as possible like enemy algoritmic intelligence and the possibility to shoot torpedoes from submarines.
+SeaLion starts with a randomly generated map and two fleets, each of which can be Italian, American, British or Japanese. The goal is to destroy all the enemy
+ships using the weapons at your disposal, in particular: battleships, crusaders, destroyers, aircraft carriers and submarines. You can select a ship by simply clicking on it, then move it by selecting the destination point,
+but watch out for the obstacles scattered on the map!
+Some ships have special weapons, just click the button and select the enemy ship to attack it.
+As for combat, ships have three different types of guns (light, medium, heavy) which all have a different range and different types of firing projectiles with different penetration and damage capabilities; they are able to turn in the right direction by triangulating and automatically firing at the nearest ship, but only if the target is within range.
+As for the menu, the selection of your and enemy fleet via menu interface, the enemy algorithmic intelligence and the possibility of firing torpedoes from submarines, will be added as soon as possible, time allow.
 ### Movement Mechanics and Obstacles
 Firstly click on one of your ships and then click on the destination point and it can happen that:
 
