@@ -1,7 +1,7 @@
 # SeaLion
 
 The project SeaLion is a C++ implementation of a RTSG (<i>Real Time Strategy Game</i>) naval battles using the SFML library (see SFML repository: https://github.com/SFML/SFML.git).
-### Intro
+## Intro
 Sealion in a videogame project realized in order to learn modern C++11 featured of design pattern like Factory,Observer,Strategy,Model-View-Controller, some functional paradigm,  object-oriented paradigm, generic template, smart-pointers, interface-oriented and polymorphic programming.To achive code stabilty and code reliability we surrounded our project with Unit Testing code choosing Google Test engine for it.Finally we have runned Google Sanitizer for detecting and eliminating eventual memory leak.
 ## Gameplay and Functionalities
 
