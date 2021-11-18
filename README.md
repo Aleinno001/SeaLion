@@ -44,9 +44,9 @@ Firstly click on one of your ships and then click on the destination point and i
 ![SeaLion](/Res/Combat.gif)
 
 
-
-
-
+<ul>
+  <li>In addition to cannons, AircraftCarrier are capable of using airplanes in order to strike and sunk enemy warships</li>
+</ul>
 ![SeaLion](/Res/Airplanes.gif)
 
 
