@@ -37,7 +37,9 @@ Firstly click on one of your ships and then click on the destination point and i
 
 ![SeaLion](/Res/Fog.gif)
 
-The cannon combat phase is realized thanks to shells and cannons that working together make a balanced equilibrium considering armour penetration and shooting dinamics like dispersion, accuracy on the target and shell types.Cannons are capable of detecting nearests ships, afterwards cannons rotate in the right direction igniting shells to the enemy.
+<ul>
+<li>The cannon combat phase is realized thanks to shells and cannons that working together make a balanced equilibrium considering armour penetration and shooting dinamics like dispersion, accuracy on the target and shell types.Cannons are capable of detecting nearests ships, afterwards cannons rotate in the right direction igniting shells to the enemy.</li>
+</ul>
 
 ![SeaLion](/Res/Combat.gif)
 
