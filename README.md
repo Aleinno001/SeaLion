@@ -13,13 +13,46 @@ Some ships have special weapons, just click the button and select the enemy ship
 As for combat, ships have three different types of guns (light, medium, heavy) which all have a different range and different types of firing projectiles with different penetration and damage capabilities; they are able to turn in the right direction by triangulating and automatically firing at the nearest ship, but only if the target is within range.As for the menu, the selection of your and enemy fleet via menu interface, the enemy algorithmic intelligence and the possibility of firing torpedoes from submarines, will be added as soon as possible, time allow.
 ### Movement Mechanics and Obstacles
 Firstly click on one of your ships and then click on the destination point and it can happen that:
+<ul>
+  <li>Two ships collide and get stranded </li>
+</ul>
+
+![SeaLion](/Res/ShipCollision.gif)
+
+<ul>
+  <li>The ship collides with an island getting stranded</li>
+</ul>
+
+![SeaLion](/Res/IsleCollision.gif)
+
+<ul>
+  <li>The ship passes over a reel, suffering damage over time  </li>
+</ul>
+
+![SeaLion](/Res/Wirpool.gif)
+
+<ul>
+  <li>The ship passes through a fog bank, so it cannot be hit by ships outside the fog but the ship itself can strike outside of it  </li>
+</ul>
+
+![SeaLion](/Res/Fog.gif)
+
+
+
+
+![SeaLion](/Res/Combat.gif)
+
+
+
+
+
+![SeaLion](/Res/Airplanes.gif)
+
 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-![SeaLion](/Res/Fog.gif)
 
-![SeaLion](/Res/Combat.gif)
 
 
