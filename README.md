@@ -38,14 +38,14 @@ Firstly click on one of your ships and then click on the destination point and i
 ![SeaLion](/Res/Fog.gif)
 
 <ul>
-<li>The cannon combat phase is realized thanks to shells and cannons that working together make a balanced equilibrium considering armour penetration and shooting dinamics like dispersion, accuracy on the target and shell types.Cannons are capable of detecting nearests ships, afterwards cannons rotate in the right direction igniting shells to the enemy.</li>
+<li>The combat phase of the cannons is achieved thanks to projectiles and cannons that working together create an optimal balance considering the penetration of the armor and the firing dynamics such as dispersion, accuracy on the target and types of projectiles. The guns are able to detect the closest ships, so the guns rotate in the right direction to fire bullets at the enemy.</li>
 </ul>
 
 ![SeaLion](/Res/Combat.gif)
 
 
 <ul>
-  <li>In addition to cannons, AircraftCarrier are capable of using airplanes in order to strike and sunk enemy warships</li>
+  <li>In addition to cannons, aircraft carriers are able to use airplanes to hit and sink enemy warships</li>
 </ul>
 
 ![SeaLion](/Res/Airplanes.gif)
