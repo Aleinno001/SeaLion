@@ -3,7 +3,7 @@
 The project SeaLion is a C++ implementation of a RTSG (<i>Real Time Strategy Game</i>) naval battles using the SFML library (see SFML repository: https://github.com/SFML/SFML.git).
 ## Intro
 
-Sealion is a video game project created to learn modern C ++ characterized by design models such as Factory, Observer, Strategy, Model-View-Controller, some functional paradigms, object-oriented paradigms, generic templates, smart-pointers, interface - oriented and polymorphic programming. To achieve the stability and reliability of the code we have surrounded our project with Unit Testing code by choosing the Google Test engine for it. Finally we ran Google Sanitizer to detect and eliminate any memory leaks.
+Sealion is a video game project created to learn modern C ++ characterized by design models such as Factory, Observer, Strategy, Model-View-Controller, some functional paradigms, object-oriented paradigms, generic templates, smart-pointers, interface - oriented and polymorphic programming. To achieve the stability and reliability of the code we have surrounded our project with Unit Testing code by choosing the Google Test engine for it. Finally we ran Google Sanitizer.
 ## Gameplay and Functionalities
 
 ### Basics
@@ -37,8 +37,7 @@ Firstly click on one of your ships and then click on the destination point and i
 
 ![SeaLion](/Res/Fog.gif)
 
-
-
+The cannon combat phase is realized thanks to shells and cannons that working together make a balanced equilibrium considering armour penetration and shooting dinamics like dispersion, accuracy on the target and shell types.Cannons are capable of detecting nearests ships, afterwards cannons rotate in the right direction igniting shells to the enemy.
 
 ![SeaLion](/Res/Combat.gif)
 
