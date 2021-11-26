@@ -3,6 +3,6 @@
 //
 #include "Specialty.h"
 void Specialty::notifyMvcObserver(){
-for (auto &it: listMvcObservers)
-it->updateMvcObserver();
+    for (auto &it: listMvcObservers)
+    it->updateMvcObserver();
 }
